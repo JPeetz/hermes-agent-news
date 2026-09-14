@@ -237,6 +237,21 @@ class CostTracker:
             self.output_price = 0.25
             self.cache_write_price = 0.075
             self.cache_hit_price = 0.015
+        elif "deepseek-v4.1-flash" in model.lower():
+            # deepseek/deepseek-v4.1-flash on OpenRouter (verified live against
+            # /api/v1/models/deepseek/deepseek-v4.1-flash/endpoints on
+            # 2026-09-14): $0.15/MTok prompt, $0.60/MTok completion,
+            # $0.003/MTok cache read on the DeepSeek-served and Relace
+            # endpoints. OpenRouter lists 16 endpoints and the resellers price
+            # higher (DeepInfra $0.20, Fireworks $0.22, Morph $0.255, Io Net
+            # $0.285), so these are the cheap-end rates -- the same convention
+            # as the GLM row. No cache-write premium is published, so writes
+            # bill at the prompt rate. Reasoning arrives folded into
+            # output_tokens.
+            self.input_price = 0.15
+            self.output_price = 0.60
+            self.cache_write_price = 0.15
+            self.cache_hit_price = 0.003
         elif "ox-alpha" in model.lower():
             # stealth/ox-alpha was $0/$0 on OpenRouter while listed (verified
             # live on 2026-08-22). Delisted 2026-08-27 when revealed as

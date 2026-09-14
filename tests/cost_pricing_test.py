@@ -116,5 +116,28 @@ class ProviderReportedImageCostTest(unittest.TestCase):
         self.assertIsNone(price_image_usage(None))
 
 
+class DeepSeekV41FlashPricingTest(unittest.TestCase):
+    """2026-09-14: the pipeline's model can be pinned per run via the
+    ``anthropic_model`` dispatch input. Any model that override can select needs
+    a real pricing row -- an unknown model still falls back to Opus rates, which
+    would report fiction on the site's cost trend."""
+
+    def test_deepseek_v4_1_flash_uses_real_openrouter_schedule(self):
+        tracker = CostTracker(model="deepseek/deepseek-v4.1-flash")
+        self.assertEqual(tracker.input_price, 0.15)
+        self.assertEqual(tracker.output_price, 0.60)
+        self.assertEqual(tracker.cache_write_price, 0.15)
+        self.assertEqual(tracker.cache_hit_price, 0.003)
+        self.assertFalse(tracker.pricing_is_estimate)
+
+        tracker.record_call("news_analyzer.reduce_rank", {
+            "input_tokens": 1_000_000,
+            "output_tokens": 1_000_000,
+        }, "DEEP")
+        breakdown = tracker.get_total_cost()
+        self.assertAlmostEqual(breakdown.input_cost, 0.15, places=6)
+        self.assertAlmostEqual(breakdown.output_cost, 0.60, places=6)
+
+
 if __name__ == "__main__":
     unittest.main()
