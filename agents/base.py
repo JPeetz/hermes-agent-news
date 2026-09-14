@@ -1128,7 +1128,7 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
                                 item_analyses=accepted + recovered.item_analyses,
                                 batch_themes=metadata.get('themes', metadata.get('category_themes', [])) + recovered.batch_themes,
                                 cross_signals=metadata.get('cross_signals', []) + recovered.cross_signals,
-                                thinking=response.thinking + '\n' + recovered.thinking)
+                                thinking='\n'.join(p for p in (response.thinking, recovered.thinking) if p) or None)
                 result = self._validate_batch_identity(result, batch_items)
                 return BatchResult(
                     batch_index=batch_index,
