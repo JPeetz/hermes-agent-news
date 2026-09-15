@@ -52,13 +52,18 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
       ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-5-opus-aws' }}
-      # Explicit per-run override ONLY -- deliberately excludes vars.ANTHROPIC_MODEL
-      # and the hardcoded fallback on the line above. ANTHROPIC_MODEL is ALWAYS
-      # populated, so treating "ANTHROPIC_MODEL is set" as "an override happened"
-      # would pin every scheduled run to the fallback model and clobber the
-      # llm.routes in PIPELINE_PROVIDERS_YAML. Empty here == no override == leave
-      # the provider secret's model selection exactly as configured.
-      LLM_MODEL_OVERRIDE: ${{ inputs.anthropic_model }}
+      # Standing model selection. Precedence:
+      #   1. explicit workflow_dispatch input   -> ad-hoc run / test
+      #   2. repo variable LLM_MODEL_OVERRIDE   -> change the standing default
+      #      with NO code edit. Set it to any model id (e.g. z-ai/GLM-5.3-Flash)
+      #      to roll back.
+      #   3. the literal default below          -> DeepSeek V4.1 Flash, standing
+      #      since 2026-09-15 (Ryan: the site was publishing as GLM).
+      # Still deliberately NOT vars.ANTHROPIC_MODEL: that is ALWAYS populated, so
+      # treating it as "an override happened" would clobber the llm.routes in
+      # PIPELINE_PROVIDERS_YAML. The override pins model + display_name + routes
+      # together, so the published site header stays truthful about what ran.
+      LLM_MODEL_OVERRIDE: ${{ inputs.anthropic_model || vars.LLM_MODEL_OVERRIDE || 'deepseek/deepseek-v4.1-flash' }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
