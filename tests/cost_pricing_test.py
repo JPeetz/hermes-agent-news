@@ -127,7 +127,7 @@ class DeepSeekV41FlashPricingTest(unittest.TestCase):
         self.assertEqual(tracker.input_price, 0.15)
         self.assertEqual(tracker.output_price, 0.60)
         self.assertEqual(tracker.cache_write_price, 0.15)
-        self.assertEqual(tracker.cache_hit_price, 0.003)
+        self.assertEqual(tracker.cache_hit_price, 0.006)
         self.assertFalse(tracker.pricing_is_estimate)
 
         tracker.record_call("news_analyzer.reduce_rank", {
