@@ -168,6 +168,10 @@ jobs:
       - name: Mint a source-only GitHub App token when no protected token is configured
         id: source-app
         if: steps.source-secret.outputs.configured != 'true'
+        # A public source can be readable with the existing read-only job
+        # token even when this App is not installed there. Acquisition below
+        # still verifies every required API read and fails on denied access.
+        continue-on-error: true
         uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ secrets.APP_ID }}
@@ -202,7 +206,11 @@ jobs:
             source_token="$SOURCE_APP_TOKEN"
           fi
           if [[ -z "$source_token" ]]; then
-            echo 'No source artifact token available; existing app installation or protected token is required.' >&2
+            source_token="$INTERNAL_GITHUB_TOKEN"
+            echo 'Trying the read-only job token for public source acquisition.'
+          fi
+          if [[ -z "$source_token" ]]; then
+            echo 'No source artifact token is available.' >&2
             exit 1
           fi
           # Keep the source-only token in this acquisition job's process
