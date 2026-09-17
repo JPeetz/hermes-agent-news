@@ -45,7 +45,7 @@ def explicit_route(environ=None, *, require_credentials=False) -> dict:
     if require_credentials and missing:
         raise BundleValidationError("Missing shadow configuration: " + ", ".join(missing))
     return {"base_url": base, "model": model or None, "max_output_tokens": 65536,
-            "max_attempts": 3, "timeout_seconds": 240, "credentials_present": keys,
+            "max_attempts": 3, "timeout_seconds": 900, "credentials_present": keys,
             "missing_configuration": missing}
 
 

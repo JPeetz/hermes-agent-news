@@ -31,6 +31,7 @@ from .contracts import (
     validate_records as _shared_validate_records,
 )
 from .budget import BudgetExceeded as _BudgetExceeded
+from .progress import Progress
 
 
 DEFAULT_TYPESAFE_ENDPOINT = "https://api.typesafe.ai/v1/systemone"
@@ -806,6 +807,8 @@ class TypeSafeAdapter:
                 payload: Any = None
                 response: Any = None
                 usage: dict[str, Any] = {}
+                progress = Progress(role="candidate", stage="filter", request_index=chunk_index + 1,
+                                    attempt=attempt, item_count=len(records), model=config.model).start()
                 try:
                     request_timeout = config.timeout_seconds
                     if budget is not None:
@@ -1066,6 +1069,11 @@ class TypeSafeAdapter:
                         "error": True,
                         "incomplete": False,
                     }
+
+                finally:
+                    progress.finish(status={"started": "incomplete", "ok": "success"}.get(attempt_record["status"], attempt_record["status"]),
+                                    input_tokens=attempt_record["usage"].get("input_tokens"),
+                                    output_tokens=attempt_record["usage"].get("output_tokens"))
 
             # The loop always returns.  Keep an explicit guard for future
             # changes to retry policy so a missing branch cannot drop records.

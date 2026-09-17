@@ -11,6 +11,7 @@ from pathlib import Path
 from .contracts import read_json, sha256_json, validate_decisions, write_json
 from .runtime import ROOT, budget_for, inspect_run, validate_output_root
 from .settings import JUDGE_MODEL, RDSEC_BASE, code_identity, experiment_identity, load_policy
+from .progress import Progress
 
 
 def attempt_metrics(artifact: dict) -> list[dict]:
@@ -106,22 +107,31 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
     try:
         with model_egress_only(allowed):
             control_start = time.monotonic()
-            control = await IncumbentAdapter(control_config, secret).evaluate(frozen, budget=budgets["incumbent"])
+            with Progress(role="experiment", stage="control", item_count=len(records), model=control_config.model) as stage:
+                control = await IncumbentAdapter(control_config, secret).evaluate(frozen, budget=budgets["incumbent"])
+                stage.finish(status="complete" if control["status"] == "complete" else "incomplete")
             experiment["timings"]["control_filter_seconds"] = time.monotonic() - control_start
             validate_decisions(records, control["decisions"])
             if control.get("input_sha256") != frozen["input_sha256"]:
                 raise ValueError("Control input hash changed")
             write_json(destination / "control-decision.json", control)
+            # Candidate time belongs to its own stage; a long/retried control
+            # must not consume the candidate's deadline before its first call.
+            budgets["candidate"] = budget_for(policy, "candidate")
             candidate_start = time.monotonic()
-            candidate = await TypeSafeAdapter(candidate_config, os.environ["TYPESAFE_API_KEY"]).evaluate(
-                records, policy=policy, budget=budgets["candidate"])
+            with Progress(role="experiment", stage="candidate", item_count=len(records), model=candidate_config.model) as stage:
+                candidate = await TypeSafeAdapter(candidate_config, os.environ["TYPESAFE_API_KEY"]).evaluate(
+                    records, policy=policy, budget=budgets["candidate"])
+                stage.finish(status="complete" if candidate["status"] == "complete" else "incomplete")
             experiment["timings"]["candidate_filter_seconds"] = time.monotonic() - candidate_start
             validate_decisions(records, candidate["decisions"])
             if candidate.get("input_sha256") != frozen["input_sha256"]:
                 raise ValueError("Candidate input hash changed")
             write_json(destination / "candidate-decision.json", candidate)
             if repeat_control:
-                repeated = await IncumbentAdapter(control_config, secret).evaluate(frozen, budget=budgets["incumbent"])
+                with Progress(role="experiment", stage="control_repeat", item_count=len(records), model=control_config.model) as stage:
+                    repeated = await IncumbentAdapter(control_config, secret).evaluate(frozen, budget=budgets["incumbent"])
+                    stage.finish(status="complete" if repeated["status"] == "complete" else "incomplete")
                 validate_decisions(records, repeated["decisions"])
                 write_json(destination / "control-repeat.json", repeated)
                 experiment["control_repeat"] = compare_decisions(records, original["decisions"],
@@ -137,11 +147,16 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
                 except Exception as exc:
                     experiment["pipeline"] = {"status": "unavailable", "failure_type": type(exc).__name__}
             budgets["judge"] = budget_for(policy, "judge")
-            with JudgeClient(judge_config, budget=budgets["judge"]) as judge:
+            with Progress(role="experiment", stage="judge", item_count=len(records), model=judge_config.model) as stage, \
+                 JudgeClient(judge_config, budget=budgets["judge"]) as judge:
                 judge_start = time.monotonic()
                 adjudication = judge.adjudicate_inputs(records, output_path=destination / "judge-inputs.json")
                 if adjudication["input_sha256"] != frozen["input_sha256"]:
                     raise ValueError("Judge did not preserve the frozen input")
+                # The compact decision artifact omits reasons, critical-story
+                # flags and cited evidence. Keep the full validated result so
+                # every reported quality finding can be audited after CI ends.
+                write_json(destination / "judge-adjudication.json", adjudication)
                 experiment["timings"]["judge_seconds"] = time.monotonic() - judge_start
                 comparisons = []
                 if mode == "pipeline" and experiment["pipeline"]["status"] == "complete":
@@ -169,6 +184,7 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
                 experiment["status"] = "complete" if output_status and repeat_verified and all(v == "complete" for v in
                     (control["status"], candidate["status"], adjudication["status"],
                      experiment.get("pipeline", {}).get("status", "complete"))) else "degraded"
+                stage.finish(status="complete" if adjudication["status"] == "complete" else "incomplete")
     except Exception as exc:
         # HTTP error bodies and exception strings may contain credentials or
         # prompts. Detailed safe adapter diagnostics remain in their artifacts.

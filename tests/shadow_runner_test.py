@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
 from shadow.contracts import BundleValidationError, seal_bundle, sha256_json, write_json
+from shadow.budget import BudgetLimits, RequestBudget
 from shadow.experiment import control_repeat_evidence, run_experiment
 from shadow.runtime import ROOT, inspect_run, model_child_environment, validate_output_root
 
@@ -51,7 +52,8 @@ class FakeJudge:
         pass
 
     def adjudicate_inputs(self, records, output_path=None):
-        result = {**self.result, "status": "complete", "adjudications": [], "requests": [], "errors": []}
+        result = {**self.result, "status": "complete", "adjudications": self.result.get("adjudications", []),
+                  "requests": [], "errors": []}
         write_json(output_path, result)
         return result
 
@@ -147,19 +149,42 @@ class ShadowRunnerTest(unittest.TestCase):
             bundle = temp_root / "bundle"
             records, decision = make_bundle(bundle)
             FakeAdapter.result = decision
-            FakeJudge.result = decision
+            judged_row = {"article_id": "a1", "relevance": "relevant", "evidence_sufficiency": "sufficient",
+                          "critical_story": True, "reason": "A new frontier model release.",
+                          "rubric_category": "model", "evidence_ids": ["a1:snippet"],
+                          "quotes": [{"evidence_id": "a1:snippet", "quote": "A new frontier model."}]}
+            FakeJudge.result = {**decision, "adjudications": [judged_row]}
             identity = {"git_sha": "a" * 40, "source_sha256": "b" * 64, "files": {}}
             policy = ROOT / "config/shadow/news-relevance-v1-dev.json"
             before = (bundle / "manifest.json").read_bytes()
             output = temp_root / "out"
+            now = [0.0]
+            class SlowControl(FakeAdapter):
+                async def evaluate(self, *args, **kwargs):
+                    now[0] += 1801
+                    return await super().evaluate(*args, **kwargs)
+
+            class ReservingCandidate(FakeAdapter):
+                async def evaluate(self, *args, **kwargs):
+                    budget = kwargs["budget"]
+                    reservation = budget.reserve(input_tokens=10, output_tokens=10)
+                    budget.settle(reservation, input_tokens=10, output_tokens=10)
+                    return await super().evaluate(*args, **kwargs)
+
             with patch.dict(os.environ, env, clear=True), \
-                 patch("shadow.incumbent.IncumbentAdapter", FakeAdapter), \
-                 patch("shadow.typesafe.TypeSafeAdapter", FakeAdapter), \
+                 patch("shadow.incumbent.IncumbentAdapter", SlowControl), \
+                 patch("shadow.typesafe.TypeSafeAdapter", ReservingCandidate), \
                  patch("shadow.judge.JudgeClient", FakeJudge), \
+                 patch("shadow.experiment.budget_for", side_effect=lambda policy, role:
+                       RequestBudget(BudgetLimits(**policy[f"{role}_budget"]), clock=lambda: now[0])), \
                  patch("shadow.experiment.code_identity", return_value=identity):
                 result = asyncio.run(run_experiment(bundle, output, policy))
                 self.assertEqual(result["status"], "complete")
                 self.assertTrue((Path(result["path"]) / "assessment.md").is_file())
+                judge_result = json.loads((Path(result["path"]) / "judge-adjudication.json").read_text())
+                self.assertIn("adjudications", judge_result)
+                self.assertEqual(judge_result["adjudications"], [judged_row])
+                self.assertEqual(judge_result["input_sha256"], decision["input_sha256"])
                 saved = json.loads((Path(result["path"]) / "experiment.json").read_text())
                 self.assertEqual(saved["metrics"]["population"]["input_count"], 1)
                 self.assertTrue(saved["human_review_required"])

@@ -6,7 +6,9 @@ These tests use injected fake HTTP clients only and never call a paid model.
 from __future__ import annotations
 
 import json
+import io
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from typing import Any
 
 from shadow.budget import BudgetLimits, RequestBudget
@@ -190,7 +192,9 @@ class IncumbentAdapterTest(unittest.IsolatedAsyncioTestCase):
         })])
         config = OpenAIChatConfig(api_key="incumbent-secret", base_url="https://route.example/v1", model="incumbent-model")
         frozen = _frozen_input(records)
-        result = await IncumbentAdapter(config=config, http_client=client).evaluate(frozen)
+        progress, stdout = io.StringIO(), io.StringIO()
+        with redirect_stderr(progress), redirect_stdout(stdout):
+            result = await IncumbentAdapter(config=config, http_client=client).evaluate(frozen)
 
         self.assertEqual([row["decision"] for row in result["decisions"]], ["keep", "reject"])
         body = client.calls[0]["json"]
@@ -204,6 +208,12 @@ class IncumbentAdapterTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result["requests"][0]["attempts"][0]["response_id"], "chat-1")
         self.assertEqual(result["requests"][0]["attempts"][0]["request_id"], "req-1")
         self.assertNotIn("incumbent-secret", json.dumps(result))
+        self.assertEqual(stdout.getvalue(), "")
+        self.assertRegex(progress.getvalue(), r'"input_tokens"\s*:\s*20')
+        self.assertRegex(progress.getvalue(), r'"output_tokens"\s*:\s*5')
+        self.assertNotIn("incumbent-secret", progress.getvalue())
+        self.assertNotIn(frozen["system_prompt"], progress.getvalue())
+        self.assertNotIn(frozen["user_message"], progress.getvalue())
 
     async def test_rdsec_control_bypasses_cache_without_changing_frozen_messages(self):
         client = FakeAsyncClient([FakeResponse({"id": "chat-fresh", "model": "deepseek-v4.1-flash",

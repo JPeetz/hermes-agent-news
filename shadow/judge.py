@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Any, Callable, Mapping, Protocol, Sequence
 
 from .budget import BudgetExceeded, BudgetLimits, RequestBudget
+from .progress import DEFAULT_HEARTBEAT_SECONDS, Progress
 
 try:  # httpx is a project dependency, but import-time guards should stay light.
     import httpx
@@ -638,6 +639,8 @@ class JudgeClient:
         transport: _Transport | Callable[..., Any] | None = None,
         budget: Any | None = None,
         sleep: Callable[[float], None] = time.sleep,
+        progress_interval_seconds: float = DEFAULT_HEARTBEAT_SECONDS,
+        progress_stream: Any | None = None,
     ) -> None:
         self.config = config
         self.transport = transport
@@ -651,6 +654,8 @@ class JudgeClient:
             )
         )
         self.sleep = sleep
+        self.progress_interval_seconds = progress_interval_seconds
+        self.progress_stream = progress_stream
         self._client: Any | None = None
         self._attempt_count = 0
 
@@ -741,6 +746,7 @@ class JudgeClient:
         user_message: str,
         kind: str,
         request_index: int,
+        item_count: int | None = None,
     ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
         body = {
             "model": self.config.model,
@@ -784,6 +790,19 @@ class JudgeClient:
             response_model: str | None = None
             finish_reason: str | None = None
             response_id: str | None = None
+            progress = Progress(
+                role="judge",
+                stage=kind,
+                request_index=request_index,
+                attempt=attempt,
+                item_count=item_count,
+                model=self.config.model,
+                interval_seconds=self.progress_interval_seconds,
+                stream=self.progress_stream,
+            ).start()
+            progress_status = "error"
+            progress_input_tokens: int | None = None
+            progress_output_tokens: int | None = None
             try:
                 response = self._post(body, headers, timeout_seconds=request_timeout)
                 status = _status_code(response)
@@ -817,6 +836,9 @@ class JudgeClient:
                     input_tokens=known_usage["prompt_tokens"],
                     output_tokens=known_usage["completion_tokens"],
                 )
+                progress_status = "success"
+                progress_input_tokens = known_usage["prompt_tokens"]
+                progress_output_tokens = known_usage["completion_tokens"]
                 request_metrics.append(
                     {
                         "request_index": request_index,
@@ -839,6 +861,7 @@ class JudgeClient:
                 )
                 return parsed, request_metrics
             except JudgeBudgetExceeded:
+                progress_status = "budget_exhausted"
                 raise
             except Exception as exc:
                 if exc.__class__.__name__ in {"ReplayIntegrityError", "BundleValidationError"}:
@@ -852,6 +875,8 @@ class JudgeClient:
                     input_tokens=known_usage["prompt_tokens"] if known_usage else None,
                     output_tokens=known_usage["completion_tokens"] if known_usage else None,
                 )
+                progress_input_tokens = known_usage["prompt_tokens"] if known_usage else None
+                progress_output_tokens = known_usage["completion_tokens"] if known_usage else None
                 status = exc.status_code if isinstance(exc, _HTTPError) else None
                 # Response-shape errors and truncated JSON are retried within
                 # this explicit budget; prompt/config errors are bounded too,
@@ -910,6 +935,12 @@ class JudgeClient:
                 # retry layer underneath it. Length-terminated responses are
                 # excluded above because the unchanged body cannot help.
                 continue
+            finally:
+                progress.finish(
+                    status=progress_status,
+                    input_tokens=progress_input_tokens,
+                    output_tokens=progress_output_tokens,
+                )
         final_error = last_error or JudgeError("unknown error")
         raise _RequestFailure(
             f"{kind} request {request_index} failed after {self.config.max_attempts} attempts: "
@@ -951,6 +982,7 @@ class JudgeClient:
                     user_message=batch_artifact["user_message"],
                     kind="input_adjudication",
                     request_index=request_index,
+                    item_count=len(batch),
                 )
                 rows = validate_input_adjudication(payload, batch)
                 adjudications.extend(rows)
@@ -1043,6 +1075,7 @@ class JudgeClient:
                 user_message=prompt["user_message"],
                 kind="output_comparison",
                 request_index=0,
+                item_count=2,
             )
             requests.extend(first_requests)
             validated = validate_output_comparison(
@@ -1065,6 +1098,7 @@ class JudgeClient:
                         user_message=repeat_prompt["user_message"],
                         kind="output_comparison_repeat",
                         request_index=1,
+                        item_count=2,
                     )
                     requests.extend(repeat_requests)
                     repeat_result["requests"] = repeat_requests

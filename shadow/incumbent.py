@@ -27,6 +27,7 @@ from .contracts import (
     validate_input as _shared_validate_input,
 )
 from .budget import BudgetExceeded as _BudgetExceeded
+from .progress import Progress
 
 
 @dataclass(frozen=True)
@@ -607,6 +608,8 @@ class IncumbentAdapter:
             response: Any = None
             payload: Any = None
             attempt_started = self._clock()
+            progress = Progress(role="incumbent", stage="filter", request_index=1,
+                                attempt=attempt, item_count=len(records), model=config.model).start()
             try:
                 timeout = config.timeout_seconds
                 if budget is not None:
@@ -847,6 +850,10 @@ class IncumbentAdapter:
                 diagnostic["error"] = reason
                 degradations.append(reason)
                 break
+            finally:
+                progress.finish(status="incomplete" if attempt_record["status"] == "started" else attempt_record["status"],
+                                input_tokens=attempt_record["usage"].get("input_tokens"),
+                                output_tokens=attempt_record["usage"].get("output_tokens"))
 
         diagnostic["status"] = diagnostic.get("status") if diagnostic.get("status") != "pending" else "transport_error"
         diagnostic["error"] = diagnostic.get("error") or last_error or "retry_exhausted"

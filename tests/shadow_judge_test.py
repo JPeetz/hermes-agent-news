@@ -7,9 +7,11 @@ mocked coverage requested by the shadow plan.
 
 from __future__ import annotations
 
+import io
 import json
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -116,6 +118,12 @@ class FakeTransport:
         if isinstance(response, BaseException):
             raise response
         return response
+
+
+class BlockingTransport(FakeTransport):
+    def post(self, url, **kwargs):
+        time.sleep(0.04)
+        return super().post(url, **kwargs)
 
 
 class JudgeContractTests(unittest.TestCase):
@@ -276,11 +284,37 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(result["status"], "complete")
         self.assertEqual(result["requests"][0]["finish_reason"], "end_turn")
 
+    def test_judge_progress_emits_heartbeat_while_request_is_blocked(self):
+        stderr = io.StringIO()
+        fake = BlockingTransport([TransportResponse(200, _input_payload())])
+        with JudgeClient(
+            JudgeConfig(max_attempts=1),
+            transport=fake,
+            progress_interval_seconds=0.01,
+            progress_stream=stderr,
+        ) as client:
+            result = client.adjudicate_inputs(RECORDS)
+        events = [json.loads(line) for line in stderr.getvalue().splitlines()]
+        self.assertEqual(result["status"], "complete")
+        self.assertEqual(events[0]["event"], "start")
+        self.assertTrue(any(event["event"] == "heartbeat" for event in events))
+        self.assertEqual(events[-1]["event"], "done")
+        self.assertEqual(events[-1]["status"], "success")
+        self.assertEqual(events[-1]["input_tokens"], 20)
+        self.assertEqual(events[-1]["output_tokens"], 80)
+
     def test_finish_length_fails_without_identical_retries_or_substitution(self):
         bad = _input_payload(finish="length")
         fake = FakeTransport([TransportResponse(200, bad)] * 3)
         budget = RecordingBudget()
-        with JudgeClient(JudgeConfig(max_attempts=3), transport=fake, budget=budget, sleep=lambda _: None) as client:
+        stderr = io.StringIO()
+        with JudgeClient(
+            JudgeConfig(max_attempts=3),
+            transport=fake,
+            budget=budget,
+            sleep=lambda _: None,
+            progress_stream=stderr,
+        ) as client:
             result = client.adjudicate_inputs(RECORDS)
         self.assertEqual(result["status"], "failed")
         self.assertEqual([row["decision"] for row in result["decisions"]], ["abstain", "abstain"])
@@ -288,6 +322,11 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(len(fake.calls), 1)
         self.assertEqual(len(budget.reservations), 1)
         self.assertEqual(result["requests"][0]["finish_reason"], "length")
+        events = [json.loads(line) for line in stderr.getvalue().splitlines()]
+        self.assertEqual(events[-1]["event"], "done")
+        self.assertEqual(events[-1]["status"], "error")
+        self.assertEqual(events[-1]["input_tokens"], 20)
+        self.assertEqual(events[-1]["output_tokens"], 80)
 
     def test_model_identity_and_usage_are_validated(self):
         fake = FakeTransport([TransportResponse(200, _input_payload(model="other"))] * 3)
