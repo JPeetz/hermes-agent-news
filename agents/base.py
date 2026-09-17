@@ -38,6 +38,16 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def _is_replay_integrity_error(exc: BaseException) -> bool:
+    """Recognise the strict replay error without importing optional shadow code.
+
+    The shadow package is intentionally optional for the normal production
+    pipeline. Checking the stable exception name also keeps this module usable
+    while a bundle is being assembled in a separate process.
+    """
+    return exc.__class__.__name__ == "ReplayIntegrityError"
+
+
 @dataclass
 class FeedSpec:
     """A single configured feed plus optional per-feed routing directives.
@@ -871,7 +881,9 @@ class BaseAnalyzer(ABC):
         target_date: Optional[str] = None,
         web_dir: str = './web',
         grounding_context: Optional[str] = None,
-        prompt_accessor: Optional['PromptAccessor'] = None
+        prompt_accessor: Optional['PromptAccessor'] = None,
+        evidence_store: Any = None,
+        replay_context: Any = None,
     ):
         """
         Initialize analyzer.
@@ -885,6 +897,9 @@ class BaseAnalyzer(ABC):
             web_dir: Directory containing generated web data.
             grounding_context: System prompt with AI ecosystem context for grounding.
             prompt_accessor: Optional PromptAccessor for config-based prompts.
+            evidence_store: Optional frozen/capturing freshness evidence store.
+            replay_context: Optional strict replay context. This is deliberately
+                dependency injection rather than an environment-controlled route.
         """
         self.llm_client = llm_client
         self.async_client = async_client
@@ -894,6 +909,8 @@ class BaseAnalyzer(ABC):
         self.web_dir = web_dir
         self.grounding_context = grounding_context
         self.prompt_accessor = prompt_accessor
+        self.evidence_store = evidence_store
+        self.replay_context = replay_context
 
         if not llm_client and not async_client:
             logger.warning("No LLM client provided - analysis will be limited")
@@ -1146,6 +1163,8 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
                     )
                 reason = str(exc)
             except Exception as exc:
+                if _is_replay_integrity_error(exc):
+                    raise
                 from .llm_client import _transient_retry_reason
                 if _transient_retry_reason(exc) is None:
                     # Bad credentials/request configuration and programming errors
@@ -1396,6 +1415,8 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
                 config_dir=self.config_dir,
                 target_date=self.target_date,
                 web_dir=self.web_dir,
+                evidence_store=self.evidence_store,
+                replay_context=self.replay_context,
             )
             demoted = await freshness_checker.process_items(
                 self.category,
@@ -1408,6 +1429,11 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
                     f"{demoted} item(s) before ranking and summary generation"
                 )
         except Exception as exc:
+            # A frozen replay must fail closed when a dependency is absent. The
+            # production reduce path still keeps its historical best-effort
+            # behaviour for ordinary freshness errors.
+            if _is_replay_integrity_error(exc):
+                raise
             logger.warning(f"  {self.category} REDUCE: freshness policy failed: {exc}")
 
         # Select top candidates for final ranking (top 50 by score)
@@ -1489,6 +1515,8 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
             ranking_thinking = response.thinking
 
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                raise
             # The transport layer already retried this with backoff, so reaching
             # here means the provider stayed down for the whole retry window.
             # Fall back to score-ordering so the page still has items, but record

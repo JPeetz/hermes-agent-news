@@ -21,6 +21,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  news-shadow-contracts:
+    name: Offline news shadow contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install import dependencies (no browser installation)
+        run: python3 -m pip install --no-input -r requirements.txt
+      - name: Mocked capture, replay, budget, judge and coordinator contracts
+        run: python3 -m unittest discover -s tests -p 'shadow_*_test.py' -v
+
   guard:
     name: Signature lockstep guard
     runs-on: ubuntu-latest

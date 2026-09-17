@@ -10,6 +10,7 @@ Focuses on FRONTIER AI news only:
 """
 
 import json
+import hashlib
 import logging
 import os
 from datetime import datetime
@@ -29,6 +30,20 @@ from ..prompt_security import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+def _is_replay_integrity_error(exc: BaseException) -> bool:
+    """Recognise strict replay failures without making production depend on shadow."""
+    return exc.__class__.__name__ == "ReplayIntegrityError"
+
+
+def _replay_integrity_error(message: str) -> Exception:
+    try:
+        from shadow.replay_context import ReplayIntegrityError  # type: ignore
+    except Exception:
+        class ReplayIntegrityError(RuntimeError):
+            pass
+    return ReplayIntegrityError(message)
 
 
 class NewsAnalyzer(BaseAnalyzer):
@@ -269,7 +284,12 @@ The summary should read like a professional briefing, focusing on what matters f
         target_date: Optional[str] = None,
         web_dir: str = './web',
         grounding_context: Optional[str] = None,
-        prompt_accessor=None
+        prompt_accessor=None,
+        relevance_strategy=None,
+        precomputed_exact_kept_ids=None,
+        capture=None,
+        evidence_store=None,
+        replay_context=None,
     ):
         super().__init__(
             llm_client=llm_client,
@@ -279,10 +299,21 @@ The summary should read like a professional briefing, focusing on what matters f
             target_date=target_date,
             web_dir=web_dir,
             grounding_context=grounding_context,
-            prompt_accessor=prompt_accessor
+            prompt_accessor=prompt_accessor,
+            evidence_store=evidence_store,
+            replay_context=replay_context,
         )
         self.config_dir = config_dir
         self.target_date = target_date or os.getenv('TARGET_DATE') or datetime.now().strftime('%Y-%m-%d')
+        # These are explicit dependency-injection seams for isolated replay.
+        # No environment variable selects a candidate strategy in production.
+        self.relevance_strategy = relevance_strategy
+        self.precomputed_exact_kept_ids = precomputed_exact_kept_ids
+        self.capture = capture
+        if (relevance_strategy is not None or precomputed_exact_kept_ids is not None) and replay_context is None:
+            raise ValueError(
+                "relevance_strategy and precomputed_exact_kept_ids require a replay_context"
+            )
 
     @property
     def category(self) -> str:
@@ -346,23 +377,194 @@ The summary should read like a professional briefing, focusing on what matters f
         """Truncate ID to first 16 chars for display."""
         return full_id[:16]
 
+    def _capture_filter_event(self, names, *args, **kwargs) -> None:
+        """Best-effort observer calls; capture must never alter publication."""
+        if self.capture is None:
+            return
+        for name in names:
+            fn = getattr(self.capture, name, None)
+            if not callable(fn):
+                continue
+            try:
+                fn(*args, **kwargs)
+            except TypeError:
+                # A small adapter keeps this compatible with both the observer
+                # used by production capture and the test recorder's compact API.
+                try:
+                    fn(kwargs)
+                except Exception as exc:
+                    logger.debug("Shadow filter capture failed: %s", exc)
+            except Exception as exc:
+                logger.debug("Shadow filter capture failed: %s", exc)
+            return
+
+    @staticmethod
+    def _filter_input_hash(records) -> str:
+        """Hash the canonical contract records written by CaptureSession."""
+        payload = json.dumps(
+            records,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        return hashlib.sha256(payload).hexdigest()
+
+    @staticmethod
+    def _strategy_ids(result, input_ids: Set[str]) -> tuple:
+        """Extract exact kept IDs and decision metadata from a replay strategy."""
+        if isinstance(result, dict):
+            candidates = result.get("kept_ids")
+            if candidates is None:
+                candidates = result.get("selected_ids")
+            if candidates is None:
+                candidates = result.get("ai_article_ids")
+            if candidates is None and isinstance(result.get("decisions"), list):
+                candidates = [
+                    row.get("article_id", row.get("id"))
+                    for row in result["decisions"]
+                    if isinstance(row, dict)
+                    and (
+                        row.get("effective_keep") is True
+                        or row.get("keep") is True
+                        or row.get("decision") in {"keep", "relevant"}
+                    )
+                ]
+            candidates = candidates or []
+            metadata = result
+        elif isinstance(result, (list, tuple, set)):
+            candidates = result
+            metadata = {}
+        else:
+            candidates = []
+            metadata = {}
+
+        ids = [str(value) for value in candidates if value is not None]
+        unknown = [value for value in ids if value not in input_ids]
+        if unknown:
+            raise _replay_integrity_error(
+                f"relevance strategy returned unknown exact ID(s): {unknown[:5]}"
+            )
+        # Preserve the original input order and reject duplicate decisions as an
+        # integrity issue. Exact IDs are required for candidate replay.
+        if len(set(ids)) != len(ids):
+            raise _replay_integrity_error("relevance strategy returned duplicate exact IDs")
+        kept = {value for value in ids}
+        return kept, metadata
+
+    async def _run_relevance_strategy(self, items: List[CollectedItem]):
+        """Run the explicitly injected replay strategy, if present."""
+        if self.relevance_strategy is None:
+            return None
+
+        strategy = self.relevance_strategy
+        result = None
+        for name in ("evaluate", "adjudicate", "filter", "select"):
+            fn = getattr(strategy, name, None)
+            if callable(fn):
+                try:
+                    result = fn(items)
+                except TypeError:
+                    result = fn(records=items)
+                break
+        else:
+            if callable(strategy):
+                try:
+                    result = strategy(items)
+                except TypeError:
+                    result = strategy(records=items)
+            else:
+                error = "relevance_strategy must be callable or expose evaluate/filter"
+                if self.replay_context is not None:
+                    raise _replay_integrity_error(error)
+                raise ValueError(error)
+
+        if hasattr(result, "__await__"):
+            result = await result
+        input_ids = {item.id for item in items}
+        kept_ids, metadata = self._strategy_ids(result, input_ids)
+        filtered = [item for item in items if item.id in kept_ids]
+        self._capture_filter_event(
+            ("record_relevance_decision", "capture_relevance_decision", "record_decision"),
+            raw_selected_ids=list(metadata.get("raw_selected_ids", kept_ids)) if isinstance(metadata, dict) else list(kept_ids),
+            mapped_kept_ids=[item.id for item in filtered],
+            input_ids=[item.id for item in items],
+            strategy=metadata,
+        )
+        return filtered
+
+    def _validate_precomputed_ids(self, items: List[CollectedItem]) -> List[CollectedItem]:
+        input_ids = [item.id for item in items]
+        expected = set(input_ids)
+        selected = [str(value) for value in (self.precomputed_exact_kept_ids or [])]
+        if any(value not in expected for value in selected):
+            if self.replay_context is not None:
+                raise _replay_integrity_error(
+                    "precomputed relevance IDs must exactly match collected item IDs"
+                )
+            raise ValueError("precomputed relevance IDs must exactly match collected item IDs")
+        if len(set(selected)) != len(selected):
+            if self.replay_context is not None:
+                raise _replay_integrity_error("precomputed relevance IDs contain duplicates")
+            raise ValueError("precomputed relevance IDs contain duplicates")
+        selected_set = set(selected)
+        filtered = [item for item in items if item.id in selected_set]
+        self._capture_filter_event(
+            ("record_relevance_decision", "capture_relevance_decision", "record_decision"),
+            raw_selected_ids=selected,
+            mapped_kept_ids=[item.id for item in filtered],
+            input_ids=input_ids,
+            strategy={"source": "precomputed_exact_kept_ids"},
+        )
+        return filtered
+
     async def _filter_with_llm(self, items: List[CollectedItem]) -> List[CollectedItem]:
         """Use LLM to filter items for frontier AI relevance."""
         if not items:
             return items
 
+        # A replay supplies either a strategy object or an exact decision set.
+        # Both paths bypass the incumbent provider call and are impossible to
+        # select through environment configuration.
+        if self.relevance_strategy is not None:
+            return await self._run_relevance_strategy(items)
+        if self.precomputed_exact_kept_ids is not None:
+            return self._validate_precomputed_ids(items)
+
         # Build context with truncated IDs
         context_parts = []
         id_map = {}  # truncated -> full ID
+        filter_records = []
         for item in items:
             truncated_id = self._truncate_id(item.id)
             id_map[truncated_id] = item.id
+            filter_records.append({
+                "id": item.id,
+                "display_id": truncated_id,
+                "title": self._clip_context_text(item.title, 300),
+                "source": item.source,
+                # The incumbent prompt appends an ellipsis to every snippet,
+                # including short content. Keep the captured semantic input in
+                # that exact renderer shape so a replay can hash it before any
+                # model call.
+                "snippet": self._clip_context_text(item.content, 300) + "...",
+            })
             context_parts.append(f"""
 ID: {truncated_id}
 Title: {self._clip_context_text(item.title, 300)}
 Source: {item.source}
 Snippet: {self._clip_context_text(item.content, 300)}...
 """)
+
+        contract_records = [
+            {
+                "id": record["id"],
+                "title": record["title"],
+                "source": record["source"],
+                "snippet": record["snippet"],
+            }
+            for record in filter_records
+        ]
+        input_sha256 = self._filter_input_hash(contract_records)
 
         items_context = '\n---'.join(context_parts)
         example_id = self._truncate_id(items[0].id)
@@ -382,6 +584,21 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             )
         system_prompt = build_hardened_system(instructions, nonce)
         user_message = build_fenced_user_message(items_context, nonce)
+        # Capture the complete frozen request only after both prompt strings
+        # exist.  The bundle validator treats these as part of the semantic
+        # input contract, so an early observer event with empty prompts is not
+        # sufficient for filter replay.
+        self._capture_filter_event(
+            ("record_relevance_input", "capture_relevance_input", "record_filter_input"),
+            records=filter_records,
+            input_ids=[item.id for item in items],
+            input_sha256=input_sha256,
+            renderer="news_filter_v1",
+            system_prompt=system_prompt,
+            user_message=user_message,
+            system=system_prompt,
+            user=user_message,
+        )
 
         try:
             response = await self.async_client.call_with_thinking(
@@ -411,6 +628,18 @@ Snippet: {self._clip_context_text(item.content, 300)}...
                             break
 
             filtered = [item for item in items if item.id in full_ai_ids]
+            self._capture_filter_event(
+                ("record_relevance_decision", "capture_relevance_decision", "record_decision"),
+                raw_selected_ids=sorted(str(value) for value in ai_ids),
+                mapped_kept_ids=[item.id for item in filtered],
+                rejected_ids=[item.id for item in items if item.id not in full_ai_ids],
+                input_ids=[item.id for item in items],
+                input_sha256=input_sha256,
+                anomalies=[],
+                model=getattr(response, "model", None),
+                usage=getattr(response, "usage", None),
+                stop_reason=getattr(response, "stop_reason", None),
+            )
             logger.info(f"LLM filter: {len(items)} -> {len(filtered)} frontier AI articles")
 
             # Log which articles were filtered out
@@ -422,12 +651,24 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             return filtered
 
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                raise
             logger.error(f"LLM filter failed: {e}")
             # Fall back to returning all items. This direction is the safe one --
             # a superset, so nothing is lost, only under-filtered -- but it still
             # means the published set was not the one we intended, so record it.
             self._filter_degradations.append(
                 f"relevance filter failed ({type(e).__name__}): items are keyword-filtered only"
+            )
+            self._capture_filter_event(
+                ("record_relevance_decision", "capture_relevance_decision", "record_decision"),
+                raw_selected_ids=[],
+                mapped_kept_ids=[item.id for item in items],
+                rejected_ids=[],
+                input_ids=[item.id for item in items],
+                input_sha256=input_sha256,
+                anomalies=[type(e).__name__],
+                fallback="superset",
             )
             return items
 
@@ -478,6 +719,8 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             logger.info(self._thinking_log_message("Small batch thinking", response))
 
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                raise
             logger.error(f"Small batch analysis failed: {e}")
             return self._empty_report()
 
@@ -566,6 +809,22 @@ Snippet: {self._clip_context_text(item.content, 300)}...
 
         if not keyword_filtered:
             logger.warning("No AI-relevant articles found after keyword filter")
+            # Preserve the explicit empty semantic-filter contract when an
+            # observer is enabled.  There was no provider call, so prompts are
+            # intentionally empty; the contract permits that only for an empty
+            # record set and the matching empty decision coverage.
+            empty_hash = self._filter_input_hash([])
+            self._capture_filter_event(
+                ("record_relevance_input", "capture_relevance_input", "record_filter_input"),
+                records=[], input_ids=[], input_sha256=empty_hash,
+                renderer="news_filter_v1", system_prompt="", user_message="",
+                system="", user="",
+            )
+            self._capture_filter_event(
+                ("record_relevance_decision", "capture_relevance_decision", "record_decision"),
+                raw_selected_ids=[], mapped_kept_ids=[], input_ids=[],
+                input_sha256=empty_hash, anomalies=[], fallback="empty_keyword_input",
+            )
             return self._empty_report()
 
         # Phase 0b: LLM filter for frontier AI relevance

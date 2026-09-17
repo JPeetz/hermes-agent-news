@@ -31,6 +31,21 @@ from .llm_client import ThinkingLevel
 
 logger = logging.getLogger(__name__)
 
+_MISSING = object()
+
+
+def _is_replay_integrity_error(exc: BaseException) -> bool:
+    """Avoid making the production freshness module depend on shadow code."""
+    return exc.__class__.__name__ == "ReplayIntegrityError"
+
+
+try:  # optional in the normal production installation
+    from shadow.replay_context import ReplayIntegrityError  # type: ignore
+except Exception:  # pragma: no cover - exercised only without shadow modules
+    class ReplayIntegrityError(RuntimeError):
+        """Fallback definition when the optional shadow replay package is absent."""
+        pass
+
 # How many days after GA a model release is still considered "fresh"
 FRESHNESS_WINDOW_DAYS = 3
 
@@ -219,16 +234,37 @@ class StalenessChecker:
     cap its importance score and annotate its summary.
     """
 
-    def __init__(self, config_dir: str, target_date: str, web_dir: str = "./web"):
+    def __init__(
+        self,
+        config_dir: str,
+        target_date: str,
+        web_dir: str = "./web",
+        evidence_store: Any = None,
+        replay_context: Any = None,
+    ):
         """
         Args:
             config_dir: Path to config/ directory containing model_releases.yaml.
             target_date: Report date (YYYY-MM-DD). Coverage date = target_date - 1.
             web_dir: Path to generated web output, used for old-anchor history.
+            evidence_store: Optional observer/frozen store for article lookups.
+            replay_context: Optional strict replay context carrying frozen history.
         """
         self.config_dir = Path(config_dir)
         self.web_dir = Path(web_dir)
         self.target_date = target_date
+        self.evidence_store = (
+            evidence_store
+            or getattr(replay_context, "evidence_store", None)
+            or getattr(replay_context, "evidence", None)
+        )
+        self.replay_context = replay_context
+        self._frozen_replay = bool(
+            replay_context is not None
+            or getattr(self.evidence_store, "frozen", False)
+            or getattr(self.evidence_store, "replay", False)
+            or getattr(self.evidence_store, "strict", False)
+        )
         target_dt = datetime.strptime(target_date, "%Y-%m-%d")
         self.target_day = target_dt.date()
         self.coverage_date = (target_dt - timedelta(days=1)).date()
@@ -253,6 +289,10 @@ class StalenessChecker:
         """
         releases_path = self.config_dir / "model_releases.yaml"
         if not releases_path.exists():
+            if self._frozen_replay:
+                raise ReplayIntegrityError(
+                    f"frozen replay model release catalog is missing: {releases_path}"
+                )
             logger.warning(f"model_releases.yaml not found at {releases_path}")
             return {}
 
@@ -260,6 +300,10 @@ class StalenessChecker:
             with open(releases_path, "r") as f:
                 data = yaml.safe_load(f) or {}
         except Exception as e:
+            if self._frozen_replay:
+                raise ReplayIntegrityError(
+                    "frozen replay model release catalog could not be read"
+                ) from e
             logger.warning(f"Failed to load model_releases.yaml: {e}")
             return {}
 
@@ -553,13 +597,223 @@ class StalenessChecker:
             current -= timedelta(days=1)
         return items
 
+    def _load_frozen_history(self):
+        """Load the exact historical anchor snapshot supplied by a replay.
+
+        ``[]`` is a valid captured empty history. The sentinel distinguishes it
+        from an absent dependency so a replay never falls through to the live
+        web directory or silently treats missing evidence as no matches.
+        """
+        # ReplayContext exposes a sealed list of relative history paths. Read
+        # those exact files rather than reconstructing history from the branch
+        # web directory, whose contents may be newer or independently edited.
+        context = self.replay_context
+        if context is not None:
+            loader = getattr(context, "load_history", None)
+            if callable(loader):
+                try:
+                    try:
+                        loaded = loader(self.target_date, OLD_ANCHOR_LOOKBACK_DAYS)
+                    except TypeError:
+                        try:
+                            loaded = loader(
+                                target_date=self.target_date,
+                                lookback_days=OLD_ANCHOR_LOOKBACK_DAYS,
+                            )
+                        except TypeError:
+                            loaded = loader()
+                    if loaded is not _MISSING:
+                        if isinstance(loaded, dict):
+                            loaded = loaded.get(
+                                "items", loaded.get("history", loaded.get("records", []))
+                            )
+                        if not isinstance(loaded, (list, tuple)):
+                            raise ReplayIntegrityError(
+                                "frozen history loader returned an invalid shape"
+                            )
+                        rows: List[Dict[str, Any]] = []
+                        for item in loaded:
+                            if not isinstance(item, dict):
+                                continue
+                            row = dict(item)
+                            row.setdefault(
+                                "terms",
+                                self._anchor_terms(
+                                    f"{row.get('title', '')} {row.get('summary', row.get('content', ''))}"
+                                ),
+                            )
+                            rows.append(row)
+                        # ReplayContext.load_history mirrors the production
+                        # search-first path.  An empty captured search corpus
+                        # must still fall back to captured category files, as
+                        # the live loader does; use the explicit file reader
+                        # below when that richer interface is available.
+                        if rows or not (
+                            callable(getattr(context, "history_files", None))
+                            and callable(getattr(context, "read_json", None))
+                        ):
+                            return rows
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        raise
+                    raise ReplayIntegrityError(
+                        "frozen history loader could not be read"
+                    ) from exc
+            history_files = getattr(context, "history_files", None)
+            read_json = getattr(context, "read_json", None)
+            if callable(history_files) and callable(read_json):
+                try:
+                    paths = history_files(include_search_documents=True)
+                    manifest_reader = getattr(context, "read_history_manifest", None)
+                    history_manifest = None
+                    if callable(manifest_reader):
+                        # A manifest is part of the capture contract. Its
+                        # presence distinguishes an intentionally empty history
+                        # from a replay bundle that never captured history.
+                        history_manifest = manifest_reader(required=True) or {}
+                    search_paths = [
+                        str(path) for path in paths
+                        if Path(str(path)).name == "search-documents.json"
+                    ]
+                    search_expected = bool(
+                        isinstance(history_manifest, dict)
+                        and history_manifest.get("search_documents_used")
+                    )
+                    if search_expected and not search_paths:
+                        raise ReplayIntegrityError(
+                            "frozen history manifest requires captured search documents"
+                        )
+
+                    def read_values(relative: str) -> list:
+                        value = read_json(relative)
+                        if isinstance(value, dict):
+                            raw_mapping = value
+                            value = raw_mapping.get("items", raw_mapping.get("records"))
+                            if value is None:
+                                value = list(raw_mapping.values())
+                        return value if isinstance(value, list) else []
+
+                    # Production prefers the search corpus and falls back to
+                    # category files only when that corpus yields no eligible
+                    # records. Preserve that decision in replay.
+                    search_records: List[Dict[str, Any]] = []
+                    for relative in search_paths:
+                        parts = relative.split("/")
+                        for item in read_values(relative):
+                            if not isinstance(item, dict):
+                                continue
+                            item_date = self._parse_item_date(item.get("date"))
+                            if not item_date:
+                                continue
+                            if item_date >= self.target_day or item_date < self._history_window_start():
+                                continue
+                            title = item.get("title", "")
+                            summary = item.get("summary", "")
+                            if not title and not summary:
+                                continue
+                            search_records.append({
+                                "id": item.get("id", ""),
+                                "date": item_date.isoformat(),
+                                "category": item.get("category", ""),
+                                "title": title,
+                                "summary": summary,
+                                "source": item.get("source", ""),
+                                "url": item.get("url", ""),
+                                "terms": self._anchor_terms(f"{title} {summary}"),
+                            })
+                    if search_records:
+                        return search_records
+
+                    records: List[Dict[str, Any]] = []
+                    for relative in paths:
+                        if relative in search_paths:
+                            continue
+                        value = read_json(relative)
+                        if isinstance(value, dict):
+                            values = value.get("items", value.get("records", []))
+                        else:
+                            values = value
+                        if not isinstance(values, list):
+                            raise ReplayIntegrityError(
+                                f"Frozen history file has invalid shape: {relative}"
+                            )
+                        parts = str(relative).split("/")
+                        historical_date = parts[1] if len(parts) >= 3 else ""
+                        filename = parts[-1]
+                        category = filename[:-5] if filename.endswith(".json") else ""
+                        if category not in {"news", "research", "social", "reddit"}:
+                            # search-documents.json is a search index, not one
+                            # of the category item streams used by old-anchor.
+                            continue
+                        for item in values:
+                            if not isinstance(item, dict):
+                                continue
+                            row = dict(item)
+                            # Category-file production fallback derives date
+                            # and category from the path, even if an item
+                            # carries stale metadata of its own.
+                            row["date"] = historical_date
+                            row["category"] = category
+                            row.setdefault(
+                                "terms",
+                                self._anchor_terms(
+                                    f"{row.get('title', '')} {row.get('summary', row.get('content', ''))}"
+                                ),
+                            )
+                            records.append(row)
+                    return records
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        raise
+                    logger.debug("Frozen history file lookup failed: %s", exc)
+                    raise ReplayIntegrityError(
+                        "frozen historical freshness evidence could not be read"
+                    ) from exc
+
+        for owner in (self.replay_context, self.evidence_store):
+            if owner is None:
+                continue
+            for name in ("load_history", "load_historical_items", "historical_items", "get_history"):
+                value = getattr(owner, name, _MISSING)
+                try:
+                    if callable(value):
+                        try:
+                            value = value(self.target_date, OLD_ANCHOR_LOOKBACK_DAYS)
+                        except TypeError:
+                            try:
+                                value = value(target_date=self.target_date)
+                            except TypeError:
+                                value = value()
+                except (KeyError, FileNotFoundError):
+                    continue
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        raise
+                    logger.debug("Frozen freshness history lookup failed: %s", exc)
+                    continue
+                if value is _MISSING:
+                    continue
+                if isinstance(value, dict):
+                    value = value.get("items", value.get("history", value.get("records", [])))
+                if isinstance(value, (list, tuple)):
+                    return [dict(item) for item in value if isinstance(item, dict)]
+        return _MISSING
+
     def _load_historical_anchor_items(self) -> List[Dict[str, Any]]:
         if self._historical_anchor_items is not None:
             return self._historical_anchor_items
 
-        items = self._load_history_from_search_documents()
-        if not items:
-            items = self._load_history_from_category_files()
+        if self._frozen_replay:
+            frozen = self._load_frozen_history()
+            if frozen is _MISSING:
+                raise ReplayIntegrityError(
+                    "missing frozen historical freshness evidence"
+                )
+            items = frozen
+        else:
+            items = self._load_history_from_search_documents()
+            if not items:
+                items = self._load_history_from_category_files()
 
         seen = set()
         deduped = []
@@ -647,6 +901,152 @@ class StalenessChecker:
                 return False
         return True
 
+    # ------------------------------------------------------------------
+    # Frozen freshness evidence
+    # ------------------------------------------------------------------
+
+    def _evidence_contains(self, url: str) -> bool:
+        """Ask an evidence provider whether *url* is present, if supported."""
+        for owner in (self.replay_context, self.evidence_store):
+            if owner is None:
+                continue
+            for name in ("contains", "has", "has_url", "contains_url", "has_evidence"):
+                fn = getattr(owner, name, None)
+                if not callable(fn):
+                    continue
+                try:
+                    return bool(fn(url))
+                except TypeError:
+                    try:
+                        return bool(fn(url=url))
+                    except TypeError:
+                        continue
+                except (KeyError, FileNotFoundError):
+                    return False
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        raise
+                    continue
+            for attr in ("records", "objects", "evidence", "entries"):
+                mapping = getattr(owner, attr, None)
+                if isinstance(mapping, dict) and url in mapping:
+                    return True
+        return False
+
+    def _lookup_evidence(self, url: str):
+        """Return a captured response record, or ``_MISSING``.
+
+        The capture/replay package is intentionally separate from the production
+        pipeline. Keep this adapter permissive across its small contract while
+        ensuring a frozen lookup occurs before DNS resolution or HTTP.
+        """
+        for owner in (self.replay_context, self.evidence_store):
+            if owner is None:
+                continue
+            for name in (
+                "resolve_http", "lookup_http", "lookup_evidence", "get_evidence",
+                "resolve_evidence", "lookup", "get_response", "get",
+            ):
+                fn = getattr(owner, name, None)
+                if not callable(fn):
+                    continue
+                try:
+                    value = fn(url, kind="http_get")
+                except TypeError:
+                    try:
+                        value = fn(url, "http_get")
+                    except TypeError:
+                        try:
+                            value = fn(url)
+                        except TypeError:
+                            try:
+                                value = fn(url=url)
+                            except TypeError:
+                                continue
+                except (KeyError, FileNotFoundError):
+                    continue
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        raise
+                    # A production observer must never make publication fail.
+                    logger.debug("Freshness evidence lookup failed for %s: %s", url, exc)
+                    continue
+                if value is not None:
+                    return value
+                if self._evidence_contains(url):
+                    # A captured failure is an observation, not a permission
+                    # to turn the incumbent's next lookup into a cache hit.
+                    # Replay stores, by contrast, use ``None`` as the explicit
+                    # failure marker and _safe_get will surface it without DNS.
+                    if getattr(owner, "mode", None) == "replay":
+                        return None
+                    continue
+
+            for attr in ("records", "objects", "evidence", "entries"):
+                mapping = getattr(owner, attr, None)
+                if isinstance(mapping, dict) and url in mapping:
+                    return mapping[url]
+        return _MISSING
+
+    def _record_evidence(self, url: str, response: Any = None, error: Any = None) -> None:
+        """Record one observed lookup without issuing another request."""
+        if self.evidence_store is None or self._frozen_replay:
+            return
+        record: Dict[str, Any] = {"url": url, "kind": "http_get"}
+        if response is not None:
+            body = getattr(response, "content", b"")
+            if isinstance(body, bytes):
+                body = body.decode("utf-8", errors="replace")
+            record.update({
+                "status_code": getattr(response, "status_code", None),
+                "headers": dict(getattr(response, "headers", {}) or {}),
+                "body": body,
+                "final_url": getattr(response, "url", url),
+            })
+        if error is not None:
+            record["error"] = {"type": type(error).__name__, "message": str(error)}
+
+        for name in ("record_http", "record_response", "record_evidence", "record", "put"):
+            fn = getattr(self.evidence_store, name, None)
+            if not callable(fn):
+                continue
+            try:
+                fn(url, record)
+            except TypeError:
+                try:
+                    fn(record)
+                except Exception as exc:
+                    logger.debug("Freshness evidence record failed for %s: %s", url, exc)
+            except Exception as exc:
+                logger.debug("Freshness evidence record failed for %s: %s", url, exc)
+            return
+
+    @staticmethod
+    def _response_from_evidence(record: Any, url: str):
+        """Recreate the small requests.Response surface used by this checker."""
+        if isinstance(record, requests.Response):
+            return record
+        if isinstance(record, dict):
+            error = record.get("error")
+            if error and record.get("status_code") is None and record.get("status") is None:
+                message = error.get("message") if isinstance(error, dict) else str(error)
+                raise requests.exceptions.RequestException(message)
+            response = requests.Response()
+            response.status_code = int(record.get("status_code", record.get("status", 200)))
+            response.url = str(record.get("final_url") or record.get("url") or url)
+            response.headers.update(record.get("headers") or {})
+            body = record.get("body", record.get("text", ""))
+            if isinstance(body, str):
+                body = body.encode("utf-8")
+            response._content = bytes(body or b"")
+            response._content_consumed = True
+            return response
+        if hasattr(record, "status_code"):
+            return record
+        raise requests.exceptions.RequestException(
+            f"Frozen freshness evidence for {url!r} has an unsupported shape"
+        )
+
     def _safe_get(self, url: str, timeout: int = 12, max_redirects: int = MAX_SAFE_REDIRECTS):
         """SSRF-guarded GET: http(s) only, no private targets, redirects re-validated.
 
@@ -655,6 +1055,24 @@ class StalenessChecker:
         allowlisted domain cannot bounce the fetch into an internal host. Raises
         SSRFBlockedError when a hop is disallowed.
         """
+        # Frozen lookups happen before parsing, DNS, or any HTTP call. A missing
+        # object is an integrity failure rather than permission to consult the
+        # current web, because current pages would silently change the replay.
+        # Capture mode is an observer only: it must never turn the evidence
+        # store into a cache or change the incumbent's network behavior.  Only
+        # a strict frozen replay consults evidence before DNS/HTTP.
+        if self._frozen_replay:
+            frozen = self._lookup_evidence(url)
+            if frozen is not _MISSING:
+                return self._response_from_evidence(frozen, url)
+            raise ReplayIntegrityError(
+                f"missing frozen freshness evidence for {url}"
+            )
+
+        # Keep the caller's URL as the evidence key even when the incumbent
+        # follows a redirect.  A replay asks for that same original URL before
+        # DNS/HTTP, while the stored response still carries its final URL.
+        request_url = url
         current = url
         for _ in range(max_redirects + 1):
             parsed = urlparse(current)
@@ -666,9 +1084,13 @@ class StalenessChecker:
                 raise SSRFBlockedError(
                     f"blocked outbound request to disallowed host: {host!r}"
                 )
-            response = self._session.get(
-                current, timeout=timeout, allow_redirects=False, stream=True
-            )
+            try:
+                response = self._session.get(
+                    current, timeout=timeout, allow_redirects=False, stream=True
+                )
+            except Exception as exc:
+                self._record_evidence(request_url, error=exc)
+                raise
             if response.is_redirect:
                 location = response.headers.get("Location")
                 if not location:
@@ -680,7 +1102,12 @@ class StalenessChecker:
                 continue
             # Final hop: buffer the body under a hard size cap before returning,
             # so callers keep using response.text/.content unchanged.
-            self._buffer_capped_body(response)
+            try:
+                self._buffer_capped_body(response)
+            except Exception as exc:
+                self._record_evidence(request_url, error=exc)
+                raise
+            self._record_evidence(request_url, response=response)
             return response
         raise SSRFBlockedError(f"too many redirects while fetching {url!r}")
 
@@ -730,6 +1157,8 @@ class StalenessChecker:
                     logger.debug(f"Freshness: skipping non-HTML article page {item_url}")
                     self._article_page_cache[item_url] = None
             except Exception as exc:
+                if _is_replay_integrity_error(exc):
+                    raise
                 logger.debug(f"Freshness check could not fetch article page {item_url}: {exc}")
                 self._article_page_cache[item_url] = None
 
@@ -789,6 +1218,8 @@ class StalenessChecker:
             response = self._safe_get(primary_url, timeout=12)
             response.raise_for_status()
         except Exception as exc:
+            if _is_replay_integrity_error(exc):
+                raise
             logger.debug(f"Freshness check could not fetch primary page {primary_url}: {exc}")
             self._primary_date_cache[primary_url] = None
             return None
@@ -1198,6 +1629,8 @@ Mark stale_anchor=false when today's item has a concrete new action, release, fi
             result = json.loads(content)
             return bool(result.get("stale_anchor")), str(result.get("reason", ""))
         except Exception as exc:
+            if _is_replay_integrity_error(exc):
+                raise
             logger.debug(f"Old-anchor LLM adjudication failed for {item.item.id}: {exc}")
             return False, ""
 

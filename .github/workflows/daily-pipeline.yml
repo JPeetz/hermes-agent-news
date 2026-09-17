@@ -203,6 +203,16 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
+      - name: Prepare optional news shadow capture
+        if: steps.schedule_gate.outputs.should_run == 'true' && vars.NEWS_SHADOW_CAPTURE_ENABLED == 'true'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          execution_sha="$(git rev-parse HEAD)"
+          echo "NEWS_SHADOW_EXECUTION_SHA=$execution_sha" >> "$GITHUB_ENV"
+          echo "NEWS_SHADOW_CAPTURE_DIR=data/shadow-capture/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_ENV"
+
       - name: Install dependencies
         if: steps.schedule_gate.outputs.should_run == 'true'
         shell: bash
@@ -685,6 +695,7 @@ jobs:
             data/processed/orchestrator_result_*.json
             data/checkpoints/**
           if-no-files-found: ignore
+          retention-days: 90
 
       - name: Push generated commit
         if: steps.schedule_gate.outputs.should_run == 'true' && steps.commit.outputs.committed == 'true'
@@ -733,6 +744,22 @@ jobs:
       # run stayed green and collection_status said "success". Never fails the job:
       # the report is live, and a false red here would make the real alert
       # indistinguishable from noise.
+      - name: Seal optional news shadow capture after publication
+        if: success() && steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS == 'true' && env.NEWS_SHADOW_CAPTURE_DIR != ''
+        continue-on-error: true
+        shell: bash
+        run: python3 scripts/shadow/publish_capture.py --bundle "$NEWS_SHADOW_CAPTURE_DIR"
+
+      - name: Upload optional news shadow evidence
+        if: always() && steps.schedule_gate.outputs.should_run == 'true' && env.NEWS_SHADOW_CAPTURE_DIR != ''
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-shadow-bundle-${{ github.run_attempt }}
+          path: ${{ env.NEWS_SHADOW_CAPTURE_DIR }}
+          if-no-files-found: ignore
+          retention-days: 90
+
       - name: Check for silently degraded sources
         if: success() && steps.schedule_gate.outputs.should_run == 'true'
         continue-on-error: true

@@ -1,0 +1,1097 @@
+name: News relevance shadow
+
+# This workflow is deliberately absent from push/pull_request triggers.  A
+# schedule only discovers metadata while NEWS_SHADOW_ENABLED is true. Paid
+# scheduled evaluation additionally requires the separately opt-in
+# NEWS_SHADOW_EVALUATE_ENABLED flag and a frozen policy; manual preflight and
+# evaluation remain available through workflow_dispatch. It never publishes
+# production data and never promotes the candidate filter.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: "Operation to run"
+        required: true
+        default: preflight
+        type: choice
+        options:
+          - preflight
+          - evaluate
+      source_runs:
+        description: "Source run IDs as run_id:attempt, comma/space separated"
+        required: false
+        type: string
+      from_date:
+        description: "Inclusive report date range start (YYYY-MM-DD)"
+        required: false
+        type: string
+      to_date:
+        description: "Inclusive report date range end (YYYY-MM-DD, max 14 dates)"
+        required: false
+        type: string
+      mode:
+        description: "Comparison capability"
+        required: false
+        default: filter
+        type: choice
+        options:
+          - filter
+          - pipeline
+      cohort:
+        description: "Predeclared evaluation cohort"
+        required: false
+        default: engineering
+        type: choice
+        options:
+          - engineering
+          - development
+          - holdout
+          - prospective
+          - recovery
+      policy_version:
+        description: "Frozen candidate policy/cohort version"
+        required: false
+        default: news-relevance-v1-dev
+        type: string
+      rubric_version:
+        description: "Frozen judge rubric version"
+        required: false
+        default: news-relevance-v1-dev
+        type: string
+      retry_version:
+        description: "Explicit retry/version label; never silently reuses inference"
+        required: false
+        default: "1"
+        type: string
+      repeat_control:
+        description: "Run an additional fresh incumbent control"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: news-shadow-coordinator
+  cancel-in-progress: false
+
+env:
+  SHADOW_INTERNAL_REPOSITORY: trend-ai-acceleration-task-force/ai-news-aggregator
+  SHADOW_SOURCE_REPOSITORY: flyryan/ai-news-aggregator
+  SHADOW_SOURCE_WORKFLOW: .github/workflows/daily-pipeline.yml
+  SHADOW_EVALUATOR_SHA: ${{ github.sha }}
+  SHADOW_RETENTION_DAYS: "90"
+
+jobs:
+  # The guard is repeated at job level so a copied workflow cannot acquire
+  # source or model credentials in a fork/mirror.  The trusted evaluator ref is
+  # the checked-out workflow commit (github.sha), and the only accepted branch
+  # is internal main.
+  metadata-acquisition:
+    name: Discover source runs and acquire metadata
+    if: >-
+      github.repository == 'trend-ai-acceleration-task-force/ai-news-aggregator' &&
+          github.ref == 'refs/heads/main' &&
+          (github.event_name == 'schedule' ||
+           (github.event_name == 'workflow_dispatch' && inputs.operation == 'evaluate')) &&
+          (github.event_name == 'workflow_dispatch' || vars.NEWS_SHADOW_ENABLED == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      metadata_artifact: ${{ steps.meta.outputs.artifact_name }}
+      selector_valid: ${{ steps.selector.outputs.valid }}
+      evaluator_sha: ${{ steps.meta.outputs.evaluator_sha }}
+    steps:
+      - name: Check out trusted evaluator commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Validate bounded selector and trusted ref
+        id: selector
+        shell: bash
+        env:
+          SOURCE_RUNS: ${{ inputs.source_runs }}
+          FROM_DATE: ${{ inputs.from_date }}
+          TO_DATE: ${{ inputs.to_date }}
+          SCHEDULE_EVAL_ENABLED: ${{ vars.NEWS_SHADOW_EVALUATE_ENABLED }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$SOURCE_RUNS" && ( -n "$FROM_DATE" || -n "$TO_DATE" ) && ( -z "$FROM_DATE" || -z "$TO_DATE" ) ]]; then
+            echo 'from_date and to_date must be supplied together.' >&2
+            exit 2
+          fi
+          if [[ -z "$SOURCE_RUNS" && -z "$FROM_DATE" && -z "$TO_DATE" && "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo 'evaluate requires source_runs or an explicit report-date range.' >&2
+            exit 2
+          fi
+          selector_args=(discover --metadata <(printf '%s\n' '{"runs": []}')
+            --state-dir "$RUNNER_TEMP/news-shadow-selector" --trusted-ref main)
+          if [[ -n "$SOURCE_RUNS" ]]; then
+            selector_args+=(--source-runs "$SOURCE_RUNS")
+          fi
+          if [[ -n "$FROM_DATE" ]]; then
+            selector_args+=(--from-date "$FROM_DATE")
+          fi
+          if [[ -n "$TO_DATE" ]]; then
+            selector_args+=(--to-date "$TO_DATE")
+          fi
+          # Parsing is performed by the dependency-free coordinator; this
+          # check runs before any source artifact or model credential is used.
+          python3 scripts/shadow/coordinate.py "${selector_args[@]}" >/dev/null
+          echo "valid=true" >> "$GITHUB_OUTPUT"
+
+      - name: Detect explicitly provisioned source token
+        id: source-secret
+        shell: bash
+        env:
+          NEWS_SHADOW_SOURCE_TOKEN: ${{ secrets.NEWS_SHADOW_SOURCE_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$NEWS_SHADOW_SOURCE_TOKEN" ]]; then
+            echo 'configured=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'configured=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Mint a source-only GitHub App token when no protected token is configured
+        id: source-app
+        if: steps.source-secret.outputs.configured != 'true'
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: flyryan
+          repositories: ai-news-aggregator
+          permission-actions: read
+          permission-contents: read
+
+      - name: Acquire source run metadata only
+        id: meta
+        shell: bash
+        env:
+          # An explicitly provisioned protected token wins.  The App token is
+          # minted above with actions:read + contents:read for this repository
+          # only.  Neither credential reaches an evaluator or writer job.
+          NEWS_SHADOW_SOURCE_TOKEN: ${{ secrets.NEWS_SHADOW_SOURCE_TOKEN }}
+          SOURCE_APP_TOKEN: ${{ steps.source-app.outputs.token }}
+          INTERNAL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_RUNS: ${{ inputs.source_runs }}
+          FROM_DATE: ${{ inputs.from_date }}
+          TO_DATE: ${{ inputs.to_date }}
+          SCHEDULE_EVAL_ENABLED: ${{ vars.NEWS_SHADOW_EVALUATE_ENABLED }}
+          SCHEDULE_POLICY_PATH: ${{ vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json' }}
+          SCHEDULE_RETRY_VERSION: ${{ vars.NEWS_SHADOW_RETRY_VERSION || '1' }}
+          SCHEDULE_MODE: ${{ vars.NEWS_SHADOW_MODE || 'filter' }}
+          SCHEDULE_EVALUATOR_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          source_token="$NEWS_SHADOW_SOURCE_TOKEN"
+          if [[ -z "$source_token" ]]; then
+            source_token="$SOURCE_APP_TOKEN"
+          fi
+          if [[ -z "$source_token" ]]; then
+            echo 'No source artifact token available; existing app installation or protected token is required.' >&2
+            exit 1
+          fi
+          # Keep the source-only token in this acquisition job's process
+          # environment so the read-only importer can use the same scoped
+          # identity. It is never exported as an artifact or job output.
+          export GH_TOKEN="$source_token"
+          mkdir -p "$RUNNER_TEMP/news-shadow-metadata"
+          # Query the workflow-scoped endpoint and cap reconciliation to three
+          # pages.  This prevents a 15-minute poll from walking unbounded
+          # repository history; explicit attempts are still addressed below by
+          # the run/attempt artifact endpoints.
+          for page in 1 2 3; do
+            gh api \
+              -H 'Accept: application/vnd.github+json' \
+              "/repos/flyryan/ai-news-aggregator/actions/workflows/daily-pipeline.yml/runs?per_page=100&page=${page}" \
+              > "$RUNNER_TEMP/news-shadow-metadata/source-runs-${page}.json"
+          done
+          python3 - "$RUNNER_TEMP/news-shadow-metadata" \
+            > "$RUNNER_TEMP/news-shadow-metadata/source-runs.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          root = Path(sys.argv[1])
+          pages = []
+          for path in sorted(root.glob("source-runs-[123].json")):
+              with path.open(encoding="utf-8") as handle:
+                  pages.append(json.load(handle))
+          json.dump(pages, sys.stdout, separators=(",", ":"))
+          sys.stdout.write("\n")
+          PY
+          cp "$RUNNER_TEMP/news-shadow-metadata/source-runs.json" "$RUNNER_TEMP/news-shadow-metadata/metadata.json"
+          mkdir -p "$RUNNER_TEMP/news-shadow-metadata/discovery-state"
+          # Carry forward only the compact internal index. The acquisition
+          # job has contents:read on this repository; source credentials are
+          # never used for this request.
+          for state_file in index.json events.jsonl; do
+            state_path="$RUNNER_TEMP/news-shadow-metadata/discovery-state/$state_file"
+            if GH_TOKEN="$INTERNAL_GITHUB_TOKEN" gh api \
+                "/repos/${SHADOW_INTERNAL_REPOSITORY}/contents/coordinator/$state_file?ref=shadow-results" \
+                --jq '.content' 2>/dev/null | tr -d '\n' | base64 --decode > "$state_path"; then
+              test -s "$state_path"
+            else
+              rm -f "$state_path"
+            fi
+          done
+          python3 scripts/shadow/coordinate.py discover \
+            --metadata "$RUNNER_TEMP/news-shadow-metadata/metadata.json" \
+            --state-dir "$RUNNER_TEMP/news-shadow-metadata/discovery-state" \
+            --trusted-ref main \
+            > "$RUNNER_TEMP/news-shadow-metadata/discovery-result.json"
+          mkdir -p "$RUNNER_TEMP/news-shadow-metadata/bundles"
+          try_sealed_bundle() {
+            local run_id="$1"
+            local attempt_number="$2"
+            local target="$3"
+            local artifact_json="$RUNNER_TEMP/news-shadow-metadata/artifacts-${run_id}-${attempt_number}.json"
+            local artifact_zip="$RUNNER_TEMP/news-shadow-metadata/artifact-${run_id}-${attempt_number}.zip"
+            local attempt_meta="$RUNNER_TEMP/news-shadow-metadata/run-${run_id}-${attempt_number}.json"
+            local next_meta="$RUNNER_TEMP/news-shadow-metadata/run-${run_id}-${attempt_number}-next.json"
+            local selected
+            gh api \
+              "/repos/flyryan/ai-news-aggregator/actions/runs/${run_id}/artifacts?per_page=100" \
+              > "$artifact_json" || return 1
+            gh api \
+              "/repos/flyryan/ai-news-aggregator/actions/runs/${run_id}/attempts/${attempt_number}" \
+              > "$attempt_meta" || return 1
+            latest_attempt="$(python3 - "$attempt_meta" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              value = json.load(handle)
+          print(value.get("run_attempt", 1))
+          PY
+            )"
+            if [[ "$latest_attempt" =~ ^[1-9][0-9]*$ ]] && (( latest_attempt > attempt_number )); then
+              gh api \
+                "/repos/flyryan/ai-news-aggregator/actions/runs/${run_id}/attempts/$((attempt_number + 1))" \
+                > "$next_meta" || return 1
+            else
+              printf '%s\n' '{}' > "$next_meta"
+            fi
+            selected="$(python3 - "$artifact_json" "$attempt_meta" "$next_meta" "$attempt_number" <<'PY'
+          import json
+          import sys
+          from datetime import datetime, timedelta, timezone
+
+          artifact_path, attempt_path, next_path, attempt_text = sys.argv[1:]
+          def parse(value):
+              if not isinstance(value, str) or not value:
+                  return None
+              try:
+                  return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+              except ValueError:
+                  return None
+
+          with open(attempt_path, encoding="utf-8") as handle:
+              attempt = json.load(handle)
+          with open(next_path, encoding="utf-8") as handle:
+              next_attempt = json.load(handle)
+          start = parse(attempt.get("run_started_at"))
+          end = parse(next_attempt.get("run_started_at")) if next_attempt.get("run_attempt") else None
+          if end is None:
+              updated = parse(attempt.get("updated_at"))
+              end = updated + timedelta(seconds=1) if updated else None
+
+          with open(artifact_path, encoding="utf-8") as handle:
+              payload = json.load(handle)
+          rows = []
+          for row in payload.get("artifacts", []) if isinstance(payload, dict) else []:
+              if not isinstance(row, dict):
+                  continue
+              name = str(row.get("name", ""))
+              if not name.startswith("news-shadow-bundle") or row.get("expired") is True:
+                  continue
+              created = parse(row.get("created_at"))
+              if start is None or end is None or created is None or not (start <= created < end):
+                  continue
+              artifact_id = row.get("id")
+              size = row.get("size_in_bytes", 0)
+              if isinstance(artifact_id, int) and isinstance(size, int) and 0 <= size <= 512 * 1024 * 1024:
+                  rows.append((str(row.get("created_at", "")), name, artifact_id, row.get("digest", "")))
+          exact = [row for row in rows if row[1] == f"news-shadow-bundle-{int(attempt_text)}"]
+          legacy = [row for row in rows if row[1] == "news-shadow-bundle"]
+          chosen = exact if exact else legacy
+          if len(chosen) != 1:
+              raise SystemExit(1)
+          _, _, artifact_id, digest = chosen[0]
+          print(f"{artifact_id}\t{digest}")
+          PY
+            )" || return 1
+            local artifact_id="${selected%%$'\t'*}"
+            local expected_digest="${selected#*$'\t'}"
+            [[ "$artifact_id" =~ ^[1-9][0-9]*$ ]] || return 1
+            gh api "/repos/flyryan/ai-news-aggregator/actions/artifacts/${artifact_id}/zip" \
+              > "$artifact_zip" || return 1
+            if [[ -n "$expected_digest" ]]; then
+              python3 - "$artifact_zip" "$expected_digest" <<'PY'
+          import hashlib
+          import sys
+          expected = sys.argv[2]
+          digest = "sha256:" + hashlib.sha256(open(sys.argv[1], "rb").read()).hexdigest()
+          if digest != expected:
+              raise SystemExit("source bundle artifact digest mismatch")
+          PY
+            fi
+            python3 - "$artifact_zip" "$target" "$run_id" "$attempt_number" <<'PY'
+          import json
+          import os
+          import shutil
+          import sys
+          import zipfile
+          from pathlib import Path, PurePosixPath
+
+          archive, target_text, run_text, attempt_text = sys.argv[1:]
+          target = Path(target_text).resolve()
+          target.mkdir(parents=True, exist_ok=False)
+          allowed = {"manifest.json", "input-manifest.json", "publication.json", "relevance",
+                     "gathered", "context", "history", "evidence", "checkpoints", "diagnostics", "original"}
+          total = 0
+          files = 0
+          with zipfile.ZipFile(archive) as handle:
+              infos = [info for info in handle.infolist() if not info.is_dir()]
+              if len(infos) > 4096:
+                  raise SystemExit("source bundle has too many files")
+              for info in infos:
+                  pure = PurePosixPath(info.filename)
+                  if pure.is_absolute() or not pure.parts or any(part in {"", ".", ".."} for part in pure.parts):
+                      raise SystemExit("source bundle contains an unsafe path")
+                  if ((info.external_attr >> 16) & 0o170000) == 0o120000:
+                      raise SystemExit("source bundle contains a symlink")
+                  parts = list(pure.parts)
+                  if parts[0] not in allowed:
+                      # actions/upload-artifact can wrap a directory in one
+                      # archive prefix; strip exactly that prefix only when the
+                      # resulting path remains in the allowlist.
+                      if len(parts) < 2 or parts[1] not in allowed:
+                          raise SystemExit("source bundle contains a non-allowlisted path")
+                      parts = parts[1:]
+                  relative = PurePosixPath(*parts)
+                  destination = (target / Path(*relative.parts)).resolve()
+                  if target != destination and target not in destination.parents:
+                      raise SystemExit("source bundle path escapes target")
+                  size = info.file_size
+                  if size < 0 or size > 128 * 1024 * 1024 or total + size > 512 * 1024 * 1024:
+                      raise SystemExit("source bundle exceeds extraction limits")
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  with handle.open(info) as source, destination.open("wb") as output:
+                      shutil.copyfileobj(source, output, length=1024 * 1024)
+                  total += size
+                  files += 1
+          manifests = list(target.rglob("manifest.json"))
+          if len(manifests) != 1:
+              raise SystemExit("sealed source bundle must contain one manifest")
+          root = manifests[0].parent
+          if root != target:
+              for child in list(root.iterdir()):
+                  destination = target / child.name
+                  if destination.exists():
+                      raise SystemExit("wrapped source bundle has duplicate root files")
+                  os.replace(child, destination)
+              root.rmdir()
+          from shadow.contracts import verify_bundle
+          manifest = verify_bundle(target, capability=None)
+          source = manifest.get("source", {})
+          if int(source.get("run_id", 0)) != int(run_text) or int(source.get("run_attempt", 0)) != int(attempt_text):
+              raise SystemExit("sealed source bundle run/attempt mismatch")
+          # Keep acquisition diagnostics outside the sealed bundle: adding a
+          # file after verify_bundle would invalidate the manifest inventory.
+          print(json.dumps({"kind": "sealed", "files": files, "bytes": total}, sort_keys=True))
+          PY
+          }
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || \
+                ("${{ github.event_name }}" == "schedule" && "$SCHEDULE_EVAL_ENABLED" == "true") ]]; then
+            selectors=()
+            if [[ -n "$SOURCE_RUNS" ]]; then
+              # Import only explicitly named run:attempt pairs. The importer
+              # treats the downloaded archive as inert data and verifies the
+              # actual report date/publication before sealing a bundle.
+              read -r -a selectors <<< "${SOURCE_RUNS//,/ }"
+            elif [[ "${{ github.event_name }}" == "schedule" ]]; then
+              # The scheduler considers a bounded newest candidate window and
+              # keeps walking it when a retained/no-op run cannot be imported.
+              # The importer still proves report date, health and publication,
+              # and the persistent index deduplicates completed work.
+              mapfile -t selectors < <(python3 - \
+                "$RUNNER_TEMP/news-shadow-metadata/source-runs.json" \
+                "$RUNNER_TEMP/news-shadow-metadata/discovery-state/index.json" \
+                "$SCHEDULE_POLICY_PATH" "$SCHEDULE_EVALUATOR_SHA" "$SCHEDULE_RETRY_VERSION" <<'PY'
+          import json
+          import hashlib
+          import sys
+
+          source_path, index_path, policy_path, evaluator_sha, retry_version = sys.argv[1:]
+          try:
+              policy_sha = hashlib.sha256(open(policy_path, "rb").read()).hexdigest()
+          except OSError:
+              policy_sha = None
+          completed = set()
+          completed_versions = {}
+          try:
+              with open(index_path, encoding="utf-8") as handle:
+                  index = json.load(handle)
+              for record in (index.get("experiments", {}) or {}).values():
+                  identity = record.get("identity", {})
+                  source = record.get("source", {})
+                  if (identity.get("cohort") == "prospective" and
+                      identity.get("policy_sha256") == policy_sha and
+                      identity.get("repeat_plan") == retry_version + ':sample20'):
+                      version = (identity.get("policy_sha256"), identity.get("cohort_sha256"), identity.get("repeat_plan"))
+                      if record.get("status") == "completed":
+                          completed_versions.setdefault(version, set()).add(source.get("report_date"))
+                      if (identity.get("replay_sha") == evaluator_sha and
+                          record.get("status") in {"completed", "failed", "incomplete", "unavailable"}):
+                          completed.add((source.get("run_id"), source.get("attempt", 1)))
+          except (OSError, ValueError, TypeError):
+              pass
+          with open(source_path, encoding="utf-8") as handle:
+              pages = json.load(handle)
+          if any(len(dates) >= 7 for dates in completed_versions.values()):
+              print("__PROSPECTIVE_CAP_REACHED__")
+              raise SystemExit(0)
+          rows = []
+          for page in pages if isinstance(pages, list) else [pages]:
+              if isinstance(page, dict):
+                  page = page.get("workflow_runs", page.get("runs", []))
+              for row in page if isinstance(page, list) else []:
+                  if not isinstance(row, dict):
+                      continue
+                  if row.get("path", "").split("@", 1)[0] != ".github/workflows/daily-pipeline.yml":
+                      continue
+                  if row.get("status") != "completed" or row.get("conclusion") != "success":
+                      continue
+                  run_id = row.get("id", row.get("run_id"))
+                  attempt = row.get("run_attempt", row.get("attempt", 1))
+                  created = str(row.get("created_at", ""))
+                  if (isinstance(run_id, int) and isinstance(attempt, int) and
+                      (run_id, attempt) not in completed):
+                      rows.append((created, run_id, attempt))
+          # Look past retained/no-op runs so the shell loop can still acquire
+          # up to two eligible dates; the coordinator remains serial and
+          # bounded to two paid invocations.
+          for _, run_id, attempt in sorted(rows, reverse=True)[:8]:
+              print(f"{run_id}:{attempt}")
+          PY
+              )
+            else
+              # A date range is only a candidate discovery window.  We use
+              # creation dates to bound metadata/artifact downloads, then the
+              # importer proves each bundle's report date.  We never relabel a
+              # run from its workflow timestamp.
+              mapfile -t selectors < <(python3 - "$RUNNER_TEMP/news-shadow-metadata/source-runs.json" "$FROM_DATE" "$TO_DATE" <<'PY'
+          import json
+          import sys
+          from datetime import date, timedelta
+
+          path, start_text, end_text = sys.argv[1:]
+          start = date.fromisoformat(start_text)
+          end = date.fromisoformat(end_text)
+          low, high = start - timedelta(days=2), end + timedelta(days=2)
+          with open(path, encoding="utf-8") as handle:
+              pages = json.load(handle)
+          rows = []
+          for page in pages if isinstance(pages, list) else [pages]:
+              if isinstance(page, dict):
+                  page = page.get("workflow_runs", page.get("runs", []))
+              for row in page if isinstance(page, list) else []:
+                  if not isinstance(row, dict):
+                      continue
+                  created = str(row.get("created_at", ""))[:10]
+                  try:
+                      created_date = date.fromisoformat(created)
+                  except ValueError:
+                      continue
+                  if not low <= created_date <= high:
+                      continue
+                  run_id = row.get("id", row.get("run_id"))
+                  latest_attempt = row.get("run_attempt", row.get("attempt", 1))
+                  if isinstance(run_id, int) and isinstance(latest_attempt, int):
+                      rows.extend(f"{run_id}:{attempt}" for attempt in range(1, latest_attempt + 1))
+          for selector in sorted(set(rows)):
+              print(selector)
+          if len(set(rows)) > 32:
+              raise SystemExit("date-range source candidate set exceeds the 32-download bound")
+          PY
+              )
+              if [[ "${#selectors[@]}" -gt 32 ]]; then
+                echo 'Date-range source candidate set exceeds the 32-download bound.' >&2
+                exit 2
+              fi
+            fi
+            if [[ "${#selectors[@]}" -eq 1 && "${selectors[0]}" == "__PROSPECTIVE_CAP_REACHED__" ]]; then
+              printf '%s\n' '{"status":"discovery_only","reason":"prospective_date_cap_reached"}' \
+                > "$RUNNER_TEMP/news-shadow-metadata/selection-status.json"
+              selectors=()
+            elif [[ "${#selectors[@]}" -eq 0 ]]; then
+              echo 'No source run candidates were found for this selector.' >&2
+              exit 2
+            fi
+            bundle_count=0
+            for selector in "${selectors[@]}"; do
+              if [[ ! "$selector" =~ ^[1-9][0-9]*(:[1-9][0-9]*)?$ ]]; then
+                echo "Invalid source run selector '$selector'" >&2
+                exit 2
+              fi
+              run_id="${selector%%:*}"
+              attempt_number="${selector##*:}"
+              if [[ "$selector" != *:* ]]; then
+                attempt_number=1
+              fi
+              bundle_out="$RUNNER_TEMP/news-shadow-metadata/bundles/${run_id}-${attempt_number}"
+              if ! try_sealed_bundle "$run_id" "$attempt_number" "$bundle_out"; then
+                rm -rf "$bundle_out"
+                if ! python3 scripts/shadow/import_legacy_bundle.py \
+                  --source-repo "$SHADOW_SOURCE_REPOSITORY" \
+                  --run-id "$run_id" \
+                  --attempt "$attempt_number" \
+                  --out "$bundle_out"; then
+                  # Scheduled polling sees successful source runs that do not
+                  # have a retained diagnostics/sealed artifact (for example
+                  # a no-op or an expired run). Keep reconciling the next
+                  # candidate; an explicit manual selector fails closed.
+                  if [[ "${{ github.event_name }}" == "schedule" ]]; then
+                    rm -rf "$bundle_out"
+                    printf '%s\n' "{\"selector\":\"$selector\",\"status\":\"unavailable\"}" \
+                      >> "$RUNNER_TEMP/news-shadow-metadata/selection-errors.jsonl"
+                    continue
+                  fi
+                  exit 1
+                fi
+              fi
+              if [[ -f "$bundle_out/manifest.json" ]]; then
+                if [[ -n "$FROM_DATE" ]] && ! python3 - "$bundle_out/manifest.json" "$FROM_DATE" "$TO_DATE" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              report_date = json.load(handle)["report_date"]
+          raise SystemExit(0 if sys.argv[2] <= report_date <= sys.argv[3] else 1)
+          PY
+                then
+                  rm -rf "$bundle_out"
+                  continue
+                fi
+                if [[ "${{ github.event_name }}" == "schedule" ]] && ! python3 - "$bundle_out" "$SCHEDULE_POLICY_PATH" "$SCHEDULE_MODE" <<'PY'
+          import sys
+          from shadow.runtime import inspect_run
+          try:
+              inspect_run(sys.argv[1], sys.argv[2], mode=sys.argv[3], cohort="prospective")
+          except (ValueError, OSError) as exc:
+              print(f"Source bundle is not prospectively eligible: {type(exc).__name__}", file=sys.stderr)
+              raise SystemExit(2)
+          PY
+                then
+                  rm -rf "$bundle_out"
+                  printf '%s\n' "{\"selector\":\"$selector\",\"status\":\"ineligible\"}" \
+                    >> "$RUNNER_TEMP/news-shadow-metadata/selection-errors.jsonl"
+                  continue
+                fi
+                bundle_count=$((bundle_count + 1))
+                if [[ "${{ github.event_name }}" == "schedule" && "$bundle_count" -ge 2 ]]; then
+                  break
+                fi
+              fi
+            done
+          else
+            printf '%s\n' '{"status":"discovery_only","reason":"scheduled metadata discovery does not acquire or evaluate paid bundles"}' \
+              > "$RUNNER_TEMP/news-shadow-metadata/selection-status.json"
+          fi
+          printf '%s\n' "evaluator_sha=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+          printf '%s\n' 'artifact_name=news-shadow-metadata' >> "$GITHUB_OUTPUT"
+
+      - name: Upload metadata inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-shadow-metadata
+          path: ${{ runner.temp }}/news-shadow-metadata
+          if-no-files-found: error
+          retention-days: 90
+
+  preflight:
+    name: Owner-authorized model and bundle preflight
+    if: >-
+      github.repository == 'trend-ai-acceleration-task-force/ai-news-aggregator' &&
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'workflow_dispatch' && inputs.operation == 'preflight'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Check out trusted evaluator commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install preflight transport dependency
+        run: python3 -m pip install --no-input "httpx>=0.27"
+      - name: Run explicit model preflight
+        env:
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          SHADOW_INCUMBENT_API_KEY: ${{ secrets.SHADOW_INCUMBENT_API_KEY || secrets.RDSEC_API_KEY }}
+          SHADOW_INCUMBENT_BASE_URL: ${{ secrets.SHADOW_INCUMBENT_BASE_URL || 'https://api.rdsec.trendmicro.com/prod/aiendpoint/v1' }}
+          SHADOW_INCUMBENT_MODEL: ${{ secrets.SHADOW_INCUMBENT_MODEL }}
+          RDSEC_API_KEY: ${{ secrets.RDSEC_API_KEY }}
+          SHADOW_EVALUATOR_SHA: ${{ github.sha }}
+          SHADOW_PREFLIGHT_POLICY_PATH: ${{ format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v1-dev') }}
+          SHADOW_PREFLIGHT_COHORT: ${{ inputs.cohort || 'engineering' }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$SHADOW_PREFLIGHT_POLICY_PATH" =~ ^config/shadow/[A-Za-z0-9_.-]+\.json$ ]]; then
+            echo 'Policy path must be an allowlisted config/shadow JSON file.' >&2
+            exit 2
+          fi
+          # The preflight owns its bounded synthetic request and writes a
+          # structured status. It receives no production publishing secret.
+          python3 scripts/shadow/preflight.py \
+            --mode "${{ inputs.mode || 'filter' }}" \
+            --cohort "$SHADOW_PREFLIGHT_COHORT" \
+            --policy "$SHADOW_PREFLIGHT_POLICY_PATH" \
+            --out "$RUNNER_TEMP/news-shadow-preflight.json" \
+            --require-credentials \
+            --probe-models
+      - name: Upload preflight status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-shadow-preflight
+          path: ${{ runner.temp }}/news-shadow-preflight.json
+          if-no-files-found: error
+          retention-days: 90
+
+  evaluator:
+    name: Evaluate selected shadow bundle
+    needs: metadata-acquisition
+    if: >-
+      github.repository == 'trend-ai-acceleration-task-force/ai-news-aggregator' &&
+      github.ref == 'refs/heads/main' &&
+      ((github.event_name == 'workflow_dispatch' && inputs.operation == 'evaluate') ||
+       (github.event_name == 'schedule' && vars.NEWS_SHADOW_ENABLED == 'true' &&
+        vars.NEWS_SHADOW_EVALUATE_ENABLED == 'true')) &&
+      needs.metadata-acquisition.result == 'success'
+    runs-on: ubuntu-latest
+    # Two serial pipeline replays may each consume the reviewed 120-minute
+    # text-replay ceiling. The coordinator still holds only one active lease.
+    timeout-minutes: 250
+    permissions:
+      contents: read
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+      SHADOW_INCUMBENT_API_KEY: ${{ secrets.SHADOW_INCUMBENT_API_KEY || secrets.RDSEC_API_KEY }}
+      SHADOW_INCUMBENT_BASE_URL: ${{ secrets.SHADOW_INCUMBENT_BASE_URL || 'https://api.rdsec.trendmicro.com/prod/aiendpoint/v1' }}
+      SHADOW_INCUMBENT_MODEL: ${{ secrets.SHADOW_INCUMBENT_MODEL }}
+      RDSEC_API_KEY: ${{ secrets.RDSEC_API_KEY }}
+      SHADOW_EVALUATOR_SHA: ${{ github.sha }}
+      SHADOW_RETRY_VERSION: ${{ inputs.retry_version || vars.NEWS_SHADOW_RETRY_VERSION || '1' }}
+      SHADOW_CONTROL_REPEAT_POLICY: ${{ github.event_name == 'schedule' && 'sample20' || (inputs.repeat_control && 'always' || 'none') }}
+      SHADOW_MODE: ${{ inputs.mode || vars.NEWS_SHADOW_MODE || 'filter' }}
+      SHADOW_POLICY_VERSION: ${{ inputs.policy_version || vars.NEWS_SHADOW_POLICY_VERSION || 'scheduled-frozen' }}
+      SHADOW_RUBRIC_VERSION: ${{ inputs.rubric_version || vars.NEWS_SHADOW_RUBRIC_VERSION || 'scheduled-frozen' }}
+      SHADOW_COHORT: ${{ github.event_name == 'schedule' && 'prospective' || (inputs.cohort || 'engineering') }}
+      SHADOW_POLICY_PATH: ${{ github.event_name == 'schedule' && (vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json') || format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v1-dev') }}
+    steps:
+      - name: Check out trusted evaluator commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install project dependencies for the isolated evaluator
+        run: python3 -m pip install --no-input -r requirements.txt
+      - name: Download source metadata inventory
+        uses: actions/download-artifact@v4
+        with:
+          name: news-shadow-metadata
+          path: ${{ runner.temp }}/news-shadow-metadata
+      - name: Restore compact coordinator index
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/news-shadow-state"
+          for state_file in index.json events.jsonl; do
+            if [[ -f "$RUNNER_TEMP/news-shadow-metadata/discovery-state/$state_file" ]]; then
+              cp "$RUNNER_TEMP/news-shadow-metadata/discovery-state/$state_file" \
+                "$RUNNER_TEMP/news-shadow-state/$state_file"
+            fi
+          done
+      - name: Validate selector and reserve bounded work
+        env:
+          SHADOW_SOURCE_RUNS: ${{ inputs.source_runs }}
+          SHADOW_FROM_DATE: ${{ inputs.from_date }}
+          SHADOW_TO_DATE: ${{ inputs.to_date }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$SHADOW_POLICY_PATH" =~ ^config/shadow/[A-Za-z0-9_.-]+\.json$ ]]; then
+            echo 'Policy path must be an allowlisted config/shadow JSON file.' >&2
+            exit 2
+          fi
+          python3 - "$SHADOW_POLICY_PATH" "$SHADOW_COHORT" <<'PY'
+          import sys
+          from shadow.settings import load_policy
+
+          policy = load_policy(sys.argv[1])
+          if sys.argv[2] in {"holdout", "prospective"} and policy.get("frozen") is not True:
+              raise SystemExit("scheduled/holdout evaluation requires a frozen policy")
+          PY
+          python3 scripts/shadow/coordinate.py discover \
+            --metadata "$RUNNER_TEMP/news-shadow-metadata/metadata.json" \
+            --state-dir "$RUNNER_TEMP/news-shadow-state" \
+            --source-runs "$SHADOW_SOURCE_RUNS" \
+            --from-date "$SHADOW_FROM_DATE" \
+            --to-date "$SHADOW_TO_DATE" \
+            --mode "$SHADOW_MODE" \
+            --policy-version "$SHADOW_POLICY_VERSION" \
+            --rubric-version "$SHADOW_RUBRIC_VERSION" \
+            --repeat-plan "$SHADOW_RETRY_VERSION:$SHADOW_CONTROL_REPEAT_POLICY" \
+            --policy "$SHADOW_POLICY_PATH" \
+            --evaluator-sha "$SHADOW_EVALUATOR_SHA" \
+            --cohort "$SHADOW_COHORT" \
+            --incumbent-route "$SHADOW_INCUMBENT_BASE_URL" \
+            --incumbent-model "$SHADOW_INCUMBENT_MODEL" \
+            --trusted-ref main \
+            > "$RUNNER_TEMP/news-shadow-discovery.json"
+
+      - name: Record sealed bundles and reserve bounded work
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/news-shadow-results" "$RUNNER_TEMP/news-shadow-records"
+          manifests=("$RUNNER_TEMP/news-shadow-metadata"/bundles/*/manifest.json)
+          if [[ ! -e "${manifests[0]}" ]]; then
+            cp "$RUNNER_TEMP/news-shadow-metadata/selection-status.json" \
+              "$RUNNER_TEMP/news-shadow-results/selection-status.json" 2>/dev/null || true
+            printf '%s\n' '{"records":[],"reason":"no_eligible_acquired_bundle"}' > "$RUNNER_TEMP/news-shadow-claim.json"
+            exit 0
+          fi
+          claim_args=()
+          for manifest in "${manifests[@]}"; do
+            record_path="$RUNNER_TEMP/news-shadow-records/$(basename "$(dirname "$manifest")").json"
+            python3 scripts/shadow/coordinate.py record \
+              --bundle "$(dirname "$manifest")" \
+              --state-dir "$RUNNER_TEMP/news-shadow-state" \
+              --mode "$SHADOW_MODE" \
+              --policy-version "$SHADOW_POLICY_VERSION" \
+              --rubric-version "$SHADOW_RUBRIC_VERSION" \
+              --repeat-plan "$SHADOW_RETRY_VERSION:$SHADOW_CONTROL_REPEAT_POLICY" \
+              --policy "$SHADOW_POLICY_PATH" \
+              --evaluator-sha "$SHADOW_EVALUATOR_SHA" \
+              --cohort "$SHADOW_COHORT" \
+              --incumbent-route "$SHADOW_INCUMBENT_BASE_URL" \
+              --incumbent-model "$SHADOW_INCUMBENT_MODEL" \
+              --trusted-ref main \
+              > "$record_path"
+            experiment_id="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["experiment_id"])' "$record_path")"
+            claim_args+=(--experiment-id "$experiment_id")
+          done
+          python3 scripts/shadow/coordinate.py claim \
+            --state-dir "$RUNNER_TEMP/news-shadow-state" \
+            --owner "${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" \
+            --lease-seconds 7500 \
+            "${claim_args[@]}" \
+            --limit 2 \
+            > "$RUNNER_TEMP/news-shadow-claim.json"
+      - name: Evaluate selected data-only bundles
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/news-shadow-results"
+          # The importer ran in the acquisition job with source-only access;
+          # this job receives only sealed data bundles. It never checks out or
+          # runs a production source ref, and each bundle gets an isolated
+          # output directory.
+          manifests=("$RUNNER_TEMP/news-shadow-metadata"/bundles/*/manifest.json)
+          if [[ ! -e "${manifests[0]}" ]]; then
+            if [[ -f "$RUNNER_TEMP/news-shadow-metadata/selection-status.json" ]]; then
+              cp "$RUNNER_TEMP/news-shadow-metadata/selection-status.json" \
+                "$RUNNER_TEMP/news-shadow-results/selection-status.json"
+            fi
+            exit 0
+          fi
+          process_claim() {
+            local claim_file="$1"
+            mapfile -t claimed_selectors < <(python3 - "$claim_file" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              value = json.load(handle)
+          for row in value.get("records", []):
+              source = row.get("source", {})
+              run_id = source.get("run_id")
+              attempt = source.get("attempt", 1)
+              if isinstance(run_id, int) and isinstance(attempt, int):
+                  print(f"{run_id}:{attempt}")
+          PY
+            )
+            if [[ "${#claimed_selectors[@]}" -eq 0 ]]; then
+              return 1
+            fi
+            for selector in "${claimed_selectors[@]}"; do
+              bundle_name="${selector/:/-}"
+              bundle_dir="$RUNNER_TEMP/news-shadow-metadata/bundles/$bundle_name"
+              manifest="$bundle_dir/manifest.json"
+              if [[ ! -f "$manifest" ]]; then
+                echo "Claimed bundle is missing: $selector" >&2
+                return 2
+              fi
+              result_dir="$RUNNER_TEMP/news-shadow-results/$bundle_name"
+              result_path="$result_dir/run-result.json"
+              mkdir -p "$result_dir"
+              repeat_args=()
+              if [[ "$SHADOW_CONTROL_REPEAT_POLICY" == 'always' ]] || \
+                 { [[ "$SHADOW_CONTROL_REPEAT_POLICY" == 'sample20' ]] && python3 - "$manifest" <<'PY'
+          import hashlib
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              report_date = json.load(handle)["report_date"]
+          raise SystemExit(0 if int(hashlib.sha256(report_date.encode()).hexdigest(), 16) % 5 == 0 else 1)
+          PY
+                 }; then
+                repeat_args+=(--repeat-control)
+              fi
+              set +e
+              python3 scripts/shadow/run.py \
+                --bundle "$bundle_dir" \
+                --out "$result_dir" \
+                --mode "$SHADOW_MODE" \
+                --policy "$SHADOW_POLICY_PATH" \
+                --cohort "$SHADOW_COHORT" \
+                --retry-version "$SHADOW_RETRY_VERSION" \
+                "${repeat_args[@]}" \
+                > "$result_path"
+              run_rc=$?
+              set -e
+              result_id=""
+              if [[ -s "$result_path" ]]; then
+                result_id="$(python3 - "$result_path" <<'PY'
+          import json
+          import re
+          import sys
+          try:
+              with open(sys.argv[1], encoding="utf-8") as handle:
+                  value = json.load(handle)
+              candidate = value.get("experiment_id") if isinstance(value, dict) else None
+              if isinstance(candidate, str) and re.fullmatch(r"[0-9a-f]{64}", candidate):
+                  print(candidate)
+          except (OSError, ValueError, TypeError):
+              pass
+          PY
+                )"
+              fi
+              result_status=failed
+              if [[ "$run_rc" -eq 0 ]]; then
+                result_status=completed
+              elif [[ "$run_rc" -eq 2 ]]; then
+                result_status=incomplete
+              fi
+              # The completion event is part of the compact state artifact, so
+              # a later poll cannot pay for a terminal identity again.
+              python3 scripts/shadow/coordinate.py record \
+                --bundle "$bundle_dir" \
+                --state-dir "$RUNNER_TEMP/news-shadow-state" \
+                --mode "$SHADOW_MODE" \
+                --status "$result_status" \
+                --policy-version "$SHADOW_POLICY_VERSION" \
+                --rubric-version "$SHADOW_RUBRIC_VERSION" \
+                --repeat-plan "$SHADOW_RETRY_VERSION:$SHADOW_CONTROL_REPEAT_POLICY" \
+                --policy "$SHADOW_POLICY_PATH" \
+                --evaluator-sha "$SHADOW_EVALUATOR_SHA" \
+                --cohort "$SHADOW_COHORT" \
+                --incumbent-route "$SHADOW_INCUMBENT_BASE_URL" \
+                --incumbent-model "$SHADOW_INCUMBENT_MODEL" \
+                --result-id "$result_id" \
+                --result-path "$result_path" \
+                --trusted-ref main \
+                > "$RUNNER_TEMP/news-shadow-results/status-$bundle_name.json" || return 2
+            done
+            return 0
+          }
+          if process_claim "$RUNNER_TEMP/news-shadow-claim.json"; then
+            :
+          else
+            claim_rc=$?
+            if [[ "$claim_rc" -eq 1 ]]; then
+              echo 'Coordinator produced no eligible acquired date.'
+              exit 0
+            fi
+            exit "$claim_rc"
+          fi
+          # Claim and process one more date serially when the queue has two
+          # eligible entries. The lease/state index is persisted by the writer;
+          # a third date remains queued for the next invocation.
+          claim_args=()
+          for record_path in "$RUNNER_TEMP/news-shadow-records/"*.json; do
+            experiment_id="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["experiment_id"])' "$record_path")"
+            claim_args+=(--experiment-id "$experiment_id")
+          done
+          python3 scripts/shadow/coordinate.py claim \
+            --state-dir "$RUNNER_TEMP/news-shadow-state" \
+            --owner "${GITHUB_RUN_ID}:${GITHUB_RUN_ATTEMPT}" \
+            --lease-seconds 7500 \
+            "${claim_args[@]}" \
+            --limit 2 \
+            > "$RUNNER_TEMP/news-shadow-claim-next.json"
+          if process_claim "$RUNNER_TEMP/news-shadow-claim-next.json"; then
+            :
+          else
+            claim_rc=$?
+            [[ "$claim_rc" -eq 1 ]] || exit "$claim_rc"
+          fi
+      - name: Write structured evaluator status
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/news-shadow-results"
+          if [[ -d "$RUNNER_TEMP/news-shadow-state" && -f "$RUNNER_TEMP/news-shadow-state/index.json" ]]; then
+            python3 scripts/shadow/coordinate.py list \
+              --state-dir "$RUNNER_TEMP/news-shadow-state" \
+              > "$RUNNER_TEMP/news-shadow-results/coordinator-status.json" || true
+            mkdir -p "$RUNNER_TEMP/news-shadow-results/news-shadow-state"
+            cp -R "$RUNNER_TEMP/news-shadow-state/." \
+              "$RUNNER_TEMP/news-shadow-results/news-shadow-state/"
+          fi
+          if [[ ! -f "$RUNNER_TEMP/news-shadow-results/coordinator-status.json" ]]; then
+            printf '%s\n' "{\"schema_version\":\"news-shadow-coordinate-status/v1\",\"status\":\"incomplete\",\"job_status\":\"$JOB_STATUS\",\"reason\":\"evaluator_step_failed\"}" \
+              > "$RUNNER_TEMP/news-shadow-results/coordinator-status.json"
+          fi
+      - name: Upload evaluator artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-shadow-evaluation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/news-shadow-results
+          if-no-files-found: error
+          retention-days: 90
+      - name: Publish assessment links in the CI summary
+        if: always()
+        env:
+          ARTIFACT_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"]) / "news-shadow-results"
+          lines = ["## News relevance shadow", "",
+                   f"[Detailed artifacts and assessments]({os.environ['ARTIFACT_URL']})", "",
+                   "Production routing is unchanged; quality verdicts are judge-estimated.", ""]
+          for path in sorted(root.glob("*/*/experiment.json")):
+              try:
+                  value = json.loads(path.read_text())
+                  date = value.get("manifest", {}).get("report_date", "unknown")
+                  lines.append(f"- {date}: **{value['status']}** — `{value['experiment_id'][:16]}` ({value['mode']})")
+              except (OSError, ValueError, KeyError):
+                  lines.append("- An experiment result could not be read; inspect the retained status artifact.")
+          if not list(root.glob("*/*/experiment.json")):
+              lines.append("No paid experiment result was produced. Inspect the coordinator status for eligibility or failure details.")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as handle:
+              handle.write("\n".join(lines) + "\n")
+          PY
+
+  # Only this job can write the internal results branch.  It never receives a
+  # source token or model credential, and it writes manifests/statuses only.
+  results-writer:
+    name: Append shadow result index
+    needs: [metadata-acquisition, evaluator]
+    if: >-
+      github.repository == 'trend-ai-acceleration-task-force/ai-news-aggregator' &&
+      github.ref == 'refs/heads/main' &&
+      always() && needs.metadata-acquisition.result == 'success' &&
+      (github.event_name == 'schedule' ||
+       (github.event_name == 'workflow_dispatch' && inputs.operation == 'evaluate'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out trusted evaluator commit without credentials
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          # This is the only job with contents:write.  Keeping the job-local
+          # checkout credential avoids putting a token in evaluator artifacts;
+          # the evaluator job itself still uses persist-credentials:false.
+          persist-credentials: true
+      - name: Download evaluator artifacts
+        if: >-
+          (github.event_name == 'workflow_dispatch' && inputs.operation == 'evaluate') ||
+          (github.event_name == 'schedule' && vars.NEWS_SHADOW_EVALUATE_ENABLED == 'true')
+        uses: actions/download-artifact@v4
+        with:
+          name: news-shadow-evaluation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/news-shadow-evaluation
+      - name: Download scheduled discovery metadata
+        if: ${{ github.event_name == 'schedule' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: news-shadow-metadata
+          path: ${{ runner.temp }}/news-shadow-discovery
+      - name: Check out or initialize shadow-results branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code origin refs/heads/shadow-results >/dev/null 2>&1; then
+            git fetch --no-tags origin shadow-results
+            git checkout -B shadow-results FETCH_HEAD
+          else
+            git checkout --orphan shadow-results
+            git rm -rf .
+          fi
+      - name: Append compact state with optimistic push retries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p coordinator
+          # Discovery is the base view; an evaluator result is the newer
+          # optimistic state and must be applied last for scheduled runs.
+          if [[ -d "$RUNNER_TEMP/news-shadow-discovery/discovery-state" ]]; then
+            cp -R "$RUNNER_TEMP/news-shadow-discovery/discovery-state/." coordinator/
+          fi
+          if [[ -d "$RUNNER_TEMP/news-shadow-evaluation/news-shadow-state" ]]; then
+            cp -R "$RUNNER_TEMP/news-shadow-evaluation/news-shadow-state/." coordinator/
+          fi
+          mkdir -p manifests
+          if [[ -d "$RUNNER_TEMP/news-shadow-evaluation" ]]; then
+            find "$RUNNER_TEMP/news-shadow-evaluation" -type f \
+              \( -name 'identity.json' -o -name 'assessment.json' -o -name 'assessment.md' -o -name 'coordinator-status.json' \) \
+              -exec cp --parents '{}' manifests/ \;
+          fi
+          if [[ -d "$RUNNER_TEMP/news-shadow-discovery" ]]; then
+            find "$RUNNER_TEMP/news-shadow-discovery" -type f \
+              \( -name 'discovery-result.json' -o -name 'selection-status.json' -o -name 'selection-errors.jsonl' \) \
+              -exec cp --parents '{}' manifests/ \;
+          fi
+          printf '%s\n' '{"schema_version":"news-shadow-results/v1","source":"internal-workflow","auto_promotion":false}' \
+            > "manifests/workflow-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
+          git config user.name 'news-shadow-results-writer'
+          git config user.email 'news-shadow-results@users.noreply.github.com'
+          git add coordinator manifests
+          git commit -m "Record news shadow run ${GITHUB_RUN_ID}/${GITHUB_RUN_ATTEMPT}" || true
+          for attempt in 1 2 3; do
+            echo "Optimistic results push attempt ${attempt}/3"
+            if git push origin HEAD:shadow-results; then
+              exit 0
+            fi
+            git fetch --no-tags origin shadow-results
+            git rebase FETCH_HEAD
+          done
+          echo 'Unable to append shadow-results after three optimistic retries.' >&2
+          exit 1

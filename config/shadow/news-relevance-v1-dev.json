@@ -1,0 +1,36 @@
+{
+  "schema_version": "news-shadow-policy/v1",
+  "version": "news-relevance-v1-dev",
+  "frozen": false,
+  "prospective_start_date": null,
+  "model": "jev-1.13.0",
+  "reject_max": 0.1,
+  "keep_min": 0.8,
+  "sufficiency_min": 0.9,
+  "chunk_size": 16,
+  "concurrency": 2,
+  "max_attempts": 3,
+  "timeout_seconds": 30,
+  "fallback": "retain",
+  "candidate_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 100000,
+    "deadline_seconds": 1800,
+    "max_cost_usd": 0.25
+  },
+  "incumbent_budget": {
+    "max_requests": 12,
+    "max_input_tokens": 1000000,
+    "max_output_tokens": 500000,
+    "deadline_seconds": 3600,
+    "max_cost_usd": null
+  },
+  "judge_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 64000,
+    "deadline_seconds": 1800,
+    "max_cost_usd": null
+  }
+}

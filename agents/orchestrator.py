@@ -9,8 +9,11 @@ import asyncio
 import logging
 import os
 import json
+import copy
+import hashlib
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
+from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 
 from .llm_client import AnthropicClient, AsyncAnthropicClient, AsyncLLMRouter, ThinkingLevel, LLMResponse
@@ -54,6 +57,24 @@ except ImportError:
     initialize_hero_generator = None
 
 logger = logging.getLogger(__name__)
+
+
+def _is_replay_integrity_error(exc: BaseException) -> bool:
+    """Recognise strict replay failures without requiring shadow at import time."""
+    return exc.__class__.__name__ == "ReplayIntegrityError"
+
+
+def _optional_capture_class():
+    """Return the opt-in capture constructor, if the shadow package is present."""
+    try:
+        from shadow import capture as capture_module  # type: ignore
+    except Exception:
+        return None
+    for name in ("CaptureObserver", "ExperimentCapture", "CaptureSession", "Capture"):
+        candidate = getattr(capture_module, name, None)
+        if candidate is not None:
+            return candidate
+    return None
 
 
 @dataclass
@@ -139,7 +160,10 @@ class MainOrchestrator:
         lookback_hours: int = 24,
         target_date: Optional[str] = None,
         provider_config: Optional[ProviderConfig] = None,
-        prompt_accessor: Optional['PromptAccessor'] = None
+        prompt_accessor: Optional['PromptAccessor'] = None,
+        replay_context: Any = None,
+        capture: Any = None,
+        capture_dir: Optional[str] = None,
     ):
         """
         Initialize orchestrator.
@@ -152,14 +176,61 @@ class MainOrchestrator:
             target_date: Specific date to collect (YYYY-MM-DD format).
             provider_config: Provider configuration. If None, loads from env vars.
             prompt_accessor: Optional PromptAccessor for config-based prompts.
+            replay_context: Optional strict frozen replay dependency. When supplied,
+                gatherers and the image client are intentionally not initialized.
+            capture: Optional production capture observer. Capture is best effort.
+            capture_dir: Opt-in capture directory; used only when ``capture`` is
+                absent and ``NEWS_SHADOW_CAPTURE_DIR`` is set by the caller.
         """
         self.config_dir = config_dir
         self.data_dir = data_dir
         self.web_dir = web_dir
         self.lookback_hours = lookback_hours
-        self.target_date = target_date or self._get_today()
+        # A verified replay owns the report date.  Accepting a caller supplied
+        # date that differs from the bundle would let coverage and history drift
+        # while still looking like a paired run.
+        frozen_date = None
+        if replay_context is not None:
+            frozen_date = getattr(replay_context, "frozen_report_date", None)
+            if frozen_date is None:
+                frozen_date = getattr(replay_context, "report_date", None)
+            if frozen_date is not None:
+                frozen_date = str(frozen_date)
+        requested_date = target_date or frozen_date or self._get_today()
+        if frozen_date is not None and str(requested_date) != frozen_date:
+            try:
+                from shadow.replay_context import ReplayIntegrityError  # type: ignore
+            except Exception:
+                class ReplayIntegrityError(RuntimeError):
+                    pass
+            raise ReplayIntegrityError(
+                f"Replay report date mismatch: requested {requested_date}, frozen {frozen_date}"
+            )
+        self.target_date = str(requested_date)
         self.provider_config = provider_config
         self.prompt_accessor = prompt_accessor
+        self.replay_context = replay_context
+        self.capture = capture
+        self.capture_dir = capture_dir or os.getenv("NEWS_SHADOW_CAPTURE_DIR")
+        self._replay_coverage: Dict[str, Any] = {}
+        self._capture_failed = False
+
+        # A replay is read-only with respect to its sealed bundle.  Even if a
+        # parent process happened to inherit NEWS_SHADOW_CAPTURE_DIR, never
+        # create a second observer while replaying a frozen dependency set.
+        if self.replay_context is None and self.capture is None and self.capture_dir:
+            capture_class = _optional_capture_class()
+            if capture_class is not None:
+                try:
+                    try:
+                        self.capture = capture_class(self.capture_dir, target_date=self.target_date)
+                    except TypeError:
+                        self.capture = capture_class(self.capture_dir)
+                except Exception as exc:
+                    # Capture is an observer. A broken observer must not block
+                    # the incumbent publication path.
+                    self._capture_failed = True
+                    logger.warning("News shadow capture disabled: %s", exc)
         # Non-fatal failures accumulated across phases; see OrchestratorResult.
         self.degradations: List[str] = []
         # Replay bundle recovered from a checkpoint on a resumed run, merged
@@ -175,35 +246,56 @@ class MainOrchestrator:
             self.llm_client = AnthropicClient()
             self.async_client = AsyncAnthropicClient()
 
-        # Initialize gatherers
-        self.gatherers: Dict[str, BaseGatherer] = {
-            'news': NewsGatherer(
-                config_dir=config_dir,
-                data_dir=data_dir,
-                lookback_hours=lookback_hours,
-                target_date=self.target_date,
-                llm_client=self.llm_client,  # For link following
-                prompt_accessor=prompt_accessor
-            ),
-            'research': ResearchGatherer(
-                config_dir=config_dir,
-                data_dir=data_dir,
-                lookback_hours=lookback_hours,
-                target_date=self.target_date
-            ),
-            'social': SocialGatherer(
-                config_dir=config_dir,
-                data_dir=data_dir,
-                lookback_hours=lookback_hours,
-                target_date=self.target_date
-            ),
-            'reddit': RedditGatherer(
-                config_dir=config_dir,
-                data_dir=data_dir,
-                lookback_hours=lookback_hours,
-                target_date=self.target_date
+        # A frozen replay has no source gatherers. This is both a safety boundary
+        # and a useful invariant for tests: replay construction cannot initialize
+        # a source client accidentally.
+        if self.replay_context is None:
+            self.gatherers: Dict[str, BaseGatherer] = {
+                'news': NewsGatherer(
+                    config_dir=config_dir,
+                    data_dir=data_dir,
+                    lookback_hours=lookback_hours,
+                    target_date=self.target_date,
+                    llm_client=self.llm_client,  # For link following
+                    prompt_accessor=prompt_accessor
+                ),
+                'research': ResearchGatherer(
+                    config_dir=config_dir,
+                    data_dir=data_dir,
+                    lookback_hours=lookback_hours,
+                    target_date=self.target_date
+                ),
+                'social': SocialGatherer(
+                    config_dir=config_dir,
+                    data_dir=data_dir,
+                    lookback_hours=lookback_hours,
+                    target_date=self.target_date
+                ),
+                'reddit': RedditGatherer(
+                    config_dir=config_dir,
+                    data_dir=data_dir,
+                    lookback_hours=lookback_hours,
+                    target_date=self.target_date
+                )
+            }
+        else:
+            self.gatherers = {}
+
+        replay_evidence = None
+        if replay_context is not None:
+            replay_evidence = self._context_value(
+                ("evidence_store", "evidence"), default=None
             )
-        }
+        if replay_evidence is None and self.capture is not None:
+            # CaptureSession exposes its EvidenceStore so the existing freshness
+            # code can record the exact response/failure without a second fetch.
+            replay_evidence = getattr(self.capture, "evidence_store", None)
+        replay_strategy = self._context_value(
+            ("relevance_strategy", "news_relevance_strategy", "candidate_strategy")
+        )
+        replay_kept_ids = self._context_value(
+            ("precomputed_exact_kept_ids", "exact_kept_ids", "news_kept_ids")
+        )
 
         # Initialize analyzers
         self.analyzers: Dict[str, BaseAnalyzer] = {
@@ -214,7 +306,12 @@ class MainOrchestrator:
                 config_dir=config_dir,
                 target_date=self.target_date,
                 web_dir=web_dir,
-                prompt_accessor=prompt_accessor
+                prompt_accessor=prompt_accessor,
+                relevance_strategy=replay_strategy,
+                precomputed_exact_kept_ids=replay_kept_ids,
+                capture=self.capture,
+                evidence_store=replay_evidence,
+                replay_context=replay_context,
             ),
             'research': ResearchAnalyzer(
                 llm_client=self.llm_client,
@@ -223,7 +320,7 @@ class MainOrchestrator:
                 config_dir=config_dir,
                 target_date=self.target_date,
                 web_dir=web_dir,
-                prompt_accessor=prompt_accessor
+                prompt_accessor=prompt_accessor,
             ),
             'social': SocialAnalyzer(
                 llm_client=self.llm_client,
@@ -232,7 +329,7 @@ class MainOrchestrator:
                 config_dir=config_dir,
                 target_date=self.target_date,
                 web_dir=web_dir,
-                prompt_accessor=prompt_accessor
+                prompt_accessor=prompt_accessor,
             ),
             'reddit': RedditAnalyzer(
                 llm_client=self.llm_client,
@@ -241,22 +338,369 @@ class MainOrchestrator:
                 config_dir=config_dir,
                 target_date=self.target_date,
                 web_dir=web_dir,
-                prompt_accessor=prompt_accessor
+                prompt_accessor=prompt_accessor,
             )
         }
+        for analyzer in self.analyzers.values():
+            # The category analyzers retain their historical constructor
+            # signatures. Wire the optional BaseAnalyzer fields after creation
+            # so production callers and subclasses remain source compatible.
+            analyzer.evidence_store = replay_evidence
+            analyzer.replay_context = replay_context
 
         # Initialize hero generator if available AND configured
         self.hero_generator: Optional['HeroGenerator'] = None
-        if HERO_GENERATOR_AVAILABLE and initialize_hero_generator:
+        if self.replay_context is None and HERO_GENERATOR_AVAILABLE and initialize_hero_generator:
             image_config = provider_config.image if provider_config else None
             self.hero_generator = initialize_hero_generator(image_config)
 
         # Initialize ecosystem context manager (Phase 0)
-        from pathlib import Path
         self.ecosystem_manager = EcosystemContextManager(Path(config_dir), prompt_accessor=prompt_accessor)
         self.grounding_context: Optional[str] = None  # Set in run()
 
         logger.info(f"Orchestrator initialized for {self.target_date}")
+
+    def _context_value(self, names, default=None):
+        """Read a replay-context value while accepting small contract variants."""
+        context = self.replay_context
+        if context is None:
+            return default
+        for name in names:
+            if isinstance(context, dict) and name in context:
+                value = context[name]
+            else:
+                value = getattr(context, name, None)
+            if value is not None:
+                if not callable(value):
+                    return value
+                # Strategy objects are intentionally callable, but invoking one
+                # while constructing the orchestrator would spend the candidate
+                # budget before the captured input has been loaded.  Only the
+                # explicitly named loader methods are invoked here.
+                if not str(name).startswith(("load_", "read_", "get_")):
+                    return value
+                try:
+                    return value()
+                except TypeError:
+                    try:
+                        return value(self.target_date)
+                    except TypeError:
+                        continue
+        return default
+
+    def _replay_error(self, message: str) -> Exception:
+        try:
+            from shadow.replay_context import ReplayIntegrityError  # type: ignore
+        except Exception:
+            class ReplayIntegrityError(RuntimeError):
+                pass
+        return ReplayIntegrityError(message)
+
+    def _evidence_dependency(self):
+        """Return the frozen store or opt-in capture store for freshness."""
+        if self.replay_context is not None:
+            value = self._context_value(("evidence_store", "evidence"), default=None)
+            if value is not None:
+                return value
+        if self.capture is not None:
+            return getattr(self.capture, "evidence_store", None)
+        return None
+
+    def _load_replay_grounding(self) -> str:
+        value = self._context_value(
+            ("grounding_context", "grounding", "load_grounding", "read_grounding"),
+            default=None,
+        )
+        if value is None:
+            raise self._replay_error("frozen replay is missing ecosystem grounding context")
+        if isinstance(value, dict):
+            value = value.get("text", value.get("grounding_context", value.get("grounding")))
+        if value is None or not str(value).strip():
+            raise self._replay_error("frozen replay grounding context has no text")
+        return str(value)
+
+    def _load_replay_gathering(self):
+        """Restore gathered items and coverage without touching source clients."""
+        payload = self._context_value(
+            ("gathering", "gathered", "gathered_items", "load_gathering", "load_gathered_items"),
+            default=None,
+        )
+        # ReplayContext's sealed bundle exposes one file per category and a
+        # metadata file, rather than a mutable aggregate object.  Read those
+        # bytes through its API so no source gatherer can be initialized.
+        if payload is None and self.replay_context is not None:
+            reader = getattr(self.replay_context, "read_gathered", None)
+            if callable(reader):
+                categories = {
+                    category: reader(category)
+                    for category in ("news", "research", "social", "reddit")
+                }
+                metadata_reader = getattr(self.replay_context, "read_json", None)
+                metadata = {}
+                if callable(metadata_reader):
+                    metadata = metadata_reader("gathered/metadata.json") or {}
+                payload = {
+                    "categories": categories,
+                    "collection_status": metadata.get("collection_status", {}),
+                    "coverage": metadata.get("coverage", {}),
+                }
+        if payload is None:
+            raise self._replay_error("frozen replay is missing the gathering snapshot")
+
+        collection_status = {}
+        coverage = {}
+        categories = payload
+        if isinstance(payload, tuple):
+            if len(payload) >= 1:
+                categories = payload[0]
+            if len(payload) >= 2 and isinstance(payload[1], dict):
+                collection_status = payload[1]
+            if len(payload) >= 3 and isinstance(payload[2], dict):
+                coverage = payload[2]
+        elif isinstance(payload, dict):
+            categories = payload.get("categories", payload.get("items", payload))
+            collection_status = payload.get("collection_status", payload.get("status", {})) or {}
+            coverage = payload.get("coverage", {}) or {}
+            for key in ("coverage_date", "coverage_start", "coverage_end", "timezone"):
+                if key in payload and key not in coverage:
+                    coverage[key] = payload[key]
+
+        if not isinstance(categories, dict):
+            raise self._replay_error("frozen gathering snapshot has an invalid category shape")
+        restored = {}
+        for category, values in categories.items():
+            if category not in {"news", "research", "social", "reddit"}:
+                raise self._replay_error(f"frozen gathering has an unknown category {category!r}")
+            if not isinstance(values, list):
+                raise self._replay_error(f"frozen gathering category {category!r} is not a list")
+            try:
+                restored[category] = [
+                    value if isinstance(value, CollectedItem) else CollectedItem.from_dict(value)
+                    for value in values
+                ]
+            except Exception as exc:
+                if _is_replay_integrity_error(exc):
+                    raise
+                raise self._replay_error(
+                    f"frozen gathering category {category!r} contains an invalid item"
+                ) from exc
+        for category in ("news", "research", "social", "reddit"):
+            restored.setdefault(category, [])
+        self._replay_coverage = dict(coverage)
+        if not collection_status and isinstance(payload, dict):
+            collection_status = payload.get("collection_status", {}) or {}
+        if not collection_status:
+            raise self._replay_error("frozen replay is missing recorded collection health")
+        missing_status = [
+            category for category in ("news", "research", "social", "reddit")
+            if category not in collection_status
+        ]
+        if missing_status:
+            raise self._replay_error(
+                f"frozen replay is missing collection health for: {', '.join(missing_status)}"
+            )
+        return restored, collection_status
+
+    def _load_replay_precontinuity(self):
+        payload = self._context_value(
+            (
+                "pre_continuity", "precontinuity", "analysis_pre_continuity",
+                "load_pre_continuity", "read_precontinuity",
+            ),
+            default=None,
+        )
+        if payload is None:
+            return None
+        if isinstance(payload, dict):
+            payload = payload.get("category_reports", payload.get("reports", payload))
+        if not isinstance(payload, dict):
+            raise self._replay_error("frozen pre-continuity snapshot has an invalid shape")
+        try:
+            unknown = set(payload) - {"news", "research", "social", "reddit"}
+            if unknown:
+                raise self._replay_error(
+                    f"frozen pre-continuity has unknown categories: {sorted(unknown)}"
+                )
+            return {
+                category: report if isinstance(report, CategoryReport) else CategoryReport.from_dict(report)
+                for category, report in payload.items()
+            }
+        except Exception as exc:
+            if _is_replay_integrity_error(exc):
+                raise
+            raise self._replay_error(
+                "frozen pre-continuity snapshot contains an invalid report"
+            ) from exc
+
+    def _load_replay_hero(self):
+        value = self._context_value(
+            ("hero", "hero_checkpoint", "hero_image", "load_hero"),
+            default=None,
+        )
+        if value is None and self.replay_context is not None:
+            # The capture contract stores the original summary JSON.  Reuse its
+            # recorded hero metadata when no separate hero checkpoint exists;
+            # never initialize the image provider for this path.
+            reader = getattr(self.replay_context, "read_original_output", None)
+            if callable(reader):
+                try:
+                    summary = json.loads(reader("summary.json").decode("utf-8"))
+                    if any(summary.get(key) for key in (
+                        "hero_image_url", "hero_image_prompt", "hero_image_usage"
+                    )):
+                        value = {
+                            "hero_image_url": summary.get("hero_image_url"),
+                            "hero_image_prompt": summary.get("hero_image_prompt"),
+                            "hero_image_usage": summary.get("hero_image_usage"),
+                        }
+                except Exception as exc:
+                    if _is_replay_integrity_error(exc):
+                        # An original output is optional for a filter-only
+                        # comparison; keep the valid no-hero representation.
+                        logger.debug("No recorded replay hero metadata: %s", exc)
+        if value is None:
+            # Missing image is a valid historical state; use the fixed no-image
+            # representation and never initialize/call the image provider.
+            return None
+        if isinstance(value, str):
+            return {"hero_image_url": value, "hero_image_prompt": None, "hero_image_usage": None}
+        if isinstance(value, dict):
+            return value
+        raise self._replay_error("frozen hero snapshot has an invalid shape")
+
+    def _capture_event(self, names, *args, **kwargs) -> None:
+        """Call an optional observer without affecting production publication."""
+        if self.capture is None:
+            return
+        for name in names:
+            fn = getattr(self.capture, name, None)
+            if not callable(fn):
+                continue
+            try:
+                fn(*args, **kwargs)
+            except TypeError:
+                try:
+                    fn(kwargs)
+                except Exception as exc:
+                    self._capture_failed = True
+                    logger.warning("News shadow capture observer failed: %s", exc)
+            except Exception as exc:
+                self._capture_failed = True
+                logger.warning("News shadow capture observer failed: %s", exc)
+            return
+
+    def _capture_begin(self) -> None:
+        self._capture_event(
+            ("begin_run", "start_run", "begin"),
+            report_date=self.target_date,
+            config_dir=self.config_dir,
+            data_dir=self.data_dir,
+            web_dir=self.web_dir,
+        )
+        if self.capture is None:
+            return
+        config = None
+        if self.provider_config is not None:
+            try:
+                config = self.provider_config.model_dump(mode="json")
+            except AttributeError:
+                config = self.provider_config.dict()
+        if config is not None:
+            self._capture_event(
+                ("capture_config", "capture_effective_config"), config
+            )
+        # Freeze only the pre-existing history, bounded by the report date.  The
+        # observer's implementation records missing dates explicitly and never
+        # treats them as current data.
+        self._capture_event(
+            ("capture_history", "capture_history_snapshot"),
+            os.path.join(self.web_dir, "data"),
+            target_date=self.target_date,
+            search_documents_used=os.path.exists(
+                os.path.join(self.web_dir, "data", "search-documents.json")
+            ),
+        )
+
+    def _capture_phase0(self) -> None:
+        model_releases = None
+        resolved_ecosystem = None
+        if self.replay_context is None:
+            try:
+                releases_path = getattr(self.ecosystem_manager, "releases_path", None)
+                if releases_path and Path(releases_path).exists():
+                    model_releases = Path(releases_path).read_bytes()
+                resolved_ecosystem = getattr(self.ecosystem_manager, "context", None)
+            except Exception as exc:
+                logger.debug("Could not read model release state for capture: %s", exc)
+        self._capture_event(
+            ("record_grounding", "capture_grounding", "record_context"),
+            grounding_context=self.grounding_context,
+            model_releases=model_releases,
+            resolved_ecosystem=resolved_ecosystem,
+            target_date=self.target_date,
+        )
+
+    def _capture_gathering(self, gathered_items, collection_status) -> None:
+        coverage = {}
+        if self.gatherers:
+            any_gatherer = next(iter(self.gatherers.values()))
+            coverage = {
+                "coverage_date": getattr(any_gatherer, "coverage_date", ""),
+                "coverage_start": (
+                    any_gatherer.start_time.isoformat()
+                    if getattr(any_gatherer, "start_time", None) else ""
+                ),
+                "coverage_end": (
+                    any_gatherer.end_time.isoformat()
+                    if getattr(any_gatherer, "end_time", None) else ""
+                ),
+            }
+        self._capture_event(
+            ("record_gathering", "capture_gathering", "record_inputs"),
+            {
+                cat: [item.to_dict() for item in values]
+                for cat, values in gathered_items.items()
+            },
+            collection_status=collection_status,
+            coverage=coverage,
+            report_date=self.target_date,
+        )
+
+    def _materialize_replay_history(self) -> None:
+        """Expose sealed prior-day files to the incumbent continuity reader.
+
+        ``ContinuityCoordinator`` predates ``ReplayContext`` and deliberately
+        reads ``web/data`` directly.  A replay therefore materializes only the
+        verified history files into its separate scratch web root; it never
+        points that reader at the frozen bundle or the live checkout.
+        """
+        context = self.replay_context
+        if context is None:
+            return
+        history_files = getattr(context, "history_files", None)
+        read_bytes = getattr(context, "read_bytes", None)
+        if not callable(history_files) or not callable(read_bytes):
+            return
+        try:
+            paths = history_files(include_search_documents=True)
+            for relative in paths:
+                parts = Path(str(relative)).parts
+                if not parts or parts[0] != "history":
+                    raise self._replay_error(
+                        f"frozen history path is outside the history root: {relative}"
+                    )
+                destination_parts = parts[1:]
+                if not destination_parts:
+                    continue
+                destination = Path(self.web_dir) / "data" / Path(*destination_parts)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(read_bytes(str(relative)))
+        except Exception as exc:
+            if _is_replay_integrity_error(exc):
+                raise
+            raise self._replay_error(
+                f"frozen history could not be materialized: {type(exc).__name__}"
+            ) from exc
 
     def _get_today(self) -> str:
         """Get today's date as YYYY-MM-DD."""
@@ -290,6 +734,7 @@ class MainOrchestrator:
         # Arm replay capture on the same origin as the cost tracker, so every
         # timestamp in the replay is measured from the true start of the run.
         get_recorder().begin_run(self.target_date)
+        self._capture_begin()
 
         # Initialize phase tracker
         phases = PhaseTracker()
@@ -297,22 +742,35 @@ class MainOrchestrator:
         # carries the completed-phase windows for faithful resume replays.
         self._phases = phases
 
-        # Phase 0: Ecosystem Context (always runs fresh - fast and stateless)
+        # Phase 0: Ecosystem Context. Frozen replay restores the exact bytes and
+        # deliberately skips the live catalog refresh.
         phases.start_phase("Phase 0: Ecosystem Context")
         try:
             logger.info("Phase 0: Loading ecosystem context...")
-            from datetime import date as date_type
-            report_date = date_type.fromisoformat(self.target_date)
-            self.grounding_context = await self.ecosystem_manager.initialize(report_date)
+            if self.replay_context is not None:
+                self.grounding_context = self._load_replay_grounding()
+            else:
+                from datetime import date as date_type
+                report_date = date_type.fromisoformat(self.target_date)
+                self.grounding_context = await self.ecosystem_manager.initialize(report_date)
             ctx_len = len(self.grounding_context) if self.grounding_context else 0
+            self._capture_phase0()
             phases.end_phase('success', details=f"{ctx_len} chars")
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                phases.end_phase('failed', error=str(e))
+                raise
             logger.warning(f"Ecosystem context failed: {e}")
             self.grounding_context = None
             phases.end_phase('partial', error=str(e))
 
         # Phase 1: Parallel Gathering
-        if resume_from is not None and resume_from > 1:
+        if self.replay_context is not None:
+            phases.start_phase("Phase 1: Gathering")
+            gathered_items, collection_status = self._load_replay_gathering()
+            total_items = sum(len(items) for items in gathered_items.values())
+            phases.end_phase('success', details=f"frozen snapshot ({total_items} items)")
+        elif resume_from is not None and resume_from > 1:
             checkpoint = self._load_checkpoint('gathering')
             self._absorb_replay_bundle(checkpoint)
             if not checkpoint:
@@ -337,6 +795,7 @@ class MainOrchestrator:
                     'collection_status': collection_status,
                     'categories': {cat: [item.to_dict() for item in items] for cat, items in gathered_items.items()}
                 })
+                self._capture_gathering(gathered_items, collection_status)
             except Exception as e:
                 phases.end_phase('failed', error=str(e))
                 raise
@@ -360,9 +819,13 @@ class MainOrchestrator:
                     config_dir=self.config_dir,
                     target_date=self.target_date,
                     web_dir=self.web_dir,
+                    evidence_store=self._evidence_dependency(),
+                    replay_context=self.replay_context,
                 )
                 category_reports = staleness_checker.process(category_reports)
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    raise
                 logger.warning(f"Resume freshness repair failed (non-fatal): {e}")
             total_analyzed = sum(len(r.all_items) for r in category_reports.values())
             self._restore_or_skip_phase(phases, "Phase 2: Analysis", checkpoint, f"loaded from checkpoint ({total_analyzed} items)")
@@ -397,10 +860,27 @@ class MainOrchestrator:
                 phases.end_phase('failed', error=str(e))
                 raise
 
+            # Preserve the exact map/reduce output before continuity and
+            # freshness mutate reports. A candidate can then reuse unaffected
+            # categories while the joint continuity pass still sees all four.
+            self._save_checkpoint('analysis_pre_continuity', {
+                'category_reports': {
+                    cat: report.to_dict() for cat, report in category_reports.items()
+                }
+            })
+            self._capture_event(
+                ("record_pre_continuity", "capture_pre_continuity"),
+                category_reports={
+                    cat: report.to_dict() for cat, report in category_reports.items()
+                },
+            )
+
             # Phase 2.5: Continuity Detection
             phases.start_phase("Phase 2.5: Continuity Detection")
             try:
                 logger.info("Phase 2.5: Detecting story continuations...")
+                if self.replay_context is not None:
+                    self._materialize_replay_history()
                 from .continuity import ContinuityCoordinator
                 continuity_coordinator = ContinuityCoordinator(
                     async_client=self.async_client,
@@ -411,6 +891,9 @@ class MainOrchestrator:
                 category_reports = await continuity_coordinator.process(category_reports)
                 phases.end_phase('success')
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    phases.end_phase('failed', error=str(e))
+                    raise
                 logger.warning(f"Continuity detection failed: {e}")
                 phases.end_phase('failed', error=str(e))
 
@@ -422,10 +905,15 @@ class MainOrchestrator:
                     config_dir=self.config_dir,
                     target_date=self.target_date,
                     web_dir=self.web_dir,
+                    evidence_store=self._evidence_dependency(),
+                    replay_context=self.replay_context,
                 )
                 category_reports = staleness_checker.process(category_reports)
                 phases.end_phase('success')
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    phases.end_phase('failed', error=str(e))
+                    raise
                 logger.warning(f"Staleness check failed (non-fatal): {e}")
                 phases.end_phase('failed', error=str(e))
 
@@ -453,6 +941,9 @@ class MainOrchestrator:
                 else:
                     phases.end_phase('failed', error="no topics detected")
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    phases.end_phase('failed', error=str(e))
+                    raise
                 logger.error(f"Topic detection failed: {e}")
                 top_topics = []
                 topic_thinking = f"Error: {e}"
@@ -506,6 +997,9 @@ class MainOrchestrator:
                 else:
                     phases.end_phase('failed', error="generation failed")
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    phases.end_phase('failed', error=str(e))
+                    raise
                 executive_summary = f"Executive summary generation failed: {e}"
                 summary_thinking = f"Error: {e}"
                 phases.end_phase('failed', error=str(e))
@@ -520,7 +1014,12 @@ class MainOrchestrator:
             )
 
         # Phase 4.6: Ecosystem Enrichment (detect new model releases from news)
-        if resume_from is None or resume_from <= 4.6:
+        if self.replay_context is not None:
+            # Enrichment is an output-side mutation. A frozen replay uses its
+            # recorded branch state and never refreshes or writes the live
+            # ecosystem catalog.
+            phases.skip_phase("Phase 4.6: Ecosystem Enrichment", "frozen replay state")
+        elif resume_from is None or resume_from <= 4.6:
             if self.ecosystem_manager and 'news' in category_reports:
                 phases.start_phase("Phase 4.6: Ecosystem Enrichment")
                 try:
@@ -536,6 +1035,9 @@ class MainOrchestrator:
                     else:
                         phases.end_phase('success', details="no new releases")
                 except Exception as e:
+                    if _is_replay_integrity_error(e):
+                        phases.end_phase('failed', error=str(e))
+                        raise
                     logger.warning(f"Ecosystem enrichment failed: {e}")
                     phases.end_phase('failed', error=str(e))
             else:
@@ -553,7 +1055,11 @@ class MainOrchestrator:
         # this phase and therefore re-runs it. The enrichment repair
         # (--resume-from 4.5) is the reason this exists: regenerating is a paid
         # image call that replaces an image the site is already serving.
-        hero_checkpoint = self._load_hero_checkpoint(resume_from)
+        hero_checkpoint = (
+            self._load_replay_hero()
+            if self.replay_context is not None
+            else self._load_hero_checkpoint(resume_from)
+        )
 
         # Build hero topics - use top_topics, or fall back to category themes
         hero_topics = top_topics
@@ -568,7 +1074,7 @@ class MainOrchestrator:
             hero_image_usage = hero_checkpoint.get('hero_image_usage')
             logger.info(f"Phase 4.7: Reusing checkpointed hero image: {hero_image_url}")
             self._restore_or_skip_phase(phases, "Phase 4.7: Hero Image", hero_checkpoint, "loaded from checkpoint")
-        elif resume_from is None or resume_from <= 4.7:
+        elif self.replay_context is None and (resume_from is None or resume_from <= 4.7):
             if self.hero_generator and hero_topics:
                 phases.start_phase("Phase 4.7: Hero Image")
                 try:
@@ -614,6 +1120,8 @@ class MainOrchestrator:
                     phases.skip_phase("Phase 4.7: Hero Image", "generator not available")
                 elif not hero_topics:
                     phases.skip_phase("Phase 4.7: Hero Image", "no topics")
+        elif self.replay_context is not None:
+            phases.skip_phase("Phase 4.7: Hero Image", "no recorded hero")
         else:
             # Legacy fallback for a run whose checkpoints predate the `hero`
             # one: there is no image to restore, so this records the phase off
@@ -627,11 +1135,34 @@ class MainOrchestrator:
         total_collected = sum(len(items) for items in gathered_items.values())
         total_analyzed = sum(len(report.all_items) for report in category_reports.values())
 
-        # Get coverage info from any gatherer (all have the same dates)
-        any_gatherer = next(iter(self.gatherers.values()))
-        coverage_date = getattr(any_gatherer, 'coverage_date', '')
-        coverage_start = any_gatherer.start_time.isoformat() if any_gatherer.start_time else ''
-        coverage_end = any_gatherer.end_time.isoformat() if any_gatherer.end_time else ''
+        # Get coverage from the frozen input manifest during replay. A replay has
+        # no gatherers by design, and deriving dates from current wall-clock
+        # state would silently change the report's meaning.
+        if self.replay_context is not None:
+            coverage_date = self._replay_coverage.get("coverage_date", "")
+            coverage_start = self._replay_coverage.get(
+                "coverage_start", self._replay_coverage.get("start", "")
+            )
+            coverage_end = self._replay_coverage.get(
+                "coverage_end", self._replay_coverage.get("end", "")
+            )
+            if not (coverage_date and coverage_start and coverage_end):
+                # Older compatible bundles may carry coverage only in the
+                # verified manifest.  Use that recorded value rather than
+                # consulting a gatherer or deriving a new wall-clock window.
+                frozen_coverage = self._context_value(
+                    ("frozen_coverage",), default=None
+                )
+                if isinstance(frozen_coverage, dict):
+                    coverage_date = coverage_date or frozen_coverage.get("coverage_date", "")
+                    coverage_start = coverage_start or frozen_coverage.get("start", "")
+                    coverage_end = coverage_end or frozen_coverage.get("end", "")
+        else:
+            # Get coverage info from any gatherer (all have the same dates)
+            any_gatherer = next(iter(self.gatherers.values()))
+            coverage_date = getattr(any_gatherer, 'coverage_date', '')
+            coverage_start = any_gatherer.start_time.isoformat() if any_gatherer.start_time else ''
+            coverage_end = any_gatherer.end_time.isoformat() if any_gatherer.end_time else ''
 
         result = OrchestratorResult(
             date=self.target_date,
@@ -728,6 +1259,9 @@ class MainOrchestrator:
             else:
                 phases.end_phase('success')
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                phases.end_phase('failed', error=str(e))
+                raise
             logger.warning(f"Link enrichment failed: {e}")
             self.degradations.append(f"link_enrichment failed entirely: {type(e).__name__}")
             phases.end_phase('failed', error=str(e))
@@ -1249,8 +1783,46 @@ class MainOrchestrator:
         Returns:
             Dict mapping category to CategoryReport.
         """
+        # Reuse the original pre-continuity reports for unaffected categories
+        # when a replay supplies them. Candidate news is rerun through its
+        # injected relevance strategy; continuity below still sees every
+        # category together.
+        reused_reports: Dict[str, CategoryReport] = {}
+        rerun_categories = None
+        if self.replay_context is not None:
+            pre_reports = self._load_replay_precontinuity()
+            if pre_reports:
+                rerun_value = self._context_value(
+                    ("rerun_categories", "replay_categories", "changed_categories"),
+                    default=None,
+                )
+                if rerun_value is None:
+                    candidate_marker = self._context_value(
+                        ("relevance_strategy", "precomputed_exact_kept_ids", "exact_kept_ids"),
+                        default=None,
+                    )
+                    # An empty exact-ID selection is still a supplied
+                    # candidate decision.  Test presence rather than truth so
+                    # it does not accidentally rerun all four categories.
+                    has_candidate = candidate_marker is not None
+                    rerun_categories = {"news"} if has_candidate else set(pre_reports)
+                else:
+                    rerun_categories = set(rerun_value)
+                reused_reports = {
+                    category: copy.deepcopy(report)
+                    for category, report in pre_reports.items()
+                    if category not in rerun_categories
+                }
+
         # Re-instantiate analyzers with grounding context
         # (they were created in __init__ without it)
+        replay_evidence = self._evidence_dependency()
+        replay_strategy = self._context_value(
+            ("relevance_strategy", "news_relevance_strategy", "candidate_strategy")
+        )
+        replay_kept_ids = self._context_value(
+            ("precomputed_exact_kept_ids", "exact_kept_ids", "news_kept_ids")
+        )
         analyzers_with_context = {
             'news': NewsAnalyzer(
                 llm_client=self.llm_client,
@@ -1260,7 +1832,12 @@ class MainOrchestrator:
                 target_date=self.target_date,
                 web_dir=self.web_dir,
                 grounding_context=self.grounding_context,
-                prompt_accessor=self.prompt_accessor
+                prompt_accessor=self.prompt_accessor,
+                relevance_strategy=replay_strategy,
+                precomputed_exact_kept_ids=replay_kept_ids,
+                capture=self.capture,
+                evidence_store=replay_evidence,
+                replay_context=self.replay_context,
             ),
             'research': ResearchAnalyzer(
                 llm_client=self.llm_client,
@@ -1270,7 +1847,7 @@ class MainOrchestrator:
                 target_date=self.target_date,
                 web_dir=self.web_dir,
                 grounding_context=self.grounding_context,
-                prompt_accessor=self.prompt_accessor
+                prompt_accessor=self.prompt_accessor,
             ),
             'social': SocialAnalyzer(
                 llm_client=self.llm_client,
@@ -1280,7 +1857,7 @@ class MainOrchestrator:
                 target_date=self.target_date,
                 web_dir=self.web_dir,
                 grounding_context=self.grounding_context,
-                prompt_accessor=self.prompt_accessor
+                prompt_accessor=self.prompt_accessor,
             ),
             'reddit': RedditAnalyzer(
                 llm_client=self.llm_client,
@@ -1290,9 +1867,12 @@ class MainOrchestrator:
                 target_date=self.target_date,
                 web_dir=self.web_dir,
                 grounding_context=self.grounding_context,
-                prompt_accessor=self.prompt_accessor
+                prompt_accessor=self.prompt_accessor,
             )
         }
+        for analyzer in analyzers_with_context.values():
+            analyzer.evidence_store = replay_evidence
+            analyzer.replay_context = self.replay_context
 
         async def analyze_category(
             name: str,
@@ -1309,18 +1889,27 @@ class MainOrchestrator:
                 # empty category. Keep the previous publication and checkpoint.
                 raise
             except Exception as e:
+                if _is_replay_integrity_error(e):
+                    raise
                 logger.error(f"  {name} analyzer failed: {e}")
                 # A missing category must not masquerade as a quiet source day.
                 raise AnalysisIntegrityError(f"{name}: analyzer failed ({type(e).__name__})") from e
 
         # Run all analyzers in parallel
+        names = (
+            set(analyzers_with_context)
+            if rerun_categories is None
+            else set(rerun_categories) & set(analyzers_with_context)
+        )
         tasks = [
             analyze_category(name, analyzers_with_context[name], gathered_items.get(name, []))
-            for name in analyzers_with_context.keys()
+            for name in analyzers_with_context.keys() if name in names
         ]
-        results = await asyncio.gather(*tasks)
+        results = await asyncio.gather(*tasks) if tasks else []
 
-        return dict(results)
+        merged = dict(reused_reports)
+        merged.update(dict(results))
+        return merged
 
     def _markdown_links_to_html(self, text: str) -> str:
         """Convert markdown links [text](url) to HTML <a> tags."""
@@ -1465,6 +2054,8 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
             return topics, response.thinking or ""
 
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                raise
             logger.error(f"Cross-category topic detection failed: {e}")
             return [], f"Error: {e}"
 
@@ -1592,6 +2183,8 @@ The summary should help a busy professional quickly scan and understand what's N
             return response.content, response.thinking or ""
 
         except Exception as e:
+            if _is_replay_integrity_error(e):
+                raise
             logger.error(f"Executive summary generation failed: {e}")
             return f"Executive summary generation failed: {e}", f"Error: {e}"
 
@@ -1607,6 +2200,43 @@ The summary should help a busy professional quickly scan and understand what's N
             json.dump(result.to_dict(), f, indent=2, ensure_ascii=False)
 
         logger.info(f"Saved orchestrator result to {filepath}")
+
+    def capture_finished_output(self, result: OrchestratorResult, web_dir: Optional[str] = None) -> None:
+        """Record the finished original output after generators have run.
+
+        This is deliberately called by ``run_pipeline`` after JSON/feed/search
+        generation. It gives an opt-in observer hashes and bounded metadata while
+        leaving publication and the incumbent output untouched.
+        """
+        if self.capture is None:
+            return
+        root = os.path.abspath(web_dir or self.web_dir)
+        report_dir = os.path.join(root, "data", result.date)
+        files: Dict[str, Dict[str, Any]] = {}
+        for name in ("summary.json", "news.json", "research.json", "social.json", "reddit.json"):
+            path = os.path.join(report_dir, name)
+            try:
+                with open(path, "rb") as handle:
+                    body = handle.read()
+                files[name] = {
+                    "sha256": hashlib.sha256(body).hexdigest(),
+                    "bytes": len(body),
+                }
+            except OSError:
+                files[name] = {"missing": True}
+        self._capture_event(
+            ("record_finished_output", "capture_finished_output", "record_output"),
+            report_date=result.date,
+            output_dir=report_dir,
+            files=files,
+            result=result.to_dict(),
+        )
+        self._capture_event(
+            ("finish_run", "complete", "finalize"),
+            report_date=result.date,
+            output_files=files,
+            result=result.to_dict(),
+        )
 
     def _log_collection_status(self, collection_status: Dict[str, Dict[str, Any]]):
         """Log collection status summary with clear indicators."""

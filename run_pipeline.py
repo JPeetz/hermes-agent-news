@@ -21,8 +21,11 @@ import re
 from datetime import datetime
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from .env file for the ordinary production CLI.
+# The isolated shadow runner can set this opt-out before importing the module;
+# it must provide its own explicitly approved configuration instead.
+if os.getenv("NEWS_SHADOW_SKIP_DOTENV") != "1":
+    load_dotenv()
 
 # Add project root to path
 sys.path.insert(0, os.path.dirname(__file__))
@@ -43,6 +46,10 @@ logging.basicConfig(
 )
 logging.getLogger('httpx').setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
+
+
+def _is_replay_integrity_error(exc: BaseException) -> bool:
+    return exc.__class__.__name__ == "ReplayIntegrityError"
 
 
 def parse_date(date_str: str) -> str:
@@ -95,7 +102,91 @@ def _validate_generated_report(web_dir: str, date_str: str) -> dict:
         return {"valid": False, "failures": [f"publish gate did not run: {type(e).__name__}"], "warnings": []}
 
 
-async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date: str = None, resume_from=None) -> bool:
+def generate_pipeline_outputs(
+    result,
+    web_dir: str,
+    provider_config: ProviderConfig = None,
+    orchestrator=None,
+) -> dict:
+    """Generate the file-backed outputs shared by production and replay.
+
+    The helper only renders into the caller-supplied ``web_dir``. It does not
+    commit, deploy, notify, or dispatch anything, which lets the shadow runner
+    give each branch an isolated writable output root.
+    """
+    logger.info("=" * 60)
+    logger.info("PHASE 6: JSON DATA GENERATION")
+    logger.info("=" * 60)
+
+    llm_cfg = provider_config.llm if provider_config else None
+    img_cfg = provider_config.image if provider_config else None
+    json_generator = JSONGenerator(
+        web_dir,
+        llm_model=llm_cfg.model if llm_cfg else None,
+        llm_model_display=(llm_cfg.display_name or llm_cfg.model) if llm_cfg else None,
+        image_model=img_cfg.model if img_cfg else None,
+        image_model_display=(img_cfg.display_name or img_cfg.model) if img_cfg else None,
+    )
+    json_generator.generate_from_orchestrator_result(result.to_dict())
+
+    logger.info("=" * 60)
+    logger.info("PHASE 6.2: LLM REPLAY GENERATION")
+    logger.info("=" * 60)
+    replay_path = generate_replay(
+        date=result.date,
+        web_dir=web_dir,
+        cost_report=get_tracker().get_json_report(),
+        orchestrator_result=result.to_dict(),
+        recorder_snapshot=get_recorder().snapshot(),
+        restored_replay=(orchestrator.restored_replay if orchestrator is not None else None),
+    )
+    if replay_path is None:
+        logger.error(
+            f"PHASE 6.2 FAILED: no replay artifacts written for {result.date} "
+            "(the report itself is unaffected)"
+        )
+
+    logger.info("=" * 60)
+    logger.info("PHASE 6.5: RSS FEED GENERATION")
+    logger.info("=" * 60)
+    if provider_config is not None:
+        pipeline_config = provider_config.get_pipeline_config()
+        base_url = pipeline_config.base_url
+    else:
+        base_url = "https://news.aatf.ai"
+    feed_generator = FeedGenerator(web_dir, rolling_window_days=7, base_url=base_url)
+    feed_generator.generate_feeds()
+
+    logger.info("=" * 60)
+    logger.info("PHASE 7: SEARCH INDEX UPDATE")
+    logger.info("=" * 60)
+    search_indexer = SearchIndexer(web_dir, rolling_window_days=30)
+    search_indexer.update_index(result.to_dict())
+
+    if orchestrator is not None and hasattr(orchestrator, "capture_finished_output"):
+        try:
+            # The observer receives output_dir and copies the five report files.
+            # Even an unexpected observer bug must not affect publication.
+            orchestrator.capture_finished_output(result, web_dir=web_dir)
+        except Exception as exc:
+            logger.warning("News shadow output capture unavailable: %s", type(exc).__name__)
+
+    return {"replay_path": replay_path, "web_dir": web_dir, "date": result.date}
+
+
+# Short alias for the isolated runner and older callers.
+generate_outputs = generate_pipeline_outputs
+
+
+async def run_pipeline(
+    config_dir: str,
+    data_dir: str,
+    web_dir: str,
+    target_date: str = None,
+    resume_from=None,
+    replay_context=None,
+    capture=None,
+) -> bool:
     """
     Run the complete multi-agent pipeline.
 
@@ -142,7 +233,10 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
             lookback_hours=lookback_hours,
             target_date=target_date if target_date else None,
             provider_config=provider_config,
-            prompt_accessor=prompt_accessor
+            prompt_accessor=prompt_accessor,
+            replay_context=replay_context,
+            capture=capture,
+            capture_dir=os.getenv("NEWS_SHADOW_CAPTURE_DIR") or None,
         )
 
         # Handle resume modes
@@ -159,70 +253,10 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
         # Run the multi-agent pipeline
         result = await orchestrator.run(resume_from=actual_resume_from)
 
-        # Generate JSON data for SPA frontend
-        logger.info("=" * 60)
-        logger.info("PHASE 6: JSON DATA GENERATION")
-        logger.info("=" * 60)
-
-        llm_cfg = provider_config.llm if provider_config else None
-        img_cfg = provider_config.image if provider_config else None
-        json_generator = JSONGenerator(
-            web_dir,
-            llm_model=llm_cfg.model if llm_cfg else None,
-            llm_model_display=(llm_cfg.display_name or llm_cfg.model) if llm_cfg else None,
-            image_model=img_cfg.model if img_cfg else None,
-            image_model_display=(img_cfg.display_name or img_cfg.model) if img_cfg else None,
-        )
-        json_generator.generate_from_orchestrator_result(result.to_dict())
-
-        # Generate the LLM replay artifacts. Best-effort by design: generate_replay
-        # swallows its own failures, so a broken replay never costs us a report.
-        logger.info("=" * 60)
-        logger.info("PHASE 6.2: LLM REPLAY GENERATION")
-        logger.info("=" * 60)
-
-        replay_path = generate_replay(
-            date=result.date,
-            web_dir=web_dir,
-            cost_report=get_tracker().get_json_report(),
-            orchestrator_result=result.to_dict(),
-            recorder_snapshot=get_recorder().snapshot(),
-            # On a resumed run this carries the calls made by the process that
-            # wrote the checkpoint, so checkpoint-loaded phases keep their cast
-            # instead of replaying as empty windows.
-            restored_replay=orchestrator.restored_replay,
-        )
-        if replay_path is None:
-            # generate_replay already logged the cause at WARNING with a traceback.
-            # Say it again at ERROR, in one greppable line: this phase runs after
-            # the orchestrator has printed its phase summary, so a silent failure
-            # here leaves no trace in the end-of-run status block. On 2026-07-31 the
-            # replay was lost this way and the run still reported success.
-            logger.error(
-                f"PHASE 6.2 FAILED: no replay artifacts written for {result.date} "
-                f"(the report itself is unaffected)"
-            )
-
-        # Generate RSS/Atom feeds
-        logger.info("=" * 60)
-        logger.info("PHASE 6.5: RSS FEED GENERATION")
-        logger.info("=" * 60)
-
-        pipeline_config = provider_config.get_pipeline_config()
-        feed_generator = FeedGenerator(
-            web_dir,
-            rolling_window_days=7,
-            base_url=pipeline_config.base_url
-        )
-        feed_generator.generate_feeds()
-
-        # Update search index
-        logger.info("=" * 60)
-        logger.info("PHASE 7: SEARCH INDEX UPDATE")
-        logger.info("=" * 60)
-
-        search_indexer = SearchIndexer(web_dir, rolling_window_days=30)
-        search_indexer.update_index(result.to_dict())
+        # Keep the render path shared with the isolated shadow worker.  The
+        # helper only writes to this caller-owned web root; publication gating
+        # remains below and production's default behavior is unchanged.
+        generate_pipeline_outputs(result, web_dir, provider_config, orchestrator)
 
         # Publish gate. Runs against the generated summary.json -- the artifact
         # readers actually get -- using the same rules as the CI publish gate and
@@ -272,6 +306,8 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
         return True
 
     except Exception as e:
+        if _is_replay_integrity_error(e):
+            raise
         logger.error(f"Pipeline failed: {e}", exc_info=True)
         return False
 
