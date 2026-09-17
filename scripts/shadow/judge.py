@@ -28,6 +28,7 @@ from _bootstrap import ROOT  # noqa: F401  (adds the repository root to sys.path
 
 from shadow.contracts import read_json, validate_input, write_json
 from shadow.judge import (
+    DEEPSEEK_MAX_OUTPUT_TOKENS,
     JudgeClient,
     JudgeConfig,
     build_input_artifact,
@@ -214,9 +215,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--status", default="complete")
     parser.add_argument("--live", action="store_true", help="explicitly allow the dedicated model request")
     parser.add_argument("--api-key-env", default="RDSec_API_KEY", help="environment variable containing the approved API key")
-    parser.add_argument("--max-output-tokens", type=int, default=8192)
-    parser.add_argument("--aggregate-output-tokens", type=int, default=64000)
-    parser.add_argument("--deadline-seconds", type=float, default=1800.0)
+    parser.add_argument("--max-output-tokens", type=int, default=DEEPSEEK_MAX_OUTPUT_TOKENS)
+    parser.add_argument("--aggregate-output-tokens", type=int, default=1920000)
+    parser.add_argument("--deadline-seconds", type=float, default=3600.0)
     return parser
 
 
