@@ -131,7 +131,7 @@ class BlastRadiusTests(unittest.TestCase):
     def test_prompt_violation_drops_only_the_prompts(self):
         generator = ReplayGenerator("/tmp/does-not-need-to-exist")
         index = {"run": {"date": "2026-07-31"}, "calls": []}
-        stream = b"stream-bytes"
+        stream = gzip.compress(json.dumps({"calls": {}}).encode())
         tainted = gzip.compress(
             json.dumps({"prompts": [{"system": "key sk-ant-api03-" + "A" * 95}]}).encode("utf-8")
         )
@@ -147,7 +147,8 @@ class BlastRadiusTests(unittest.TestCase):
         index = {"run": {"date": "2026-07-31"}, "calls": []}
         clean = gzip.compress(json.dumps({"prompts": [{"system": DEEPMIND_URL}]}).encode("utf-8"))
 
-        _, _, kept_prompts = generator._gate_artifacts(index, b"s", clean)
+        stream = gzip.compress(json.dumps({"calls": {}}).encode())
+        _, _, kept_prompts = generator._gate_artifacts(index, stream, clean)
 
         self.assertEqual(kept_prompts, clean)
 

@@ -1511,6 +1511,11 @@ class MainOrchestrator:
                     value = span.get(field)
                     if value is not None:
                         span[field] = int(round(float(value) + shift_ms))
+                if isinstance(span.get('deltas'), dict):
+                    deltas = dict(span['deltas'])
+                    deltas['t'] = [int(round(float(stamp) + shift_ms))
+                                   for stamp in deltas.get('t', [])]
+                    span['deltas'] = deltas
             span_id = span.get('id')
             if span_id:
                 while span_id in taken_ids:

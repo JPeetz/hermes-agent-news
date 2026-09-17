@@ -109,8 +109,8 @@
 						class="info-btn"
 						on:click|stopPropagation={() => (infoOpen = !infoOpen)}
 						aria-expanded={infoOpen}
-						aria-label="What does the {agent.label} do?"
-						title="What does the {agent.label} do?"
+						aria-label="What does {agent.id === 'jev' ? 'Jev' : `the ${agent.label}`} do?"
+						title="What does {agent.id === 'jev' ? 'Jev' : `the ${agent.label}`} do?"
 					>
 						<!-- A plain letter: the circle is drawn in CSS, so it can carry the
 						     agent's colour and sit on a proper touch target. The ⓘ glyph
@@ -122,7 +122,7 @@
 			<div class="kind">{agent.kind}</div>
 		</div>
 		{#if total > 0}
-			<div class="counter" title="{completed} of {total} LLM calls complete">
+			<div class="counter" title="{completed} of {total} calls complete">
 				<span class="counter-now">{completed}</span><span class="counter-sep">/</span><span>{total}</span>
 			</div>
 		{/if}
@@ -201,6 +201,7 @@
 						on:click={() => onSelectCall(ac.call.id)}
 						title={isImageCall(ac.call)
 							? `${ac.call.task} — ${ac.call.model} — image, no token metering`
+							: ac.call.interaction_type === 'decision' ? `${ac.call.decision_item_count} articles evaluated together`
 							: `${ac.call.task} — ${ac.call.provider_id} — ${ac.call.profile}`}
 					>
 						<span class="chip-fill" style="width: {Math.round(ac.progress * 100)}%"></span>
@@ -221,6 +222,8 @@
 											>{/if}
 										painting
 									</span>
+								{:else if ac.call.interaction_type === 'decision'}
+									<span class="state-tag">evaluating batch</span>
 								{:else if ac.state === 'queued'}
 									<span class="state-tag">queued {formatDuration(ac.call.wait_ms)}</span>
 								{:else if ac.state === 'waiting'}
@@ -257,6 +260,7 @@
 						on:click={() => onSelectCall(dc.id)}
 						title={isImageCall(dc)
 							? `${dc.task} — ${dc.model} — image, no token metering`
+							: dc.interaction_type === 'decision' ? `${dc.decision_item_count} articles · ${((dc.end_ms - dc.start_ms) / 1000).toFixed(3)}s · view results`
 							: `${dc.task} — ${dc.provider_id} — ${dc.profile} — ${formatTokens(
 									dc.output_tokens
 								)} tok — ${formatCost(dc.cost_usd)}`}
@@ -272,6 +276,8 @@
 								<span class="route-tag">{dc.provider_id}</span>
 								{#if isImageCall(dc)}
 									<span class="state-tag done-tag">image</span>
+								{:else if dc.interaction_type === 'decision'}
+									<span class="state-tag done-tag">{((dc.end_ms - dc.start_ms) / 1000).toFixed(3)}s · {dc.decision_item_count} articles{dc.outcome !== 'ok' ? ` · ${dc.outcome}` : ''}</span>
 								{:else if dc.outcome !== 'ok'}
 									<!-- A failure that a later attempt recovered is not lost work.
 									     Saying only "failed" implied the batch never made it in. -->
@@ -339,6 +345,8 @@
 				<span>{status === 'done' ? '1 image · ' : ''}cost not reported by provider</span>
 			{/if}
 		</div>
+	{:else if agent.id === 'jev' && completed > 0}
+		<div class="foot"><span>Typed decisions · open a batch to inspect</span></div>
 	{:else if completed > 0 && (state?.output_tokens ?? 0) > 0}
 		<div class="foot">
 			<span>{formatTokens(state?.output_tokens ?? 0)} out</span>

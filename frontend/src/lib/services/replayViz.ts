@@ -19,7 +19,8 @@ const PROVIDER_PALETTE: Record<string, string> = {
 	bedrock: '#f59e0b',
 	// Not an LLM route: the hero image client. Matched to the `imagegen` kind tint so
 	// the Illustrator reads as one thing across the stage and the transcript.
-	image: '#ec4899'
+	image: '#ec4899',
+	typesafe: '#0d9488'
 };
 
 const PROVIDER_FALLBACKS = ['#14b8a6', '#a855f7', '#ec4899', '#84cc16', '#6366f1'];
@@ -61,8 +62,9 @@ const KIND_COLORS: Record<string, string> = {
 };
 
 /** An agent's identity colour: category tint when it has one, else kind tint. */
-export function agentColor(agent: Pick<ReplayAgent, 'category' | 'kind'> | undefined): string {
+export function agentColor(agent: (Pick<ReplayAgent, 'category' | 'kind'> & { id?: string }) | undefined): string {
 	if (!agent) return '#737373';
+	if (agent.id === 'jev') return '#0d9488';
 	if (agent.category && CATEGORY_COLORS[agent.category]) return CATEGORY_COLORS[agent.category];
 	return KIND_COLORS[agent.kind] ?? '#737373';
 }

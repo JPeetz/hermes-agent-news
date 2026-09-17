@@ -14,6 +14,7 @@ only for relevant articles; other branches discard it.
 from __future__ import annotations
 
 import asyncio
+import copy
 import hashlib
 import json
 import math
@@ -507,6 +508,7 @@ class TypeSafeAdapter:
         transport: Any | None = None,
         sleep: Callable[[float], Any] | None = None,
         clock: Callable[[], float] | None = None,
+        attempt_observer: Callable[[dict[str, Any]], None] | None = None,
     ) -> None:
         # A caller-owned client lets the offline contract tests inject a fake
         # transport.  Real runs create one client per adapter invocation and
@@ -518,6 +520,15 @@ class TypeSafeAdapter:
         self._api_key = api_key
         self._sleep = sleep or asyncio.sleep
         self._clock = clock or time.monotonic
+        self._attempt_observer = attempt_observer
+
+    def _observe_attempt(self, event: dict[str, Any]) -> None:
+        """Observation is isolated from decisions and receives no HTTP credentials."""
+        if self._attempt_observer is not None:
+            try:
+                self._attempt_observer(copy.deepcopy(event))
+            except Exception:
+                pass
 
     async def evaluate(
         self,
@@ -803,6 +814,8 @@ class TypeSafeAdapter:
                     "latency_ms": None,
                     "error": None,
                 }
+                attempt_sent = False
+                response_observed = False
                 payload: Any = None
                 response: Any = None
                 usage: dict[str, Any] = {}
@@ -815,6 +828,11 @@ class TypeSafeAdapter:
                         if isinstance(remaining, (int, float)):
                             request_timeout = min(request_timeout, max(0.001, float(remaining)))
                     async with semaphore:
+                        self._observe_attempt({
+                            "event": "start", "chunk_index": chunk_index, "attempt": attempt,
+                            "body": body, "records": records, "model": config.model,
+                        })
+                        attempt_sent = True
                         response = await client.post(
                             config.endpoint,
                             headers=headers,
@@ -836,6 +854,33 @@ class TypeSafeAdapter:
                     }
                     attempt_record["cost_usd"] = cost_usd
                     attempt_record["request_id"] = _request_id(response, payload)
+                    # The response is a single typed result, not a token stream.
+                    # Normalize once at receipt and reuse these exact decisions below.
+                    validation = self._validate_payload(payload, body["questions"], config.model)
+                    observed_decisions = _abstain_decisions(
+                        records, reason="abstain_error", model=None,
+                        request_hash=request_hash, policy=policy,
+                    )
+                    observed_anomalies = []
+                    response_error = None
+                    if not isinstance(status_code, int) or not 200 <= status_code < 300:
+                        response_error = f"http_{status_code}" if status_code is not None else "http_error"
+                    elif parse_error:
+                        response_error = parse_error
+                    elif validation["status"] != "ok":
+                        response_error = validation.get("error", "invalid_response")
+                    else:
+                        observed_decisions, observed_anomalies = self._decisions_from_answers(
+                            records, payload["answers"], request_hash=request_hash,
+                            model=validation["model"], policy=policy,
+                        )
+                    self._observe_attempt({
+                        "event": "response", "chunk_index": chunk_index, "attempt": attempt,
+                        "records": records, "decisions": observed_decisions,
+                        "raw_response": payload, "usage": attempt_record["usage"],
+                        "estimated_cost_usd": cost_usd, "error": response_error,
+                    })
+                    response_observed = True
                     _budget_settle(
                         budget,
                         reservation,
@@ -896,7 +941,6 @@ class TypeSafeAdapter:
                             "incomplete": False,
                         }
 
-                    validation = self._validate_payload(payload, body["questions"], config.model)
                     attempt_record["status"] = validation["status"]
                     attempt_record["error"] = validation.get("error")
                     diagnostic["attempts"].append(attempt_record)
@@ -932,13 +976,7 @@ class TypeSafeAdapter:
                         "cost_usd": cost_usd,
                     }
                     diagnostic["latency_ms"] = round((self._clock() - started) * 1000.0, 3)
-                    decisions, anomalies = self._decisions_from_answers(
-                        records,
-                        payload["answers"],
-                        request_hash=request_hash,
-                        model=returned_model,
-                        policy=policy,
-                    )
+                    decisions, anomalies = observed_decisions, observed_anomalies
                     degradations.extend(anomalies)
                     return {
                         "decisions": decisions,
@@ -1001,6 +1039,10 @@ class TypeSafeAdapter:
                     except Exception:
                         pass
                     reason = f"{type(exc).__name__}"
+                    if attempt_sent and not response_observed:
+                        self._observe_attempt({"event": "error", "chunk_index": chunk_index,
+                                               "attempt": attempt, "error": reason})
+                        response_observed = True
                     attempt_record["status"] = "transport_error"
                     attempt_record["error"] = reason
                     diagnostic["attempts"].append(attempt_record)
@@ -1070,6 +1112,10 @@ class TypeSafeAdapter:
                     }
 
                 finally:
+                    if attempt_sent and not response_observed:
+                        self._observe_attempt({"event": "error", "chunk_index": chunk_index,
+                                               "attempt": attempt,
+                                               "error": attempt_record.get("error") or "incomplete"})
                     progress.finish(status={"started": "incomplete", "ok": "success"}.get(attempt_record["status"], attempt_record["status"]),
                                     input_tokens=attempt_record["usage"].get("input_tokens"),
                                     output_tokens=attempt_record["usage"].get("output_tokens"))

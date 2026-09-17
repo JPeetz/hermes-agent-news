@@ -210,6 +210,7 @@ function callStateAt(call: ReplayCall, t: number): CallPhaseState {
 	// thinking turned into writing, so the call reads as working-and-producing for
 	// its whole span rather than sitting on a fabricated "thinking" phase. The token
 	// counter is flagged approximate instead of invented.
+	if (call.interaction_type === 'decision') return 'waiting';
 	if (firstToken == null) return 'streaming';
 	if (t < firstToken) return 'waiting';
 	return 'streaming';

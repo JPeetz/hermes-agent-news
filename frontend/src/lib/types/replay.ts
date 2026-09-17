@@ -146,8 +146,15 @@ export interface ReplayCall {
 
 	provider_id: string;
 	model: string;
-	profile: ReplayProfile;
-	effort: ReplayEffort;
+	profile: ReplayProfile | null;
+	effort: ReplayEffort | null;
+	/** Typed decisions arrive together, without a generated token stream. */
+	interaction_type?: 'decision';
+	decision_item_count?: number;
+	decision_question_count?: number;
+	decision_items_kept?: number;
+	decision_items_excluded?: number;
+	decision_items_retained?: number;
 
 	input_tokens: number;
 	output_tokens: number;

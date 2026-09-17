@@ -440,6 +440,7 @@
 										? `${call.task} · ${call.model} · ${formatDuration(
 												call.end_ms - call.start_ms
 											)} · 1 image (no token metering)`
+										: call.interaction_type === 'decision' ? `${call.task} · ${call.decision_item_count} articles · ${((call.end_ms - call.start_ms) / 1000).toFixed(3)}s · typed response`
 										: `${call.task} · ${call.provider_id} · ${call.effort} effort · ${formatDuration(
 												call.end_ms - call.start_ms
 											)} · ${formatTokens(call.output_tokens)} tok${

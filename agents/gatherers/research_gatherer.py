@@ -16,11 +16,9 @@ import asyncio
 import logging
 import os
 import re
-import sys
 import time
 from datetime import datetime
 from email.utils import parsedate_to_datetime
-from pathlib import Path
 from typing import List, Optional
 
 import feedparser
@@ -30,13 +28,9 @@ from ..base import BaseGatherer, CollectedItem, step_label_for_url
 from ..html_text import html_to_text
 from .arxiv_oai import ArxivOAIHarvester
 
-SCRIPTS_DIR = Path(__file__).resolve().parents[2] / 'scripts'
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
-
 try:
-    from lesswrong_cookie_fetch import DEFAULT_USER_AGENT as LESSWRONG_USER_AGENT
-    from lesswrong_cookie_fetch import LessWrongClient
+    from scripts.lesswrong_cookie_fetch import DEFAULT_USER_AGENT as LESSWRONG_USER_AGENT
+    from scripts.lesswrong_cookie_fetch import LessWrongClient
 except ImportError:
     LESSWRONG_USER_AGENT = "AI-News-Aggregator/1.0"
     LessWrongClient = None

@@ -123,6 +123,7 @@ _SOURCE_SUPERSEDED_IF_SPLIT = {"research": ("research_arxiv", "research_blogs")}
 # sk-live-/sk-test- (Stripe-style), and bare OpenAI keys, which are long
 # unbroken alphanumeric runs.
 _SECRET_PATTERNS = (
+    re.compile(r"\bapikey_[a-fA-F0-9]{32}_[a-fA-F0-9]{64}\b"),
     re.compile(r"\bsk-(?:ant|proj|or|live|test)-[A-Za-z0-9_\-]{16,}"),
     re.compile(r"\bsk-[A-Za-z0-9]{20,}"),
     re.compile(r"\bBearer\s+\S+", re.IGNORECASE),
@@ -415,6 +416,9 @@ class ReplayGenerator:
 
             span_t0 = (restored or {}).get("t0_epoch")
             merged_spans: List[Dict[str, Any]] = []
+            # Recorder IDs restart in each process. Preserve both responses
+            # when a resumed run's c001 meets a checkpoint's c001.
+            taken_ids = {span.get("id") for span in (recorder or {}).get("calls", []) if span.get("id")}
             for span in spans:
                 span = dict(span)
                 if span_t0:
@@ -425,6 +429,19 @@ class ReplayGenerator:
                         placed = to_merged_ms(float(span_t0) + float(value) / 1000.0)
                         if placed is not None:
                             span[field] = placed
+                if span_t0 and isinstance(span.get("deltas"), dict):
+                    deltas = dict(span["deltas"])
+                    deltas["t"] = [
+                        to_merged_ms(float(span_t0) + float(stamp) / 1000.0)
+                        for stamp in deltas.get("t", [])
+                    ]
+                    span["deltas"] = deltas
+                span_id = span.get("id")
+                if span_id:
+                    while span_id in taken_ids:
+                        span_id = f"r{span_id}"
+                    span["id"] = span_id
+                    taken_ids.add(span_id)
                 span["restored"] = True
                 merged_spans.append(span)
 
@@ -435,7 +452,19 @@ class ReplayGenerator:
             base_recorder["calls"] = merged_spans + list(base_recorder.get("calls") or [])
             recorder = base_recorder
 
-            return cost_report, recorder, len(merged_rows)
+            # Cost rows and spans normally describe the same calls. Decision
+            # APIs have spans only, and failed attempts may also lack cost rows.
+            unmatched = {}
+            for span in merged_spans:
+                if span.get("end_ms") is None:
+                    continue
+                key = (span.get("caller") or "", span.get("outcome") in ("failed", "refused"))
+                unmatched[key] = unmatched.get(key, 0) + 1
+            for row in merged_rows:
+                key = (row.get("caller") or "unknown", bool(row.get("partial")))
+                if unmatched.get(key, 0):
+                    unmatched[key] -= 1
+            return cost_report, recorder, len(merged_rows) + sum(unmatched.values())
         except Exception as error:  # noqa: BLE001 -- never lose the replay over this
             logger.warning(
                 f"Could not merge restored replay calls "
@@ -582,8 +611,8 @@ class ReplayGenerator:
                 if span.get("end_ms") is None:
                     continue
                 end_ms = int(span["end_ms"])
-                start_ms = int(span.get("start_ms") or end_ms)
-                queued_ms = int(span.get("queued_ms") or start_ms)
+                start_ms = int(span["start_ms"] if span.get("start_ms") is not None else end_ms)
+                queued_ms = int(span["queued_ms"] if span.get("queued_ms") is not None else start_ms)
                 context = span.get("context") or {}
                 deltas = span.get("deltas") or {}
                 calls.append(
@@ -622,6 +651,27 @@ class ReplayGenerator:
                     }
                 )
 
+                if context.get("interaction_type") == "decision":
+                    call = calls[-1]
+                    call.update(
+                        interaction_type="decision",
+                        profile=None,
+                        effort=None,
+                        first_token_ms=None,
+                        input_tokens=int(span.get("input_tokens") or 0),
+                        output_tokens=int(span.get("output_tokens") or 0),
+                        usage_measured=bool(context.get("usage_measured")),
+                    )
+                    for key in (
+                        "decision_item_count", "decision_question_count",
+                        "decision_items_kept", "decision_items_excluded",
+                        "decision_items_retained",
+                    ):
+                        if key in context:
+                            call[key] = int(context[key])
+                    if context.get("estimated_cost_usd") is not None:
+                        call["cost_usd_estimated"] = round(float(context["estimated_cost_usd"]), 6)
+
         # Link each failed attempt to the attempt that recovered it, so the UI can
         # say "retried, succeeded" rather than leaving a bare red row that reads as
         # lost data. A failure with no later success stays unlinked -- that one
@@ -641,7 +691,8 @@ class ReplayGenerator:
                 if successor is not None:
                     call["recovered_by"] = successor["id"]
                     successor["recovers"] = call["id"]
-                    self._estimate_failed_input(call, successor, tracker)
+                    if call.get("interaction_type") != "decision":
+                        self._estimate_failed_input(call, successor, tracker)
 
         calls.sort(key=lambda c: (c["start_ms"], c["id"]))
         return calls
@@ -1121,7 +1172,12 @@ class ReplayGenerator:
         if not spans:
             return None, None
 
-        marquee = {c["id"] for c in calls if c["role"] in MARQUEE_ROLES}
+        # A typed decision's single response is its entire replay. Preserve the
+        # raw results alongside major prose calls when pruning long token streams.
+        marquee = {
+            c["id"] for c in calls
+            if c["role"] in MARQUEE_ROLES or c.get("interaction_type") == "decision"
+        }
 
         def payload(
             coalesce_ms: int, thinking_only: Sequence[str] = (), keep: Optional[set] = None
@@ -1208,8 +1264,7 @@ class ReplayGenerator:
             match = pattern.search(blob)
             if match:
                 raise ValueError(
-                    f"Replay {what} contains disallowed content matching {pattern.pattern!r}: "
-                    f"{match.group(0)[:40]!r}"
+                    f"Replay {what} contains disallowed content matching {pattern.pattern!r}"
                 )
 
         # The configured endpoints are the one host family that is genuinely
@@ -1415,6 +1470,21 @@ class ReplayGenerator:
         """
         self._assert_publishable(index)
 
+        # Typed decision responses include the exact API JSON as well as their
+        # readable projection. Apply the same publish gate to all output text.
+        if stream_blob is not None:
+            try:
+                self._assert_publishable(
+                    json.loads(gzip.decompress(stream_blob).decode("utf-8")),
+                    what="output artifact",
+                )
+            except ValueError as error:
+                logger.error("Dropping the replay output artifact: %s", error)
+                stream_blob = None
+                index["run"]["stream_available"] = False
+                for call in index.get("calls", []):
+                    call["has_stream"] = False
+
         # The prompts artifact is the one place a credential could realistically
         # reach the public site: prompts are assembled from config and collected
         # data, so this gate is now doing real work rather than guarding a single
@@ -1589,4 +1659,3 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

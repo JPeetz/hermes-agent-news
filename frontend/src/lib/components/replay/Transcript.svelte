@@ -16,6 +16,7 @@
 	import { createStreamRenderer, withCaret } from '$lib/services/replayMarkdown';
 	import { parsePrefix, highlightJson, splitFence } from '$lib/services/replayJson';
 	import JsonStream from './JsonStream.svelte';
+	import JevDecision from './JevDecision.svelte';
 
 	// One renderer per pane: they re-render on the same frames, so a shared cache
 	// would be invalidated by the other caller every time.
@@ -308,6 +309,10 @@
 	// zero. This branch renders the picture and the prompt instead, and the header
 	// above drops the token/cost stats rather than printing zeros as if measured.
 	$: isImage = isImageCall(call);
+	$: isDecision = call.interaction_type === 'decision';
+	function requestJson(value: string) {
+		try { return JSON.stringify(JSON.parse(value), null, 2); } catch { return value; }
+	}
 	$: imageUrl = call.image_url ?? null;
 	$: imagePrompt = call.image_prompt ?? null;
 
@@ -374,7 +379,7 @@
 		<div class="min-w-0">
 			<div class="ts-eyebrow">
 				<span class="route" style="background: {accent}">{call.provider_id}</span>
-				{#if !isImage}
+				{#if !isImage && !isDecision}
 					<!-- Analysis profiles map to LLM effort levels; they mean nothing for an
 					     image client, so the badge would be decorative rather than true. -->
 					<span class="profile" style="--p: {profileColor(call.profile)}">{call.profile}</span>
@@ -410,8 +415,13 @@
 	</header>
 
 	<dl class="ts-stats">
-		<div><dt>Duration</dt><dd>{formatDuration(call.end_ms - call.start_ms)}</dd></div>
-		{#if isImage}
+		<div><dt>Duration</dt><dd>{isDecision ? `${((call.end_ms - call.start_ms) / 1000).toFixed(3)}s` : formatDuration(call.end_ms - call.start_ms)}</dd></div>
+		{#if isDecision}
+			<div><dt>Model</dt><dd>{call.model}</dd></div>
+			<div><dt>Articles</dt><dd>{call.decision_item_count ?? '—'}</dd></div>
+			<div><dt>Questions</dt><dd>{call.decision_question_count ?? '—'}</dd></div>
+			<div><dt>Est. cost</dt><dd>{call.cost_usd_estimated != null ? `~$${call.cost_usd_estimated.toFixed(6)}` : 'Not reported'}</dd></div>
+		{:else if isImage}
 			<!-- An image client, not an LLM route, so it never reaches the cost tracker.
 			     The provider does report usage though, and when it did we show it: image
 			     tokens bill at ~10x the thinking tokens beside them, which is why the two
@@ -452,7 +462,7 @@
 				</dd>
 			</div>
 		{/if}
-		{#if !isImage && call.billed === false}
+		{#if !isImage && !isDecision && call.billed === false}
 			<!-- The request never returned, so the cost tracker recorded nothing for it.
 			     Printing $0.00 would claim it was free, which is the one thing we know
 			     it wasn't: the prompt was ingested and charged either way. -->
@@ -502,7 +512,7 @@
 			{#if call.error_type}
 				<div><dt>Error</dt><dd>{call.error_type}</dd></div>
 			{/if}
-		{:else if !isImage}
+		{:else if !isImage && !isDecision}
 			<div><dt>Effort</dt><dd>{call.effort}</dd></div>
 			<div><dt>Input</dt><dd>{formatTokens(call.input_tokens)}</dd></div>
 			<div><dt>Output</dt><dd>{formatTokens(call.output_tokens)}</dd></div>
@@ -580,7 +590,7 @@
 		     and the user prompt are different documents — both closed by default: a
 		     research batch sends ~130k chars, which must not be the first thing in
 		     a 22rem scroller. -->
-		{#if !isImage}
+		{#if !isImage && !isDecision}
 			<section class="prompt">
 				<h4>
 					<button
@@ -631,7 +641,7 @@
 					aria-expanded={userPromptOpen}
 				>
 					<span class="prompt-caret" class:open={userPromptOpen} aria-hidden="true">▸</span>
-					{isImage ? 'The prompt' : 'User prompt'}
+					{isDecision ? 'Request JSON' : isImage ? 'The prompt' : 'User prompt'}
 					<span class="prompt-hint">
 						{userPromptOpen ? '(hide)' : '(click to see what the model was sent)'}
 					</span>
@@ -649,6 +659,9 @@
 			{#if userPromptOpen}
 				{#if promptsState === 'loading' && !promptMessages}
 					<p class="answer-text pending">Loading the prompt…</p>
+				{:else if isDecision && promptMessages}
+					<pre class="decision-request" aria-label="Raw Jev request">{requestJson(promptMessages)}</pre>
+					{#if promptTruncated}<p class="prompt-peek">Request truncated by the artifact size limit.</p>{/if}
 				{:else if promptMessagesHtml}
 					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					<div class="prompt-text md">{@html promptMessagesHtml}</div>
@@ -707,6 +720,11 @@
 				{/if}
 			</section>
 
+		{:else if isDecision}
+			{#if streamState === 'loading'}<p class="ts-note">Loading decisions…</p>{/if}
+			{#key call.id}
+				<JevDecision {call} text={answerText} finished={isAfter} unavailable={showEmptyStream} />
+			{/key}
 		{:else if streamState === 'loading'}
 			<p class="ts-note">Loading stream…</p>
 		{:else if showEmptyStream}
@@ -864,6 +882,7 @@
 </div>
 
 <style>
+	.decision-request { max-height: 320px; overflow: auto; padding: 12px; background: #8881; font: 11px/1.6 ui-monospace, monospace; }
 	.transcript {
 		display: flex;
 		flex-direction: column;

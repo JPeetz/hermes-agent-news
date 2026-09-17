@@ -64,6 +64,23 @@ The production web host serves a web-only Docker image. `web/_app/` is intention
 
 ## Daily Automation
 
+`NEWS_RELEVANCE_PROVIDER=typesafe` selects Jev for the news relevance filter after
+the existing keyword prefilter. It requires `TYPESAFE_API_KEY` and uses the frozen
+Choice/Noul policy in `config/shadow/news-relevance-v4-frozen.json`. Native Choice
+controls inclusion; no probability or confidence threshold is added. Only
+`irrelevant` is excluded. Insufficient evidence or service/validation failure
+retains the affected articles and logs the fallback. Importance is consumed only
+for relevant articles. Setting the provider variable to `llm` restores the legacy
+filter for the next run. Historical replay remains isolated from this switch.
+
+Jev's replay shows one span per real API attempt, the bounded article decisions,
+and the exact request/response JSON. Questions run together within each batch;
+the replay records one completed response rather than generated reasoning. The
+display label follows the configured LLM and appends ` & Jev` when enabled.
+The legacy optional shadow bundle is captured only with the LLM filter; its
+incumbent-prompt schema must not mislabel a Jev production call. Existing frozen
+historical bundles remain usable by the separate shadow workflow.
+
 Reddit is a required daily source: empty or degraded collection stops before analysis,
 and the publish gate independently requires healthy Reddit collection and nonempty output.
 The hosted workflow probes credits before collection and caches actual daily consumption

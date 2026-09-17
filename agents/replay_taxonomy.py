@@ -98,6 +98,13 @@ for _cat in CATEGORIES:
 
 AGENTS.update(
     {
+        "jev": AgentIdentity(
+            id="jev",
+            label="Jev",
+            kind="analyzer",
+            category="news",
+            blurb="Judges bounded news evidence with parallel relevance and importance questions.",
+        ),
         "continuity": AgentIdentity(
             id="continuity",
             label="Continuity Editor",
@@ -141,6 +148,7 @@ AGENTS.update(
 def agent_ids() -> List[str]:
     """Cast list in a stable, stage-left-to-right order."""
     ordered = [f"{c}_gatherer" for c in CATEGORIES]
+    ordered += ["jev"]
     ordered += [f"{c}_analyzer" for c in CATEGORIES]
     ordered += ["continuity", "freshness", "orchestrator", "link_enricher", "ecosystem", "hero"]
     return ordered
@@ -165,6 +173,9 @@ def resolve_call(caller: str) -> CallIdentity:
         return CallIdentity(agent_id="orchestrator", task="Unattributed call", role=ROLE_MAP)
 
     caller = caller.strip()
+
+    if caller == "jev.filter" or caller.startswith("jev.filter."):
+        return CallIdentity(agent_id="jev", task="Judge news relevance", role=ROLE_FILTER)
 
     match = _BATCH_RE.match(caller)
     if match:

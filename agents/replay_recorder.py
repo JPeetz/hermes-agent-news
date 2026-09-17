@@ -496,6 +496,7 @@ class ReplayRecorder:
         call_id: Optional[str],
         response: Optional[Any] = None,
         error: Optional[BaseException] = None,
+        context_update: Optional[Dict[str, Any]] = None,
     ) -> None:
         """Close a span with its terminal state, token usage and outcome."""
         record = self._calls.get(call_id) if call_id else None
@@ -508,6 +509,14 @@ class ReplayRecorder:
             return
 
         record.end_ms = self._ms()
+        # Typed decision APIs report usage and result counts only on completion.
+        # Keep this metadata bounded; raw responses belong in the output artifact.
+        for key in (
+            "estimated_cost_usd", "usage_measured", "decision_items_kept",
+            "decision_items_excluded", "decision_items_retained",
+        ):
+            if context_update and key in context_update:
+                record.context[key] = context_update[key]
         if record.start_ms is None:
             # The request never cleared the semaphore -- it spent its whole life
             # queued. Reporting wait_ms=0 here would invert the truth on the
@@ -515,6 +524,15 @@ class ReplayRecorder:
             # CancelledError) is what tells the generator these never went out.
             record.start_ms = record.end_ms
             record.wait_ms = record.end_ms - record.queued_ms
+
+        # A typed API may return measured usage alongside malformed answers.
+        # Preserve that usage even when validation marks the attempt failed.
+        usage = getattr(response, "usage", None)
+        if usage is not None:
+            record.input_tokens = getattr(usage, "input_tokens", None)
+            record.output_tokens = getattr(usage, "output_tokens", None)
+            record.cache_read_tokens = getattr(usage, "cache_read_input_tokens", None)
+            record.cache_creation_tokens = getattr(usage, "cache_creation_input_tokens", None)
 
         if error is not None:
             record.outcome = OUTCOME_FAILED
@@ -529,13 +547,6 @@ class ReplayRecorder:
             record.outcome = OUTCOME_TRUNCATED
         else:
             record.outcome = OUTCOME_OK
-
-        usage = getattr(response, "usage", None)
-        if usage is not None:
-            record.input_tokens = getattr(usage, "input_tokens", None)
-            record.output_tokens = getattr(usage, "output_tokens", None)
-            record.cache_read_tokens = getattr(usage, "cache_read_input_tokens", None)
-            record.cache_creation_tokens = getattr(usage, "cache_creation_input_tokens", None)
 
     def snapshot(self) -> Dict[str, Any]:
         """Everything captured, raw and unshaped, for the generator.

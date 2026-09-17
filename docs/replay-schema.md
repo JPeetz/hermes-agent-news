@@ -169,8 +169,8 @@ This needs **no nginx change** and works with the dev Vite middleware
 
       "provider_id": "gcp",          // which route served it
       "model": "claude-5-opus-gcp",
-      "profile": "STANDARD",         // QUICK | STANDARD | DEEP | ULTRATHINK
-      "effort": "xhigh",             // low | medium | high | xhigh | max
+      "profile": "STANDARD",         // QUICK | STANDARD | DEEP | ULTRATHINK; null for typed decisions
+      "effort": "xhigh",             // low | medium | high | xhigh | max; null for typed decisions
 
       "input_tokens": 184220,
       "output_tokens": 9840,
@@ -215,6 +215,41 @@ This needs **no nginx change** and works with the dev Vite middleware
   }
 }
 ```
+
+### Jev typed decisions
+
+Jev calls use `agent_id: "jev"`, `caller: "jev.filter.batch_N"`, `role: "filter"`,
+and `interaction_type: "decision"`. Each span is one actual HTTP attempt. Retries
+remain separate spans, and batches larger than the configured limit remain
+separate calls. `decision_item_count` and `decision_question_count` describe that
+request; each article has one Choice and one Noul question evaluated together.
+
+The exact request JSON, containing named article state variables and keyed
+questions, lives in the existing prompt artifact's `messages` field. A successful
+response produces one text event at response receipt containing:
+
+```json
+{
+  "schema_version": "jev-relevance-replay/v1",
+  "articles": [],
+  "raw_response": {}
+}
+```
+
+`articles` is the readable projection: bounded `id`, `title`, `source`, `snippet`,
+native `relevance`, `probabilities`, `confidence`, `critical_probability`,
+`effective_keep`, and `fallback_reason`. Importance is discarded in this
+projection unless the native Choice is `relevant`. `raw_response` preserves the
+exact parsed API response, including unused answers, for inspection. Neither
+view contains headers or credentials. Both artifacts pass the publication guard.
+
+There are no generated reasoning tokens or gradual per-article answers. Playback
+reveals the whole response at its recorded timestamp. `profile`, `effort`, and
+`first_token_ms` are null. Usage counts are native API measurements when
+`usage_measured` is true. `billed: false` means no settled bill is available;
+`cost_usd_estimated`, when present, uses measured usage and the configured price.
+These estimates are excluded from the measured run total. Decision responses
+remain intact when the output artifact prunes less prominent prose streams.
 
 ### Restored calls (resumed runs)
 
@@ -267,6 +302,7 @@ history, never replace it with the two or three calls this process made
 
 | caller pattern | agent_id | role | task |
 |---|---|---|---|
+| `jev.filter.batch_{n}` | `jev` | `filter` | `Judge news relevance` |
 | `{cat}_analyzer.batch_{n}` | `{cat}_analyzer` | `map` | `Analyze batch {n}` |
 | `{cat}_analyzer.batch_{n}_retry` | `{cat}_analyzer` | `map` | `Retry batch {n}` |
 | `{cat}_analyzer.reduce_rank` | `{cat}_analyzer` | `reduce` | `Rank and select` |

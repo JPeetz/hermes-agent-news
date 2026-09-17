@@ -21,6 +21,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  replay-frontend:
+    name: Replay frontend type checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run check
+        working-directory: frontend
+
   news-shadow-contracts:
     name: Offline news shadow contracts
     runs-on: ubuntu-latest
@@ -35,6 +51,8 @@ jobs:
         run: python3 -m pip install --no-input -r requirements.txt
       - name: Mocked capture, replay, budget, judge and coordinator contracts
         run: python3 -m unittest discover -s tests -p 'shadow_*_test.py' -v
+      - name: Production Jev selection and replay contracts
+        run: python3 -m unittest discover -s tests -p 'jev_*_test.py' -v
 
   guard:
     name: Signature lockstep guard

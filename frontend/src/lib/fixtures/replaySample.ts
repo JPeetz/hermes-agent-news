@@ -7,7 +7,8 @@
  * no stream, a thinking-heavy call and a thinking-empty one.
  */
 
-import type { ReplayCall, ReplayIndex, ReplayStream } from '$lib/types/replay';
+import type { ReplayCall, ReplayIndex, ReplayStream, ReplayPrompts } from '$lib/types/replay';
+import { JEV_SAMPLE_REQUEST, JEV_SAMPLE_RESPONSE } from './jevSample';
 
 const MIN = 60_000;
 
@@ -458,6 +459,19 @@ seeds.push({
 });
 
 const calls = seeds.map(buildCall).sort((a, b) => a.queued_ms - b.queued_ms);
+calls.push({
+	id: 'jev-demo', agent_id: 'jev', phase_id: 'phase-2', caller: 'jev.filter.batch_0',
+	task: 'Judge news relevance', role: 'filter', worker: null,
+	queued_ms: 246100, start_ms: 246100, end_ms: 247741, first_token_ms: null, wait_ms: 0,
+	provider_id: 'typesafe', model: 'jev-1.13.0', profile: null, effort: null,
+	interaction_type: 'decision', decision_item_count: 3, decision_question_count: 6,
+	decision_items_kept: 1, decision_items_excluded: 1, decision_items_retained: 1,
+	input_tokens: 980, output_tokens: 219, cache_read_tokens: 0,
+	cost_usd: 0, billed: false, cost_usd_estimated: 0.00004, usage_measured: true,
+	thinking_chars: 0, text_chars: JEV_SAMPLE_RESPONSE.length, stream_events: 1,
+	stop_reason: null, outcome: 'ok', attempt: 1, fallback_from: null, retry_reason: null, has_stream: true
+});
+calls.sort((a, b) => a.queued_ms - b.queued_ms);
 const lastEnd = calls.reduce((m, c) => Math.max(m, c.end_ms), 0);
 const DURATION = Math.round(lastEnd + 3.2 * MIN);
 
@@ -495,6 +509,9 @@ const ANALYST_BLURB: Record<string, string> = {
 const GATHERED: Record<string, number> = { news: 318, research: 494, social: 226, reddit: 148 };
 
 const agents: ReplayIndex['agents'] = [];
+agents.push({ id: 'jev', label: 'Jev', kind: 'analyzer', category: 'news', phase_ids: ['phase-2'],
+	...agentAgg('jev'), items_in: 3, items_out: 2, status: 'success',
+	blurb: 'Parallel relevance and importance decisions from bounded article evidence.' });
 for (const cat of ['news', 'research', 'social', 'reddit']) {
 	agents.push({
 		id: `${cat}_gatherer`,
@@ -695,6 +712,7 @@ export const REPLAY_SAMPLE: ReplayIndex = {
 		total_output_tokens: calls.reduce((s, c) => s + c.output_tokens, 0),
 		llm_calls: calls.length,
 		models: [
+			'jev-1.13.0',
 			'claude-5-opus-aws',
 			'claude-5-opus-gcp',
 			'claude-5-opus-anthropic',
@@ -748,6 +766,7 @@ const TEXT_SNIPPETS = [
 ];
 
 function buildStreamFor(call: ReplayCall): ReplayCallStreamLocal {
+	if (call.interaction_type === 'decision') return { t: [call.end_ms], kind: [1], text: [JEV_SAMPLE_RESPONSE] };
 	const t: number[] = [];
 	const kind: (0 | 1)[] = [];
 	const text: string[] = [];
@@ -788,4 +807,9 @@ export const REPLAY_SAMPLE_STREAM: ReplayStream = {
 	calls: Object.fromEntries(
 		calls.filter((c) => c.has_stream).map((c) => [c.id, buildStreamFor(c)])
 	)
+};
+
+export const REPLAY_SAMPLE_PROMPTS: ReplayPrompts = {
+	schema: 1, date: REPLAY_SAMPLE.date,
+	calls: { 'jev-demo': { messages: JEV_SAMPLE_REQUEST, chars: JEV_SAMPLE_REQUEST.length, truncated: false } }
 };

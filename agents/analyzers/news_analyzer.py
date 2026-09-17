@@ -306,7 +306,7 @@ The summary should read like a professional briefing, focusing on what matters f
         self.config_dir = config_dir
         self.target_date = target_date or os.getenv('TARGET_DATE') or datetime.now().strftime('%Y-%m-%d')
         # These are explicit dependency-injection seams for isolated replay.
-        # No environment variable selects a candidate strategy in production.
+        # The independent production provider below never relaxes replay guards.
         self.relevance_strategy = relevance_strategy
         self.precomputed_exact_kept_ids = precomputed_exact_kept_ids
         self.capture = capture
@@ -314,6 +314,12 @@ The summary should read like a professional briefing, focusing on what matters f
             raise ValueError(
                 "relevance_strategy and precomputed_exact_kept_ids require a replay_context"
             )
+        self.news_relevance_provider = (
+            "llm" if replay_context is not None else
+            os.getenv("NEWS_RELEVANCE_PROVIDER", "llm").strip().lower()
+        )
+        if self.news_relevance_provider not in {"llm", "typesafe"}:
+            raise ValueError("NEWS_RELEVANCE_PROVIDER must be llm or typesafe")
 
     @property
     def category(self) -> str:
@@ -518,7 +524,7 @@ The summary should read like a professional briefing, focusing on what matters f
         return filtered
 
     async def _filter_with_llm(self, items: List[CollectedItem]) -> List[CollectedItem]:
-        """Use LLM to filter items for frontier AI relevance."""
+        """Apply the configured news relevance provider to bounded evidence."""
         if not items:
             return items
 
@@ -564,6 +570,36 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             }
             for record in filter_records
         ]
+        if getattr(self, "news_relevance_provider", "llm") == "typesafe":
+            try:
+                from ..jev_relevance import JevRelevanceFilter
+                result = await JevRelevanceFilter().evaluate(contract_records)
+                self._jev_filter_result = result
+                decisions = result["decisions"]
+                # Exact IDs only; malformed/incomplete results retain this batch.
+                if (len(decisions) != len(contract_records) or
+                        {row["id"] for row in decisions} != {item.id for item in items}):
+                    raise ValueError("Jev decision coverage mismatch")
+                kept_ids = {row["id"] for row in decisions if row["effective_keep"]}
+                fallback_count = sum(bool(row.get("fallback_reason")) for row in decisions)
+                if result.get("degradations") or fallback_count:
+                    self._filter_degradations.append(
+                        f"Jev relevance filter retained {fallback_count} items with fallback; "
+                        f"status={result.get('status', 'unknown')}"
+                    )
+                logger.info("Jev filter: %s -> %s AI articles (%s fallback)",
+                            len(items), len(kept_ids), fallback_count)
+                return [item for item in items if item.id in kept_ids]
+            except Exception as exc:
+                # Never log exception strings: transport errors can contain secrets.
+                self._filter_degradations.append(
+                    f"Jev relevance filter failed ({type(exc).__name__}): "
+                    "items are keyword-filtered only"
+                )
+                logger.warning("Jev relevance filter failed (%s); retaining %s articles",
+                               type(exc).__name__, len(items))
+                return items
+
         input_sha256 = self._filter_input_hash(contract_records)
 
         items_context = '\n---'.join(context_parts)
@@ -796,7 +832,7 @@ Snippet: {self._clip_context_text(item.content, 300)}...
         """
         Analyze news articles using map-reduce batching.
 
-        Keeps pre-filter phases (keyword + LLM) then applies map-reduce to filtered items.
+        Keeps pre-filter phases (keyword + relevance) then applies map-reduce to filtered items.
         """
         if not items:
             return self._empty_report()
@@ -827,12 +863,12 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             )
             return self._empty_report()
 
-        # Phase 0b: LLM filter for frontier AI relevance
+        # Phase 0b: configured relevance filter (Jev or the legacy LLM route)
         self._filter_degradations = []
         filtered_items = await self._filter_with_llm(keyword_filtered)
 
         if not filtered_items:
-            logger.warning("No frontier AI articles found after LLM filter")
+            logger.warning("No AI articles found after relevance filter")
             return self._empty_report()
 
         # Always use map + reduce; the shared pre-reduce freshness pass in

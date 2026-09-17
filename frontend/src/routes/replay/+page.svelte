@@ -22,7 +22,7 @@
 		ReplayPrompts,
 		ReplayStream
 	} from '$lib/types/replay';
-	import { REPLAY_SAMPLE, REPLAY_SAMPLE_STREAM } from '$lib/fixtures/replaySample';
+	import { REPLAY_SAMPLE, REPLAY_SAMPLE_STREAM, REPLAY_SAMPLE_PROMPTS } from '$lib/fixtures/replaySample';
 	import Newsroom from '$lib/components/replay/Newsroom.svelte';
 	import Timeline from '$lib/components/replay/Timeline.svelte';
 	import Transcript from '$lib/components/replay/Transcript.svelte';
@@ -374,7 +374,8 @@
 	async function ensurePrompts() {
 		if (promptsState !== 'idle' || !index) return;
 		if (isDemo) {
-			promptsState = 'unavailable';
+			prompts = REPLAY_SAMPLE_PROMPTS;
+			promptsState = 'ready';
 			return;
 		}
 		// The index says whether the file was published, so an absent one costs no
