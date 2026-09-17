@@ -14,6 +14,7 @@ from typing import Any
 
 from shadow.budget import BudgetLimits, RequestBudget
 from shadow.contracts import sha256_json
+from shadow.contracts import BundleValidationError
 from shadow.incumbent import IncumbentAdapter, OpenAIChatConfig
 from shadow.typesafe import (
     DEFAULT_TYPESAFE_MODEL,
@@ -51,21 +52,27 @@ def _records():
     return [
         {"id": "article-keep", "title": "OpenAI ships a frontier model", "source": "Example", "snippet": "A model release."},
         {"id": "article-reject", "title": "Local weather forecast", "source": "Example", "snippet": "No AI connection."},
-        {"id": "article-abstain", "title": "AI company changes office policy", "source": "Example", "snippet": "The bounded excerpt is ambiguous."},
+        {"id": "article-borderline", "title": "AI company changes office policy", "source": "Example", "snippet": "The bounded excerpt is ambiguous."},
     ]
+
+
+def _choice_answer(label="relevant"):
+    probabilities = {key: .02 for key in ("relevant", "irrelevant", "insufficient_evidence")}
+    probabilities[label] = .96
+    return {"type": "choice", "choice": label, "probabilities": probabilities, "confidence": .92}
 
 
 def _typesafe_payload(*, model: str = DEFAULT_TYPESAFE_MODEL, include_third: bool = True):
     answers = {
-        "r_0000": {"type": "noul", "noul": 0.95},
-        "s_0000": {"type": "noul", "noul": 0.99},
-        "r_0001": {"type": "noul", "noul": 0.04},
-        "s_0001": {"type": "noul", "noul": 0.99},
+        "r_0000": _choice_answer("relevant"),
+        "c_0000": {"type": "noul", "noul": .95},
+        "r_0001": _choice_answer("irrelevant"),
+        "c_0001": {"type": "noul", "noul": .99},
     }
     if include_third:
         answers.update({
-            "r_0002": {"type": "noul", "noul": 0.50},
-            "s_0002": {"type": "noul", "noul": 0.99},
+            "r_0002": _choice_answer("insufficient_evidence"),
+            "c_0002": {"type": "noul", "noul": .99},
         })
     return {
         "model": model,
@@ -87,18 +94,93 @@ def _frozen_input(records=None):
 
 
 class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
-    async def test_exact_questions_and_conservative_decisions(self):
+    async def test_choice_controls_relevance_without_a_probability_or_critical_gate(self):
+        for probability in (0, .5, .9, 1):
+            with self.subTest(probability=probability):
+                choice = {"type": "choice", "choice": "relevant", "confidence": .10,
+                          "probabilities": {"relevant": .4, "irrelevant": .3, "insufficient_evidence": .3}}
+                payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": {
+                    "r_0000": choice, "c_0000": {"type": "noul", "noul": probability},
+                }}
+                result = await TypeSafeAdapter(http_client=FakeAsyncClient([FakeResponse(payload)])).evaluate(
+                    _records()[:1], api_key="test"
+                )
+                row = result["decisions"][0]
+                self.assertEqual(row["decision"], "keep")
+                self.assertEqual(row["relevance"], "relevant")
+                self.assertEqual(row["probabilities"], choice["probabilities"])
+                self.assertEqual(row["confidence"], .10)
+                self.assertEqual(row["critical_probability"], probability)
+                self.assertIsNone(row["fallback_reason"])
+
+    async def test_invalid_used_critical_noul_reports_error_without_replacing_valid_choice(self):
+        for probability in (None, True, "0.9", -0.1, 1.1, float("nan")):
+            with self.subTest(probability=probability):
+                payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": {
+                    "r_0000": _choice_answer(), "c_0000": {"type": "noul", "noul": probability},
+                }}
+                result = await TypeSafeAdapter(http_client=FakeAsyncClient([FakeResponse(payload)])).evaluate(
+                    _records()[:1], api_key="test"
+                )
+                row = result["decisions"][0]
+                self.assertIsNone(row["fallback_reason"])
+                self.assertEqual(row["relevance"], "relevant")
+                self.assertEqual(row["decision"], "keep")
+                self.assertIsNone(row["critical_probability"])
+                self.assertIn("invalid_critical_answer:article-keep", result["degradations"])
+                self.assertTrue(row["effective_keep"])
+
+    async def test_unused_critical_noul_is_discarded_even_if_missing_or_invalid(self):
+        for label in ("irrelevant", "insufficient_evidence"):
+            for critical in (None, {"type": "noul", "noul": 1}, {"type": "noul", "noul": "bad"}):
+                with self.subTest(label=label, critical=critical):
+                    answers = {"r_0000": _choice_answer(label)}
+                    if critical is not None:
+                        answers["c_0000"] = critical
+                    payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": answers}
+                    result = await TypeSafeAdapter(http_client=FakeAsyncClient([FakeResponse(payload)])).evaluate(
+                        _records()[:1], api_key="test"
+                    )
+                    self.assertEqual(result["status"], "complete")
+                    self.assertEqual(result["degradations"], [])
+                    row = result["decisions"][0]
+                    self.assertEqual(row["relevance"], label)
+                    self.assertIsNone(row["critical_probability"])
+                    self.assertEqual(row["decision"], "reject" if label == "irrelevant" else "abstain")
+
+    async def test_malformed_choice_retains_item_with_explicit_error(self):
+        for change in ({"choice": "other"}, {"confidence": None}, {"probabilities": {"relevant": .9}},
+                       {"probabilities": {"relevant": True, "irrelevant": 0, "insufficient_evidence": 0}},
+                       {"probabilities": {"relevant": .01, "irrelevant": .98, "insufficient_evidence": .01}}):
+            with self.subTest(change=change):
+                payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": {
+                    "r_0000": {**_choice_answer(), **change}, "c_0000": {"type": "noul", "noul": .99}}}
+                result = await TypeSafeAdapter(http_client=FakeAsyncClient([FakeResponse(payload)])).evaluate(
+                    _records()[:1], api_key="test"
+                )
+                row = result["decisions"][0]
+                self.assertEqual(row["fallback_reason"], "abstain_error")
+                self.assertIsNone(row["relevance"])
+                self.assertIsNone(row["critical_probability"])
+                self.assertTrue(row["effective_keep"])
+
+    async def test_legacy_evidence_gate_policy_is_not_silently_reinterpreted(self):
+        client = FakeAsyncClient([])
+        with self.assertRaises(BundleValidationError):
+            await TypeSafeAdapter(http_client=client).evaluate(
+                _records(), policy={"sufficiency_min": .9}, api_key="test"
+            )
+        self.assertEqual(client.calls, [])
+
+    async def test_exact_questions_and_inclusion_decisions(self):
         client = FakeAsyncClient([FakeResponse(_typesafe_payload())])
         adapter = TypeSafeAdapter(http_client=client)
         result = await adapter.evaluate(
             _records(),
             policy={
-                "schema_version": "news-shadow-policy/v1",
+                "schema_version": "news-shadow-policy/v3",
                 "version": "policy-test-1",
                 "model": DEFAULT_TYPESAFE_MODEL,
-                "reject_max": 0.10,
-                "keep_min": 0.80,
-                "sufficiency_min": 0.90,
                 "questions_per_article": 2,
                 "chunk_size": 16,
                 "concurrency": 2,
@@ -111,6 +193,9 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual([row["decision"] for row in result["decisions"]], ["keep", "reject", "abstain"])
         self.assertEqual([row["effective_keep"] for row in result["decisions"]], [True, False, True])
+        self.assertEqual([row["relevance"] for row in result["decisions"]],
+                         ["relevant", "irrelevant", "insufficient_evidence"])
+        self.assertEqual([row["critical_probability"] for row in result["decisions"]], [.95, None, None])
         self.assertEqual(client.calls[0]["url"], "https://api.typesafe.ai/v1/systemone")
         self.assertEqual(client.calls[0]["json"]["model"], DEFAULT_TYPESAFE_MODEL)
         self.assertEqual(client.calls[0]["json"]["state"], {
@@ -119,8 +204,16 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
             "article_0002": _records()[2],
         })
         self.assertEqual(sorted(client.calls[0]["json"]["questions"]), [
-            "r_0000", "r_0001", "r_0002", "s_0000", "s_0001", "s_0002",
+            "c_0000", "c_0001", "c_0002", "r_0000", "r_0001", "r_0002",
         ])
+        self.assertEqual([row["probabilities"] for row in result["decisions"]],
+                         [_choice_answer(label)["probabilities"] for label in ("relevant", "irrelevant", "insufficient_evidence")])
+        self.assertTrue(all(row["fallback_reason"] is None for row in result["decisions"]))
+        question = client.calls[0]["json"]["questions"]["r_0000"]
+        self.assertIsInstance(question["instructions"], dict)
+        self.assertEqual(question["type"], "choice")
+        self.assertEqual(set(question["criteria"]), {"relevant", "irrelevant", "insufficient_evidence"})
+        self.assertEqual(client.calls[0]["json"]["questions"]["c_0000"]["type"], "noul")
         self.assertNotIn("confidence", client.calls[0]["json"]["questions"]["r_0000"])
         self.assertEqual(result["requests"][0]["returned_model"], DEFAULT_TYPESAFE_MODEL)
         self.assertNotIn("typesafe-secret", json.dumps(result))
@@ -133,13 +226,13 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
                 for key, question in body["questions"].items():
                     # Resolve the exact variable in each question, as opposed
                     # to assuming that question IDs supply model-visible scope.
-                    variables = re.findall(r"`([^`]+)`", question["instructions"])
+                    variables = re.findall(r"`([^`]+)`", json.dumps(question["instructions"]))
                     self_test.assertEqual(len(variables), 1)
                     article = body["state"][variables[0]]
-                    value = 0.99 if key.startswith("s_") else {
-                        "article-keep": 0.95, "article-reject": 0.04, "article-abstain": 0.50,
+                    label = {
+                        "article-keep": "relevant", "article-reject": "irrelevant", "article-borderline": "insufficient_evidence",
                     }[article["id"]]
-                    answers[key] = {"type": "noul", "noul": value}
+                    answers[key] = _choice_answer(label) if question["type"] == "choice" else {"type": "noul", "noul": .99}
                 return FakeResponse({"model": DEFAULT_TYPESAFE_MODEL, "answers": answers,
                                      "usage": {"input_tokens": 100, "output_tokens": 20}})
 
@@ -149,12 +242,12 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
                 records, policy={"version": "binding-test", "chunk_size": 2}, api_key="test"
             )
             self.assertEqual({row["id"]: row["decision"] for row in result["decisions"]}, {
-                "article-keep": "keep", "article-reject": "reject", "article-abstain": "abstain",
+                "article-keep": "keep", "article-reject": "reject", "article-borderline": "abstain",
             })
 
     async def test_missing_question_abstains_only_the_affected_article(self):
         payload = _typesafe_payload(include_third=False)
-        payload["answers"].pop("s_0001")
+        payload["answers"].pop("r_0001")
         client = FakeAsyncClient([FakeResponse(payload)])
         result = await TypeSafeAdapter(http_client=client).evaluate(
             _records()[:2],

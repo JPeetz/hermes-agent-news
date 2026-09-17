@@ -53,7 +53,7 @@ on:
       policy_version:
         description: "Frozen candidate policy/cohort version"
         required: false
-        default: news-relevance-v2-dev
+        default: news-relevance-v4-dev
         type: string
       rubric_version:
         description: "Frozen judge rubric version"
@@ -691,7 +691,7 @@ jobs:
           SHADOW_INCUMBENT_MODEL: ${{ secrets.SHADOW_INCUMBENT_MODEL }}
           RDSEC_API_KEY: ${{ secrets.RDSEC_API_KEY }}
           SHADOW_EVALUATOR_SHA: ${{ github.sha }}
-          SHADOW_PREFLIGHT_POLICY_PATH: ${{ format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v2-dev') }}
+          SHADOW_PREFLIGHT_POLICY_PATH: ${{ format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v4-dev') }}
           SHADOW_PREFLIGHT_COHORT: ${{ inputs.cohort || 'engineering' }}
         run: |
           set -euo pipefail
@@ -746,7 +746,7 @@ jobs:
       SHADOW_POLICY_VERSION: ${{ inputs.policy_version || vars.NEWS_SHADOW_POLICY_VERSION || 'scheduled-frozen' }}
       SHADOW_RUBRIC_VERSION: ${{ inputs.rubric_version || vars.NEWS_SHADOW_RUBRIC_VERSION || 'scheduled-frozen' }}
       SHADOW_COHORT: ${{ github.event_name == 'schedule' && 'prospective' || (inputs.cohort || 'engineering') }}
-      SHADOW_POLICY_PATH: ${{ github.event_name == 'schedule' && (vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json') || format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v2-dev') }}
+      SHADOW_POLICY_PATH: ${{ github.event_name == 'schedule' && (vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json') || format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v4-dev') }}
     steps:
       - name: Check out trusted evaluator commit
         uses: actions/checkout@v4

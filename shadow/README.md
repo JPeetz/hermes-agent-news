@@ -29,8 +29,9 @@ have passed. Hosted model access and the September 17 engineering comparison
 were also verified in [run 35233797762](https://github.com/trend-ai-acceleration-task-force/ai-news-aggregator/actions/runs/35233797762).
 The candidate returned valid scores for all 78 inputs, but the uncalibrated
 0.90 evidence-sufficiency gate converted every result to a retained abstention.
-That result qualifies the integration, not the decision policy. Further
-historical development runs locally.
+That result demonstrated transport access only. V4 replaces that extra judgment
+and gate with the user-specified relevance Choice and critical-story Noul.
+Further historical development runs locally.
 Relevant offline tests are part of normal development. Production collection or
 publishing pipeline execution requires explicit user authorization; shadow model
 evaluation is separately authorized and bounded.
@@ -64,7 +65,7 @@ python3 scripts/shadow/preflight.py --require-credentials --probe-models
 python3 scripts/shadow/run.py \
   --bundle data/shadow-review/cohort/35192960377-1 \
   --out data/shadow-review/experiments \
-  --policy config/shadow/news-relevance-v2-dev.json \
+  --policy config/shadow/news-relevance-v4-dev.json \
   --mode filter --cohort engineering --repeat-control
 ```
 
@@ -89,31 +90,49 @@ configuration only. It explicitly reports that model access has not been verifie
 
 ## Policy and evidence
 
-The current v2 development policy is deliberately **not frozen**. Its reject/keep/evidence
-thresholds were uncalibrated engineering settings, not recommended defaults.
-In particular, `sufficiency_min: 0.90` suppressed every classification in the
-first engineering experiment and must not be carried into a frozen policy
-without development evidence. Noul returns a probability for each proposition,
-not a separate confidence value; abstention is assigned by application code.
-Compare policies locally using saved scores when question meanings are unchanged.
+The current v4 development policy is deliberately **not frozen**. It asks two
+independent questions per article in the same request:
+
+- A Choice with `relevant`, `irrelevant`, and `insufficient_evidence`, using the
+  user's bounded-news-adjudicator instruction over title, source, and snippet.
+- A Noul asking whether this is an important story supported by the supplied evidence.
+
+The native Choice label controls relevance directly, without a confidence or
+probability threshold. Its returned distribution and confidence are preserved
+as `probabilities` and `confidence`. The selected label is stored as `relevance`.
+For compatibility with the existing replay contract, relevant maps to keep,
+irrelevant to reject, and insufficient_evidence to retained abstention.
+
+Only a relevant Choice allows the Noul to be consumed. Its unmodified P(yes) is
+stored as `critical_probability`; all other choices discard it (null), including
+when the unused Noul is missing or malformed. A missing/malformed Noul for a
+relevant article reports a critical-answer error without replacing the valid
+Choice. No additional critical-story threshold is imposed. Invalid Choice
+responses and transport failures use the existing explicit retain-on-error fallback.
+
 Changed questions require fresh inference. Evaluate both discarded relevant
 items and retained irrelevant items, and keep model-judge estimates distinct
-from independently labelled accuracy. Abstentions and errors retain the item.
+from independently labelled accuracy.
 Holdout and prospective execution require a versioned
 policy with `frozen: true`. Prospective runs also require `prospective_start_date`
 set to a report date after policy freeze and after the historical cohort. Change
 the version and policy hash when changing any
 threshold, rubric, model revision, chunking or cohort definition.
 
-V2 corrects article binding: each bounded record is a named top-level state
-variable such as `article_0004`, and both questions refer directly to that
-backticked variable. Question IDs remain response bookkeeping only. Custom
-question instructions must include `{article}` for the adapter to substitute
-the variable reference. The original array-position wording is superseded;
-its scores must not be reused to calibrate the corrected questions. V2 retains
-the original thresholds solely to isolate the query change in development;
-the 0.90 evidence gate is still unqualified. A local 78-item check plus reversed
-batches and three singleton checks verified the corrected request format.
+Each bounded record is a named top-level state variable such as `article_0004`.
+Both questions directly reference that backticked variable. Question IDs remain
+response bookkeeping only. Both question templates must include `{article}` in
+their instructions for substitution. The v3 policy schema rejects earlier
+probability-threshold policies rather than silently changing their meaning.
+Historical policy files and saved experiment artifacts retain their original
+semantics and require their corresponding evaluator revision.
+
+The question map is built in a loop before the HTTP call, so all questions in a
+request are evaluated in parallel by Jev. The v4 batch ceiling is 128 articles,
+allowing each recovered day (19–78 articles) to be submitted in one request.
+This ceiling is an application setting, not a provider question-count limit.
+Jev documents 64k tokens for state plus all questions, and 32k for state plus
+the longest question; request size still depends on the records and rubric.
 
 Each experiment gets a new immutable identity derived from source run/attempt,
 bundle hash, evaluator commit and actual source-file hashes, policy, model route,

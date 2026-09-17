@@ -75,7 +75,7 @@ class ShadowRunnerTest(unittest.TestCase):
         from shadow.runtime import budget_for
         from shadow.settings import load_policy
         config = JudgeConfig()
-        budget = budget_for(load_policy(ROOT / "config/shadow/news-relevance-v1-dev.json"), "judge")
+        budget = budget_for(load_policy(ROOT / "config/shadow/news-relevance-v4-dev.json"), "judge")
         for _ in range(5):
             reservation = budget.reserve(input_tokens=10000, output_tokens=config.max_output_tokens)
             budget.settle(reservation, input_tokens=10000, output_tokens=config.max_output_tokens)
@@ -155,7 +155,7 @@ class ShadowRunnerTest(unittest.TestCase):
                           "quotes": [{"evidence_id": "a1:snippet", "quote": "A new frontier model."}]}
             FakeJudge.result = {**decision, "adjudications": [judged_row]}
             identity = {"git_sha": "a" * 40, "source_sha256": "b" * 64, "files": {}}
-            policy = ROOT / "config/shadow/news-relevance-v1-dev.json"
+            policy = ROOT / "config/shadow/news-relevance-v4-dev.json"
             before = (bundle / "manifest.json").read_bytes()
             output = temp_root / "out"
             now = [0.0]

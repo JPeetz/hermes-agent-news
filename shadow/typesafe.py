@@ -6,9 +6,9 @@ environment variables, construct a production LLM client, or call any source
 of article data.  Callers supply the frozen records, the policy, credentials,
 and (when running under the experiment runner) the shared request budget.
 
-TypeSafe's API returns a Noul probability directly.  Noul answers do not carry
-the separate ``confidence`` field used by Choice and Score answers; this module
-therefore preserves only the two probabilities returned by the service.
+TypeSafe returns a relevance Choice and a critical-story Noul per article.
+The selected Choice controls relevance. The critical-story probability is used
+only for relevant articles; other branches discard it.
 """
 
 from __future__ import annotations
@@ -53,7 +53,7 @@ class TypeSafeConfig:
     timeout_seconds: float = 30.0
     max_attempts: int = 3
     max_http_attempts: int = 64
-    batch_size: int = 16
+    batch_size: int = 128
     max_concurrency: int = 2
     backoff_initial_seconds: float = 0.5
     backoff_max_seconds: float = 5.0
@@ -103,12 +103,30 @@ class TypeSafeConfig:
 
 
 DEFAULT_POLICY: dict[str, Any] = {
-    "version": "news-relevance-v2-dev",
-    "rubric_version": "frontier-news-v1",
-    "reject_max": 0.10,
-    "keep_min": 0.80,
-    "sufficiency_min": 0.90,
-    "batch_size": 16,
+    "schema_version": "news-shadow-policy/v3",
+    "version": "news-relevance-v4-dev",
+    "rubric_version": "bounded-news-adjudicator-v1",
+    "questions_per_article": 2,
+    "batch_size": 128,
+    "relevance_question": {
+        "type": "choice",
+        "instructions": {
+            "article": "{article}",
+            "instruction": "You are a bounded news relevance adjudicator. Judge only the supplied title, source, and snippet. Use relevant when the bounded evidence is about an AI/ML model, company, product, research, safety, policy, infrastructure, controversy, or other substantive AI news; use irrelevant when it is outside that scope; use insufficient_evidence when the evidence cannot support either call.",
+        },
+        "criteria": {
+            "relevant": None,
+            "irrelevant": None,
+            "insufficient_evidence": None,
+        },
+    },
+    "critical_question": {
+        "type": "noul",
+        "instructions": {
+            "article": "{article}",
+            "question": "Is this an important story supported by the supplied evidence?",
+        },
+    },
 }
 
 
@@ -270,8 +288,12 @@ def _normalise_policy(policy: Mapping[str, Any] | None) -> dict[str, Any]:
         raise _validation_error("relevance policy must be an object")
     result = dict(DEFAULT_POLICY)
     result.update(dict(policy))
-    if "schema_version" in result and result["schema_version"] != "news-shadow-policy/v1":
+    if result["schema_version"] != "news-shadow-policy/v3":
         raise _validation_error("unsupported relevance policy schema")
+    if any(key in result for key in ("include_min", "reject_max", "keep_min", "sufficiency_min", "relevance_instructions",
+                                    "relevance_true", "relevance_false", "sufficiency_instructions",
+                                    "sufficiency_true", "sufficiency_false")):
+        raise _validation_error("Legacy probability-threshold policies require the historical adapter")
     version = result.get("version", result.get("policy_version"))
     if not isinstance(version, str) or not version.strip():
         raise _validation_error("relevance policy requires a non-empty version")
@@ -280,21 +302,15 @@ def _normalise_policy(policy: Mapping[str, Any] | None) -> dict[str, Any]:
     if "model" in result and result["model"] is not None:
         if not isinstance(result["model"], str) or not result["model"].strip():
             raise _validation_error("relevance policy model must be a non-empty ID")
-    for name in ("reject_max", "keep_min", "sufficiency_min"):
-        value = _finite_probability(result.get(name))
-        if value is None:
-            raise _validation_error(f"relevance policy {name} must be a finite probability")
-        result[name] = value
-    if not (result["reject_max"] < result["keep_min"]):
-        raise _validation_error("relevance policy requires reject_max < keep_min")
     batch_size = result.get("chunk_size", result.get("batch_size", DEFAULT_POLICY["batch_size"]))
     if isinstance(batch_size, bool) or not isinstance(batch_size, int) or batch_size < 1:
         raise _validation_error("relevance policy batch_size must be a positive integer")
     result["batch_size"] = batch_size
     if result.get("fallback", "retain") != "retain":
-        raise _validation_error("TypeSafe relevance policy must retain abstentions")
-    if "questions_per_article" in result and result["questions_per_article"] != 2:
-        raise _validation_error("TypeSafe relevance policy requires exactly two questions per article")
+        raise _validation_error("TypeSafe relevance policy must retain items on errors")
+    if type(result["questions_per_article"]) is not int or result["questions_per_article"] != 2:
+        raise _validation_error("TypeSafe relevance policy requires a Choice and a Noul per article")
+    _questions_for([], result)
     for key in ("concurrency", "max_attempts"):
         if key in result:
             value = result[key]
@@ -358,10 +374,14 @@ def _response_json(response: Any) -> tuple[Any, str | None]:
     return payload, None
 
 
-def _question_ids(index: int) -> tuple[str, str]:
+def _question_id(index: int) -> str:
     # Stable IDs are code-only keys.  Their meaning lives in the full
     # instructions below, as required by the TypeSafe question contract.
-    return f"r_{index:04d}", f"s_{index:04d}"
+    return f"r_{index:04d}"
+
+
+def _critical_question_id(index: int) -> str:
+    return f"c_{index:04d}"
 
 
 def _article_variable(index: int) -> str:
@@ -369,47 +389,32 @@ def _article_variable(index: int) -> str:
 
 
 def _questions_for(records: Sequence[Mapping[str, str]], policy: Mapping[str, Any]) -> dict[str, Any]:
-    relevance_instruction = policy.get(
-        "relevance_instructions",
-        "Does {article} belong in a frontier AI news newsletter? Evaluate only this article's evidence. Include model, company, product, research, safety, policy, infrastructure, controversy, and negative AI news. Exclude unrelated general technology, routine non-AI news, and generic marketing commentary.",
-    )
-    sufficiency_instruction = policy.get(
-        "sufficiency_instructions",
-        "Does the bounded title, source, and snippet in {article} provide enough evidence to make the frontier-AI relevance judgment without guessing or importing facts not present in this article?",
-    )
-    for instruction in (relevance_instruction, sufficiency_instruction):
-        if not isinstance(instruction, str) or "{article}" not in instruction:
+    question = policy["relevance_question"]
+    if (not isinstance(question, dict) or set(question) != {"type", "instructions", "criteria"}
+            or question["type"] != "choice" or not isinstance(question["criteria"], dict)
+            or set(question["criteria"]) != {"relevant", "irrelevant", "insufficient_evidence"}):
+        raise _validation_error("Relevance question must be a Choice with the three relevance labels")
+    critical = policy["critical_question"]
+    if (not isinstance(critical, dict) or set(critical) != {"type", "instructions"}
+            or critical["type"] != "noul"):
+        raise _validation_error("Critical-story question must be a Noul")
+    templates = []
+    for template in (question, critical):
+        try:
+            encoded = json.dumps(template, ensure_ascii=False, allow_nan=False)
+            instructions = json.dumps(template["instructions"], ensure_ascii=False, allow_nan=False)
+        except (TypeError, ValueError) as exc:
+            raise _validation_error("Question must be JSON") from exc
+        if "{article}" not in instructions:
             raise _validation_error("Question instructions must contain the {article} variable")
-    relevance_true = policy.get(
-        "relevance_true",
-        "The article is substantively about frontier artificial intelligence within the stated scope, including important safety, policy, infrastructure, or negative developments.",
-    )
-    relevance_false = policy.get(
-        "relevance_false",
-        "The article is unrelated, generic, routine, or lacks a substantive frontier-AI connection in the supplied evidence.",
-    )
-    sufficiency_true = policy.get(
-        "sufficiency_true",
-        "The supplied bounded evidence is enough to support a relevance decision without speculation.",
-    )
-    sufficiency_false = policy.get(
-        "sufficiency_false",
-        "The supplied evidence is too incomplete, ambiguous, or generic to support a relevance decision.",
-    )
-    questions: dict[str, Any] = {}
-    for index, _record in enumerate(records):
-        relevance_id, sufficiency_id = _question_ids(index)
+        templates.append(encoded)
+    # The generated variable name contains only safe JSON string characters.
+    # Copy the template per article; never insert article text into instructions.
+    questions = {}
+    for index in range(len(records)):
         article = f"`{_article_variable(index)}`"
-        questions[relevance_id] = {
-            "type": "noul",
-            "instructions": relevance_instruction.replace("{article}", article),
-            "criteria": {"true": relevance_true, "false": relevance_false},
-        }
-        questions[sufficiency_id] = {
-            "type": "noul",
-            "instructions": sufficiency_instruction.replace("{article}", article),
-            "criteria": {"true": sufficiency_true, "false": sufficiency_false},
-        }
+        questions[_question_id(index)] = json.loads(templates[0].replace("{article}", article))
+        questions[_critical_question_id(index)] = json.loads(templates[1].replace("{article}", article))
     return questions
 
 
@@ -423,15 +428,18 @@ def _decision(
     model: str | None,
     request_hash: str | None,
     policy: Mapping[str, Any],
+    relevance: str | None = None,
+    confidence: float | None = None,
+    critical_probability: float | None = None,
 ) -> dict[str, Any]:
     return {
         "id": record_id,
         "decision": semantic,
         "effective_keep": bool(effective_keep),
-        "probabilities": {
-            "relevance": (probabilities or {}).get("relevance"),
-            "evidence_sufficient": (probabilities or {}).get("evidence_sufficient"),
-        },
+        "relevance": relevance,
+        "probabilities": dict(probabilities or {}),
+        "confidence": confidence,
+        "critical_probability": critical_probability,
         "fallback_reason": fallback_reason,
         "model": model,
         "request_hash": request_hash,
@@ -1176,6 +1184,30 @@ class TypeSafeAdapter:
             return None
         return _finite_probability(answer.get("noul"))
 
+    @staticmethod
+    def _answer_choice(answers: Mapping[str, Any], question_id: str) -> dict[str, Any] | None:
+        answer = answers.get(question_id)
+        labels = {"relevant", "irrelevant", "insufficient_evidence"}
+        if not isinstance(answer, Mapping) or answer.get("type") != "choice":
+            return None
+        choice = answer.get("choice")
+        probabilities = answer.get("probabilities")
+        confidence = _finite_probability(answer.get("confidence"))
+        if (not isinstance(choice, str) or choice not in labels
+                or not isinstance(probabilities, Mapping) or set(probabilities) != labels
+                or confidence is None):
+            return None
+        values = {label: _finite_probability(value) for label, value in probabilities.items()}
+        if any(value is None for value in values.values()):
+            return None
+        # Provider distributions may be rounded. Preserve the returned values;
+        # this tolerance validates their shape without renormalizing them.
+        if not math.isclose(sum(values.values()), 1.0, abs_tol=0.02):
+            return None
+        if values[choice] < max(values.values()):
+            return None
+        return {"choice": choice, "probabilities": values, "confidence": confidence}
+
     def _decisions_from_answers(
         self,
         records: Sequence[Mapping[str, str]],
@@ -1188,21 +1220,15 @@ class TypeSafeAdapter:
         decisions: list[dict[str, Any]] = []
         anomalies: list[str] = []
         for index, record in enumerate(records):
-            relevance_id, sufficiency_id = _question_ids(index)
-            relevance = self._answer_probability(answers, relevance_id)
-            sufficiency = self._answer_probability(answers, sufficiency_id)
-            probabilities = {
-                "relevance": relevance,
-                "evidence_sufficient": sufficiency,
-            }
-            if relevance is None or sufficiency is None:
+            choice = self._answer_choice(answers, _question_id(index))
+            if choice is None:
                 anomalies.append(f"invalid_answer:{record['id']}")
                 decisions.append(
                     _decision(
                         record["id"],
                         semantic="abstain",
                         effective_keep=True,
-                        probabilities=probabilities,
+                        probabilities=None,
                         fallback_reason="abstain_error",
                         model=model,
                         request_hash=request_hash,
@@ -1210,28 +1236,28 @@ class TypeSafeAdapter:
                     )
                 )
                 continue
-            if sufficiency < policy["sufficiency_min"]:
-                semantic = "abstain"
-                effective_keep = True
-            elif relevance <= policy["reject_max"]:
-                semantic = "reject"
-                effective_keep = False
-            elif relevance >= policy["keep_min"]:
-                semantic = "keep"
-                effective_keep = True
-            else:
-                semantic = "abstain"
-                effective_keep = True
+            relevance = choice["choice"]
+            semantic = {"relevant": "keep", "irrelevant": "reject", "insufficient_evidence": "abstain"}[relevance]
+            # Both questions run in parallel. Ignore the speculative critical
+            # answer entirely unless the relevance Choice selects relevant.
+            critical_probability = None
+            if relevance == "relevant":
+                critical_probability = self._answer_probability(answers, _critical_question_id(index))
+                if critical_probability is None:
+                    anomalies.append(f"invalid_critical_answer:{record['id']}")
             decisions.append(
                 _decision(
                     record["id"],
                     semantic=semantic,
-                    effective_keep=effective_keep,
-                    probabilities=probabilities,
+                    effective_keep=semantic != "reject",
+                    probabilities=choice["probabilities"],
                     fallback_reason=None,
                     model=model,
                     request_hash=request_hash,
                     policy=policy,
+                    relevance=relevance,
+                    confidence=choice["confidence"],
+                    critical_probability=critical_probability,
                 )
             )
         return decisions, anomalies

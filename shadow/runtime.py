@@ -10,7 +10,7 @@ from .contracts import BundleValidationError, read_json, sha256_json, verify_bun
 from .settings import RDSEC_BASE, load_policy, safe_api_base
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_POLICY = ROOT / "config/shadow/news-relevance-v2-dev.json"
+DEFAULT_POLICY = ROOT / "config/shadow/news-relevance-v4-dev.json"
 COHORTS = ("engineering", "development", "holdout", "prospective", "recovery")
 
 

@@ -1,7 +1,6 @@
 """Versioned experiment policy and credential-free execution identity."""
 from __future__ import annotations
 
-import math
 import re
 import subprocess
 import platform
@@ -11,7 +10,7 @@ from urllib.parse import urlsplit
 
 from .contracts import BundleValidationError, hash_file, read_json, sha256_json
 
-POLICY_SCHEMA = "news-shadow-policy/v1"
+POLICY_SCHEMA = "news-shadow-policy/v3"
 JUDGE_MODEL = "deepseek-v4.1-flash"
 JUDGE_VERSION = "news-editorial-judge/v3"
 RDSEC_BASE = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1"
@@ -25,15 +24,11 @@ def load_policy(path: str | Path) -> dict:
         raise BundleValidationError("Invalid policy version")
     if policy.get("model") != "jev-1.13.0":
         raise BundleValidationError("Policy must pin the reviewed Jev revision")
-    thresholds = [policy.get(key) for key in ("reject_max", "keep_min", "sufficiency_min")]
-    if any(isinstance(v, bool) or not isinstance(v, (int, float)) or
-           not math.isfinite(v) or not 0 <= v <= 1 for v in thresholds):
-        raise BundleValidationError("Policy thresholds must be finite probabilities")
-    if thresholds[0] >= thresholds[1]:
-        raise BundleValidationError("Reject threshold must be below keep threshold")
+    from .typesafe import _normalise_policy
+    _normalise_policy(policy)
     if type(policy.get("frozen")) is not bool:
         raise BundleValidationError("Policy frozen status must be explicit")
-    for key, maximum in (("chunk_size", 64), ("concurrency", 4), ("max_attempts", 3)):
+    for key, maximum in (("chunk_size", 128), ("concurrency", 4), ("max_attempts", 3)):
         value = policy.get(key)
         if type(value) is not int or not 1 <= value <= maximum:
             raise BundleValidationError(f"Invalid policy {key}")

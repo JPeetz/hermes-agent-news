@@ -1,0 +1,54 @@
+{
+  "schema_version": "news-shadow-policy/v3",
+  "version": "news-relevance-v4-dev",
+  "frozen": false,
+  "prospective_start_date": null,
+  "model": "jev-1.13.0",
+  "chunk_size": 128,
+  "concurrency": 2,
+  "max_attempts": 3,
+  "timeout_seconds": 30,
+  "fallback": "retain",
+  "candidate_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 100000,
+    "deadline_seconds": 1800,
+    "max_cost_usd": 0.25
+  },
+  "incumbent_budget": {
+    "max_requests": 12,
+    "max_input_tokens": 1000000,
+    "max_output_tokens": 500000,
+    "deadline_seconds": 3600,
+    "max_cost_usd": null
+  },
+  "judge_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 1920000,
+    "deadline_seconds": 3600,
+    "max_cost_usd": null
+  },
+  "rubric_version": "bounded-news-adjudicator-v1",
+  "questions_per_article": 2,
+  "relevance_question": {
+    "type": "choice",
+    "instructions": {
+      "article": "{article}",
+      "instruction": "You are a bounded news relevance adjudicator. Judge only the supplied title, source, and snippet. Use relevant when the bounded evidence is about an AI/ML model, company, product, research, safety, policy, infrastructure, controversy, or other substantive AI news; use irrelevant when it is outside that scope; use insufficient_evidence when the evidence cannot support either call."
+    },
+    "criteria": {
+      "relevant": null,
+      "irrelevant": null,
+      "insufficient_evidence": null
+    }
+  },
+  "critical_question": {
+    "type": "noul",
+    "instructions": {
+      "article": "{article}",
+      "question": "Is this an important story supported by the supplied evidence?"
+    }
+  }
+}
