@@ -32,6 +32,14 @@ The candidate returned valid scores for all 78 inputs, but the uncalibrated
 That result demonstrated transport access only. V4 replaces that extra judgment
 and gate with the user-specified relevance Choice and critical-story Noul.
 Further historical development runs locally.
+The corrected v4 request has now been evaluated on all 537 recovered inputs.
+DeepSeek supplied 535 definite labels and two insufficient-evidence labels;
+native Choice agreed with 522 of the definite labels. Ryan reviewed and accepted
+the two extra inclusions, leaving 11 exclusion disagreements with the judge.
+Those remaining labels are model estimates, not independently established
+errors. Native Choice retained all 168 stories the judge marked important.
+Adding a relevance-probability cutoff of 0.80 or 0.90 increased exclusions, so
+the frozen policy uses no additional confidence or probability gate.
 Relevant offline tests are part of normal development. Production collection or
 publishing pipeline execution requires explicit user authorization; shadow model
 evaluation is separately authorized and bounded.
@@ -90,8 +98,10 @@ configuration only. It explicitly reports that model access has not been verifie
 
 ## Policy and evidence
 
-The current v4 development policy is deliberately **not frozen**. It asks two
-independent questions per article in the same request:
+The v4 development policy remains editable. The matching
+`news-relevance-v4-frozen.json` locks the tested questions, model, batching and
+failure behavior for prospective report dates starting September 18, 2026.
+It asks two independent questions per article in the same request:
 
 - A Choice with `relevant`, `irrelevant`, and `insufficient_evidence`, using the
   user's bounded-news-adjudicator instruction over title, source, and snippet.

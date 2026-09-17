@@ -195,7 +195,7 @@ jobs:
           FROM_DATE: ${{ inputs.from_date }}
           TO_DATE: ${{ inputs.to_date }}
           SCHEDULE_EVAL_ENABLED: ${{ vars.NEWS_SHADOW_EVALUATE_ENABLED }}
-          SCHEDULE_POLICY_PATH: ${{ vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json' }}
+          SCHEDULE_POLICY_PATH: ${{ vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v4-frozen.json' }}
           SCHEDULE_RETRY_VERSION: ${{ vars.NEWS_SHADOW_RETRY_VERSION || '1' }}
           SCHEDULE_MODE: ${{ vars.NEWS_SHADOW_MODE || 'filter' }}
           SCHEDULE_EVALUATOR_SHA: ${{ github.sha }}
@@ -746,7 +746,7 @@ jobs:
       SHADOW_POLICY_VERSION: ${{ inputs.policy_version || vars.NEWS_SHADOW_POLICY_VERSION || 'scheduled-frozen' }}
       SHADOW_RUBRIC_VERSION: ${{ inputs.rubric_version || vars.NEWS_SHADOW_RUBRIC_VERSION || 'scheduled-frozen' }}
       SHADOW_COHORT: ${{ github.event_name == 'schedule' && 'prospective' || (inputs.cohort || 'engineering') }}
-      SHADOW_POLICY_PATH: ${{ github.event_name == 'schedule' && (vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v1-frozen.json') || format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v4-dev') }}
+      SHADOW_POLICY_PATH: ${{ github.event_name == 'schedule' && (vars.NEWS_SHADOW_POLICY_PATH || 'config/shadow/news-relevance-v4-frozen.json') || format('config/shadow/{0}.json', inputs.policy_version || 'news-relevance-v4-dev') }}
     steps:
       - name: Check out trusted evaluator commit
         uses: actions/checkout@v4
