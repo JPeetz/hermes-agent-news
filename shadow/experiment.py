@@ -35,6 +35,21 @@ def attempt_metrics(artifact: dict) -> list[dict]:
     return result
 
 
+def control_repeat_evidence(control: dict, repeated: dict) -> dict:
+    """Require distinct model response IDs, not gateway request IDs, for drift evidence."""
+    def response_ids(artifact):
+        return {row["response_id"] for row in attempt_metrics(artifact)
+                if row.get("status") == "success" and row.get("response_id")}
+    first_ids, repeat_ids = response_ids(control), response_ids(repeated)
+    shared = first_ids & repeat_ids
+    verified = (control.get("status") == repeated.get("status") == "complete" and
+                bool(first_ids) and bool(repeat_ids) and not shared)
+    return {"distinct_response_ids": verified,
+            "basis": "distinct_model_response_ids" if verified else
+                     "reused_model_response_id" if shared else "missing_successful_response_identity",
+            "shared_response_ids": sorted(shared)}
+
+
 async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="engineering",
                          repeat_control=False, retry_version="1") -> dict:
     # Imports are deliberately below preflight in the CLI; acquisition never
@@ -77,7 +92,7 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
     control_config = OpenAIChatConfig(base_url=route["base_url"], model=route["model"],
         max_output_tokens=route["max_output_tokens"], max_attempts=route["max_attempts"],
         timeout_seconds=route["timeout_seconds"], max_http_attempts=3)
-    judge_config = JudgeConfig(api_key=os.environ["RDSEC_API_KEY"], max_output_tokens=16384)
+    judge_config = JudgeConfig(api_key=os.environ["RDSEC_API_KEY"])
     secret = os.environ.get("SHADOW_INCUMBENT_API_KEY") or os.environ["RDSEC_API_KEY"]
     allowed = [candidate_config.endpoint, route["base_url"] + "/chat/completions", judge_config.endpoint]
     started = time.monotonic()
@@ -85,7 +100,7 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
                   "status": "running", "mode": mode, "cohort": cohort, "manifest": manifest,
                   "identity": identity, "policy_frozen": policy["frozen"], "timings": {},
                   "control_model": route["model"],
-                  "judge": {"model": JUDGE_MODEL}, "human_review_required": True,
+                  "judge": {"model": JUDGE_MODEL, "max_output_tokens": judge_config.max_output_tokens}, "human_review_required": True,
                   "promotion": "manual_only"}
     write_json(destination / "experiment.json", experiment)
     try:
@@ -111,6 +126,7 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
                 write_json(destination / "control-repeat.json", repeated)
                 experiment["control_repeat"] = compare_decisions(records, original["decisions"],
                     control["decisions"], repeated["decisions"], candidate_requests=attempt_metrics(repeated))
+                experiment["control_repeat_evidence"] = control_repeat_evidence(control, repeated)
             if mode == "pipeline":
                 from .pipeline_runner import run_pipeline_pair
                 # Finish branch execution before starting the adjudication
@@ -149,7 +165,8 @@ async def run_experiment(bundle, out, policy_path, *, mode="filter", cohort="eng
                 experiment["filter_status"] = "complete" if all(v == "complete" for v in
                     (control["status"], candidate["status"], adjudication["status"])) else "degraded"
                 output_status = all(row.get("status") == "complete" for row in comparisons)
-                experiment["status"] = "complete" if output_status and all(v == "complete" for v in
+                repeat_verified = not repeat_control or experiment["control_repeat_evidence"]["distinct_response_ids"]
+                experiment["status"] = "complete" if output_status and repeat_verified and all(v == "complete" for v in
                     (control["status"], candidate["status"], adjudication["status"],
                      experiment.get("pipeline", {}).get("status", "complete"))) else "degraded"
     except Exception as exc:

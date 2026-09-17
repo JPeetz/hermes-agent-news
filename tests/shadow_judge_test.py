@@ -22,6 +22,7 @@ from shadow.contracts import validate_input, validate_decisions  # noqa: E402
 from shadow.judge import (  # noqa: E402
     CATEGORY_VALUES,
     DEEPSEEK_MODEL,
+    DEEPSEEK_MAX_OUTPUT_TOKENS,
     DIMENSIONS,
     DIMENSION_VALUES,
     FINDING_KINDS,
@@ -122,6 +123,9 @@ class JudgeContractTests(unittest.TestCase):
         config = JudgeConfig(api_key="secret")
         self.assertEqual(config.endpoint, RDSEC_ENDPOINT)
         self.assertEqual(config.model, DEEPSEEK_MODEL)
+        self.assertEqual(config.max_output_tokens, DEEPSEEK_MAX_OUTPUT_TOKENS)
+        self.assertEqual(config.to_public_dict()["max_output_tokens"], 384_000)
+        self.assertEqual(config.timeout_seconds, 900.0)
         self.assertNotIn("api_key", config.to_public_dict())
         with self.assertRaises(ValueError):
             JudgeConfig(endpoint="https://other.example/v1/chat/completions")
@@ -244,6 +248,10 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(len(budget.settlements), 1)
         self.assertEqual(fake.calls[0][0], RDSEC_ENDPOINT)
         self.assertEqual(fake.calls[0][1]["json"]["model"], DEEPSEEK_MODEL)
+        self.assertEqual(
+            fake.calls[0][1]["json"]["cache"],
+            {"no-cache": True, "no-store": True},
+        )
 
     def test_transport_retry_is_bounded_and_each_attempt_is_budgeted(self):
         fake = FakeTransport(
@@ -268,7 +276,7 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(result["status"], "complete")
         self.assertEqual(result["requests"][0]["finish_reason"], "end_turn")
 
-    def test_finish_length_retries_and_eventually_fails_without_substitution(self):
+    def test_finish_length_fails_without_identical_retries_or_substitution(self):
         bad = _input_payload(finish="length")
         fake = FakeTransport([TransportResponse(200, bad)] * 3)
         budget = RecordingBudget()
@@ -277,7 +285,9 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(result["status"], "failed")
         self.assertEqual([row["decision"] for row in result["decisions"]], ["abstain", "abstain"])
         self.assertTrue(all(row["fallback_reason"] == "judge_error" for row in result["decisions"]))
-        self.assertEqual(len(fake.calls), 3)
+        self.assertEqual(len(fake.calls), 1)
+        self.assertEqual(len(budget.reservations), 1)
+        self.assertEqual(result["requests"][0]["finish_reason"], "length")
 
     def test_model_identity_and_usage_are_validated(self):
         fake = FakeTransport([TransportResponse(200, _input_payload(model="other"))] * 3)

@@ -37,11 +37,20 @@ DEEPSEEK_MODEL = "deepseek-v4.1-flash"
 # Stable names for the experiment manifest/coordinator.
 JUDGE_ENDPOINT = RDSEC_ENDPOINT
 JUDGE_MODEL = DEEPSEEK_MODEL
-JUDGE_VERSION = "news-editorial-judge/v2"
+JUDGE_VERSION = "news-editorial-judge/v3"
 INPUT_SCHEMA = "input-adjudication/v1"
 OUTPUT_SCHEMA = "output-comparison/v1"
 MAX_OUTPUT_EVIDENCE_CHARS = 4_000
+# The current RDSec model-info entry for this exact model advertises a 384k
+# completion ceiling (``max_tokens`` and ``max_output_tokens``).  Keep this
+# value alongside the pinned model so callers cannot silently fall back to a
+# smaller probe/evaluation cap.
+DEEPSEEK_MAX_OUTPUT_TOKENS = 384_000
 TERMINAL_FINISH_REASONS = frozenset({"stop", "end_turn"})
+# ``length`` means the provider exhausted the requested completion ceiling.
+# Replaying the same body cannot create additional room, so it is a terminal
+# judge failure for this bounded client rather than an identical retry.
+NON_RETRYABLE_FINISH_REASONS = frozenset({"length"})
 
 RELEVANCE_VALUES = {"relevant", "irrelevant", "insufficient_evidence"}
 SUFFICIENCY_VALUES = {"sufficient", "insufficient"}
@@ -120,12 +129,16 @@ class JudgeConfig:
     api_key: str | None = field(default=None, repr=False, compare=False)
     endpoint: str = RDSEC_ENDPOINT
     model: str = DEEPSEEK_MODEL
-    timeout_seconds: float = 120.0
+    # RDSec judge calls may spend substantial time reasoning at the model's
+    # verified 384k completion ceiling. The enclosing RequestBudget remains
+    # the hard wall-clock bound for an evaluation.
+    timeout_seconds: float = 900.0
     max_attempts: int = 3
     max_requests: int = 64
     # A 16-article batch can need a rationale and evidence references for every
-    # row. The enclosing RequestBudget still caps aggregate output at 64k.
-    max_output_tokens: int = 8192
+    # row. This is the verified RDSec ceiling for the pinned model; callers
+    # still provide the enclosing aggregate RequestBudget for each evaluation.
+    max_output_tokens: int = DEEPSEEK_MAX_OUTPUT_TOKENS
     batch_size: int = 16
     max_input_tokens: int = 2_000_000
     retry_backoff_seconds: float = 0.0
@@ -632,7 +645,9 @@ class JudgeClient:
             BudgetLimits(
                 max_requests=config.max_requests,
                 max_input_tokens=config.max_input_tokens,
-                max_output_tokens=min(64_000, config.max_output_tokens * config.max_requests),
+                # Keep direct callers within the reviewed aggregate ceiling.
+                max_output_tokens=min(1_920_000, config.max_output_tokens * config.max_requests),
+                deadline_seconds=3600,
             )
         )
         self.sleep = sleep
@@ -735,6 +750,10 @@ class JudgeClient:
             ],
             "max_tokens": self.config.max_output_tokens,
             "stream": False,
+            # The judge must observe the current request rather than any
+            # provider-side cached response. These LiteLLM controls do not
+            # alter prompts or reasoning settings.
+            "cache": {"no-cache": True, "no-store": True},
         }
         body_hash = _sha256_json(body)
         estimated_input_tokens = max(1, len(_json_text(body).encode("utf-8")))
@@ -789,7 +808,9 @@ class JudgeClient:
                     )
                 content, finish_reason = _extract_content(payload)
                 if finish_reason not in TERMINAL_FINISH_REASONS:
-                    raise JudgeError(f"judge finish_reason must be stop, got {finish_reason!r}")
+                    raise JudgeError(
+                        f"judge finish_reason must be terminal, got {finish_reason!r}"
+                    )
                 parsed = _decode_json_payload(content)
                 self._settle(
                     reservation,
@@ -864,6 +885,11 @@ class JudgeClient:
                     # Client/schema HTTP errors cannot be repaired by an outer
                     # retry; transport/429/5xx failures remain bounded-retry.
                     break
+                if finish_reason in NON_RETRYABLE_FINISH_REASONS:
+                    # The request body, including its max_tokens ceiling, is
+                    # unchanged. Retrying a length-terminated response would
+                    # spend the same budget without creating a new outcome.
+                    break
                 if attempt >= self.config.max_attempts:
                     break
                 retry_after = exc.retry_after_seconds if isinstance(exc, _HTTPError) else None
@@ -880,9 +906,9 @@ class JudgeClient:
                     delay = min(delay, max(0.0, float(remaining)))
                 if delay > 0:
                     self.sleep(delay)
-                # Every retry is a fresh bounded attempt.  This is true for
-                # transport failures and malformed responses alike, with no
-                # SDK/client retry layer underneath it.
+                # Every retry is a fresh bounded attempt, with no SDK/client
+                # retry layer underneath it. Length-terminated responses are
+                # excluded above because the unchanged body cannot help.
                 continue
         final_error = last_error or JudgeError("unknown error")
         raise _RequestFailure(
@@ -1468,6 +1494,7 @@ def compare_outputs(
 __all__ = [
     "CATEGORY_VALUES",
     "DEEPSEEK_MODEL",
+    "DEEPSEEK_MAX_OUTPUT_TOKENS",
     "DIMENSIONS",
     "INPUT_SCHEMA",
     "JUDGE_ENDPOINT",
@@ -1480,6 +1507,7 @@ __all__ = [
     "JudgeError",
     "OUTPUT_SCHEMA",
     "TERMINAL_FINISH_REASONS",
+    "NON_RETRYABLE_FINISH_REASONS",
     "RDSEC_ENDPOINT",
     "TransportResponse",
     "adjudicate_inputs",

@@ -423,6 +423,10 @@ class IncumbentAdapter:
         }
         if config.reasoning_effort is not None:
             request_body["reasoning"] = {"effort": config.reasoning_effort}
+        if urlsplit(config.base_url).hostname == "api.rdsec.trendmicro.com":
+            # LiteLLM gateway controls: identical frozen prompts must receive
+            # fresh responses when measuring control repeatability.
+            request_body["cache"] = {"no-cache": True, "no-store": True}
         request_hash = _hash_json(request_body)
         empty_result = {
             "adapter": "incumbent",
@@ -538,6 +542,7 @@ class IncumbentAdapter:
             "endpoint": endpoint,
             "requested_model": config.model,
             "reasoning_effort": config.reasoning_effort,
+            "cache_policy": body.get("cache"),
             "returned_model": None,
             "request_id": None,
             "attempts": [],
@@ -631,6 +636,8 @@ class IncumbentAdapter:
                 attempt_record["usage"] = {"input_tokens": input_tokens, "output_tokens": output_tokens}
                 attempt_record["cost_usd"] = cost_usd
                 attempt_record["request_id"] = _request_id(response, payload)
+                response_id = payload.get("id") if isinstance(payload, Mapping) else None
+                attempt_record["response_id"] = response_id[:256] if isinstance(response_id, str) else None
                 _budget_settle(
                     budget,
                     reservation,

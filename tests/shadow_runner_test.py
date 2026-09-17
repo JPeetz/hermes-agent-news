@@ -8,7 +8,7 @@ from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
 from shadow.contracts import BundleValidationError, seal_bundle, sha256_json, write_json
-from shadow.experiment import run_experiment
+from shadow.experiment import control_repeat_evidence, run_experiment
 from shadow.runtime import ROOT, inspect_run, model_child_environment, validate_output_root
 
 
@@ -57,6 +57,28 @@ class FakeJudge:
 
 
 class ShadowRunnerTest(unittest.TestCase):
+    def test_repeat_checks_model_response_identity_not_gateway_request_identity(self):
+        def artifact(response_id, request_id):
+            return {"status": "complete", "requests": [{"attempts": [
+                {"status": "success", "response_id": response_id, "request_id": request_id}]}]}
+        control = artifact("completion-1", "gateway-1")
+        reused = control_repeat_evidence(control, artifact("completion-1", "gateway-2"))
+        self.assertFalse(reused["distinct_response_ids"])
+        self.assertEqual(reused["basis"], "reused_model_response_id")
+        self.assertFalse(control_repeat_evidence(control, artifact(None, "gateway-3"))["distinct_response_ids"])
+        self.assertTrue(control_repeat_evidence(control, artifact("completion-2", "gateway-4"))["distinct_response_ids"])
+
+    def test_development_budget_covers_five_maximum_output_judge_batches(self):
+        from shadow.judge import JudgeConfig
+        from shadow.runtime import budget_for
+        from shadow.settings import load_policy
+        config = JudgeConfig()
+        budget = budget_for(load_policy(ROOT / "config/shadow/news-relevance-v1-dev.json"), "judge")
+        for _ in range(5):
+            reservation = budget.reserve(input_tokens=10000, output_tokens=config.max_output_tokens)
+            budget.settle(reservation, input_tokens=10000, output_tokens=config.max_output_tokens)
+        self.assertEqual(budget.snapshot()["requests"], 5)
+
     def test_failed_access_probe_preserves_safe_diagnostics(self):
         from shadow.preflight import probe_models
 
@@ -75,6 +97,9 @@ class ShadowRunnerTest(unittest.TestCase):
             candidate.return_value.evaluate = AsyncMock(return_value=success)
             judge.return_value.__enter__.return_value.adjudicate_inputs.return_value = judge_failure
             result = asyncio.run(probe_models())
+            judge_config = judge.call_args.args[0]
+            judge_budget = judge.call_args.kwargs["budget"]
+            judge_budget.reserve(input_tokens=1000, output_tokens=judge_config.max_output_tokens)
         self.assertFalse(result["model_access_verified"])
         self.assertEqual(result["diagnostics"]["incumbent"]["requests"][0]["error"], "ReadTimeout")
         self.assertEqual(result["diagnostics"]["judge"]["errors"], judge_failure["errors"])

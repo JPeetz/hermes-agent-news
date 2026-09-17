@@ -218,6 +218,7 @@ def build_assessment(experiment: Mapping[str, Any]) -> dict[str, Any]:
             "budget": dict(budget),
         },
         "filter_cost_details": dict(experiment.get("filter_usage") or {}),
+        "control_repeat_evidence": experiment.get("control_repeat_evidence"),
         "downstream_usage": {name: {"status": result.get("status"), "usage": result.get("usage"),
                                     "wall_seconds": result.get("wall_seconds")}
                              for name, result in pipeline_result.get("branches", {}).items()},
@@ -342,6 +343,7 @@ def render_assessment(value: Mapping[str, Any]) -> str:
             f"- Total experiment cost: unknown. {report.get('total_cost_basis', '')}",
             f"- Judge requests: {_value((usage.get('judge') or {}).get('request_count') if isinstance(usage.get('judge'), Mapping) else None)}; cost status: **{_value((usage.get('judge') or {}).get('cost_status') if isinstance(usage.get('judge'), Mapping) else None)}**; known cost: {_value((usage.get('judge') or {}).get('cost_usd_known') if isinstance(usage.get('judge'), Mapping) else None)}.",
             f"- Timings: `{json.dumps(timings, sort_keys=True)}`.",
+            f"- Repeated-control identity evidence: `{json.dumps(report.get('control_repeat_evidence'), sort_keys=True)}`. Distinct response IDs show no duplicate completion was observed; they do not prove uncached inference.",
             f"- Output comparisons: {_value(output.get('comparison_count'))}; overall outcomes: `{json.dumps(output.get('overall', {}), sort_keys=True)}`.",
             f"- Critical output findings: {_value(output.get('critical_finding_count'))}.",
             f"- Opposite-order repeat checks: {_value(output.get('repeat_selected_count'))}; consistency: {_value(output.get('repeat_consistency_rate'))}.",

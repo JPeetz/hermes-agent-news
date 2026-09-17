@@ -25,8 +25,9 @@ async def probe_models() -> dict:
               max_output_tokens=100000, deadline_seconds=600)) for role in ("incumbent", "candidate", "judge")}
     config = OpenAIChatConfig(base_url=route["base_url"], model=route["model"], max_output_tokens=16384,
                              timeout_seconds=240, max_attempts=1, max_http_attempts=1)
-    judge_config = JudgeConfig(api_key=os.environ["RDSEC_API_KEY"], max_attempts=1, max_output_tokens=16384,
-                               timeout_seconds=240)
+    judge_config = JudgeConfig(api_key=os.environ["RDSEC_API_KEY"], max_attempts=1)
+    budgets["judge"] = RequestBudget(BudgetLimits(max_requests=1, max_input_tokens=250000,
+        max_output_tokens=judge_config.max_output_tokens, deadline_seconds=1800))
     with model_egress_only([TypeSafeConfig().endpoint, config.base_url + "/chat/completions", judge_config.endpoint]):
         incumbent = await IncumbentAdapter(config,
             os.environ.get("SHADOW_INCUMBENT_API_KEY") or os.environ["RDSEC_API_KEY"]).evaluate(frozen, budget=budgets["incumbent"])

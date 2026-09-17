@@ -1,8 +1,6 @@
 """Offline contract tests for the bounded relevance adapters.
 
-These tests use injected fake HTTP clients only.  They are intentionally not
-run by the implementation worker; the repository owner runs the focused suite
-after the shared runner and policy are reviewed.
+These tests use injected fake HTTP clients only and never call a paid model.
 """
 
 from __future__ import annotations
@@ -201,8 +199,24 @@ class IncumbentAdapterTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(body["messages"][1]["content"], frozen["user_message"])
         self.assertEqual(body["model"], "incumbent-model")
         self.assertEqual(body["reasoning"], {"effort": "high"})
+        self.assertNotIn("cache", body)
         self.assertEqual(result["requests"][0]["returned_model"], "incumbent-model")
+        self.assertEqual(result["requests"][0]["attempts"][0]["response_id"], "chat-1")
+        self.assertEqual(result["requests"][0]["attempts"][0]["request_id"], "req-1")
         self.assertNotIn("incumbent-secret", json.dumps(result))
+
+    async def test_rdsec_control_bypasses_cache_without_changing_frozen_messages(self):
+        client = FakeAsyncClient([FakeResponse({"id": "chat-fresh", "model": "deepseek-v4.1-flash",
+            "choices": [{"finish_reason": "stop", "message": {"content": '{"ai_article_ids":["article-keep"]}'}}]})])
+        frozen = _frozen_input(_records()[:2])
+        config = OpenAIChatConfig(api_key="test", base_url="https://api.rdsec.trendmicro.com/prod/aiendpoint/v1",
+                                  model="deepseek-v4.1-flash")
+        result = await IncumbentAdapter(config, http_client=client).evaluate(frozen)
+        body = client.calls[0]["json"]
+        self.assertEqual(body["cache"], {"no-cache": True, "no-store": True})
+        self.assertEqual(body["messages"][0]["content"], frozen["system_prompt"])
+        self.assertEqual(body["messages"][1]["content"], frozen["user_message"])
+        self.assertEqual(result["status"], "complete")
 
     async def test_ambiguous_prefix_fails_closed_to_superset(self):
         records = [
