@@ -20,11 +20,19 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from shadow.contracts import validate_input, validate_decisions  # noqa: E402
 from shadow.judge import (  # noqa: E402
+    CATEGORY_VALUES,
     DEEPSEEK_MODEL,
+    DIMENSIONS,
+    DIMENSION_VALUES,
+    FINDING_KINDS,
     RDSEC_ENDPOINT,
+    RELEVANCE_VALUES,
+    SEVERITIES,
+    SUFFICIENCY_VALUES,
     JudgeClient,
     JudgeConfig,
     JudgeError,
+    OVERALL_VALUES,
     TransportResponse,
     build_blinded_output_prompt,
     build_input_artifact,
@@ -135,6 +143,95 @@ class JudgeContractTests(unittest.TestCase):
         self.assertNotIn('"branch"', encoded)
         self.assertNotIn('"confidence"', encoded)
 
+    def test_prompts_declare_the_complete_typed_output_contract(self):
+        input_prompt = build_input_artifact(RECORDS)["system_prompt"]
+        for field in (
+            '"article_id"',
+            '"evidence_ids"',
+            '"relevance"',
+            '"evidence_sufficiency"',
+            '"rubric_category"',
+            '"critical_story"',
+            '"reason"',
+            '"quotes"',
+            'relevant|irrelevant|insufficient_evidence',
+        ):
+            self.assertIn(field, input_prompt)
+        self.assertIn("never the pipe character", input_prompt)
+
+        decoder = json.JSONDecoder()
+        input_example, _ = decoder.raw_decode(input_prompt[input_prompt.index("{"):])
+        input_row = input_example["adjudications"][0]
+        self.assertEqual(set(input_example), {"adjudications"})
+        self.assertEqual(set(input_row), {
+            "article_id", "evidence_ids", "relevance", "evidence_sufficiency",
+            "rubric_category", "critical_story", "reason", "quotes",
+        })
+        self.assertEqual(set(input_row["relevance"].split("|")), RELEVANCE_VALUES)
+        self.assertEqual(set(input_row["evidence_sufficiency"].split("|")), SUFFICIENCY_VALUES)
+        self.assertEqual(set(input_row["rubric_category"].split("|")), CATEGORY_VALUES)
+        input_example["adjudications"] = [{
+            "article_id": "a1",
+            "evidence_ids": ["a1:snippet"],
+            "relevance": "relevant",
+            "evidence_sufficiency": "sufficient",
+            "rubric_category": "model",
+            "critical_story": True,
+            "reason": "The supplied snippet supports the classification.",
+            "quotes": [{"evidence_id": "a1:snippet", "quote": RECORDS[0]["snippet"]}],
+        }]
+        self.assertEqual(validate_input_adjudication(input_example, RECORDS[:1])[0]["article_id"], "a1")
+
+        output_prompt, _ = build_blinded_output_prompt(
+            {"summary": "A"},
+            {"summary": "B"},
+            pair_id="p1",
+            seed=1,
+        )
+        for field in (
+            '"pair_id"',
+            '"dimensions"',
+            '"important_story_coverage"',
+            '"irrelevant_inclusions"',
+            '"safety_policy_omissions"',
+            '"supported_claims"',
+            '"duplicates"',
+            '"ranking_usefulness"',
+            '"summary_quality"',
+            '"findings"',
+            '"overall"',
+            'gained_story|lost_story|unsupported_claim|duplicate|other',
+        ):
+            self.assertIn(field, output_prompt["system_prompt"])
+        self.assertIn("never the pipe character", output_prompt["system_prompt"])
+        output_example, _ = decoder.raw_decode(
+            output_prompt["system_prompt"][output_prompt["system_prompt"].index("{"):]
+        )
+        self.assertEqual(set(output_example), {"pair_id", "dimensions", "findings", "overall"})
+        self.assertEqual(set(output_example["dimensions"]), set(DIMENSIONS))
+        self.assertEqual(
+            set(output_example["dimensions"]["important_story_coverage"].split("|")),
+            DIMENSION_VALUES,
+        )
+        finding_example = output_example["findings"][0]
+        self.assertEqual(set(finding_example), {
+            "kind", "side", "severity", "article_id", "evidence_ids", "quote", "reason",
+        })
+        self.assertEqual(set(finding_example["kind"].split("|")), FINDING_KINDS)
+        self.assertEqual(set(finding_example["severity"].split("|")), SEVERITIES)
+        self.assertEqual(set(finding_example["side"].split("|")), {"A", "B"})
+        self.assertEqual(set(output_example["overall"].split("|")), OVERALL_VALUES)
+        output_example.update(
+            pair_id="p1",
+            dimensions={key: "tie" for key in DIMENSIONS},
+            findings=[],
+            overall="tie",
+        )
+        self.assertEqual(
+            validate_output_comparison(output_example, pair_id="p1", evidence={})["overall"],
+            "tie",
+        )
+
     def test_all_records_are_adjudicated_and_decisions_validate(self):
         fake = FakeTransport([TransportResponse(200, _input_payload())])
         budget = RecordingBudget()
@@ -163,6 +260,13 @@ class JudgeContractTests(unittest.TestCase):
         self.assertEqual(len(fake.calls), 2)
         self.assertEqual(len(budget.reservations), 2)
         self.assertEqual(len(budget.settlements), 2)
+
+    def test_end_turn_is_a_terminal_judge_response(self):
+        fake = FakeTransport([TransportResponse(200, _input_payload(finish="end_turn"))])
+        with JudgeClient(JudgeConfig(max_attempts=1), transport=fake) as client:
+            result = client.adjudicate_inputs(RECORDS)
+        self.assertEqual(result["status"], "complete")
+        self.assertEqual(result["requests"][0]["finish_reason"], "end_turn")
 
     def test_finish_length_retries_and_eventually_fails_without_substitution(self):
         bad = _input_payload(finish="length")

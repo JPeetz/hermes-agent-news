@@ -5,7 +5,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 from shadow.contracts import BundleValidationError, seal_bundle, sha256_json, write_json
 from shadow.experiment import run_experiment
@@ -57,6 +57,31 @@ class FakeJudge:
 
 
 class ShadowRunnerTest(unittest.TestCase):
+    def test_failed_access_probe_preserves_safe_diagnostics(self):
+        from shadow.preflight import probe_models
+
+        env = {"TYPESAFE_API_KEY": "candidate-secret", "RDSEC_API_KEY": "judge-secret",
+               "SHADOW_INCUMBENT_MODEL": "deepseek-v4.1-flash"}
+        failure = {"status": "degraded", "requests": [{"status": "transport_error",
+                   "error": "ReadTimeout"}], "actual_models": []}
+        success = {"status": "complete", "actual_models": ["jev-1.13.0"], "requests": []}
+        judge_failure = {"status": "failed", "requests": [],
+                         "errors": [{"error": "JudgeError"}]}
+        with patch.dict(os.environ, env, clear=True), \
+             patch("shadow.incumbent.IncumbentAdapter") as incumbent, \
+             patch("shadow.typesafe.TypeSafeAdapter") as candidate, \
+             patch("shadow.judge.JudgeClient") as judge:
+            incumbent.return_value.evaluate = AsyncMock(return_value=failure)
+            candidate.return_value.evaluate = AsyncMock(return_value=success)
+            judge.return_value.__enter__.return_value.adjudicate_inputs.return_value = judge_failure
+            result = asyncio.run(probe_models())
+        self.assertFalse(result["model_access_verified"])
+        self.assertEqual(result["diagnostics"]["incumbent"]["requests"][0]["error"], "ReadTimeout")
+        self.assertEqual(result["diagnostics"]["judge"]["errors"], judge_failure["errors"])
+        self.assertEqual(result["actual_models"]["candidate"], ["jev-1.13.0"])
+        self.assertNotIn("candidate-secret", json.dumps(result))
+        self.assertNotIn("judge-secret", json.dumps(result))
+
     def test_worker_environment_excludes_repository_source_and_proxy_credentials(self):
         result = model_child_environment({"PATH": "/bin", "HOME": "/tmp/home", "RDSEC_API_KEY": "model",
             "GITHUB_TOKEN": "git", "GH_TOKEN": "git", "HTTP_PROXY": "proxy", "SCRAPECREATORS_API_KEY": "source",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local integrity/configuration preflight; never calls a model or source API."""
+"""Inspect shadow integrity/configuration; model calls require --probe-models."""
 from __future__ import annotations
 
 import argparse

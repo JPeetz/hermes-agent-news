@@ -13,7 +13,7 @@ from .contracts import BundleValidationError, hash_file, read_json, sha256_json
 
 POLICY_SCHEMA = "news-shadow-policy/v1"
 JUDGE_MODEL = "deepseek-v4.1-flash"
-JUDGE_VERSION = "news-editorial-judge/v1"
+JUDGE_VERSION = "news-editorial-judge/v2"
 RDSEC_BASE = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1"
 
 
