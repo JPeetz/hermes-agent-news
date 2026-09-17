@@ -70,7 +70,11 @@ class ShadowRunnerTest(unittest.TestCase):
             with self.assertRaises(BundleValidationError):
                 validate_output_root(output)
         with tempfile.TemporaryDirectory() as temp:
-            bundle = Path(temp) / "bundle"
+            # macOS exposes the temporary directory through /var, a symlink to
+            # /private/var.  The runtime correctly rejects symlink traversal,
+            # so exercise it with the canonical fixture path.
+            temp_root = Path(temp).resolve()
+            bundle = temp_root / "bundle"
             with self.assertRaises(BundleValidationError):
                 validate_output_root(bundle / "results", bundle)
 
@@ -86,26 +90,31 @@ class ShadowRunnerTest(unittest.TestCase):
     def test_complete_filter_run_writes_reviewable_result_and_refuses_overwrite(self):
         env = {"TYPESAFE_API_KEY": "test", "RDSEC_API_KEY": "test", "SHADOW_INCUMBENT_MODEL": "deepseek-v4.1-flash"}
         with tempfile.TemporaryDirectory() as temp:
-            bundle = Path(temp) / "bundle"
+            # macOS exposes the temporary directory through /var, a symlink to
+            # /private/var.  The runtime correctly rejects symlink traversal,
+            # so exercise it with the canonical fixture path.
+            temp_root = Path(temp).resolve()
+            bundle = temp_root / "bundle"
             records, decision = make_bundle(bundle)
             FakeAdapter.result = decision
             FakeJudge.result = decision
             identity = {"git_sha": "a" * 40, "source_sha256": "b" * 64, "files": {}}
             policy = ROOT / "config/shadow/news-relevance-v1-dev.json"
             before = (bundle / "manifest.json").read_bytes()
+            output = temp_root / "out"
             with patch.dict(os.environ, env, clear=True), \
                  patch("shadow.incumbent.IncumbentAdapter", FakeAdapter), \
                  patch("shadow.typesafe.TypeSafeAdapter", FakeAdapter), \
                  patch("shadow.judge.JudgeClient", FakeJudge), \
                  patch("shadow.experiment.code_identity", return_value=identity):
-                result = asyncio.run(run_experiment(bundle, Path(temp) / "out", policy))
+                result = asyncio.run(run_experiment(bundle, output, policy))
                 self.assertEqual(result["status"], "complete")
                 self.assertTrue((Path(result["path"]) / "assessment.md").is_file())
                 saved = json.loads((Path(result["path"]) / "experiment.json").read_text())
                 self.assertEqual(saved["metrics"]["population"]["input_count"], 1)
                 self.assertTrue(saved["human_review_required"])
                 with self.assertRaises(FileExistsError):
-                    asyncio.run(run_experiment(bundle, Path(temp) / "out", policy))
+                    asyncio.run(run_experiment(bundle, output, policy))
             self.assertEqual((bundle / "manifest.json").read_bytes(), before)
 
 

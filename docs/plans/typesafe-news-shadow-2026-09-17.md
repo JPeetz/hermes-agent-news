@@ -229,7 +229,7 @@ Calculate counts, set differences, retention/abstention/failure rates, top-k ove
 
 Pipeline-wide replay work and filter-only evaluation can progress independently after contracts are settled. Ship useful historical relevance comparisons first, while capture accumulates future full-replay inputs. Do not block all evaluation on reconstructing dependencies that no longer exist.
 
-Plan focused offline tests in `tests/shadow_*_test.py`; repository instructions reserve execution of tests and pipelines to the owner unless explicitly requested. Add only mocked/offline shadow tests to `tests.yml`, never live model evaluation. Required cases:
+Plan focused offline tests in `tests/shadow_*_test.py`; run relevant tests during development. Production pipeline execution requires explicit user authorization. Add only mocked/offline shadow tests to `tests.yml`, never live model evaluation. Required cases:
 
 1. Exact canonical evidence parity, original keyword selection/order, full IDs, duplicate/unknown/ambiguous IDs, empty input, normalized title/snippet boundaries and secret-safe config serialization.
 2. Complete/partial stream reconstruction, last successful retry lineage, per-attempt cost retention, truncated prompts, failed calls with partial JSON and survivor-only checkpoints.
@@ -250,7 +250,7 @@ python3 scripts/shadow/import_legacy_bundle.py \
   --source-repo flyryan/ai-news-aggregator --run-id 35192960377 --attempt 1 \
   --out /tmp/news-shadow/bundles/35192960377-1
 
-# Owner-run focused offline checks, once implemented.
+# Focused offline checks.
 python3 -m unittest discover -s tests -p 'shadow_*_test.py' -v
 
 # Owner-authorized CI access/model preflight, without source articles.
@@ -283,7 +283,7 @@ These do not prevent implementing offline capture, contracts, recovery and mocke
 - **Long-term retention:** only needed before promoting this into a benchmark that must outlive 90-day artifacts. Select an existing approved durable store rather than silently creating new infrastructure.
 
 Historical recovery and the implementation through Stage 5 are present locally.
-The next qualification step is the owner's offline test run, followed by an
+The next qualification step is an offline test run, followed by an
 explicit synthetic access probe and engineering filter experiment. Full replay
 requires a new dependency-complete production capture; the ten historical bundles
 qualify only for filter replay. Capture, CI gates and production routing remain unchanged.

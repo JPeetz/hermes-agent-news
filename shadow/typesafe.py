@@ -628,19 +628,25 @@ class TypeSafeAdapter:
         any_error = False
         any_incomplete = False
         for _index, result in results:
-            decisions.extend(result[1]["decisions"])
-            requests.append(result[1]["request"])
+            # ``asyncio.gather`` returns the tuple produced by
+            # ``_evaluate_chunk``.  After unpacking, ``result`` is already
+            # the chunk payload; indexing it by ``1`` treated the payload as
+            # a sequence and raised ``KeyError: 1`` for every successful
+            # response.  Keep the unpacking explicit so the per-chunk
+            # accounting remains coupled to the same payload.
+            decisions.extend(result["decisions"])
+            requests.append(result["request"])
             usage.add_request()
-            for attempt_usage in result[1]["attempt_usages"]:
+            for attempt_usage in result["attempt_usages"]:
                 usage.add_attempt(attempt_usage[0], attempt_usage[1])
-            for degradation in result[1]["degradations"]:
+            for degradation in result["degradations"]:
                 if degradation not in degradations:
                     degradations.append(degradation)
             actual_models.update(
-                model for model in result[1]["actual_models"] if isinstance(model, str)
+                model for model in result["actual_models"] if isinstance(model, str)
             )
-            any_error = any_error or result[1]["error"]
-            any_incomplete = any_incomplete or result[1]["incomplete"]
+            any_error = any_error or result["error"]
+            any_incomplete = any_incomplete or result["incomplete"]
 
         status = "complete"
         if any_incomplete:

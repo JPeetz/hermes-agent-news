@@ -55,10 +55,9 @@ class SocketBoundaryTests(unittest.TestCase):
                 socket.getaddrinfo("source.example.test", 443)
             with self.assertRaises(ReplayIntegrityError):
                 socket.create_connection(("source.example.test", 443), timeout=0.01)
-            with self.assertRaises(ReplayIntegrityError):
-                socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex(
-                    ("198.51.100.22", 443)
-                )
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                with self.assertRaises(ReplayIntegrityError):
+                    sock.connect_ex(("198.51.100.22", 443))
 
     def test_proxy_environment_is_removed_only_inside_context(self):
         with mock.patch.dict(os.environ, {"HTTPS_PROXY": "http://proxy.example.test:8080"}, clear=False):
@@ -163,7 +162,10 @@ class BudgetBoundaryTests(unittest.TestCase):
     def test_budget_counts_attempts_without_reading_response_content(self):
         import httpx
 
-        budget = RequestBudget(BudgetLimits(max_requests=1, max_input_tokens=1, max_output_tokens=1))
+        # The network guard reserves the buffered request-body byte length as
+        # its conservative input bound.  Keep the request-count ceiling tight
+        # while allowing this small JSON body to reach the mocked transport.
+        budget = RequestBudget(BudgetLimits(max_requests=1, max_input_tokens=64, max_output_tokens=1))
         transport = httpx.MockTransport(
             lambda request: httpx.Response(200, request=request, content=b"body")
         )

@@ -161,7 +161,9 @@ class ReplayConstructionTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_replay_phase_0_uses_frozen_grounding_without_catalog_refresh(self):
         replay = SimpleNamespace(frozen_report_date=DATE, grounding_context="frozen grounding")
-        orchestrator = MainOrchestrator(target_date=DATE, replay_context=replay)
+        with mock.patch.object(orchestrator_module, "AnthropicClient"), \
+                mock.patch.object(orchestrator_module, "AsyncAnthropicClient"):
+            orchestrator = MainOrchestrator(target_date=DATE, replay_context=replay)
         orchestrator._load_replay_gathering = mock.Mock(side_effect=RuntimeError("stop after phase 0"))
         tracker = SimpleNamespace(start=mock.Mock())
         recorder = SimpleNamespace(begin_run=mock.Mock())

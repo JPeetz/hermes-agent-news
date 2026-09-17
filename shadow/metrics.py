@@ -89,6 +89,13 @@ def summarize_branch(
         if rows[article_id].get("fallback_reason") not in (None, "", "insufficient_evidence")
     }
     count = len(input_ids)
+    # An empty decision collection means this branch produced no usable
+    # response.  Its rates are therefore undefined, even when the input
+    # population is known: reporting 0% would turn an unavailable branch into
+    # an observed outcome.  Once at least one decision exists, use the full
+    # input population so partial responses retain measurable coverage and
+    # missing IDs remain visible in the counts above.
+    rate_denominator = count if rows else 0
     return {
         "input_count": count,
         "decision_count": len(present),
@@ -98,16 +105,16 @@ def summarize_branch(
         "extra_ids": extras,
         "duplicate_ids": duplicates,
         "coverage_count": len(present),
-        "coverage_rate": _rate(len(present), count),
+        "coverage_rate": _rate(len(present), rate_denominator),
         "kept_count": len(kept),
         "rejected_count": len(rejected),
         "abstention_count": len(abstained),
         "fallback_count": len(fallback),
         "error_count": len(errors),
-        "keep_rate": _rate(len(kept), count),
-        "abstention_rate": _rate(len(abstained), count),
-        "fallback_rate": _rate(len(fallback), count),
-        "error_rate": _rate(len(errors), count),
+        "keep_rate": _rate(len(kept), rate_denominator),
+        "abstention_rate": _rate(len(abstained), rate_denominator),
+        "fallback_rate": _rate(len(fallback), rate_denominator),
+        "error_rate": _rate(len(errors), rate_denominator),
         "kept_ids": sorted(kept),
         "rejected_ids": sorted(rejected),
         "abstained_ids": sorted(abstained),

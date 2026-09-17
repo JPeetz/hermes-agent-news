@@ -6,7 +6,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, arXiv API, Twitter, Reddit, Bluesky, Mastodon), analyzes them using Claude Opus 5 with adaptive thinking, and serves a modern Svelte SPA frontend with AATF branding.
 
-**Testing:** The user always runs tests themselves. Do not run the pipeline or tests unless explicitly asked.
+**Testing:** Run relevant tests and fix failures as part of normal development. Do not run or dispatch the production collection/publishing pipeline, including backfills or resumes, without the user's explicit authorization. Test execution does not require separate permission.
 
 ## Commands
 
@@ -51,7 +51,7 @@ npm run preview                 # Preview production build
 npm run check                   # TypeScript type checking
 ```
 
-There are no unit tests, linting, or type checking configured.
+Offline Python tests live in `tests/` and run through `.github/workflows/tests.yml`. Frontend type checking is available through `npm run check`.
 
 ### Web-Only Host Deployment
 ```bash

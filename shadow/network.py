@@ -976,10 +976,9 @@ def _install_aiohttp_guards(patcher: _Patcher, guard: _NetworkGuard) -> None:
     patcher.set(session_cls, "_request", guarded_request)
 
 
-@contextlib.contextmanager
 def model_egress_only(
     allowed_urls: Iterable[str], budget: RequestBudget | None = None
-) -> Iterator[_NetworkGuard]:
+) -> contextlib.AbstractContextManager[_NetworkGuard]:
     """Allow only bounded HTTPS model POSTs for the duration of a context.
 
     ``allowed_urls`` must contain exact HTTPS endpoint URLs.  Each endpoint's
@@ -989,36 +988,48 @@ def model_egress_only(
     (including retries) and reserves the UTF-8 request-body byte length plus
     ``max_tokens``/``max_completion_tokens`` before opening the connection.
     Unbounded request bodies fail closed.  Response bodies are never read by
-    this guard.  The context is synchronous but its wrappers support async
-    HTTP clients and are task-local through ``contextvars``.
+    this guard.  The endpoint and budget declarations are validated when this
+    function is called; process-wide patches and proxy removal begin only when
+    the returned context is entered.  The context is synchronous but its
+    wrappers support async HTTP clients and are task-local through
+    ``contextvars``.
     """
 
     endpoints = _load_endpoints(allowed_urls)
     if budget is not None and not hasattr(budget, "reserve"):
         raise TypeError("budget must provide RequestBudget.reserve/settle")
-    guard = _NetworkGuard(endpoints, budget)
-    patcher = _Patcher()
-    env_before = {name: os.environ.get(name) for name in _PROXY_ENV_VARS}
-    env_present = set(os.environ).intersection(_PROXY_ENV_VARS)
-    for name in _PROXY_ENV_VARS:
-        os.environ.pop(name, None)
-    current_token = _CURRENT_GUARD.set(guard)
-    try:
-        _install_socket_guards(patcher, guard)
-        _install_requests_guards(patcher, guard)
-        _install_httpx_guards(patcher, guard)
-        _install_aiohttp_guards(patcher, guard)
-        yield guard
-    finally:
-        patcher.restore()
-        _CURRENT_GUARD.reset(current_token)
+    # Keep declaration validation outside the generator.  A function decorated
+    # with ``contextmanager`` does not execute its body until ``__enter__``;
+    # callers should learn about a malformed allowlist at declaration time,
+    # before they retain or schedule an invalid guard.  No process-wide state
+    # is changed until the returned context manager is entered.
+    @contextlib.contextmanager
+    def activate() -> Iterator[_NetworkGuard]:
+        guard = _NetworkGuard(endpoints, budget)
+        patcher = _Patcher()
+        env_before = {name: os.environ.get(name) for name in _PROXY_ENV_VARS}
+        env_present = set(os.environ).intersection(_PROXY_ENV_VARS)
         for name in _PROXY_ENV_VARS:
-            if name in env_present:
-                value = env_before[name]
-                if value is not None:
-                    os.environ[name] = value
-            else:
-                os.environ.pop(name, None)
+            os.environ.pop(name, None)
+        current_token = _CURRENT_GUARD.set(guard)
+        try:
+            _install_socket_guards(patcher, guard)
+            _install_requests_guards(patcher, guard)
+            _install_httpx_guards(patcher, guard)
+            _install_aiohttp_guards(patcher, guard)
+            yield guard
+        finally:
+            patcher.restore()
+            _CURRENT_GUARD.reset(current_token)
+            for name in _PROXY_ENV_VARS:
+                if name in env_present:
+                    value = env_before[name]
+                    if value is not None:
+                        os.environ[name] = value
+                else:
+                    os.environ.pop(name, None)
+
+    return activate()
 
 
 __all__ = ["ReplayIntegrityError", "model_egress_only"]

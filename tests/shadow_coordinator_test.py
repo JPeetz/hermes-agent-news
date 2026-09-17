@@ -10,12 +10,14 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from shadow.coordinator import (  # noqa: E402
     Coordinator,
+    DiscoveryError,
     SelectorError,
     TrustedRefError,
     classify_source_run,
@@ -144,6 +146,24 @@ class StateTests(unittest.TestCase):
             )
             coordinator.state.record_status(row["experiment_id"], "failed")
             self.assertEqual(coordinator.claim_next(owner="worker"), [])
+
+    def test_resealed_source_cannot_create_unrequested_paid_experiment(self):
+        manifest = {"source": {"repository": "flyryan/ai-news-aggregator", "run_id": 123, "run_attempt": 1},
+                    "report_date": "2026-09-17", "bundle_sha256": "a" * 64,
+                    "capabilities": {"filter_replay": True},
+                    "eligibility": {"healthy": True, "successful_run": True},
+                    "publication": {"status": "published"}}
+        for status in ("discovered", "running", "completed", "failed"):
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as directory, \
+                    patch("shadow.coordinator.verify_bundle", return_value=manifest):
+                coordinator = Coordinator(directory)
+                first = coordinator.record_bundle("first", evaluator_sha="b" * 40,
+                                                   repeat_plan="1", status=status)
+                with patch("shadow.coordinator.verify_bundle", return_value={**manifest, "bundle_sha256": "c" * 64}):
+                    with self.assertRaisesRegex(DiscoveryError, "already sealed"):
+                        coordinator.record_bundle("second", evaluator_sha="b" * 40, repeat_plan="1")
+                    retried = coordinator.record_bundle("second", evaluator_sha="b" * 40, repeat_plan="2")
+                    self.assertNotEqual(first["experiment_id"], retried["experiment_id"])
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -235,16 +235,48 @@ jobs:
           # Carry forward only the compact internal index. The acquisition
           # job has contents:read on this repository; source credentials are
           # never used for this request.
-          for state_file in index.json events.jsonl; do
-            state_path="$RUNNER_TEMP/news-shadow-metadata/discovery-state/$state_file"
-            if GH_TOKEN="$INTERNAL_GITHUB_TOKEN" gh api \
-                "/repos/${SHADOW_INTERNAL_REPOSITORY}/contents/coordinator/$state_file?ref=shadow-results" \
-                --jq '.content' 2>/dev/null | tr -d '\n' | base64 --decode > "$state_path"; then
-              test -s "$state_path"
-            else
-              rm -f "$state_path"
-            fi
-          done
+          python3 - "$RUNNER_TEMP/news-shadow-metadata/discovery-state" <<'PY'
+          import base64
+          import json
+          import os
+          import sys
+          from pathlib import Path
+          from urllib.error import HTTPError
+          from urllib.request import Request, urlopen
+
+          root = Path(sys.argv[1])
+          repo = os.environ["SHADOW_INTERNAL_REPOSITORY"]
+          token = os.environ["INTERNAL_GITHUB_TOKEN"]
+          def get(path, missing_ok=False):
+              request = Request(f"https://api.github.com/repos/{repo}/{path}", headers={
+                  "Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"})
+              try:
+                  with urlopen(request, timeout=30) as response:
+                      return json.load(response)
+              except HTTPError as exc:
+                  code = exc.code
+                  exc.close()
+                  if missing_ok and code == 404:
+                      return None
+                  raise SystemExit(f"Required coordinator state request failed: HTTP {code}") from None
+
+          # Prove contents access before interpreting a missing branch as the
+          # first run. A failed state read must never silently reset paid dedup.
+          get(f"commits/{os.environ['GITHUB_SHA']}")
+          branch = get("git/ref/heads/shadow-results", missing_ok=True)
+          if branch is not None:
+              for name in ("index.json", "events.jsonl"):
+                  payload = get(f"contents/coordinator/{name}?ref=shadow-results")
+                  raw = base64.b64decode("".join(payload["content"].split()), validate=True)
+                  if not raw:
+                      raise SystemExit(f"Required coordinator state is empty: {name}")
+                  if name == "index.json":
+                      json.loads(raw)
+                  else:
+                      for line in raw.splitlines():
+                          json.loads(line)
+                  (root / name).write_bytes(raw)
+          PY
           python3 scripts/shadow/coordinate.py discover \
             --metadata "$RUNNER_TEMP/news-shadow-metadata/metadata.json" \
             --state-dir "$RUNNER_TEMP/news-shadow-metadata/discovery-state" \

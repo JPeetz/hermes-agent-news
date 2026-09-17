@@ -325,6 +325,9 @@ def _build_orchestrator(data_dir, web_dir, config_dir, client, hero_generator):
     orch.web_dir = web_dir
     orch.provider_config = None
     orch.prompt_accessor = None
+    orch.replay_context = None
+    orch.capture = None
+    orch._capture_failed = False
     orch.grounding_context = None
     orch.ecosystem_manager = _EcosystemStub()
     orch.gatherers = {"news": SimpleNamespace(

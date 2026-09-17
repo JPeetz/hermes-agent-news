@@ -13,6 +13,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from h11 import LocalProtocolError
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
@@ -179,6 +181,36 @@ class JudgeContractTests(unittest.TestCase):
             result = client.adjudicate_inputs(RECORDS)
         self.assertEqual(result["status"], "failed")
         self.assertIn("returned model", result["errors"][0]["error"])
+
+    def test_transport_exception_does_not_echo_credentials_in_artifacts(self):
+        credential = "synthetic-judge-secret"
+        transport_error = LocalProtocolError(
+            f"Illegal header value b'Bearer {credential}\\n'"
+        )
+        fake = FakeTransport([transport_error] * 3)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_path = Path(temp_dir) / "judge-artifact.json"
+            with JudgeClient(
+                JudgeConfig(api_key=credential, max_attempts=3),
+                transport=fake,
+                sleep=lambda _: None,
+            ) as client:
+                result = client.adjudicate_inputs(RECORDS, output_path=output_path)
+            persisted = output_path.read_text(encoding="utf-8")
+
+        artifacts = json.dumps(
+            {
+                "result": result,
+                "requests": result["requests"],
+                "errors": result["errors"],
+                "persisted": persisted,
+            }
+        )
+        self.assertNotIn(credential, artifacts)
+        self.assertTrue(result["errors"])
+        self.assertTrue(
+            all(request["error"] == "LocalProtocolError" for request in result["requests"])
+        )
 
 
 class BlindingAndValidationTests(unittest.TestCase):

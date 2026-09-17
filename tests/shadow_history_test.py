@@ -133,7 +133,7 @@ class HistoricalRecoveryTest(unittest.TestCase):
                            ("checkpoints/2026-09-17/analysis.json", {"_replay": {"spans": [span()], "cost_calls": []}})])
         metadata = {"run_id": 35192960377, "run_attempt": 1, "execution_sha": "a" * 40, "conclusion": "success"}
         with tempfile.TemporaryDirectory() as folder:
-            target = Path(folder) / "bundle"
+            target = Path(folder).resolve() / "bundle"
             result = import_legacy_bundle(payload, metadata, target)
             self.assertTrue(result["capabilities"]["filter_replay"])
             self.assertFalse(result["capabilities"]["pipeline_replay"])

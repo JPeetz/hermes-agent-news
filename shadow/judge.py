@@ -88,9 +88,18 @@ class JudgeBudgetExceeded(JudgeError):
 class _RequestFailure(JudgeError):
     """A failed logical request carrying every paid attempt's metrics."""
 
-    def __init__(self, message: str, requests: Sequence[Mapping[str, Any]]) -> None:
+    def __init__(
+        self,
+        message: str,
+        requests: Sequence[Mapping[str, Any]],
+        *,
+        code: str | None = None,
+        status_code: int | None = None,
+    ) -> None:
         super().__init__(message)
         self.requests = [dict(item) for item in requests]
+        self.code = code
+        self.status_code = status_code
 
 
 class _Transport(Protocol):
@@ -450,11 +459,54 @@ def _fallback_decisions(records: Sequence[Mapping[str, Any]], reason: str) -> li
     ]
 
 
+_SAFE_ERROR_CODES = {
+    # These are stable, locally-defined labels.  They are deliberately kept
+    # separate from exception text, which may contain provider response data
+    # or an echoed Authorization header.
+    "returned model",
+    "invalid finish reason",
+}
+
+
+def _safe_status_code(error: BaseException) -> int | None:
+    status_code = getattr(error, "status_code", None)
+    return status_code if type(status_code) is int and 100 <= status_code <= 599 else None
+
+
+def _safe_error_code(error: BaseException) -> str | None:
+    code = getattr(error, "code", None)
+    if isinstance(code, str) and code in _SAFE_ERROR_CODES:
+        return code
+    if isinstance(error, JudgeError):
+        # Match only controlled prefixes; never return the provider-supplied
+        # suffix (which can contain response or request material).
+        message = str(error)
+        if message.startswith("judge returned model "):
+            return "returned model"
+        if message.startswith("judge finish_reason "):
+            return "invalid finish reason"
+    return None
+
+
 def _public_exception(error: BaseException) -> str:
-    text = str(error).strip().replace("\n", " ")
-    if len(text) > 300:
-        text = text[:297] + "..."
-    return f"{type(error).__name__}: {text}" if text else type(error).__name__
+    """Return a diagnostics-safe exception label.
+
+    Transport libraries include request material in some exception messages
+    (for example h11's ``LocalProtocolError`` can echo an invalid Bearer
+    header).  Persist only the exception type, an HTTP status integer when it
+    is explicitly available, or one of the small locally allowlisted codes.
+    Never serialize ``str(error)`` into an experiment artifact.
+    """
+
+    name = type(error).__name__
+    status_code = _safe_status_code(error)
+    if status_code is not None:
+        return f"{name}: status={status_code}"
+
+    code = _safe_error_code(error)
+    if code is not None:
+        return f"{name}: code={code}"
+    return name
 
 
 def _status_code(response: Any) -> int | None:
@@ -811,10 +863,13 @@ class JudgeClient:
                 # transport failures and malformed responses alike, with no
                 # SDK/client retry layer underneath it.
                 continue
+        final_error = last_error or JudgeError("unknown error")
         raise _RequestFailure(
             f"{kind} request {request_index} failed after {self.config.max_attempts} attempts: "
-            f"{_public_exception(last_error or JudgeError('unknown error'))}",
+            f"{_public_exception(final_error)}",
             request_metrics,
+            code=_safe_error_code(final_error),
+            status_code=_safe_status_code(final_error),
         )
 
     def adjudicate_inputs(

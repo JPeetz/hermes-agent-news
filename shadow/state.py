@@ -682,7 +682,7 @@ class StateStore:
                     continue
                 candidates.append(row)
             candidates.sort(key=lambda row: (row.get("created_at") or "", row["experiment_id"]))
-            chosen = candidates[:limit]
+            chosen = candidates[:1 if serial else limit]
             for row in chosen:
                 row["status"] = STATUS_RUNNING
                 row["lease"] = {

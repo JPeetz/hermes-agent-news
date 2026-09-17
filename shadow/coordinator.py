@@ -718,6 +718,22 @@ class Coordinator:
             incumbent_route=incumbent_route,
             incumbent_model=incumbent_model,
         )
+        # Publication reconciliation may change a legacy bundle's hash after
+        # an unrelated main commit. It must not silently buy the same source
+        # experiment again. A source run/attempt is immutable within its full
+        # evaluator/policy/route/retry version; resealing needs a new version.
+        version_key = identity.as_dict()
+        version_key.pop("bundle_sha256", None)
+        for previous in self.state.list_records():
+            if (previous.get("source") or {}).get("metadata_only") is not False:
+                continue
+            previous_key = dict(previous.get("identity") or {})
+            previous_bundle = previous_key.pop("bundle_sha256", None)
+            if previous_key == version_key and previous_bundle != identity.bundle_sha256:
+                raise DiscoveryError(
+                    "Source run/attempt was already sealed for this experiment version; "
+                    "use an explicit new retry version to evaluate changed bundle evidence"
+                )
         source = manifest.get("source") if isinstance(manifest.get("source"), Mapping) else {}
         eligibility = manifest.get("eligibility") if isinstance(manifest.get("eligibility"), Mapping) else {}
         capabilities = manifest.get("capabilities") if isinstance(manifest.get("capabilities"), Mapping) else {}

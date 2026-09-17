@@ -19,10 +19,14 @@ September 13, 14, and 16 (111 inputs). September 17 is the engineering sample
 verified retry followed by a publication revert. These belong to recovery cases.
 September 9 is superseded, with its original publication independently verified.
 
-Only syntax/static review and read-only reconstruction have been performed.
-The repository owner runs the tests and authorizes live pipeline/model execution.
-No schedule, capture variable, credential, workflow dispatch or production route
-was changed while implementing this package.
+Static checks, the offline shadow suite and the existing CI regression tests
+have passed locally. Hosted qualification and the first model experiment are
+separate checks; a passing offline suite is not evidence of model access.
+Relevant offline tests are part of normal development. Production collection or
+publishing pipeline execution requires explicit user authorization; shadow model
+evaluation is separately authorized and bounded.
+Capture and scheduled evaluation are off by default. Production routing remains
+unchanged. The internal evaluator uses separately named protected model secrets.
 
 ## Commands
 
@@ -41,7 +45,7 @@ python3 scripts/shadow/import_legacy_bundle.py \
 python3 scripts/shadow/preflight.py \
   --bundle data/shadow-review/cohort/35192960377-1
 
-# Owner-run offline test suite (not executed during implementation).
+# Offline test suite; no pipeline or model calls.
 python3 -m unittest discover -s tests -p 'shadow_*_test.py' -v
 
 # Explicit paid access probe using synthetic records only.
