@@ -7,6 +7,11 @@ or publishes report output. Ordinary production runs retain the incumbent route.
 
 ## Current qualification
 
+Historical replay, engineering experiments and policy calibration run locally
+against the downloaded, verified bundles. CI is for ongoing prospective shadow
+runs after production publication. Both use the same evaluator and evidence
+contracts; historical iteration does not require a workflow dispatch.
+
 The September 8–17 historical artifacts were reconstructed without inference.
 All ten bundles support **filter replay**. None contain the dependencies needed
 for a full pipeline replay. The metadata-only inventory is in
@@ -20,8 +25,12 @@ verified retry followed by a publication revert. These belong to recovery cases.
 September 9 is superseded, with its original publication independently verified.
 
 Static checks, the offline shadow suite and the existing CI regression tests
-have passed locally. Hosted qualification and the first model experiment are
-separate checks; a passing offline suite is not evidence of model access.
+have passed. Hosted model access and the September 17 engineering comparison
+were also verified in [run 35233797762](https://github.com/trend-ai-acceleration-task-force/ai-news-aggregator/actions/runs/35233797762).
+The candidate returned valid scores for all 78 inputs, but the uncalibrated
+0.90 evidence-sufficiency gate converted every result to a retained abstention.
+That result qualifies the integration, not the decision policy. Further
+historical development runs locally.
 Relevant offline tests are part of normal development. Production collection or
 publishing pipeline execution requires explicit user authorization; shadow model
 evaluation is separately authorized and bounded.
@@ -51,11 +60,11 @@ python3 -m unittest discover -s tests -p 'shadow_*_test.py' -v
 # Explicit paid access probe using synthetic records only.
 python3 scripts/shadow/preflight.py --require-credentials --probe-models
 
-# Explicit paid filter experiment after credentials and tests are qualified.
+# Local historical filter experiment after credentials and tests are qualified.
 python3 scripts/shadow/run.py \
   --bundle data/shadow-review/cohort/35192960377-1 \
   --out data/shadow-review/experiments \
-  --policy config/shadow/news-relevance-v1-dev.json \
+  --policy config/shadow/news-relevance-v2-dev.json \
   --mode filter --cohort engineering --repeat-control
 ```
 
@@ -80,21 +89,39 @@ configuration only. It explicitly reports that model access has not been verifie
 
 ## Policy and evidence
 
-The checked-in policy is deliberately **not frozen**. Development uses
-conservative reject/keep/sufficiency thresholds, with abstention and errors
-retaining the item. Noul probabilities are preserved directly; there is no
-invented confidence score. Holdout and prospective execution require a versioned
+The current v2 development policy is deliberately **not frozen**. Its reject/keep/evidence
+thresholds were uncalibrated engineering settings, not recommended defaults.
+In particular, `sufficiency_min: 0.90` suppressed every classification in the
+first engineering experiment and must not be carried into a frozen policy
+without development evidence. Noul returns a probability for each proposition,
+not a separate confidence value; abstention is assigned by application code.
+Compare policies locally using saved scores when question meanings are unchanged.
+Changed questions require fresh inference. Evaluate both discarded relevant
+items and retained irrelevant items, and keep model-judge estimates distinct
+from independently labelled accuracy. Abstentions and errors retain the item.
+Holdout and prospective execution require a versioned
 policy with `frozen: true`. Prospective runs also require `prospective_start_date`
 set to a report date after policy freeze and after the historical cohort. Change
 the version and policy hash when changing any
 threshold, rubric, model revision, chunking or cohort definition.
+
+V2 corrects article binding: each bounded record is a named top-level state
+variable such as `article_0004`, and both questions refer directly to that
+backticked variable. Question IDs remain response bookkeeping only. Custom
+question instructions must include `{article}` for the adapter to substitute
+the variable reference. The original array-position wording is superseded;
+its scores must not be reused to calibrate the corrected questions. V2 retains
+the original thresholds solely to isolate the query change in development;
+the 0.90 evidence gate is still unqualified. A local 78-item check plus reversed
+batches and three singleton checks verified the corrected request format.
 
 Each experiment gets a new immutable identity derived from source run/attempt,
 bundle hash, evaluator commit and actual source-file hashes, policy, model route,
 mode and repeat settings. Existing experiment directories cannot be overwritten.
 Every retry consumes a request reservation; unreported usage/cost stays unknown.
 Terminal failures are not retried automatically. Use a new `--retry-version`
-(or the matching manual CI input) for an explicitly requested fresh attempt.
+for a fresh local historical attempt; the matching CI input applies to shadow
+operations.
 The quoted TypeSafe input price is an estimate, not an invoice. Historical
 aggregate cost estimates and unknown failed-attempt costs remain separate.
 

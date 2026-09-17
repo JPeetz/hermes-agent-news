@@ -1,8 +1,31 @@
 # TypeSafe news relevance shadow: implementation plan
 
-Reviewed 17 September 2026. The implementation is now on `feat/typesafe-news-shadow`;
-the experiment remains disabled and has not run inference. See the
-[implementation guide](../../shadow/README.md) for current commands and qualification status.
+Reviewed 17 September 2026; execution guidance updated after deployment and the
+first engineering experiment. The implementation is deployed from public main
+at `d4e7d871105a272212ea83ff9b01fe93dd2efb11`. Model access and the September 17
+filter comparison have completed; automatic evaluation remains disabled.
+See the [implementation guide](../../shadow/README.md) for current commands and
+qualification status. Baseline findings and staged plans below record the
+original review, rather than asserting that completed checks remain outstanding.
+
+**Execution split:** run historical recovery, replay and policy calibration
+locally. Use CI for ongoing prospective shadow runs after production publication.
+Reuse the same evaluator and immutable evidence contracts in both environments.
+Historical iteration does not require a CI dispatch.
+
+**Policy correction:** the initial `sufficiency_min=0.90` was an uncalibrated
+engineering setting. On September 17, every valid Jev evidence-sufficiency
+score was below it, so application code assigned 78 retained abstentions.
+This was not a model refusal or a separate confidence output. Compare saved
+scores locally, evaluate thresholds and question design on development dates,
+and freeze a supported policy before holdout or prospective evaluation.
+
+**Query correction:** the first adapter used prose array positions instead of
+the TypeSafe skill's direct state-variable references. V2 assigns each article
+a named state variable and substitutes that backticked variable into its two
+questions. Local inference confirmed that this materially changes the scores;
+the original query's threshold fits cannot calibrate the corrected query.
+The isolated binding check retains the original thresholds, model and evidence.
 
 Implement the handoff as an internal, bounded comparison service with two entry points: historical selection and discovery of newly published production runs. Start by recovering the filter evidence already preserved in CI. Add explicit capture for future runs, then support full downstream comparisons only when their dependencies are complete. Production continues to use the incumbent filter; no evaluator can promote Jev.
 
@@ -141,7 +164,7 @@ Add `agents/relevance/{contracts.py,incumbent.py,typesafe.py}`. Prefer a small `
 
 The live [HTTP API](https://docs.typesafe.ai/api.md) accepts `POST https://api.typesafe.ai/v1/systemone`, bearer authentication, `state`, `model` and a `questions` map. Noul answers are `{ "type": "noul", "noul": 0.92 }`; there is no separate Noul confidence field. The current [model documentation](https://docs.typesafe.ai/models.md) identifies `jev-1.13.0` and recommends revision pinning for calibrated policies. Pin that ID for the initial experiment, verify it in preflight and record the returned model on every response. An alias change must not silently change the cohort.
 
-Use shared state containing only the frozen bounded article records. Each article gets an independently worded frontier-relevance Noul and, if retained in the locked development design, an evidence-sufficiency Noul. Instructions explicitly point to the article's array position and define the rubric; question keys such as `r_0007` are only code identifiers. Batch 16 articles initially, reuse connections and allow at most two in-flight Jev calls. Freeze chunking/order with the policy because changing request context is an experimental change.
+Use shared state containing only the frozen bounded article records, each assigned to a named variable such as `article_0007`. Each article gets an independently worded frontier-relevance Noul and, if retained in the locked development design, an evidence-sufficiency Noul. Each question uses the backticked article variable directly and defines the rubric; question keys such as `r_0007` are only code identifiers. Batch 16 articles initially, reuse connections and allow at most two in-flight Jev calls. Freeze chunking/order with the policy because changing request context is an experimental change.
 
 The relevance proposition uses the current rubric's model/company/product/research/safety/policy/infrastructure scope, with explicit inclusion of controversy and negative AI news. Evidence sufficiency asks whether this bounded evidence supports a relevance judgment, not whether the story is true. No novelty, importance or article-kind decision changes downstream behavior.
 
@@ -168,7 +191,7 @@ Have a human calibrate at least 50 development items, balanced across kept/rejec
 
 Create `.github/workflows/news-shadow.yml` in the upstream source with a job-level repository guard for `trend-ai-acceleration-task-force/ai-news-aggregator`. Preserve the public-only publishing workflow and mirror removal rule. Confirm the new workflow survives one normal mirror update before enabling its schedule.
 
-Use manual dispatch first. Inputs: source run IDs plus optional explicit attempts, or an inclusive date range; capability mode (`filter|pipeline`); frozen policy/cohort version; and explicit retry/version selection. Reject mixed selectors, invalid dates, arbitrary repositories/URLs and untrusted evaluator refs. The job resolves one trusted evaluator commit and records it. The production source SHA is provenance, not permission to execute downloaded code.
+Historical selection and development use the local importer and `scripts/shadow/run.py`. Manual CI dispatch remains an entry point for shadow-run qualification and troubleshooting, not the historical calibration loop. Its inputs are source run IDs plus optional explicit attempts, or an inclusive date range; capability mode (`filter|pipeline`); frozen policy/cohort version; and explicit retry/version selection. Reject mixed selectors, invalid dates, arbitrary repositories/URLs and untrusted evaluator refs. The job resolves one trusted evaluator commit and records it. The production source SHA is provenance, not permission to execute downloaded code.
 
 Later enable a 15-minute internal poll, gated by `NEWS_SHADOW_ENABLED`. Both entry points call the same discovery/import/run/compare path. Cross-repository production completion does not directly trigger an internal `workflow_run`. GitHub describes the available [workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows); polling avoids adding a production dispatch dependency.
 

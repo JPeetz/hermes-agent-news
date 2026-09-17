@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import io
+import re
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from typing import Any
@@ -112,13 +113,44 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual([row["effective_keep"] for row in result["decisions"]], [True, False, True])
         self.assertEqual(client.calls[0]["url"], "https://api.typesafe.ai/v1/systemone")
         self.assertEqual(client.calls[0]["json"]["model"], DEFAULT_TYPESAFE_MODEL)
-        self.assertEqual(client.calls[0]["json"]["state"]["articles"], _records())
+        self.assertEqual(client.calls[0]["json"]["state"], {
+            "article_0000": _records()[0],
+            "article_0001": _records()[1],
+            "article_0002": _records()[2],
+        })
         self.assertEqual(sorted(client.calls[0]["json"]["questions"]), [
             "r_0000", "r_0001", "r_0002", "s_0000", "s_0001", "s_0002",
         ])
         self.assertNotIn("confidence", client.calls[0]["json"]["questions"]["r_0000"])
         self.assertEqual(result["requests"][0]["returned_model"], DEFAULT_TYPESAFE_MODEL)
         self.assertNotIn("typesafe-secret", json.dumps(result))
+
+    async def test_article_variable_binding_survives_reordering_and_chunk_boundaries(self):
+        class ResolvingClient:
+            async def post(self, url, **kwargs):
+                body = kwargs["json"]
+                answers = {}
+                for key, question in body["questions"].items():
+                    # Resolve the exact variable in each question, as opposed
+                    # to assuming that question IDs supply model-visible scope.
+                    variables = re.findall(r"`([^`]+)`", question["instructions"])
+                    self_test.assertEqual(len(variables), 1)
+                    article = body["state"][variables[0]]
+                    value = 0.99 if key.startswith("s_") else {
+                        "article-keep": 0.95, "article-reject": 0.04, "article-abstain": 0.50,
+                    }[article["id"]]
+                    answers[key] = {"type": "noul", "noul": value}
+                return FakeResponse({"model": DEFAULT_TYPESAFE_MODEL, "answers": answers,
+                                     "usage": {"input_tokens": 100, "output_tokens": 20}})
+
+        self_test = self
+        for records in (_records(), list(reversed(_records()))):
+            result = await TypeSafeAdapter(http_client=ResolvingClient()).evaluate(
+                records, policy={"version": "binding-test", "chunk_size": 2}, api_key="test"
+            )
+            self.assertEqual({row["id"]: row["decision"] for row in result["decisions"]}, {
+                "article-keep": "keep", "article-reject": "reject", "article-abstain": "abstain",
+            })
 
     async def test_missing_question_abstains_only_the_affected_article(self):
         payload = _typesafe_payload(include_third=False)

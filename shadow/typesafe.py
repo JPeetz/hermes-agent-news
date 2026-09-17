@@ -103,7 +103,7 @@ class TypeSafeConfig:
 
 
 DEFAULT_POLICY: dict[str, Any] = {
-    "version": "news-relevance-v1-dev",
+    "version": "news-relevance-v2-dev",
     "rubric_version": "frontier-news-v1",
     "reject_max": 0.10,
     "keep_min": 0.80,
@@ -364,15 +364,22 @@ def _question_ids(index: int) -> tuple[str, str]:
     return f"r_{index:04d}", f"s_{index:04d}"
 
 
+def _article_variable(index: int) -> str:
+    return f"article_{index:04d}"
+
+
 def _questions_for(records: Sequence[Mapping[str, str]], policy: Mapping[str, Any]) -> dict[str, Any]:
     relevance_instruction = policy.get(
         "relevance_instructions",
-        "Does this article belong in a frontier AI news newsletter? Evaluate only the article evidence in the state. Include model, company, product, research, safety, policy, infrastructure, controversy, and negative AI news. Exclude unrelated general technology, routine non-AI news, and generic marketing commentary.",
+        "Does {article} belong in a frontier AI news newsletter? Evaluate only this article's evidence. Include model, company, product, research, safety, policy, infrastructure, controversy, and negative AI news. Exclude unrelated general technology, routine non-AI news, and generic marketing commentary.",
     )
     sufficiency_instruction = policy.get(
         "sufficiency_instructions",
-        "Does the bounded title, source, and snippet for this article provide enough evidence to make the frontier-AI relevance judgment without guessing or importing facts not present in the state?",
+        "Does the bounded title, source, and snippet in {article} provide enough evidence to make the frontier-AI relevance judgment without guessing or importing facts not present in this article?",
     )
+    for instruction in (relevance_instruction, sufficiency_instruction):
+        if not isinstance(instruction, str) or "{article}" not in instruction:
+            raise _validation_error("Question instructions must contain the {article} variable")
     relevance_true = policy.get(
         "relevance_true",
         "The article is substantively about frontier artificial intelligence within the stated scope, including important safety, policy, infrastructure, or negative developments.",
@@ -392,14 +399,15 @@ def _questions_for(records: Sequence[Mapping[str, str]], policy: Mapping[str, An
     questions: dict[str, Any] = {}
     for index, _record in enumerate(records):
         relevance_id, sufficiency_id = _question_ids(index)
+        article = f"`{_article_variable(index)}`"
         questions[relevance_id] = {
             "type": "noul",
-            "instructions": f"For article array position {index}, {relevance_instruction}",
+            "instructions": relevance_instruction.replace("{article}", article),
             "criteria": {"true": relevance_true, "false": relevance_false},
         }
         questions[sufficiency_id] = {
             "type": "noul",
-            "instructions": f"For article array position {index}, {sufficiency_instruction}",
+            "instructions": sufficiency_instruction.replace("{article}", article),
             "criteria": {"true": sufficiency_true, "false": sufficiency_false},
         }
     return questions
@@ -707,7 +715,7 @@ class TypeSafeAdapter:
     ) -> tuple[int, dict[str, Any]]:
         bounded_records = [dict(record) for record in records]
         body = {
-            "state": {"articles": bounded_records},
+            "state": {_article_variable(index): record for index, record in enumerate(bounded_records)},
             "model": config.model,
             "questions": _questions_for(bounded_records, policy),
         }
