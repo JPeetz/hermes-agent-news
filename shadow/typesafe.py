@@ -25,6 +25,7 @@ from urllib.parse import urlsplit
 
 import httpx
 
+from .settings import candidate_question_templates
 from .contracts import (
     BundleValidationError as _BundleValidationError,
     sha256_json as _shared_sha256_json,
@@ -389,25 +390,7 @@ def _article_variable(index: int) -> str:
 
 
 def _questions_for(records: Sequence[Mapping[str, str]], policy: Mapping[str, Any]) -> dict[str, Any]:
-    question = policy["relevance_question"]
-    if (not isinstance(question, dict) or set(question) != {"type", "instructions", "criteria"}
-            or question["type"] != "choice" or not isinstance(question["criteria"], dict)
-            or set(question["criteria"]) != {"relevant", "irrelevant", "insufficient_evidence"}):
-        raise _validation_error("Relevance question must be a Choice with the three relevance labels")
-    critical = policy["critical_question"]
-    if (not isinstance(critical, dict) or set(critical) != {"type", "instructions"}
-            or critical["type"] != "noul"):
-        raise _validation_error("Critical-story question must be a Noul")
-    templates = []
-    for template in (question, critical):
-        try:
-            encoded = json.dumps(template, ensure_ascii=False, allow_nan=False)
-            instructions = json.dumps(template["instructions"], ensure_ascii=False, allow_nan=False)
-        except (TypeError, ValueError) as exc:
-            raise _validation_error("Question must be JSON") from exc
-        if "{article}" not in instructions:
-            raise _validation_error("Question instructions must contain the {article} variable")
-        templates.append(encoded)
+    templates = candidate_question_templates(policy)
     # The generated variable name contains only safe JSON string characters.
     # Copy the template per article; never insert article text into instructions.
     questions = {}
@@ -1203,8 +1186,6 @@ class TypeSafeAdapter:
         # Provider distributions may be rounded. Preserve the returned values;
         # this tolerance validates their shape without renormalizing them.
         if not math.isclose(sum(values.values()), 1.0, abs_tol=0.02):
-            return None
-        if values[choice] < max(values.values()):
             return None
         return {"choice": choice, "probabilities": values, "confidence": confidence}
 

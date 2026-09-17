@@ -150,8 +150,7 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
 
     async def test_malformed_choice_retains_item_with_explicit_error(self):
         for change in ({"choice": "other"}, {"confidence": None}, {"probabilities": {"relevant": .9}},
-                       {"probabilities": {"relevant": True, "irrelevant": 0, "insufficient_evidence": 0}},
-                       {"probabilities": {"relevant": .01, "irrelevant": .98, "insufficient_evidence": .01}}):
+                       {"probabilities": {"relevant": True, "irrelevant": 0, "insufficient_evidence": 0}}):
             with self.subTest(change=change):
                 payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": {
                     "r_0000": {**_choice_answer(), **change}, "c_0000": {"type": "noul", "noul": .99}}}
@@ -163,6 +162,19 @@ class TypeSafeAdapterTest(unittest.IsolatedAsyncioTestCase):
                 self.assertIsNone(row["relevance"])
                 self.assertIsNone(row["critical_probability"])
                 self.assertTrue(row["effective_keep"])
+
+    async def test_native_choice_is_not_recomputed_from_its_distribution(self):
+        choice = {"type": "choice", "choice": "relevant", "confidence": .1,
+                  "probabilities": {"relevant": .49, "irrelevant": .5, "insufficient_evidence": .01}}
+        payload = {"model": DEFAULT_TYPESAFE_MODEL, "answers": {
+            "r_0000": choice, "c_0000": {"type": "noul", "noul": .6}}}
+        result = await TypeSafeAdapter(http_client=FakeAsyncClient([FakeResponse(payload)])).evaluate(
+            _records()[:1], api_key="test"
+        )
+        self.assertEqual(result["decisions"][0]["relevance"], "relevant")
+        self.assertEqual(result["decisions"][0]["decision"], "keep")
+        self.assertEqual(result["decisions"][0]["probabilities"], choice["probabilities"])
+        self.assertEqual(result["decisions"][0]["critical_probability"], .6)
 
     async def test_legacy_evidence_gate_policy_is_not_silently_reinterpreted(self):
         client = FakeAsyncClient([])

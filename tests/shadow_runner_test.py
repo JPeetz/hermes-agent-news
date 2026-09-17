@@ -2,6 +2,8 @@
 import asyncio
 import json
 import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -59,6 +61,17 @@ class FakeJudge:
 
 
 class ShadowRunnerTest(unittest.TestCase):
+    def test_metadata_preflight_needs_only_the_standard_library(self):
+        result = subprocess.run(
+            [sys.executable, "-S", "-c",
+             "from shadow.runtime import inspect_run; "
+             "result = inspect_run(None, environ={}); "
+             "assert result['policy_version'] == 'news-relevance-v4-dev'; "
+             "assert not result['model_access_verified']"],
+            cwd=ROOT, text=True, capture_output=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_repeat_checks_model_response_identity_not_gateway_request_identity(self):
         def artifact(response_id, request_id):
             return {"status": "complete", "requests": [{"attempts": [

@@ -1,6 +1,7 @@
 """Versioned experiment policy and credential-free execution identity."""
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 import platform
@@ -16,6 +17,32 @@ JUDGE_VERSION = "news-editorial-judge/v3"
 RDSEC_BASE = "https://api.rdsec.trendmicro.com/prod/aiendpoint/v1"
 
 
+def candidate_question_templates(policy: dict) -> tuple[str, str]:
+    """Validate question templates without importing any model client dependencies."""
+    if type(policy.get("questions_per_article")) is not int or policy["questions_per_article"] != 2:
+        raise BundleValidationError("Policy requires a Choice and a Noul per article")
+    question = policy.get("relevance_question")
+    if (not isinstance(question, dict) or set(question) != {"type", "instructions", "criteria"}
+            or question["type"] != "choice" or not isinstance(question["criteria"], dict)
+            or set(question["criteria"]) != {"relevant", "irrelevant", "insufficient_evidence"}):
+        raise BundleValidationError("Relevance question must be a Choice with the three relevance labels")
+    critical = policy.get("critical_question")
+    if (not isinstance(critical, dict) or set(critical) != {"type", "instructions"}
+            or critical["type"] != "noul"):
+        raise BundleValidationError("Critical-story question must be a Noul")
+    templates = []
+    for template in (question, critical):
+        try:
+            encoded = json.dumps(template, ensure_ascii=False, allow_nan=False)
+            instructions = json.dumps(template["instructions"], ensure_ascii=False, allow_nan=False)
+        except (TypeError, ValueError) as exc:
+            raise BundleValidationError("Question must be JSON") from exc
+        if "{article}" not in instructions:
+            raise BundleValidationError("Question instructions must contain the {article} variable")
+        templates.append(encoded)
+    return tuple(templates)
+
+
 def load_policy(path: str | Path) -> dict:
     policy = read_json(path)
     if not isinstance(policy, dict) or policy.get("schema_version") != POLICY_SCHEMA:
@@ -24,8 +51,7 @@ def load_policy(path: str | Path) -> dict:
         raise BundleValidationError("Invalid policy version")
     if policy.get("model") != "jev-1.13.0":
         raise BundleValidationError("Policy must pin the reviewed Jev revision")
-    from .typesafe import _normalise_policy
-    _normalise_policy(policy)
+    candidate_question_templates(policy)
     if type(policy.get("frozen")) is not bool:
         raise BundleValidationError("Policy frozen status must be explicit")
     for key, maximum in (("chunk_size", 128), ("concurrency", 4), ("max_attempts", 3)):
