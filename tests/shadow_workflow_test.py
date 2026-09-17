@@ -3,6 +3,7 @@ import base64
 import io
 import json
 import os
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -10,6 +11,36 @@ from unittest.mock import patch
 from urllib.error import HTTPError
 
 import yaml
+
+
+class SelectorWorkflowTests(unittest.TestCase):
+    def _select(self, source_runs, from_date="", to_date=""):
+        root = Path(__file__).resolve().parents[1]
+        workflow = yaml.safe_load((root / ".github/workflows/news-shadow.yml").read_text())
+        step = next(step for step in workflow["jobs"]["metadata-acquisition"]["steps"]
+                    if step.get("id") == "selector")
+        script = step["run"].replace("${{ github.event_name }}", "workflow_dispatch")
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "output"
+            output.touch()
+            result = subprocess.run(["bash", "-e", "-o", "pipefail", "-c", script],
+                cwd=root, capture_output=True, text=True,
+                env={**os.environ, "RUNNER_TEMP": directory, "GITHUB_OUTPUT": str(output),
+                     "SOURCE_RUNS": source_runs, "FROM_DATE": from_date, "TO_DATE": to_date})
+            return result, output.read_text()
+
+    def test_manual_source_attempt_survives_shell_to_cli_handoff(self):
+        result, output = self._select("35192960377:1")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(output, "valid=true\n")
+
+    def test_invalid_or_unbounded_selector_never_marks_ready(self):
+        for selector in (("", "", ""), ("", "2026-09-01", ""),
+                         ("", "2026-09-01", "2026-09-17"), ("invalid", "", "")):
+            with self.subTest(selector=selector):
+                result, output = self._select(*selector)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertEqual(output, "")
 
 
 class StateRestoreTests(unittest.TestCase):

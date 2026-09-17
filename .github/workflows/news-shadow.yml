@@ -132,7 +132,11 @@ jobs:
             echo 'evaluate requires source_runs or an explicit report-date range.' >&2
             exit 2
           fi
-          selector_args=(discover --metadata <(printf '%s\n' '{"runs": []}')
+          # A process substitution stored in an array loses its file
+          # descriptor before the later Python invocation. Use a real file.
+          selector_metadata="$RUNNER_TEMP/news-shadow-selector-metadata.json"
+          printf '%s\n' '{"runs": []}' > "$selector_metadata"
+          selector_args=(discover --metadata "$selector_metadata"
             --state-dir "$RUNNER_TEMP/news-shadow-selector" --trusted-ref main)
           if [[ -n "$SOURCE_RUNS" ]]; then
             selector_args+=(--source-runs "$SOURCE_RUNS")
@@ -305,13 +309,13 @@ jobs:
               value = json.load(handle)
           print(value.get("run_attempt", 1))
           PY
-            )"
+            )" || return 1
             if [[ "$latest_attempt" =~ ^[1-9][0-9]*$ ]] && (( latest_attempt > attempt_number )); then
               gh api \
                 "/repos/flyryan/ai-news-aggregator/actions/runs/${run_id}/attempts/$((attempt_number + 1))" \
                 > "$next_meta" || return 1
             else
-              printf '%s\n' '{}' > "$next_meta"
+              printf '%s\n' '{}' > "$next_meta" || return 1
             fi
             selected="$(python3 - "$artifact_json" "$attempt_meta" "$next_meta" "$attempt_number" <<'PY'
           import json
@@ -368,7 +372,7 @@ jobs:
             gh api "/repos/flyryan/ai-news-aggregator/actions/artifacts/${artifact_id}/zip" \
               > "$artifact_zip" || return 1
             if [[ -n "$expected_digest" ]]; then
-              python3 - "$artifact_zip" "$expected_digest" <<'PY'
+              python3 - "$artifact_zip" "$expected_digest" <<'PY' || return 1
           import hashlib
           import sys
           expected = sys.argv[2]
