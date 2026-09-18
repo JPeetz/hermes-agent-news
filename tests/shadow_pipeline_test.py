@@ -7,12 +7,14 @@ reviewed.
 
 from __future__ import annotations
 
+import json
 import unittest
 from types import SimpleNamespace
 from unittest import mock
 
 from agents import orchestrator as orchestrator_module
 from agents.analyzers.news_analyzer import NewsAnalyzer
+from agents.analyzers.reddit_analyzer import RedditAnalyzer
 from agents.base import AnalyzedItem, CollectedItem
 from agents.orchestrator import MainOrchestrator
 from shadow.replay_context import ReplayIntegrityError
@@ -173,6 +175,43 @@ class ReplayConstructionTests(unittest.IsolatedAsyncioTestCase):
                 with self.assertRaisesRegex(RuntimeError, "stop after phase 0"):
                     await orchestrator.run()
         catalog.assert_not_awaited()
+
+
+class RedditRankingCorrectionTests(unittest.IsolatedAsyncioTestCase):
+    async def test_reduce_uses_corrected_summary_and_exact_ranked_ids(self):
+        # The production incident contained an initial placeholder ranking,
+        # followed by a complete correction in the same successful response.
+        items = [
+            AnalyzedItem(
+                item=_item(f"{index:012x}", f"OpenAI discussion {index}", "Community evidence."),
+                summary=f"Analyzed discussion {index}.", importance_score=95 - index,
+                reasoning="Substantive community discussion.", themes=[],
+            )
+            for index in range(1, 12)
+        ]
+        corrected_ids = [item.item.id for item in reversed(items[1:])]
+        corrected_summary = "**r/LocalLLaMA** discussed open models and agent security."
+        draft = {"top_10": ["10a..."] + [item.item.id for item in items[:9]],
+                 "category_summary": "placeholder"}
+        corrected = {"top_10": corrected_ids, "category_summary": corrected_summary}
+        content = (
+            f"```json\n{json.dumps(draft)}\n```\n"
+            "Wait, let me correct that output.\n"
+            f"```json\n{json.dumps(corrected)}\n```"
+        )
+        client = _AsyncClient(content)
+        analyzer = RedditAnalyzer(async_client=client, target_date="2026-09-18")
+        with mock.patch("agents.staleness_checker.StalenessChecker") as checker:
+            checker.return_value.process_items = mock.AsyncMock(return_value=0)
+            report = await analyzer._reduce_phase(items, [], [], "Saved batch reasoning.")
+            checker.return_value.process_items.assert_awaited_once()
+
+        self.assertEqual(report.category_summary, corrected_summary)
+        self.assertEqual([item.item.id for item in report.top_items], corrected_ids)
+        self.assertEqual(report.all_items, items)
+        self.assertEqual(report.degradations, [])
+        self.assertEqual(len(client.calls), 1)
+        self.assertEqual(client.calls[0]["caller"], "reddit_analyzer.reduce_rank")
 
 
 class ReplayIntegrityPropagationTests(unittest.IsolatedAsyncioTestCase):

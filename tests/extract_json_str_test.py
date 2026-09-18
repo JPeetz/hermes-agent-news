@@ -110,6 +110,45 @@ class ExtractJsonStrTest(unittest.TestCase):
         )
 
 
+class CorrectedRankingTest(unittest.TestCase):
+    """A complete correction must supersede the draft from the same response."""
+
+    def setUp(self):
+        self.extract = _load_extract_json_str()
+        self.keys = ("top_10", "category_summary")
+        self.draft = {"top_10": ["10a..."], "category_summary": "placeholder"}
+        self.corrected = {"top_10": ["2740b29ad905"], "category_summary": "Complete summary."}
+
+    def fence(self, value):
+        return f'```json\n{json.dumps(value)}\n```'
+
+    def test_complete_correction_replaces_draft(self):
+        response = self.fence(self.draft) + '\nWait — let me correct that output.\n' + self.fence(self.corrected)
+        self.assertEqual(json.loads(self.extract(response, required_keys=self.keys)), self.corrected)
+        # Other consumers keep their existing first-object behavior.
+        self.assertEqual(json.loads(self.extract(response)), self.draft)
+
+    def test_unrelated_trailing_object_does_not_replace_ranking(self):
+        response = self.fence(self.corrected) + '\n' + self.fence({"methodology": "score order"})
+        self.assertEqual(json.loads(self.extract(response, required_keys=self.keys)), self.corrected)
+
+    def test_incomplete_trailing_correction_does_not_replace_complete_result(self):
+        for tail in (
+            '```json\n{"top_10": ["new"], "category_summary": "unfinished\n```',
+            self.fence({"top_10": ["new"]}),
+            self.fence([self.corrected]),
+        ):
+            with self.subTest(tail=tail):
+                response = self.fence(self.corrected) + '\n' + tail
+                self.assertEqual(json.loads(self.extract(response, required_keys=self.keys)), self.corrected)
+
+    def test_raw_single_ranking_still_parses(self):
+        self.assertEqual(
+            json.loads(self.extract(json.dumps(self.corrected), required_keys=self.keys)),
+            self.corrected,
+        )
+
+
 class RawControlCharacterTest(unittest.TestCase):
     """ox-alpha emits literal newlines/tabs inside JSON string values.
 

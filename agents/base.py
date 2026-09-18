@@ -104,7 +104,7 @@ def _env_int(name: str, default: int, minimum: int = 1) -> int:
     return value
 
 
-def extract_json_str(content: str) -> str:
+def extract_json_str(content: str, *, required_keys: tuple[str, ...] = ()) -> str:
     """Extract a JSON object/array substring from an LLM response.
 
     Mirrors the robust extraction used by BaseAnalyzer._parse_json_response so
@@ -115,6 +115,10 @@ def extract_json_str(content: str) -> str:
     to the caller. Kept fully self-contained (no module-level helpers): the
     regression suite lifts this exact function out via ast and runs it
     standalone.
+
+    When required_keys is supplied, prefer the last complete fenced object
+    with those fields. This lets ranking responses replace an initial draft
+    with a correction without mistaking later, unrelated JSON for the result.
     """
 
     def _escape_control_chars_in_strings(text: str) -> str:
@@ -195,6 +199,19 @@ def extract_json_str(content: str) -> str:
         return ''.join(out)
 
     content = (content or "").strip()
+
+    if required_keys:
+        import json
+
+        blocks = re.findall(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
+        for block in reversed(blocks):
+            candidate = extract_json_str(block)
+            try:
+                parsed = json.loads(candidate)
+            except (ValueError, TypeError):
+                continue
+            if isinstance(parsed, dict) and all(key in parsed for key in required_keys):
+                return candidate
 
     # Prefer JSON inside a markdown code block when present.
     code_block_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
@@ -1505,7 +1522,9 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
                 )
 
             ranking_result = sanitize_ranking_result(
-                self._parse_json_response(response.content),
+                self._parse_json_response(
+                    response.content, required_keys=("top_10", "category_summary")
+                ),
                 where=f"{self.category} reduce",
             )
             if response.stop_reason == "max_tokens" and ranking_result.get('category_summary'):
@@ -1721,7 +1740,10 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
 
         logger.info(f"Saved report to {filepath}")
 
-    def _parse_json_response(self, content: str, expected_items: Optional[int] = None) -> dict:
+    def _parse_json_response(
+        self, content: str, expected_items: Optional[int] = None,
+        *, required_keys: tuple[str, ...] = (),
+    ) -> dict:
         """Parse JSON from LLM response, handling various formats.
 
         Handles:
@@ -1737,7 +1759,7 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
         # and unescaped inner quotes) that this method's own walk cannot
         # recover from. Everything below (truncation detection, repair,
         # recovery) then operates on sanitized text.
-        content = extract_json_str(content)
+        content = extract_json_str(content, required_keys=required_keys)
 
         # Try to extract JSON from markdown code block first
         code_block_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
