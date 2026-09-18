@@ -7,6 +7,7 @@
 
 import MiniSearch from 'minisearch';
 import type { SearchDocument, Category } from '$lib/types';
+import { decodeItemTitle } from './itemTitles';
 
 interface CorpusDoc extends SearchDocument {
 	ref: string;
@@ -37,7 +38,7 @@ function buildIndex(docs: CorpusDoc[]): MiniSearch<CorpusDoc> {
 			fuzzy: 0.2
 		}
 	});
-	index.addAll(docs);
+	index.addAll(docs.map(decodeItemTitle));
 	return index;
 }
 

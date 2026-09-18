@@ -4,6 +4,7 @@
 
 import type { DataIndex, DaySummary, CategoryData, Category } from '$lib/types';
 import { dataUrl } from './dataBase';
+import { decodeItemTitle } from './itemTitles';
 
 const cache = new Map<string, unknown>();
 type LoadIndexOptions = {
@@ -27,7 +28,7 @@ export async function loadIndex({ forceRefresh = false }: LoadIndexOptions = {})
 		throw new Error(`Failed to load data index: ${response.status}`);
 	}
 
-	const data = await response.json();
+	const data: DataIndex = await response.json();
 	cache.set(cacheKey, data);
 	return data;
 }
@@ -53,7 +54,10 @@ export async function loadDaySummary(date: string): Promise<DaySummary> {
 		throw new Error(`Failed to load summary for ${date}: ${response.status}`);
 	}
 
-	const data = await response.json();
+	const data: DaySummary = await response.json();
+	for (const category of Object.values(data.categories ?? {})) {
+		if (category.top_items) category.top_items = category.top_items.map(decodeItemTitle);
+	}
 	cache.set(cacheKey, data);
 	return data;
 }
@@ -72,7 +76,8 @@ export async function loadCategoryData(date: string, category: Category): Promis
 		throw new Error(`Failed to load ${category} data for ${date}: ${response.status}`);
 	}
 
-	const data = await response.json();
+	const data: CategoryData = await response.json();
+	if (data.items) data.items = data.items.map(decodeItemTitle);
 	cache.set(cacheKey, data);
 	return data;
 }

@@ -10,7 +10,8 @@
     "postbuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',b='../.data-backup';if(fs.existsSync(b)){fs.cpSync(b,d,{recursive:true});fs.rmSync(b,{recursive:true});console.log('Restored web/data')}\"",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test:titles": "node --experimental-strip-types --test tests/itemTitles.test.ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.0",
@@ -31,6 +32,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "date-fns": "^4.1.0",
     "dompurify": "^3.0.0",
+    "entities": "6.0.1",
     "minisearch": "^7.1.0"
   }
 }

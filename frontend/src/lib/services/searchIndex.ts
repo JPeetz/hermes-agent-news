@@ -9,6 +9,7 @@
 
 import type { SearchDocument, SearchResult, Category } from '$lib/types';
 import { dataBase, dataUrl } from './dataBase';
+import { decodeItemTitle } from './itemTitles';
 
 interface CorpusDoc extends SearchDocument {
 	ref: string;
@@ -62,7 +63,8 @@ async function initializeFallback(): Promise<boolean> {
 	try {
 		const response = await fetch(dataUrl('/data/search-corpus.json'));
 		if (!response.ok) return false;
-		fallbackDocs = await response.json();
+		const docs: CorpusDoc[] = await response.json();
+		fallbackDocs = docs.map(decodeItemTitle);
 		docCount = fallbackDocs?.length ?? 0;
 		initialized = true;
 		return true;
