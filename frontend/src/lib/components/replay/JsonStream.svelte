@@ -30,6 +30,8 @@
 	export let reduced = false;
 	/** Native decision probabilities are displayed as values, without score ranking. */
 	export let showScores = true;
+	/** Show the recorded filter outcome on Jev article rows. */
+	export let showDecisionOutcome = false;
 	/**
 	 * id → item title for the replay's date, so output that references items only
 	 * by hash (the continuity matcher, the curator) reads as stories instead.
@@ -91,6 +93,12 @@
 			if (frac !== null && e.value?.kind === 'number') return { n: Number(e.value.value), frac };
 		}
 		return null;
+	}
+
+	function keptByFilter(item: PartialValue): boolean | null {
+		if (item.kind !== 'object') return null;
+		const value = item.entries.find((entry) => entry.key === 'effective_keep')?.value;
+		return value?.kind === 'boolean' ? value.value : null;
 	}
 
 	/** Which field the badge is showing, so its tooltip can name it. */
@@ -251,6 +259,7 @@
 				{@const open = isOpen(i, items.length, expanded)}
 				{@const writing = live && !complete && i === items.length - 1}
 				{@const score = scoreOf(item)}
+				{@const kept = showDecisionOutcome ? keptByFilter(item) : null}
 				<li
 					class="js-card"
 					class:writing
@@ -262,6 +271,14 @@
 						     you tell what the sort actually moved. -->
 						<span class="js-idx">{i + 1}</span>
 						<span class="js-preview">{previewOf(item, 160, resolver)}</span>
+						{#if showDecisionOutcome}
+							<span
+								class="js-outcome"
+								class:included={kept === true}
+								class:excluded={kept === false}
+								title={kept === null ? 'Filter outcome not recorded' : `${kept ? 'Included' : 'Excluded'} by the relevance filter`}
+							>{kept === null ? 'Not recorded' : kept ? 'Included' : 'Excluded'}</span>
+						{/if}
 						{#if score}
 							<span
 								class="js-badge"
@@ -512,6 +529,21 @@
 	:global(.dark) .js-card.open .js-preview {
 		color: #f5f5f5;
 	}
+	.js-outcome {
+		flex: none;
+		font-size: 0.6rem;
+		font-weight: 700;
+		padding: 0 5px;
+		border-radius: 3px;
+		white-space: nowrap;
+		color: #525252;
+		background: rgb(0 0 0 / 0.05);
+	}
+	.js-outcome.included { color: #0f766e; background: rgb(13 148 136 / 0.1); }
+	.js-outcome.excluded { color: #b91c1c; background: rgb(185 28 28 / 0.08); }
+	:global(.dark) .js-outcome { color: #d4d4d4; background: rgb(255 255 255 / 0.08); }
+	:global(.dark) .js-outcome.included { color: #5eead4; background: rgb(13 148 136 / 0.16); }
+	:global(.dark) .js-outcome.excluded { color: #fca5a5; background: rgb(185 28 28 / 0.16); }
 	/* The score, on the collapsed row. Tinted by value rather than a bar: at this size
 	   a bar is a smear, whereas a number you can actually read is the thing being
 	   sorted on. The expanded field keeps its bar. */

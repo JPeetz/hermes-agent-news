@@ -877,6 +877,7 @@
 						{onNeedItemIndex}
 						{reduced}
 						showScores={!isDecision}
+						showDecisionOutcome={decisionOutput !== null}
 					/>
 					{#if parsedJson.epilogue}
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
