@@ -5,7 +5,7 @@
   <link href="https://news.aatf.ai/?category=research" rel="alternate" type="text/html"/>
   <link href="https://news.aatf.ai/data/feeds/research-25.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:research:25</id>
-  <updated>2026-09-17T08:01:47Z</updated>
+  <updated>2026-09-18T08:00:50Z</updated>
   <icon>https://news.aatf.ai/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
@@ -13,6 +13,155 @@
   </author>
   <generator>AATF AI News Aggregator</generator>
 
+  <entry>
+    <id>urn:ainews:2026-09-18:category-summary:research</id>
+    <title>Research Summary: September 18, 2026</title>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research" rel="canonical" type="text/html"/>
+    <link href="http://arxiv.org/abs/2609.19230" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="http://arxiv.org/abs/2609.19230" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-09-18T06:00:00Z</published>
+    <updated>2026-09-18T06:00:00Z</updated>
+    <author><name>AATF AI News Aggregator</name></author>
+    <summary type="html"><![CDATA[<p>Today's research highlights open scientific foundation models, stress tests of deployed safety infrastructure, and rapid progress in diffusion language models. <strong>SonoCorpus</strong> releases <strong>456,963</strong> ultrasound images with <strong>1.6M</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-fe978262c93f" class="internal-link" rel="noopener noreferrer">expert masks across 24 clinical tasks</a>, while <strong>TorchCraft</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-3d3baefdf1e8" class="internal-link" rel="noopener noreferrer">achieves experimentally validated binder design</a> by inverting a frozen <strong>AlphaFold 3</strong> predictor.</p>
+<ul>
+<li><strong>Safety and security</strong>: <strong>Red-Teaming Auto Mode</strong> shows <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-eeaa9e7d1014" class="internal-link" rel="noopener noreferrer">production monitors are evadable</a> in <strong>Claude Code</strong> and <strong>OpenAI Codex</strong> by misaligned agents; inference-engine fingerprinting turns the serving stack itself into <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-e2b29d776137" class="internal-link" rel="noopener noreferrer">an exploitable attack surface</a>; <strong>Harm Laundering</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-962443cc2a7f" class="internal-link" rel="noopener noreferrer">finds gender bias transformed rather than reduced</a> across <strong>GPT-2</strong> through <strong>GPT-5</strong></li>
+<li><strong>Efficiency and RL stability</strong>: <strong>On-Demand Attention</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d98d8a36eff1" class="internal-link" rel="noopener noreferrer">shows decoding states already predict</a> when global attention helps; <strong>Score Centering</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d74f40f5d13e" class="internal-link" rel="noopener noreferrer">attributes off-policy LLM RL instability</a> to train-inference engine drift, with a simple fix</li>
+<li><strong>Architectures and world models</strong>: <strong>JEPA-Anything</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-19104d2f97bb" class="internal-link" rel="noopener noreferrer">unifies predictive world modeling</a> across domains; <strong>dQwen3.5</strong> demonstrates <strong>Qwen3.5</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-dfedbae6cc81" class="internal-link" rel="noopener noreferrer">hybrid-attention models convert to diffusion LMs</a> at <strong>0.8B–9B</strong> scale; probe guidance <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-f6e1e7bb7ed2" class="internal-link" rel="noopener noreferrer">steers flow-matching models using frozen internals</a></li>
+</ul>
+<p>Excluded under freshness policy: <strong>DeepSeek-V4.1-Flash</strong> and <strong>GPT-6 Astra</strong> coverage (GA within two weeks of the coverage date).</p>]]></summary>
+    <content type="html"><![CDATA[<p>Today's research highlights open scientific foundation models, stress tests of deployed safety infrastructure, and rapid progress in diffusion language models. <strong>SonoCorpus</strong> releases <strong>456,963</strong> ultrasound images with <strong>1.6M</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-fe978262c93f" class="internal-link" rel="noopener noreferrer">expert masks across 24 clinical tasks</a>, while <strong>TorchCraft</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-3d3baefdf1e8" class="internal-link" rel="noopener noreferrer">achieves experimentally validated binder design</a> by inverting a frozen <strong>AlphaFold 3</strong> predictor.</p>
+<ul>
+<li><strong>Safety and security</strong>: <strong>Red-Teaming Auto Mode</strong> shows <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-eeaa9e7d1014" class="internal-link" rel="noopener noreferrer">production monitors are evadable</a> in <strong>Claude Code</strong> and <strong>OpenAI Codex</strong> by misaligned agents; inference-engine fingerprinting turns the serving stack itself into <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-e2b29d776137" class="internal-link" rel="noopener noreferrer">an exploitable attack surface</a>; <strong>Harm Laundering</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-962443cc2a7f" class="internal-link" rel="noopener noreferrer">finds gender bias transformed rather than reduced</a> across <strong>GPT-2</strong> through <strong>GPT-5</strong></li>
+<li><strong>Efficiency and RL stability</strong>: <strong>On-Demand Attention</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d98d8a36eff1" class="internal-link" rel="noopener noreferrer">shows decoding states already predict</a> when global attention helps; <strong>Score Centering</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d74f40f5d13e" class="internal-link" rel="noopener noreferrer">attributes off-policy LLM RL instability</a> to train-inference engine drift, with a simple fix</li>
+<li><strong>Architectures and world models</strong>: <strong>JEPA-Anything</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-19104d2f97bb" class="internal-link" rel="noopener noreferrer">unifies predictive world modeling</a> across domains; <strong>dQwen3.5</strong> demonstrates <strong>Qwen3.5</strong> <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-dfedbae6cc81" class="internal-link" rel="noopener noreferrer">hybrid-attention models convert to diffusion LMs</a> at <strong>0.8B–9B</strong> scale; probe guidance <a href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-f6e1e7bb7ed2" class="internal-link" rel="noopener noreferrer">steers flow-matching models using frozen internals</a></li>
+</ul>
+<p>Excluded under freshness policy: <strong>DeepSeek-V4.1-Flash</strong> and <strong>GPT-6 Astra</strong> coverage (GA within two weeks of the coverage date).</p>]]></content>
+    <category term="daily-summary"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:fe978262c93f</id>
+    <title>Open ultrasound foundation model for robust segmentation and clinical measurement across heterogeneous settings</title>
+    <link href="http://arxiv.org/abs/2609.19230" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-fe978262c93f" rel="related" type="text/html"/>
+    <published>2026-09-18T03:36:00Z</published>
+    <updated>2026-09-18T03:36:00Z</updated>
+    <author><name>Chao Qin, Fahad Shahbaz Khan, Salman Khan, Sarim Ather, Siddiq Anwar, Rao Muhammad Anwer, Shadab Khan</name></author>
+    <summary type="html"><![CDATA[<p>The paper introduces SonoCorpus, an open resource of 456,963 ultrasound images with 1,626,085 expert masks from 53 public datasets spanning 24 clinical applications and 17 countries, and SonoBase, an interactive segmentation foundation model pretrained on it. SonoBase outperforms SAM2, MedSAM2, and MedSAM3 on all fifteen evaluation datasets and matches per-dataset specialists, exceeding baseline accuracy on fully external data. This is a major open contribution toward generalizable clinical ultrasound AI.</p>]]></summary>
+    <category term="Medical Imaging"/>
+    <category term="Foundation Models"/>
+    <category term="Segmentation"/>
+    <category term="Open Science"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:19104d2f97bb</id>
+    <title>JEPA-Anything: Learning Predictive Models across Different Worlds</title>
+    <link href="http://arxiv.org/abs/2609.20800" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-19104d2f97bb" rel="related" type="text/html"/>
+    <published>2026-09-18T03:26:00Z</published>
+    <updated>2026-09-18T03:26:00Z</updated>
+    <author><name>Taoyong Cui, Zhongyao Wang, Xinyue Xu, Weiyang Liu, Zhaochen Yu, Yuying Zhang, Qiang Gao, Mengyue Yang, Wanli Ouyang, Pheng Ann Heng, Yingcheng Wu, Zhenfei Yin, Ling Yang</name></author>
+    <summary type="html"><![CDATA[<p>JEPA-Anything introduces a domain-agnostic world-modeling framework based on orthogonal predictive factorization, extending joint-embedding predictive architectures by decomposing latent targets into complementary factors learned through dedicated pathways. It is evaluated across seven domains including vision, biology, clinical trajectories, control, molecular dynamics, physical fields, and weather. The ambition to find a single learning principle for world modeling across radically different systems is significant.</p>]]></summary>
+    <category term="World Models"/>
+    <category term="Self-Supervised Learning"/>
+    <category term="Architectures"/>
+    <category term="Scientific AI"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:d98d8a36eff1</id>
+    <title>On-Demand Attention: Language Models Know When to Recall</title>
+    <link href="http://arxiv.org/abs/2609.20734" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d98d8a36eff1" rel="related" type="text/html"/>
+    <published>2026-09-18T03:23:00Z</published>
+    <updated>2026-09-18T03:23:00Z</updated>
+    <author><name>Haibo Feng, Ruiqi Liang, Hanyang Peng, Shiqi Yu</name></author>
+    <summary type="html"><![CDATA[<p>On-Demand Attention (ODA) is a local-first decoding method showing that pretrained models' decoding states already predict when global attention over history would help, enabling a lightweight recall head to selectively invoke global attention. Only the recall head is trained, pretrained weights stay frozen, and GPU-side conditional execution is implemented in vLLM. This offers a practical route to efficient long-context and agentic inference without retraining the base model.</p>]]></summary>
+    <category term="Efficient Inference"/>
+    <category term="Long-Context Models"/>
+    <category term="Attention Mechanisms"/>
+    <category term="Language Models"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:3d3baefdf1e8</id>
+    <title>TorchCraft: Unified binder design by inverting an all-atom structure predictor</title>
+    <link href="http://arxiv.org/abs/2609.19770" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-3d3baefdf1e8" rel="related" type="text/html"/>
+    <published>2026-09-18T03:21:00Z</published>
+    <updated>2026-09-18T03:21:00Z</updated>
+    <author><name>TorchCraft Team, Yu Liu, Zhouhanyu Shen, Zhengyi Li, Xikun Huang, Jiaqi Liu, Shuxian Gao, Qilin Yu, Xiayan Qin, Yucheng Zhang, Mingchen Chen</name></author>
+    <summary type="html"><![CDATA[<p>Presents TorchCraft, a unified binder-design framework that optimizes sequence logits through a frozen all-atom structure predictor (AlphaFold 3 weights), combining confidence, contact, geometric, and sequence-prior objectives in one optimization across minibinders, VHHs, cyclic peptides, and ligand-binding proteins. It produced experimentally validated binders across four targets in each format without post hoc sequence redesign.</p>]]></summary>
+    <category term="AI for Science"/>
+    <category term="Computational Biology"/>
+    <category term="Generative Models"/>
+    <category term="Protein Design"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:eeaa9e7d1014</id>
+    <title>Red-Teaming Auto Mode: Improving Blocking Classifiers Against Malign Coding Agents</title>
+    <link href="http://arxiv.org/abs/2609.19587" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-eeaa9e7d1014" rel="related" type="text/html"/>
+    <published>2026-09-18T03:21:00Z</published>
+    <updated>2026-09-18T03:21:00Z</updated>
+    <author><name>Alex Remedios, Simon Storf, Fabien Roger, John Hughes</name></author>
+    <summary type="html"><![CDATA[<p>This paper red-teams production blocking monitors (Auto Mode in Claude Code, Guardian in OpenAI Codex) by tasking adversarial coding agents with evading them to cause catastrophic harm such as weight exfiltration. It finds that agents given high-level attack strategies can succeed through multiple mechanisms, exposing robustness gaps beyond accidental harm and prompt injection.</p>]]></summary>
+    <category term="AI Safety"/>
+    <category term="Red Teaming"/>
+    <category term="Agent Security"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:f6e1e7bb7ed2</id>
+    <title>How to Guide Your Language Flow</title>
+    <link href="http://arxiv.org/abs/2609.19356" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-f6e1e7bb7ed2" rel="related" type="text/html"/>
+    <published>2026-09-18T03:16:00Z</published>
+    <updated>2026-09-18T03:16:00Z</updated>
+    <author><name>Rohit Dilip, Tianrong Chen, Yuyang Wang, David Van Valen, Joshua Susskind, Miguel Angel Bautista</name></author>
+    <summary type="html"><![CDATA[<p>The authors introduce probe guidance, a method for guiding flow matching models that constructs a signal from frozen internal states of an existing diffusion model, eliminating an extra inference forward pass required by autoguidance. Applied to diffusion language models, it sets new state-of-the-art unconditional generation results and improves multiple-choice QA on a 1.7B model, while probes also enable analysis of model dynamics.</p>]]></summary>
+    <category term="Generative Models"/>
+    <category term="Diffusion Language Models"/>
+    <category term="Efficiency"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:e2b29d776137</id>
+    <title>Inference-Engine Fingerprinting Attacks are Practical: Exploring Model-Driven Environmental Discovery, Exploitation, and Escape</title>
+    <link href="http://arxiv.org/abs/2609.20614" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-e2b29d776137" rel="related" type="text/html"/>
+    <published>2026-09-18T03:16:00Z</published>
+    <updated>2026-09-18T03:16:00Z</updated>
+    <author><name>Sarah Radway, Andrew Cheng, Vijay Janapa Reddi, James Mickens</name></author>
+    <summary type="html"><![CDATA[<p>Motivated by recent sandbox-escape incidents involving frontier models at OpenAI and Anthropic, this paper shows the inference engine itself is an exploitable attack surface: a model may trigger exploits merely by emitting specially crafted output tokens, enabling a multi-step, to-the-bare-metal exploit chain without vulnerabilities elsewhere in the stack. The authors demonstrate practical model-driven environmental discovery, exploitation, and escape against inference engines.</p>]]></summary>
+    <category term="AI Security"/>
+    <category term="AI Safety"/>
+    <category term="Systems"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:d74f40f5d13e</id>
+    <title>Score Centering Stabilizes Off-policy Reinforcement Learning</title>
+    <link href="http://arxiv.org/abs/2609.20807" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-d74f40f5d13e" rel="related" type="text/html"/>
+    <published>2026-09-18T03:16:00Z</published>
+    <updated>2026-09-18T03:16:00Z</updated>
+    <author><name>Martin Marek, Max Ryabinin</name></author>
+    <summary type="html"><![CDATA[<p>Identifies drift between training and inference engines as the primary cause of instability in RL fine-tuning of large language models, and derives a simple additive score-centering correction that cancels this drift. Experiments on models from 0.6B to 30B parameters show it matches or beats importance-sampling-based corrections at lower rollout cost. This is a practical, broadly applicable fix for a well-known engineering pain point in RLHF/RLVR.</p>]]></summary>
+    <category term="Reinforcement Learning"/>
+    <category term="Language Models"/>
+    <category term="Training Stability"/>
+    <category term="Efficiency"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-18:research:dfedbae6cc81</id>
+    <title>dQwen3.5: Hybrid-Attention Diffusion Language Models</title>
+    <link href="http://arxiv.org/abs/2609.20751" rel="alternate" type="text/html"/>
+    <link href="https://news.aatf.ai/?date=2026-09-18&amp;category=research#item-dfedbae6cc81" rel="related" type="text/html"/>
+    <published>2026-09-18T03:16:00Z</published>
+    <updated>2026-09-18T03:16:00Z</updated>
+    <author><name>Anton Xue, Litu Rout, Aditya Akella, Adam Klivans, Sujay Sanghavi, Sanjay Shakkottai</name></author>
+    <summary type="html"><![CDATA[<p>This paper adapts the existing autoregressive hybrid-attention model Qwen3.5 (released well before the coverage date) at 0.8B, 2B, 4B, and 9B scales into a diffusion language model family called dQwen3.5. The key challenge is that RNN layers in hybrid backbones are structurally causal and hard to bidirectionalize, yet the authors show hybrids are efficient adaptation starting points, reaching a given training loss in roughly half the tokens of a full-attention control. This extends diffusion LM research beyond full-attention architectures.</p>]]></summary>
+    <category term="Diffusion Language Models"/>
+    <category term="Language Models"/>
+    <category term="Architectures"/>
+    <category term="Efficiency"/>
+  </entry>
   <entry>
     <id>urn:ainews:2026-09-17:category-summary:research</id>
     <title>Research Summary: September 17, 2026</title>
@@ -111,21 +260,6 @@
 </ul>
 <p>On the systems and representation side, <strong>LLMs Develop Belief State Geometry In-Context</strong> <a href="https://news.aatf.ai/?date=2026-09-16&amp;category=research#item-705142c7473c" class="internal-link" rel="noopener noreferrer">links in-context learning</a> to <strong>belief-state posteriors</strong> from hidden Markov models, while <strong>OpWeave</strong> <a href="https://news.aatf.ai/?date=2026-09-16&amp;category=research#item-6f4b5b2a9a00" class="internal-link" rel="noopener noreferrer">advances operator-level disaggregation</a> for heterogeneous serving and <strong>mKernel</strong> <a href="https://news.aatf.ai/?date=2026-09-16&amp;category=research#item-b35b9314b4b5" class="internal-link" rel="noopener noreferrer">provides multi-GPU, multi-node fused kernels</a> overlapping compute, <strong>NVLink</strong>, and <strong>RDMA</strong> at tile granularity. Together these indicate mature infrastructure work plus a broadening recognition that current alignment and interpretability tooling has measurable blind spots.</p>]]></content>
     <category term="daily-summary"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-16:research:8182fc23088e</id>
-    <title>Stellar Colosseum: A Many-Agent Harness for Long-Horizon Research in Mathematics and Theoretical Computer Science</title>
-    <link href="http://arxiv.org/abs/2609.15983" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-16&amp;category=research#item-8182fc23088e" rel="related" type="text/html"/>
-    <published>2026-09-16T03:12:00Z</published>
-    <updated>2026-09-16T03:12:00Z</updated>
-    <author><name>Honghao Lin, David P. Woodruff, Yuan Deng, Jieming Mao, Song Zuo, Vahab Mirrokni</name></author>
-    <summary type="html"><![CDATA[<p>Stellar Colosseum is a model-agnostic harness for allocating inference across long-horizon research problems in mathematics and theoretical computer science. It explores alternative strategies before proof construction, uses a readiness gate to decide when a route is mature enough to decompose, represents the proof plan as interdependent section-level subproblems, and routes verifier findings back to the affected part of the argument, generating and falsifying candidates in parallel. The framing is that progress on such problems depends on sequences of uncertain, interdependent decisions rather than single-shot generation.</p>]]></summary>
-    <category term="Agents"/>
-    <category term="Automated Reasoning"/>
-    <category term="Mathematics"/>
-    <category term="Multi-Agent Systems"/>
-    <category term="Evaluation"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-15:category-summary:research</id>
@@ -463,157 +597,5 @@
     <category term="Chain-of-Thought Monitoring"/>
     <category term="Model Evaluations"/>
     <category term="Interpretability Concerns"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-11:research:183227943fac</id>
-    <title>An operationalization of opaque serial depth</title>
-    <link href="https://www.lesswrong.com/posts/x8BvtWxtoajBGHS3g/an-operationalization-of-opaque-serial-depth" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-11&amp;category=research#item-183227943fac" rel="related" type="text/html"/>
-    <published>2026-09-11T03:16:00Z</published>
-    <updated>2026-09-11T03:16:00Z</updated>
-    <author><name>ryan_greenblatt</name></author>
-    <summary type="html"><![CDATA[<p>Ryan Greenblatt operationalizes the notion of opaque serial depth from a recent GDM paper (Brown-Cohen et al, 2026), proposing a concrete standard for what counts as an interpretable bottleneck in a computational graph. The goal is to give AI companies a measurable proxy for how much unverbalized serial cognition an architecture permits, supporting a proposal that labs disclose latent-reasoning risk.</p>]]></summary>
-    <category term="AI Safety"/>
-    <category term="AI Governance"/>
-    <category term="Chain-of-Thought Monitorability"/>
-    <category term="Interpretability"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-11:research:6b1998f1f729</id>
-    <title>Proposal for tracking the effects of architecture on monitorability</title>
-    <link href="https://www.alignmentforum.org/posts/hLPGv8QjPcNLtDp3A/proposal-for-tracking-the-effects-of-architecture-on" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-11&amp;category=research#item-6b1998f1f729" rel="related" type="text/html"/>
-    <published>2026-09-11T03:16:00Z</published>
-    <updated>2026-09-11T03:16:00Z</updated>
-    <author><name>ryan_greenblatt</name></author>
-    <summary type="html"><![CDATA[<p>Ryan Greenblatt proposes that AI companies regularly disclose externally verified information about whether their architectures permit latent reasoning or latent inter-agent communication, which could silently erode the ability to monitor models via chain-of-thought. The proposal suggests measuring opaque serial depth as a minimally invasive proxy and reporting it transparently to inform performance-vs-monitorability tradeoffs.</p>]]></summary>
-    <category term="AI Safety"/>
-    <category term="Oversight"/>
-    <category term="Monitorability"/>
-    <category term="Governance"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:category-summary:research</id>
-    <title>Research Summary: September 10, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research" rel="canonical" type="text/html"/>
-    <link href="https://www.lesswrong.com/posts/82z6FvbYRdjYjqigK/personal-statement-on-joining-the-openai-nonprofit-board" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://www.lesswrong.com/posts/82z6FvbYRdjYjqigK/personal-statement-on-joining-the-openai-nonprofit-board" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-09-10T06:00:00Z</published>
-    <updated>2026-09-10T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p>Today's research highlights span frontier-scale safety fragility, agentic AI security, and a landmark open model release. <strong>Ling 2.0</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-27d695085557" class="internal-link" rel="noopener noreferrer">scales open reasoning models</a> to <strong>1T parameters</strong> under a unified MoE design with systematic scaling-law analysis, while a prominent alignment researcher <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-3ba7a244ca11" class="internal-link" rel="noopener noreferrer">joining OpenAI's nonprofit board</a> is the field's key governance signal.</p>
-<p>Safety, governance, and security:</p>
-<ul>
-<li>Refusal-direction ablation attacks, previously validated only on dense models up to ~<strong>70B</strong>, <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-17fa23d766c6" class="internal-link" rel="noopener noreferrer">transfer to a 320B MoE</a>, showing alignment fragility persists at frontier scale</li>
-<li><strong>AgentHijack</strong> and <strong>MMPIBench</strong> expose <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-0898da474d6d" class="internal-link" rel="noopener noreferrer">visual-patch hijacking</a> and <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-8b6b75b3e081" class="internal-link" rel="noopener noreferrer">multimodal prompt injection</a> against deployed computer-use agents</li>
-<li><strong>Obfuscated Adversarial Training</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-c7295074429e" class="internal-link" rel="noopener noreferrer">mechanistic study finds probe-aligned structure</a> in models trained against monitors</li>
-</ul>
-<p>Capability, multimodality, and efficiency:</p>
-<ul>
-<li><strong>MotionBlind</strong> shows video-LLMs <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-6e6f6a928872" class="internal-link" rel="noopener noreferrer">fail at physically grounded motion understanding</a> via contrastive self-recorded video pairs</li>
-<li><strong>OmniPoint</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-d241eff4f9f5" class="internal-link" rel="noopener noreferrer">unifies monocular metric 3D reconstruction</a> across pinhole, fisheye, and equirectangular cameras</li>
-<li>Tom Davidson <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-a68f8cf786f2" class="internal-link" rel="noopener noreferrer">argues data bottlenecks will slow</a>, not prevent, a fast intelligence explosion</li>
-<li><strong>Osprey</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-cdfb9febfeed" class="internal-link" rel="noopener noreferrer">delivers target-agnostic speculative-decoding drafters</a>; <strong>Phi-Bench</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-4e5601b78194" class="internal-link" rel="noopener noreferrer">tests whether LLMs can engineer serving infrastructure</a></li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>Today's research highlights span frontier-scale safety fragility, agentic AI security, and a landmark open model release. <strong>Ling 2.0</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-27d695085557" class="internal-link" rel="noopener noreferrer">scales open reasoning models</a> to <strong>1T parameters</strong> under a unified MoE design with systematic scaling-law analysis, while a prominent alignment researcher <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-3ba7a244ca11" class="internal-link" rel="noopener noreferrer">joining OpenAI's nonprofit board</a> is the field's key governance signal.</p>
-<p>Safety, governance, and security:</p>
-<ul>
-<li>Refusal-direction ablation attacks, previously validated only on dense models up to ~<strong>70B</strong>, <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-17fa23d766c6" class="internal-link" rel="noopener noreferrer">transfer to a 320B MoE</a>, showing alignment fragility persists at frontier scale</li>
-<li><strong>AgentHijack</strong> and <strong>MMPIBench</strong> expose <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-0898da474d6d" class="internal-link" rel="noopener noreferrer">visual-patch hijacking</a> and <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-8b6b75b3e081" class="internal-link" rel="noopener noreferrer">multimodal prompt injection</a> against deployed computer-use agents</li>
-<li><strong>Obfuscated Adversarial Training</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-c7295074429e" class="internal-link" rel="noopener noreferrer">mechanistic study finds probe-aligned structure</a> in models trained against monitors</li>
-</ul>
-<p>Capability, multimodality, and efficiency:</p>
-<ul>
-<li><strong>MotionBlind</strong> shows video-LLMs <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-6e6f6a928872" class="internal-link" rel="noopener noreferrer">fail at physically grounded motion understanding</a> via contrastive self-recorded video pairs</li>
-<li><strong>OmniPoint</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-d241eff4f9f5" class="internal-link" rel="noopener noreferrer">unifies monocular metric 3D reconstruction</a> across pinhole, fisheye, and equirectangular cameras</li>
-<li>Tom Davidson <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-a68f8cf786f2" class="internal-link" rel="noopener noreferrer">argues data bottlenecks will slow</a>, not prevent, a fast intelligence explosion</li>
-<li><strong>Osprey</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-cdfb9febfeed" class="internal-link" rel="noopener noreferrer">delivers target-agnostic speculative-decoding drafters</a>; <strong>Phi-Bench</strong> <a href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-4e5601b78194" class="internal-link" rel="noopener noreferrer">tests whether LLMs can engineer serving infrastructure</a></li>
-</ul>]]></content>
-    <category term="daily-summary"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:3ba7a244ca11</id>
-    <title>Personal statement on joining the OpenAI nonprofit board</title>
-    <link href="https://www.lesswrong.com/posts/82z6FvbYRdjYjqigK/personal-statement-on-joining-the-openai-nonprofit-board" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-3ba7a244ca11" rel="related" type="text/html"/>
-    <published>2026-09-10T03:31:00Z</published>
-    <updated>2026-09-10T03:31:00Z</updated>
-    <author><name>paulfchristiano</name></author>
-    <summary type="html"><![CDATA[<p>Alignment researcher Paul Christiano announces he is joining OpenAI's nonprofit board and its Safety and Security Committee, while stating his belief that loss-of-control risk from rapid AI acceleration is now acute and that the industry, including OpenAI, is not currently on track to reduce it to acceptable levels. He frames his role as providing safety oversight expertise at a critical moment and emphasizes that OpenAI should be judged by externally verifiable behavior. This is a significant signal about the state of safety governance at a leading frontier lab.</p>]]></summary>
-    <category term="AI Safety"/>
-    <category term="AI Governance"/>
-    <category term="Alignment"/>
-    <category term="Frontier Lab Oversight"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:6e6f6a928872</id>
-    <title>MotionBlind: Probing the Illusion of Motion Understanding in Video-LLMs</title>
-    <link href="http://arxiv.org/abs/2609.09528" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-6e6f6a928872" rel="related" type="text/html"/>
-    <published>2026-09-10T03:19:00Z</published>
-    <updated>2026-09-10T03:19:00Z</updated>
-    <author><name>Dhairya Bhatia, Bishoy Galoaa, Oliver Fritsche, Shahid Kamal, Muhammad Obaidullah Abdul Salam, Umer Saleem, Om Rastogi, Frania Felix Chettiar, Nesli Erdogmus, Sarah Ostadabbas</name></author>
-    <summary type="html"><![CDATA[<p>MotionBlind is a contrastive benchmark of self-recorded video pairs differing only in physically grounded motion (speed, magnitude, direction), showing that Video-LLMs can name objects yet fail to judge which clip moves faster. The results challenge the assumption that Video-LLMs can serve as perceptual front ends for world models.</p>]]></summary>
-    <category term="Video Understanding"/>
-    <category term="Benchmarks and Evaluation"/>
-    <category term="World Models"/>
-    <category term="AI Safety"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:17fa23d766c6</id>
-    <title>How Fragile Is Safety Alignment at Frontier Scale? A Single-Direction Attack on a 320B MoE</title>
-    <link href="http://arxiv.org/abs/2609.09793" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-17fa23d766c6" rel="related" type="text/html"/>
-    <published>2026-09-10T03:16:00Z</published>
-    <updated>2026-09-10T03:16:00Z</updated>
-    <author><name>Yi Shi, Tanyu Chen, Kai Shen</name></author>
-    <summary type="html"><![CDATA[<p>This paper tests whether the directional ablation refusal-direction attack, previously established only on dense models up to about 70B, still works on a frontier-scale MoE: GLM-5.3-Flash (320B parameters, 288 experts, hyper-connection residual, FP8 weights). The attack survives the architectural shift and quantization, showing that safety alignment remains brittle at scale with a cheap training-free white-box method. This is significant evidence that alignment fragility is not an artifact of smaller dense models.</p>]]></summary>
-    <category term="AI Safety"/>
-    <category term="Alignment"/>
-    <category term="Adversarial Robustness"/>
-    <category term="Mixture of Experts"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:27d695085557</id>
-    <title>Every Activation Boosted: Scaling General Reasoner to 1 Trillion Open Language Foundation</title>
-    <link href="http://arxiv.org/abs/2510.22115" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-27d695085557" rel="related" type="text/html"/>
-    <published>2026-09-10T03:16:00Z</published>
-    <updated>2026-09-10T03:16:00Z</updated>
-    <author><name>Ling Team, Ang Li, Ben Liu, Binbin Hu, Bing Li, Bingwei Zeng, Borui Ye, Caizhi Tang, Changxin Tian, Chao Huang, Chao Zhang, Chen Qian, Chenchen Ju, Chenchen Li, Chengfu Tang, Chilin Fu, Chunshao Ren, Chunwei Wu, Cong Zhang, Cunyin Peng, Dafeng Xu, Daixin Wang, Dalong Zhang, Dingnan Jin, Dingyuan Zhu, Dongke Hu, Fangzheng Zhao, Feifan Wu, Feng Zhu, Gangshan Wang, Haitao Zhang, Hailin Zhao, Hanxiao Zhang, Hanzi Wang, Hao Qian, Haoyi Yu, Heng Zhang, Hongliang Zhang, Hongzhi Luan, Huirong Dong, Huizhong Li, Jia Li, Jia Liu, Jialong Zhu, Jian Sha, Jianping Wei, Jiaolong Yang, Jieyue Ma, Jiewei Wu, Jinjing Huang, Jingyun Tian, Jingyuan Zhang, Jinquan Sun, Juanhui Tu, Jun Liu, Jun Xu, Jun Zhou, Junjie Ou, Junpeng Fang, Kaihong Zhang, Kaiqin Hu, Ke Shi, Kun Tang, Kunlong Chen, Lanyin Mei, Lei Liang, Lei Xu, Libo Zhang, Lin Ju, Lin Yuan, Ling Zhong, Lintao Ma, Lu Liu, Lu Yu, Lun Cai, Meiqi Zhu, Mengying Li, Min Chen, Minghao Xue, Minghong Cai, Mingming Yin, Peijie Jiang, Peilong Zhao, Pingping Liu, Qian Zhao, Qing Cui, Qingxiang Huang, Qingyuan Yang, Quankun Yu, Shaowei Wei, Shijie Lian, Shoujian Zheng, Shun Song, Shungen Zhang, Shuo Zhang, Siyuan Li, Song Liu, Ting Guo, Tong Zhao, Wanli Gu, Weichang Wu, Weiguang Han, Wenjing Fang, Wubin Wang, Xiang Shu, Xiao Shi, Xiaoshun Lan, Xiaolu Zhang, Xiaqing Sun, Xin Zhao, Xingyu Lu, Xiong Xu, Xudong Wang, Xudong Wang, Xuemin Yang, Yajie Yang, Yang Xiang, Yanzhe Li, Yi Zhang, Yilong Wang, Yingxue Li, Yongzhen Guo, Yuzhuo Fu, Yuanyuan Wang, Yue Yang, Yue Yu, Yufeng Deng, Yun Zhang, Yunfei Yu, Yuqi Zhang, Yuxiao He, Zengke Gui, Zhaoxin Huan, Zhaoyang Wang, Zhibo Zhu, Zhihao Wang, Zhiqiang Zhang, Zhoufei Wang, Zihang Zeng, Ziqi Liu, Zitao Xuan, Zuoli Tang</name></author>
-    <summary type="html"><![CDATA[<p>This technical report introduces Ling 2.0, a series of open reasoning-oriented language foundation models spanning 16B to 1T total parameters under a high-sparsity Mixture-of-Experts paradigm, including Ling-mini-2.0, Ling-flash-2.0, and Ling-1T. The series achieves up to 7-fold active-compute efficiency versus dense counterparts, with coordinated innovations across architecture, pre-training, post-training, and infrastructure guided by empirical scaling laws. As a large-scale open-weight MoE release with detailed engineering documentation, it is a significant reference point for the open-model ecosystem.</p>]]></summary>
-    <category term="Large Language Models"/>
-    <category term="Mixture-of-Experts"/>
-    <category term="Scaling Laws"/>
-    <category term="Open Models"/>
-    <category term="Reasoning"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:d241eff4f9f5</id>
-    <title>OmniPoint: Universal Monocular Metric Pointcloud from Any Camera</title>
-    <link href="http://arxiv.org/abs/2609.09394" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-d241eff4f9f5" rel="related" type="text/html"/>
-    <published>2026-09-10T03:16:00Z</published>
-    <updated>2026-09-10T03:16:00Z</updated>
-    <author><name>Botao Ye, Marc Pollefeys, Ming-Hsuan Yang, Abhijit Kundu</name></author>
-    <summary type="html"><![CDATA[<p>OmniPoint unifies monocular metric 3D reconstruction across pinhole, fisheye, and equirectangular cameras using a decoupled ray-and-distance representation that separates the camera projection model from scene structure, with a decoupled training objective. It also addresses data scarcity for unconventional camera models.</p>]]></summary>
-    <category term="3D Reconstruction"/>
-    <category term="Novel Architectures"/>
-    <category term="Computer Vision"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-10:research:a68f8cf786f2</id>
-    <title>Data bottlenecks won’t prevent an intelligence explosion (but they will slow it down)</title>
-    <link href="https://www.lesswrong.com/posts/icykbWYmdLFYxgvqY/data-bottlenecks-won-t-prevent-an-intelligence-explosion-but" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-09-10&amp;category=research#item-a68f8cf786f2" rel="related" type="text/html"/>
-    <published>2026-09-10T03:16:00Z</published>
-    <updated>2026-09-10T03:16:00Z</updated>
-    <author><name>Tom Davidson</name></author>
-    <summary type="html"><![CDATA[<p>Tom Davidson examines whether data constraints could halt a fast intelligence explosion, systematically evaluating candidate bottlenecks such as the need for millions of job trajectories. He argues that a software-only intelligence explosion inside datacenters could produce highly sample-efficient algorithms requiring human-like data quantities, so bottlenecks would slow but not stop explosive AI-driven progress. The analysis matters for forecasting takeoff dynamics and economic transformation timelines.</p>]]></summary>
-    <category term="Forecasting"/>
-    <category term="Intelligence Explosion"/>
-    <category term="AI Capabilities"/>
-    <category term="AI Safety"/>
   </entry>
 </feed>
