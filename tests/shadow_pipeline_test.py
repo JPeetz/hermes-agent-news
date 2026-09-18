@@ -194,24 +194,32 @@ class RedditRankingCorrectionTests(unittest.IsolatedAsyncioTestCase):
         draft = {"top_10": ["10a..."] + [item.item.id for item in items[:9]],
                  "category_summary": "placeholder"}
         corrected = {"top_10": corrected_ids, "category_summary": corrected_summary}
-        content = (
-            f"```json\n{json.dumps(draft)}\n```\n"
-            "Wait, let me correct that output.\n"
-            f"```json\n{json.dumps(corrected)}\n```"
-        )
-        client = _AsyncClient(content)
-        analyzer = RedditAnalyzer(async_client=client, target_date="2026-09-18")
-        with mock.patch("agents.staleness_checker.StalenessChecker") as checker:
-            checker.return_value.process_items = mock.AsyncMock(return_value=0)
-            report = await analyzer._reduce_phase(items, [], [], "Saved batch reasoning.")
-            checker.return_value.process_items.assert_awaited_once()
+        valid_correction = json.dumps(corrected)
+        corrections = {
+            "valid": valid_correction,
+            "trailing_comma": valid_correction[:-1] + ",}",
+            "missing_comma": valid_correction.replace('], "category_summary"', '] "category_summary"'),
+        }
+        for variant, correction in corrections.items():
+            with self.subTest(variant=variant):
+                content = (
+                    f"```json\n{json.dumps(draft)}\n```\n"
+                    "Wait, let me correct that output.\n"
+                    f"```json\n{correction}\n```"
+                )
+                client = _AsyncClient(content)
+                analyzer = RedditAnalyzer(async_client=client, target_date="2026-09-18")
+                with mock.patch("agents.staleness_checker.StalenessChecker") as checker:
+                    checker.return_value.process_items = mock.AsyncMock(return_value=0)
+                    report = await analyzer._reduce_phase(items, [], [], "Saved batch reasoning.")
+                    checker.return_value.process_items.assert_awaited_once()
 
-        self.assertEqual(report.category_summary, corrected_summary)
-        self.assertEqual([item.item.id for item in report.top_items], corrected_ids)
-        self.assertEqual(report.all_items, items)
-        self.assertEqual(report.degradations, [])
-        self.assertEqual(len(client.calls), 1)
-        self.assertEqual(client.calls[0]["caller"], "reddit_analyzer.reduce_rank")
+                self.assertEqual(report.category_summary, corrected_summary)
+                self.assertEqual([item.item.id for item in report.top_items], corrected_ids)
+                self.assertEqual(report.all_items, items)
+                self.assertEqual(report.degradations, [])
+                self.assertEqual(len(client.calls), 1)
+                self.assertEqual(client.calls[0]["caller"], "reddit_analyzer.reduce_rank")
 
 
 class ReplayIntegrityPropagationTests(unittest.IsolatedAsyncioTestCase):

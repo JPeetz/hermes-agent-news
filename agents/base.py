@@ -104,7 +104,9 @@ def _env_int(name: str, default: int, minimum: int = 1) -> int:
     return value
 
 
-def extract_json_str(content: str, *, required_keys: tuple[str, ...] = ()) -> str:
+def extract_json_str(
+    content: str, *, required_keys: tuple[str, ...] = (), repair_json=None,
+) -> str:
     """Extract a JSON object/array substring from an LLM response.
 
     Mirrors the robust extraction used by BaseAnalyzer._parse_json_response so
@@ -119,6 +121,8 @@ def extract_json_str(content: str, *, required_keys: tuple[str, ...] = ()) -> st
     When required_keys is supplied, prefer the last complete fenced object
     with those fields. This lets ranking responses replace an initial draft
     with a correction without mistaking later, unrelated JSON for the result.
+    repair_json lets the caller use its existing syntax repairs while deciding
+    which object is complete, before an earlier draft can be selected.
     """
 
     def _escape_control_chars_in_strings(text: str) -> str:
@@ -209,7 +213,13 @@ def extract_json_str(content: str, *, required_keys: tuple[str, ...] = ()) -> st
             try:
                 parsed = json.loads(candidate)
             except (ValueError, TypeError):
-                continue
+                if repair_json is None:
+                    continue
+                candidate = repair_json(candidate)
+                try:
+                    parsed = json.loads(candidate)
+                except (ValueError, TypeError):
+                    continue
             if isinstance(parsed, dict) and all(key in parsed for key in required_keys):
                 return candidate
 
@@ -1759,7 +1769,10 @@ Every entry needs a nonempty summary and reasoning and a numeric score 0-100.
         # and unescaped inner quotes) that this method's own walk cannot
         # recover from. Everything below (truncation detection, repair,
         # recovery) then operates on sanitized text.
-        content = extract_json_str(content, required_keys=required_keys)
+        content = extract_json_str(
+            content, required_keys=required_keys,
+            repair_json=self._repair_common_json_errors,
+        )
 
         # Try to extract JSON from markdown code block first
         code_block_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
