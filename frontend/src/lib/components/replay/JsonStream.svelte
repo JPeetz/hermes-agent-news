@@ -28,6 +28,8 @@
 	export let complete = false;
 	export let live = false;
 	export let reduced = false;
+	/** Native decision probabilities are displayed as values, without score ranking. */
+	export let showScores = true;
 	/**
 	 * id → item title for the replay's date, so output that references items only
 	 * by hash (the continuity matcher, the curator) reads as stories instead.
@@ -83,7 +85,7 @@
 	 * Returns the raw number too, since the badge prints it.
 	 */
 	function scoreOf(item: PartialValue): { n: number; frac: number } | null {
-		if (item.kind !== 'object') return null;
+		if (!showScores || item.kind !== 'object') return null;
 		for (const e of item.entries) {
 			const frac = scoreFraction(e.key, e.value);
 			if (frac !== null && e.value?.kind === 'number') return { n: Number(e.value.value), frac };
@@ -147,7 +149,7 @@
 
 	// Any score at all to sort by? Matches (topics, matches) have none, and offering a
 	// sort control that does nothing is worse than not offering one.
-	$: hasScores = items.some((it) => scoreOf(it) !== null);
+	$: hasScores = showScores && items.some((it) => scoreOf(it) !== null);
 
 	/**
 	 * Stable identity for a card, so reordering animates instead of re-mounting.
@@ -273,7 +275,7 @@
 					{#if open && item.kind === 'object'}
 						<dl class="js-fields">
 							{#each entriesOf(item) as e (e.key)}
-								{@const frac = scoreFraction(e.key, e.value)}
+								{@const frac = showScores ? scoreFraction(e.key, e.value) : null}
 								<div class="js-field" class:prose={isProse(e)}>
 									<dt>{humaniseKey(e.key)}</dt>
 									<dd>

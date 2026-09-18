@@ -16,7 +16,6 @@
 	import { createStreamRenderer, withCaret } from '$lib/services/replayMarkdown';
 	import { parsePrefix, highlightJson, splitFence } from '$lib/services/replayJson';
 	import JsonStream from './JsonStream.svelte';
-	import JevDecision from './JevDecision.svelte';
 
 	// One renderer per pane: they re-render on the same frames, so a shared cache
 	// would be invalidated by the other caller every time.
@@ -251,7 +250,7 @@
 	// the last block so it trails the final word instead of dropping a line.
 	// The caret marks where the model is writing *now*, so it belongs to exactly one
 	// pane: the answer once text has started, the reasoning pane before that.
-	$: showCaret = isLive && !streamDone && !reduced;
+	$: showCaret = !isDecision && isLive && !streamDone && !reduced;
 	$: caretHtml = showCaret ? '<span class="caret"></span>' : '';
 	$: thinkingHtml = withCaret(renderThinking(thinkingText), answerText ? '' : caretHtml);
 	$: answerHtml = withCaret(renderAnswer(answerText), caretHtml);
@@ -274,7 +273,33 @@
 		jsonCacheVal = parsePrefix(text);
 		return jsonCacheVal;
 	}
-	$: parsedJson = answerText ? parseCached(answerText) : null;
+	// Jev's recorded envelope pairs article identities with its native response.
+	// Use the shared structured renderer for the article rows and the shared raw
+	// renderer for the original API response.
+	function decisionViews(text: string) {
+		try {
+			const result = JSON.parse(text);
+			if (result.schema_version !== 'jev-relevance-replay/v1' || !Array.isArray(result.articles)) return null;
+			const articles = result.articles.map((row: Record<string, unknown>) => {
+				const { probabilities, critical_probability, ...article } = row;
+				return {
+					...article,
+					...Object.fromEntries(Object.entries((probabilities ?? {}) as Record<string, unknown>)
+						.map(([key, value]) => [`probability_${key}`, value])),
+					...(row.relevance === 'relevant' ? { critical_probability } : {})
+				};
+			});
+			return {
+				structured: JSON.stringify({ articles }),
+				raw: JSON.stringify(result.raw_response, null, 2),
+				redacted: result.raw_response_redacted === true
+			};
+		} catch { return null; }
+	}
+	$: decisionOutput = isDecision && answerText ? decisionViews(answerText) : null;
+	$: structuredText = decisionOutput?.structured ?? answerText;
+	$: rawText = decisionOutput?.raw ?? answerText;
+	$: parsedJson = structuredText ? parseCached(structuredText) : null;
 	/** Whether *this* call is one the structured view can render at all. */
 	$: isJsonCall = parsedJson !== null;
 
@@ -299,7 +324,7 @@
 		rawCacheVal = { lang, html: highlightJson(body) };
 		return rawCacheVal;
 	}
-	$: rawJson = isJsonCall && outputView === 'raw' && answerText ? highlightCached(answerText) : null;
+	$: rawJson = isJsonCall && outputView === 'raw' && rawText ? highlightCached(rawText) : null;
 
 	// ------------------------------------------------------------ image calls
 	//
@@ -643,7 +668,7 @@
 					<span class="prompt-caret" class:open={userPromptOpen} aria-hidden="true">▸</span>
 					{isDecision ? 'Request JSON' : isImage ? 'The prompt' : 'User prompt'}
 					<span class="prompt-hint">
-						{userPromptOpen ? '(hide)' : '(click to see what the model was sent)'}
+						{userPromptOpen ? '(hide)' : isDecision ? '(show)' : '(click to see what the model was sent)'}
 					</span>
 				</button>
 				<span class="answer-meta">
@@ -720,13 +745,10 @@
 				{/if}
 			</section>
 
-		{:else if isDecision}
-			{#if streamState === 'loading'}<p class="ts-note">Loading decisions…</p>{/if}
-			{#key call.id}
-				<JevDecision {call} text={answerText} finished={isAfter} unavailable={showEmptyStream} />
-			{/key}
 		{:else if streamState === 'loading'}
-			<p class="ts-note">Loading stream…</p>
+			<p class="ts-note">{isDecision ? 'Loading response…' : 'Loading stream…'}</p>
+		{:else if isDecision && showEmptyStream}
+			<p class="ts-note">Response not retained for this call.</p>
 		{:else if showEmptyStream}
 			<div class="ts-note ts-note-block">
 				<p class="font-medium">
@@ -834,11 +856,15 @@
 							>
 						</span>
 					{/if}
-					<span class="answer-meta">
-						{answerText.length.toLocaleString()} / {call.text_chars.toLocaleString()} chars
-					</span>
+					{#if !isDecision}
+						<span class="answer-meta">
+							{answerText.length.toLocaleString()} / {call.text_chars.toLocaleString()} chars
+						</span>
+					{/if}
 				</h4>
-				{#if answerText && showStructured && parsedJson?.root}
+				{#if outputView === 'raw' && decisionOutput?.redacted}
+					<p class="answer-text pending">Raw response redacted: credential detected.</p>
+				{:else if answerText && showStructured && parsedJson?.root}
 					{#if parsedJson.preamble}
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						<div class="json-aside md">{@html renderPreamble(parsedJson.preamble)}</div>
@@ -850,6 +876,7 @@
 						{itemIndex}
 						{onNeedItemIndex}
 						{reduced}
+						showScores={!isDecision}
 					/>
 					{#if parsedJson.epilogue}
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -871,10 +898,10 @@
 					<div class="answer-text md">{@html answerHtml}</div>
 				{:else if isLive}
 					<p class="answer-text pending">
-						{hasThinking && thinkingText ? 'still reasoning…' : 'waiting for first token…'}
+						{isDecision ? 'Waiting for response…' : hasThinking && thinkingText ? 'still reasoning…' : 'waiting for first token…'}
 					</p>
 				{:else if isAfter}
-					<p class="answer-text pending">No text deltas were captured for this call.</p>
+					<p class="answer-text pending">{isDecision ? 'No response captured for this call.' : 'No text deltas were captured for this call.'}</p>
 				{/if}
 			</section>
 		{/if}

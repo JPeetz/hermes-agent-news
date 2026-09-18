@@ -201,7 +201,7 @@
 						on:click={() => onSelectCall(ac.call.id)}
 						title={isImageCall(ac.call)
 							? `${ac.call.task} — ${ac.call.model} — image, no token metering`
-							: ac.call.interaction_type === 'decision' ? `${ac.call.decision_item_count} articles evaluated together`
+							: ac.call.interaction_type === 'decision' ? `${ac.call.decision_item_count} articles`
 							: `${ac.call.task} — ${ac.call.provider_id} — ${ac.call.profile}`}
 					>
 						<span class="chip-fill" style="width: {Math.round(ac.progress * 100)}%"></span>
@@ -345,9 +345,7 @@
 				<span>{status === 'done' ? '1 image · ' : ''}cost not reported by provider</span>
 			{/if}
 		</div>
-	{:else if agent.id === 'jev' && completed > 0}
-		<div class="foot"><span>Typed decisions · open a batch to inspect</span></div>
-	{:else if completed > 0 && (state?.output_tokens ?? 0) > 0}
+	{:else if agent.id !== 'jev' && completed > 0 && (state?.output_tokens ?? 0) > 0}
 		<div class="foot">
 			<span>{formatTokens(state?.output_tokens ?? 0)} out</span>
 			<span class="foot-dot">·</span>

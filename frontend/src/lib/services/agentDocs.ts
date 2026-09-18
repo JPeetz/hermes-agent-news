@@ -257,11 +257,10 @@ const DESK_DOCS: Record<string, AgentDoc> = {
 
 const DOCS: Record<string, AgentDoc> = {
 	jev: {
-		summary: 'Jev makes typed decisions about news relevance. Every article receives a relevance Choice and an importance Noul in the same request.',
+		summary: 'Classifies news relevance and importance.',
 		input: 'The supplied title, source and bounded snippet for each article, bound to named state variables.',
 		output: 'Relevant articles continue to the news analyst. Irrelevant articles are excluded. Insufficient evidence and service failures retain the affected articles.',
-		matters: 'Resolves news inclusion before the writing and ranking work begins.',
-		note: 'Answers arrive together, without generated reasoning text. Native Choice controls inclusion; confidence adds no extra cutoff. Importance is ignored unless the article is relevant.'
+		matters: 'Selects articles for news analysis.'
 	},
 	...SCOUT_DOCS,
 	...DESK_DOCS,
