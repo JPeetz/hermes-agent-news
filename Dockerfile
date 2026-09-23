@@ -40,7 +40,7 @@ RUN python -m playwright install --with-deps chromium
 # Copy application code
 COPY agents/ ./agents/
 COPY shadow/ ./shadow/
-COPY config/shadow/news-relevance-v4-frozen.json ./config/shadow/news-relevance-v4-frozen.json
+COPY config/shadow/news-relevance-v5-frozen.json ./config/shadow/news-relevance-v5-frozen.json
 COPY generators/ ./generators/
 COPY scripts/ ./scripts/
 COPY assets/ ./assets/

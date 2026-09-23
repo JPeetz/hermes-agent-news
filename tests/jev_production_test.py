@@ -182,5 +182,34 @@ class JevProductionTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(result["decisions"]), 3)
 
 
+    async def test_production_uses_recall_first_v5_policy_with_unchanged_mechanics(self):
+        from pathlib import Path
+        from agents import jev_relevance
+        from shadow.settings import load_policy
+        root = Path(jev_relevance.__file__).resolve().parents[1]
+        v4 = load_policy(root / "config/shadow/news-relevance-v4-frozen.json")
+        v5 = load_policy(jev_relevance.POLICY_PATH)
+        self.assertEqual(jev_relevance.POLICY_PATH.name, "news-relevance-v5-frozen.json")
+        self.assertEqual(JevRelevanceFilter(api_key="").policy, v5)
+        self.assertTrue(v4["frozen"] and v5["frozen"])
+        self.assertEqual(v4["version"], "news-relevance-v4-frozen")
+        self.assertEqual(v5["version"], "news-relevance-v5-frozen")
+        self.assertGreater(v5["prospective_start_date"], v4["prospective_start_date"])
+        instruction = v5["relevance_question"]["instructions"]["instruction"]
+        self.assertIn("Use irrelevant only when AI is absent or merely incidental.", instruction)
+        # Only the Choice wording and its identifying metadata change; model, batching,
+        # budgets, fallback, the importance Noul and the three Choice labels do not.
+        changed = {"version", "prospective_start_date", "supersedes", "rationale",
+                   "rubric_version", "relevance_question"}
+        self.assertEqual({k: v for k, v in v4.items() if k not in changed},
+                         {k: v for k, v in v5.items() if k not in changed})
+        self.assertEqual(v5["supersedes"], v4["version"])
+        self.assertEqual({**v4["relevance_question"], "instructions": None},
+                         {**v5["relevance_question"], "instructions": None})
+        self.assertEqual(v5["relevance_question"]["criteria"],
+                         {"relevant": None, "irrelevant": None, "insufficient_evidence": None})
+        self.assertEqual(v4["relevance_question"]["instructions"]["article"],
+                         v5["relevance_question"]["instructions"]["article"])
+
 if __name__ == "__main__":
     unittest.main()

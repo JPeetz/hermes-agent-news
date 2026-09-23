@@ -40,6 +40,22 @@ Those remaining labels are model estimates, not independently established
 errors. Native Choice retained all 168 stories the judge marked important.
 Adding a relevance-probability cutoff of 0.80 or 0.90 increased exclusions, so
 the frozen policy uses no additional confidence or probability gate.
+
+**v5 (production from 2026-09-24).** v4's "other substantive AI news" wording
+split clearly-AI political headlines near 50/50 (on 2026-09-23, "Trump says the
+US is officially renaming AI to 'super intelligence'" was excluded). Because
+the downstream analysts already score AI relevance and importance,
+`news-relevance-v5-frozen.json` makes the Choice recall-first: relevant when AI
+or ML is a clear subject of the title or snippet, irrelevant only when AI is
+absent or incidental. Nothing else changes: the Noul, model, batching, budgets
+and keep rule are the same. Three paired live runs per arm through the production transport
+over all 537 historical inputs: v5 kept 449–450 of the 456 judge-relevant
+stories (v4 444–447), agreed with 526–527 of 535 definite judge labels (v4
+522–525), kept all 168 judge-important stories, and kept 1–2 of 79
+judge-irrelevant (v4 1). On the 81-article 2026-09-23 day it kept 71 in every
+run (v4 67–68); every newly kept title has AI as an explicit subject. Details:
+`docs/plans/evidence/jev-relevance-v5-evaluation-2026-09-23.json`.
+
 Relevant offline tests are part of normal development. Production collection or
 publishing pipeline execution requires explicit user authorization; shadow model
 evaluation is separately authorized and bounded.
@@ -101,6 +117,9 @@ configuration only. It explicitly reports that model access has not been verifie
 The v4 development policy remains editable. The matching
 `news-relevance-v4-frozen.json` locks the tested questions, model, batching and
 failure behavior for prospective report dates starting September 18, 2026.
+`news-relevance-v5-frozen.json` supersedes it for production from September 24,
+2026 with only the recall-first Choice instruction changed; v4 is kept for
+history and for its saved experiments.
 It asks two independent questions per article in the same request:
 
 - A Choice with `relevant`, `irrelevant`, and `insufficient_evidence`, using the

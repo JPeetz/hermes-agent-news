@@ -1,0 +1,56 @@
+{
+  "schema_version": "news-shadow-policy/v3",
+  "version": "news-relevance-v5-frozen",
+  "frozen": true,
+  "prospective_start_date": "2026-09-24",
+  "supersedes": "news-relevance-v4-frozen",
+  "rationale": "Recall-first relevance screen. Later analyst stages already score each story for AI relevance and importance, so this first screen drops only stories where AI is absent or incidental. v4's 'other substantive AI news' wording split clearly-AI political headlines near 50/50 (2026-09-23: 'Trump says the US is officially renaming AI to super intelligence' was excluded in 3 of 3 runs at 46-53% irrelevant). Only the relevance instruction, version, rubric version and dates change; model, batching, budgets, the critical-story Noul and the keep rule (argmax Choice; only irrelevant drops; insufficient_evidence and failures retain) are identical to v4.",
+  "model": "jev-1.13.0",
+  "chunk_size": 128,
+  "concurrency": 2,
+  "max_attempts": 3,
+  "timeout_seconds": 30,
+  "fallback": "retain",
+  "candidate_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 100000,
+    "deadline_seconds": 1800,
+    "max_cost_usd": 0.25
+  },
+  "incumbent_budget": {
+    "max_requests": 12,
+    "max_input_tokens": 1000000,
+    "max_output_tokens": 500000,
+    "deadline_seconds": 3600,
+    "max_cost_usd": null
+  },
+  "judge_budget": {
+    "max_requests": 64,
+    "max_input_tokens": 2000000,
+    "max_output_tokens": 1920000,
+    "deadline_seconds": 3600,
+    "max_cost_usd": null
+  },
+  "rubric_version": "recall-first-news-adjudicator-v2",
+  "questions_per_article": 2,
+  "relevance_question": {
+    "type": "choice",
+    "instructions": {
+      "article": "{article}",
+      "instruction": "You are a news relevance adjudicator for a daily AI news digest. Judge only the supplied title, source, and snippet. Use relevant when the title or snippet is about artificial intelligence or machine learning in a way a reader following AI news would want to see: models, companies, products, research, safety, policy, regulation, politics, public statements about AI, infrastructure, business, or controversy. AI does not have to be the whole story if it is a clear subject of the headline or snippet. Use irrelevant only when AI is absent or merely incidental. Use insufficient_evidence when the evidence cannot support either call."
+    },
+    "criteria": {
+      "relevant": null,
+      "irrelevant": null,
+      "insufficient_evidence": null
+    }
+  },
+  "critical_question": {
+    "type": "noul",
+    "instructions": {
+      "article": "{article}",
+      "question": "Is this an important story supported by the supplied evidence?"
+    }
+  }
+}

@@ -15,7 +15,7 @@ from shadow.budget import BudgetLimits, RequestBudget
 from shadow.typesafe import TypeSafeAdapter, TypeSafeConfig
 from .replay_recorder import DELTA_TEXT, get_recorder
 
-POLICY_PATH = Path(__file__).resolve().parents[1] / "config/shadow/news-relevance-v4-frozen.json"
+POLICY_PATH = Path(__file__).resolve().parents[1] / "config/shadow/news-relevance-v5-frozen.json"
 
 
 class JevRelevanceError(RuntimeError):

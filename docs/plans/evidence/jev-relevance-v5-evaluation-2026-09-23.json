@@ -1,0 +1,505 @@
+{
+  "schema_version": "jev-relevance-policy-comparison/v1",
+  "observed_on": "2026-09-23",
+  "question": "Does the recall-first v5 relevance instruction improve the production Jev news screen over v4?",
+  "transport": "Production agents.jev_relevance.JevRelevanceFilter -> TypeSafeAdapter -> https://api.typesafe.ai/v1/systemone, model jev-1.13.0, one request per day (chunk_size 128). Policy object swapped per arm; config identical.",
+  "policies": {
+    "v4": {
+      "version": "news-relevance-v4-frozen",
+      "sha256_canonical_json": "12eda7c38b1a480f32a63a62a19e3c36aed44cc9981db6404e7a1de1e278a9e9",
+      "instruction": "You are a bounded news relevance adjudicator. Judge only the supplied title, source, and snippet. Use relevant when the bounded evidence is about an AI/ML model, company, product, research, safety, policy, infrastructure, controversy, or other substantive AI news; use irrelevant when it is outside that scope; use insufficient_evidence when the evidence cannot support either call."
+    },
+    "v5": {
+      "version": "news-relevance-v5-frozen",
+      "sha256_canonical_json": "3417c0a23f5f9a4858cfb6f9c376d1cf3096c7cb3670054ae6ac49c04074b4fc",
+      "instruction": "You are a news relevance adjudicator for a daily AI news digest. Judge only the supplied title, source, and snippet. Use relevant when the title or snippet is about artificial intelligence or machine learning in a way a reader following AI news would want to see: models, companies, products, research, safety, policy, regulation, politics, public statements about AI, infrastructure, business, or controversy. AI does not have to be the whole story if it is a clear subject of the headline or snippet. Use irrelevant only when AI is absent or merely incidental. Use insufficient_evidence when the evidence cannot support either call."
+    }
+  },
+  "design": "3 paired runs per arm; arm order alternated per run. Historical cohort = the 537 frozen September 8-17 inputs from data/shadow-review/choice-critical-2026-09-17; today = the 81 records of the actual 2026-09-23 production Jev request (web/data/2026-09-23/replay-prompts.json.gz, call c001). Keep = effective_keep (relevant or insufficient_evidence or fallback).",
+  "reference_labels": "DeepSeek v4.1 Flash judge labels (456 relevant / 79 irrelevant / 2 insufficient after the two user-reviewed editorial overrides; 454/81/2 unedited). Judge labels are model estimates, not ground truth. 168 judge-important stories.",
+  "historical": {
+    "v4": [
+      {
+        "agreement_535": 522,
+        "agreement_535_unedited_judge": 520,
+        "judge_relevant_kept_of_456": 444,
+        "judge_irrelevant_kept_of_79": 1,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 447,
+        "jev_insufficient_evidence": 0,
+        "cost_usd": 0.006992,
+        "statuses": [
+          "complete"
+        ]
+      },
+      {
+        "agreement_535": 525,
+        "agreement_535_unedited_judge": 523,
+        "judge_relevant_kept_of_456": 447,
+        "judge_irrelevant_kept_of_79": 1,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 450,
+        "jev_insufficient_evidence": 0,
+        "cost_usd": 0.006992,
+        "statuses": [
+          "complete"
+        ]
+      },
+      {
+        "agreement_535": 523,
+        "agreement_535_unedited_judge": 521,
+        "judge_relevant_kept_of_456": 445,
+        "judge_irrelevant_kept_of_79": 1,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 448,
+        "jev_insufficient_evidence": 1,
+        "cost_usd": 0.006992,
+        "statuses": [
+          "complete"
+        ]
+      }
+    ],
+    "v5": [
+      {
+        "agreement_535": 527,
+        "agreement_535_unedited_judge": 525,
+        "judge_relevant_kept_of_456": 450,
+        "judge_irrelevant_kept_of_79": 2,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "Digested week: royal hairlines – Prince George’s hair has such brio as he starts at Eton | Emma Brockes",
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 454,
+        "jev_insufficient_evidence": 0,
+        "cost_usd": 0.008097,
+        "statuses": [
+          "complete"
+        ]
+      },
+      {
+        "agreement_535": 527,
+        "agreement_535_unedited_judge": 525,
+        "judge_relevant_kept_of_456": 449,
+        "judge_irrelevant_kept_of_79": 1,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 452,
+        "jev_insufficient_evidence": 0,
+        "cost_usd": 0.008097,
+        "statuses": [
+          "complete"
+        ]
+      },
+      {
+        "agreement_535": 526,
+        "agreement_535_unedited_judge": 524,
+        "judge_relevant_kept_of_456": 449,
+        "judge_irrelevant_kept_of_79": 2,
+        "judge_important_kept_of_168": 168,
+        "judge_irrelevant_kept_titles": [
+          "Digested week: royal hairlines – Prince George’s hair has such brio as he starts at Eton | Emma Brockes",
+          "DevFest is back"
+        ],
+        "kept_total_of_537": 452,
+        "jev_insufficient_evidence": 0,
+        "cost_usd": 0.008097,
+        "statuses": [
+          "complete"
+        ]
+      }
+    ]
+  },
+  "historical_changes": {
+    "newly_kept_by_v5": [
+      {
+        "id": "5f0808b1aec0",
+        "date": "2026-09-08",
+        "title": "Opaque recurrence, and other AI terms that you should probably know",
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "judge": "relevant",
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.4,
+          0.43,
+          0.37
+        ],
+        "v5_p_relevant": [
+          0.86,
+          0.84,
+          0.85
+        ]
+      },
+      {
+        "id": "915acc33cbeb",
+        "date": "2026-09-12",
+        "title": "Digested week: royal hairlines – Prince George’s hair has such brio as he starts at Eton | Emma Brockes",
+        "source": "AI (artificial intelligence) | The Guardian",
+        "judge": "irrelevant",
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 2,
+        "v4_p_relevant": [
+          0.22,
+          0.26,
+          0.22
+        ],
+        "v5_p_relevant": [
+          0.53,
+          0.48,
+          0.52
+        ]
+      },
+      {
+        "id": "82a745c8dde5",
+        "date": "2026-09-15",
+        "title": "Only at TechCrunch Disrupt 2026: What happens when OpenAI ships your roadmap?",
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "judge": "relevant",
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.38,
+          0.34,
+          0.34
+        ],
+        "v5_p_relevant": [
+          0.81,
+          0.83,
+          0.71
+        ]
+      },
+      {
+        "id": "a0f981474317",
+        "date": "2026-09-15",
+        "title": "Humanity’s Last Invention — Richard Socher of Recursive",
+        "source": "Latent.Space",
+        "judge": "relevant",
+        "v4_kept_runs": 1,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.41,
+          0.42,
+          0.38
+        ],
+        "v5_p_relevant": [
+          0.85,
+          0.88,
+          0.87
+        ]
+      },
+      {
+        "id": "3d3550763c3e",
+        "date": "2026-09-17",
+        "title": "Why I can’t wait to get into a driverless car | Letters",
+        "source": "AI (artificial intelligence) | The Guardian",
+        "judge": "relevant",
+        "v4_kept_runs": 1,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.45,
+          0.48,
+          0.46
+        ],
+        "v5_p_relevant": [
+          0.72,
+          0.84,
+          0.78
+        ]
+      }
+    ],
+    "newly_dropped_by_v5": [],
+    "unstable": [
+      {
+        "id": "1926130a563d",
+        "date": "2026-09-11",
+        "title": "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "judge": "relevant",
+        "v4_kept_runs": 1,
+        "v5_kept_runs": 1,
+        "v4_p_relevant": [
+          0.35,
+          0.49,
+          0.26
+        ],
+        "v5_p_relevant": [
+          0.53,
+          0.37,
+          0.46
+        ]
+      },
+      {
+        "id": "22e24c92b085",
+        "date": "2026-09-11",
+        "title": "Why the current tech backlash feels different",
+        "source": "AI | The Verge",
+        "judge": "insufficient_evidence",
+        "v4_kept_runs": 3,
+        "v5_kept_runs": 2,
+        "v4_p_relevant": [
+          0.39,
+          0.37,
+          0.37
+        ],
+        "v5_p_relevant": [
+          0.39,
+          0.39,
+          0.36
+        ]
+      },
+      {
+        "id": "cd751c52d983",
+        "date": "2026-09-12",
+        "title": "UK economy unexpectedly grows 0.4% in July boosted by AI",
+        "source": "AI (artificial intelligence) | The Guardian",
+        "judge": "relevant",
+        "v4_kept_runs": 2,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.51,
+          0.46,
+          0.51
+        ],
+        "v5_p_relevant": [
+          0.9,
+          0.92,
+          0.9
+        ]
+      },
+      {
+        "id": "5785d33bd4a2",
+        "date": "2026-09-15",
+        "title": "Hear how AI can engineer nature’s comeback at TechCrunch Disrupt 2026",
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "judge": "relevant",
+        "v4_kept_runs": 2,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.39,
+          0.44,
+          0.42
+        ],
+        "v5_p_relevant": [
+          0.81,
+          0.82,
+          0.83
+        ]
+      }
+    ]
+  },
+  "today_2026_09_23": {
+    "v4": [
+      {
+        "kept_of_81": 67,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Patti Harrison Had Dreams of a Tech Utopia. Silicon Valley Smashed Them",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address",
+          "TechCrunch Founder Summit’s agenda revealed: Unlock fundraising, hiring, and AI insights in Boston on November 4",
+          "Andreessen Horowitz is launching an ‘academy’ with no homework and partnerships with Palantir, Google, and Meta",
+          "Trump says the US is officially renaming AI to ‘super intelligence’"
+        ],
+        "cost_usd": 0.001044372,
+        "status": "complete"
+      },
+      {
+        "kept_of_81": 67,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Patti Harrison Had Dreams of a Tech Utopia. Silicon Valley Smashed Them",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address",
+          "TechCrunch Founder Summit’s agenda revealed: Unlock fundraising, hiring, and AI insights in Boston on November 4",
+          "Andreessen Horowitz is launching an ‘academy’ with no homework and partnerships with Palantir, Google, and Meta",
+          "Trump says the US is officially renaming AI to ‘super intelligence’"
+        ],
+        "cost_usd": 0.001044372,
+        "status": "complete"
+      },
+      {
+        "kept_of_81": 68,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Patti Harrison Had Dreams of a Tech Utopia. Silicon Valley Smashed Them",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address",
+          "TechCrunch Founder Summit’s agenda revealed: Unlock fundraising, hiring, and AI insights in Boston on November 4",
+          "Andreessen Horowitz is launching an ‘academy’ with no homework and partnerships with Palantir, Google, and Meta"
+        ],
+        "cost_usd": 0.001044372,
+        "status": "complete"
+      }
+    ],
+    "v5": [
+      {
+        "kept_of_81": 71,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address"
+        ],
+        "cost_usd": 0.00121107,
+        "status": "complete"
+      },
+      {
+        "kept_of_81": 71,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address"
+        ],
+        "cost_usd": 0.00121107,
+        "status": "complete"
+      },
+      {
+        "kept_of_81": 71,
+        "irrelevant_titles": [
+          "Woman's brain worm infection confirmed after eggs grow tails in lab test",
+          "Adobe Premiere finally brings powerful video editing to Android, and it's free",
+          "Review: Resident Evil might just be the best gaming adaptation yet",
+          "IT mistake erases 11 years of viewing history for hospitals’ maternity records",
+          "Shuffling the deck chairs: Xbox continues its \"reset\" with dramatic restructuring",
+          "Protests for Germany’s car industry as job losses loom",
+          "Trump’s sneaky plan to gut Endangered Species Act draws from 1995 Scalia dissent",
+          "Dyson’s most overengineered gadget may have a waterproofing problem",
+          "NASA chief: I'm only interested in \"good deals\" from international partners",
+          "Superpowers cannot solve world’s problems, UN chief says in final general assembly address"
+        ],
+        "cost_usd": 0.00121107,
+        "status": "complete"
+      }
+    ]
+  },
+  "today_changes": {
+    "newly_kept_by_v5": [
+      {
+        "id": "32fc352a0503",
+        "date": "2026-09-23",
+        "title": "Patti Harrison Had Dreams of a Tech Utopia. Silicon Valley Smashed Them",
+        "source": "Feed: Artificial Intelligence Latest",
+        "judge": null,
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.35,
+          0.27,
+          0.29
+        ],
+        "v5_p_relevant": [
+          0.81,
+          0.79,
+          0.81
+        ]
+      },
+      {
+        "id": "ca16462960ef",
+        "date": "2026-09-23",
+        "title": "TechCrunch Founder Summit’s agenda revealed: Unlock fundraising, hiring, and AI insights in Boston on November 4",
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "judge": null,
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.2,
+          0.24,
+          0.21
+        ],
+        "v5_p_relevant": [
+          0.61,
+          0.58,
+          0.6
+        ]
+      },
+      {
+        "id": "d9f52a8e66b2",
+        "date": "2026-09-23",
+        "title": "Andreessen Horowitz is launching an ‘academy’ with no homework and partnerships with Palantir, Google, and Meta",
+        "source": "AI | The Verge",
+        "judge": null,
+        "v4_kept_runs": 0,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.44,
+          0.42,
+          0.44
+        ],
+        "v5_p_relevant": [
+          0.5,
+          0.54,
+          0.5
+        ]
+      },
+      {
+        "id": "1cfcb9cfb808",
+        "date": "2026-09-23",
+        "title": "Trump says the US is officially renaming AI to ‘super intelligence’",
+        "source": "AI | The Verge",
+        "judge": null,
+        "v4_kept_runs": 1,
+        "v5_kept_runs": 3,
+        "v4_p_relevant": [
+          0.41,
+          0.42,
+          0.52
+        ],
+        "v5_p_relevant": [
+          0.96,
+          0.95,
+          0.96
+        ]
+      }
+    ],
+    "newly_dropped_by_v5": [],
+    "unstable": []
+  },
+  "errors_or_fallbacks": 0,
+  "total_cost_usd": 0.052036
+}

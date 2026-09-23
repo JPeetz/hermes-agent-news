@@ -66,7 +66,10 @@ The production web host serves a web-only Docker image. `web/_app/` is intention
 
 `NEWS_RELEVANCE_PROVIDER=typesafe` selects Jev for the news relevance filter after
 the existing keyword prefilter. It requires `TYPESAFE_API_KEY` and uses the frozen
-Choice/Noul policy in `config/shadow/news-relevance-v4-frozen.json`. Native Choice
+Choice/Noul policy in `config/shadow/news-relevance-v5-frozen.json` (from the
+2026-09-24 report date; v4 stays for history). The v5 Choice is recall-first:
+the downstream analysts already rank AI relevance and importance, so this screen
+drops only stories where AI is absent or incidental. Native Choice
 controls inclusion; no probability or confidence threshold is added. Only
 `irrelevant` is excluded. Insufficient evidence or service/validation failure
 retains the affected articles and logs the fallback. Importance is consumed only
