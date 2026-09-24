@@ -57,8 +57,9 @@ Thumbs.db
 # Docker volumes
 volumes/
 
-# Frontend build artifacts (built during Docker build)
+# Frontend build artifacts (built during Docker/build — Vercel adapter handles this)
 web/_app/
+web/*.html
 frontend/.svelte-kit/
 .data-backup/
 
@@ -79,3 +80,4 @@ node_modules/
 
 # CI-only Mullvad relay cache (persisted via actions/cache, never committed)
 .mullvad-state/
+.vercel
