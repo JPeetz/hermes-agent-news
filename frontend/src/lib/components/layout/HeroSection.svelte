@@ -36,8 +36,8 @@
 -->
 <section class="hero-section mb-8">
 	<div class="hero-frame">
-		{#if heroImageUrl}
-			<img src={heroImageUrl} alt="Daily AI scene" class="hero-image" />{/if}
+				{#if heroImageUrl}
+			<img src={heroImageUrl} alt="Daily AI scene" class="hero-image" />
 		{:else}
 			<div
 				class="hero-fallback bg-gradient-to-br from-bg-surface to-bg-dark flex items-center justify-center"
