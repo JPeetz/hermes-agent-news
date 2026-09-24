@@ -236,7 +236,7 @@ jobs:
         run: |
           set -euo pipefail
           if [[ -n "${PIPELINE_PROVIDERS_YAML:-}" ]]; then
-            printf '%s\n' "$PIPELINE_PROVIDERS_YAML" | base64 -d > config/providers.yaml 2>/dev/null
+            python3 -c "import base64, sys, os; data = base64.b64decode(sys.stdin.read().strip()); open('config/providers.yaml', 'wb').write(data)" <<< "$PIPELINE_PROVIDERS_YAML" 2>/dev/null
             if [[ $? -ne 0 || ! -s config/providers.yaml ]]; then
               printf '%s\n' "$PIPELINE_PROVIDERS_YAML" > config/providers.yaml
             fi
