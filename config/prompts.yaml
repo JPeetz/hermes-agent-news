@@ -350,15 +350,9 @@ orchestration:
     ```
 
   executive_summary: |
-    Generate the daily "Agent N's Hermes News" article from the analyzed data below.
+    Generate the daily "Agent N's Hermes News" article from the news data below.
 
     ${context}
-
-    TODAY'S TOPICS:
-    ${topics_context}
-
-    CATEGORY SUMMARIES:
-    ${category_summaries}
 
     Write a structured newsletter article with section headers using ##.
     Sections to include when content exists: Releases, Merged PRs, Community, Tips & Tutorials.
