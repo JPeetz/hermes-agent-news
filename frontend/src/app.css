@@ -4,8 +4,8 @@
 
 @layer base {
 	:root {
-		--color-trend-red: #E63946;
-		--color-guardian-red: #C1272D;
+		--color-hermes-gold: #F59E0B;
+		--color-agent-cyan: #06B6D4;
 	}
 
 	html {
@@ -20,34 +20,34 @@
 @layer components {
 	/* Card component */
 	.card {
-		@apply bg-white dark:bg-trend-gray-800
+		@apply bg-white dark:bg-bg-card
 		       rounded-xl p-6
 		       shadow-card hover:shadow-card-hover
 		       transition-shadow duration-200
-		       border border-trend-gray-200 dark:border-trend-gray-700;
+		       border border-agent-gray-200 dark:border-agent-gray-700;
 	}
 
-	/* Category accent borders */
-	.category-accent-news {
-		@apply border-l-4 border-category-news;
+	/* Section accent borders */
+	.section-accent-releases {
+		@apply border-l-4 border-category-releases;
 	}
 
-	.category-accent-research {
-		@apply border-l-4 border-category-research;
+	.section-accent-merged-prs {
+		@apply border-l-4 border-category-merged-prs;
 	}
 
-	.category-accent-social {
-		@apply border-l-4 border-category-social;
+	.section-accent-community {
+		@apply border-l-4 border-category-community;
 	}
 
-	.category-accent-reddit {
-		@apply border-l-4 border-category-reddit;
+	.section-accent-tips {
+		@apply border-l-4 border-category-tips;
 	}
 
 	/* Primary button */
 	.btn-primary {
 		@apply px-4 py-2 rounded-lg
-		       bg-trend-red hover:bg-guardian-red
+		       bg-hermes-gold hover:bg-hermes-gold-dark
 		       text-white font-medium
 		       transition-colors duration-200;
 	}
@@ -55,9 +55,9 @@
 	/* Secondary button */
 	.btn-secondary {
 		@apply px-4 py-2 rounded-lg
-		       bg-trend-gray-200 hover:bg-trend-gray-300
-		       dark:bg-trend-gray-700 dark:hover:bg-trend-gray-600
-		       text-trend-dark dark:text-trend-gray-100
+		       bg-agent-gray-200 hover:bg-agent-gray-300
+		       dark:bg-agent-gray-700 dark:hover:bg-agent-gray-600
+		       text-agent-gray-900 dark:text-agent-gray-100
 		       font-medium transition-colors duration-200;
 	}
 
@@ -66,84 +66,82 @@
 		@apply inline-block px-2 py-0.5 rounded-full text-xs font-medium;
 	}
 
-	.badge-news {
-		@apply bg-category-news/20 text-category-news;
+	.badge-releases {
+		@apply bg-category-releases/20 text-category-releases;
 	}
 
-	.badge-research {
-		@apply bg-category-research/20 text-category-research;
+	.badge-merged-prs {
+		@apply bg-category-merged-prs/20 text-category-merged-prs;
 	}
 
-	.badge-social {
-		@apply bg-category-social/20 text-category-social;
+	.badge-community {
+		@apply bg-category-community/20 text-category-community;
 	}
 
-	.badge-reddit {
-		@apply bg-category-reddit/20 text-category-reddit;
+	.badge-tips {
+		@apply bg-category-tips/20 text-category-tips;
 	}
 
 	/* Input field */
 	.input {
 		@apply w-full px-4 py-2 rounded-lg
-		       border border-trend-gray-200 dark:border-trend-gray-700
-		       bg-white dark:bg-trend-gray-800
-		       text-trend-dark dark:text-trend-gray-100
-		       placeholder-trend-gray-400
-		       focus:border-trend-red focus:ring-2 focus:ring-trend-red/20
+		       border border-agent-gray-200 dark:border-agent-gray-700
+		       bg-white dark:bg-bg-card
+		       text-agent-gray-900 dark:text-agent-gray-100
+		       placeholder-agent-gray-400
+		       focus:border-hermes-gold focus:ring-2 focus:ring-hermes-gold/20
 		       outline-none transition-all duration-200;
 	}
 
-	/* Navigation link.
-	   Three padding tiers, not two: the tablet band (sm–lg) carries text labels for
-	   all seven items and needs tighter gutters than the desktop layout to fit. */
+	/* Navigation link */
 	.nav-link {
 		@apply px-1.5 sm:px-2.5 lg:px-4 py-2 rounded-lg
-		       text-trend-gray-600 dark:text-trend-gray-400
-		       hover:bg-trend-gray-200 dark:hover:bg-trend-gray-700
+		       text-agent-gray-600 dark:text-agent-gray-400
+		       hover:bg-agent-gray-200 dark:hover:bg-agent-gray-700
 		       transition-colors duration-200;
 	}
 
 	.nav-link-active {
-		@apply text-trend-red bg-trend-red/10;
+		@apply text-hermes-gold bg-hermes-gold/10;
 	}
 
 	/* Importance-driven card tiers */
 	.card-importance-high {
-		@apply shadow-lg border-l-4 border-l-trend-red
+		@apply shadow-lg border-l-4 border-l-hermes-gold
 		       hover:-translate-y-0.5 transition-all duration-200;
 	}
 
 	.card-importance-medium {
-		@apply shadow-md border-l-4 border-l-amber-500
+		@apply shadow-md border-l-4 border-l-agent-cyan
 		       hover:-translate-y-0.5 transition-all duration-200;
 	}
 
 	.card-importance-standard {
-		@apply shadow-card border-l-4 border-l-trend-gray-300 dark:border-l-trend-gray-600
+		@apply shadow-card border-l-4 border-l-agent-gray-300 dark:border-l-agent-gray-600
 		       hover:-translate-y-0.5 transition-all duration-200;
 	}
 
 	.card-importance-low {
-		@apply shadow-sm border-l-2 border-l-trend-gray-200 dark:border-l-trend-gray-700 opacity-90;
+		@apply shadow-sm border-l-2 border-l-agent-gray-200 dark:border-l-agent-gray-700 opacity-90;
 	}
 }
 
 @layer utilities {
-	/* Summary prose styling - for formatted markdown content */
+	/* Summary prose styling */
 	.prose-summary {
-		@apply text-trend-gray-700 dark:text-trend-gray-300;
+		@apply text-agent-gray-700 dark:text-agent-gray-300;
 	}
 
 	.prose-summary h2 {
-		@apply font-bold text-trend-gray-800 dark:text-trend-gray-100 text-lg mt-5 mb-2;
+		@apply font-bold text-agent-gray-800 dark:text-agent-gray-100 text-lg mt-5 mb-2;
 	}
 
 	.prose-summary h3 {
-		@apply font-semibold text-trend-gray-800 dark:text-trend-gray-100 text-base mt-4 mb-2;
+		@apply font-semibold text-agent-gray-800 dark:text-agent-gray-100 text-base mt-4 mb-2;
 	}
 
 	.prose-summary h4 {
-		@apply font-semibold text-trend-gray-800 dark:text-trend-gray-100 text-base mt-4 mb-2;
+		@apply font-semibold text-agent-gray-800 dark:text-agent-gray-100 text-base mt-4 mb-2;
 	}
 
 	.prose-summary h2:first-child,
@@ -153,7 +151,7 @@
 	}
 
 	.prose-summary strong {
-		@apply text-trend-gray-900 dark:text-white font-semibold;
+		@apply text-agent-gray-900 dark:text-white font-semibold;
 	}
 
 	.prose-summary ul {
@@ -161,37 +159,32 @@
 	}
 
 	.prose-summary li {
-		@apply text-trend-gray-700 dark:text-trend-gray-300;
+		@apply text-agent-gray-700 dark:text-agent-gray-300;
 	}
 
 	.prose-summary a {
-		@apply text-trend-red hover:text-guardian-red underline;
+		@apply text-hermes-gold hover:text-hermes-gold-dark underline;
 	}
 
-	/* Internal links (to items on our site) - WCAG compliant contrast */
 	.prose-summary a.internal-link {
-		@apply text-trend-red/90 underline decoration-trend-red/50
-		       hover:text-trend-red hover:decoration-trend-red
-		       dark:text-red-300 dark:decoration-red-300/60
-		       dark:hover:text-red-200 dark:hover:decoration-red-200;
+		@apply text-hermes-gold/90 underline decoration-hermes-gold/50
+		       hover:text-hermes-gold hover:decoration-hermes-gold
+		       dark:text-amber-300 dark:decoration-amber-300/60
+		       dark:hover:text-amber-200 dark:hover:decoration-amber-200;
 	}
 
-	/* Keep link color for bold text inside links */
 	.prose-summary a.internal-link strong {
 		@apply text-inherit font-semibold;
 	}
 
 	.prose-summary p {
-		@apply mb-3 leading-relaxed text-trend-gray-700 dark:text-trend-gray-300;
+		@apply mb-3 leading-relaxed text-agent-gray-700 dark:text-agent-gray-300;
 	}
 
-	/* Inline code. `.prose` blocks get this from @tailwindcss/typography;
-	   .prose-summary is hand-rolled, so it needs its own rule or code spans
-	   render as ordinary prose. */
 	.prose-summary code {
 		@apply px-1 py-0.5 rounded text-[0.9em] font-mono
-		       bg-trend-gray-100 dark:bg-trend-gray-700
-		       text-trend-gray-800 dark:text-trend-gray-200;
+		       bg-agent-gray-100 dark:bg-agent-gray-700
+		       text-agent-gray-800 dark:text-agent-gray-200;
 	}
 
 	.prose-summary p:last-child {
@@ -200,7 +193,7 @@
 
 	/* Text gradient */
 	.text-gradient {
-		@apply bg-gradient-to-r from-trend-red to-guardian-red bg-clip-text text-transparent;
+		@apply bg-gradient-to-r from-hermes-gold to-agent-cyan bg-clip-text text-transparent;
 	}
 
 	/* Scroll shadows */
