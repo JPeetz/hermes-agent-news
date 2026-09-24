@@ -657,11 +657,12 @@ class KieImageClient(BaseImageClient):
                 }
             )
             response = urllib.request.urlopen(req, timeout=self.timeout)
-            data = json.loads(response.read().decode())
+            raw_response = response.read().decode()
+            data = json.loads(raw_response)
             task_id = data.get("data", {}).get("taskId") if isinstance(data.get("data"), dict) else None
 
             if not task_id:
-                raise RuntimeError(f"Kie: no taskId in response: {json.dumps(data, indent=2)[:300]}")
+                raise RuntimeError(f"Kie: no taskId in response ({len(raw_response)} chars): {raw_response[:500]}")
 
             # Step 2: Poll for result
             for i in range(self.max_poll_attempts):
