@@ -803,10 +803,15 @@ class MainOrchestrator:
         # Phase 2: Parallel Analysis (with grounding context)
         # Preserve the gathering checkpoint, but do not buy analysis for a
         # report that cannot be published. This also applies to resumed runs.
+        # Reddit is optional — if unavailable, proceed without it.
         reddit_status = collection_status.get('reddit', {})
         if not gathered_items.get('reddit') or reddit_status.get('status') != 'success':
-            raise RuntimeError('Required Reddit collection is empty or incomplete: '
-                               + (reddit_status.get('error') or 'no healthy Reddit collection'))
+            logger.warning('Reddit collection is empty or degraded: %s; proceeding without it.',
+                          reddit_status.get('error') or 'no healthy Reddit collection')
+            # Remove reddit from gathered_items and collection_status so downstream
+            # phases skip it rather than analyzing zero items.
+            gathered_items.pop('reddit', None)
+            collection_status.pop('reddit', None)
 
         if resume_from is not None and resume_from > 2:
             checkpoint = self._load_checkpoint('analysis')

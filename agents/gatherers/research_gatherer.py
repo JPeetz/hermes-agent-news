@@ -48,16 +48,8 @@ RESEARCH_FEED_TIMEOUT = float(os.getenv('RESEARCH_FEED_TIMEOUT', '20'))
 class ResearchGatherer(BaseGatherer):
     """Gathers research content from arXiv and research blogs."""
 
-    # arXiv categories relevant to AI
-    CATEGORIES = {
-        'cs.AI': 'Artificial Intelligence',
-        'cs.LG': 'Machine Learning',
-        'cs.CL': 'Computation and Language',
-        'cs.CV': 'Computer Vision',
-        'cs.NE': 'Neural and Evolutionary Computing',
-        'cs.RO': 'Robotics',
-        'stat.ML': 'Machine Learning (Statistics)'
-    }
+    # arXiv categories — empty for Hermes Agent News (no Hermes-specific arXiv category)
+    CATEGORIES = {}
 
     API_BASE = "https://export.arxiv.org/api/query"
     RSS_BASE = "https://rss.arxiv.org/rss"
