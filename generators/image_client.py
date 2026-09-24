@@ -170,7 +170,7 @@ class BaseImageClient(ABC):
         self,
         prompt: str,
         reference_image: Optional[bytes] = None,
-        aspect_ratio: str = "21:9",
+        aspect_ratio: str = "16:9",
         image_size: str = "2K"
     ) -> ImageResponse:
         """
@@ -230,7 +230,7 @@ class NativeGeminiClient(BaseImageClient):
         self,
         prompt: str,
         reference_image: Optional[bytes] = None,
-        aspect_ratio: str = "21:9",
+        aspect_ratio: str = "16:9",
         image_size: str = "2K"
     ) -> ImageResponse:
         """Generate image using google-genai SDK."""
@@ -366,7 +366,7 @@ class OpenAICompatibleClient(BaseImageClient):
         self,
         prompt: str,
         reference_image: Optional[bytes] = None,
-        aspect_ratio: str = "21:9",
+        aspect_ratio: str = "16:9",
         image_size: str = "2K"
     ) -> ImageResponse:
         """Generate image using OpenAI chat/completions format."""
@@ -500,7 +500,7 @@ class OpenRouterImageClient(BaseImageClient):
         self,
         prompt: str,
         reference_image: Optional[bytes] = None,
-        aspect_ratio: str = "21:9",
+        aspect_ratio: str = "16:9",
         image_size: str = "2K"
     ) -> ImageResponse:
         """Generate image via POST {endpoint}/images."""
@@ -574,6 +574,7 @@ class KieImageClient(BaseImageClient):
 
     KIE_BASE = "https://api.kie.ai/api/v1"
     DEFAULT_MODEL = "gpt-image/1.5-image-to-image"
+    # Supported aspect ratios: "1:1", "3:2", "4:3", "16:9" (NOT 21:9)
 
     def __init__(
         self,
@@ -603,7 +604,7 @@ class KieImageClient(BaseImageClient):
         self,
         prompt: str,
         reference_image: Optional[bytes] = None,
-        aspect_ratio: str = "21:9",
+        aspect_ratio: str = "16:9",
         image_size: str = "2K"
     ) -> ImageResponse:
         """Generate image via kie.ai task API."""
@@ -616,6 +617,7 @@ class KieImageClient(BaseImageClient):
                 "prompt": prompt,
                 "aspect_ratio": aspect_ratio,
                 "quality": self.quality,
+                "output_format": "jpg",
             }
         }
         # Add character sheet reference if configured

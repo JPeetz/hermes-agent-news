@@ -324,7 +324,7 @@ Create a scene that represents these stories. Consider:
             response = await self.client.generate(
                 prompt=instructions,
                 reference_image=skunk_bytes,
-                aspect_ratio="21:9",
+                aspect_ratio="16:9",
                 image_size="2K"
             )
 
@@ -449,7 +449,7 @@ IMPORTANT:
             response = await self.client.generate(
                 prompt=instructions,
                 reference_image=hero_bytes,
-                aspect_ratio="21:9",
+                aspect_ratio="16:9",
                 image_size="2K"
             )
 
