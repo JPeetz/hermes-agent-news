@@ -233,46 +233,20 @@ class HeroGenerator:
         # Build topic sections for prompt
         topic_sections = []
         for i, summary in enumerate(topic_summaries, 1):
-            section = f"**Topic {i}: {summary['name']}**"
+            section = f"topic {i}: {summary['name']}"
             if summary['description']:
-                section += f"\n{summary['description']}"
+                # Clean description: remove markdown, truncate to 200 chars
+                desc = summary['description'].replace('**', '').replace('*', '').replace('[', '').replace(']', '')
+                section += f" {desc[:200]}"
             topic_sections.append(section)
 
-        return f"""You are generating a daily hero image for 'Agent N's Hermes News' website.
+        # Build scene from topics
+        topics_str = "; ".join(topic_sections)
+        visual_elements_str = ", ".join(visual_elements[:3])
 
-## Your Goal
-Create a sleek, futuristic editorial illustration that visually represents today's top Hermes Agent / AI news stories. The scene should use a dark sci-fi aesthetic with gold and cyan accents.
+        return f"""Agent N: a young woman, 24, 168cm (5'6"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), gold (#FFD700), cyan (#00FFFF), white (#F8F8F8).
 
-## The Character (CRITICAL)
-The attached reference image shows our character Agent N. You MUST:
-- Preserve Agent N's exact likeness: young woman with short dark hair, over-ear headphones, white high-collared top
-- Place Agent N in a control room or high-tech workspace environment
-- Show her actively monitoring, analyzing, or interacting with holographic data displays
-- Position her in the frame prominently, engaged with the scene
-
-## Color Palette
-- Primary accent: Gold (#FFD700) - warmth, achievement, value
-- Secondary accent: Cyan (#00FFFF) - technology, intelligence, data flow
-- Background: Deep black with subtle blue-grey gradients
-- Small bright warm highlights to break the cool tones
-
-## Today's Stories
-
-{chr(10).join(topic_sections)}
-
-## Visual Direction
-Create a scene that represents these stories. Consider:
-- Holographic displays with data, graphs, and streaming information
-- Neural network visualizations floating in the air
-- A sleek, dark high-tech environment with warm gold and cool cyan lighting
-- Agent N positioned to view or interact with the information displays
-- Suggested scene elements: {', '.join(visual_elements)}
-
-## Style Requirements
-- Premium editorial tech photography, digital art style
-- Gold and cyan accent colors with dark backgrounds
-- Sleek, sophisticated, high-tech atmosphere
-- No text or watermarks on the image itself"""
+She stands in a dark command center with glowing gold and cyan data streams, examining a floating holographic display showing today's Hermes Agent news: {topics_str[:300]}. Surrounded by holographic interfaces with {visual_elements_str}."""
 
     async def generate(
         self,

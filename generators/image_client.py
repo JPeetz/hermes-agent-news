@@ -626,22 +626,25 @@ class KieImageClient(BaseImageClient):
 
         # Build request body. Skip image_size: kie uses aspect_ratio only.
         # gpt-image/1.5-image-to-image does NOT accept output_format or strength.
-        body = {
-            "model": self.model,
-            "input": {
-                "prompt": prompt,
-                "aspect_ratio": aspect_ratio,
-                "quality": self.quality,
-            }
+        # CRITICAL: `input` must be a stringified JSON object, NOT a nested dict.
+        input_dict = {
+            "prompt": prompt,
+            "aspect_ratio": aspect_ratio,
+            "quality": self.quality,
         }
         # Add character sheet reference if configured
         if self.reference_url:
-            body["input"]["input_urls"] = [self.reference_url]
+            input_dict["input_urls"] = [self.reference_url]
         elif reference_image:
             # Fall back to base64 data URI (handles legacy caller passing bytes)
             import base64
             b64 = base64.b64encode(reference_image).decode()
-            body["input"]["input_urls"] = [f"data:image/png;base64,{b64}"]
+            input_dict["input_urls"] = [f"data:image/png;base64,{b64}"]
+
+        body = {
+            "model": self.model,
+            "input": json.dumps(input_dict)
+        }
 
         logger.info(f"Kie: creating task for {self.model}, aspect={aspect_ratio}")
 
