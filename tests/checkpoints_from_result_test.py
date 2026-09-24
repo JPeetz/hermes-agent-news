@@ -167,7 +167,7 @@ def make_result() -> dict:
             "research": {"status": "partial", "items": 2},
         },
         "hero_image_url": "/data/2026-09-04/hero.webp?v=1",
-        "hero_image_prompt": "a skunk reading the news",
+        "hero_image_prompt": "Agent N reading the news",
         "hero_image_usage": {"input_tokens": 10, "output_tokens": 20},
         "phase_status": [
             {

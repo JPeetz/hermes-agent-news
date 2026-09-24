@@ -147,7 +147,7 @@ llm:
 # =============================================================================
 # Image Provider (hero image generation)
 # =============================================================================
-# Generates a daily hero image featuring the AATF skunk mascot.
+# Generates a daily hero image featuring Agent N.
 # Comment out this entire section to skip hero image generation.
 #
 image:

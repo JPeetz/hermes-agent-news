@@ -8,6 +8,8 @@ The character is placed in topic-related scenes based on the day's top topics.
 Supports two initialization modes:
 1. New: HeroGenerator.from_config(config) - uses unified ImageClient abstraction
 2. Legacy: HeroGenerator(api_key, endpoint, model) - backwards compatible, deprecated
+
+Powered by JP Technologies — https://jptechnologies.vercel.app
 """
 
 import os
@@ -268,13 +270,13 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
             Dict with 'path' (relative URL path) and 'prompt' (used prompt), or None on failure
         """
         # Read reference image (optional: kie mode uses remote URL from client config)
-        skunk_bytes = None
+        character_bytes = None
         if hasattr(self.client, 'reference_url') and self.client.reference_url:
             logger.info("Agent N reference provided via client config (remote URL)")
         elif self.AGENT_N_REFERENCE.exists():
             try:
                 with open(self.AGENT_N_REFERENCE, "rb") as f:
-                    skunk_bytes = f.read()
+                    character_bytes = f.read()
             except Exception as e:
                 logger.warning(f"Failed to read agent N reference image: {e}")
         else:
@@ -297,7 +299,7 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
             # Use ImageClient for generation
             response = await self.client.generate(
                 prompt=instructions,
-                reference_image=skunk_bytes,
+                reference_image=character_bytes,
                 aspect_ratio="3:2",
                 image_size="2K"
             )

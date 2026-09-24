@@ -96,10 +96,10 @@ TOPIC_UNLINKED_NAME = "Agent frameworks"
 TOPIC_UNLINKED_DESC = "Two agent frameworks shipped on the same afternoon."
 
 HERO_URL = f"/data/{DATE}/hero.webp?v=1"
-HERO_PROMPT = "A skunk reviewing two agent frameworks on a circuit-board bench."
+HERO_PROMPT = "Agent N reviewing two agent frameworks on a circuit-board bench."
 
 REGEN_HERO_URL = f"/data/{DATE}/hero.webp"
-REGEN_HERO_PROMPT = "A freshly drawn skunk."
+REGEN_HERO_PROMPT = "Agent N reviewing the day's news."
 
 # The replay bundle the ORIGINAL run left on summary.json: one analyzer span and
 # its cost row. Nothing in the repair run can produce these again -- the

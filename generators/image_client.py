@@ -449,7 +449,7 @@ class OpenRouterImageClient(BaseImageClient):
     natively supports what the daily hero needs:
     - aspect_ratio ("21:9" hero banners; chat/completions would ignore it)
     - resolution tiers ("2K")
-    - input_references for image-to-image (the skunk mascot reference)
+    - input_references for image-to-image (the Agent N character reference)
 
     Response shape per OpenRouter docs: data[0].b64_json + media_type, plus a
     usage block with prompt/completion token counts.

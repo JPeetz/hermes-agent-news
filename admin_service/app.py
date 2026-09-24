@@ -71,7 +71,7 @@ def create_app(
             task.cancel()
 
     app = FastAPI(
-        title="AATF admin",
+        title="Hermes News Admin",
         docs_url=None,
         redoc_url=None,
         openapi_url=None,

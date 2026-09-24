@@ -8,7 +8,7 @@ natively supports the three things the daily hero needs:
 
   1. ``aspect_ratio`` ("21:9" hero banners -- chat/completions ignores it),
   2. ``resolution`` tiers ("2K"),
-  3. ``input_references`` for image-to-image generation (the skunk mascot).
+  3. ``input_references`` for image-to-image generation (the Agent N character).
 
 These tests lock in:
 
@@ -144,8 +144,8 @@ class EndpointAndBodyTest(unittest.TestCase):
         self.assertNotIn("quality", body)
 
     def test_reference_image_becomes_input_reference_data_url(self):
-        skunk = b"skunk-png-bytes"
-        expected_b64 = base64.b64encode(skunk).decode()
+        character_ref = b"character-png-bytes"
+        expected_b64 = base64.b64encode(character_ref).decode()
 
         _, instance, _ = _generate_with(
             _make_client(), [_ok_response()]
@@ -157,7 +157,7 @@ class EndpointAndBodyTest(unittest.TestCase):
             with patch("generators.image_client.httpx.AsyncClient", return_value=ctx2), \
                  patch("generators.image_client.asyncio.sleep", new=AsyncMock()):
                 await _make_client().generate(
-                    "a prompt", reference_image=skunk, aspect_ratio="21:9",
+                    "a prompt", reference_image=character_ref, aspect_ratio="21:9",
                     image_size="2K"
                 )
 

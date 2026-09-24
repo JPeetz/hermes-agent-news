@@ -139,7 +139,7 @@ AGENTS.update(
             id="hero",
             label="Illustrator",
             kind="imagegen",
-            blurb="Paints the day's scene around the AATF skunk.",
+            blurb="Paints the day's scene around Agent N.",
         ),
     }
 )

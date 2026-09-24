@@ -131,7 +131,7 @@ class FeedGenerator:
     # Size variants for category feeds
     SIZE_VARIANTS = [25, 50, 100, None]  # None = full/all items
 
-    FEED_TITLE = "AATF AI News Aggregator"
+    FEED_TITLE = "Agent N's Hermes News"
     FEED_SUBTITLE = "Daily AI/ML news powered by Claude Opus 5"
 
     def _extract_first_external_link(self, html: str) -> Optional[str]:
@@ -139,7 +139,7 @@ class FeedGenerator:
         Extract first external href from HTML content.
 
         Used to find a representative source link for summary entries. Summary
-        entries keep the AATF briefing as the primary alternate/canonical URL,
+        entries keep the Hermes News briefing as the primary alternate/canonical URL,
         while this external URL is emitted as secondary Feedly-compatible
         metadata and as the semantic source via link.
         """
@@ -726,10 +726,10 @@ class FeedGenerator:
   <updated>{now}</updated>
   <icon>{self.base_url}/assets/logo.webp</icon>
   <author>
-    <name>AATF AI News Aggregator</name>
+    <name>Agent N's Hermes News</name>
     <uri>{self.base_url}</uri>
   </author>
-  <generator>AATF AI News Aggregator</generator>
+  <generator>Agent N's Hermes News</generator>
 {''.join(entries)}
 </feed>'''
 
@@ -817,7 +817,7 @@ class FeedGenerator:
             hero_img_html = f'<p><img src="{hero_full_url}" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>\n'
             summary_html = hero_img_html + summary_html
 
-        # Keep the AATF briefing URL as the primary alternate/canonical link.
+        # Keep the Hermes News briefing URL as the primary alternate/canonical link.
         # The representative external URL remains as a secondary alternate for
         # Feedly compatibility, while rel="via" identifies it semantically.
         external_url = item.get('_external_url')
@@ -855,7 +855,7 @@ class FeedGenerator:
     {links}
     <published>{published}</published>
     <updated>{published}</updated>
-    <author><name>AATF AI News Aggregator</name></author>
+    <author><name>Agent N's Hermes News</name></author>
     <summary type="html"><![CDATA[{summary_html}]]></summary>
     <content type="html"><![CDATA[{summary_html}]]></content>
     <category term="daily-summary"/>{media_element}

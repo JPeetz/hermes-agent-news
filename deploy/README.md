@@ -14,7 +14,7 @@ trust to sign deployable commits:
 
 - Ryan Duff — flyryan identity
 - Ryan Duff — EMU identity
-- AATF daily-pipeline CI bot (`PIPELINE_SIGNING_KEY` secret)
+- JPeetz Hermes Agent News CI bot (`PIPELINE_SIGNING_KEY` secret)
 
 Add or rotate a signer by editing that file (and the real host copy). Use `*`
 as the principal — the CI committer email contains `[bot]`, which the ssh

@@ -382,7 +382,6 @@ https://lilianweng.github.io/index.xml
 https://huyenchip.com/feed.xml
 https://www.nature.com/subjects/machine-learning.rss
 https://www.nature.com/natmachintell.rss
-http://feeds.trendmicro.com/TrendMicroSimplySecurity
 """
 
     # Twitter accounts

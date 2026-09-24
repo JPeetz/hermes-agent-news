@@ -500,7 +500,7 @@ Automatically identifies when today's stories continue from previous coverage:
 - **2-day lookback**: Compares against items from the past 2 days
 
 ### Analysis Profiles And Adaptive Thinking
-- QUICK/STANDARD/DEEP/ULTRATHINK are internal analysis profiles (originating from the AATF project), not Anthropic API thinking levels
+- QUICK/STANDARD/DEEP/ULTRATHINK are internal analysis profiles (originating from the original AATF project), not Anthropic API thinking levels
 - Claude Opus 5 uses adaptive thinking plus effort settings, not fixed manual `budget_tokens`
 - Opus 5 requests send top-level `thinking: {"type": "adaptive", "display": "summarized"}` plus `output_config.effort`
 - `LLM_ADAPTIVE_MAX_TOKENS` sets the response output ceiling and is separate from thinking depth
@@ -556,7 +556,7 @@ Multiple Atom 1.0 feeds for different use cases:
 - **Daily Briefing** - Executive summaries only with hero image
 - **Category Feeds** - News, Research, Social, Reddit separately
 - **Summary Feeds** - All category summaries
-- Summary entries keep the original AATF briefing URL as the first alternate link; the representative external source remains as a secondary alternate for Feedly compatibility
+- Summary entries keep the original Hermes News briefing URL as the first alternate link; the representative external source remains as a secondary alternate for Feedly compatibility
 - Summary entries include both `<summary type="html">` and `<content type="html">` with the same publisher-provided HTML so full-content readers do not need to fetch the linked page
 
 ---
@@ -582,7 +582,7 @@ ai-news-aggregator/
 │   ├── json_generator.py      # JSON data for SPA frontend
 │   ├── search_indexer.py      # MiniSearch corpus builder
 │   ├── feed_generator.py      # Atom RSS feeds
-│   └── hero_generator.py      # Daily hero image with skunk mascot
+│   └── hero_generator.py      # Daily hero image with Agent N character
 ├── frontend/                  # Svelte SPA
 │   ├── src/
 │   │   ├── lib/components/    # UI components
@@ -789,16 +789,8 @@ This is a fork of the original [flyryan/ai-news-aggregator](https://github.com/f
 
 Apache License 2.0 — See [LICENSE](LICENSE) file for details.
 
-Original work copyright 2026 AI Acceleration Task Force (AATF). This fork maintained by JPeetz.
+Original work copyright 2026 AI Acceleration Task Force (AATF). This fork maintained by [JPeetz](https://jptechnologies.vercel.app/).
 
 ---
 
-## Built by TrendAI
-
-**AI Acceleration Task Force** | [TrendAI](https://www.trendmicro.com)
-
-Originally built as an internal tool to keep our team informed about AI developments, now open-sourced so others can run their own instances.
-
----
-
-**Interested in being a Trender?** [Join us!](https://www.trendmicro.com/en_us/about/careers.html)
+*Powered by [JP Technologies](https://jptechnologies.vercel.app/) — Agent N's Hermes News*
