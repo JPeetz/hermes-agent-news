@@ -250,23 +250,25 @@ jobs:
             cat > config/providers.yaml <<YAML
           llm:
             mode: "openai-compatible"
-            api_key: "\${ANTHROPIC_API_KEY}"
-            base_url: "\${ANTHROPIC_API_BASE}"
-            model: "\${ANTHROPIC_MODEL}"
+            api_key: "\${OPENROUTER_API_KEY}"
+            base_url: "https://openrouter.ai/api"
+            model: "z-ai/GLM-5.3-Flash"
+            display_name: "GLM-5.3-Flash"
             timeout: 600
             routes:
-              - id: "aws"
-                model: "claude-5-opus-aws"
-              - id: "gcp"
-                model: "claude-5-opus-gcp"
-              - id: "anthropic"
-                model: "claude-5-opus-anthropic"
+              - id: "primary"
+                model: "z-ai/GLM-5.3-Flash"
+                api_key: "\${OPENROUTER_API_KEY}"
+                base_url: "https://openrouter.ai/api"
+                mode: "openai-compatible"
 
           image:
-            mode: "openai-compatible"
-            api_key: "\${ANTHROPIC_API_KEY}"
-            endpoint: "\${ANTHROPIC_API_BASE}/v1"
-            model: "gemini-3-pro-image"
+            mode: "kie"
+            api_key: "\${KIE_API_KEY}"
+            model: "gpt-image/1.5-image-to-image"
+            quality: "medium"
+            reference_url: "https://files.catbox.moe/5llsue.jpg"
+            display_name: "Agent N via Kie.ai"
 
           pipeline:
             base_url: "${PIPELINE_BASE_URL}"
