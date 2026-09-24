@@ -1,14 +1,14 @@
 """
-Reddit Gatherer - Collects posts from Reddit subreddits via the ScrapeCreators API.
+Reddit Gatherer - Collects posts from Reddit subreddits via the ScraperAPI proxy.
 
-Reddit's free unauthenticated ``.json`` endpoint was killed at the endpoint level
-(HTTP 403 from every exit IP) and OAuth is also unavailable. This gatherer uses the
-ScrapeCreators third-party API (header ``x-api-key``), which unblocks Reddit
-server-side and returns ``.json``-equivalent data plus post bodies and comments.
+Reddit's free unauthenticated ``.json`` endpoint is blocked at the endpoint level
+(HTTP 403 from every exit IP) and OAuth is also unavailable. This gatherer uses
+ScraperAPI (``api.scraperapi.com``) as a proxy to Reddit's native JSON API, which
+unblocks Reddit server-side and returns native ``.json``-equivalent data.
 
-Two endpoints are used:
-  * ``GET /v1/reddit/subreddit``      -> listing (discovery + ranking, ~23 posts/page)
-  * ``GET /v1/reddit/post/comments``  -> per-post body (selftext) + top comments
+Two endpoint patterns are used (both proxied through ScraperAPI):
+  * ``GET /r/{subreddit}/.json?sort=...&after=...``  -> listing (discovery + ranking)
+  * ``GET /r/{subreddit}/comments/{id}/.json``        -> per-post body (selftext) + top comments
 
 Collection strategy: ``sort=new`` (strictly reverse-chronological) is paged
 newest -> oldest and stopped once the coverage window is passed. This is both
@@ -43,15 +43,12 @@ def _env_int(name: str, default: int, minimum: int = 0) -> int:
     return value if value >= minimum else default
 
 
-# ScrapeCreators API configuration
+# ScraperAPI configuration
 SCRAPECREATORS_API_KEY = os.getenv("SCRAPECREATORS_API_KEY", "")
-SCRAPECREATORS_BASE = os.getenv("SCRAPECREATORS_BASE", "https://api.scrapecreators.com")
+SCRAPECREATORS_BASE = os.getenv("SCRAPECREATORS_BASE", "https://api.scraperapi.com")
 
-# Egress: ScrapeCreators unblocks Reddit server-side, so its calls go DIRECT and must
-# NOT be captured by the pipeline-wide HTTPS_PROXY/ALL_PROXY exports (Mullvad). The old
-# REDDIT_PROXY_URL is now a no-op for Reddit; a dedicated override is provided for the
-# rare case the ScrapeCreators traffic itself should be proxied.
-SCRAPECREATORS_PROXY_URL = os.getenv("SCRAPECREATORS_PROXY_URL", "")
+# Egress: ScraperAPI unblocks Reddit server-side, so its calls go DIRECT and must
+# NOT be captured by the pipeline-wide HTTPS_PROXY/ALL_PROXY exports (Mullvad).
 REDDIT_USER_AGENT = os.getenv("REDDIT_USER_AGENT", "AI-News-Aggregator/1.0")
 
 # Tunables (all env-overridable)
@@ -62,7 +59,7 @@ REDDIT_MIN_COMMENTS_FOR_DIGEST = _env_int("REDDIT_MIN_COMMENTS_FOR_DIGEST", 8, m
 REDDIT_CREDIT_BUDGET = _env_int("REDDIT_CREDIT_BUDGET", 600, minimum=1)
 REDDIT_FETCH_WORKERS = _env_int("REDDIT_FETCH_WORKERS", 6, minimum=1)
 # Consecutive older-than-window posts that trigger a stop. >1 absorbs out-of-order
-# pinned/stickied posts (which ScrapeCreators does not flag) at the top of a listing.
+# pinned/stickied posts at the top of a listing.
 REDDIT_OLDER_STOP_THRESHOLD = _env_int("REDDIT_OLDER_STOP_THRESHOLD", 3, minimum=1)
 REDDIT_REQUEST_TIMEOUT = _env_int("REDDIT_REQUEST_TIMEOUT", 60, minimum=5)
 
@@ -71,11 +68,11 @@ _RETRYABLE_STATUS = (429, 500, 502, 503, 504)
 
 
 class FatalScrapeError(Exception):
-    """Non-recoverable ScrapeCreators error (bad key / out of credits) - abort the run."""
+    """Non-recoverable error - abort the run."""
 
 
 class RedditGatherer(BaseGatherer):
-    """Gathers posts from Reddit subreddits via the ScrapeCreators API."""
+    """Gathers posts from Reddit subreddits via ScraperAPI proxy."""
 
     def __init__(
         self,
@@ -128,7 +125,7 @@ class RedditGatherer(BaseGatherer):
     async def gather(self) -> List[CollectedItem]:
         """Gather posts from configured subreddits."""
         if not SCRAPECREATORS_API_KEY:
-            self.note_degradation('SCRAPECREATORS_API_KEY is missing')
+            self.note_degradation('SCRAPECREATORS_API_KEY is missing (required for ScraperAPI proxy)')
             logger.error(
                 "SCRAPECREATORS_API_KEY is not set - Reddit collection is disabled. "
                 "Set the env var / GitHub secret to restore Reddit data."
@@ -168,11 +165,11 @@ class RedditGatherer(BaseGatherer):
         """Fetch all subreddits concurrently; runs in a worker thread."""
         start_balance = self._fetch_credit_balance()
         if start_balance is not None:
-            logger.info(f"ScrapeCreators credit balance at start: {start_balance}")
+            logger.info(f"ScraperAPI balance at start: {start_balance}")
             self._credits_remaining = start_balance
             if start_balance <= 0:
                 self._stop_calls = True
-                self.note_degradation(f'ScrapeCreators credits exhausted (balance={start_balance})')
+                self.note_degradation(f'ScraperAPI credits exhausted (balance={start_balance})')
                 raise FatalScrapeError(self.get_degradation())
 
         all_posts: List[CollectedItem] = []
@@ -187,8 +184,8 @@ class RedditGatherer(BaseGatherer):
             with self.time_step('reddit', f'r/{sub}') as step:
                 posts = self._fetch_subreddit(sub)
                 step.items = len(posts)
-                # `_fetch_subreddit` catches everything -- a fatal ScrapeCreators
-                # error or a blown credit budget returns a short list rather than
+                # `_fetch_subreddit` catches everything -- a fatal proxy error
+                # or a blown call budget returns a short list rather than
                 # raising, so `time_step` cannot infer failure from an exception.
                 # Without this, an aborted run draws 15 clean green bars.
                 with self._lock:
@@ -224,7 +221,7 @@ class RedditGatherer(BaseGatherer):
         if stopped:
             self.note_degradation('Reddit collection stopped before completion (budget or provider failure)')
         logger.info(
-            f"ScrapeCreators usage: {calls} calls this run; "
+            f"ScraperAPI usage: {calls} calls this run; "
             f"credits_remaining={remaining}; credits_consumed={consumed}"
             + ("; STOPPED EARLY (budget/fatal)" if stopped else "")
         )
@@ -232,10 +229,10 @@ class RedditGatherer(BaseGatherer):
         # Surface credit usage/balance in the end-of-run cost summary.
         try:
             from ..cost_tracker import get_tracker
-            # ScrapeCreators bills 1 credit per call at ~$0.99 / 1000 credits.
+            # ScraperAPI bills per call; no per-credit balance available.
             billed = consumed if consumed is not None else calls
             get_tracker().record_external_api(
-                "ScrapeCreators (Reddit)",
+                "ScraperAPI (Reddit)",
                 calls=calls,
                 credits_consumed=consumed,
                 balance=remaining,
@@ -243,7 +240,7 @@ class RedditGatherer(BaseGatherer):
                 note=self.get_degradation(),
             )
         except Exception as e:  # never let reporting break collection
-            logger.debug(f"Could not record ScrapeCreators usage: {e}")
+            logger.debug(f"Could not record ScraperAPI usage: {e}")
 
         return all_posts
 
@@ -273,20 +270,27 @@ class RedditGatherer(BaseGatherer):
                 if data is None:  # soft failure or stop_calls
                     break
 
-                posts = data.get("posts") or []
-                if not isinstance(data.get('posts'), list):
+                listing = data.get("data") if isinstance(data, dict) else None
+                if not isinstance(listing, dict):
                     self.note_degradation(f'r/{subreddit}: malformed listing response')
                     break
-                if not posts:
+                children = listing.get("children") or []
+                if not isinstance(children, list):
+                    self.note_degradation(f'r/{subreddit}: children is not a list')
+                    break
+                if not children:
                     break
 
-                for post in posts:
+                for child in children:
+                    post = child.get("data", {}) if isinstance(child, dict) else {}
+                    if not isinstance(post, dict):
+                        continue
                     post_id = post.get("id", "")
                     if not post_id or post_id in seen_ids:
                         continue
                     seen_ids.add(post_id)
 
-                    # ScrapeCreators does not flag stickied posts (always null); defensive no-op.
+                    # Reddit JSON flags stickied posts natively; skip them.
                     if post.get("stickied"):
                         continue
 
@@ -314,7 +318,7 @@ class RedditGatherer(BaseGatherer):
                 if consecutive_older >= self.older_stop_threshold:
                     break
 
-                after = data.get("after")
+                after = listing.get("after")
                 if not after:
                     break
                 pages += 1
@@ -344,7 +348,7 @@ class RedditGatherer(BaseGatherer):
         return [item for item, _ in pairs]
 
     def _build_item(self, subreddit: str, post: Dict[str, Any], pub_dt: datetime) -> CollectedItem:
-        """Map a ScrapeCreators listing post to a CollectedItem (body filled in later)."""
+        """Map a Reddit native JSON post to a CollectedItem (body filled in later)."""
         post_id = post.get("id", "")
         title = post.get("title", "") or ""
         domain = (post.get("domain") or "").lower()
@@ -357,7 +361,7 @@ class RedditGatherer(BaseGatherer):
             published=pub_dt.isoformat(),
             source=f"r/{subreddit}",
             source_type='reddit',
-            tags=[],  # flair not exposed by ScrapeCreators listings
+            tags=[],  # flair not exposed by Reddit .json listings
             metadata={
                 'platform_id': post_id,
                 'subreddit': subreddit,
@@ -407,8 +411,15 @@ class RedditGatherer(BaseGatherer):
         if data is None:
             return
 
-        detail = data.get("post") or {}
-        comments = data.get("comments") or []
+        # Reddit native JSON comments: [post_listing, comments_listing]
+        if isinstance(data, list) and len(data) >= 2:
+            post_children = data[0].get("data", {}).get("children", []) if isinstance(data[0], dict) else []
+            detail = post_children[0].get("data", {}) if post_children else {}
+            comment_children = data[1].get("data", {}).get("children", []) if isinstance(data[1], dict) else []
+            comments = [c.get("data", {}) for c in comment_children if isinstance(c, dict)]
+        else:
+            detail = {}
+            comments = []
 
         content = ""
         if is_self:
@@ -457,101 +468,83 @@ class RedditGatherer(BaseGatherer):
         """Create a session that ignores ambient proxy env vars (direct egress by default)."""
         session = requests.Session()
         session.headers.update({"User-Agent": REDDIT_USER_AGENT})
-        # Ignore HTTPS_PROXY/ALL_PROXY exported pipeline-wide (Mullvad) - ScrapeCreators
+        # Ignore HTTPS_PROXY/ALL_PROXY exported pipeline-wide (Mullvad) - ScraperAPI
         # unblocks server-side and must go direct.
         session.trust_env = False
-        if SCRAPECREATORS_PROXY_URL:
-            session.proxies.update({"http": SCRAPECREATORS_PROXY_URL, "https": SCRAPECREATORS_PROXY_URL})
-            logger.info("ScrapeCreators session using explicit SCRAPECREATORS_PROXY_URL")
         return session
 
     def _fetch_credit_balance(self) -> Optional[int]:
-        """Read the real account balance (does not consume a credit)."""
-        try:
-            session = self._make_session()
-            resp = session.get(
-                f"{SCRAPECREATORS_BASE}/v1/account/credit-balance",
-                headers={"x-api-key": SCRAPECREATORS_API_KEY},
-                timeout=self.timeout,
-            )
-            session.close()
-            if resp.status_code == 200:
-                data = resp.json()
-                return data.get("creditCount", data.get("credits_remaining"))
-            logger.warning(f"Credit-balance probe returned HTTP {resp.status_code}")
-        except Exception as e:
-            logger.warning(f"Could not fetch ScrapeCreators credit balance: {e}")
+        """ScraperAPI has no credit balance endpoint."""
         return None
 
     def _api_get(self, session: requests.Session, path: str, params: dict) -> Optional[Dict[str, Any]]:
         """
-        Budgeted GET against ScrapeCreators with retry/backoff.
+        Budgeted GET through ScraperAPI proxy to Reddit's native JSON API.
 
-        Returns the parsed JSON on success, or None on a soft failure / when the credit
-        budget is exhausted. Raises FatalScrapeError on bad-key / out-of-credits.
+        Builds the target Reddit JSON URL from params, wraps it in a ScraperAPI
+        proxy call (``?api_key=...&url=...``), and returns the parsed native JSON
+        on success. Returns None on a soft failure / when the call budget is exhausted.
+        No credit-balance endpoint is available.
         """
-        url = f"{SCRAPECREATORS_BASE}{path}"
-        headers = {"x-api-key": SCRAPECREATORS_API_KEY}
+        # Build the target Reddit native JSON URL from the endpoint params.
+        if "url" in params:
+            # Comments/detail endpoint: params["url"] is a Reddit post URL
+            target_url = params["url"].rstrip("/") + ".json"
+        else:
+            # Listing endpoint: params has subreddit, sort, optional after
+            subreddit = params.get("subreddit", "")
+            sort = params.get("sort", "new")
+            after = params.get("after")
+            target_url = f"https://www.reddit.com/r/{subreddit}/.json?sort={sort}"
+            if after:
+                target_url += f"&after={after}"
+
+        # Wrap through ScraperAPI
+        proxy_params = {
+            "api_key": SCRAPECREATORS_API_KEY,
+            "url": target_url,
+        }
 
         for attempt in range(3):
-            # Every HTTP attempt can consume a credit, including retries.
             with self._lock:
                 if self._stop_calls:
                     return None
                 if self._calls_made >= self.credit_budget:
                     self._stop_calls = True
-                    logger.warning('Reddit credit budget (%s attempts) reached', self.credit_budget)
+                    logger.warning('Reddit call budget (%s calls) reached', self.credit_budget)
                     return None
                 self._calls_made += 1
             try:
-                resp = session.get(url, params=params, headers=headers, timeout=self.timeout)
+                resp = session.get(SCRAPECREATORS_BASE, params=proxy_params, timeout=self.timeout)
             except requests.exceptions.RequestException as e:
                 delay = 2 ** attempt
-                logger.warning(f"ScrapeCreators request error for {path} ({e}); retrying in {delay}s")
+                logger.warning(f"ScraperAPI request error for {target_url} ({e}); retrying in {delay}s")
                 time.sleep(delay)
                 continue
 
             status = resp.status_code
 
-            # Bad key / out of credits are not transient - abort fast (note the documented
-            # quirk where a bad/empty key may surface as 402 "out of credits").
-            if status in (401, 402):
-                raise FatalScrapeError(f"ScrapeCreators HTTP {status} for {path}: {resp.text[:200]}")
-
             if status in _RETRYABLE_STATUS:
                 delay = 2 ** attempt
-                logger.warning(f"ScrapeCreators HTTP {status} for {path}; retrying in {delay}s")
+                logger.warning(f"ScraperAPI HTTP {status} for {target_url}; retrying in {delay}s")
                 time.sleep(delay)
                 continue
 
             if status != 200:
-                logger.warning(f"ScrapeCreators HTTP {status} for {path}; skipping")
-                self.note_degradation(f'ScrapeCreators HTTP {status} for {path}')
+                logger.warning(f"ScraperAPI HTTP {status} for {target_url}; skipping")
+                self.note_degradation(f'ScraperAPI HTTP {status} for {target_url}')
                 return None
 
             try:
                 data = resp.json()
             except ValueError:
-                logger.warning(f"ScrapeCreators returned non-JSON for {path}; skipping")
-                self.note_degradation(f'ScrapeCreators returned non-JSON for {path}')
+                logger.warning(f"ScraperAPI returned non-JSON for {target_url}; skipping")
+                self.note_degradation(f'ScraperAPI returned non-JSON for {target_url}')
                 return None
 
-            if not data.get("success", False):
-                message = str(data.get("message", ""))
-                low = message.lower()
-                if "credit" in low or "api key" in low or "unauthor" in low:
-                    raise FatalScrapeError(f"ScrapeCreators success=false (fatal) for {path}: {message[:200]}")
-                delay = 2 ** attempt
-                logger.warning(f"ScrapeCreators success=false for {path} ({message[:120]}); retrying in {delay}s")
-                time.sleep(delay)
-                continue
-
-            credits = data.get("credits_remaining")
-            if credits is not None:
-                with self._lock:
-                    self._credits_remaining = min(self._credits_remaining, credits) if self._credits_remaining is not None else credits
+            # Reddit native JSON — no success/credit fields; response IS the data.
             return data
 
-        logger.warning(f"ScrapeCreators request to {path} failed after retries; skipping")
-        self.note_degradation(f'ScrapeCreators {path} failed after retries')
+        logger.warning(f"ScraperAPI request to {target_url} failed after retries; skipping")
+        self.note_degradation(f'ScraperAPI {path} failed after retries')
         return None
