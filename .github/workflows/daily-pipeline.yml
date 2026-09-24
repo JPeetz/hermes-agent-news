@@ -550,7 +550,7 @@ jobs:
           restore-keys: source-health-${{ github.ref_name }}-
 
       - name: Verify alert receiver readiness without sending a notification
-        if: steps.schedule_gate.outputs.should_run == 'true'
+        if: steps.schedule_gate.outputs.should_run == 'true' && env.PIPELINE_ALERT_TOKEN != ''
         shell: bash
         run: |
           set -euo pipefail
