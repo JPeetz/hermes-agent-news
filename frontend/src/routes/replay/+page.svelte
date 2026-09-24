@@ -506,7 +506,7 @@
 </script>
 
 <svelte:head>
-	<title>LLM Replay{index ? ` — ${index.date}` : ''} | AATF AI News Aggregator</title>
+	<title>LLM Replay{index ? ` — ${index.date}` : ''} | Agent N's Hermes News</title>
 	<meta
 		name="description"
 		content="A time-scrubbed reconstruction of the AATF AI news pipeline: every agent, every LLM call, replayed from real timestamps."

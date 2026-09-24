@@ -245,9 +245,9 @@
 
 <svelte:head>
 	{#if categoryParam && config}
-		<title>{config.title} - {effectiveDate || 'Latest'} | AATF AI News Aggregator</title>
+		<title>{config.title} - {effectiveDate || 'Latest'} | Agent N's Hermes News</title>
 	{:else}
-		<title>AATF AI News Aggregator</title>
+		<title>Agent N's Hermes News</title>
 	{/if}
 </svelte:head>
 
