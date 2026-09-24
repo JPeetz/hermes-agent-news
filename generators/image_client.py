@@ -597,7 +597,9 @@ class KieImageClient(BaseImageClient):
         logger.info(
             f"KieImageClient initialized with model={self.model}, "
             f"reference_url={'set' if reference_url else 'none'}, "
-            f"quality={self.quality}"
+            f"quality={self.quality}, "
+            f"api_key_set={'yes' if self.api_key else 'no'}, "
+            f"api_key_len={len(self.api_key) if self.api_key else 0}"
         )
 
     async def generate(
