@@ -162,13 +162,13 @@
 		background:
 			radial-gradient(70% 55% at 12% 0%, rgb(102 126 234 / 0.1), transparent 60%),
 			radial-gradient(60% 50% at 50% 100%, rgb(139 92 246 / 0.08), transparent 60%),
-			radial-gradient(60% 60% at 92% 10%, rgb(230 57 70 / 0.09), transparent 62%);
+			radial-gradient(60% 60% at 92% 10%, rgb(255 215 0 / 0.09), transparent 62%);
 	}
 	:global(.dark) .backdrop {
 		background:
 			radial-gradient(70% 55% at 12% 0%, rgb(102 126 234 / 0.18), transparent 60%),
 			radial-gradient(60% 50% at 50% 100%, rgb(139 92 246 / 0.14), transparent 60%),
-			radial-gradient(60% 60% at 92% 10%, rgb(230 57 70 / 0.16), transparent 62%);
+			radial-gradient(60% 60% at 92% 10%, rgb(255 215 0 / 0.16), transparent 62%);
 	}
 
 	.stage-header {
@@ -186,7 +186,7 @@
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: #E63946;
+		color: #FFD700;
 	}
 	.phase-label {
 		font-size: 1.05rem;
@@ -228,7 +228,7 @@
 		color: #f5f5f5;
 	}
 	.stat-hot {
-		color: #E63946 !important;
+		color: #FFD700 !important;
 	}
 	.of {
 		font-size: 0.65rem;
@@ -374,7 +374,7 @@
 		font-size: 0.58rem;
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
-		color: #E63946;
+		color: #FFD700;
 	}
 
 	/* --- responsive: stack the floor on small screens ---------------------- */

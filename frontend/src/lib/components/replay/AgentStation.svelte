@@ -553,7 +553,7 @@
 		color: #c4b5fd;
 	}
 	.effort[data-effort='max'] {
-		background: rgb(230 57 70 / 0.14);
+		background: rgb(255 215 0 / 0.14);
 		color: #b91c1c;
 	}
 	:global(.dark) .effort[data-effort='max'] {

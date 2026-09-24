@@ -37,12 +37,12 @@
 <section class="hero-section mb-8">
 	<div class="hero-frame">
 		{#if heroImageUrl}
-			<img src={heroImageUrl} alt="Daily AI scene featuring AATF mascot" class="hero-image" />
+			<img src={heroImageUrl} alt="Daily AI scene" class="hero-image" />{/if}
 		{:else}
 			<div
-				class="hero-fallback bg-gradient-to-br from-trend-gray-700 to-trend-gray-900 flex items-center justify-center"
+				class="hero-fallback bg-gradient-to-br from-bg-surface to-bg-dark flex items-center justify-center"
 			>
-				<img src="/assets/logo.webp" alt="AATF Logo" class="w-24 h-24 opacity-40" />
+				<img src="/assets/logo.webp" alt="Agent N Logo" class="w-24 h-24 opacity-40" />
 			</div>
 		{/if}
 	</div>
@@ -163,16 +163,16 @@
 		color: #fff;
 		padding: 0.45rem 0.85rem;
 		border-radius: 999px;
-		background: rgba(230, 57, 70, 0.9);
+		background: rgba(255, 215, 0, 0.9);
 		border: 1px solid rgba(255, 255, 255, 0.28);
 		backdrop-filter: blur(6px);
 		box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.45);
 		transition: background 160ms ease, transform 140ms ease, box-shadow 160ms ease;
 	}
 	.replay-cta:hover {
-		background: #e63946;
+		background: #b8960c;
 		transform: translateY(-1px);
-		box-shadow: 0 6px 18px -4px rgba(230, 57, 70, 0.7);
+		box-shadow: 0 6px 18px -4px rgba(255, 215, 0, 0.6);
 	}
 	.replay-cta:focus-visible {
 		outline: 2px solid #fff;

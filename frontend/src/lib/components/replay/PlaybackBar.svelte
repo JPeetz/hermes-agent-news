@@ -231,7 +231,7 @@
 		width: 2rem;
 		height: 2rem;
 		border-radius: 999px;
-		background: #E63946;
+		background: #FFD700;
 		color: #fff;
 		flex: none;
 		transition: background 150ms ease, transform 120ms ease;
@@ -254,8 +254,8 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.btn-step:hover {
-			color: #E63946;
-			background: rgb(230 57 70 / 0.1);
+			color: #FFD700;
+			background: rgb(255 215 0 / 0.1);
 		}
 	}
 
@@ -304,7 +304,7 @@
 		background: rgb(255 255 255 / 0.06);
 	}
 	.scrub:focus-visible {
-		outline: 2px solid #E63946;
+		outline: 2px solid #FFD700;
 		outline-offset: 1px;
 	}
 
@@ -349,7 +349,7 @@
 		background: rgb(255 255 255 / 0.25);
 	}
 	.phase-tick.passed {
-		background: rgb(230 57 70 / 0.5);
+		background: rgb(255 215 0 / 0.5);
 	}
 
 	/* Full-width and squashed by scaleX, so the fill never triggers layout. */
@@ -360,7 +360,7 @@
 		bottom: 0;
 		width: 100%;
 		transform-origin: left center;
-		background: rgb(230 57 70 / 0.14);
+		background: rgb(255 215 0 / 0.14);
 		pointer-events: none;
 		will-change: transform;
 	}
@@ -383,7 +383,7 @@
 		bottom: 0;
 		left: -1px;
 		width: 2px;
-		background: #E63946;
+		background: #FFD700;
 	}
 	.thumb-count {
 		position: absolute;
@@ -393,7 +393,7 @@
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 		color: #fff;
-		background: #E63946;
+		background: #FFD700;
 		border-radius: 3px;
 		padding: 0 3px;
 		white-space: nowrap;
@@ -431,12 +431,12 @@
 	   mouse behaviour untouched. */
 	@media (hover: hover) and (pointer: fine) {
 		.speeds button:hover {
-			color: #E63946;
-			background: rgb(230 57 70 / 0.08);
+			color: #FFD700;
+			background: rgb(255 215 0 / 0.08);
 		}
 	}
 	.speeds button.on {
-		background: #E63946;
+		background: #FFD700;
 		color: #fff;
 	}
 	.speeds button.realtime {

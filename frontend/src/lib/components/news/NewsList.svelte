@@ -29,7 +29,7 @@
 	{#if hasMore}
 		<div class="mt-6 text-center">
 			<slot name="view-all">
-				<span class="text-sm text-trend-gray-500">
+				<span class="text-sm text-text-muted">
 					Showing top {limit} of {totalCount ?? items.length} items
 				</span>
 			</slot>

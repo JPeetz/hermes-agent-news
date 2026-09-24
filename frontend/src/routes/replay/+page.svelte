@@ -521,16 +521,16 @@
 		<div class="flex flex-wrap items-end justify-between gap-3">
 			<div>
 				<p class="eyebrow">Pipeline replay</p>
-				<h1 class="text-2xl sm:text-3xl font-bold text-trend-gray-800 dark:text-trend-gray-100">
+				<h1 class="text-2xl sm:text-3xl font-bold text-text-light">
 					The newsroom, replayed
 					<span class="built-by">(interface built by Opus 5)</span>
 				</h1>
-				<p class="mt-1 text-sm text-trend-gray-600 dark:text-trend-gray-400 max-w-2xl">
+				<p class="mt-1 text-sm text-text-muted max-w-2xl">
 					Every animation below is driven by a real timestamp from a real request. Watch the cast
 					wake up, take work, and report in.
 					{#if index}
 						<span class="whitespace-nowrap">
-							<strong class="text-trend-gray-800 dark:text-trend-gray-200">{prettyDate}</strong>
+							<strong class="text-text-light">{prettyDate}</strong>
 						</span>
 					{/if}
 				</p>
@@ -539,7 +539,7 @@
 			{#if index}
 				<a
 					href="/?date={index.date}"
-					class="text-sm font-medium text-trend-red hover:text-guardian-red transition-colors"
+					class="text-sm font-medium text-hermes-gold hover:text-hermes-gold-dark transition-colors"
 				>
 					&larr; Back to the report
 				</a>
@@ -552,9 +552,9 @@
 	{:else if loadError || !index}
 		<!-- The common case: historical dates predate replay capture. -->
 		<div class="card text-center py-14 px-6">
-			<div class="mx-auto mb-4 w-14 h-14 rounded-full grid place-items-center bg-trend-red/10">
+			<div class="mx-auto mb-4 w-14 h-14 rounded-full grid place-items-center bg-hermes-gold/10">
 				<svg
-					class="w-7 h-7 text-trend-red"
+					class="w-7 h-7 text-hermes-gold"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
@@ -565,10 +565,10 @@
 					<circle cx="12" cy="12" r="9" />
 				</svg>
 			</div>
-			<h2 class="text-lg font-semibold text-trend-gray-800 dark:text-trend-gray-100">
+			<h2 class="text-lg font-semibold text-text-light">
 				No replay for {effectiveDate ?? 'this date'}
 			</h2>
-			<p class="mt-2 text-sm text-trend-gray-600 dark:text-trend-gray-400 max-w-md mx-auto">
+			<p class="mt-2 text-sm text-text-muted max-w-md mx-auto">
 				Replay capture records the pipeline as it runs, so it only exists for dates after the
 				feature shipped. Older reports were generated before there was anything watching.
 			</p>
@@ -764,7 +764,7 @@
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		color: #E63946;
+		color: #FFD700;
 		margin-bottom: 2px;
 	}
 
@@ -898,8 +898,8 @@
 		color: #a3a3a3;
 	}
 	.viewswitch button.on {
-		background: #E63946;
-		color: #fff;
+		background: #FFD700;
+		color: #0A0A0A;
 	}
 
 	.hint-btn {
@@ -911,7 +911,7 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.hint-btn:hover {
-			color: #E63946;
+			color: #FFD700;
 		}
 	}
 

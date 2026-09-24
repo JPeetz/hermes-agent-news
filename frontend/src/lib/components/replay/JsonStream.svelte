@@ -404,7 +404,7 @@
 		font-size: 0.95rem;
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
-		color: var(--accent, #E63946);
+		color: var(--accent, #FFD700);
 	}
 	.js-label {
 		font-size: 0.58rem;
@@ -421,7 +421,7 @@
 		width: 3px;
 		height: 3px;
 		border-radius: 50%;
-		background: var(--accent, #E63946);
+		background: var(--accent, #FFD700);
 		animation: jsdot 1.1s ease-in-out infinite;
 	}
 	.js-live i:nth-child(2) {
@@ -460,23 +460,23 @@
 		background: rgb(255 255 255 / 0.04);
 	}
 	.js-card.open {
-		border-left-color: var(--accent, #E63946);
+		border-left-color: var(--accent, #FFD700);
 		background: rgb(0 0 0 / 0.045);
 	}
 	:global(.dark) .js-card.open {
 		background: rgb(255 255 255 / 0.06);
 	}
 	.js-card.writing {
-		border-left-color: var(--accent, #E63946);
+		border-left-color: var(--accent, #FFD700);
 		animation: jsedge 1.4s ease-in-out infinite;
 	}
 	@keyframes jsedge {
 		0%,
 		100% {
-			border-left-color: color-mix(in srgb, var(--accent, #E63946) 35%, transparent);
+			border-left-color: color-mix(in srgb, var(--accent, #FFD700) 35%, transparent);
 		}
 		50% {
-			border-left-color: var(--accent, #E63946);
+			border-left-color: var(--accent, #FFD700);
 		}
 	}
 
@@ -557,13 +557,13 @@
 		color: #525252;
 		background: rgb(0 0 0 / 0.05);
 		/* --f is 0..1; high scores lift toward the accent so a scan finds them. */
-		background: color-mix(in srgb, var(--accent, #E63946) calc(var(--f) * 22%), rgb(0 0 0 / 0.05));
+		background: color-mix(in srgb, var(--accent, #FFD700) calc(var(--f) * 22%), rgb(0 0 0 / 0.05));
 	}
 	:global(.dark) .js-badge {
 		color: #d4d4d4;
 		background: color-mix(
 			in srgb,
-			var(--accent, #E63946) calc(var(--f) * 30%),
+			var(--accent, #FFD700) calc(var(--f) * 30%),
 			rgb(255 255 255 / 0.08)
 		);
 	}
@@ -591,13 +591,13 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.js-sort button:hover {
-			color: var(--accent, #E63946);
+			color: var(--accent, #FFD700);
 			background: rgb(0 0 0 / 0.04);
 		}
 	}
 	.js-sort button.on {
 		color: #fff;
-		background: var(--accent, #E63946);
+		background: var(--accent, #FFD700);
 	}
 
 	/* The raw id beside its resolved title: present for cross-referencing the raw
@@ -694,7 +694,7 @@
 		display: block;
 		height: 100%;
 		border-radius: 3px;
-		background: var(--accent, #E63946);
+		background: var(--accent, #FFD700);
 	}
 	.js-score-num {
 		font-variant-numeric: tabular-nums;
@@ -759,7 +759,7 @@
 		color: #f5f5f5;
 	}
 	.js-md :global(a) {
-		color: var(--accent, #E63946);
+		color: var(--accent, #FFD700);
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}
@@ -809,7 +809,7 @@
 		height: 1em;
 		margin-left: 1px;
 		vertical-align: text-bottom;
-		background: var(--accent, #E63946);
+		background: var(--accent, #FFD700);
 		animation: jscaret 1s steps(2, start) infinite;
 	}
 	.js-bullets {
@@ -838,7 +838,7 @@
 		height: 1em;
 		margin-left: 1px;
 		vertical-align: text-bottom;
-		background: var(--accent, #E63946);
+		background: var(--accent, #FFD700);
 		animation: jscaret 1s steps(2, start) infinite;
 	}
 	@keyframes jscaret {

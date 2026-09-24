@@ -320,14 +320,20 @@
 		{#if categoryData.items.length === 0}
 			<EmptyState
 				title="No {config?.title.toLowerCase()} found"
-				message="No items in this category for {effectiveDate}."
+				message={categoryParam === 'news'
+					? 'No Hermes news published today. Check back after the next pipeline run.'
+					: categoryParam === 'research'
+						? 'No research papers today. The pipeline checks arXiv and RSS feeds daily.'
+						: categoryParam === 'reddit'
+							? 'No Reddit discussions collected. Reddit API may be unavailable until Oct 1, 2026.'
+							: 'No items in this category for {effectiveDate}.'}
 			/>
 		{:else}
 			<!-- Category Summary -->
 			{#if categoryData.category_summary}
 				<section class="mb-8">
 					<div class="card border-l-4" style="border-left-color: {config?.color}">
-						<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-3">
+						<h2 class="font-semibold text-text-light mb-3">
 							{config?.title} Summary
 						</h2>
 						<div class="prose-summary max-w-none">
@@ -340,7 +346,7 @@
 			<!-- Themes -->
 			{#if categoryData.themes && categoryData.themes.length > 0}
 				<section class="mb-8">
-					<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-4">
+					<h2 class="font-semibold text-text-light mb-4">
 						Key Themes
 					</h2>
 					<div class="flex flex-wrap gap-2">
@@ -358,7 +364,7 @@
 
 			<!-- All Items -->
 			<section>
-				<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-6">
+				<h2 class="font-semibold text-text-light mb-6">
 					All Items ({categoryData.items.length})
 				</h2>
 				<NewsList items={categoryData.items} category={categoryParam} date={effectiveDate || ''} />
@@ -383,12 +389,12 @@
 
 		<!-- Executive Summary -->
 		<section class="mb-12">
-			<div class="card border-l-4 border-trend-red dark:border-trend-red">
+			<div class="card border-l-4 border-agent-cyan dark:border-agent-cyan">
 				<div class="flex items-center justify-between mb-4">
-					<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100">
+					<h2 class="text-xl font-bold text-text-light">
 						Executive Summary
 					</h2>
-					<span class="text-sm text-trend-gray-500 dark:text-trend-gray-400">
+					<span class="text-sm text-text-muted">
 						{summary.total_items_analyzed} items analyzed
 					</span>
 				</div>
@@ -401,7 +407,7 @@
 		<!-- Top Topics -->
 		{#if summary.top_topics && summary.top_topics.length > 0}
 			<section class="mb-12">
-				<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-6">
+				<h2 class="text-xl font-bold text-text-light mb-6">
 					Top Topics Today
 				</h2>
 				<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -423,16 +429,16 @@
 								class="w-3 h-3 rounded-full"
 								style="background-color: {CATEGORY_CONFIG[category].color}"
 							></span>
-							<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100">
+							<h2 class="text-xl font-bold text-text-light">
 								{CATEGORY_CONFIG[category].title}
 							</h2>
-							<span class="text-sm text-trend-gray-500">
+							<span class="text-sm text-text-muted">
 								({catSummary.count} items)
 							</span>
 						</div>
 						<a
 							href={categoryHref(category)}
-							class="text-sm font-medium text-trend-red hover:text-guardian-red transition-colors"
+							class="text-sm font-medium text-hermes-gold hover:text-hermes-gold-dark transition-colors"
 						>
 							View All &rarr;
 						</a>

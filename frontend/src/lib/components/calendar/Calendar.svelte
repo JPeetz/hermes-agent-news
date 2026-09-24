@@ -60,12 +60,12 @@
 	}
 </script>
 
-<div class="bg-white dark:bg-trend-gray-800 rounded-xl shadow-card p-4">
+<div class="bg-white dark:bg-bg-surface rounded-xl shadow-card p-4">
 	<!-- Header with month navigation -->
 	<div class="flex items-center justify-between mb-4">
 		<button
 			on:click={previousMonth}
-			class="p-2 rounded-lg hover:bg-trend-gray-100 dark:hover:bg-trend-gray-700 transition-colors"
+			class="p-2 rounded-lg hover:bg-bg-surface transition-colors"
 			aria-label="Previous month"
 		>
 			<svg
@@ -80,13 +80,13 @@
 			</svg>
 		</button>
 
-		<h3 class="font-semibold text-trend-gray-800 dark:text-trend-gray-200">
+		<h3 class="font-semibold text-text-light">
 			{monthName} {viewYear}
 		</h3>
 
 		<button
 			on:click={nextMonth}
-			class="p-2 rounded-lg hover:bg-trend-gray-100 dark:hover:bg-trend-gray-700 transition-colors"
+			class="p-2 rounded-lg hover:bg-bg-surface transition-colors"
 			aria-label="Next month"
 		>
 			<svg
@@ -105,7 +105,7 @@
 	<!-- Weekday headers -->
 	<div class="grid grid-cols-7 mb-2">
 		{#each weekdays as day}
-			<div class="text-center text-xs font-medium text-trend-gray-500 dark:text-trend-gray-400 py-2">
+			<div class="text-center text-xs font-medium text-text-muted py-2">
 				{day}
 			</div>
 		{/each}
@@ -132,13 +132,13 @@
 	</div>
 
 	<!-- Legend -->
-	<div class="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-trend-gray-200 dark:border-trend-gray-700 text-xs text-trend-gray-500">
+	<div class="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-teal-border text-xs text-text-muted">
 		<div class="flex items-center gap-1.5">
-			<span class="w-3 h-3 rounded-full bg-trend-red"></span>
+			<span class="w-3 h-3 rounded-full bg-hermes-gold"></span>
 			<span>Has data</span>
 		</div>
 		<div class="flex items-center gap-1.5">
-			<span class="w-3 h-3 rounded-full border-2 border-trend-red"></span>
+			<span class="w-3 h-3 rounded-full border-2 border-hermes-gold"></span>
 			<span>Today</span>
 		</div>
 	</div>

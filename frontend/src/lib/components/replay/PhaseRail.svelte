@@ -86,7 +86,7 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.chip:hover {
-			border-color: rgb(230 57 70 / 0.45);
+			border-color: rgb(255 215 0 / 0.45);
 		}
 	}
 
@@ -98,8 +98,8 @@
 	}
 	.chip.now {
 		opacity: 1;
-		border-color: #E63946;
-		background: rgb(230 57 70 / 0.09);
+		border-color: #FFD700;
+		background: rgb(255 215 0 / 0.09);
 	}
 
 	.chip-fill {
@@ -107,7 +107,7 @@
 		left: 0;
 		top: 0;
 		bottom: 0;
-		background: rgb(230 57 70 / 0.16);
+		background: rgb(255 215 0 / 0.16);
 		transition: width 120ms linear;
 	}
 
@@ -123,7 +123,7 @@
 		font-size: 0.55rem;
 		font-weight: 800;
 		font-variant-numeric: tabular-nums;
-		color: #E63946;
+		color: #FFD700;
 		flex: none;
 	}
 	.chip-label {

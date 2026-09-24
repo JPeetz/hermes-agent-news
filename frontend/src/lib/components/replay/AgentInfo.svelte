@@ -17,7 +17,7 @@
 
 	export let label: string;
 	export let doc: AgentDoc;
-	export let accent = '#E63946';
+	export let accent = '#FFD700';
 	/** The station this was opened from; the panel is positioned against it. */
 	export let anchor: HTMLElement | null = null;
 	export let onClose: () => void = () => {};

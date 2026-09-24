@@ -27,7 +27,7 @@
 	}
 </script>
 
-<nav class="bg-white dark:bg-trend-gray-800 border-b border-gray-200 dark:border-trend-gray-700 sticky top-0 z-50">
+<nav class="bg-white dark:bg-bg-dark border-b border-gray-200 dark:border-teal-border sticky top-0 z-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center h-14">
 			<!-- Main navigation -->
@@ -36,7 +36,7 @@
 				<li>
 					<a
 						href="/"
-						class="nav-link whitespace-nowrap hover:bg-transparent sm:hover:bg-trend-gray-200 {homeActive ? 'text-trend-red sm:bg-trend-red/10' : ''}"
+						class="nav-link whitespace-nowrap hover:bg-transparent sm:hover:bg-bg-surface {homeActive ? 'text-hermes-gold sm:bg-hermes-gold/10' : ''}"
 						aria-label="Home"
 					>
 						<svg
@@ -83,7 +83,7 @@
 				<li>
 					<a
 						href="/archive"
-						class="nav-link whitespace-nowrap hover:bg-transparent sm:hover:bg-trend-gray-200 {archiveActive ? 'text-trend-red sm:bg-trend-red/10' : ''}"
+						class="nav-link whitespace-nowrap hover:bg-transparent sm:hover:bg-bg-surface {archiveActive ? 'text-hermes-gold sm:bg-hermes-gold/10' : ''}"
 						aria-label="Archive"
 					>
 						<svg
@@ -103,7 +103,7 @@
 				<li class="hidden sm:block">
 					<a
 						href="/about"
-						class="nav-link whitespace-nowrap {aboutActive ? 'text-trend-red bg-trend-red/10' : ''}"
+						class="nav-link whitespace-nowrap {aboutActive ? 'text-hermes-gold bg-hermes-gold/10' : ''}"
 						aria-label="About"
 					>
 						About
