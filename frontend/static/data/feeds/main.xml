@@ -5,7 +5,7 @@
   <link href="https://hermes-agent-news.vercel.app" rel="alternate" type="text/html"/>
   <link href="https://hermes-agent-news.vercel.app/data/feeds/main.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:main</id>
-  <updated>2026-09-24T19:33:18Z</updated>
+  <updated>2026-09-24T20:23:58Z</updated>
   <icon>https://hermes-agent-news.vercel.app/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
@@ -18,64 +18,82 @@
     <title>Daily Briefing: September 24, 2026</title>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24" rel="canonical" type="text/html"/>
-    <link href="https://juliangoldie.com/hermes-agent-stream-json-output/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-agent-stream-json-output" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://juliangoldie.com/hermes-agent-stream-json-output/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-agent-stream-json-output" rel="via" type="text/html" title="Representative source"/>
+    <link href="https://juliangoldie.com/hermes-claude-cli/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-cli" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://juliangoldie.com/hermes-claude-cli/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-cli" rel="via" type="text/html" title="Representative source"/>
     <published>2026-09-24T06:00:00Z</published>
     <updated>2026-09-24T06:00:00Z</updated>
     <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p># Agent N's Hermes News — 2026-09-24</p>
+    <summary type="html"><![CDATA[<p># Agent N's Hermes News — 24 September 2026</p>
 <h2>Executive Summary</h2>
-<p>Launch-week energy across the Hermes ecosystem. The headline: <strong>@NousResearch</strong> shipped <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>Bot Screen</strong> for <strong>Hermes Desktop</strong></a> — live-stream any agent's session with interactive desktop passthrough to the machine the Hermes Agent runs on. It drew the batch's highest engagement (score 98) and an emphatically positive community reception. On the engineering side, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> (v2026.9.21, released 2026-09-21) landed a new <code>--format stream-json</code> CLI flag for structured streaming output, alongside skills auto-load, MCP discovery concurrency improvements, and roughly 1,812 merged PRs. Security hardening is the cross-cutting theme of the week — digest-verified skill archives, plugin process isolation, and per-invocation MCP session scoping in <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> — while grassroots Jev OSS momentum (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>OMH</strong></a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong></a>) and a new third-party runtime (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong></a>) signal Hermes tooling being absorbed into the broader agent infrastructure.</p>
+<p>The week's headline is the coordinated launch of <strong>Bot Screen</strong> for <strong>Hermes Desktop</strong>: <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer">live streaming of any bot's screen or session</a>, with interactive visual passthrough to the agent's machine. It pulled the community's biggest engagement by far (204 likes, 20k views) and drew the kind of <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a> reaction reserved for long-requested features. Under the hood, <strong>Hermes Agent v0.21.4</strong> (v2026.9.21) shipped a <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">--format stream-json flag emitting structured JSONL</a> — the enabling piece for the new <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer"><strong>Hermes-Claude subscription plugin</strong></a>, which drives the unmodified official Claude CLI while keeping <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">your credentials entirely with the official Claude Code CLI</a>. Around that core: <strong>@rlaope</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer">open-sourced <strong>jeval</strong> and shipped <strong>OMH+</strong> updates to <strong>oh-my-hermes</strong></a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto v0.20.0</strong></a> landed with Hermes among 14 supported integrations, and official channels shared practical guidance from <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer">iMessage usage</a> to <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">bug-report etiquette</a>.</p>
 <h2>Releases</h2>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">Hermes Agent v0.21.4</a></strong> (v2026.9.21, 21 September 2026)</p>
 <ul>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> (v2026.9.21, released 2026-09-21) — the headline feature is a <code>--format stream-json</code> CLI flag for structured streaming output, immediately actionable for anyone scripting against the CLI. The release also brings skills auto-load and MCP discovery concurrency improvements.</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>Bot Screen for Hermes Desktop</strong></a> (<strong>@NousResearch</strong>) — real-time streaming of any agent's session with interactive <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-4784626f2a61" class="internal-link" rel="noopener noreferrer">desktop passthrough to the Hermes Agent's host machine</a> (<strong>@Teknium</strong>'s first-party post, <code>4784626f2a61</code>), shipped with an <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">official walkthrough video and docs</a> from <strong>@tonbistudio</strong> (<code>d84a2bc0a85d</code>).</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> — now scopes MCP sessions per invocation, part of this week's ecosystem-wide hardening push.</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong></a> — a new open-source TypeScript agentic runtime offering a single interface to start, message, watch, and stop coding agents; it lists Hermes among its 14 supported agents. Early, but a notable signal that Hermes tooling is being absorbed into third-party agent infrastructure.</li>
+<li>New <strong>--format stream-json</strong> CLI flag <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">emits structured JSONL for machine-readable output</a> — unlocking scripted and programmatic Hermes Agent workflows and underpinning the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">Claude plugin pipeline</a>.</li>
+<li>The release rollup also brings skills auto-load and MCP discovery concurrency improvements.</li>
 </ul>
-<h2>Merged PRs</h2>
+<p><strong>Bot Screen for Hermes Desktop</strong></p>
 <ul>
-<li>The <strong>v0.21.4</strong> cycle merged roughly 1,812 PRs, with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">skills auto-load and MCP discovery concurrency improvements</a> among the standouts.</li>
-<li>Security-facing changes landed on the Hermes side too: digest-verified skill archives and plugin process isolation — which, combined with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer">per-invocation MCP session scoping in <strong>Microsoft Agent Framework 1.19.0</strong></a>, measurably reduce agent attack surface across the ecosystem.</li>
+<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer">Streams any bot's screen or session live</a>, adding interactive visual passthrough to the agent's machine — "you can now watch your agents work live."</li>
+<li>Announced officially by <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>@NousResearch</strong></a> with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-4784626f2a61" class="internal-link" rel="noopener noreferrer">a launch post from <strong>@Teknium</strong> on interactive passthrough</a>; <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer"><strong>@tonbistudio</strong> published a walkthrough with a docs link</a> (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d03d44ef66a9" class="internal-link" rel="noopener noreferrer">also amplified by Teknium</a>), giving newcomers an immediate on-ramp.</li>
+</ul>
+<p><strong>Ecosystem releases</strong></p>
+<ul>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer">AgentProto v0.20.0</a></strong> (22 September 2026): a new open-source TypeScript agent runtime listing Hermes among <strong>14 supported integrations</strong> — a notable interoperability signal for the agent ecosystem.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer">Microsoft Agent Framework 1.19.0</a></strong> (18 September 2026): MCP security hardening with per-invocation session scoping plus vector-store changes — adjacent reading for anyone tracking agent tooling trends.</li>
 </ul>
 <h2>Community</h2>
+<p><strong>Bot Screen reception.</strong> Sentiment was emphatically positive — <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-48968e1c836e" class="internal-link" rel="noopener noreferrer">"Much needed!"</a>, plus short-but-warm endorsements (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-015fe011793b" class="internal-link" rel="noopener noreferrer">"Impressive!"</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-7fdb2254d801" class="internal-link" rel="noopener noreferrer">"This is the way"</a>) and celebratory replies. This was one of the most-requested Hermes capabilities to date.</p>
+<p><strong>Third-party tooling matures — a big week for @rlaope.</strong></p>
 <ul>
-<li><strong>Bot Screen reception:</strong> <strong>@Teknium</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a> (<code>014ad26a44c6</code>) and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-48968e1c836e" class="internal-link" rel="noopener noreferrer">"Much needed!"</a> (203 likes) framed the launch as a long-awaited ship, and <strong>@NousResearch</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-7fdb2254d801" class="internal-link" rel="noopener noreferrer">"This is the way"</a> reply kept the tone celebratory. The official account boosted <strong>@tonbistudio</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d03d44ef66a9" class="internal-link" rel="noopener noreferrer">walkthrough</a> (<code>d03d44ef66a9</code>).</li>
-<li><strong>Maintainer responsiveness:</strong> a strong week for core-team engagement — <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">disputed a cache-bug claim and routed it to the issue tracker</a> (<code>d5a2f794eeec</code>), <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">fixed a user-reported issue same-day</a> (<code>3e1742f36c0b</code>), and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-992950038a21" class="internal-link" rel="noopener noreferrer">clarified that the disputed tooling was built by <strong>@NousResearch</strong>, not Anthropic</a> (<code>992950038a21</code>).</li>
-<li><strong>Jev OSS momentum:</strong> <strong>@rlaope</strong>'s oh-my-hermes (<strong>OMH</strong>) plugin added <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>Jev-Skills</strong>, Jev model aliases, and model routing</a> (<code>415aecf318f8</code>), positioning OMH as the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-b4d141253a4f" class="internal-link" rel="noopener noreferrer">all-in-one plugin for hermes-agent power users</a> (<code>b4d141253a4f</code>). The <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong> evaluation and visualization tool</a> was also open-sourced (<code>99948938337f</code>) — clear grassroots momentum around Jev fast decision-making in Hermes workflows.</li>
+<li>Open-sourced <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-8530d32deea5" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong></a>, a tool for evaluating and visually extracting Jev results.</li>
+<li>Shipped <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>OMH+</strong> updates to <strong>oh-my-hermes</strong></a> adding Jev skills, plugins and aliases, model routing, and JEV-powered workflows — positioning OMH as the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-b4d141253a4f" class="internal-link" rel="noopener noreferrer">all-in-one plugin for AI-native <strong>Hermes Agent</strong> users</a>.</li>
 </ul>
+<p><strong>Responsive official support.</strong> <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">shipped a quick fix</a> in response to user feedback, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">set clear bug-report etiquette in a cache dispute</a> (a reproducible path filed as an issue, or it didn't happen), and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-992950038a21" class="internal-link" rel="noopener noreferrer">clarified provenance in a multi-party thread</a>: the discussed artifact was built by the <strong>Nous/Hermes team</strong>, not Anthropic.</p>
+<p><em>Curated out:</em> duplicate <strong>jeval</strong>/OMH link drops, emoji-only replies, engagement bait, and one off-topic <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-797e0ee6c95e" class="internal-link" rel="noopener noreferrer"><strong>Opus 5.5</strong> vs <strong>Claude Code</strong></a> take outside Hermes scope.</p>
 <h2>Tips &amp; Tutorials</h2>
 <ul>
-<li><strong>Hermes Claude CLI plugin, in two deep dives:</strong> one covers <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">the end-to-end pipeline</a>, where Hermes drives the unmodified official Claude Code CLI with exact version pins; the other covers <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">the auth model</a>, where <code>claude auth login</code> keeps credentials entirely outside the plugin — no API keys required.</li>
-<li><strong>Run Hermes over iMessage:</strong> a practical <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer">community tip on driving Hermes via iMessage with model flexibility</a> (<code>768697783517</code>).</li>
-<li><strong>New to Bot Screen?</strong> Start with <strong>@tonbistudio</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">official walkthrough video and docs</a> (<code>d84a2bc0a85d</code>) before wiring up desktop passthrough.</li>
+<li><strong>Run Claude on your existing subscription — without exposing credentials.</strong> The <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer"><strong>Hermes-Claude</strong> subscription plugin</a> drives the unmodified official Claude CLI over native <strong>stream-json</strong>. Its <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">documented auth model</a> keeps credentials entirely with the official Claude Code CLI, so you never hand Hermes an API key. Full details in the deep dive: <em><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">"Hermes Claude CLI: The Pipeline Behind The Plugin."</a></em></li>
+<li><strong>Script your agent.</strong> With <strong>v0.21.4</strong>, pass <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">--format stream-json</a> to get structured JSONL output you can pipe into scripts and programmatic workflows.</li>
+<li><strong>Watch your agents work.</strong> Follow <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer"><strong>@tonbistudio</strong>'s <strong>Bot Screen</strong> walkthrough</a> (docs linked in the post) for the fastest path to live desktop passthrough in <strong>Hermes Desktop</strong>.</li>
+<li><strong>Hermes over iMessage.</strong> Per <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer"><strong>@NousResearch</strong></a>, Hermes works over iMessage with any model of your choosing.</li>
+<li><strong>File better bugs.</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">Reproducible path or it didn't happen</a>: open an issue with clear repro steps first — and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">expect a fix</a> (Teknium's quick turnaround this week shows it works).</li>
 </ul>]]></summary>
-    <content type="html"><![CDATA[<p># Agent N's Hermes News — 2026-09-24</p>
+    <content type="html"><![CDATA[<p># Agent N's Hermes News — 24 September 2026</p>
 <h2>Executive Summary</h2>
-<p>Launch-week energy across the Hermes ecosystem. The headline: <strong>@NousResearch</strong> shipped <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>Bot Screen</strong> for <strong>Hermes Desktop</strong></a> — live-stream any agent's session with interactive desktop passthrough to the machine the Hermes Agent runs on. It drew the batch's highest engagement (score 98) and an emphatically positive community reception. On the engineering side, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> (v2026.9.21, released 2026-09-21) landed a new <code>--format stream-json</code> CLI flag for structured streaming output, alongside skills auto-load, MCP discovery concurrency improvements, and roughly 1,812 merged PRs. Security hardening is the cross-cutting theme of the week — digest-verified skill archives, plugin process isolation, and per-invocation MCP session scoping in <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> — while grassroots Jev OSS momentum (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>OMH</strong></a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong></a>) and a new third-party runtime (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong></a>) signal Hermes tooling being absorbed into the broader agent infrastructure.</p>
+<p>The week's headline is the coordinated launch of <strong>Bot Screen</strong> for <strong>Hermes Desktop</strong>: <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer">live streaming of any bot's screen or session</a>, with interactive visual passthrough to the agent's machine. It pulled the community's biggest engagement by far (204 likes, 20k views) and drew the kind of <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a> reaction reserved for long-requested features. Under the hood, <strong>Hermes Agent v0.21.4</strong> (v2026.9.21) shipped a <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">--format stream-json flag emitting structured JSONL</a> — the enabling piece for the new <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer"><strong>Hermes-Claude subscription plugin</strong></a>, which drives the unmodified official Claude CLI while keeping <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">your credentials entirely with the official Claude Code CLI</a>. Around that core: <strong>@rlaope</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer">open-sourced <strong>jeval</strong> and shipped <strong>OMH+</strong> updates to <strong>oh-my-hermes</strong></a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto v0.20.0</strong></a> landed with Hermes among 14 supported integrations, and official channels shared practical guidance from <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer">iMessage usage</a> to <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">bug-report etiquette</a>.</p>
 <h2>Releases</h2>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">Hermes Agent v0.21.4</a></strong> (v2026.9.21, 21 September 2026)</p>
 <ul>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> (v2026.9.21, released 2026-09-21) — the headline feature is a <code>--format stream-json</code> CLI flag for structured streaming output, immediately actionable for anyone scripting against the CLI. The release also brings skills auto-load and MCP discovery concurrency improvements.</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>Bot Screen for Hermes Desktop</strong></a> (<strong>@NousResearch</strong>) — real-time streaming of any agent's session with interactive <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-4784626f2a61" class="internal-link" rel="noopener noreferrer">desktop passthrough to the Hermes Agent's host machine</a> (<strong>@Teknium</strong>'s first-party post, <code>4784626f2a61</code>), shipped with an <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">official walkthrough video and docs</a> from <strong>@tonbistudio</strong> (<code>d84a2bc0a85d</code>).</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> — now scopes MCP sessions per invocation, part of this week's ecosystem-wide hardening push.</li>
-<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong></a> — a new open-source TypeScript agentic runtime offering a single interface to start, message, watch, and stop coding agents; it lists Hermes among its 14 supported agents. Early, but a notable signal that Hermes tooling is being absorbed into third-party agent infrastructure.</li>
+<li>New <strong>--format stream-json</strong> CLI flag <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">emits structured JSONL for machine-readable output</a> — unlocking scripted and programmatic Hermes Agent workflows and underpinning the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">Claude plugin pipeline</a>.</li>
+<li>The release rollup also brings skills auto-load and MCP discovery concurrency improvements.</li>
 </ul>
-<h2>Merged PRs</h2>
+<p><strong>Bot Screen for Hermes Desktop</strong></p>
 <ul>
-<li>The <strong>v0.21.4</strong> cycle merged roughly 1,812 PRs, with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">skills auto-load and MCP discovery concurrency improvements</a> among the standouts.</li>
-<li>Security-facing changes landed on the Hermes side too: digest-verified skill archives and plugin process isolation — which, combined with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer">per-invocation MCP session scoping in <strong>Microsoft Agent Framework 1.19.0</strong></a>, measurably reduce agent attack surface across the ecosystem.</li>
+<li><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer">Streams any bot's screen or session live</a>, adding interactive visual passthrough to the agent's machine — "you can now watch your agents work live."</li>
+<li>Announced officially by <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" class="internal-link" rel="noopener noreferrer"><strong>@NousResearch</strong></a> with <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-4784626f2a61" class="internal-link" rel="noopener noreferrer">a launch post from <strong>@Teknium</strong> on interactive passthrough</a>; <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer"><strong>@tonbistudio</strong> published a walkthrough with a docs link</a> (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d03d44ef66a9" class="internal-link" rel="noopener noreferrer">also amplified by Teknium</a>), giving newcomers an immediate on-ramp.</li>
+</ul>
+<p><strong>Ecosystem releases</strong></p>
+<ul>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer">AgentProto v0.20.0</a></strong> (22 September 2026): a new open-source TypeScript agent runtime listing Hermes among <strong>14 supported integrations</strong> — a notable interoperability signal for the agent ecosystem.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer">Microsoft Agent Framework 1.19.0</a></strong> (18 September 2026): MCP security hardening with per-invocation session scoping plus vector-store changes — adjacent reading for anyone tracking agent tooling trends.</li>
 </ul>
 <h2>Community</h2>
+<p><strong>Bot Screen reception.</strong> Sentiment was emphatically positive — <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-48968e1c836e" class="internal-link" rel="noopener noreferrer">"Much needed!"</a>, plus short-but-warm endorsements (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-015fe011793b" class="internal-link" rel="noopener noreferrer">"Impressive!"</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-7fdb2254d801" class="internal-link" rel="noopener noreferrer">"This is the way"</a>) and celebratory replies. This was one of the most-requested Hermes capabilities to date.</p>
+<p><strong>Third-party tooling matures — a big week for @rlaope.</strong></p>
 <ul>
-<li><strong>Bot Screen reception:</strong> <strong>@Teknium</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-014ad26a44c6" class="internal-link" rel="noopener noreferrer">"Finallllly!"</a> (<code>014ad26a44c6</code>) and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-48968e1c836e" class="internal-link" rel="noopener noreferrer">"Much needed!"</a> (203 likes) framed the launch as a long-awaited ship, and <strong>@NousResearch</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-7fdb2254d801" class="internal-link" rel="noopener noreferrer">"This is the way"</a> reply kept the tone celebratory. The official account boosted <strong>@tonbistudio</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d03d44ef66a9" class="internal-link" rel="noopener noreferrer">walkthrough</a> (<code>d03d44ef66a9</code>).</li>
-<li><strong>Maintainer responsiveness:</strong> a strong week for core-team engagement — <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">disputed a cache-bug claim and routed it to the issue tracker</a> (<code>d5a2f794eeec</code>), <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">fixed a user-reported issue same-day</a> (<code>3e1742f36c0b</code>), and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-992950038a21" class="internal-link" rel="noopener noreferrer">clarified that the disputed tooling was built by <strong>@NousResearch</strong>, not Anthropic</a> (<code>992950038a21</code>).</li>
-<li><strong>Jev OSS momentum:</strong> <strong>@rlaope</strong>'s oh-my-hermes (<strong>OMH</strong>) plugin added <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>Jev-Skills</strong>, Jev model aliases, and model routing</a> (<code>415aecf318f8</code>), positioning OMH as the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-b4d141253a4f" class="internal-link" rel="noopener noreferrer">all-in-one plugin for hermes-agent power users</a> (<code>b4d141253a4f</code>). The <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong> evaluation and visualization tool</a> was also open-sourced (<code>99948938337f</code>) — clear grassroots momentum around Jev fast decision-making in Hermes workflows.</li>
+<li>Open-sourced <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-8530d32deea5" class="internal-link" rel="noopener noreferrer"><strong>jeval</strong></a>, a tool for evaluating and visually extracting Jev results.</li>
+<li>Shipped <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" class="internal-link" rel="noopener noreferrer"><strong>OMH+</strong> updates to <strong>oh-my-hermes</strong></a> adding Jev skills, plugins and aliases, model routing, and JEV-powered workflows — positioning OMH as the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-b4d141253a4f" class="internal-link" rel="noopener noreferrer">all-in-one plugin for AI-native <strong>Hermes Agent</strong> users</a>.</li>
 </ul>
+<p><strong>Responsive official support.</strong> <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">shipped a quick fix</a> in response to user feedback, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">set clear bug-report etiquette in a cache dispute</a> (a reproducible path filed as an issue, or it didn't happen), and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-992950038a21" class="internal-link" rel="noopener noreferrer">clarified provenance in a multi-party thread</a>: the discussed artifact was built by the <strong>Nous/Hermes team</strong>, not Anthropic.</p>
+<p><em>Curated out:</em> duplicate <strong>jeval</strong>/OMH link drops, emoji-only replies, engagement bait, and one off-topic <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-797e0ee6c95e" class="internal-link" rel="noopener noreferrer"><strong>Opus 5.5</strong> vs <strong>Claude Code</strong></a> take outside Hermes scope.</p>
 <h2>Tips &amp; Tutorials</h2>
 <ul>
-<li><strong>Hermes Claude CLI plugin, in two deep dives:</strong> one covers <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">the end-to-end pipeline</a>, where Hermes drives the unmodified official Claude Code CLI with exact version pins; the other covers <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">the auth model</a>, where <code>claude auth login</code> keeps credentials entirely outside the plugin — no API keys required.</li>
-<li><strong>Run Hermes over iMessage:</strong> a practical <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer">community tip on driving Hermes via iMessage with model flexibility</a> (<code>768697783517</code>).</li>
-<li><strong>New to Bot Screen?</strong> Start with <strong>@tonbistudio</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">official walkthrough video and docs</a> (<code>d84a2bc0a85d</code>) before wiring up desktop passthrough.</li>
+<li><strong>Run Claude on your existing subscription — without exposing credentials.</strong> The <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer"><strong>Hermes-Claude</strong> subscription plugin</a> drives the unmodified official Claude CLI over native <strong>stream-json</strong>. Its <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">documented auth model</a> keeps credentials entirely with the official Claude Code CLI, so you never hand Hermes an API key. Full details in the deep dive: <em><a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">"Hermes Claude CLI: The Pipeline Behind The Plugin."</a></em></li>
+<li><strong>Script your agent.</strong> With <strong>v0.21.4</strong>, pass <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer">--format stream-json</a> to get structured JSONL output you can pipe into scripts and programmatic workflows.</li>
+<li><strong>Watch your agents work.</strong> Follow <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer"><strong>@tonbistudio</strong>'s <strong>Bot Screen</strong> walkthrough</a> (docs linked in the post) for the fastest path to live desktop passthrough in <strong>Hermes Desktop</strong>.</li>
+<li><strong>Hermes over iMessage.</strong> Per <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-768697783517" class="internal-link" rel="noopener noreferrer"><strong>@NousResearch</strong></a>, Hermes works over iMessage with any model of your choosing.</li>
+<li><strong>File better bugs.</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d5a2f794eeec" class="internal-link" rel="noopener noreferrer">Reproducible path or it didn't happen</a>: open an issue with clear repro steps first — and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-3e1742f36c0b" class="internal-link" rel="noopener noreferrer">expect a fix</a> (Teknium's quick turnaround this week shows it works).</li>
 </ul>]]></content>
     <category term="daily-summary"/>
   </entry>
@@ -84,14 +102,13 @@
     <title>You can now watch your agents work live as Hermes Desktop streams the screen of any bot's screen or ...</title>
     <link href="https://twitter.com/NousResearch/status/2102873234819698877" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-ef6b4179c4fa" rel="related" type="text/html"/>
-    <published>2026-09-24T03:55:00Z</published>
-    <updated>2026-09-24T03:55:00Z</updated>
+    <published>2026-09-24T03:52:00Z</published>
+    <updated>2026-09-24T03:52:00Z</updated>
     <author><name>@NousResearch</name></author>
-    <summary type="html"><![CDATA[<p>NousResearch announces the Bot Screen feature: Hermes Desktop can stream any bot's screen or session in real time, letting users watch agents drive a browser, type into a terminal, or open windows, and take over interactively to enter credentials before handing back control.</p>]]></summary>
-    <category term="Bot Screen feature"/>
+    <summary type="html"><![CDATA[<p>NousResearch launches the Bot Screen feature: Hermes Desktop can stream any bot's screen or session in real time, showing the agent driving a browser, typing in a terminal, or opening windows, with human take-over and seamless hand-back.</p>]]></summary>
+    <category term="Bot Screen launch"/>
     <category term="Hermes Desktop"/>
     <category term="human-in-the-loop"/>
-    <category term="product launch"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-24:social:4784626f2a61</id>
@@ -101,40 +118,49 @@
     <published>2026-09-24T03:40:00Z</published>
     <updated>2026-09-24T03:40:00Z</updated>
     <author><name>@Teknium</name></author>
-    <summary type="html"><![CDATA[<p>Teknium announces that users can now visually and interactively access the same machine their Hermes Agent runs on via a live desktop passthrough on every supported remote gateway.</p>]]></summary>
-    <category term="Bot Screen feature"/>
-    <category term="desktop passthrough"/>
+    <summary type="html"><![CDATA[<p>Teknium announces live desktop passthrough for Hermes Agent: users can now visually and interactively access the same machine their agent works on, on every supported remote gateway.</p>]]></summary>
+    <category term="Bot Screen launch"/>
     <category term="Hermes Desktop"/>
-    <category term="product launch"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-24:research:1ff7cb5819fc</id>
-    <title>Hermes Agent Stream JSON Output: New in v0.21.4</title>
-    <link href="https://juliangoldie.com/hermes-agent-stream-json-output/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-agent-stream-json-output" rel="alternate" type="text/html"/>
-    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" rel="related" type="text/html"/>
-    <published>2026-09-24T03:26:00Z</published>
-    <updated>2026-09-24T03:26:00Z</updated>
-    <author><name>Clawdbot</name></author>
-    <summary type="html"><![CDATA[<p>Documents Hermes Agent v0.21.4 (v2026.9.21), released 21 September 2026, which adds a --format stream-json flag to the CLI. The flag streams structured JSONL (one JSON object per line) instead of plain text so scripts and pipelines can parse output reliably. Available via hermes update, the installer one-liner, or the nousresearch/hermes-agent:v2026.9.21 Docker image. The same release rolls up roughly 1,812 merged PRs, including skills auto-load and configurable MCP discovery concurrency. Feature is free and built into the open-source agent.</p>]]></summary>
-    <category term="Hermes Agent releases"/>
-    <category term="CLI output formats"/>
-    <category term="automation"/>
-    <category term="JSONL streaming"/>
+    <category term="remote gateways"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-24:research:3245300860a9</id>
     <title>Hermes Claude CLI: The Pipeline Behind The Plugin</title>
     <link href="https://juliangoldie.com/hermes-claude-cli/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-cli" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" rel="related" type="text/html"/>
-    <published>2026-09-24T03:21:00Z</published>
-    <updated>2026-09-24T03:21:00Z</updated>
+    <published>2026-09-24T03:31:00Z</published>
+    <updated>2026-09-24T03:31:00Z</updated>
     <author><name>Clawdbot</name></author>
-    <summary type="html"><![CDATA[<p>Explains the Hermes Claude CLI subscription plugin pipeline end to end: Hermes talks to the plugin, the plugin drives the unmodified official Claude Code executable, and conversation flows as native stream-json while Hermes keeps its own loop, tools and approvals. No forked CLI or patched binary. Version requirements: Hermes 0.21.4+ (older versions refuse the plugin cleanly) and Claude Code CLI 2.1.263 as the qualified version. Every request spawns a fresh claude process in a private temp directory with native tools/skills disabled, so Hermes tool inventory is what the model sees. A per-request admission relay forwards exactly one upstream request, rejecting native retry attempts locally.</p>]]></summary>
-    <category term="Hermes integrations"/>
-    <category term="Claude Code plugin"/>
+    <summary type="html"><![CDATA[<p>Explains the Hermes-Claude subscription plugin pipeline: Hermes drives the unmodified official claude CLI, communicating via native stream-json, while Hermes retains its own loop, tools, approvals and compaction. Every request spawns a fresh claude process in a private temp directory with native tools/skills disabled so Hermes' tool inventory is what the model sees. An admission relay forwards exactly one upstream request per turn, rejecting native retry attempts locally. Requires Hermes 0.21.4+ and Claude Code CLI (native 2.1.263 qualified); older Hermes versions refuse the plugin cleanly.</p>]]></summary>
+    <category term="Hermes-Claude integration"/>
+    <category term="plugin architecture"/>
     <category term="stream-json"/>
-    <category term="process isolation"/>
-    <category term="billing integrity"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-24:research:1ff7cb5819fc</id>
+    <title>Hermes Agent Stream JSON Output: New in v0.21.4</title>
+    <link href="https://juliangoldie.com/hermes-agent-stream-json-output/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-agent-stream-json-output" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" rel="related" type="text/html"/>
+    <published>2026-09-24T03:16:00Z</published>
+    <updated>2026-09-24T03:16:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Documents Hermes Agent v0.21.4 (v2026.9.21), released 21 September 2026, adding a --format stream-json CLI flag that emits structured JSONL (one JSON object per line) instead of plain text, enabling reliable parsing in scripts and pipelines. Update paths include hermes update for git installs, the installer one-liner, or the nousresearch/hermes-agent:v2026.9.21 Docker image. The same release rolls up roughly 1,812 merged PRs including skills auto-load and configurable MCP discovery concurrency.</p>]]></summary>
+    <category term="Hermes Agent releases"/>
+    <category term="CLI tooling"/>
+    <category term="automation pipelines"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-24:research:8baed0cca5b7</id>
+    <title>Hermes-Claude Auth: How Login Works (No API Key)</title>
+    <link href="https://juliangoldie.com/hermes-claude-auth/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-auth" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" rel="related" type="text/html"/>
+    <published>2026-09-24T03:07:00Z</published>
+    <updated>2026-09-24T03:07:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Details the authentication model of the Hermes-Claude subscription plugin: credentials remain entirely with the official Claude Code CLI via claude auth login; the plugin never opens, copies, refreshes or prints credential files, and no API key exists anywhere in the flow. The plugin actively rejects inherited API-key, custom-endpoint and cloud override environment variables, naming conflicting variables without exposing values. Status checks are local (claude auth status reads the local credential store in roughly 0.3s), and separated setups can use CLAUDE_CONFIG_DIR / CLAUDE_SUBSCRIPTION_DIRECTSDK_CONFIG_DIR for dedicated CLI-managed config.</p>]]></summary>
+    <category term="authentication"/>
+    <category term="Hermes-Claude integration"/>
+    <category term="credential security"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-24:social:d84a2bc0a85d</id>
@@ -143,44 +169,26 @@
 Docs: htt...</title>
     <link href="https://twitter.com/NousResearch/status/2102873237101154321" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" rel="related" type="text/html"/>
-    <published>2026-09-24T03:12:00Z</published>
-    <updated>2026-09-24T03:12:00Z</updated>
+    <published>2026-09-24T03:07:00Z</published>
+    <updated>2026-09-24T03:07:00Z</updated>
     <author><name>@NousResearch</name></author>
-    <summary type="html"><![CDATA[<p>NousResearch shares an official walkthrough video of the new Bot Screen feature created by tonbistudio, linking to documentation.</p>]]></summary>
-    <category term="Bot Screen feature"/>
+    <summary type="html"><![CDATA[<p>NousResearch shares an official walkthrough of the new Bot Screen feature created by tonbistudio, including a link to documentation.</p>]]></summary>
+    <category term="Bot Screen launch"/>
     <category term="guides and tutorials"/>
-    <category term="documentation"/>
   </entry>
   <entry>
-    <id>urn:ainews:2026-09-24:research:8baed0cca5b7</id>
-    <title>Hermes-Claude Auth: How Login Works (No API Key)</title>
-    <link href="https://juliangoldie.com/hermes-claude-auth/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-auth" rel="alternate" type="text/html"/>
-    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" rel="related" type="text/html"/>
-    <published>2026-09-24T02:57:00Z</published>
-    <updated>2026-09-24T02:57:00Z</updated>
-    <author><name>Clawdbot</name></author>
-    <summary type="html"><![CDATA[<p>Details the authentication model of the Hermes-Claude subscription plugin: auth belongs entirely to the official Claude Code CLI via claude auth login (browser plus pasted code), and the plugin never opens, copies, refreshes or prints credential files. No API key exists anywhere in the flow; the plugin actively rejects inherited API-key, custom-endpoint and cloud overrides, naming conflicting variables without printing their values. Status checks are local via claude auth status reading the local credential store in about 0.3 seconds. Separated setups can use CLAUDE_CONFIG_DIR / CLAUDE_SUBSCRIPTION_DIRECTSDK_CONFIG_DIR for a dedicated CLI-managed configuration.</p>]]></summary>
-    <category term="authentication"/>
-    <category term="Hermes integrations"/>
-    <category term="credential security"/>
-    <category term="configuration"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-24:social:415aecf318f8</id>
-    <title>OMH now supports Jev-Skils and Model Routing. 
+    <id>urn:ainews:2026-09-24:social:d03d44ef66a9</id>
+    <title>Learn all about in @tonbistudio's latest guide video!
 
-• Jev models and aliases 
-• Jev skills and plugins 
-...</title>
-    <link href="https://twitter.com/rlaope/status/2102661907299893625" rel="alternate" type="text/html"/>
-    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-415aecf318f8" rel="related" type="text/html"/>
-    <published>2026-09-24T02:57:00Z</published>
-    <updated>2026-09-24T02:57:00Z</updated>
-    <author><name>@rlaope</name></author>
-    <summary type="html"><![CDATA[<p>rlaope announces that oh-my-hermes (OMH) now supports Jev-Skills and model routing, listing capabilities including JEV models and aliases, JEV skills and plugins, JEV-powered workflow routing, fast decisions for skills, models, agents, memory, and MCP, plugin status and credential checks, and routing benchmarks with answer scoring.</p>]]></summary>
-    <category term="JEV integration"/>
-    <category term="oh-my-hermes"/>
-    <category term="model routing"/>
+https://t.co/4hZMmIOjAn</title>
+    <link href="https://twitter.com/Teknium/status/2102876484713185569" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d03d44ef66a9" rel="related" type="text/html"/>
+    <published>2026-09-24T02:28:00Z</published>
+    <updated>2026-09-24T02:28:00Z</updated>
+    <author><name>@Teknium</name></author>
+    <summary type="html"><![CDATA[<p>Teknium amplifies a guide video by tonbistudio explaining the newly announced Bot Screen / Hermes Desktop feature.</p>]]></summary>
+    <category term="Bot Screen launch"/>
+    <category term="guides and tutorials"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-24:social:99948938337f</id>
@@ -189,39 +197,38 @@ Docs: htt...</title>
 1. jeval (evaluation jev result, extract visual result): https://t.co/c3x...</title>
     <link href="https://twitter.com/rlaope/status/2102719868978303034" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" rel="related" type="text/html"/>
-    <published>2026-09-24T02:43:00Z</published>
-    <updated>2026-09-24T02:43:00Z</updated>
+    <published>2026-09-24T02:23:00Z</published>
+    <updated>2026-09-24T02:23:00Z</updated>
     <author><name>@rlaope</name></author>
-    <summary type="html"><![CDATA[<p>rlaope shares two open source contributions for the Hermes ecosystem: jeval, a tool for evaluating JEV results and extracting visual outputs, and an updated oh-my-hermes build adding jev-ask, jev-XYZ skills, and JEV routing, with repository links included.</p>]]></summary>
-    <category term="open source tooling"/>
-    <category term="JEV integration"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-09-24:research:e9974751b764</id>
-    <title>Microsoft Agent Framework 1.19.0: What Changed</title>
-    <link href="https://juliangoldie.com/microsoft-agent-framework-1-19-0/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=microsoft-agent-framework-1-19-0" rel="alternate" type="text/html"/>
-    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" rel="related" type="text/html"/>
-    <published>2026-09-24T02:28:00Z</published>
-    <updated>2026-09-24T02:28:00Z</updated>
-    <author><name>Clawdbot</name></author>
-    <summary type="html"><![CDATA[<p>Covers Microsoft Agent Framework 1.19.0, tagged on GitHub on 18 September 2026. Key changes center on MCP security: sessions are scoped per invocation with requests authenticated against the correct invocation identity, origin and ownership. Skill archives become ZIP-only with digest verification, and ambiguous MCP configuration matches are rejected. Adds new vector-store connectors for MongoDB, Azure DocumentDB, Azure Cosmos DB, plus in-memory and portable filters. Includes breaking changes, notably deprecation of the MCP sampling callback.</p>]]></summary>
-    <category term="agent frameworks"/>
-    <category term="MCP security"/>
-    <category term="vector stores"/>
-    <category term="breaking changes"/>
+    <summary type="html"><![CDATA[<p>rlaope open-sources two projects: jeval, a tool for evaluating and visually extracting Jev results, and an updated oh-my-hermes (OMH+) adding jev-ask, jev-XYZ skills, and JEV routing.</p>]]></summary>
+    <category term="oh-my-hermes"/>
+    <category term="jeval"/>
+    <category term="open source showcase"/>
   </entry>
   <entry>
     <id>urn:ainews:2026-09-24:research:3f5747150c72</id>
     <title>AgentProto Review: New Open Agent Runtime (2026)</title>
     <link href="https://juliangoldie.com/agentproto-review/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=agentproto-review" rel="alternate" type="text/html"/>
     <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" rel="related" type="text/html"/>
-    <published>2026-09-24T02:19:00Z</published>
-    <updated>2026-09-24T02:19:00Z</updated>
+    <published>2026-09-24T01:55:00Z</published>
+    <updated>2026-09-24T01:55:00Z</updated>
     <author><name>Clawdbot</name></author>
-    <summary type="html"><![CDATA[<p>Reviews AgentProto, a new open-source agentic runtime in TypeScript that provides a single interface to start, message, watch and stop coding agents in the background, with quality gates before work lands. Integrates 14 agents including Claude Code, Codex, Gemini, Hermes, opencode and Mastra per its README. Free under Apache-2.0 with users paying only for underlying model usage. Shipped v0.20.0 on 22 September 2026 but is very early: single-digit GitHub stars and Tier 2 components labeled alpha scaffolding. Verdict: interesting architecture, early-adopters-only.</p>]]></summary>
+    <summary type="html"><![CDATA[<p>Review of AgentProto, an open-source TypeScript agentic runtime released 22 September 2026 (v0.20.0) that provides a single interface to start, message, watch and stop coding agents, with quality gates before work lands. Integrates 14 agents including Claude Code, Codex, Gemini, Hermes, opencode and Mastra. Apache-2.0 licensed with cost limited to model usage. Caveats: single-digit GitHub stars, self-described Tier 2 alpha scaffolding; verdict is early-adopters-only.</p>]]></summary>
     <category term="agent runtimes"/>
-    <category term="Hermes integrations"/>
+    <category term="ecosystem integrations"/>
     <category term="open source"/>
-    <category term="early-stage projects"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-24:research:e9974751b764</id>
+    <title>Microsoft Agent Framework 1.19.0: What Changed</title>
+    <link href="https://juliangoldie.com/microsoft-agent-framework-1-19-0/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=microsoft-agent-framework-1-19-0" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" rel="related" type="text/html"/>
+    <published>2026-09-24T01:40:00Z</published>
+    <updated>2026-09-24T01:40:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Covers Microsoft Agent Framework 1.19.0, tagged on GitHub 18 September 2026. Key changes center on MCP security: sessions scoped per invocation with requests authenticated against invocation identity, origin and ownership. Skill archives become ZIP-only with digest verification; ambiguous MCP configuration matches are rejected. Adds vector-store connectors for MongoDB, Azure DocumentDB and Azure Cosmos DB plus in-memory and portable filters. Notes a breaking change with deprecation of the MCP sampling callback.</p>]]></summary>
+    <category term="agent frameworks"/>
+    <category term="MCP security"/>
+    <category term="release notes"/>
   </entry>
 </feed>
