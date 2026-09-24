@@ -100,7 +100,7 @@
 		width: 100%;
 		border-radius: 1rem;
 		overflow: hidden;
-		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+		background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
 	}
 
 	.hero-frame {
@@ -122,7 +122,7 @@
 
 	.hero-overlay {
 		padding: 0.85rem 1rem 1rem;
-		background: #16213e;
+		background: #0A0A0A;
 	}
 
 	.hero-row {
@@ -194,7 +194,7 @@
 
 	@media (min-width: 640px) {
 		/* Tablet and up: enough height for the caption to ride over the image again. */
-		.hero-section {
+	.hero-section {
 			aspect-ratio: 21 / 9;
 		}
 
@@ -203,7 +203,7 @@
 			aspect-ratio: auto;
 		}
 
-		.hero-overlay {
+	.hero-overlay {
 			position: absolute;
 			bottom: 0;
 			left: 0;
