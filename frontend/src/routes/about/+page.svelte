@@ -22,11 +22,11 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>AATF AI News Aggregator</strong> delivers daily briefings on AI/ML developments,
+				<strong>Agent N's Hermes News</strong> delivers daily briefings on AI/ML developments,
 				helping you stay current with the fast-moving world of artificial intelligence.
 			</p>
 			<p>
-				Built by the <a href="https://www.trendmicro.com/" target="_blank" rel="noopener noreferrer" class="text-trend-red hover:underline font-semibold">TrendAI</a> <strong>AI Acceleration Task Force (AATF)</strong>, this project was created
+				Built by the <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener noreferrer" class="text-trend-red hover:underline font-semibold">Hermes Initiative</a> <strong>Agent N's Hermes News</strong>, this project was created
 				to make sense of the overwhelming volume of AI news published daily across research papers,
 				news outlets, and social media.
 			</p>

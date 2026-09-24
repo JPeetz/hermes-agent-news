@@ -53,7 +53,7 @@
 	function updateModelMeta() {
 		const model = get(currentModel);
 		if (!model?.display_name) return;
-		const text = `Your daily digest of AI developments powered by the AATF and ${model.display_name}`;
+		const text = `Your daily digest of Hermes Agent news powered by Agent N and ${model.display_name}`;
 		for (const sel of [
 			'meta[name="description"]',
 			'meta[property="og:description"]',
@@ -81,7 +81,7 @@
 </script>
 
 <svelte:head>
-	<link rel="alternate" type="application/atom+xml" title="AATF AI News" href="/data/feeds/main.xml"/>
+	<link rel="alternate" type="application/atom+xml" title="Agent N's Hermes News" href="/data/feeds/main.xml"/>
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">

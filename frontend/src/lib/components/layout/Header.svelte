@@ -11,7 +11,7 @@
 	let showSearch = false;
 </script>
 
-<header class="bg-gradient-to-r from-trend-red to-guardian-red text-white shadow-lg">
+<header class="bg-gradient-to-r from-hermes-gold to-agent-cyan text-white shadow-lg">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
 		<!--
 			Mobile geometry, the short version: four 36px icon buttons plus their gaps
@@ -27,18 +27,18 @@
 				<a href="/" class="flex items-center gap-2 sm:gap-3 min-w-0 hover:opacity-90 transition-opacity">
 					<img
 						src="/assets/logo.webp"
-						alt="AATF Logo"
+						alt="Agent N Logo"
 						class="w-10 h-10 sm:w-12 sm:h-12 flex-none rounded-full bg-white p-0.5"
 					/>
 					<div class="min-w-0">
 						<h1 class="text-lg sm:text-2xl font-bold tracking-tight leading-tight">
-							AATF AI News Aggregator
+							Agent N's Hermes News
 						</h1>
 						<p class="text-xs sm:text-sm text-white/80 leading-snug">
 							{#if modelName}
 								Powered by {modelName}
 							{:else}
-								Daily AI/ML news from the AATF
+								Daily Hermes Agent news from Agent N
 							{/if}
 							{#if showNewBadge}
 								<span class="new-badge">NEW</span>
@@ -60,7 +60,7 @@
 
 				<!-- GitHub link -->
 				<a
-					href="https://github.com/flyryan/ai-news-aggregator"
+					href="https://github.com/JPeetz/hermes-agent-news"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="p-1.5 sm:p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors flex-none"

@@ -6,29 +6,29 @@
 	$: modelName = $currentModel?.display_name ?? '';
 </script>
 
-<footer class="bg-trend-dark text-white mt-auto">
+<footer class="bg-bg-dark text-white mt-auto">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 		<div class="flex flex-col md:flex-row items-center justify-between gap-4">
 			<div class="flex items-center gap-3">
 				<img
 					src="/assets/logo.webp"
-					alt="AATF Logo"
+					alt="Agent N Logo"
 					class="w-8 h-8 rounded-full"
 				/>
 				<div>
-					<p class="font-medium">AATF AI News Aggregator</p>
+					<p class="font-medium">Agent N's Hermes News</p>
 					<p class="text-sm text-trend-gray-400">
 						{#if modelName}
 							Powered by {modelName}
 						{:else}
-							Daily AI/ML news from the AATF
+							Daily Hermes Agent news from Agent N
 						{/if}
 					</p>
 				</div>
 			</div>
 
 			<div class="flex items-center gap-6 text-sm text-trend-gray-400">
-				<span>AATF - AI Acceleration Task Force</span>
+				<span>Agent N's Hermes News</span>
 				<span>&copy; {currentYear}</span>
 				<a href="/about" class="hover:text-white transition-colors">[About]</a>
 				<a href="/feeds" class="hover:text-white transition-colors">[RSS]</a>

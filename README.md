@@ -1,16 +1,16 @@
-# AI News Aggregator
+# Agent N's Hermes News
 
 ![Pipeline Banner](assets/pipeline-banner.webp)
 
-> Multi-agent AI news pipeline powered by Claude Opus 5 with adaptive thinking
+> Multi-agent news pipeline for Hermes Agent & Hermes Desktop, powered by adaptive thinking
 
-> **Live Site:** [https://news.aatf.ai](https://news.aatf.ai)
+> **Live Site:** [https://hermes-agent-news.vercel.app](https://hermes-agent-news.vercel.app)
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-green.svg)](https://www.python.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 
-Daily AI/ML news briefings curated by specialized agents using adaptive thinking profiles. The publishing repository starts the hosted pipeline every morning at 3 AM ET, with the live site typically updated around 4 AM ET.
+Daily Hermes Agent & Hermes Desktop news briefings curated by specialized agents using adaptive thinking profiles. The pipeline runs every morning via GitHub Actions, collecting from official Hermes channels, GitHub releases/PRs, community discussions, and social media — then publishing a structured newsletter with sections for Releases, Merged PRs, Community, and Tips.
 
 ---
 
