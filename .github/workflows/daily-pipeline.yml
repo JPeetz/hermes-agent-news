@@ -596,12 +596,14 @@ jobs:
           args=(--config-dir ./config --data-dir ./data --web-dir ./frontend/static)
           # Test KIE_API_KEY directly
           echo "KIE_API_KEY length: ${#KIE_API_KEY}"
+          python3 -c "import os; k=os.environ.get('KIE_API_KEY',''); print(f'py_len={len(k)}')"
           curl -s -X POST "https://api.kie.ai/api/v1/jobs/createTask" \
             -H "Authorization: Bearer ${KIE_API_KEY}" \
             -H "Content-Type: application/json" \
             -d '{"model":"gpt-image/1.5-image-to-image","input":{"prompt":"test","aspect_ratio":"16:9","quality":"medium","output_format":"jpg"}}' \
             -o /tmp/kie_test.json \
-            -m 10 && echo "KIE test response:" && python3 -c "import json; d=json.load(open('/tmp/kie_test.json')); print(json.dumps(d,indent=2)[:300])"
+            -m 10 || true
+          python3 -c "import json; d=json.load(open('/tmp/kie_test.json')); print(json.dumps(d,indent=2)[:400])"
           if [[ -n "${TARGET_DATE_INPUT:-}" ]]; then
             args+=(--date "$TARGET_DATE_INPUT")
           fi
