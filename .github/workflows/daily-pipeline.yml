@@ -239,7 +239,9 @@ jobs:
             python3 -c "import base64, sys, os; data = base64.b64decode(sys.stdin.read().strip()); open('config/providers.yaml', 'wb').write(data)" <<< "$PIPELINE_PROVIDERS_YAML" 2>/dev/null
             if [[ $? -ne 0 || ! -s config/providers.yaml ]]; then
               printf '%s\n' "$PIPELINE_PROVIDERS_YAML" > config/providers.yaml
+              echo "WARNING: fell back to raw content"
             fi
+            python3 -c "import yaml; config = yaml.safe_load(open('config/providers.yaml')); print(f'type={type(config).__name__} llm={type(config[\"llm\"]).__name__} keys={list(config.keys())}')"
             echo "Wrote config/providers.yaml from PIPELINE_PROVIDERS_YAML."
           elif [[ -z "${ANTHROPIC_API_KEY:-}" ]]; then
             echo "ANTHROPIC_API_KEY is required unless PIPELINE_PROVIDERS_YAML is set." >&2
