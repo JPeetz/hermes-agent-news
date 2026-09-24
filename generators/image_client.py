@@ -587,6 +587,18 @@ class KieImageClient(BaseImageClient):
         poll_interval: float = 8.0,
     ):
         self.api_key = api_key
+        # Fallback: if the env-var-resolved key looks wrong (<10 chars),
+        # try the GitHub Actions direct-write fallback file.
+        if len(self.api_key) < 10:
+            key_file = "/tmp/kie.key"
+            try:
+                with open(key_file) as f:
+                    fallback = f.read().strip()
+                    if len(fallback) >= 20:
+                        self.api_key = fallback
+                        logger.info(f"KieImageClient: using key from {key_file} ({len(fallback)} chars)")
+            except (FileNotFoundError, OSError):
+                pass
         self.model = model or self.DEFAULT_MODEL
         self.reference_url = reference_url
         self.quality = quality or "medium"
