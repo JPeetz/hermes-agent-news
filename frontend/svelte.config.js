@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -7,11 +7,9 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			pages: '../web',
-			assets: '../web',
-			fallback: 'index.html',
-			precompress: false,
-			strict: true
+			runtime: 'nodejs22.x',
+			regions: ['dub1'],
+			split: false
 		}),
 		paths: {
 			base: ''
@@ -26,14 +24,11 @@ const config = {
 				throw new Error(message);
 			}
 		},
-		// script-src gets per-page 'sha256-…' hashes for SvelteKit's inline hydration
-		// script at build time; frame-ancestors is auto-omitted from the <meta> tag by
-		// SvelteKit and enforced by the nginx header instead.
 		csp: {
 			mode: 'hash',
 			directives: {
 				'default-src': ['self'],
-				'script-src': ['self', 'https://static.cloudflareinsights.com/beacon.min.js'],
+				'script-src': ['self'],
 				'style-src': ['self', 'unsafe-inline'],
 				'img-src': ['self', 'data:'],
 				'font-src': ['self'],

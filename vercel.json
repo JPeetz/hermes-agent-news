@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/.svelte-kit/vercel/output",
+  "installCommand": "cd frontend && npm install",
+  "rewrites": [
+    { "source": "/data/(.*)", "destination": "/web/data/$1" },
+    { "source": "/assets/(.*)", "destination": "/frontend/static/assets/$1" },
+    { "source": "/favicon.png", "destination": "/frontend/static/favicon.png" }
+  ],
+  "crons": []
+}
