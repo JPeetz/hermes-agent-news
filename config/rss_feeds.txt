@@ -1,17 +1,24 @@
-# Hermes Agent News — Hermes Agent/Hermes Desktop-only RSS/Atom feeds
+# Hermes Agent News — Curated Hermes Agent/Hermes Desktop RSS/Atom feeds
 # One URL per line. Lines starting with # are comments.
+#
+# Sources without RSS feeds are covered via Twitter/GitHub:
+#   - @NousResearch @Teknium @rlaope tweet all releases
+#   - GitHub releases.atom covers every release tag
 
-# ===== GitHub Release Feeds (confirmed working) =====
-https://github.com/NousResearch/hermes-agent/releases.atom  # GitHub Releases — Release tags, changelogs
-https://github.com/0xarkstar/awesome-hermes-agent/commits/main.atom  # Awesome Hermes Agent — curated list
-https://github.com/mudrii/hermes-agent-docs/commits/main.atom  # Community docs updates
-https://github.com/AaronWong1999/hermesclaw/commits/main.atom  # HermesClaw — community project
+# ===== GitHub Release Feeds (primary — every release here) =====
+https://github.com/NousResearch/hermes-agent/releases.atom
+https://github.com/NousResearch/hermes-agent/commits/main.atom
 
-# ===== Official Content (verify feed URLs) =====
-# https://hermes-agent.ai/blog/feed.xml           # Blog — currently 404, needs correct URL
-# https://hermes-ai.net/changelog/feed.xml         # Changelog — currently 404, needs correct URL
+# ===== Community & Ecosystem GitHub Feeds =====
+https://github.com/0xarkstar/awesome-hermes-agent/commits/main.atom
+https://github.com/mudrii/hermes-agent-docs/commits/main.atom
+https://github.com/AaronWong1999/hermesclaw/commits/main.atom
 
-# ===== Third-Party Coverage (verify feed URLs) =====
-# https://www.hermesbible.com/changelog/feed.xml  # Hermes Bible — currently 404
-# https://www.marktechpost.com/tag/hermes-agent/feed/  # MarkTechPost — currently 404
-# https://www.digitalapplied.com/blog/rss.xml      # Digital Applied — currently 404
+# ===== Third-Party Coverage Blogs =====
+https://www.marktechpost.com/feed/
+https://juliangoldie.com/feed/
+
+# ===== Non-RSS sources (covered by Twitter/GitHub) =====
+# https://hermes-agent.ai/blog — JS-rendered, no RSS; tweets cover releases
+# https://hermes-ai.net/changelog/ — no RSS; GitHub releases cover
+# https://hermes-ai.net/news/hermes-agent/ — news aggregator; covered via searches
