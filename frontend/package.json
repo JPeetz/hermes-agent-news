@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "prebuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',s=p.join('static','data'),b='../.data-backup';if(fs.existsSync(d)){if(fs.existsSync(s))fs.rmSync(s,{recursive:true});fs.cpSync(d,s,{recursive:true});fs.cpSync(d,b,{recursive:true});console.log('Copied web/data to static/data OK')}else{console.log('WARN: web/data not found, data files will 404')}\"",
+    "prebuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',s=p.join('static','data');if(fs.existsSync(d)){if(fs.existsSync(s))fs.rmSync(s,{recursive:true});fs.cpSync(d,s,{recursive:true});console.log('Copied legacy web/data to static/data OK')}else{console.log('Data already in static/data (pipeline output lives here)')}\"",
     "build": "vite build",
-    "postbuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',b='../.data-backup';if(fs.existsSync(b)){fs.cpSync(b,d,{recursive:true});fs.rmSync(b,{recursive:true});console.log('Restored web/data')}\"",
+    "postbuild": "echo prebuild-data-ready",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

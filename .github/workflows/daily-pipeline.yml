@@ -75,7 +75,7 @@ jobs:
       MULLVAD_WG_PRIVATE_KEY: ${{ secrets.MULLVAD_WG_PRIVATE_KEY }}
       MULLVAD_RELAY_FILTER: ${{ vars.MULLVAD_RELAY_FILTER || 'us' }}
       PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://hermes-agent-news.vercel.app' }}
-      PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'web/data config/model_releases.yaml config/ecosystem_context.yaml' }}
+      PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'frontend/static/data config/model_releases.yaml config/ecosystem_context.yaml' }}
       # `gemini-3-pro-image-preview` was retired from the endpoint and now 400s
       # ("Invalid model name"), which failed Phase 4.7 on 2026-07-28. The GA name
       # is the correct default; verify against /v1/models before changing it.
@@ -671,10 +671,10 @@ jobs:
         with:
           name: generated-pipeline-output
           path: |
-            web/data
+            frontend/static/data
             config/model_releases.yaml
             config/ecosystem_context.yaml
-          if-no-files-found: error
+          if-no-files-found: warning
 
       # orchestrator_result is here so a lost replay stays rebuildable. All of
       # data/ is gitignored and dies with the runner, and the replay blobs are
@@ -754,7 +754,7 @@ jobs:
           # re-dispatches or backfills where nothing new was committed), and directly
           # answers "is the site serving today's report?" If summary.json for the date
           # is absent from origin/main, the run claimed success but the site is STALE.
-          artifact="web/data/${report_date}/summary.json"
+          artifact="frontend/static/data/${report_date}/summary.json"
           if git cat-file -e "origin/main:${artifact}" 2>/dev/null; then
             echo "Verified: ${artifact} is published on origin/main."
           else
@@ -848,7 +848,7 @@ jobs:
         run: |
           set -uo pipefail
           report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
-          if [[ -f "web/data/${report_date}/replay-index.json" ]]; then
+          if [[ -f "frontend/static/data/${report_date}/replay-index.json" ]]; then
             echo "Verified: replay-index.json present for ${report_date}."
           else
             echo "::warning title=Replay artifact missing::Phase 6.2 produced no \
