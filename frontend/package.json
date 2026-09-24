@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "prebuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',s=p.join('static','data');if(fs.existsSync(d)){if(fs.existsSync(s))fs.rmSync(s,{recursive:true});fs.cpSync(d,s,{recursive:true});console.log('Copied legacy web/data to static/data OK')}else{console.log('Data already in static/data (pipeline output lives here)')}\"",
+    "prebuild": "node -e \"console.log('Data served from committed static/data/')\"",
     "build": "vite build",
     "postbuild": "echo prebuild-data-ready",
     "preview": "vite preview",
