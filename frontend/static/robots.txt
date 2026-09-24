@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Allow AI crawlers specifically
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemaps
+Sitemap: https://hermes-agent-news-one.vercel.app/feeds
+Sitemap: https://hermes-agent-news-one.vercel.app/data/index.json
