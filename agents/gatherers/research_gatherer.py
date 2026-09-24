@@ -444,7 +444,10 @@ class ResearchGatherer(BaseGatherer):
 
         # Separate LessWrong from other feeds (LessWrong needs GraphQL for date-range queries)
         lesswrong_feeds = [s for s in self.research_feed_specs if 'lesswrong.com' in s.url.lower()]
-        other_feeds = [s for s in self.research_feed_specs if 'lesswrong.com' not in s.url.lower()]
+        hf_daily_feeds = [s for s in self.research_feed_specs if 'huggingface.co/api/daily_papers' in s.url.lower()]
+        other_feeds = [s for s in self.research_feed_specs
+                       if 'lesswrong.com' not in s.url.lower()
+                       and 'huggingface.co/api/daily_papers' not in s.url.lower()]
 
         all_posts = []
         seen_urls = set()
@@ -465,6 +468,99 @@ class ResearchGatherer(BaseGatherer):
                         all_posts.append(post)
             except Exception as e:
                 logger.error(f"Failed to fetch LessWrong via GraphQL: {e}")
+
+        # Fetch HuggingFace Daily Papers (JSON API → keyword-filtered → CollectedItem)
+        if hf_daily_feeds:
+            logger.info(f"Fetching {len(hf_daily_feeds)} HuggingFace daily papers feed")
+            try:
+                import urllib.request
+                import json as _json
+
+                # Fetch the 50 daily papers from HF API
+                hf_url = "https://huggingface.co/api/daily_papers"
+                req = urllib.request.Request(hf_url, headers={"User-Agent": "Hermes-Agent-News/1.0"})
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    hf_papers = _json.loads(resp.read())
+
+                # Filter: major org mentions or high-value keywords in title
+                MAJOR_ORGS = ["openai", "anthropic", "google deepmind", "meta", "microsoft",
+                              "deepseek", "mistral", "moonshot", "minimax", "alibaba"]
+                HIGH_VALUE_KWS = ["agent", "framework", "llm", "large language model",
+                                  "reasoning", "tool use", "open source", "model release",
+                                  "multimodal", "state-of-the-art", "breakthrough",
+                                  "alignment", "safety", "reinforcement learning",
+                                  "mixture of experts", "moe", "architecture", "benchmark",
+                                  "video generation", "code generation", "retrieval",
+                                  "fine-tuning", "distillation", "scaling law",
+                                  "context window", "long context", "memory"]
+                LOW_VALUE_KWS = ["survey", "review", "preliminary", "toward",
+                                 "protein", "molecule", "chemistry", "biology"]
+
+                filtered = []
+                for p in hf_papers:
+                    paper = p.get("paper", p)
+                    title = (paper.get("title", "") or "").lower()
+                    summary = (paper.get("summary", "") or "").lower()[:300]
+                    text = f"{title} {summary}"
+                    score = 0
+
+                    # +30 for major org mention
+                    for org in MAJOR_ORGS:
+                        if org in text:
+                            score += 30
+                            break
+
+                    # +15 per high-value keyword in title (max +50)
+                    title_hits = sum(1 for kw in HIGH_VALUE_KWS if kw in title)
+                    score += min(title_hits * 15, 50)
+
+                    # -20 for low-value terms in title
+                    for kw in LOW_VALUE_KWS:
+                        if kw in title:
+                            if kw in ("agent", "framework", "llm"):  # these are not low-value
+                                score += 10
+                            else:
+                                score -= 20
+
+                    if score >= 35:  # threshold for notable
+                        filtered.append((p, score))
+
+                filtered.sort(key=lambda x: -x[1])
+                filtered = filtered[:8]  # keep top 8
+
+                logger.info(f"HF daily papers: kept {len(filtered)}/{len(hf_papers)} after keyword filter")
+
+                for p, score in filtered:
+                    paper = p.get("paper", p)
+                    pid = paper.get("id", "unknown")
+                    title = paper.get("title", paper.get("id", "?"))
+                    summary = paper.get("summary", "")[:500]
+                    arxiv_url = f"https://arxiv.org/abs/{pid}"
+
+                    item = CollectedItem(
+                        id=pid,
+                        url=arxiv_url,
+                        title=title,
+                        content=summary,
+                        author="HF Daily Papers",
+                        published=(paper.get("publishedAt", "") or ""),
+                        source='hf_daily_papers',
+                        source_type='rss',
+                        keywords=[],
+                        collected_at=datetime.now().isoformat(),
+                        metadata={
+                            'source': 'huggingface',
+                            'source_feed': 'hf_daily_papers',
+                            'arxiv_id': pid,
+                            'relevance_score': score,
+                        }
+                    )
+                    if item.url not in seen_urls:
+                        seen_urls.add(item.url)
+                        all_posts.append(item)
+
+            except Exception as e:
+                logger.error(f"Failed to fetch HF daily papers: {e}")
 
         # Fetch other feeds via RSS (existing behavior)
         if other_feeds:
