@@ -41,7 +41,7 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 - **7 arXiv categories** (cs.AI, cs.LG, cs.CL, cs.CV, cs.NE, cs.RO, stat.ML)
 - **6 social platforms** (Twitter, Bluesky, Mastodon, Reddit, LessWrong, research blogs)
 - **Adaptive reasoning profiles** for lightweight triage through cross-category synthesis
-- **Daily hero image** generated with AATF skunk mascot
+- **Daily hero image** generated with Agent N mascot
 
 ---
 
@@ -87,7 +87,7 @@ For Claude Opus 5, these are profiles rather than fixed token budgets. The clien
 
 ```bash
 # Clone the repository
-git clone https://github.com/flyryan/ai-news-aggregator.git
+git clone https://github.com/JPeetz/hermes-agent-news.git
 cd ai-news-aggregator
 
 # Create config file
@@ -105,7 +105,7 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ```bash
 # Clone and setup
-git clone https://github.com/flyryan/ai-news-aggregator.git
+git clone https://github.com/JPeetz/hermes-agent-news.git
 cd ai-news-aggregator
 
 # Python setup
@@ -134,7 +134,7 @@ If you only need to **serve the frontend** (pipeline runs elsewhere and pushes d
 
 ```bash
 # Clone the repository
-git clone https://github.com/flyryan/ai-news-aggregator.git
+git clone https://github.com/JPeetz/hermes-agent-news.git
 cd ai-news-aggregator
 
 # Build and run (web-only)
@@ -500,7 +500,7 @@ Automatically identifies when today's stories continue from previous coverage:
 - **2-day lookback**: Compares against items from the past 2 days
 
 ### Analysis Profiles And Adaptive Thinking
-- QUICK/STANDARD/DEEP/ULTRATHINK are internal AATF analysis profiles, not Anthropic API thinking levels
+- QUICK/STANDARD/DEEP/ULTRATHINK are internal analysis profiles (originating from the AATF project), not Anthropic API thinking levels
 - Claude Opus 5 uses adaptive thinking plus effort settings, not fixed manual `budget_tokens`
 - Opus 5 requests send top-level `thinking: {"type": "adaptive", "display": "summarized"}` plus `output_config.effort`
 - `LLM_ADAPTIVE_MAX_TOKENS` sets the response output ceiling and is separate from thinking depth
@@ -541,14 +541,14 @@ Each pipeline run tracks collection status per source:
 | **Reddit** | Configurable subreddits | ScrapeCreators API (listings + post comments) |
 
 ### Frontend Features
-- **AATF Branding** - Trend Red (#E63946) color scheme with skunk mascot
+- **Agent N Branding** - Gold/Cyan (#FFD700/#00FFFF) dark theme with Agent N character
 - **Calendar Navigation** - Browse historical reports by date
 - **Full-text Search** - Client-side MiniSearch index built in a Web Worker from a compact corpus
 - **Dark Mode** - System-aware with manual toggle
 - **Responsive Design** - Mobile-first with Tailwind CSS
 
 ### Daily Hero Image
-Each report includes a generated hero image featuring the AATF skunk mascot in a scene representing the day's top stories, created via Gemini 3 Pro.
+Each report includes a generated hero image featuring the Agent N character in a scene representing the day's top stories, created via kie.ai gpt-image/1.5-image-to-image.
 
 ### RSS Feeds
 Multiple Atom 1.0 feeds for different use cases:
@@ -556,7 +556,7 @@ Multiple Atom 1.0 feeds for different use cases:
 - **Daily Briefing** - Executive summaries only with hero image
 - **Category Feeds** - News, Research, Social, Reddit separately
 - **Summary Feeds** - All category summaries
-- Summary entries keep the AATF briefing URL as the first `rel="alternate"` and `rel="canonical"` link; the representative external source remains as a secondary alternate plus `rel="via"` for Feedly compatibility
+- Summary entries keep the original AATF briefing URL as the first alternate link; the representative external source remains as a secondary alternate for Feedly compatibility
 - Summary entries include both `<summary type="html">` and `<content type="html">` with the same publisher-provided HTML so full-content readers do not need to fetch the linked page
 
 ---
@@ -775,21 +775,21 @@ python3 scripts/regenerate_hero.py 2026-01-06 -e "Add a coffee cup to the scene"
 
 ## Contributing
 
-Contributions are welcome!
+This is a fork of the original [flyryan/ai-news-aggregator](https://github.com/flyryan/ai-news-aggregator) by **Ryan Flynn** and the **AI Acceleration Task Force**. All credit for the pipeline architecture, gatherers, analyzers, and Svelte frontend belongs to the original authors.
 
-- **Bug Reports**: [Open an issue](https://github.com/flyryan/ai-news-aggregator/issues)
-- **Feature Requests**: [Open an issue](https://github.com/flyryan/ai-news-aggregator/issues)
-- **Pull Requests**: Fork, make changes, submit PR
+### Original Repository
+- **GitHub**: [flyryan/ai-news-aggregator](https://github.com/flyryan/ai-news-aggregator)
+- **Live Site**: [news.aatf.ai](https://news.aatf.ai)
 
-Please ensure your contributions maintain backwards compatibility with existing configurations.
+**Bug Reports & Feature Requests** for the core pipeline should be directed to the [original repository](https://github.com/flyryan/ai-news-aggregator/issues).
 
 ---
 
 ## License
 
-Apache License 2.0 - See [LICENSE](LICENSE) file for details.
+Apache License 2.0 — See [LICENSE](LICENSE) file for details.
 
-Copyright 2026 AI Acceleration Task Force (AATF)
+Original work copyright 2026 AI Acceleration Task Force (AATF). This fork maintained by JPeetz.
 
 ---
 
