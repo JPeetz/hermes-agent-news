@@ -625,13 +625,13 @@ class KieImageClient(BaseImageClient):
         import json, asyncio, urllib.request, urllib.error, urllib.parse
 
         # Build request body. Skip image_size: kie uses aspect_ratio only.
+        # gpt-image/1.5-image-to-image does NOT accept output_format or strength.
         body = {
             "model": self.model,
             "input": {
                 "prompt": prompt,
                 "aspect_ratio": aspect_ratio,
                 "quality": self.quality,
-                "output_format": "jpg",
             }
         }
         # Add character sheet reference if configured
