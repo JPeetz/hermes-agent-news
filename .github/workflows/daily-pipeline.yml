@@ -67,6 +67,7 @@ jobs:
       TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
       SCRAPECREATORS_API_KEY: ${{ secrets.SCRAPECREATORS_API_KEY }}
       SCRAPECREATORS_BASE: ${{ vars.SCRAPECREATORS_BASE || 'https://api.scrapecreators.com' }}
+      KIE_API_KEY: ${{ secrets.KIE_API_KEY }}
       REDDIT_PROXY_URL: ${{ secrets.REDDIT_PROXY_URL }}
       REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT || 'Hermes-Agent-News/1.0 (by u/JPeetz)' }}
       LESSWRONG_PROXY_URL: ${{ secrets.LESSWRONG_PROXY_URL }}

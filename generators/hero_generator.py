@@ -2,8 +2,8 @@
 """
 Hero Image Generator
 
-Generates daily hero images with the AATF skunk mascot via configured image provider.
-The mascot is placed in topic-related scenes based on the day's top topics.
+Generates daily hero images with the Agent N character via configured image provider.
+The character is placed in topic-related scenes based on the day's top topics.
 
 Supports two initialization modes:
 1. New: HeroGenerator.from_config(config) - uses unified ImageClient abstraction
@@ -28,9 +28,11 @@ logger = logging.getLogger(__name__)
 
 
 class HeroGenerator:
-    """Generates daily hero images with skunk mascot via configured image provider."""
+    """Generates daily hero images with Agent N mascot via configured image provider."""
 
-    SKUNK_REFERENCE = Path(__file__).parent.parent / "assets" / "skunk-reference.png"
+    # Agent N character sheet (used by kie mode as input_urls; others read bytes)
+    AGENT_N_REFERENCE_URL = "https://files.catbox.moe/5llsue.jpg"
+    AGENT_N_REFERENCE = Path(__file__).parent.parent / "frontend" / "static" / "assets" / "agent-n-reference.png"
 
     # Topic-to-visual mapping for scene generation
     VISUAL_MAPPINGS = {
@@ -46,7 +48,7 @@ class HeroGenerator:
         "regulation": "gavel, scales of justice, official documents",
         "funding": "growth charts, money symbols, investment visuals",
         "multimodal": "eyes, cameras, sound waves, multiple sensory inputs",
-        "agent": "autonomous systems, workflow diagrams, connected tools",
+        "agent": "autonomous systems, workflow diagrams, connected tools, Hermes interface",
         "open source": "connected nodes, community gathering, collaboration",
         "reasoning": "thought bubbles, chain of logic, decision trees",
         "benchmark": "performance charts, comparison graphs, trophy",
@@ -56,6 +58,9 @@ class HeroGenerator:
         "security": "locks, shields, firewall barriers, protection symbols",
         "training": "compute clusters, gradient flows, learning curves",
         "deployment": "cloud infrastructure, scaling arrows, production systems",
+        "desktop": "computer desktop interface, window management, bot screen",
+        "hermes": "robot assistant, AI agent interface, glowing cyan circuits",
+        "bot": "automated systems, chat interface, streaming data",
     }
 
     def __init__(
@@ -107,9 +112,11 @@ class HeroGenerator:
                 "or pass client parameter directly."
             )
 
-        # Verify skunk reference exists
-        if not self.SKUNK_REFERENCE.exists():
-            raise FileNotFoundError(f"Skunk reference image not found at {self.SKUNK_REFERENCE}")
+        # Verify reference exists (warning only; kie mode uses remote URL)
+        if hasattr(self.client, 'reference_url') and self.client.reference_url:
+            logger.info(f"HeroGenerator initialized with remote reference URL")
+        elif not self.AGENT_N_REFERENCE.exists():
+            logger.warning(f"Agent N reference image not found at {self.AGENT_N_REFERENCE}")
 
     @classmethod
     def from_config(cls, config: 'ImageProviderConfig') -> 'HeroGenerator':
@@ -231,33 +238,41 @@ class HeroGenerator:
                 section += f"\n{summary['description']}"
             topic_sections.append(section)
 
-        return f"""You are generating a daily hero image for an AI news aggregator website.
+        return f"""You are generating a daily hero image for 'Agent N's Hermes News' website.
 
 ## Your Goal
-Create a playful, colorful editorial illustration that visually represents today's top AI news stories. The scene should immediately convey the themes of the day's news to readers.
+Create a sleek, futuristic editorial illustration that visually represents today's top Hermes Agent / AI news stories. The scene should use a dark sci-fi aesthetic with gold and cyan accents.
 
-## The Mascot (CRITICAL)
-The attached image shows our skunk mascot. You MUST:
-- Keep the EXACT circuit board pattern on the skunk's body and tail - this is a core part of the brand identity
-- Maintain the skunk's white and black coloring with the tech circuit pattern visible
-- The skunk must be ACTIVELY DOING SOMETHING related to the topics - typing on a keyboard, reading papers, adjusting equipment, pointing at a screen, holding tools, etc. NOT just standing and smiling at the camera!
-- Position the skunk in the lower-left or lower-right portion, engaged with the scene
+## The Character (CRITICAL)
+The attached reference image shows our character Agent N. You MUST:
+- Preserve Agent N's exact likeness: young woman with short dark hair, over-ear headphones, white high-collared top
+- Place Agent N in a control room or high-tech workspace environment
+- Show her actively monitoring, analyzing, or interacting with holographic data displays
+- Position her in the frame prominently, engaged with the scene
+
+## Color Palette
+- Primary accent: Gold (#FFD700) - warmth, achievement, value
+- Secondary accent: Cyan (#00FFFF) - technology, intelligence, data flow
+- Background: Deep black with subtle blue-grey gradients
+- Small bright warm highlights to break the cool tones
 
 ## Today's Stories
 
 {chr(10).join(topic_sections)}
 
 ## Visual Direction
-Create a scene that represents these stories. You must include Topic 1 (the top story), then pick 2-3 others that would make the best scene together. Consider:
-- What visual metaphors could represent these themes?
-- How can the skunk mascot interact with or observe these elements?
+Create a scene that represents these stories. Consider:
+- Holographic displays with data, graphs, and streaming information
+- Neural network visualizations floating in the air
+- A sleek, dark high-tech environment with warm gold and cool cyan lighting
+- Agent N positioned to view or interact with the information displays
 - Suggested scene elements: {', '.join(visual_elements)}
 
 ## Style Requirements
-- Playful cartoon illustration, tech editorial art style
-- Vibrant colors with Trend Red (#E63946) accents
-- Energetic, forward-looking, tech-optimistic mood
-- No company logos or watermarks - but topic-relevant company logos (OpenAI, Anthropic, Google, etc.) are encouraged when relevant to the stories"""
+- Premium editorial tech photography, digital art style
+- Gold and cyan accent colors with dark backgrounds
+- Sleek, sophisticated, high-tech atmosphere
+- No text or watermarks on the image itself"""
 
     async def generate(
         self,
@@ -278,13 +293,18 @@ Create a scene that represents these stories. You must include Topic 1 (the top 
         Returns:
             Dict with 'path' (relative URL path) and 'prompt' (used prompt), or None on failure
         """
-        # Read skunk reference image
-        try:
-            with open(self.SKUNK_REFERENCE, "rb") as f:
-                skunk_bytes = f.read()
-        except Exception as e:
-            logger.error(f"Failed to read skunk reference image: {e}")
-            return None
+        # Read reference image (optional: kie mode uses remote URL from client config)
+        skunk_bytes = None
+        if hasattr(self.client, 'reference_url') and self.client.reference_url:
+            logger.info("Agent N reference provided via client config (remote URL)")
+        elif self.AGENT_N_REFERENCE.exists():
+            try:
+                with open(self.AGENT_N_REFERENCE, "rb") as f:
+                    skunk_bytes = f.read()
+            except Exception as e:
+                logger.warning(f"Failed to read agent N reference image: {e}")
+        else:
+            logger.warning("No reference image available; generating without one")
 
         # Extract visual elements and topic summaries from all available topics
         visual_elements = self._extract_visuals(top_topics)

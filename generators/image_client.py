@@ -563,6 +563,129 @@ class OpenRouterImageClient(BaseImageClient):
         )
 
 
+class KieImageClient(BaseImageClient):
+    """
+    Image client using kie.ai task-based API (gpt-image/1.5-image-to-image).
+
+    kie.ai uses an async task model: createTask -> poll recordInfo -> download result.
+    Reference image is passed as input_urls (URL reference, not local bytes).
+    Supports: gpt-image/1.5-image-to-image with character sheet reference.
+    """
+
+    KIE_BASE = "https://api.kie.ai/api/v1"
+    DEFAULT_MODEL = "gpt-image/1.5-image-to-image"
+
+    def __init__(
+        self,
+        api_key: str,
+        model: Optional[str] = None,
+        reference_url: Optional[str] = None,
+        quality: Optional[str] = None,
+        timeout: float = 180.0,
+        max_poll_attempts: int = 30,
+        poll_interval: float = 8.0,
+    ):
+        self.api_key = api_key
+        self.model = model or self.DEFAULT_MODEL
+        self.reference_url = reference_url
+        self.quality = quality or "medium"
+        self.timeout = timeout
+        self.max_poll_attempts = max_poll_attempts
+        self.poll_interval = max(3.0, poll_interval)
+
+        logger.info(
+            f"KieImageClient initialized with model={self.model}, "
+            f"reference_url={'set' if reference_url else 'none'}, "
+            f"quality={self.quality}"
+        )
+
+    async def generate(
+        self,
+        prompt: str,
+        reference_image: Optional[bytes] = None,
+        aspect_ratio: str = "21:9",
+        image_size: str = "2K"
+    ) -> ImageResponse:
+        """Generate image via kie.ai task API."""
+        import json, asyncio, urllib.request, urllib.error, urllib.parse
+
+        # Build request body. Skip image_size: kie uses aspect_ratio only.
+        body = {
+            "model": self.model,
+            "input": {
+                "prompt": prompt,
+                "aspect_ratio": aspect_ratio,
+                "quality": self.quality,
+            }
+        }
+        # Add character sheet reference if configured
+        if self.reference_url:
+            body["input"]["input_urls"] = [self.reference_url]
+        elif reference_image:
+            # Fall back to base64 data URI (handles legacy caller passing bytes)
+            import base64
+            b64 = base64.b64encode(reference_image).decode()
+            body["input"]["input_urls"] = [f"data:image/png;base64,{b64}"]
+
+        logger.info(f"Kie: creating task for {self.model}, aspect={aspect_ratio}")
+
+        try:
+            # Step 1: Create task
+            req_body = json.dumps(body).encode()
+            req = urllib.request.Request(
+                f"{self.KIE_BASE}/jobs/createTask",
+                data=req_body,
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json"
+                }
+            )
+            response = urllib.request.urlopen(req, timeout=self.timeout)
+            data = json.loads(response.read().decode())
+            task_id = data.get("data", {}).get("taskId") if isinstance(data.get("data"), dict) else None
+
+            if not task_id:
+                raise RuntimeError(f"Kie: no taskId in response: {json.dumps(data, indent=2)[:300]}")
+
+            # Step 2: Poll for result
+            for i in range(self.max_poll_attempts):
+                await asyncio.sleep(self.poll_interval)
+                poll_req = urllib.request.Request(
+                    f"{self.KIE_BASE}/jobs/recordInfo?taskId={task_id}",
+                    headers={"Authorization": f"Bearer {self.api_key}"}
+                )
+                poll_resp = urllib.request.urlopen(poll_req, timeout=self.timeout)
+                poll_data = json.loads(poll_resp.read().decode())
+                pd = poll_data.get("data", {})
+                state = pd.get("state", "") if isinstance(pd, dict) else ""
+
+                if state == "success":
+                    result_json = pd.get("resultJson", "{}")
+                    urls = json.loads(result_json).get("resultUrls", [])
+                    if not urls:
+                        raise RuntimeError("Kie: success but no resultUrls in response")
+                    img_url = urls[0]
+                    logger.info(f"Kie: task {task_id} succeeded, downloading {img_url}")
+                    img_resp = urllib.request.urlopen(img_url, timeout=self.timeout)
+                    image_bytes = img_resp.read()
+                    return ImageResponse(
+                        image_data=image_bytes,
+                        mime_type="image/webp",
+                        usage=None,
+                        model=self.model,
+                    )
+                elif state in ("fail", "error"):
+                    fail_msg = pd.get("failMsg", "unknown failure") if isinstance(pd, dict) else "unknown"
+                    raise RuntimeError(f"Kie: task {task_id} failed: {fail_msg[:300]}")
+                else:
+                    logger.info(f"Kie: poll {i+1}/{self.max_poll_attempts} state={state}")
+
+            raise RuntimeError(f"Kie: task {task_id} did not complete within {self.max_poll_attempts} polls")
+
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"Kie: HTTP {e.code}: {e.read().decode()[:300]}") from e
+
+
 class ImageClient:
     """
     Factory class for creating image clients based on configuration.
@@ -584,6 +707,7 @@ class ImageClient:
             NativeGeminiClient for native mode
             OpenAICompatibleClient for openai-compatible mode
             OpenRouterImageClient for openrouter mode
+            KieImageClient for kie mode
 
         Raises:
             ValueError: If mode is unknown
@@ -606,8 +730,15 @@ class ImageClient:
                 model=config.model,
                 quality=getattr(config, 'quality', None)
             )
+        elif config.mode == "kie":
+            return KieImageClient(
+                api_key=config.api_key,
+                model=config.model,
+                reference_url=config.reference_url,
+                quality=getattr(config, 'quality', None)
+            )
         else:
             raise ValueError(
                 f"Unknown image mode: {config.mode}. "
-                f"Expected 'native', 'openai-compatible', or 'openrouter'."
+                f"Expected 'native', 'openai-compatible', 'openrouter', or 'kie'."
             )

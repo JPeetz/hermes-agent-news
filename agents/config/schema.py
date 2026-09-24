@@ -207,22 +207,24 @@ class ResolvedLLMRouteConfig(BaseModel):
 class ImageProviderConfig(BaseModel):
     """Configuration for image generation provider (optional).
 
-    Supports three modes:
+    Supports four modes:
     - native: Uses google-genai SDK directly (recommended for Google API keys)
     - openai-compatible: Uses REST chat/completions format (for LiteLLM proxies)
     - openrouter: Uses OpenRouter's /api/v1/images endpoint (aspect_ratio +
       resolution + input_references supported natively)
+    - kie: Uses kie.ai task-based API (gpt-image/1.5-image-to-image)
 
     Attributes:
         mode: API mode - 'native' for google-genai SDK, 'openai-compatible'
-              or 'openrouter' for REST
+              'openrouter' for REST, or 'kie' for kie.ai task API
         api_key: API key for image generation service
         endpoint: API endpoint URL (required for openai-compatible mode only;
                   optional for openrouter, defaults to https://openrouter.ai/api/v1)
         model: Model name for image generation
         quality: Optional rendering quality (auto/low/medium/high; openrouter mode)
+        reference_url: URL to a reference/character-sheet image (kie mode; used as input_urls)
     """
-    mode: Literal["native", "openai-compatible", "openrouter"] = Field(
+    mode: Literal["native", "openai-compatible", "openrouter", "kie"] = Field(
         default="native",
         description="API mode: 'native' for google-genai SDK, "
                     "'openai-compatible'/'openrouter' for REST"
@@ -244,6 +246,10 @@ class ImageProviderConfig(BaseModel):
     quality: Optional[str] = Field(
         default=None,
         description="Optional rendering quality (auto/low/medium/high); used by openrouter mode"
+    )
+    reference_url: Optional[str] = Field(
+        default=None,
+        description="Reference/character sheet image URL; used by kie mode as input_urls"
     )
 
     @field_validator('api_key')
@@ -269,6 +275,11 @@ class ImageProviderConfig(BaseModel):
             raise ValueError(
                 "endpoint is required when mode is 'openai-compatible'. "
                 "Provide your proxy's image generation endpoint URL."
+            )
+        if self.mode == "kie" and not self.reference_url:
+            raise ValueError(
+                "reference_url is required when mode is 'kie'. "
+                "Provide the URL to the character sheet reference image."
             )
         return self
 
