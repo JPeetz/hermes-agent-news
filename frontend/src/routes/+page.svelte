@@ -20,6 +20,7 @@
 	import { safeHtml } from '$lib/services/safeHtml';
 	import { hasReplayData } from '$lib/services/replayLoader';
 	import { dataUrl } from '$lib/services/dataBase';
+	import ReplayView from '$lib/components/replay/ReplayView.svelte';
 
 	// Data state
 	let summary: DaySummary | null = null;
@@ -33,6 +34,7 @@
 
 	// Read query params
 	$: dateParam = $page.url.searchParams.get('date');
+	$: viewParam = $page.url.searchParams.get('view');
 	$: rawCategoryParam = $page.url.searchParams.get('category');
 	$: categoryParam =
 		rawCategoryParam && validCategories.includes(rawCategoryParam as Category)
@@ -64,7 +66,7 @@
 		if (forDate) {
 			void hasReplayData(forDate).then((exists) => {
 				// Ignore a probe that resolved after the user moved to another date.
-				if (exists && forDate === effectiveDate) replayUrl = `/replay?date=${forDate}`;
+				if (exists && forDate === effectiveDate) replayUrl = `/?date=${forDate}&view=replay`;
 			});
 		}
 	}
@@ -387,6 +389,9 @@
 			/>
 		</section>
 
+	{#if viewParam === 'replay'}
+		<ReplayView date={summary.date} />
+	{:else}
 		<!-- Executive Summary -->
 		<section class="mb-12">
 			<div class="card border-l-4 border-agent-cyan dark:border-agent-cyan">
@@ -448,7 +453,8 @@
 				</section>
 			{/if}
 		{/each}
-	{:else}
+	{/if}
+{:else}
 		<EmptyState
 			title="No data available"
 			message="Run the pipeline to generate news data."
