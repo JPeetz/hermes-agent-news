@@ -54,3 +54,14 @@ https://www.reddit.com/r/hermesagent/search.rss?q=Hermes+Desktop&restrict_sr=1
 # https://hermes-ai.net/changelog/ — no RSS; GitHub releases cover
 # https://hermes-ai.net/news/hermes-agent/ — news aggregator; covered via searches
 # JEV (decision engine) & LAYA (local decision system) — internal projects, no external RSS
+
+# ===== arXiv — Hermes Agent research papers =====
+# arXiv API returns Atom XML (feedparser-compatible). Targeted searches avoid
+# flooding from unrelated "HERMES" papers (geoscience, telecom, etc.). The LLM
+# relevance gate handles any remaining false positives.
+# Primary: direct "Hermes Agent" + "Nous Research" match (title/abstract/author)
+https://export.arxiv.org/api/query?search_query=all:%28%22Hermes%20Agent%22%20AND%20%22Nous%20Research%22%29&sortBy=submittedDate&max_results=20
+# Secondary: broader "Hermes + agent + self-improving" (catches implicit mentions)
+https://export.arxiv.org/api/query?search_query=all:%28Hermes%20AND%20agent%20AND%20self-improving%29&sortBy=submittedDate&max_results=20
+# Category-level: cs.AI daily dump (LLM gate filters noise)
+https://rss.arxiv.org/rss/cs.AI
