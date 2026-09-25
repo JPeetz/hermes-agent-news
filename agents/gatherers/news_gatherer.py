@@ -7,9 +7,11 @@ Combines RSS collection with smart link following from social media posts.
 import asyncio
 import logging
 import os
+import time
 from datetime import datetime
 from typing import List, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from urllib.parse import urlparse
 
 import feedparser
 import requests
@@ -136,8 +138,15 @@ class NewsGatherer(BaseGatherer):
             """One feed, timed as its own replay step.
 
             Labelled by host, never by URL -- see `step_label_for_url`.
+            Reddit rate-limits burst requests (HTTP 429), so stagger Reddit
+            feeds with a short delay before fetching: they share one origin
+            and parallel workers triggering 7+ requests at once get throttled.
             """
-            with self.time_step('news', step_label_for_url(getattr(spec, 'url', spec))) as step:
+            url = getattr(spec, 'url', spec)
+            host = (urlparse(url).hostname or '').lower()
+            if host == 'reddit.com' or host.endswith('.reddit.com'):
+                time.sleep(2.0)
+            with self.time_step('news', step_label_for_url(url)) as step:
                 articles = self._fetch_feed(spec)
                 step.items = len(articles)
                 return articles
