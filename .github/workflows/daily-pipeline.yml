@@ -65,10 +65,7 @@ jobs:
       TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
-      SCRAPECREATORS_API_KEY: ${{ secrets.SCRAPECREATORS_API_KEY }}
-      SCRAPECREATORS_BASE: ${{ vars.SCRAPECREATORS_BASE || 'https://api.scrapecreators.com' }}
       KIE_API_KEY: ${{ secrets.KIE_API_KEY }}
-      REDDIT_PROXY_URL: ${{ secrets.REDDIT_PROXY_URL }}
       REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT || 'Hermes-Agent-News/1.0 (by u/JPeetz)' }}
       LESSWRONG_PROXY_URL: ${{ secrets.LESSWRONG_PROXY_URL }}
       PIPELINE_PROXY_URL: ${{ secrets.PIPELINE_PROXY_URL }}
@@ -409,7 +406,6 @@ jobs:
       # without state every run re-picks the same first relay. Cache the last
       # relay that passed the LessWrong probe and try it first next run.
       - name: Restore known-good Mullvad relay
-        if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == '' && env.REDDIT_PROXY_URL == ''
         uses: actions/cache@v4
         with:
           path: .mullvad-state
@@ -418,7 +414,6 @@ jobs:
             mullvad-known-good-
 
       - name: Start Mullvad tunnel for hosted egress
-        if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == '' && env.REDDIT_PROXY_URL == ''
         shell: bash
         run: |
           set -euo pipefail
@@ -542,7 +537,6 @@ jobs:
 
           {
             echo "PIPELINE_PROXY_URL=$proxy_url"
-            echo "REDDIT_PROXY_URL=$proxy_url"
           } >> "$GITHUB_ENV"
 
           # Reddit no longer hits reddit.com directly: the gatherer collects via the
