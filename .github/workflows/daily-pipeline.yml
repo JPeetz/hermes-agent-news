@@ -532,14 +532,6 @@ jobs:
           report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
           python3 scripts/pipeline_alert.py --date "$report_date" --probe
 
-      - name: Check Reddit credit reserve before analysis
-        if: steps.schedule_gate.outputs.should_run == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
-          python3 scripts/reddit_credit_health.py --date "$report_date"
-
       - name: Write KIE API key to disk
         if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
