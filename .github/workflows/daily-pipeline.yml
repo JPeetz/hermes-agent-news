@@ -271,35 +271,6 @@ jobs:
             base_url: "${PIPELINE_BASE_URL}"
             lookback_hours: 24
           YAML
-          elif [[ -n "${GOOGLE_API_KEY:-}" ]]; then
-            cat > config/providers.yaml <<YAML
-          llm:
-            mode: "anthropic"
-            api_key: "\${ANTHROPIC_API_KEY}"
-            model: "\${ANTHROPIC_MODEL}"
-            timeout: 600
-
-          image:
-            mode: "native"
-            api_key: "\${GOOGLE_API_KEY}"
-            model: "${PIPELINE_IMAGE_MODEL}"
-
-          pipeline:
-            base_url: "${PIPELINE_BASE_URL}"
-            lookback_hours: 24
-          YAML
-          else
-            cat > config/providers.yaml <<YAML
-          llm:
-            mode: "anthropic"
-            api_key: "\${ANTHROPIC_API_KEY}"
-            model: "\${ANTHROPIC_MODEL}"
-            timeout: 600
-
-          pipeline:
-            base_url: "${PIPELINE_BASE_URL}"
-            lookback_hours: 24
-          YAML
           fi
 
           python3 <<'PY'
