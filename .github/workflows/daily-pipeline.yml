@@ -620,7 +620,7 @@ jobs:
           # into summary.json). Validate the actual user-facing artifact so we never
           # publish a "generation failed" report. Exit 1 here fails the job and
           # blocks the commit; the revert step below restores the prior good data.
-          python3 scripts/validate_report.py --web-dir ./web --date "$report_date"
+          python3 scripts/validate_report.py --web-dir ./frontend/static --date "$report_date"
 
       - name: Discard invalid generated data (keep last good report)
         if: failure() && steps.schedule_gate.outputs.should_run == 'true'
@@ -817,7 +817,7 @@ jobs:
           # Exits 1 by design when it finds something; that is a finding, not a
           # job failure.
           python3 scripts/check_source_anomalies.py \
-            --web-dir ./web --date "$report_date" --alert 2>&1 | tee /tmp/anomaly_check.txt
+            --web-dir ./frontend/static --date "$report_date" --alert 2>&1 | tee /tmp/anomaly_check.txt
           check_rc="${PIPESTATUS[0]}"
 
           # GitHub-native surfacing, added 2026-08-17. The webhook POST is the
