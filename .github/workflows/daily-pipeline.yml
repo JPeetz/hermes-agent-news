@@ -50,7 +50,6 @@ jobs:
     env:
       TZ: America/New_York
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
       ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-5-opus-aws' }}
       # Explicit per-run override ONLY -- deliberately excludes vars.ANTHROPIC_MODEL
       # and the hardcoded fallback on the line above. ANTHROPIC_MODEL is ALWAYS
@@ -243,7 +242,8 @@ jobs:
           elif [[ -z "${ANTHROPIC_API_KEY:-}" ]]; then
             echo "ANTHROPIC_API_KEY is required unless PIPELINE_PROVIDERS_YAML is set." >&2
             exit 1
-          elif [[ -n "${ANTHROPIC_API_BASE:-}" ]]; then
+          else
+            # ANTHROPIC_API_KEY is set -> write the provider config directly
             cat > config/providers.yaml <<YAML
           llm:
             mode: "openai-compatible"
