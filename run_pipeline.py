@@ -41,7 +41,7 @@ from generators.search_indexer import SearchIndexer
 from generators.feed_generator import FeedGenerator
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=getattr(logging, os.environ.get("LOG_LEVEL", "INFO").upper(), logging.INFO),
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logging.getLogger('httpx').setLevel(logging.WARNING)

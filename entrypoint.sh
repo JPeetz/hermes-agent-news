@@ -20,15 +20,26 @@ fi
 # Set up cron job only if enabled
 if [ "${ENABLE_CRON:-false}" = "true" ]; then
     CRON_SCHEDULE="${COLLECTION_SCHEDULE:-0 3 * * *}"
-    CRON_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web >> /app/logs/cron.log 2>&1"
-    # If newsletter is configured, chain send after pipeline
+
+    # Next run only: DEBUG logging for diagnostics
+    DEBUG_CMD="LOG_LEVEL=DEBUG cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web > /app/logs/cron.log 2>&1"
     if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
-        CRON_CMD="${CRON_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
+        DEBUG_CMD="${DEBUG_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
     fi
-    echo "$CRON_SCHEDULE $CRON_CMD" > /etc/cron.d/ai-news-cron
+
+    # Restore normal logging for subsequent runs (after 24h)
+    NORMAL_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web >> /app/logs/cron.log 2>&1"
+    if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
+        NORMAL_CMD="${NORMAL_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
+    fi
+
+    echo "$CRON_SCHEDULE $NORMAL_CMD" > /etc/cron.d/ai-news-cron-restore
+    (sleep 86400 && mv /etc/cron.d/ai-news-cron-restore /etc/cron.d/ai-news-cron && crontab /etc/cron.d/ai-news-cron) &
+
+    echo "$CRON_SCHEDULE $DEBUG_CMD" > /etc/cron.d/ai-news-cron
     chmod 0644 /etc/cron.d/ai-news-cron
     crontab /etc/cron.d/ai-news-cron
-    echo "Cron job scheduled: $CRON_SCHEDULE"
+    echo "Cron job scheduled (NEXT RUN DEBUG): $CRON_SCHEDULE"
     cron
 else
     echo "Cron scheduler disabled (set ENABLE_CRON=true to enable)"
