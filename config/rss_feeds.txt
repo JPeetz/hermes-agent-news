@@ -30,11 +30,23 @@ https://juliangoldie.com/feed/
 https://huggingface.co/blog/feed.xml
 
 # ===== Reddit Community (RSS feeds — no proxy required) =====
-# Multi-sub feed: hermesagent + LocalLLaMA + nousresearch
-https://www.reddit.com/r/hermesagent+LocalLLaMA+nousresearch/.rss
-# Hermes Agent user posts
+# Priority: critical — primary Hermes subreddits
+https://www.reddit.com/r/hermesagent/new.rss
+https://www.reddit.com/r/hermesagent/hot.rss
+https://www.reddit.com/r/nousresearch/.rss
+
+# Hermes Agent official user posts
 https://www.reddit.com/user/NousResearch/.rss
-# Search: Hermes Desktop mentions
+
+# Community subs — keyword-filtered by LLM relevance gate (Hermes Agent/Desktop keywords)
+https://www.reddit.com/r/LocalLLaMA/new.rss
+https://www.reddit.com/r/LLMDevs/new.rss
+https://www.reddit.com/r/Rag/new.rss
+
+# Multi-sub combined feed (backup — the individual feeds above are preferred for per-sub sorting)
+# https://www.reddit.com/r/hermesagent+LocalLLaMA+nousresearch/.rss
+
+# Keyword search feeds (LLM relevance gate will filter for Agent N content)
 https://www.reddit.com/r/hermesagent/search.rss?q=Hermes+Desktop&restrict_sr=1
 
 # ===== Non-RSS sources (covered by Twitter/GitHub) =====
