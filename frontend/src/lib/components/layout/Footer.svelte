@@ -30,6 +30,7 @@
 			<div class="flex items-center gap-6 text-sm text-text-muted">
 				<span>Agent N's Hermes News</span>
 				<span>&copy; {currentYear}</span>
+				<a href="/subscribe" class="hover:text-white transition-colors">[Subscribe]</a>
 				<a href="/about" class="hover:text-white transition-colors">[About]</a>
 				<a href="/feeds" class="hover:text-white transition-colors">[RSS]</a>
 			</div>

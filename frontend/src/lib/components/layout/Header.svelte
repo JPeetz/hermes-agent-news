@@ -71,6 +71,17 @@
 					@joerg_peetz
 				</a>
 
+				<!-- Newsletter Subscribe -->
+				<a
+					href="/subscribe"
+					class="hidden sm:flex items-center gap-1 text-sm text-white/90 bg-white/10 px-3 py-1.5 rounded-lg hover:bg-white/20 transition-colors"
+					aria-label="Subscribe to newsletter"
+					title="Subscribe to newsletter"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+					Subscribe
+				</a>
+
 				<!-- GitHub link -->
 				<a
 					href="https://github.com/JPeetz/hermes-agent-news"

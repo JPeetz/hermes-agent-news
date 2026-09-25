@@ -27,6 +27,9 @@ services:
       # Twitter API (optional - skip Twitter collection if not set)
       - TWITTERAPI_IO_KEY=${TWITTERAPI_IO_KEY:-}
 
+      # Newsletter (Buttondown)
+      - BUTTONDOWN_API_KEY=${BUTTONDOWN_API_KEY:-}
+
       # Collection Settings
       - ENABLE_CRON=${ENABLE_CRON:-false}
       - COLLECTION_SCHEDULE=${COLLECTION_SCHEDULE:-0 3 * * *}
