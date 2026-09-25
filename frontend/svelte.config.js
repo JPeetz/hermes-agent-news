@@ -1,16 +1,29 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapterStatic from '@sveltejs/adapter-static';
+import adapterVercel from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+// Vercel sets VERCEL=1 during its builds -> use the Vercel adapter.
+// Local / Docker (VPS) builds -> static adapter outputting to ../web (nginx serves it).
+const isVercel = process.env.VERCEL === '1';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-			runtime: 'nodejs22.x',
-			regions: ['dub1'],
-			split: false
-		}),
+		adapter: isVercel
+			? adapterVercel({
+					runtime: 'nodejs22.x',
+					regions: ['dub1'],
+					split: false
+				})
+			: adapterStatic({
+					pages: '../web',
+					assets: '../web',
+					fallback: 'index.html',
+					precompress: false,
+					strict: true
+				}),
 		paths: {
 			base: ''
 		},

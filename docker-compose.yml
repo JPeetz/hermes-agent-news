@@ -13,9 +13,15 @@ services:
       - ./web/assets:/app/web/assets
       - ./logs:/app/logs
     environment:
-      # Anthropic API Configuration
-      - ANTHROPIC_API_BASE=${ANTHROPIC_API_BASE}
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # LLM provider (OpenRouter)
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+
+      # Image generation (kie.ai)
+      - KIE_API_KEY=${KIE_API_KEY:-}
+
+      # Legacy Anthropic vars (kept for compatibility; provider config uses OpenRouter)
+      - ANTHROPIC_API_BASE=${ANTHROPIC_API_BASE:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-opus-5}
 
       # Twitter API (optional - skip Twitter collection if not set)
@@ -23,9 +29,13 @@ services:
 
       # Collection Settings
       - ENABLE_CRON=${ENABLE_CRON:-false}
-      - COLLECTION_SCHEDULE=${COLLECTION_SCHEDULE:-0 6 * * *}
+      - COLLECTION_SCHEDULE=${COLLECTION_SCHEDULE:-0 3 * * *}
       - LOOKBACK_HOURS=${LOOKBACK_HOURS:-24}
       - TARGET_DATE=${TARGET_DATE:-}
+
+      # Pipeline
+      - PIPELINE_BASE_URL=${PIPELINE_BASE_URL:-http://localhost:7100}
+      - NEWS_USER_AGENT=${NEWS_USER_AGENT:-Hermes-Agent-News/1.0}
 
       # Timezone
       - TZ=${TZ:-America/New_York}
