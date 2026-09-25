@@ -406,6 +406,7 @@ jobs:
       # without state every run re-picks the same first relay. Cache the last
       # relay that passed the LessWrong probe and try it first next run.
       - name: Restore known-good Mullvad relay
+        if: env.MULLVAD_ACCOUNT != ''
         uses: actions/cache@v4
         with:
           path: .mullvad-state
@@ -414,6 +415,7 @@ jobs:
             mullvad-known-good-
 
       - name: Start Mullvad tunnel for hosted egress
+        if: env.MULLVAD_ACCOUNT != '' && env.MULLVAD_WG_PRIVATE_KEY != ''
         shell: bash
         run: |
           set -euo pipefail
