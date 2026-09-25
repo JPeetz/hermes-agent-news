@@ -97,8 +97,9 @@ class RedditGatherer(BaseGatherer):
         # Shared, thread-safe run state (gathering runs across a thread pool)
         self._lock = Lock()
         self._calls_made = 0            # HTTP attempts issued this run (budget unit)
-        self._credits_remaining: Optional[int] = None  # latest observed balance
+        self._credits_remaining: Optional[int] = None  # last observed balance
         self._stop_calls = False        # set when budget hit or a fatal error occurs
+        self._scraperapi_dead = False   # circuit-breaker: set True after first failure
 
         if not self.subreddits:
             # Default subreddits if none configured
@@ -486,6 +487,12 @@ class RedditGatherer(BaseGatherer):
         on success. Returns None on a soft failure / when the call budget is exhausted.
         No credit-balance endpoint is available.
         """
+        # Quick health check: skip fast if the API key is missing or dead
+        if not SCRAPECREATORS_API_KEY or len(SCRAPECREATORS_API_KEY) < 10:
+            logger.warning("SCRAPECREATORS_API_KEY not set or too short; skipping Reddit")
+            self.note_degradation('SCRAPECREATORS_API_KEY missing or short')
+            return None
+
         # Build the target Reddit native JSON URL from the endpoint params.
         if "url" in params:
             # Comments/detail endpoint: params["url"] is a Reddit post URL
@@ -507,7 +514,7 @@ class RedditGatherer(BaseGatherer):
 
         for attempt in range(3):
             with self._lock:
-                if self._stop_calls:
+                if self._stop_calls or self._scraperapi_dead:
                     return None
                 if self._calls_made >= self.credit_budget:
                     self._stop_calls = True
@@ -530,8 +537,12 @@ class RedditGatherer(BaseGatherer):
                 time.sleep(delay)
                 continue
 
+            if status not in (200, *range(429, 600)):
+                break
             if status != 200:
-                logger.warning(f"ScraperAPI HTTP {status} for {target_url}; skipping")
+                with self._lock:
+                    self._scraperapi_dead = True
+                logger.warning(f"ScraperAPI HTTP {status} for {target_url}; skipping, circuit-breaker set")
                 self.note_degradation(f'ScraperAPI HTTP {status} for {target_url}')
                 return None
 
@@ -545,6 +556,8 @@ class RedditGatherer(BaseGatherer):
             # Reddit native JSON — no success/credit fields; response IS the data.
             return data
 
-        logger.warning(f"ScraperAPI request to {target_url} failed after retries; skipping")
+        logger.warning(f"ScraperAPI request to {target_url} failed after retries; circuit-breaker set")
+        with self._lock:
+            self._scraperapi_dead = True
         self.note_degradation(f'ScraperAPI {path} failed after retries')
         return None

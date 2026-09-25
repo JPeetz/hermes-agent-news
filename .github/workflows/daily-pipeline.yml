@@ -747,6 +747,24 @@ jobs:
           git pull --rebase origin main
           git push origin HEAD:main
 
+      - name: Deploy to Vercel
+        if: steps.schedule_gate.outputs.should_run == 'true' && steps.commit.outputs.committed == 'true'
+        shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning::No VERCEL_TOKEN secret set. Data was committed but Vercel not auto-deployed."
+            echo "  Generate a token at https://vercel.com/account/tokens and set it as:"
+            echo "  gh secret set VERCEL_TOKEN --repo \${{ github.repository }}"
+            exit 0
+          fi
+          echo "Deploying to Vercel..."
+          npx -y vercel deploy --prod --prebuilt \
+            --token "$VERCEL_TOKEN" \
+            --scope joerg-peetzs-projects \
+            --cwd /home/runner/work/hermes-agent-news/hermes-agent-news 2>&1 || echo "Vercel deploy failed (check token scope)"
+
       # ---------------------------------------------------------------------
       # Detection gap fix (2026-06-21): a scheduled run can exit 0 without ever
       # producing today's report. The 3 AM ET gate makes the OTHER scheduled
