@@ -61,7 +61,7 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 | **4. Executive Summary** | Generate daily briefing (500-800 words) | DEEP |
 | **4.5. Link Enrichment** | Inject internal links to referenced items | STANDARD |
 | **4.6. Ecosystem Enrichment** | Auto-detect new model releases from news | STANDARD |
-| **4.7. Hero Image** | Generate branded banner with Gemini 3 Pro | - |
+| **4.7. Hero Image** | Generate branded banner via kie.ai (Agent N character) | - |
 | **5-7. Output** | JSON data generation + LLM replay artifacts + RSS feeds + MiniSearch corpus (client-built index) | - |
 
 ### Adaptive Thinking Profiles
@@ -223,7 +223,7 @@ Set these on the publishing repository:
 | `PIPELINE_PROXY_URL` | Optional HTTP(S) or SOCKS proxy URL for the whole pipeline; useful when hosted runner egress is blocked by multiple sources |
 | `MULLVAD_ACCOUNT` | Optional Mullvad account number; used to create a WireGuard tunnel when neither `PIPELINE_PROXY_URL` nor `REDDIT_PROXY_URL` is set |
 | `MULLVAD_WG_PRIVATE_KEY` | Optional stable WireGuard private key for the CI Mullvad device; avoids creating a new Mullvad device on every run |
-| `GOOGLE_API_KEY` | Optional Gemini native image generation when not using a proxy image provider |
+| `KIE_API_KEY` | Required for kie.ai image generation (gpt-image/1.5-image-to-to-image using Agent N character) |
 | `PIPELINE_PUSH_TOKEN` | Optional PAT if the default `GITHUB_TOKEN` is not enough for downstream webhook behavior |
 
 ### Optional Repository Variables
@@ -232,7 +232,7 @@ Set these on the publishing repository:
 |----------|---------|---------|
 | `ANTHROPIC_MODEL` | `claude-5-opus-aws` | Legacy single-provider model ID; ignored when `llm.routes` is configured |
 | `PIPELINE_BASE_URL` | `https://news.aatf.ai` | Base URL used in feeds |
-| `PIPELINE_IMAGE_MODEL` | `gemini-3-pro-image-preview` | Native Gemini image model used by fallback config |
+| `PIPELINE_IMAGE_MODEL` | `gpt-image/1.5-image-to-image` | kie.ai image model |
 | `PIPELINE_COMMIT_PATHS` | `web/data config/model_releases.yaml config/ecosystem_context.yaml` | Space-separated generated outputs to commit |
 | `REDDIT_USER_AGENT` | `AI-News-Aggregator/1.0 (by u/flyryan)` | User-Agent sent to Reddit API requests |
 | `NEWS_USER_AGENT` | `REDDIT_USER_AGENT` value | User-Agent sent to RSS/feed sources |
@@ -342,23 +342,23 @@ llm:
   timeout: 600
 ```
 
-### Image Provider (Optional)
+### Image Provider (Required for hero images)
 
-Hero image generation is optional. Comment out the entire `image:` section to skip.
+Hero image generation uses **kie.ai** (`gpt-image/1.5-image-to-image`) with the **Agent N character sheet** as reference. The pipeline generates a daily hero scene from the day's top topics.
 
 | Mode | Description | Requirements |
 |------|-------------|--------------|
-| `native` (default) | Google Gemini API via google-genai SDK | Google AI API key |
-| `openai-compatible` | OpenAI-compatible image endpoint | Proxy endpoint + key |
+| `kie` (default) | kie.ai gpt-image/1.5-image-to-to-image via task API | KIE_API_KEY + character sheet URL |
 
 ```yaml
 image:
-  mode: "native"
-  api_key: "${GOOGLE_API_KEY}"
-  model: "gemini-3-pro-image-preview"
+  mode: "kie"
+  api_key: "${KIE_API_KEY}"
+  model: "gpt-image/1.5-image-to-image"
+  reference_url: "https://files.catbox.moe/5llsue.jpg"
 ```
 
-If no image provider is configured, the pipeline runs successfully without hero images.
+If no `KIE_API_KEY` is configured, hero generation is skipped gracefully.
 
 ### Pipeline Settings
 
@@ -760,7 +760,7 @@ python3 scripts/regenerate_hero.py 2026-01-06 -e "Add a coffee cup to the scene"
 - **Node.js 18+** (for frontend development)
 - **Docker & Docker Compose** (for containerized deployment)
 - **Claude Opus 5** (recommended for best analysis quality)
-- **Gemini 3 Pro** (optional, for hero image generation)
+- **kie.ai API key** (required for hero image generation via gpt-image/1.5-image-to-image)
 
 ### API Keys
 
