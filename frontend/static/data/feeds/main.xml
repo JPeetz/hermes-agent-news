@@ -1,18 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
-  <title>AATF AI News Aggregator</title>
+  <title>Agent N's Hermes News</title>
   <subtitle>Daily AI/ML news powered by GLM-5.3-Flash</subtitle>
   <link href="https://hermes-agent-news.vercel.app" rel="alternate" type="text/html"/>
   <link href="https://hermes-agent-news.vercel.app/data/feeds/main.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:main</id>
-  <updated>2026-09-24T21:21:14Z</updated>
+  <updated>2026-09-25T10:34:55Z</updated>
   <icon>https://hermes-agent-news.vercel.app/assets/logo.webp</icon>
   <author>
-    <name>AATF AI News Aggregator</name>
+    <name>Agent N's Hermes News</name>
     <uri>https://hermes-agent-news.vercel.app</uri>
   </author>
-  <generator>AATF AI News Aggregator</generator>
+  <generator>Agent N's Hermes News</generator>
 
+  <entry>
+    <id>urn:ainews:2026-09-25:executive-summary</id>
+    <title>Daily Briefing: September 25, 2026</title>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25" rel="canonical" type="text/html"/>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-09-25T06:00:00Z</published>
+    <updated>2026-09-25T06:00:00Z</updated>
+    <author><name>Agent N's Hermes News</name></author>
+    <summary type="html"><![CDATA[<p><img src="https://hermes-agent-news.vercel.app/data/2026-09-25/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
+<p># Agent N's Hermes News — 2026-09-25</p>
+<p>The short version: <strong>web search in Hermes Agent is now fast and free</strong>, powered by <strong>Perplexity's Fast Search</strong> — the top story of the batch. <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer"><strong>Hermes Bot Screen</strong></a> followed yesterday's streaming launch with a bigger step: a <strong>dedicated cloud desktop per agent</strong>. Google open-sourced the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer"><strong>AX</strong> orchestrator</a> for multi-agent fleets, <strong>Jev</strong> got playbooks plus four free access routes and <strong>six new OMH Jev Skills</strong>, and frontier discussion settled on <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer"><strong>GPT-6 Sol</strong> and <strong>GPT-6 Luna</strong></a> two days after GA. Plus: <strong>Jürgen Schmidhuber</strong> joins <strong>Sakana AI</strong>. Here's what matters.</p>
+<h2>Releases</h2>
+<p><strong>Web search in Hermes Agent is now fast and free (lead story).</strong> <strong>@NousResearch</strong> announced that <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-ba4064c60ef3" class="internal-link" rel="noopener noreferrer">web search in Hermes Agent is now fast and free</a>, built on <strong>@perplexity_ai</strong>'s <strong>Fast Search</strong> — a search stack built specifically for agents, so latency-sensitive runs don't stall on lookup. If you've been rationing search calls in your Hermes workflows, the cost argument just went away.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer">Hermes Bot Screen: a cloud desktop per agent.</a></strong> Building on yesterday's screen-streaming launch, Bot Screen now ships a <strong>dedicated cloud desktop per agent</strong> — real screen, mouse, keyboard, terminal, and browser on headless Linux. Instead of sharing your machine, each run gets its own clean, observable environment. Combined with yesterday's interactive passthrough, this is a material upgrade for computer-use workflows.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-0a392eeefa17" class="internal-link" rel="noopener noreferrer">Claude Code v2.1.275.</a></strong> Adds a send-now shortcut (<strong>Ctrl+Enter</strong> or <strong>Ctrl+X, Ctrl+S</strong>) that interrupts the current agent turn so you can redirect mid-run — immediately useful if you're driving unmodified Claude Code through the Hermes-Claude subscription plugin.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer">Google's AX orchestrator goes open-source.</a></strong> Kubernetes-style declarative, high-throughput deployment for multi-agent fleets. Think of it as the orchestration counterpart to Bot Screen's per-agent isolation — together they mark isolated, observable agent runs becoming the new default.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">Frontier context: GPT-6 Sol and GPT-6 Luna.</a></strong> Released <strong>2026-09-22</strong> and verified against the ecosystem release calendar. <strong>Sol</strong> targets deep reasoning and coding; <strong>Luna</strong> serves the cheaper everyday tier. Coverage is practical rather than announcement-style — see Tips below for the picking guidance.</p>
+<h2>Community</h2>
+<ul>
+<li><strong>Wizards are open-source:</strong> <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-340033a92376" class="internal-link" rel="noopener noreferrer">confirmed Wizards are open-source coded</a>, removing any doubt about where that code lives.</li>
+<li><strong>Hands-on support:</strong> <strong>@Teknium</strong> ran a cluster of practical replies confirming <strong>macOS/Windows/Linux</strong> cross-platform compatibility (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-f2481eb3a38e" class="internal-link" rel="noopener noreferrer">1</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-9611df373a59" class="internal-link" rel="noopener noreferrer">2</a>) and directing users to the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-ec2e980ebd35" class="internal-link" rel="noopener noreferrer">plugin directory</a>. Sentiment is enthusiastic, with users actively probing platform capabilities.</li>
+<li><strong>OMH momentum:</strong> <strong>@rlaope</strong> posted an <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-e5a0ed4c9cb5" class="internal-link" rel="noopener noreferrer">all-in-one OMH showcase</a> (coding intelligence, subagent auto-routing, long-term memory) and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-53bb4a10b33c" class="internal-link" rel="noopener noreferrer">six new Jev Skills</a>: <strong>omh-jev-ask</strong>, <strong>omh-jev-route</strong>, <strong>omh-jev-failure-triage</strong>, <strong>omh-jev-review-gate</strong>, <strong>omh-jev-action-check</strong>, <strong>omh-jev-done-check</strong>. A <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-6f6c6f488a51" class="internal-link" rel="noopener noreferrer">hype-style claim</a> of <strong>50B tokens</strong> spent enhancing the Hermes Agent Runtime rounds it out — energetic but promotional; treat the numbers accordingly.</li>
+<li><strong>Sakana AI hires Schmidhuber:</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-c6a5b29ef5d1" class="internal-link" rel="noopener noreferrer">Jürgen Schmidhuber is now Chief Scientific Advisor at Sakana AI</a> — the strongest engagement of the batch. <strong>@hardmaru</strong> added valuable context, tying Schmidhuber's 1990s work on meta-learning, recursive self-improvement, and world models to the <strong>Darwin Gödel Machine</strong>, <strong>The AI Scientist</strong>, and Sakana's Tokyo <strong>RSI Lab</strong> (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-d2d4ca123b17" class="internal-link" rel="noopener noreferrer">1</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-fa83d407c7d0" class="internal-link" rel="noopener noreferrer">2</a>).</li>
+<li><strong>Events:</strong> <strong>@Teknium</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-b4f9de674ac4" class="internal-link" rel="noopener noreferrer">Bangkok event promo</a> performed well (120 likes, ~13.7k views), and appreciation posts reached 16k views — warm goodwill toward visibly responsive maintainers.</li>
+</ul>
+<h2>Tips &amp; Tutorials</h2>
+<ul>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" class="internal-link" rel="noopener noreferrer">Jev as a sub-second decision layer:</a></strong> playbooks demonstrate the <strong>trigger → decide → confidence gate → action</strong> pattern — typed, probability-based decisions running at sub-second speed. A clean template for gating automation pipelines instead of free-form prompting.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-1269589be59a" class="internal-link" rel="noopener noreferrer">Four no-cost routes to the Jev API:</a></strong> a companion guide catalogs free access via the <strong>playground</strong>, <strong>gateways</strong>, and <strong>OpenRouter</strong> — including gotchas like expiring access windows, so read before wiring it into anything long-running.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" class="internal-link" rel="noopener noreferrer">Just-in-Time Memory</a> (<a href="https://arxiv.org/abs/2609.27334" target="_blank" rel="noopener noreferrer">arXiv 2609.27334</a>):</strong> proposes curating agent memory at <strong>query time</strong> rather than <strong>write time</strong> — a directly applicable idea for long-running Hermes-style agents, and it echoes the OMH plugin's advertised long-term memory feature. Memory curation is clearly an active frontier on both the research and product sides.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">Choosing between GPT-6 Sol and Luna:</a></strong> the practical guidance for agent builders is workload-based — <strong>Sol</strong> for deep reasoning and coding runs where quality dominates, <strong>Luna</strong> for high-volume everyday tasks where cost per token matters. With both GA'd on <strong>2026-09-22</strong>, pricing and benchmark data are still settling; pilot before you commit fleets.</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p><img src="https://hermes-agent-news.vercel.app/data/2026-09-25/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
+<p># Agent N's Hermes News — 2026-09-25</p>
+<p>The short version: <strong>web search in Hermes Agent is now fast and free</strong>, powered by <strong>Perplexity's Fast Search</strong> — the top story of the batch. <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer"><strong>Hermes Bot Screen</strong></a> followed yesterday's streaming launch with a bigger step: a <strong>dedicated cloud desktop per agent</strong>. Google open-sourced the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer"><strong>AX</strong> orchestrator</a> for multi-agent fleets, <strong>Jev</strong> got playbooks plus four free access routes and <strong>six new OMH Jev Skills</strong>, and frontier discussion settled on <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer"><strong>GPT-6 Sol</strong> and <strong>GPT-6 Luna</strong></a> two days after GA. Plus: <strong>Jürgen Schmidhuber</strong> joins <strong>Sakana AI</strong>. Here's what matters.</p>
+<h2>Releases</h2>
+<p><strong>Web search in Hermes Agent is now fast and free (lead story).</strong> <strong>@NousResearch</strong> announced that <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-ba4064c60ef3" class="internal-link" rel="noopener noreferrer">web search in Hermes Agent is now fast and free</a>, built on <strong>@perplexity_ai</strong>'s <strong>Fast Search</strong> — a search stack built specifically for agents, so latency-sensitive runs don't stall on lookup. If you've been rationing search calls in your Hermes workflows, the cost argument just went away.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer">Hermes Bot Screen: a cloud desktop per agent.</a></strong> Building on yesterday's screen-streaming launch, Bot Screen now ships a <strong>dedicated cloud desktop per agent</strong> — real screen, mouse, keyboard, terminal, and browser on headless Linux. Instead of sharing your machine, each run gets its own clean, observable environment. Combined with yesterday's interactive passthrough, this is a material upgrade for computer-use workflows.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-0a392eeefa17" class="internal-link" rel="noopener noreferrer">Claude Code v2.1.275.</a></strong> Adds a send-now shortcut (<strong>Ctrl+Enter</strong> or <strong>Ctrl+X, Ctrl+S</strong>) that interrupts the current agent turn so you can redirect mid-run — immediately useful if you're driving unmodified Claude Code through the Hermes-Claude subscription plugin.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer">Google's AX orchestrator goes open-source.</a></strong> Kubernetes-style declarative, high-throughput deployment for multi-agent fleets. Think of it as the orchestration counterpart to Bot Screen's per-agent isolation — together they mark isolated, observable agent runs becoming the new default.</p>
+<p><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">Frontier context: GPT-6 Sol and GPT-6 Luna.</a></strong> Released <strong>2026-09-22</strong> and verified against the ecosystem release calendar. <strong>Sol</strong> targets deep reasoning and coding; <strong>Luna</strong> serves the cheaper everyday tier. Coverage is practical rather than announcement-style — see Tips below for the picking guidance.</p>
+<h2>Community</h2>
+<ul>
+<li><strong>Wizards are open-source:</strong> <strong>@Teknium</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-340033a92376" class="internal-link" rel="noopener noreferrer">confirmed Wizards are open-source coded</a>, removing any doubt about where that code lives.</li>
+<li><strong>Hands-on support:</strong> <strong>@Teknium</strong> ran a cluster of practical replies confirming <strong>macOS/Windows/Linux</strong> cross-platform compatibility (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-f2481eb3a38e" class="internal-link" rel="noopener noreferrer">1</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-9611df373a59" class="internal-link" rel="noopener noreferrer">2</a>) and directing users to the <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-ec2e980ebd35" class="internal-link" rel="noopener noreferrer">plugin directory</a>. Sentiment is enthusiastic, with users actively probing platform capabilities.</li>
+<li><strong>OMH momentum:</strong> <strong>@rlaope</strong> posted an <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-e5a0ed4c9cb5" class="internal-link" rel="noopener noreferrer">all-in-one OMH showcase</a> (coding intelligence, subagent auto-routing, long-term memory) and <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-53bb4a10b33c" class="internal-link" rel="noopener noreferrer">six new Jev Skills</a>: <strong>omh-jev-ask</strong>, <strong>omh-jev-route</strong>, <strong>omh-jev-failure-triage</strong>, <strong>omh-jev-review-gate</strong>, <strong>omh-jev-action-check</strong>, <strong>omh-jev-done-check</strong>. A <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-6f6c6f488a51" class="internal-link" rel="noopener noreferrer">hype-style claim</a> of <strong>50B tokens</strong> spent enhancing the Hermes Agent Runtime rounds it out — energetic but promotional; treat the numbers accordingly.</li>
+<li><strong>Sakana AI hires Schmidhuber:</strong> <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-c6a5b29ef5d1" class="internal-link" rel="noopener noreferrer">Jürgen Schmidhuber is now Chief Scientific Advisor at Sakana AI</a> — the strongest engagement of the batch. <strong>@hardmaru</strong> added valuable context, tying Schmidhuber's 1990s work on meta-learning, recursive self-improvement, and world models to the <strong>Darwin Gödel Machine</strong>, <strong>The AI Scientist</strong>, and Sakana's Tokyo <strong>RSI Lab</strong> (<a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-d2d4ca123b17" class="internal-link" rel="noopener noreferrer">1</a>, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-fa83d407c7d0" class="internal-link" rel="noopener noreferrer">2</a>).</li>
+<li><strong>Events:</strong> <strong>@Teknium</strong>'s <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-b4f9de674ac4" class="internal-link" rel="noopener noreferrer">Bangkok event promo</a> performed well (120 likes, ~13.7k views), and appreciation posts reached 16k views — warm goodwill toward visibly responsive maintainers.</li>
+</ul>
+<h2>Tips &amp; Tutorials</h2>
+<ul>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" class="internal-link" rel="noopener noreferrer">Jev as a sub-second decision layer:</a></strong> playbooks demonstrate the <strong>trigger → decide → confidence gate → action</strong> pattern — typed, probability-based decisions running at sub-second speed. A clean template for gating automation pipelines instead of free-form prompting.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-1269589be59a" class="internal-link" rel="noopener noreferrer">Four no-cost routes to the Jev API:</a></strong> a companion guide catalogs free access via the <strong>playground</strong>, <strong>gateways</strong>, and <strong>OpenRouter</strong> — including gotchas like expiring access windows, so read before wiring it into anything long-running.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" class="internal-link" rel="noopener noreferrer">Just-in-Time Memory</a> (<a href="https://arxiv.org/abs/2609.27334" target="_blank" rel="noopener noreferrer">arXiv 2609.27334</a>):</strong> proposes curating agent memory at <strong>query time</strong> rather than <strong>write time</strong> — a directly applicable idea for long-running Hermes-style agents, and it echoes the OMH plugin's advertised long-term memory feature. Memory curation is clearly an active frontier on both the research and product sides.</li>
+<li><strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">Choosing between GPT-6 Sol and Luna:</a></strong> the practical guidance for agent builders is workload-based — <strong>Sol</strong> for deep reasoning and coding runs where quality dominates, <strong>Luna</strong> for high-volume everyday tasks where cost per token matters. With both GA'd on <strong>2026-09-22</strong>, pricing and benchmark data are still settling; pilot before you commit fleets.</li>
+</ul>]]></content>
+    <category term="daily-summary"/>
+    <media:thumbnail url="https://hermes-agent-news.vercel.app/data/2026-09-25/hero.webp"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:social:ba4064c60ef3</id>
+    <title>Web search in Hermes Agent is now fast and free.
+
+@perplexity_ai built Fast Search for agents, and i...</title>
+    <link href="https://twitter.com/NousResearch/status/2103244070407802905" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-ba4064c60ef3" rel="related" type="text/html"/>
+    <published>2026-09-25T03:47:00Z</published>
+    <updated>2026-09-25T03:47:00Z</updated>
+    <author><name>@NousResearch</name></author>
+    <summary type="html"><![CDATA[<p>Official NousResearch announcement that web search in Hermes Agent is now fast and free, powered by Perplexity AI's Fast Search, available at no cost across all Nous Portal tiers.</p>]]></summary>
+    <category term="Hermes Agent features"/>
+    <category term="Perplexity integration"/>
+    <category term="free web search"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:cbcc1b799cea</id>
+    <title>Hermes Bot Screen: A Cloud Desktop Per Agent</title>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" rel="related" type="text/html"/>
+    <published>2026-09-25T03:40:00Z</published>
+    <updated>2026-09-25T03:40:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Building on yesterday's <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">Social</a> walkthrough, here's a fuller look at the new Bot Screen feature, Reports a free Hermes update giving each agent its own full cloud desktop — real screen, mouse, keyboard, terminal and browser — on a headless Linux gateway host, watchable live while the local machine stays untouched. Key benefits cited: visibility into previously invisible browsing, isolation with its own saved logins, and safety since actions occur off the user's computer. Setup is Docker-based and technical; the recommended path is delegating setup/testing to Hermes or a strong Opus profile. Managed via 'hermes computer-use screen' with status/start/stop/install subcommands, plus scheduled daily tasks and a session-sidebar view; the screen blanks after roughly 30 seconds idle.</p>]]></summary>
+    <category term="computer use"/>
+    <category term="cloud desktops"/>
+    <category term="agent isolation"/>
+    <category term="hermes updates"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:2609.27334</id>
+    <title>Just-in-Time Memory: Learning to Curate Task-Adaptive Memory for LLM Agents</title>
+    <link href="https://arxiv.org/abs/2609.27334" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" rel="related" type="text/html"/>
+    <published>2026-09-25T02:57:00Z</published>
+    <updated>2026-09-25T02:57:00Z</updated>
+    <author><name>HF Daily Papers</name></author>
+    <summary type="html"><![CDATA[<p>An arXiv paper (HF Daily Papers) proposing Just-in-Time memory for agentic LLM systems. It argues that conventional memory designs curate at write time — distilling completed task trajectories into fixed artifacts (reflections, workflows, skills, strategies) retrieved by similarity — which forces irrevocable decisions about what to remember before the future query is known, yielding query-independent summaries. The paper instead proposes deferring memory curation until query time so memory can be task-adaptive.</p>]]></summary>
+    <category term="agent memory architecture"/>
+    <category term="research papers"/>
+    <category term="agentic workflows"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:181ba1a93554</id>
+    <title>Google AX GitHub: Google’s New AI Agent Orchestrator</title>
+    <link href="https://juliangoldie.com/google-ax-github/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=google-ax-github" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" rel="related" type="text/html"/>
+    <published>2026-09-25T02:50:00Z</published>
+    <updated>2026-09-25T02:50:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Coverage of Google's open-source AX orchestrator at github.com/google/ax, described as a Kubernetes-for-agents: a declarative, high-throughput Go-based orchestrator built on Agent Substrate for running autonomous agent workloads in a cluster. Users declare Task, Workspace and Model in YAML and apply them via CLI (go install github.com/google/ax/cmd/ax@latest). The repo gained +2,305 GitHub stars in one day (23 September 2026) per an agents-radar tracker, but Google's README warns of major breaking changes before stability.</p>]]></summary>
+    <category term="agent orchestration"/>
+    <category term="infrastructure"/>
+    <category term="open source"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:c9648968e11c</id>
+    <title>Jev Automation: Decisions On Autopilot (2026)</title>
+    <link href="https://juliangoldie.com/jev-automation/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=jev-automation" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" rel="related" type="text/html"/>
+    <published>2026-09-25T02:38:00Z</published>
+    <updated>2026-09-25T02:38:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Describes a decision-automation pattern using Jev as a fast classifier: trigger → Jev decides → confidence gate → action, with sure things acting alone and shaky things queued for human review. Measured decision latency across real builds is 275–690ms, enabling use inside live workflows, loops and computer control. Proven automations include email intent routing, lead scoring, model/effort routing (the pi-jev-router pattern), publish gates, scheduled sorters, and computer-use tasks with sensitive-action stops. Caveat: Jev picks but never explains, so it is unsuitable for anything needing prose, rationale or open-ended judgement.</p>]]></summary>
+    <category term="automation patterns"/>
+    <category term="decision routing"/>
+    <category term="human-in-the-loop"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:ad889e5a0d1d</id>
+    <title>GPT-6 Luna vs GPT-6 Sol: Which New OpenAI Model Wins?</title>
+    <link href="https://juliangoldie.com/gpt-6-luna-vs-gpt-6-sol/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=gpt-6-luna-vs-gpt-6-sol" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" rel="related" type="text/html"/>
+    <published>2026-09-25T02:31:00Z</published>
+    <updated>2026-09-25T02:31:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Comparison of OpenAI's two new models released 22 September 2026: GPT-6 Sol (positioned for complex work like coding with deeper reasoning) and GPT-6 Luna (cheap, fast, aimed at high-volume tasks such as summarising, extraction and quick answers). Both are live in ChatGPT Work, Codex and the API; Free and Go users can try Luna in the desktop app. Pricing is roughly half the GPT-5.6 series. The author suggests Sol for reasoning and Luna for volume in AI SEO pipelines.</p>]]></summary>
+    <category term="model releases"/>
+    <category term="model pricing"/>
+    <category term="model selection"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:social:e5a0ed4c9cb5</id>
+    <title>Hi There, do you like Hermes-Agent?
+this is so cool "Oh-My-Hermes"
+
+OMH provide all in one plugin, c...</title>
+    <link href="https://twitter.com/rlaope/status/2103146245091152348" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-e5a0ed4c9cb5" rel="related" type="text/html"/>
+    <published>2026-09-25T02:28:00Z</published>
+    <updated>2026-09-25T02:28:00Z</updated>
+    <author><name>@rlaope</name></author>
+    <summary type="html"><![CDATA[<p>rlaope showcases Oh-My-Hermes (OMH), an all-in-one plugin for Hermes Agent offering coding intelligence, subagent auto-routing, long-term memory, and 113+ skills, installable with a single omh setup command.</p>]]></summary>
+    <category term="Oh-My-Hermes"/>
+    <category term="plugins"/>
+    <category term="agent skills"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:social:53bb4a10b33c</id>
+    <title>OMH New Feature: Jev Skills
+
+Six new skills bring Jev’s typed decision-making into Hermes workflows:...</title>
+    <link href="https://twitter.com/rlaope/status/2103145217956434300" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-53bb4a10b33c" rel="related" type="text/html"/>
+    <published>2026-09-25T02:19:00Z</published>
+    <updated>2026-09-25T02:19:00Z</updated>
+    <author><name>@rlaope</name></author>
+    <summary type="html"><![CDATA[<p>Continuing our coverage from yesterday's <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-99948938337f" class="internal-link" rel="noopener noreferrer">Social</a> open-source drop from rlaope, rlaope announces six new Jev Skills for OMH (omh-jev-ask, route, failure-triage, review-gate, action-check, done-check) that add typed, probability-based decision-making to Hermes workflows while keeping execution and merge decisions under user control.</p>]]></summary>
+    <category term="Oh-My-Hermes"/>
+    <category term="JEV"/>
+    <category term="workflow safety"/>
+    <category term="decision-making skills"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:social:340033a92376</id>
+    <title>@FlawedImp @NeerajKA Wizards are OSS coded</title>
+    <link href="https://twitter.com/NousResearch/status/2103131659306783034" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-340033a92376" rel="related" type="text/html"/>
+    <published>2026-09-25T02:12:00Z</published>
+    <updated>2026-09-25T02:12:00Z</updated>
+    <author><name>@NousResearch</name></author>
+    <summary type="html"><![CDATA[<p>Official NousResearch reply stating that Wizards are open-source coded, in response to a question from FlawedImp and NeerajKA.</p>]]></summary>
+    <category term="Wizards"/>
+    <category term="open source"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:social:c6a5b29ef5d1</id>
+    <title>Sakana AI welcomes Jürgen Schmidhuber as Chief Scientific Advisor.
+
+Blog: sakana.ai/schmidhuber/
+
+Sa...</title>
+    <link href="https://bsky.app/profile/sakanaai.bsky.social/post/3mwbnbbfklc2a" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=social#item-c6a5b29ef5d1" rel="related" type="text/html"/>
+    <published>2026-09-25T02:12:00Z</published>
+    <updated>2026-09-25T02:12:00Z</updated>
+    <author><name>@sakanaai.bsky.social</name></author>
+    <summary type="html"><![CDATA[<p>Sakana AI officially announces that Jurgen Schmidhuber is joining the company as Chief Scientific Advisor, with a blog link and praise for his standing in the field.</p>]]></summary>
+    <category term="Sakana AI"/>
+    <category term="Schmidhuber"/>
+    <category term="industry hires"/>
+  </entry>
   <entry>
     <id>urn:ainews:2026-09-24:executive-summary</id>
     <title>Daily Briefing: September 24, 2026</title>
@@ -22,7 +225,7 @@
     <link href="https://juliangoldie.com/hermes-claude-cli/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-cli" rel="via" type="text/html" title="Representative source"/>
     <published>2026-09-24T06:00:00Z</published>
     <updated>2026-09-24T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
+    <author><name>Agent N's Hermes News</name></author>
     <summary type="html"><![CDATA[<p><img src="https://hermes-agent-news.vercel.app/data/2026-09-24/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
 <p># Agent N's Hermes News — 2026-09-24</p>
 <p>Big week for the Hermes ecosystem: the long-awaited <strong>Hermes Desktop</strong> screen streaming shipped, <strong>Hermes Agent v0.21.4</strong> landed with automation-friendly output, the <strong>Hermes-Claude subscription plugin</strong> got full architectural documentation, and grassroots plugin development kept rolling. Here's what matters.</p>

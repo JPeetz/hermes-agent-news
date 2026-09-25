@@ -1,18 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
-  <title>AATF AI News Aggregator - Research (Top 50)</title>
+  <title>Agent N's Hermes News - Research (Top 50)</title>
   <subtitle>Research items from AI News Aggregator</subtitle>
   <link href="https://hermes-agent-news.vercel.app/?category=research" rel="alternate" type="text/html"/>
   <link href="https://hermes-agent-news.vercel.app/data/feeds/research-50.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:research:50</id>
-  <updated>2026-09-24T21:21:14Z</updated>
+  <updated>2026-09-25T10:34:55Z</updated>
   <icon>https://hermes-agent-news.vercel.app/assets/logo.webp</icon>
   <author>
-    <name>AATF AI News Aggregator</name>
+    <name>Agent N's Hermes News</name>
     <uri>https://hermes-agent-news.vercel.app</uri>
   </author>
-  <generator>AATF AI News Aggregator</generator>
+  <generator>Agent N's Hermes News</generator>
 
+  <entry>
+    <id>urn:ainews:2026-09-25:category-summary:research</id>
+    <title>Research Summary: September 25, 2026</title>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research" rel="canonical" type="text/html"/>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-09-25T06:00:00Z</published>
+    <updated>2026-09-25T06:00:00Z</updated>
+    <author><name>Agent N's Hermes News</name></author>
+    <summary type="html"><![CDATA[<p>This week's research/documentation roundup is dominated by <strong>agent execution environments</strong>: the <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer">Hermes Bot Screen</a></strong> update ships a dedicated cloud desktop per agent — real screen, mouse, keyboard, terminal and browser on headless Linux — materially upgrading computer-use capability, while Google's open-source <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer">AX</a></strong> orchestrator adds Kubernetes-style declarative, high-throughput deployment for multi-agent fleets. Both point toward isolated, observable agent runs as the new default. On the research side, the <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" class="internal-link" rel="noopener noreferrer">Just-in-Time Memory</a></strong> paper (arXiv 2609.27334) proposes curating agent memory at query time rather than write time, a directly applicable idea for long-running Hermes-style agents. Frontier-model context is anchored by <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">GPT-6 Sol and GPT-6 Luna</a></strong> (GA 2026-09-22, verified against the ecosystem release calendar): Sol targets deep reasoning and coding, Luna the cheaper everyday tier, with practical cost/workload guidance for agent builders. Rounding out the practical layer, <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" class="internal-link" rel="noopener noreferrer">Jev</a></strong> playbooks demonstrate a sub-second, confidence-gated decision/routing pattern for automation, a companion guide catalogs <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-1269589be59a" class="internal-link" rel="noopener noreferrer">four no-cost routes to the Jev API</a> (playground, gateways, OpenRouter) including gotchas like expiring access windows, and <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-0a392eeefa17" class="internal-link" rel="noopener noreferrer">Claude Code v2.1.275</a></strong> adds a send-now shortcut (Ctrl+Enter or Ctrl+X, Ctrl+S) that interrupts the current agent turn so users can redirect mid-run.</p>]]></summary>
+    <content type="html"><![CDATA[<p>This week's research/documentation roundup is dominated by <strong>agent execution environments</strong>: the <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" class="internal-link" rel="noopener noreferrer">Hermes Bot Screen</a></strong> update ships a dedicated cloud desktop per agent — real screen, mouse, keyboard, terminal and browser on headless Linux — materially upgrading computer-use capability, while Google's open-source <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" class="internal-link" rel="noopener noreferrer">AX</a></strong> orchestrator adds Kubernetes-style declarative, high-throughput deployment for multi-agent fleets. Both point toward isolated, observable agent runs as the new default. On the research side, the <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" class="internal-link" rel="noopener noreferrer">Just-in-Time Memory</a></strong> paper (arXiv 2609.27334) proposes curating agent memory at query time rather than write time, a directly applicable idea for long-running Hermes-style agents. Frontier-model context is anchored by <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" class="internal-link" rel="noopener noreferrer">GPT-6 Sol and GPT-6 Luna</a></strong> (GA 2026-09-22, verified against the ecosystem release calendar): Sol targets deep reasoning and coding, Luna the cheaper everyday tier, with practical cost/workload guidance for agent builders. Rounding out the practical layer, <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" class="internal-link" rel="noopener noreferrer">Jev</a></strong> playbooks demonstrate a sub-second, confidence-gated decision/routing pattern for automation, a companion guide catalogs <a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-1269589be59a" class="internal-link" rel="noopener noreferrer">four no-cost routes to the Jev API</a> (playground, gateways, OpenRouter) including gotchas like expiring access windows, and <strong><a href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-0a392eeefa17" class="internal-link" rel="noopener noreferrer">Claude Code v2.1.275</a></strong> adds a send-now shortcut (Ctrl+Enter or Ctrl+X, Ctrl+S) that interrupts the current agent turn so users can redirect mid-run.</p>]]></content>
+    <category term="daily-summary"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:cbcc1b799cea</id>
+    <title>Hermes Bot Screen: A Cloud Desktop Per Agent</title>
+    <link href="https://juliangoldie.com/hermes-bot-screen/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-bot-screen" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-cbcc1b799cea" rel="related" type="text/html"/>
+    <published>2026-09-25T03:40:00Z</published>
+    <updated>2026-09-25T03:40:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Building on yesterday's <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=social#item-d84a2bc0a85d" class="internal-link" rel="noopener noreferrer">Social</a> walkthrough, here's a fuller look at the new Bot Screen feature, Reports a free Hermes update giving each agent its own full cloud desktop — real screen, mouse, keyboard, terminal and browser — on a headless Linux gateway host, watchable live while the local machine stays untouched. Key benefits cited: visibility into previously invisible browsing, isolation with its own saved logins, and safety since actions occur off the user's computer. Setup is Docker-based and technical; the recommended path is delegating setup/testing to Hermes or a strong Opus profile. Managed via 'hermes computer-use screen' with status/start/stop/install subcommands, plus scheduled daily tasks and a session-sidebar view; the screen blanks after roughly 30 seconds idle.</p>]]></summary>
+    <category term="computer use"/>
+    <category term="cloud desktops"/>
+    <category term="agent isolation"/>
+    <category term="hermes updates"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:2609.27334</id>
+    <title>Just-in-Time Memory: Learning to Curate Task-Adaptive Memory for LLM Agents</title>
+    <link href="https://arxiv.org/abs/2609.27334" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-2609.27334" rel="related" type="text/html"/>
+    <published>2026-09-25T02:57:00Z</published>
+    <updated>2026-09-25T02:57:00Z</updated>
+    <author><name>HF Daily Papers</name></author>
+    <summary type="html"><![CDATA[<p>An arXiv paper (HF Daily Papers) proposing Just-in-Time memory for agentic LLM systems. It argues that conventional memory designs curate at write time — distilling completed task trajectories into fixed artifacts (reflections, workflows, skills, strategies) retrieved by similarity — which forces irrevocable decisions about what to remember before the future query is known, yielding query-independent summaries. The paper instead proposes deferring memory curation until query time so memory can be task-adaptive.</p>]]></summary>
+    <category term="agent memory architecture"/>
+    <category term="research papers"/>
+    <category term="agentic workflows"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:181ba1a93554</id>
+    <title>Google AX GitHub: Google’s New AI Agent Orchestrator</title>
+    <link href="https://juliangoldie.com/google-ax-github/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=google-ax-github" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-181ba1a93554" rel="related" type="text/html"/>
+    <published>2026-09-25T02:50:00Z</published>
+    <updated>2026-09-25T02:50:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Coverage of Google's open-source AX orchestrator at github.com/google/ax, described as a Kubernetes-for-agents: a declarative, high-throughput Go-based orchestrator built on Agent Substrate for running autonomous agent workloads in a cluster. Users declare Task, Workspace and Model in YAML and apply them via CLI (go install github.com/google/ax/cmd/ax@latest). The repo gained +2,305 GitHub stars in one day (23 September 2026) per an agents-radar tracker, but Google's README warns of major breaking changes before stability.</p>]]></summary>
+    <category term="agent orchestration"/>
+    <category term="infrastructure"/>
+    <category term="open source"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:c9648968e11c</id>
+    <title>Jev Automation: Decisions On Autopilot (2026)</title>
+    <link href="https://juliangoldie.com/jev-automation/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=jev-automation" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-c9648968e11c" rel="related" type="text/html"/>
+    <published>2026-09-25T02:38:00Z</published>
+    <updated>2026-09-25T02:38:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Describes a decision-automation pattern using Jev as a fast classifier: trigger → Jev decides → confidence gate → action, with sure things acting alone and shaky things queued for human review. Measured decision latency across real builds is 275–690ms, enabling use inside live workflows, loops and computer control. Proven automations include email intent routing, lead scoring, model/effort routing (the pi-jev-router pattern), publish gates, scheduled sorters, and computer-use tasks with sensitive-action stops. Caveat: Jev picks but never explains, so it is unsuitable for anything needing prose, rationale or open-ended judgement.</p>]]></summary>
+    <category term="automation patterns"/>
+    <category term="decision routing"/>
+    <category term="human-in-the-loop"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:ad889e5a0d1d</id>
+    <title>GPT-6 Luna vs GPT-6 Sol: Which New OpenAI Model Wins?</title>
+    <link href="https://juliangoldie.com/gpt-6-luna-vs-gpt-6-sol/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=gpt-6-luna-vs-gpt-6-sol" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-ad889e5a0d1d" rel="related" type="text/html"/>
+    <published>2026-09-25T02:31:00Z</published>
+    <updated>2026-09-25T02:31:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Comparison of OpenAI's two new models released 22 September 2026: GPT-6 Sol (positioned for complex work like coding with deeper reasoning) and GPT-6 Luna (cheap, fast, aimed at high-volume tasks such as summarising, extraction and quick answers). Both are live in ChatGPT Work, Codex and the API; Free and Go users can try Luna in the desktop app. Pricing is roughly half the GPT-5.6 series. The author suggests Sol for reasoning and Luna for volume in AI SEO pipelines.</p>]]></summary>
+    <category term="model releases"/>
+    <category term="model pricing"/>
+    <category term="model selection"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:1269589be59a</id>
+    <title>Jev API Free: 4 No-Cost Routes That Work (2026)</title>
+    <link href="https://juliangoldie.com/jev-api-free/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=jev-api-free" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-1269589be59a" rel="related" type="text/html"/>
+    <published>2026-09-25T02:19:00Z</published>
+    <updated>2026-09-25T02:19:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Catalogs four no-cost ways to access the Jev API: (1) jevplayground.com browser playground with no signup, on an independent test bench rather than TypeSafe's own site; (2) Vercel AI Gateway free access closing 25 September 2026, requiring a card on file; (3) OpenCode Zen free tier using the model named jev-1.13 (warning against the similarly-listed non-free variant) and updating OpenCode first; (4) OpenRouter beta, where Jev is now listed and reachable with a standard OpenRouter key — described as the durable post-window route.</p>]]></summary>
+    <category term="API access"/>
+    <category term="model routing"/>
+    <category term="cost optimization"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-09-25:research:0a392eeefa17</id>
+    <title>Claude Code Send Now Key: How the New Shortcut Works</title>
+    <link href="https://juliangoldie.com/claude-code-send-now-key/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=claude-code-send-now-key" rel="alternate" type="text/html"/>
+    <link href="https://hermes-agent-news.vercel.app/?date=2026-09-25&amp;category=research#item-0a392eeefa17" rel="related" type="text/html"/>
+    <published>2026-09-25T02:04:00Z</published>
+    <updated>2026-09-25T02:04:00Z</updated>
+    <author><name>Clawdbot</name></author>
+    <summary type="html"><![CDATA[<p>Explains the send-now key shipped in Claude Code v2.1.275 (17 September 2026): Ctrl+Enter (or Ctrl+X, Ctrl+S) interrupts the current agent turn and sends all queued messages at once, with sent and queued messages displayed in grey until the model receives them. The same release added skills and plugin syncing from a claude.ai account into terminal sessions. The main benefit is redirecting long-running agent turns without mashing Escape and losing queued context.</p>]]></summary>
+    <category term="developer tooling"/>
+    <category term="agent steering"/>
+    <category term="CLI UX"/>
+  </entry>
   <entry>
     <id>urn:ainews:2026-09-24:category-summary:research</id>
     <title>Research Summary: September 24, 2026</title>
@@ -22,7 +128,7 @@
     <link href="https://juliangoldie.com/hermes-claude-cli/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=hermes-claude-cli" rel="via" type="text/html" title="Representative source"/>
     <published>2026-09-24T06:00:00Z</published>
     <updated>2026-09-24T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
+    <author><name>Agent N's Hermes News</name></author>
     <summary type="html"><![CDATA[<p>This week's research/documentation is dominated by the <strong>Hermes-Claude subscription plugin</strong>: <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">an end-to-end architectural walkthrough of the pipeline</a> (Hermes → plugin → unmodified official <strong>Claude Code</strong> execution, with process isolation and an admission relay for billing integrity), paired with a <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">security-focused auth guide</a> confirming credentials stay entirely with the official CLI via <strong>claude auth</strong> — no API keys for users to store or leak. On the release side, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> adds a <strong>--format stream-json</strong> flag producing structured JSONL output, immediately useful for automation and tooling, alongside a merged-PR rollup bringing <strong>skills auto-load</strong> and <strong>MCP discovery concurrency</strong> improvements. In the broader agent ecosystem, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> hardens MCP security by scoping sessions per invocation — relevant context for anyone wiring external tools into agent workflows — and the early-stage <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong> runtime</a> (v0.20.0, Apache-2.0) offers a single interface across 14 coding agents with Hermes listed as a supported integration, an early signal of growing ecosystem interoperability.</p>]]></summary>
     <content type="html"><![CDATA[<p>This week's research/documentation is dominated by the <strong>Hermes-Claude subscription plugin</strong>: <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3245300860a9" class="internal-link" rel="noopener noreferrer">an end-to-end architectural walkthrough of the pipeline</a> (Hermes → plugin → unmodified official <strong>Claude Code</strong> execution, with process isolation and an admission relay for billing integrity), paired with a <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-8baed0cca5b7" class="internal-link" rel="noopener noreferrer">security-focused auth guide</a> confirming credentials stay entirely with the official CLI via <strong>claude auth</strong> — no API keys for users to store or leak. On the release side, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-1ff7cb5819fc" class="internal-link" rel="noopener noreferrer"><strong>Hermes Agent v0.21.4</strong></a> adds a <strong>--format stream-json</strong> flag producing structured JSONL output, immediately useful for automation and tooling, alongside a merged-PR rollup bringing <strong>skills auto-load</strong> and <strong>MCP discovery concurrency</strong> improvements. In the broader agent ecosystem, <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-e9974751b764" class="internal-link" rel="noopener noreferrer"><strong>Microsoft Agent Framework 1.19.0</strong></a> hardens MCP security by scoping sessions per invocation — relevant context for anyone wiring external tools into agent workflows — and the early-stage <a href="https://hermes-agent-news.vercel.app/?date=2026-09-24&amp;category=research#item-3f5747150c72" class="internal-link" rel="noopener noreferrer"><strong>AgentProto</strong> runtime</a> (v0.20.0, Apache-2.0) offers a single interface across 14 coding agents with Hermes listed as a supported integration, an early signal of growing ecosystem interoperability.</p>]]></content>
     <category term="daily-summary"/>
