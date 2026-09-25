@@ -33,7 +33,11 @@ class RedditGatherer(BaseGatherer):
     ):
         super().__init__(config_dir, data_dir, lookback_hours, target_date)
 
-    async def collect(self) -> List[CollectedItem]:
+    @property
+    def category(self) -> str:
+        return 'reddit'
+
+    async def gather(self) -> List[CollectedItem]:
         """No-op: Reddit collected via RSS. Returns empty list."""
         logger.info("Reddit gatherer disabled — Reddit content now collected via RSS feeds in news gatherer")
         return []
