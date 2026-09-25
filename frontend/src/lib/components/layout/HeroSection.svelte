@@ -105,14 +105,17 @@
 
 	.hero-frame {
 		width: 100%;
-		aspect-ratio: 21 / 9;
+		aspect-ratio: 16 / 7;
 		overflow: hidden;
+		max-height: 60vh;
 	}
 
 	.hero-image {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		object-position: center center;
+		background: #0A0A0A;
 	}
 
 	.hero-fallback {
@@ -195,7 +198,8 @@
 	@media (min-width: 640px) {
 		/* Tablet and up: enough height for the caption to ride over the image again. */
 	.hero-section {
-			aspect-ratio: 21 / 9;
+			aspect-ratio: 16 / 7;
+			max-height: 60vh;
 		}
 
 		.hero-frame {
