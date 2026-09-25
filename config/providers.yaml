@@ -1,0 +1,25 @@
+llm:
+  mode: "openai-compatible"
+  api_key: "${OPENROUTER_API_KEY}"
+  base_url: "https://openrouter.ai/api"
+  model: "z-ai/GLM-5.3-Flash"
+  display_name: "GLM-5.3-Flash"
+  timeout: 600
+  routes:
+    - id: "primary"
+      model: "z-ai/GLM-5.3-Flash"
+      api_key: "${OPENROUTER_API_KEY}"
+      base_url: "https://openrouter.ai/api"
+      mode: "openai-compatible"
+
+image:
+  mode: "kie"
+  api_key: "${KIE_API_KEY}"
+  model: "gpt-image/1.5-image-to-image"
+  quality: "medium"
+  reference_url: "https://files.catbox.moe/5llsue.jpg"
+  display_name: "Agent N via Kie.ai"
+
+pipeline:
+  base_url: "${PIPELINE_BASE_URL}"
+  lookback_hours: 24
