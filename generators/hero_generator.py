@@ -295,6 +295,23 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
         topic_names = [s['name'] for s in topic_summaries]
         logger.info(f"Generating hero image for {date} with topics: {topic_names}")
 
+        # Log the prompt for replay
+        prompt_logged = instructions
+        replay_context = {
+            "caller": "hero_generator.compose",
+            "provider_model": self.client.model if hasattr(self.client, 'model') else "kie",
+            "prompt": prompt_logged,
+        }
+        import time as _time_module
+        from agents.replay_recorder import get_recorder
+        recorder = get_recorder()
+        replay_call_id = recorder.start_call(
+            request_id=None,
+            context=replay_context,
+        )
+        recorder.mark_started(replay_call_id)
+        _call_start = _time_module.time()
+
         try:
             # Use ImageClient for generation
             response = await self.client.generate(
@@ -341,14 +358,22 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
                     "cost_usd": round(cost.total_cost, 6),
                     "model": response.model,
                 }
+            # Record in replay as successful call
+            recorder.finish_call(replay_call_id, response={
+                "model": response.model or "kie",
+                "usage": result.get("usage"),
+                "path": relative_url,
+            })
             return result
 
         except RuntimeError as e:
             # ImageClient raises RuntimeError for API errors
             logger.error(f"Hero image generation failed: {e}")
+            recorder.finish_call(replay_call_id, error=e)
             return None
         except Exception as e:
             logger.error(f"Hero image generation failed unexpectedly: {e}")
+            recorder.finish_call(replay_call_id, error=e)
             return None
 
     def generate_sync(

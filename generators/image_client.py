@@ -583,8 +583,8 @@ class KieImageClient(BaseImageClient):
         reference_url: Optional[str] = None,
         quality: Optional[str] = None,
         timeout: float = 180.0,
-        max_poll_attempts: int = 30,
-        poll_interval: float = 8.0,
+        max_poll_attempts: int = 180,
+        poll_interval: float = 15.0,
     ):
         self.api_key = api_key
         # Fallback: if the env-var-resolved key looks wrong (<10 chars),
