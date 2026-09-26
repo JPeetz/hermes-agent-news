@@ -58,6 +58,8 @@ RUN chmod +x run_pipeline.py entrypoint.sh
 
 # Configure nginx
 COPY nginx.conf /etc/nginx/sites-available/default
+# Anti-scraping AI block (http-level config, loaded by conf.d/)
+COPY ai-block.conf /etc/nginx/conf.d/ai-block.conf
 
 # Expose web port
 EXPOSE 80
