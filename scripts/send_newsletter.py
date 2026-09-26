@@ -159,7 +159,7 @@ def main():
         return
 
     data_dir = os.environ.get("DATA_DIR", "/app/web/data")
-    date = os.environ.get("TARGET_DATE", datetime.now().strftime("%Y-%m-%d"))
+    date = os.environ.get("TARGET_DATE", "").strip() or datetime.now().strftime("%Y-%m-%d")
     base_url = os.environ.get("PIPELINE_BASE_URL", "https://hermesnews.xyz")
 
     summary_path = Path(data_dir) / date / "summary.json"
