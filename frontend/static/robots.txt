@@ -1,19 +1,157 @@
-User-agent: *
-Allow: /
+# robots.txt for hermesnews.xyz
+# Block all known AI crawlers, scrapers, and training bots
+# Last updated: 2026-09-26
 
-# Allow AI crawlers specifically
+# Block AI training crawlers (opt-out of all training data)
 User-agent: GPTBot
-Allow: /
+Disallow: /
 
-User-agent: Google-Extended
-Allow: /
+User-agent: GPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
 
 User-agent: CCBot
-Allow: /
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
 
 User-agent: anthropic-ai
-Allow: /
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Google-Extended-Cloud
+Disallow: /
+
+User-agent: Google-CloudVertexBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: Neevabot
+Disallow: /
+
+User-agent: aiHitBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12Bot
+Disallow: /
+
+User-agent: Barkrowler
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SeekportBot
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: ResearchScanBot
+Disallow: /
+
+User-agent: EvliBot
+Disallow: /
+
+User-agent: AwarioBot
+Disallow: /
+
+User-agent: AdsBot-Google
+Disallow: /
+
+User-agent: GoogleOther
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: AspiegelBot
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+User-agent: SentiBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: YandexImages
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+# General rules for all crawlers — allow homepage only, block data/feeds
+User-agent: *
+Disallow: /data/
+Disallow: /_app/
+Disallow: /feeds
+Disallow: /api/
+Allow: /$
 
 # Sitemaps
-Sitemap: https://hermes-agent-news-one.vercel.app/feeds
-Sitemap: https://hermes-agent-news-one.vercel.app/data/index.json
+Sitemap: https://hermesnews.xyz/feeds
+Sitemap: https://hermesnews.xyz/data/index.json

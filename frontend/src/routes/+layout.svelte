@@ -9,6 +9,7 @@
 	import Header from '$lib/components/layout/Header.svelte';
 	import Navigation from '$lib/components/layout/Navigation.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import NewsletterModal from '$lib/components/layout/NewsletterModal.svelte';
 	import { isPreview, previewLabel } from '$lib/services/dataBase';
 	import '../app.css';
 
@@ -99,6 +100,7 @@
 	</main>
 
 	<Footer />
+	<NewsletterModal />
 </div>
 
 <style>
