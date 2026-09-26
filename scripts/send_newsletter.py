@@ -140,7 +140,7 @@ def send_newsletter(api_key: str, html_body: str, report_date: str):
     payload = {
         "subject": f"Agent N's Hermes News — {report_date}",
         "body": html_body,
-        "status": "sent",
+        "status": "about_to_send",
     }
     resp = requests.post(url, headers=headers, json=payload, timeout=30)
     data = resp.json()
