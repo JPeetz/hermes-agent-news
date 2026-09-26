@@ -62,7 +62,7 @@ class SubscribeHandler(BaseHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", 0))
         body_raw = self.rfile.read(length)
 
-        if self.path == "/api/subscribe":
+        if self.path == "/subscribe":
             self._handle_subscribe(body_raw)
         elif self.path == "/api/image-callback":
             self._handle_image_callback(body_raw)
