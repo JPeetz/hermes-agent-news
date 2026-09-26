@@ -142,7 +142,7 @@ def sync_to_buttondown(email: str) -> bool:
     try:
         req = urllib_req.Request(
             BUTTONDOWN_API,
-            data=json.dumps({"email": email}).encode(),
+            data=json.dumps({"email_address": email}).encode(),
             headers={
                 "Authorization": f"Token {BUTTONDOWN_API_KEY}",
                 "Content-Type": "application/json",
