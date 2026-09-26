@@ -342,10 +342,34 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
             # Return relative URL path for web serving
             relative_url = f"/data/{date}/hero.webp"
 
+            # Try to extract creditsConsumed from Kie response for accurate cost
+            kie_credits = None
+            if hasattr(self.client, '__class__') and 'KieImageClient' in type(self.client).__name__:
+                # Kie reports credits in the poll response's data.creditsConsumed field.
+                # Fallback: known fixed cost for the model used in this pipeline.
+                passthrough = getattr(response, 'passthrough', None) or {}
+                kie_credits = passthrough.get('creditsConsumed', None)
+                if kie_credits:
+                    logger.info(f"Kie: actual credits consumed: {kie_credits}")
+                else:
+                    # Fixed rate: 4 credits per image, 1000 credits = $5
+                    # 4 * ($5/1000) = $0.02
+                    kie_credits = 4
+                    logger.info(f"Kie: using fixed rate ({kie_credits} credits = $0.02)")
+
             # Token accounting, when the provider reported it. Priced separately from
             # LLM calls because an image response bills three token classes at three
             # different rates -- see agents.cost_tracker.price_image_usage.
-            cost = price_image_usage(response.usage)
+            cost = price_image_usage(response.usage) if response.usage else None
+            if not cost and kie_credits:
+                from agents.cost_tracker import UsageCost
+                kie_cost = (kie_credits * 5.0) / 1000.0
+                cost = UsageCost(
+                    total_cost=kie_cost,
+                    input_tokens=0,
+                    image_tokens=kie_credits,
+                    text_tokens=0,
+                )
             if cost:
                 logger.info(
                     f"Hero image cost: ${cost.total_cost:.4f} "

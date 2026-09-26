@@ -160,6 +160,8 @@ class ImageResponse:
     # $0.000 for a call that was in fact billed.
     usage: Optional[Dict[str, Any]] = None
     model: Optional[str] = None
+    # Provider-specific passthrough data (e.g., creditsConsumed from Kie)
+    passthrough: Dict[str, Any] = None
 
 
 class BaseImageClient(ABC):
@@ -692,11 +694,17 @@ class KieImageClient(BaseImageClient):
                     logger.info(f"Kie: task {task_id} succeeded, downloading {img_url}")
                     img_resp = urllib.request.urlopen(img_url, timeout=self.timeout)
                     image_bytes = img_resp.read()
+                    # Extract creditsConsumed from poll data for accurate cost tracking
+                    passthrough = {}
+                    credits_consumed = pd.get("creditsConsumed")
+                    if credits_consumed:
+                        passthrough["creditsConsumed"] = credits_consumed
                     return ImageResponse(
                         image_data=image_bytes,
                         mime_type="image/webp",
                         usage=None,
                         model=self.model,
+                        passthrough=passthrough,
                     )
                 elif state in ("fail", "error"):
                     fail_msg = pd.get("failMsg", "unknown failure") if isinstance(pd, dict) else "unknown"
