@@ -136,6 +136,7 @@ def send_newsletter(api_key: str, html_body: str, report_date: str):
     headers = {
         "Authorization": f"Token {api_key}",
         "Content-Type": "application/json",
+        "X-Buttondown-Live-Dangerously": "true",
     }
     payload = {
         "subject": f"Agent N's Hermes News — {report_date}",
