@@ -585,6 +585,7 @@ class KieImageClient(BaseImageClient):
         timeout: float = 180.0,
         max_poll_attempts: int = 180,
         poll_interval: float = 15.0,
+        callback_url: Optional[str] = None,
     ):
         self.api_key = api_key
         # Fallback: if the env-var-resolved key looks wrong (<10 chars),
@@ -605,6 +606,7 @@ class KieImageClient(BaseImageClient):
         self.timeout = timeout
         self.max_poll_attempts = max_poll_attempts
         self.poll_interval = max(3.0, poll_interval)
+        self.callback_url = callback_url
 
         logger.info(
             f"KieImageClient initialized with model={self.model}, "
@@ -645,8 +647,10 @@ class KieImageClient(BaseImageClient):
             "model": self.model,
             "input": json.dumps(input_dict)
         }
+        if self.callback_url:
+            body["callBackUrl"] = self.callback_url
 
-        logger.info(f"Kie: creating task for {self.model}, aspect={aspect_ratio}")
+        logger.info(f"Kie: creating task for {self.model}, aspect={aspect_ratio}" + (f", callback={self.callback_url}" if self.callback_url else ""))
 
         try:
             # Step 1: Create task
@@ -751,12 +755,13 @@ class ImageClient:
                 quality=getattr(config, 'quality', None)
             )
         elif config.mode == "kie":
-            return KieImageClient(
-                api_key=config.api_key,
-                model=config.model,
-                reference_url=config.reference_url,
-                quality=getattr(config, 'quality', None)
-            )
+                    return KieImageClient(
+                        api_key=config.api_key,
+                        model=config.model,
+                        reference_url=config.reference_url,
+                        quality=getattr(config, 'quality', None),
+                        callback_url=getattr(config, 'callback_url', None),
+                    )
         else:
             raise ValueError(
                 f"Unknown image mode: {config.mode}. "

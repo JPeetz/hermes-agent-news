@@ -251,6 +251,10 @@ class ImageProviderConfig(BaseModel):
         default=None,
         description="Reference/character sheet image URL; used by kie mode as input_urls"
     )
+    callback_url: Optional[str] = Field(
+        default=None,
+        description="Optional callback URL for async task completion notification (callBackUrl)"
+    )
 
     @field_validator('api_key')
     @classmethod

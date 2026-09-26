@@ -302,6 +302,13 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
             "provider_model": self.client.model if hasattr(self.client, 'model') else "kie",
             "prompt": prompt_logged,
         }
+        # Set callback URL on the Kie client if available
+        if hasattr(self.client, 'callback_url') and not self.client.callback_url:
+            import os as _os
+            base_url = _os.environ.get("PIPELINE_BASE_URL", "")
+            if base_url:
+                self.client.callback_url = f"{base_url.rstrip('/')}/api/image-callback"
+                logger.info(f"Set Kie callback URL: {self.client.callback_url}")
         import time as _time_module
         from agents.replay_recorder import get_recorder
         recorder = get_recorder()
