@@ -22,7 +22,7 @@ if [ "${ENABLE_CRON:-false}" = "true" ]; then
     CRON_SCHEDULE="${COLLECTION_SCHEDULE:-0 3 * * *}"
 
     # Next run only: DEBUG logging for diagnostics
-    DEBUG_CMD="LOG_LEVEL=DEBUG cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web > /app/logs/cron.log 2>&1"
+    DEBUG_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web > /app/logs/cron.log 2>&1"
     if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
         DEBUG_CMD="${DEBUG_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
     fi
@@ -33,10 +33,13 @@ if [ "${ENABLE_CRON:-false}" = "true" ]; then
         NORMAL_CMD="${NORMAL_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
     fi
 
-    echo "$CRON_SCHEDULE $NORMAL_CMD" > /etc/cron.d/ai-news-cron-restore
+    # Write cron files with the right PATH — cron's default doesn't include /usr/local/bin
+    echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron-restore
+    echo "$CRON_SCHEDULE LOG_LEVEL=DEBUG $DEBUG_CMD" >> /etc/cron.d/ai-news-cron-restore
     (sleep 86400 && mv /etc/cron.d/ai-news-cron-restore /etc/cron.d/ai-news-cron && crontab /etc/cron.d/ai-news-cron) &
 
-    echo "$CRON_SCHEDULE $DEBUG_CMD" > /etc/cron.d/ai-news-cron
+    echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron
+    echo "$CRON_SCHEDULE LOG_LEVEL=DEBUG $DEBUG_CMD" >> /etc/cron.d/ai-news-cron
     chmod 0644 /etc/cron.d/ai-news-cron
     crontab /etc/cron.d/ai-news-cron
     echo "Cron job scheduled (NEXT RUN DEBUG): $CRON_SCHEDULE"
