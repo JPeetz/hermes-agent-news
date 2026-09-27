@@ -362,12 +362,12 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
             # different rates -- see agents.cost_tracker.price_image_usage.
             cost = price_image_usage(response.usage) if response.usage else None
             if not cost and kie_credits:
-                from agents.cost_tracker import UsageCost
+                from agents.cost_tracker import ImageCost
                 kie_cost = (kie_credits * 5.0) / 1000.0
-                cost = UsageCost(
-                    total_cost=kie_cost,
+                cost = ImageCost(
                     input_tokens=0,
                     image_tokens=kie_credits,
+                    image_cost=kie_cost,
                     text_tokens=0,
                 )
             if cost:
