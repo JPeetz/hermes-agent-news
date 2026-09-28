@@ -44,7 +44,7 @@ services:
       - TZ=${TZ:-America/New_York}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD-SHELL", "curl -f -s -H 'User-Agent: Hermes-HealthCheck/1.0' http://localhost/ > /dev/null 2>&1"]
       interval: 30s
       timeout: 10s
       retries: 3

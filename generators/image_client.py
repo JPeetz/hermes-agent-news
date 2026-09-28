@@ -708,6 +708,35 @@ class KieImageClient(BaseImageClient):
                     )
                 elif state in ("fail", "error"):
                     fail_msg = pd.get("failMsg", "unknown failure") if isinstance(pd, dict) else "unknown"
+                    # Retry on transient "Internal Error" — retry the entire create+pol flow
+                    if "Internal Error" in fail_msg and i < self.max_poll_attempts - 1:
+                        logger.warning(
+                            f"Kie: task {task_id} transient failure (attempt {i+1}): "
+                            f"{fail_msg[:100]}. Retrying entire flow..."
+                        )
+                        # Reset and restart the entire create+pol flow
+                        body_copy = dict(body)
+                        req_body = json.dumps(body_copy).encode()
+                        req = urllib.request.Request(
+                            f"{self.KIE_BASE}/jobs/createTask",
+                            data=req_body,
+                            headers={
+                                "Authorization": f"Bearer {self.api_key}",
+                                "Content-Type": "application/json"
+                            }
+                        )
+                        response = urllib.request.urlopen(req, timeout=self.timeout)
+                        raw_response = response.read().decode()
+                        data = json.loads(raw_response)
+                        new_task_id = data.get("data", {}).get("taskId") if isinstance(data.get("data"), dict) else None
+                        if new_task_id:
+                            task_id = new_task_id
+                            logger.info(f"Kie: retry created new task {task_id}")
+                            # Reset poll counter (negative offset to account for the poll we just did)
+                            i = -1  # will become 0 after continue's loop increment
+                            continue
+                        else:
+                            logger.warning("Kie: retry could not create new task, falling through to failure")
                     raise RuntimeError(f"Kie: task {task_id} failed: {fail_msg[:300]}")
                 else:
                     logger.info(f"Kie: poll {i+1}/{self.max_poll_attempts} state={state}")
