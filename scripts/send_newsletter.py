@@ -34,10 +34,10 @@ def build_newsletter_html(summary: dict, report_date: str, base_url: str = "http
         dot_color = color_map.get(cat, "#888")
         topic_rows += f"""
           <tr>
-            <td style="padding:6px 0;border-bottom:1px solid #2A2A2A;">
+            <td style="padding:6px 0;border-bottom:1px solid #E0E0E0;">
               <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{dot_color};margin-right:8px;"></span>
-              <span style="color:#E0E0E0;font-size:14px;">{title}</span>
-              {f'<span style="color:#888;font-size:12px;margin-left:8px;">({importance})</span>' if importance else ''}
+              <span style="color:#333333;font-size:14px;">{title}</span>
+              {f'<span style="color:#999999;font-size:12px;margin-left:8px;">({importance})</span>' if importance else ''}
             </td>
           </tr>"""
 
@@ -60,40 +60,40 @@ def build_newsletter_html(summary: dict, report_date: str, base_url: str = "http
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-<body style="margin:0;padding:0;background-color:#0A0A0A;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0A0A0A;">
+<body style="margin:0;padding:0;background-color:#F4F4F4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4F4F4;">
     <tr>
-      <td align="center" style="padding:20px 10px;">
-        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+      <td align="center" style="padding:30px 10px;">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FFFFFF;border-radius:12px;">
           <!-- Header -->
           <tr>
-            <td style="text-align:center;padding:30px 20px 10px 20px;">
-              <span style="color:#FFD700;font-size:28px;font-weight:bold;letter-spacing:1px;">Agent N's Hermes News</span>
-              <p style="color:#00FFFF;font-size:14px;margin:4px 0 0 0;">Powered by GLM-5.3-Flash</p>
+            <td style="text-align:center;padding:32px 24px 12px 24px;">
+              <span style="color:#D4A843;font-size:26px;font-weight:700;letter-spacing:0.5px;">Agent N's Hermes News</span>
+              <p style="color:#0088CC;font-size:13px;margin:4px 0 0 0;font-weight:500;">Powered by GLM-5.3-Flash</p>
             </td>
           </tr>
-          <tr><td style="height:2px;background:linear-gradient(90deg,#FFD700,#00FFFF,#FFD700);margin:0 20px;"></td></tr>
+          <tr><td style="height:2px;background:linear-gradient(90deg,#D4A843,#0088CC,#D4A843);margin:0 24px;"></td></tr>
           <!-- Date header -->
           <tr>
-            <td style="padding:20px 20px 10px 20px;text-align:center;">
-              <p style="color:#E0E0E0;font-size:16px;margin:0;">{report_date}</p>
-              <p style="color:#888;font-size:12px;margin:4px 0 0 0;">{total_items} items analyzed | <a href="{base_url}" style="color:#00FFFF;">View online</a></p>
+            <td style="padding:20px 24px 10px 24px;text-align:center;">
+              <p style="color:#555555;font-size:15px;margin:0;font-weight:500;">{report_date}</p>
+              <p style="color:#888888;font-size:12px;margin:4px 0 0 0;">{total_items} items analyzed | <a href="{base_url}" style="color:#0088CC;text-decoration:underline;">View online</a></p>
             </td>
           </tr>
           {hero_html}
           <!-- Executive Summary -->
           <tr>
-            <td style="padding:10px 20px;">
-              <h2 style="color:#FFD700;font-size:18px;margin:0 0 10px 0;">Executive Summary</h2>
-              <div style="color:#CCCCCC;font-size:14px;line-height:1.6;">
+            <td style="padding:8px 24px 16px 24px;">
+              <h2 style="color:#D4A843;font-size:17px;margin:0 0 10px 0;font-weight:700;">Executive Summary</h2>
+              <div style="color:#333333;font-size:14px;line-height:1.7;">
                 {exec_summary[:800]}
               </div>
             </td>
           </tr>
           <!-- Topics -->
           <tr>
-            <td style="padding:10px 20px;">
-              <h2 style="color:#FFD700;font-size:18px;margin:0 0 10px 0;">Top Stories</h2>
+            <td style="padding:8px 24px 16px 24px;">
+              <h2 style="color:#D4A843;font-size:17px;margin:0 0 10px 0;font-weight:700;">Top Stories</h2>
               <table width="100%" cellpadding="0" cellspacing="0">
                 {topic_rows}
               </table>
@@ -101,23 +101,23 @@ def build_newsletter_html(summary: dict, report_date: str, base_url: str = "http
           </tr>
           <!-- Category counts -->
           <tr>
-            <td style="padding:10px 20px;">
-              <div style="color:#888;font-size:12px;border-top:1px solid #2A2A2A;padding-top:10px;">
+            <td style="padding:8px 24px;">
+              <div style="color:#888888;font-size:12px;border-top:1px solid #E0E0E0;padding-top:10px;">
                 Coverage: {cat_counts}
               </div>
             </td>
           </tr>
           <!-- Footer -->
           <tr>
-            <td style="padding:20px;text-align:center;border-top:1px solid #2A2A2A;margin-top:20px;">
-              <p style="color:#666;font-size:11px;margin:0;">
-                <a href="{base_url}" style="color:#00FFFF;">Agent N's Hermes News</a> &mdash;
+            <td style="padding:20px 24px;text-align:center;border-top:1px solid #E0E0E0;margin-top:16px;">
+              <p style="color:#888888;font-size:11px;margin:0;">
+                <a href="{base_url}" style="color:#0088CC;text-decoration:underline;">Agent N's Hermes News</a> &mdash;
                 Daily Hermes Agent &amp; Hermes Desktop news<br/>
-                Hero images by <a href="https://kie.ai?ref=7c7e62a37e5bbed684c789bbd7d6f0dd" style="color:#00FFFF;">kie.ai</a>
+                Hero images by <a href="https://kie.ai?ref=7c7e62a37e5bbed684c789bbd7d6f0dd" style="color:#0088CC;text-decoration:underline;">kie.ai</a>
               </p>
-              <p style="color:#666;font-size:10px;margin:10px 0 0 0;">
+              <p style="color:#999999;font-size:10px;margin:10px 0 0 0;">
                 You received this because you subscribed. 
-                <a href="%unsubscribe_url%" style="color:#888;">Unsubscribe</a>
+                <a href="%unsubscribe_url%" style="color:#999999;">Unsubscribe</a>
               </p>
             </td>
           </tr>
