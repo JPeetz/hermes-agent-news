@@ -17,29 +17,41 @@ else
     echo "BUTTONDOWN_API_KEY not set; subscribe server disabled"
 fi
 
+# Write .env file so cron children (which lose docker-compose env vars) can
+# reload them via python-dotenv — run_pipeline.py already calls load_dotenv().
+cat > /app/.env << EOF
+OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+KIE_API_KEY=${KIE_API_KEY:-}
+BUTTONDOWN_API_KEY=${BUTTONDOWN_API_KEY:-}
+PIPELINE_BASE_URL=${PIPELINE_BASE_URL:-https://hermesnews.xyz}
+TARGET_DATE=${TARGET_DATE:-}
+EOF
+
 # Set up cron job only if enabled
 if [ "${ENABLE_CRON:-false}" = "true" ]; then
     CRON_SCHEDULE="${COLLECTION_SCHEDULE:-0 3 * * *}"
 
-    # Next run only: DEBUG logging for diagnostics
-    DEBUG_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web > /app/logs/cron.log 2>&1"
+    # Export essential env vars on the cron command line too, for scripts that
+    # don't load dotenv (send_newsletter.py).  Quotes inside crontab are tricky
+    # so use no quotes on values that lack special chars.
+    VARS="LOG_LEVEL=DEBUG OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-} KIE_API_KEY=${KIE_API_KEY:-}"
     if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
-        DEBUG_CMD="${DEBUG_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
+        VARS="${VARS} BUTTONDOWN_API_KEY=${BUTTONDOWN_API_KEY}"
     fi
 
-    # Restore normal logging for subsequent runs (after 24h)
-    NORMAL_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web >> /app/logs/cron.log 2>&1"
+    PIPE_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web"
     if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
-        NORMAL_CMD="${NORMAL_CMD} && python3 /app/scripts/send_newsletter.py >> /app/logs/newsletter.log 2>&1"
+        PIPE_CMD="${PIPE_CMD} && python3 /app/scripts/send_newsletter.py"
     fi
 
-    # Write cron files with the right PATH — cron's default doesn't include /usr/local/bin
+    # First run (restored after 24h): DEBUG logging
     echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron-restore
-    echo "$CRON_SCHEDULE LOG_LEVEL=DEBUG $DEBUG_CMD" >> /etc/cron.d/ai-news-cron-restore
+    echo "$CRON_SCHEDULE $VARS $PIPE_CMD > /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron-restore
     (sleep 86400 && mv /etc/cron.d/ai-news-cron-restore /etc/cron.d/ai-news-cron && crontab /etc/cron.d/ai-news-cron) &
 
+    # Normal run
     echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron
-    echo "$CRON_SCHEDULE LOG_LEVEL=DEBUG $DEBUG_CMD" >> /etc/cron.d/ai-news-cron
+    echo "$CRON_SCHEDULE $VARS $PIPE_CMD >> /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron
     chmod 0644 /etc/cron.d/ai-news-cron
     crontab /etc/cron.d/ai-news-cron
     echo "Cron job scheduled (NEXT RUN DEBUG): $CRON_SCHEDULE"
