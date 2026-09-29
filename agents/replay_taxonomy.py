@@ -139,7 +139,7 @@ AGENTS.update(
             id="hero",
             label="Illustrator",
             kind="imagegen",
-            blurb="Paints the day's scene around Agent N.",
+            blurb="Paints the day's scene around Agent N via kie.ai (https://kie.ai/?ref=7c7e62a37e5bbed684c789bbd7d6f0dd).",
         ),
     }
 )
