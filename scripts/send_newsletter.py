@@ -8,6 +8,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # cron children don't inherit docker-compose env; read /app/.env
+except ImportError:
+    pass
+
 import requests
 
 logging.basicConfig(
