@@ -569,51 +569,53 @@ class ResearchGatherer(BaseGatherer):
         # can't go through feedparser. Routes only to the "Hermes Agent" search.
         if hn_feeds:
             logger.info("Fetching Hacker News Algolia (Hermes Agent stories)")
-            try:
-                import urllib.request
-                import json as _json
+            with self.time_step('research_blogs', 'Hacker News') as step:
+                try:
+                    import urllib.request
+                    import json as _json
 
-                HN_QUERY = "https://hn.algolia.com/api/v1/search_by_date?query=%22Hermes%20Agent%22&tags=story&hitsPerPage=20"
-                req = urllib.request.Request(HN_QUERY, headers={"User-Agent": "Hermes-Agent-News/1.0"})
-                with urllib.request.urlopen(req, timeout=15) as resp:
-                    hn_data = _json.loads(resp.read())
+                    HN_QUERY = "https://hn.algolia.com/api/v1/search_by_date?query=%22Hermes%20Agent%22&tags=story&hitsPerPage=20"
+                    req = urllib.request.Request(HN_QUERY, headers={"User-Agent": "Hermes-Agent-News/1.0"})
+                    with urllib.request.urlopen(req, timeout=15) as resp:
+                        hn_data = _json.loads(resp.read())
 
-                hits = hn_data.get("hits", [])
-                kept = 0
-                for h in hits:
-                    title = (h.get("title") or "").strip()
-                    url = h.get("url") or f"https://news.ycombinator.com/item?id={h.get('objectID','')}"
-                    if not title:
-                        continue
-                    author = (h.get("author") or "hn")
-                    created = (h.get("created_at") or "")
-                    points = h.get("points") or 0
-                    item = CollectedItem(
-                        id=f"hn-{h.get('objectID','')}",
-                        url=url,
-                        title=title,
-                        content=(h.get("story_text") or title)[:500],
-                        author=author,
-                        published=created,
-                        source='hn_algolia',
-                        source_type='rss',
-                        keywords=["hacker", "hacker news"],
-                        collected_at=datetime.now().isoformat(),
-                        metadata={
-                            'source': 'hackernews',
-                            'source_feed': 'hn_algolia_hermes',
-                            'hn_object_id': h.get('objectID', ''),
-                            'points': points,
-                            'comments': h.get('num_comments', 0),
-                        }
-                    )
-                    if item.url not in seen_urls:
-                        seen_urls.add(item.url)
-                        all_posts.append(item)
-                        kept += 1
-                logger.info(f"HN Algolia: kept {kept} Hermes Agent stories")
-            except Exception as e:
-                logger.error(f"Failed to fetch HN Algolia: {e}")
+                    hits = hn_data.get("hits", [])
+                    kept = 0
+                    for h in hits:
+                        title = (h.get("title") or "").strip()
+                        url = h.get("url") or f"https://news.ycombinator.com/item?id={h.get('objectID','')}"
+                        if not title:
+                            continue
+                        author = (h.get("author") or "hn")
+                        created = (h.get("created_at") or "")
+                        points = h.get("points") or 0
+                        item = CollectedItem(
+                            id=f"hn-{h.get('objectID','')}",
+                            url=url,
+                            title=title,
+                            content=(h.get("story_text") or title)[:500],
+                            author=author,
+                            published=created,
+                            source='hn_algolia',
+                            source_type='rss',
+                            keywords=["hacker", "hacker news"],
+                            collected_at=datetime.now().isoformat(),
+                            metadata={
+                                'source': 'hackernews',
+                                'source_feed': 'hn_algolia_hermes',
+                                'hn_object_id': h.get('objectID', ''),
+                                'points': points,
+                                'comments': h.get('num_comments', 0),
+                            }
+                        )
+                        if item.url not in seen_urls:
+                            seen_urls.add(item.url)
+                            all_posts.append(item)
+                            kept += 1
+                    step.items = kept
+                    logger.info(f"HN Algolia: kept {kept} Hermes Agent stories")
+                except Exception as e:
+                    logger.error(f"Failed to fetch HN Algolia: {e}")
 
         # Fetch other feeds via RSS (existing behavior)
         if other_feeds:
