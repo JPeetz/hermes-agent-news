@@ -445,9 +445,11 @@ class ResearchGatherer(BaseGatherer):
         # Separate LessWrong from other feeds (LessWrong needs GraphQL for date-range queries)
         lesswrong_feeds = [s for s in self.research_feed_specs if 'lesswrong.com' in s.url.lower()]
         hf_daily_feeds = [s for s in self.research_feed_specs if 'huggingface.co/api/daily_papers' in s.url.lower()]
+        hn_feeds = [s for s in self.research_feed_specs if 'hn.algolia.com/api' in s.url.lower()]
         other_feeds = [s for s in self.research_feed_specs
                        if 'lesswrong.com' not in s.url.lower()
-                       and 'huggingface.co/api/daily_papers' not in s.url.lower()]
+                       and 'huggingface.co/api/daily_papers' not in s.url.lower()
+                       and 'hn.algolia.com/api' not in s.url.lower()]
 
         all_posts = []
         seen_urls = set()
@@ -561,6 +563,57 @@ class ResearchGatherer(BaseGatherer):
 
             except Exception as e:
                 logger.error(f"Failed to fetch HF daily papers: {e}")
+
+        # Fetch Hacker News Algolia (JSON API → keyword-filtered → CollectedItem)
+        # Mirrors the HF daily-papers handler: HN is a JSON API, not RSS, so it
+        # can't go through feedparser. Routes only to the "Hermes Agent" search.
+        if hn_feeds:
+            logger.info("Fetching Hacker News Algolia (Hermes Agent stories)")
+            try:
+                import urllib.request
+                import json as _json
+
+                HN_QUERY = "https://hn.algolia.com/api/v1/search_by_date?query=%22Hermes%20Agent%22&tags=story&hitsPerPage=20"
+                req = urllib.request.Request(HN_QUERY, headers={"User-Agent": "Hermes-Agent-News/1.0"})
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    hn_data = _json.loads(resp.read())
+
+                hits = hn_data.get("hits", [])
+                kept = 0
+                for h in hits:
+                    title = (h.get("title") or "").strip()
+                    url = h.get("url") or f"https://news.ycombinator.com/item?id={h.get('objectID','')}"
+                    if not title:
+                        continue
+                    author = (h.get("author") or "hn")
+                    created = (h.get("created_at") or "")
+                    points = h.get("points") or 0
+                    item = CollectedItem(
+                        id=f"hn-{h.get('objectID','')}",
+                        url=url,
+                        title=title,
+                        content=(h.get("story_text") or title)[:500],
+                        author=author,
+                        published=created,
+                        source='hn_algolia',
+                        source_type='rss',
+                        keywords=["hacker", "hacker news"],
+                        collected_at=datetime.now().isoformat(),
+                        metadata={
+                            'source': 'hackernews',
+                            'source_feed': 'hn_algolia_hermes',
+                            'hn_object_id': h.get('objectID', ''),
+                            'points': points,
+                            'comments': h.get('num_comments', 0),
+                        }
+                    )
+                    if item.url not in seen_urls:
+                        seen_urls.add(item.url)
+                        all_posts.append(item)
+                        kept += 1
+                logger.info(f"HN Algolia: kept {kept} Hermes Agent stories")
+            except Exception as e:
+                logger.error(f"Failed to fetch HN Algolia: {e}")
 
         # Fetch other feeds via RSS (existing behavior)
         if other_feeds:
