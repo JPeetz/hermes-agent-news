@@ -154,6 +154,11 @@ def send_newsletter(api_key: str, html_body: str, report_date: str):
     if resp.status_code in (200, 201):
         logger.info(f"Buttondown email sent: id={data.get('id')} status={data.get('status')}")
         return True
+    elif resp.status_code == 400 and data.get("code") == "email_duplicate":
+        # Same subject/date already exists on Buttondown (e.g. a re-run of a
+        # date that already sent). This is not a failure — the email is out.
+        logger.info(f"Buttondown duplicate for {report_date}; email already exists — nothing to send")
+        return True
     else:
         logger.error(f"Buttondown API error {resp.status_code}: {data}")
         return False

@@ -31,30 +31,21 @@ EOF
 if [ "${ENABLE_CRON:-false}" = "true" ]; then
     CRON_SCHEDULE="${COLLECTION_SCHEDULE:-0 3 * * *}"
 
-    # Export essential env vars on the cron command line too, for scripts that
-    # don't load dotenv (send_newsletter.py).  Quotes inside crontab are tricky
-    # so use no quotes on values that lack special chars.
-    VARS="LOG_LEVEL=DEBUG OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-} KIE_API_KEY=${KIE_API_KEY:-}"
-    if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
-        VARS="${VARS} BUTTONDOWN_API_KEY=${BUTTONDOWN_API_KEY}"
-    fi
-
+    # Both run_pipeline.py and send_newsletter.py call load_dotenv() and read
+    # /app/.env (written above), so cron children get their env from there.
+    # NEVER bake secrets into the cron command line: a "VAR=x cmd1 && cmd2"
+    # prefix only scopes the vars to cmd1 (cd), and the keys leak in `ps`.
     PIPE_CMD="cd /app && python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web"
     if [ -n "${BUTTONDOWN_API_KEY:-}" ]; then
         PIPE_CMD="${PIPE_CMD} && python3 /app/scripts/send_newsletter.py"
     fi
 
-    # First run (restored after 24h): DEBUG logging
-    echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron-restore
-    echo "$CRON_SCHEDULE $VARS $PIPE_CMD > /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron-restore
-    (sleep 86400 && mv /etc/cron.d/ai-news-cron-restore /etc/cron.d/ai-news-cron && crontab /etc/cron.d/ai-news-cron) &
-
     # Normal run
     echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron
-    echo "$CRON_SCHEDULE $VARS $PIPE_CMD >> /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron
+    echo "$CRON_SCHEDULE $PIPE_CMD >> /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron
     chmod 0644 /etc/cron.d/ai-news-cron
     crontab /etc/cron.d/ai-news-cron
-    echo "Cron job scheduled (NEXT RUN DEBUG): $CRON_SCHEDULE"
+    echo "Cron job scheduled: $CRON_SCHEDULE"
     cron
 else
     echo "Cron scheduler disabled (set ENABLE_CRON=true to enable)"
