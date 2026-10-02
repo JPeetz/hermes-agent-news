@@ -25,6 +25,17 @@ logger = logging.getLogger("send_newsletter")
 def build_newsletter_html(summary: dict, report_date: str, base_url: str = "https://hermesnews.xyz") -> str:
     """Render the HTML email with Agent N branding."""
     exec_summary = summary.get("executive_summary_html") or summary.get("executive_summary", "")
+
+    # Make internal relative links absolute so they work in email. The website's
+    # exec summary carries links like href="/?date=...&category=..." which render
+    # fine on the site but are dead in an email client (no origin to resolve against).
+    # We rewrite every href="/... to href="<base_url>/... before sending. This is safe:
+    # external links are already absolute (http/https) and untouched.
+    import re as _re
+    exec_summary = _re.sub(
+        r'href="/(?!/)', f'href="{base_url}/', exec_summary
+    ) if exec_summary else ""
+
     topics = summary.get("top_topics", [])[:6]
     categories = summary.get("categories", {})
     hero_url = summary.get("hero_image_url")
@@ -92,7 +103,7 @@ def build_newsletter_html(summary: dict, report_date: str, base_url: str = "http
             <td style="padding:8px 24px 16px 24px;">
               <h2 style="color:#D4A843;font-size:17px;margin:0 0 10px 0;font-weight:700;">Executive Summary</h2>
               <div style="color:#333333;font-size:14px;line-height:1.7;">
-                {exec_summary[:800]}
+                {exec_summary}
               </div>
             </td>
           </tr>
