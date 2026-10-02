@@ -21,26 +21,34 @@
 <button
 	on:click={handleClick}
 	disabled={!available}
+	aria-label={day.toDateString()}
+	aria-pressed={selected}
+	title={available ? `${day.toDateString()} – has news` : day.toDateString()}
 	class="
-		relative aspect-square p-1 rounded-lg text-sm transition-all
-		{inMonth ? 'text-text-light' : 'text-text-muted'}
+		relative aspect-square rounded-xl text-sm font-medium transition-all duration-150
+		{inMonth
+			? available
+				? 'text-agent-gray-900 dark:text-agent-gray-100'
+				: 'text-agent-gray-400 dark:text-agent-gray-500'
+			: 'text-agent-gray-300 dark:text-agent-gray-700'}
 		{available
-			? 'cursor-pointer hover:bg-hermes-gold/10'
+			? 'cursor-pointer hover:bg-hermes-gold/15 hover:scale-105'
 			: 'cursor-default'}
 		{selected
-			? 'bg-hermes-gold text-bg-dark hover:bg-hermes-gold-dark'
+			? 'bg-hermes-gold text-bg-dark shadow-glow-gold hover:bg-hermes-gold-dark hover:text-bg-dark'
 			: ''}
-		{today && !selected
-			? 'ring-2 ring-hermes-gold ring-inset'
-			: ''}
+		{today && !selected ? 'ring-2 ring-hermes-gold/70 ring-inset' : ''}
 	"
 >
-	<span class="relative z-10">{dayNumber}</span>
+	<span class="relative z-10 flex items-center justify-center h-full">
+		{dayNumber}
+	</span>
 
-	<!-- Data indicator dot -->
 	{#if available && !selected}
 		<span
-			class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-hermes-gold"
+			class="absolute bottom-1.5 left-1/2 -translate-x-1/2 h-1.5 w-1.5 rounded-full"
+			class:bg-agent-cyan={!today}
+			class:bg-hermes-gold={today}
 		></span>
 	{/if}
 </button>

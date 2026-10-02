@@ -60,12 +60,12 @@
 	}
 </script>
 
-<div class="bg-white dark:bg-bg-surface rounded-xl shadow-card p-4">
+<div class="bg-white dark:bg-bg-card rounded-xl shadow-card p-5">
 	<!-- Header with month navigation -->
-	<div class="flex items-center justify-between mb-4">
+	<div class="flex items-center justify-between mb-5">
 		<button
 			on:click={previousMonth}
-			class="p-2 rounded-lg hover:bg-bg-surface transition-colors"
+			class="p-2 rounded-lg text-agent-gray-500 hover:text-hermes-gold hover:bg-hermes-gold/10 transition-colors"
 			aria-label="Previous month"
 		>
 			<svg
@@ -80,13 +80,13 @@
 			</svg>
 		</button>
 
-		<h3 class="font-semibold text-text-light">
+		<h3 class="font-semibold text-agent-gray-900 dark:text-agent-gray-100">
 			{monthName} {viewYear}
 		</h3>
 
 		<button
 			on:click={nextMonth}
-			class="p-2 rounded-lg hover:bg-bg-surface transition-colors"
+			class="p-2 rounded-lg text-agent-gray-500 hover:text-hermes-gold hover:bg-hermes-gold/10 transition-colors"
 			aria-label="Next month"
 		>
 			<svg
@@ -105,14 +105,14 @@
 	<!-- Weekday headers -->
 	<div class="grid grid-cols-7 mb-2">
 		{#each weekdays as day}
-			<div class="text-center text-xs font-medium text-text-muted py-2">
+			<div class="text-center text-xs font-semibold uppercase tracking-wide text-agent-gray-500 dark:text-agent-gray-400 py-1.5">
 				{day}
 			</div>
 		{/each}
 	</div>
 
 	<!-- Calendar grid -->
-	<div class="grid grid-cols-7 gap-1">
+	<div class="grid grid-cols-7 gap-1.5">
 		{#each calendarDays as day}
 			{@const dateStr = toDateString(day)}
 			{@const inMonth = isInMonth(day, viewYear, viewMonth)}
@@ -132,13 +132,17 @@
 	</div>
 
 	<!-- Legend -->
-	<div class="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-teal-border text-xs text-text-muted">
-		<div class="flex items-center gap-1.5">
-			<span class="w-3 h-3 rounded-full bg-hermes-gold"></span>
-			<span>Has data</span>
+	<div class="flex items-center justify-center gap-5 mt-5 pt-4 border-t border-agent-gray-200 dark:border-agent-gray-700 text-xs text-agent-gray-600 dark:text-agent-gray-400">
+		<div class="flex items-center gap-2">
+			<span class="w-2.5 h-2.5 rounded-full bg-agent-cyan"></span>
+			<span>News data</span>
 		</div>
-		<div class="flex items-center gap-1.5">
-			<span class="w-3 h-3 rounded-full border-2 border-hermes-gold"></span>
+		<div class="flex items-center gap-2">
+			<span class="w-2.5 h-2.5 rounded-full bg-hermes-gold"></span>
+			<span>Today with news</span>
+		</div>
+		<div class="flex items-center gap-2">
+			<span class="w-3 h-3 rounded-full border-2 border-hermes-gold/70"></span>
 			<span>Today</span>
 		</div>
 	</div>
