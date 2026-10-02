@@ -29,25 +29,19 @@ https://juliangoldie.com/feed/
 # Hugging Face (major releases & trending model announcements)
 https://huggingface.co/blog/feed.xml
 
-# ===== Reddit Community (RSS feeds — no proxy required) =====
-# Priority: critical — primary Hermes subreddits
-https://www.reddit.com/r/hermesagent/new.rss
-https://www.reddit.com/r/hermesagent/hot.rss
-https://www.reddit.com/r/nousresearch/.rss
+# ===== Reddit Community (via one combined multi-sub feed) =====
+# Priority: critical — primary Hermes subreddits.
+# IMPORTANT: Reddit rate-limits anonymous RSS to ~1 request per window (HTTP 429
+# on any second burst). Fetching each sub as its own feed guarantees throttling.
+# A single combined multi-sub feed returns covers all subs in ONE request, which
+# stays under the quota. The gatherer fetches Reddit serially at 1.6s spacing;
+# with one feed that is effectively one request per run.
+https://www.reddit.com/r/hermesagent+nousresearch+LocalLLaMA+LLMDevs+Rag/new.rss
 
-# Hermes Agent official user posts
-https://www.reddit.com/user/NousResearch/.rss
-
-# Community subs — keyword-filtered by LLM relevance gate (Hermes Agent/Desktop keywords)
-https://www.reddit.com/r/LocalLLaMA/new.rss
-https://www.reddit.com/r/LLMDevs/new.rss
-https://www.reddit.com/r/Rag/new.rss
-
-# Multi-sub combined feed (backup — the individual feeds above are preferred for per-sub sorting)
-# https://www.reddit.com/r/hermesagent+LocalLLaMA+nousresearch/.rss
-
-# Keyword search feeds (LLM relevance gate will filter for Agent N content)
-https://www.reddit.com/r/hermesagent/search.rss?q=Hermes+Desktop&restrict_sr=1
+# Keyword search feed (LLM relevance gate filters for Agent N content). Kept
+# commented: a second Reddit request in the same window trips 429, and the
+# combined feed above already surfaces Agent N content via the relevance gate.
+# https://www.reddit.com/r/hermesagent/search.rss?q=Hermes+Desktop&restrict_sr=1
 
 # ===== Non-RSS sources (covered by Twitter/GitHub) =====
 # https://hermes-agent.ai/blog — JS-rendered, no RSS; tweets cover releases

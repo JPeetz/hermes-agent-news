@@ -424,6 +424,8 @@ The summary should read like a professional briefing, focusing on what matters f
                 candidates = result.get("selected_ids")
             if candidates is None:
                 candidates = result.get("ai_article_ids")
+            if candidates is None:
+                candidates = result.get("hermes_item_ids")
             if candidates is None and isinstance(result.get("decisions"), list):
                 candidates = [
                     row.get("article_id", row.get("id"))
@@ -645,7 +647,20 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             )
 
             result = self._parse_json_response(response.content)
-            ai_ids = set(result.get('ai_article_ids', []))
+            # The model can return the filter key under its prompt-shaped name
+            # ("hermes_item_ids" since the Agent N rebrand) or the legacy
+            # "ai_article_ids". Accept either so a prompt change can't silently
+            # zero out the whole news category. (Regressed in b7f3794: the
+            # rebrand prompt switched to hermes_item_ids but the parser only
+            # read ai_article_ids, so every run published an empty news report.)
+            id_keys = ("ai_article_ids", "hermes_item_ids", "article_ids")
+            ai_ids = []
+            for key in id_keys:
+                val = result.get(key)
+                if val:
+                    ai_ids = val
+                    break
+            ai_ids = set(ai_ids) if isinstance(ai_ids, list) else set()
 
             logger.info(self._thinking_log_message("LLM filter thinking", response))
             logger.info(f"LLM filter returned {len(ai_ids)} AI article IDs")

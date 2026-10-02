@@ -131,37 +131,57 @@ class NewsGatherer(BaseGatherer):
         return unique_articles
 
     async def _collect_rss(self) -> List[CollectedItem]:
-        """Collect articles from RSS feeds."""
+        """Collect articles from RSS feeds.
+
+        Non-Reddit feeds fetch in parallel (fast). Reddit feeds fetch
+        strictly serially with an inter-request delay: Reddit rate-limits
+        burst requests (HTTP 429), and firing its ~8 feeds through parallel
+        workers means they all hit reddit.com at once and get throttled.
+        A naive `time.sleep` inside each worker doesn't stagger anything
+        (they all sleep concurrently), so we process Reddit one-by-one.
+        """
         loop = asyncio.get_event_loop()
 
-        def fetch_timed(spec):
-            """One feed, timed as its own replay step.
-
-            Labelled by host, never by URL -- see `step_label_for_url`.
-            Reddit rate-limits burst requests (HTTP 429), so stagger Reddit
-            feeds with a short delay before fetching: they share one origin
-            and parallel workers triggering 7+ requests at once get throttled.
-            """
+        reddit_specs = []
+        other_specs = []
+        for spec in self.feed_specs:
             url = getattr(spec, 'url', spec)
             host = (urlparse(url).hostname or '').lower()
             if host == 'reddit.com' or host.endswith('.reddit.com'):
-                time.sleep(2.0)
-            with self.time_step('news', step_label_for_url(url)) as step:
-                articles = self._fetch_feed(spec)
-                step.items = len(articles)
-                return articles
+                reddit_specs.append(spec)
+            else:
+                other_specs.append(spec)
 
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            tasks = [
-                loop.run_in_executor(executor, fetch_timed, spec)
-                for spec in self.feed_specs
-            ]
-            results = await asyncio.gather(*tasks)
-
-        # Flatten results
         articles = []
-        for result in results:
-            articles.extend(result)
+
+        # Non-Reddit feeds: fetch in parallel, each timed as its own replay step.
+        def fetch_timed(spec):
+            url = getattr(spec, 'url', spec)
+            with self.time_step('news', step_label_for_url(url)) as step:
+                items = self._fetch_feed(spec)
+                step.items = len(items)
+                return items
+
+        if other_specs:
+            with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+                tasks = [
+                    loop.run_in_executor(executor, fetch_timed, spec)
+                    for spec in other_specs
+                ]
+                results = await asyncio.gather(*tasks)
+                for result in results:
+                    articles.extend(result)
+
+        # Reddit feeds: fetch strictly serially, spaced to avoid 429.
+        # 1.6s between requests keeps us under Reddit's burst limit while
+        # adding negligible wall-clock time for ~8 feeds.
+        for spec in reddit_specs:
+            url = getattr(spec, 'url', spec)
+            with self.time_step('news', step_label_for_url(url)) as step:
+                items = await loop.run_in_executor(None, self._fetch_feed, spec)
+                step.items = len(items)
+                articles.extend(items)
+            await asyncio.sleep(1.6)
 
         return articles
 
