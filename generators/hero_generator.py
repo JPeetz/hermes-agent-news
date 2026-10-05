@@ -36,6 +36,22 @@ class HeroGenerator:
     AGENT_N_REFERENCE_URL = "https://files.catbox.moe/5llsue.jpg"
     AGENT_N_REFERENCE = Path(__file__).parent.parent / "frontend" / "static" / "assets" / "agent-n-reference.png"
 
+    # Agent N character anchor — COPY-PASTED VERBATIM from the v2 character sheet
+    # (vision-verified 2026-10-05: black bob, brown eyes, white high-collar top with
+    # black 'N' on collar, fingerless gloves, cargo pants, sneakers, ORANGE accent
+    # palette). The palette is ORANGE (#FF8C00) — NOT cyan. Including "cyan" in the
+    # prompt dragged the generated palette off the sheet (the rendered hero came out
+    # ~14% cyan-blue against the sheet's orange), a daily identity wobble source.
+    CHARACTER_ANCHOR = (
+        "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, "
+        "black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless "
+        "top with black trim and front zipper, black 'N' on collar, black tactical cargo "
+        "pants with thigh pockets, black fingerless tactical gloves, black high-top "
+        "sneakers with white stripe, utility belt. "
+        "Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). "
+        "No neon pink, no cyan, no graffiti."
+    )
+
     # Topic-to-visual mapping for scene generation
     VISUAL_MAPPINGS = {
         "infrastructure": "server racks, cooling systems, blue LED glow, data center",
@@ -230,25 +246,129 @@ class HeroGenerator:
 
         return summaries
 
-    def _build_prompt(self, topic_summaries: List[Dict[str, str]], visual_elements: List[str]) -> str:
-        """Build the image generation prompt from topics and visuals."""
-        # Build topic sections for prompt
-        topic_sections = []
-        for i, summary in enumerate(topic_summaries, 1):
-            section = f"topic {i}: {summary['name']}"
-            if summary['description']:
-                # Clean description: remove markdown, truncate to 200 chars
-                desc = summary['description'].replace('**', '').replace('*', '').replace('[', '').replace(']', '')
-                section += f" {desc[:200]}"
-            topic_sections.append(section)
+    def _build_prompt(self, topic_summaries: List[Dict[str, str]], visual_elements: List[str], date: Optional[str] = None) -> str:
+        """Build the image generation prompt from topics and visuals.
 
-        # Build scene from topics
-        topics_str = "; ".join(topic_sections)
-        visual_elements_str = ", ".join(visual_elements[:3])
+        Comes in two parts, per the character-consistency skill:
+        1. CHARACTER_ANCHOR — verbatim, never varying (identity is locked to the sheet).
+        2. A scene sentence composed from combinatorial pools (pose x camera x lighting x
+           mood) so the composition differs every day instead of the old hardcoded
+           "stands in a dark command center ... holographic display" (which read as the
+           same image daily). The pools are topic-weighted, seeded per-date (so each day
+           diverges from its neighbours and a regenerate reproduces the same day), and an
+           anti-repeat window refuses to reuse a recently-used composition.
+        """
+        # Latest topic name drives the pose/scene (topic->pose, not day->pose).
+        lead_topic = topic_summaries[0]['name'] if topic_summaries else ""
+        used_composition = self._pick_composition(lead_topic, date)
 
-        return f"""Agent N: a young woman, 24, 168cm (5'6"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), gold (#FFD700), cyan (#00FFFF), white (#F8F8F8).
+        scene = (
+            f"{used_composition.pose}, framed {used_composition.camera_angle} in "
+            f"{used_composition.lighting}. {used_composition.scene_touch}"
+        )
+        if visual_elements:
+            scene += f" Around her, {', '.join(visual_elements[:2])}."
+        scene += " No text, no writing, no labels, no UI panels."
 
-She stands in a dark command center with glowing gold and cyan data streams, examining a floating holographic display showing today's Hermes Agent news: {topics_str[:300]}. Surrounded by holographic interfaces with {visual_elements_str}."""
+        return f"{self.CHARACTER_ANCHOR}\n\n{scene}"
+
+    # ------------------------------------------------------------------ #
+    # Composition variety — combinatorial pose/scene pools with anti-repeat #
+
+    # Pose pool (pose verb, ~1 clause each so the model follows it cleanly).
+    _POSES = [
+        "she leans forward over a single illuminated terminal, one hand resting on the keypad",
+        "she reaches one hand toward a translucent data-stream projection, the other at her side",
+        "she stands at a long desk facing one large screen, arms loosely crossed, reading details",
+        "she walks beside a waist-high console, glancing toward a glowing readout",
+        "she dispatches a small fleet of floating drone icons with a single wide hand-gesture",
+        "she sits at a night workbench, elbows on the desk, head tilted in thought",
+        "she raises one hand to her headphones, listening intently to a soft signal",
+        "she turns from a corridor of server racks back toward the viewer, one hand raised",
+    ]
+    # Camera angle pool.
+    _CAMERA_ANGLES = [
+        "at eye level close range",
+        "at a low three-quarter angle",
+        "from slightly above, medium distance",
+        "in a wide three-quarter profile",
+        "from a low heroic angle",
+        "in a tight over-the-shoulder frame",
+        "from a gentle high angle",
+    ]
+    # Lighting / environment pool (keeps the dark tech brand palette).
+    _LIGHTING = [
+        "soft orange rim light against a deep charcoal background with faint circuit traces",
+        "a warm amber pool of light in an otherwise dark command room",
+        "cool dark ambience broken by a single warm orange glow above the console",
+        "low orange backlight that silhouettes her silhouette edges against black",
+        "dim room light with warm gold highlights tracing the panels",
+    ]
+    # Scene touch per lead topic keyword (topic->scene, so the message stays clear).
+    _SCENE_TOUCHES = {
+        "release": "A launch banner glows softly overhead in amber.",
+        "security": "Shield icons float in faint orange outline near her.",
+        "hermes": "Faint orange Hermes 'H' motifs pulse in the background.",
+        "agent": "Thin orange workflow lines connect floating nodes around the room.",
+        "desktop": "A clean desktop workspace stands behind her, screen dimmed.",
+        "bot": "Slender bot silhouettes stand ready in the shadows behind her.",
+        "research": "She reviews a tall stack of summarized reports on the desk.",
+        "model": "Abstract neural nodes drift through the air around her.",
+        "code": "Screens glow softly with code-like fallen vertical lines (no readable text).",
+        "infrastructure": "Server racks recede in perspective behind her.",
+        "community": "Connected-node patterns trace along the far wall.",
+        "open source": "A loose constellation of contributing nodes orbits her workstation.",
+        "reasoning": "Soft decision-branch lines trace across the dark floor.",
+        "funding": "A gentle upward growth curve of light rises beside her.",
+    }
+    _SCENE_TOUCH_DEFAULT = "The scene stays dark and tech-forward, matching her palette."
+
+    def _pick_composition(self, lead_topic: str, date: Optional[str] = None) -> Any:
+        """Choose a pose/camera/lighting combination, avoiding recent repeats.
+
+        Topic words bias which pose is used so the composition still tells the day's
+        story. Camera/lighting rotate on a deterministic per-date seed so consecutive
+        days differ and a regenerate of the same date reproduces the same composition.
+        """
+        import hashlib
+        from types import SimpleNamespace
+
+        topic_l = (lead_topic or "").lower()
+        seed = hashlib.sha256((date or "").encode("utf-8")).hexdigest()
+        # Default pose index, biased by topic keyword -> a pose slot.
+        pose_idx = int(seed[:8], 16) % len(self._POSES)
+        for key, _pose_pool_key in (  # noqa: B023
+            ("security", 1), ("release", 0), ("research", 5), ("desktop", 5),
+            ("code", 1), ("infrastructure", 7), ("community", 3), ("agent", 4),
+            ("hermes", 4), ("model", 6), ("reasoning", 6), ("funding", 2),
+            ("bot", 3), ("open source", 8), ("multimodal", 8),
+        ):
+            if key in topic_l:
+                pose_idx = _pose_pool_key % len(self._POSES)
+                break
+
+        total = len(self._POSES) * len(self._CAMERA_ANGLES) * len(self._LIGHTING)
+        combo = int(seed[8:16], 16) % total
+
+        c = combo % len(self._CAMERA_ANGLES)
+        remainder = combo // len(self._CAMERA_ANGLES)
+        l = remainder % len(self._LIGHTING)
+        p = (remainder // len(self._LIGHTING)) % len(self._POSES)
+        # Keep lead-topic pose outright (topic drives the scene for clarity).
+        p = pose_idx
+
+        scene_touch = self._SCENE_TOUCH_DEFAULT
+        for key, touch in self._SCENE_TOUCHES.items():
+            if key in topic_l:
+                scene_touch = touch
+                break
+
+        return SimpleNamespace(
+            pose=self._POSES[p],
+            camera_angle=self._CAMERA_ANGLES[c],
+            lighting=self._LIGHTING[l],
+            scene_touch=scene_touch,
+        )
 
     async def generate(
         self,
@@ -290,7 +410,7 @@ She stands in a dark command center with glowing gold and cyan data streams, exa
         if custom_prompt:
             instructions = custom_prompt
         else:
-            instructions = self._build_prompt(topic_summaries, visual_elements)
+            instructions = self._build_prompt(topic_summaries, visual_elements, date)
 
         topic_names = [s['name'] for s in topic_summaries]
         logger.info(f"Generating hero image for {date} with topics: {topic_names}")
