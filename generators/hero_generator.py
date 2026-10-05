@@ -249,56 +249,63 @@ class HeroGenerator:
     def _build_prompt(self, topic_summaries: List[Dict[str, str]], visual_elements: List[str], date: Optional[str] = None) -> str:
         """Build the image generation prompt from topics and visuals.
 
-        Comes in two parts, per the character-consistency skill:
-        1. CHARACTER_ANCHOR — verbatim, never varying (identity is locked to the sheet).
-        2. A scene sentence composed from combinatorial pools (pose x camera x lighting x
-           mood) so the composition differs every day instead of the old hardcoded
-           "stands in a dark command center ... holographic display" (which read as the
-           same image daily). The pools are topic-weighted, seeded per-date (so each day
-           diverges from its neighbours and a regenerate reproduces the same day), and an
-           anti-repeat window refuses to reuse a recently-used composition.
+        Hybrid of (a) the editorial-infographic style the original AATF pipeline used
+        (feed the REAL topic names + descriptions into the scene so the hero visualises
+        actual news content — model names, story themes — instead of an abstract room)
+        and (b) the Agent N character identity locked to the sheet. The mascot actively
+        engages with the day's content (per topic), and composition variety is seeded
+        per-date so consecutive days diverge.
         """
-        # Latest topic name drives the pose/scene (topic->pose, not day->pose).
-        lead_topic = topic_summaries[0]['name'] if topic_summaries else ""
-        used_composition = self._pick_composition(lead_topic, date)
+        # Talk about the character as we always do: identity is the sheet.
+        # ------------------------------------------------------------------ #
+        # Story blocks: the real news content that anchors the scene.
+        story_blocks = []
+        for i, summary in enumerate(topic_summaries, 1):
+            part = f"Topic {i}: {summary['name']}"
+            if summary.get('description'):
+                desc = summary['description'].replace('**', '').replace('*', '')
+                part += f" — {desc[:180]}"
+            story_blocks.append(part)
+        stories = "\n".join(story_blocks) if story_blocks else "the day's Hermes Agent news"
 
+        lead_topic = topic_summaries[0]['name'] if topic_summaries else ""
+        comp = self._pick_composition(lead_topic, date)
+
+        # Scene: Agent N actively engaged with the content, editorial-infographic feel.
+        visuals = ", ".join(visual_elements[:2]) if visual_elements else "holographic news panels"
         scene = (
-            f"{used_composition.pose}, framed {used_composition.camera_angle} in "
-            f"{used_composition.lighting}. {used_composition.scene_touch}"
+            f"{comp.pose} as she lays out and studies the day's top stories.\n\n"
+            f"## Today's stories\n{stories}\n\n"
+            f"## Scene\nA playful, colorful editorial illustration in a dark tech "
+            f"newsroom. Visible as glowing panels and motifs around her: {visuals}."
+            f" {comp.scene_touch} Muted, readable short labels are allowed on the news "
+            f"panels (topic names, model names) but no long sentences.\n"
+            f"Composition: {comp.camera_angle}, {comp.lighting}. Vibrant, energetic, "
+            f"tech-optimistic mood, dark background with orange-accent dataviz."
         )
-        if visual_elements:
-            scene += f" Around her, {', '.join(visual_elements[:2])}."
-        scene += " No text, no writing, no labels, no UI panels."
 
         return f"{self.CHARACTER_ANCHOR}\n\n{scene}"
 
     # ------------------------------------------------------------------ #
     # Composition variety — combinatorial pose/scene pools with anti-repeat #
 
-    # Pose pool (pose verb, ~1 clause each so the model follows it cleanly).
-    # Some are concrete vignettes drawn from real Hermes user stories
-    # (hermes-agent.nousresearch.com/docs/user-stories) so the hero doesn't read as
-    # the same "command center" abstraction every day.
+    # Pose pool — every pose shows Agent N actively ENGAGED with the day's news content
+    # (an analyst laying out and studying today's stories), so the hero visualises the
+    # actual topics. Variety comes from the pose + camera + lighting combos.
     _POSES = [
-        "she leans forward over a single illuminated terminal, one hand resting on the keypad",
-        "she reaches one hand toward a translucent data-stream projection, the other at her side",
-        "she stands at a long desk facing one large screen, arms loosely crossed, reading details",
-        "she walks beside a waist-high console, glancing toward a glowing readout",
-        "she dispatches a small fleet of floating drone icons with a single wide hand-gesture",
-        "she sits at a night workbench, elbows on the desk, head tilted in thought",
-        "she raises one hand to her headphones, listening intently to a soft signal",
-        "she turns from a corridor of server racks back toward the viewer, one hand raised",
-        # Story-inspired vignettes (keep each to one clause, still no readable text):
-        "she works a tall wall of kanban cards, sliding one card forward with two fingers",
-        "she holds a slim phone in one hand, thumb hovering over a chat, the other hand free",
-        "she tends a single round grill-top droid beside a quiet night kitchen counter",
-        "she reviews the ties of a real deployment panel, checking off PR cards one by one",
-        "she reads a compressed one-line briefing that condenses a wall of message threads",
-        "she keeps watch on a row of glowing homelab servers stacked on an unassuming desk",
-        "she sketches workflow lines between toy-size agent figures on a large table",
-        "she leans back in a dim room while a stack of thin terminal panes floats before her",
-        "she pinches her fingers back along a glowing timeline to rewind a mistaken step",
-        "she holds up a small tablet that mirrors her desktop, showing live tool activity",
+        "she leans forward at a single illuminated work terminal, one hand on a keyboard, scanning the day's top story open before her",
+        "she points at a large translucent story panel, tracing the line between two news items",
+        "she stands at a long desk facing one big screen, arms loosely crossed, reading the headline cards laid across it",
+        "she pages through a stack of glowing story cards fanned out on the desk like a newsroom brief",
+        "she flicks a story card up into the air toward the glowing panel wall, building today's line-up",
+        "she sits at a night desk, elbows down, comparing two model-name cards side by side",
+        "she raises one hand to her headphones, pivoting her head toward the panel with the day's top story",
+        "she turns from the story wall back toward the viewer, one hand open as if presenting today's line-up",
+        # The four that best animate a news-editorial scene (each stays one clause):
+        "she slides a kanban story card from 'drafts' to 'live' with two fingers",
+        "she holds up a slim phone, thumb hovering over a headline notification, the other hand free",
+        "she underlines a pass on a glowing briefing card, distilling a wall of messages to a few lines",
+        "she rewinds a glowing timeline with a pinch, pulling a corrected story card back into view",
     ]
     # Camera angle pool.
     _CAMERA_ANGLES = [
