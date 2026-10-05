@@ -6,10 +6,13 @@ export default {
 		extend: {
 			colors: {
 				// Agent N's Hermes News Brand Colors
-				'hermes-gold': '#F59E0B',
-				'hermes-gold-dark': '#D97706',
-				'agent-cyan': '#06B6D4',
-				'agent-cyan-dark': '#0891B2',
+				// 2026-10-05: realigned to the strict character-sheet palette (orange
+				// #FF8C00 + dark gray + white) to match the new hero images. Reversible —
+				// previous gold/cyan build is one git revert away if Joerg flips back.
+				'hermes-gold': '#FF8C00',
+				'hermes-gold-dark': '#E07B00',
+				'agent-cyan': '#FFB84D',
+				'agent-cyan-dark': '#E0A800',
 				'bg-dark': '#121212',
 				'bg-card': '#1E1E1E',
 				'agent-gray': {
@@ -37,8 +40,10 @@ export default {
 					900: '#171717'
 				},
 				// Category accent colors (simplified for newsletter)
-				'category-releases': '#F59E0B',
-				'category-merged-prs': '#06B6D4',
+				// 2026-10-05: releases/merged-prs nudged into the warm sheet family;
+				// community/tips stay distinct for classification.
+				'category-releases': '#FF8C00',
+				'category-merged-prs': '#FFB84D',
 				'category-community': '#10b981',
 				'category-tips': '#8b5cf6'
 			},
@@ -58,8 +63,8 @@ export default {
 			boxShadow: {
 				'card': '0 2px 8px rgba(0, 0, 0, 0.08)',
 				'card-hover': '0 4px 12px rgba(0, 0, 0, 0.12)',
-				'glow-gold': '0 0 12px rgba(245, 158, 11, 0.3)',
-				'glow-cyan': '0 0 12px rgba(6, 182, 212, 0.3)'
+				'glow-gold': '0 0 12px rgba(255, 140, 0, 0.3)',
+				'glow-cyan': '0 0 12px rgba(255, 184, 77, 0.3)'
 			},
 			typography: {
 				DEFAULT: {

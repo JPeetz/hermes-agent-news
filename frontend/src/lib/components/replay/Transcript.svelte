@@ -992,7 +992,7 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.ts-close:hover {
-			color: #FFD700;
+			color: #FF8C00;
 			background: rgb(255 215 0 / 0.1);
 		}
 	}
@@ -1184,7 +1184,7 @@
 		color: #fbbf24;
 	}
 	.linkish {
-		color: #FFD700;
+		color: #FF8C00;
 		text-decoration: underline;
 		font-variant-numeric: tabular-nums;
 	}
@@ -1265,7 +1265,7 @@
 		color: #737373;
 	}
 	.art-note a {
-		color: #FFD700;
+		color: #FF8C00;
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}
@@ -1292,12 +1292,12 @@
 		cursor: pointer;
 	}
 	.prompt-toggle:focus-visible {
-		color: #FFD700;
+		color: #FF8C00;
 		outline: none;
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.prompt-toggle:hover {
-			color: #FFD700;
+			color: #FF8C00;
 		}
 	}
 	.prompt-caret {
@@ -1597,7 +1597,7 @@
 		background: rgb(255 255 255 / 0.09);
 	}
 	.md :global(a) {
-		color: #FFD700;
+		color: #FF8C00;
 		text-decoration: underline;
 		text-underline-offset: 2px;
 	}

@@ -612,7 +612,7 @@
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		color: #FFD700;
+		color: #FF8C00;
 		margin-bottom: 2px;
 	}
 
@@ -728,7 +728,7 @@
 		color: #a3a3a3;
 	}
 	.viewswitch button.on {
-		background: #FFD700;
+		background: #FF8C00;
 		color: #0A0A0A;
 	}
 
@@ -741,7 +741,7 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.hint-btn:hover {
-			color: #FFD700;
+			color: #FF8C00;
 		}
 	}
 

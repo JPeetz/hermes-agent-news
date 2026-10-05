@@ -66,10 +66,10 @@
 			<!-- Agent N's silhouette/logo area -->
 			<div class="modal-icon">
 				<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-					<circle cx="20" cy="20" r="18" stroke="#FFD700" stroke-width="2" fill="none"/>
+					<circle cx="20" cy="20" r="18" stroke="#FF8C00" stroke-width="2" fill="none"/>
 					<path d="M12 26 C12 18, 18 12, 20 10 C22 12, 28 18, 28 26" stroke="#00E5FF" stroke-width="2" fill="none" stroke-linecap="round"/>
-					<circle cx="16" cy="18" r="1.5" fill="#FFD700"/>
-					<circle cx="24" cy="18" r="1.5" fill="#FFD700"/>
+					<circle cx="16" cy="18" r="1.5" fill="#FF8C00"/>
+					<circle cx="24" cy="18" r="1.5" fill="#FF8C00"/>
 				</svg>
 			</div>
 
@@ -98,7 +98,7 @@
 			{#if subscribeStatus === 'success'}
 				<div class="success-message">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-						<path d="M4 10 L8 14 L16 6" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M4 10 L8 14 L16 6" stroke="#FF8C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
 					<span>You're in! Check your inbox for confirmation.</span>
 				</div>
@@ -213,7 +213,7 @@
 		margin: 0 0 24px 0;
 	}
 	.modal-subtitle strong {
-		color: #FFD700;
+		color: #FF8C00;
 	}
 
 	.benefit-row {
@@ -268,7 +268,7 @@
 		transition: border-color 0.2s;
 	}
 	.email-input:focus {
-		border-color: #FFD700;
+		border-color: #FF8C00;
 	}
 	.email-input:disabled {
 		opacity: 0.6;
@@ -276,7 +276,7 @@
 
 	.subscribe-btn {
 		padding: 10px 20px;
-		background: linear-gradient(135deg, #FFD700, #E6C200);
+		background: linear-gradient(135deg, #FF8C00, #E6C200);
 		color: #0A0A0A;
 		border: none;
 		border-radius: 8px;
@@ -300,7 +300,7 @@
 		gap: 10px;
 		justify-content: center;
 		padding: 12px;
-		color: #FFD700;
+		color: #FF8C00;
 		font-size: 14px;
 		font-weight: 500;
 	}

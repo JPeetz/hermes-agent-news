@@ -186,7 +186,7 @@
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: #FFD700;
+		color: #FF8C00;
 	}
 	.phase-label {
 		font-size: 1.05rem;
@@ -228,7 +228,7 @@
 		color: #f5f5f5;
 	}
 	.stat-hot {
-		color: #FFD700 !important;
+		color: #FF8C00 !important;
 	}
 	.of {
 		font-size: 0.65rem;
@@ -374,7 +374,7 @@
 		font-size: 0.58rem;
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
-		color: #FFD700;
+		color: #FF8C00;
 	}
 
 	/* --- responsive: stack the floor on small screens ---------------------- */

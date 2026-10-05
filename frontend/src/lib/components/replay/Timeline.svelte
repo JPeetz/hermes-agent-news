@@ -818,12 +818,12 @@
 		}
 	}
 	.bar.selected {
-		box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #FFD700;
+		box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #FF8C00;
 		opacity: 1;
 		z-index: 3;
 	}
 	:global(.dark) .bar.selected {
-		box-shadow: 0 0 0 2px #171717, 0 0 0 3.5px #FFD700;
+		box-shadow: 0 0 0 2px #171717, 0 0 0 3.5px #FF8C00;
 	}
 
 	.bar span {
@@ -898,7 +898,7 @@
 		bottom: 0;
 		left: -1px;
 		width: 2px;
-		background: #FFD700;
+		background: #FF8C00;
 		box-shadow: 0 0 8px 0 rgb(255 215 0 / 0.8);
 	}
 

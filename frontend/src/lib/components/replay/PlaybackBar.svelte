@@ -231,7 +231,7 @@
 		width: 2rem;
 		height: 2rem;
 		border-radius: 999px;
-		background: #FFD700;
+		background: #FF8C00;
 		color: #fff;
 		flex: none;
 		transition: background 150ms ease, transform 120ms ease;
@@ -254,7 +254,7 @@
 	}
 	@media (hover: hover) and (pointer: fine) {
 		.btn-step:hover {
-			color: #FFD700;
+			color: #FF8C00;
 			background: rgb(255 215 0 / 0.1);
 		}
 	}
@@ -304,7 +304,7 @@
 		background: rgb(255 255 255 / 0.06);
 	}
 	.scrub:focus-visible {
-		outline: 2px solid #FFD700;
+		outline: 2px solid #FF8C00;
 		outline-offset: 1px;
 	}
 
@@ -383,7 +383,7 @@
 		bottom: 0;
 		left: -1px;
 		width: 2px;
-		background: #FFD700;
+		background: #FF8C00;
 	}
 	.thumb-count {
 		position: absolute;
@@ -393,7 +393,7 @@
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 		color: #fff;
-		background: #FFD700;
+		background: #FF8C00;
 		border-radius: 3px;
 		padding: 0 3px;
 		white-space: nowrap;
@@ -431,12 +431,12 @@
 	   mouse behaviour untouched. */
 	@media (hover: hover) and (pointer: fine) {
 		.speeds button:hover {
-			color: #FFD700;
+			color: #FF8C00;
 			background: rgb(255 215 0 / 0.08);
 		}
 	}
 	.speeds button.on {
-		background: #FFD700;
+		background: #FF8C00;
 		color: #fff;
 	}
 	.speeds button.realtime {

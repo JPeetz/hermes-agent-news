@@ -91,7 +91,7 @@
 		text-align: center;
 	}
 	h1 {
-		color: #FFD700;
+		color: #FF8C00;
 		font-size: 24px;
 		margin: 0 0 8px 0;
 		font-weight: 600;
@@ -118,14 +118,14 @@
 		transition: border-color 0.2s;
 	}
 	.email-input:focus {
-		border-color: #FFD700;
+		border-color: #FF8C00;
 	}
 	.email-input:disabled {
 		opacity: 0.6;
 	}
 	.subscribe-btn {
 		padding: 12px 24px;
-		background: linear-gradient(135deg, #FFD700, #F0C800);
+		background: linear-gradient(135deg, #FF8C00, #F0C800);
 		color: #0A0A0A;
 		border: none;
 		border-radius: 8px;
@@ -174,6 +174,6 @@
 		margin: 20px 0 0 0;
 	}
 	.fine-print a {
-		color: #00FFFF;
+		color: #FFB84D;
 	}
 </style>
