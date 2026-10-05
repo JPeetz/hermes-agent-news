@@ -276,6 +276,9 @@ class HeroGenerator:
     # Composition variety — combinatorial pose/scene pools with anti-repeat #
 
     # Pose pool (pose verb, ~1 clause each so the model follows it cleanly).
+    # Some are concrete vignettes drawn from real Hermes user stories
+    # (hermes-agent.nousresearch.com/docs/user-stories) so the hero doesn't read as
+    # the same "command center" abstraction every day.
     _POSES = [
         "she leans forward over a single illuminated terminal, one hand resting on the keypad",
         "she reaches one hand toward a translucent data-stream projection, the other at her side",
@@ -285,24 +288,36 @@ class HeroGenerator:
         "she sits at a night workbench, elbows on the desk, head tilted in thought",
         "she raises one hand to her headphones, listening intently to a soft signal",
         "she turns from a corridor of server racks back toward the viewer, one hand raised",
+        # Story-inspired vignettes (keep each to one clause, still no readable text):
+        "she works a tall wall of kanban cards, sliding one card forward with two fingers",
+        "she holds a slim phone in one hand, thumb hovering over a chat, the other hand free",
+        "she tends a single round grill-top droid beside a quiet night kitchen counter",
+        "she reviews the ties of a real deployment panel, checking off PR cards one by one",
+        "she reads a compressed one-line briefing that condenses a wall of message threads",
+        "she keeps watch on a row of glowing homelab servers stacked on an unassuming desk",
+        "she sketches workflow lines between toy-size agent figures on a large table",
+        "she leans back in a dim room while a stack of thin terminal panes floats before her",
+        "she pinches her fingers back along a glowing timeline to rewind a mistaken step",
+        "she holds up a small tablet that mirrors her desktop, showing live tool activity",
     ]
     # Camera angle pool.
     _CAMERA_ANGLES = [
-        "at eye level close range",
+        "at eye level, close range",
         "at a low three-quarter angle",
         "from slightly above, medium distance",
         "in a wide three-quarter profile",
         "from a low heroic angle",
         "in a tight over-the-shoulder frame",
-        "from a gentle high angle",
+        "from a gentle high angle showing the whole workspace",
     ]
     # Lighting / environment pool (keeps the dark tech brand palette).
     _LIGHTING = [
         "soft orange rim light against a deep charcoal background with faint circuit traces",
         "a warm amber pool of light in an otherwise dark command room",
         "cool dark ambience broken by a single warm orange glow above the console",
-        "low orange backlight that silhouettes her silhouette edges against black",
+        "low orange backlight that traces her silhouette edges against black",
         "dim room light with warm gold highlights tracing the panels",
+        "a single desk lamp glow in an otherwise dark late-night workspace",
     ]
     # Scene touch per lead topic keyword (topic->scene, so the message stays clear).
     _SCENE_TOUCHES = {
@@ -314,12 +329,17 @@ class HeroGenerator:
         "bot": "Slender bot silhouettes stand ready in the shadows behind her.",
         "research": "She reviews a tall stack of summarized reports on the desk.",
         "model": "Abstract neural nodes drift through the air around her.",
-        "code": "Screens glow softly with code-like fallen vertical lines (no readable text).",
+        "code": "Screens glow softly with code-like falling vertical lines (no readable text).",
         "infrastructure": "Server racks recede in perspective behind her.",
         "community": "Connected-node patterns trace along the far wall.",
         "open source": "A loose constellation of contributing nodes orbits her workstation.",
         "reasoning": "Soft decision-branch lines trace across the dark floor.",
         "funding": "A gentle upward growth curve of light rises beside her.",
+        "kanban": "A tall wall of kanban cards glows with faint orange outlines.",
+        "phone": "A soft phone-screen glow reflects warm light onto her face.",
+        "cron": "A wall clock face floats faintly in the dark behind her.",
+        "migration": "Two sets of terminal panes sit side by side on the desk bridging a gap.",
+        "memory": "Glowing notebook spines line a shelf behind her like a small library.",
     }
     _SCENE_TOUCH_DEFAULT = "The scene stays dark and tech-forward, matching her palette."
 
@@ -342,6 +362,17 @@ class HeroGenerator:
             ("code", 1), ("infrastructure", 7), ("community", 3), ("agent", 4),
             ("hermes", 4), ("model", 6), ("reasoning", 6), ("funding", 2),
             ("bot", 3), ("open source", 8), ("multimodal", 8),
+            # Story-inspired topic -> vignette pose (index into _POSES).
+            ("kanban", 8), ("board", 8), ("task", 8),
+            ("phone", 9), ("telegram", 9), ("mobile", 9), ("ios", 9),
+            ("grill", 10), ("smoker", 10), ("bbq", 10), ("brisket", 10),
+            ("deploy", 11), ("pr", 11), ("kubernetes", 11), ("k8s", 11),
+            ("briefing", 12), ("summary", 12), ("digest", 12), ("ledger", 12),
+            ("homelab", 13), ("self-host", 13), ("selfhost", 13), ("optiplex", 13),
+            ("swarm", 14), ("team", 14), ("fleet", 14), ("agents", 14),
+            ("terminal", 15), ("cli", 15), ("scroll", 15),
+            ("rollback", 16), ("rewind", 16), ("roll back", 16),
+            ("tablet", 17), ("companion", 17), ("dashboard", 17),
         ):
             if key in topic_l:
                 pose_idx = _pose_pool_key % len(self._POSES)
