@@ -43,7 +43,12 @@ if [ "${ENABLE_CRON:-false}" = "true" ]; then
 
     # Normal run
     echo "PATH=/usr/local/bin:/usr/bin:/bin" > /etc/cron.d/ai-news-cron
-    echo "$CRON_SCHEDULE $PIPE_CMD >> /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron
+    # Wrap the whole chain in a subshell so ALL output (run_pipeline AND
+    # send_newsletter) is captured to cron.log. Without the subshell, shell
+    # precedence binds ">> log 2>&1" only to the LAST command (send_newsletter),
+    # silently dropping every run_pipeline log line — which hid pipeline
+    # errors/tracebacks. (Fixed 2026-10-05.)
+    echo "$CRON_SCHEDULE ( $PIPE_CMD ) >> /app/logs/cron.log 2>&1" >> /etc/cron.d/ai-news-cron
     chmod 0644 /etc/cron.d/ai-news-cron
     crontab /etc/cron.d/ai-news-cron
     echo "Cron job scheduled: $CRON_SCHEDULE"
