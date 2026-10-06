@@ -259,12 +259,21 @@ class HeroGenerator:
         # Talk about the character as we always do: identity is the sheet.
         # ------------------------------------------------------------------ #
         # Story blocks: the real news content that anchors the scene.
+        # Keep it SHORT: kie.ai's image provider rejects prompts over its text-length
+        # limit ("The text length cannot exceed the maximum limit", HTTP 500). A real
+        # day can list 10+ topics; feeding all of them with descriptions blew past the
+        # cap and nulled today's hero (2026-10-06). Bound to the top N topics and short
+        # description snippets so the prompt stays well under the limit regardless of
+        # how many topics the day has.
+        MAX_TOPIC_N = 3
         story_blocks = []
-        for i, summary in enumerate(topic_summaries, 1):
+        for i, summary in enumerate(topic_summaries[:MAX_TOPIC_N], 1):
             part = f"Topic {i}: {summary['name']}"
             if summary.get('description'):
                 desc = summary['description'].replace('**', '').replace('*', '')
-                part += f" — {desc[:180]}"
+                if len(desc) > 120:
+                    desc = desc[:117].rstrip() + "..."
+                part += f" — {desc}"
             story_blocks.append(part)
         stories = "\n".join(story_blocks) if story_blocks else "the day's Hermes Agent news"
 
