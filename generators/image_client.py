@@ -577,6 +577,12 @@ class KieImageClient(BaseImageClient):
     KIE_BASE = "https://api.kie.ai/api/v1"
     DEFAULT_MODEL = "gpt-image/1.5-image-to-image"
     # Supported aspect ratios: "1:1", "3:2", "4:3", "16:9" (NOT 21:9)
+    # kie.ai's image provider rejects prompts over this text-length limit with
+    # HTTP 500 "The text length cannot exceed the maximum limit" — which nulled a
+    # day's hero when a verbose prompt exceeded it (2026-10-06). Hard cap here at
+    # the send boundary so NO future prompt editor can ever null a hero again.
+    # Keep comfortably under 3000; truncation is loud (warning log) not silent.
+    MAX_PROMPT_LEN = 2800
 
     def __init__(
         self,
@@ -627,6 +633,19 @@ class KieImageClient(BaseImageClient):
     ) -> ImageResponse:
         """Generate image via kie.ai task API."""
         import json, asyncio, urllib.request, urllib.error, urllib.parse
+
+        # Hard cap the prompt at the send boundary (belt-and-braces on top of the
+        # builder's own topic cap): if the caller ever yields a prompt over the kie
+        # text limit, truncate it here so the day's hero still generates. Loud, not
+        # silent — a truncation likely means a prompt-builder regression that should
+        # be investigated, so make it visible in the logs.
+        if len(prompt) > self.MAX_PROMPT_LEN:
+            logger.warning(
+                f"Kie: prompt {len(prompt)} chars exceeds MAX_PROMPT_LEN "
+                f"({self.MAX_PROMPT_LEN}); truncating to keep the hero generating. "
+                f"This usually signals a hero-gatherer prompt regression worth investigating."
+            )
+            prompt = prompt[: self.MAX_PROMPT_LEN]
 
         # Build request body. Skip image_size: kie uses aspect_ratio only.
         # gpt-image/1.5-image-to-image does NOT accept output_format or strength.
