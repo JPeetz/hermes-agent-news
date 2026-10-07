@@ -43,18 +43,32 @@ def build_newsletter_html(summary: dict, report_date: str, base_url: str = "http
 
     topic_rows = ""
     for t in topics:
-        title = t.get("title", "Topic")
+        # top_topics objects carry `name` (+ rich `description`), NOT `title`. Reading
+        # `title` made every row render the literal fallback "Topic" + a bare importance
+        # number with no content. Use name for the label and a short clean description
+        # snippet so each topic row actually shows what the story is about.
+        title = t.get("name") or t.get("title") or "Top Story"
         importance = t.get("importance", "")
         cat = t.get("category", "general")
-        # Map category to color
+        # Category color map
         color_map = {"news": "#0066FF", "research": "#22C55E", "social": "#F97316", "reddit": "#EF4444"}
         dot_color = color_map.get(cat, "#888")
+        # Clean description for email: strip markdown links/bold to plain text, cap length.
+        import re as _re
+        desc_raw = t.get("description", "") or ""
+        desc_clean = _re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", desc_raw)
+        desc_clean = desc_clean.replace("**", "").replace("*", "")
+        desc_clean = _re.sub(r"\s+", " ", desc_clean).strip()
+        if len(desc_clean) > 180:
+            desc_clean = desc_clean[:177].rstrip() + "..."
+        importance_badge = f' <span style="color:#999999;font-size:12px;">({importance})</span>' if importance else ""
+        desc_html = f'<div style="color:#666666;font-size:13px;line-height:1.5;margin-top:2px;">{desc_clean}</div>' if desc_clean else ""
         topic_rows += f"""
           <tr>
-            <td style="padding:6px 0;border-bottom:1px solid #E0E0E0;">
+            <td style="padding:8px 0;border-bottom:1px solid #E0E0E0;">
               <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{dot_color};margin-right:8px;"></span>
-              <span style="color:#333333;font-size:14px;">{title}</span>
-              {f'<span style="color:#999999;font-size:12px;margin-left:8px;">({importance})</span>' if importance else ''}
+              <span style="color:#333333;font-size:14px;font-weight:600;">{title}</span>{importance_badge}
+              {desc_html}
             </td>
           </tr>"""
 
