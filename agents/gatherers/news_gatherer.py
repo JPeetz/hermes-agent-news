@@ -202,7 +202,30 @@ class NewsGatherer(BaseGatherer):
 
         try:
             logger.debug(f"Fetching feed: {feed_url} (proxy={'direct' if use_proxy is False else 'default'})")
-            response = session.get(feed_url, timeout=30)
+            # Reddit throttles anonymous RSS intermittently (HTTP 429 on the
+            # shared/nat egress IP), and 5xx can be transient too. A single
+            # failed request previously dropped the feed for the whole day, so
+            # retry retryable statuses with exponential backoff + jitter.
+            max_attempts = 5
+            base_wait = 2.0
+            response = None
+            resp = None
+            for attempt in range(1, max_attempts + 1):
+                resp = session.get(feed_url, timeout=30)
+                if resp.status_code not in (408, 429,) and resp.status_code < 500:
+                    response = resp
+                    break
+                wait = min(base_wait * (2 ** (attempt - 1)), 30) + 0.25
+                logger.warning(
+                    f"Feed {feed_url} retryable HTTP {resp.status_code} "
+                    f"(attempt {attempt}/{max_attempts}); retrying in {wait:.2f}s"
+                )
+                time.sleep(wait)
+            if response is None:
+                raise requests.HTTPError(
+                    f"feed {feed_url} still failing after {max_attempts} attempts "
+                    f"(last status {resp.status_code if resp else 'unknown'})"
+                )
             response.raise_for_status()
             feed = feedparser.parse(
                 response.content,
