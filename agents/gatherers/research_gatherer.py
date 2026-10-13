@@ -207,6 +207,19 @@ class ResearchGatherer(BaseGatherer):
             logger.info(f"Skipping arXiv collection on {self.report_date} (weekend - no new papers)")
             return []
 
+        # No arXiv categories configured: the arXiv leg is deliberately disabled
+        # (CATEGORIES={} since 857eec6) and arXiv papers are instead collected by
+        # the NEWS gatherer via the arXiv API/RSS query lines in rss_feeds.txt.
+        # Without this guard the loop below fans out over zero categories, falls
+        # into the OAI-PMH fallback with an empty archive set, and flags a fake
+        # "arXiv returned 0 papers" degradation on every non-weekend run.
+        if not self.categories:
+            logger.info(
+                f"Skipping arXiv category collection on {self.report_date} "
+                "(no arXiv categories configured; arXiv covered via news gatherer)"
+            )
+            return []
+
         logger.info(f"Collecting from arXiv ({len(self.categories)} categories)")
 
         self._arxiv_problems: List[str] = []
