@@ -84,8 +84,11 @@ The legacy optional shadow bundle is captured only with the LLM filter; its
 incumbent-prompt schema must not mislabel a Jev production call. Existing frozen
 historical bundles remain usable by the separate shadow workflow.
 
-Reddit is a required daily source: empty or degraded collection stops before analysis,
-and the publish gate independently requires healthy Reddit collection and nonempty output.
+Reddit is a required daily source: empty collection (or a degraded collection below the
+publish floor, `REDDIT_MIN_PUBLISH_COUNT`, default 300) stops before analysis. A degraded
+collection above the floor proceeds, with the degradation recorded in the source row. The
+publish gate applies the same policy via `scripts/reddit_gate_policy.py` and independently
+requires nonempty output.
 The hosted workflow probes credits before collection and caches actual daily consumption
 in `data/health` for a three-day reserve warning (600 credits/day until history exists).
 Every ScrapeCreators HTTP attempt, including retries, counts against the run credit cap.

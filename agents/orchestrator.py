@@ -56,6 +56,17 @@ except ImportError:
     HERO_GENERATOR_AVAILABLE = False
     initialize_hero_generator = None
 
+# Shared "usable Reddit" policy with scripts/validate_report.py (see module
+# docstring for why the two gates must not drift). Namespace import matches
+# the scripts.lesswrong_cookie_fetch precedent.
+try:
+    from scripts.reddit_gate_policy import reddit_gate_ok, REDDIT_MIN_PUBLISH_COUNT
+except ImportError:
+    REDDIT_MIN_PUBLISH_COUNT = 300
+
+    def reddit_gate_ok(status, count):  # strict fallback: success-only
+        return (status == 'success' and (count or 0) > 0), None
+
 logger = logging.getLogger(__name__)
 
 
@@ -803,10 +814,25 @@ class MainOrchestrator:
         # Phase 2: Parallel Analysis (with grounding context)
         # Preserve the gathering checkpoint, but do not buy analysis for a
         # report that cannot be published. This also applies to resumed runs.
+        #
+        # The policy lives in scripts/reddit_gate_policy.py so this pre-filter
+        # and the publish validator cannot drift apart (2026-10-15: four runs
+        # died here over one degraded subreddit the validator would have
+        # published — 537 posts, 14/15 subs at full volume).
         reddit_status = collection_status.get('reddit', {})
-        if not gathered_items.get('reddit') or reddit_status.get('status') != 'success':
+        reddit_ok, reddit_reason = reddit_gate_ok(
+            reddit_status.get('status'),
+            reddit_status.get('count', len(gathered_items.get('reddit') or [])),
+        )
+        if not reddit_ok:
             raise RuntimeError('Required Reddit collection is empty or incomplete: '
-                               + (reddit_status.get('error') or 'no healthy Reddit collection'))
+                               + (reddit_status.get('error') or reddit_reason or 'no healthy Reddit collection'))
+        if reddit_status.get('status') == 'partial':
+            logger.warning(
+                "    Proceeding with partial Reddit collection (%s posts, floor %s): %s",
+                reddit_status.get('count'), REDDIT_MIN_PUBLISH_COUNT,
+                reddit_status.get('error') or 'unspecified degradation',
+            )
 
         if resume_from is not None and resume_from > 2:
             checkpoint = self._load_checkpoint('analysis')

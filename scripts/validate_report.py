@@ -41,6 +41,15 @@ import urllib.error
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+# Shared "usable Reddit" policy with the orchestrator's pre-analysis gate.
+# Dual import: tests import this file as `scripts.validate_report` (repo root
+# on sys.path), the workflow runs it as `python3 scripts/validate_report.py`
+# (sys.path[0] is the scripts dir itself).
+try:
+    from scripts.reddit_gate_policy import reddit_gate_ok
+except ImportError:
+    from reddit_gate_policy import reddit_gate_ok
+
 # Substrings that indicate a phase wrote a failure sentinel instead of real content.
 # Matched case-insensitively against the executive summary text.
 FAILURE_SENTINELS = (
@@ -138,8 +147,15 @@ def validate(summary: dict, date_str: str) -> dict:
         failures.append('required Reddit category is missing or empty')
     sources = (summary.get('collection_status') or {}).get('sources') or []
     reddit_source = next((s for s in sources if s.get('name') == 'reddit'), None)
-    if reddit_source is None or reddit_source.get('status') != 'success' or not reddit_source.get('count'):
-        failures.append('required Reddit collection is missing, failed or incomplete')
+    # Same policy as the orchestrator's pre-analysis gate (shared module, so a
+    # day never passes analysis only to be rejected here — 2026-10-15).
+    _rs_ok, _rs_reason = reddit_gate_ok(
+        reddit_source.get('status') if reddit_source else None,
+        reddit_source.get('count') if reddit_source else 0,
+    )
+    if reddit_source is None or not _rs_ok:
+        failures.append('required Reddit collection is missing, failed or incomplete'
+                        + (f": {_rs_reason}" if reddit_source is not None and _rs_reason else ''))
     degraded_categories = []
     if isinstance(categories, dict):
         for name in sorted(categories):

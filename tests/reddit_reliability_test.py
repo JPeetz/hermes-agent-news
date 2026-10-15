@@ -148,3 +148,74 @@ class RedditReliabilityTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class RedditGatePolicyTests(unittest.TestCase):
+    """The shared 'usable Reddit' policy (2026-10-15): both gates must agree."""
+
+    def setUp(self):
+        import importlib
+        import scripts.reddit_gate_policy as policy
+        importlib.reload(policy)  # clear any env var leakage between tests
+        self.policy = policy
+
+    def test_success_publishes(self):
+        ok, reason = self.policy.reddit_gate_ok('success', 606)
+        self.assertTrue(ok)
+        self.assertIsNone(reason)
+
+    def test_failed_and_missing_never_publish(self):
+        self.assertFalse(self.policy.reddit_gate_ok('failed', 0)[0])
+        self.assertFalse(self.policy.reddit_gate_ok('failed', 500)[0])
+        self.assertFalse(self.policy.reddit_gate_ok(None, 500)[0])
+        self.assertFalse(self.policy.reddit_gate_ok('success', 0)[0])
+
+    def test_partial_above_floor_publishes(self):
+        # Today's failure profile: 14/15 subs healthy, 537 posts total.
+        ok, reason = self.policy.reddit_gate_ok('partial', 537)
+        self.assertTrue(ok)
+        self.assertIsNone(reason)
+
+    def test_partial_below_floor_is_fatal(self):
+        # The arXiv pattern: a source-level collapse shows as a low count.
+        ok, reason = self.policy.reddit_gate_ok('partial', 12)
+        self.assertFalse(ok)
+        self.assertIn('publish floor', reason)
+
+    def test_env_override_adjusts_floor(self):
+        import os, importlib
+        os.environ['REDDIT_MIN_PUBLISH_COUNT'] = '100'
+        try:
+            importlib.reload(self.policy)
+            self.assertTrue(self.policy.reddit_gate_ok('partial', 150)[0])
+            self.assertFalse(self.policy.reddit_gate_ok('partial', 99)[0])
+        finally:
+            del os.environ['REDDIT_MIN_PUBLISH_COUNT']
+            importlib.reload(self.policy)
+
+    def test_validator_accepts_partial_above_floor(self):
+        """A run that proceeds with partial Reddit must pass the publish gate."""
+        summary = {
+            'date': '2026-10-15', 'executive_summary': 'A' * 500,
+            'top_topics': [{'name': 'AI'}], 'total_items_analyzed': 500,
+            'categories': {'reddit': {'count': 537, 'category_summary': 'A' * 400}},
+            'collection_status': {'sources': [
+                {'name': 'reddit', 'status': 'partial', 'count': 537},
+                {'name': 'news', 'status': 'success', 'count': 100},
+                {'name': 'papers', 'status': 'success', 'count': 50},
+            ]},
+        }
+        result = validate(summary, '2026-10-15')
+        self.assertTrue(all('Reddit' not in f for f in result['failures']), result['failures'])
+
+    def test_validator_rejects_partial_below_floor(self):
+        summary = {
+            'date': '2026-10-15', 'executive_summary': 'A' * 500,
+            'top_topics': [{'name': 'AI'}], 'total_items_analyzed': 500,
+            'categories': {'reddit': {'count': 40, 'category_summary': 'A' * 400}},
+            'collection_status': {'sources': [
+                {'name': 'reddit', 'status': 'partial', 'count': 40},
+            ]},
+        }
+        result = validate(summary, '2026-10-15')
+        self.assertTrue(any('Reddit' in f for f in result['failures']))
