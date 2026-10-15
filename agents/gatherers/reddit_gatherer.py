@@ -68,6 +68,13 @@ REDDIT_REQUEST_TIMEOUT = _env_int("REDDIT_REQUEST_TIMEOUT", 60, minimum=5)
 
 # Listing/detail status codes that are retryable transient failures
 _RETRYABLE_STATUS = (429, 500, 502, 503, 504)
+# 2026-10-15: ScrapeCreators intermittently returned HTTP 404 on after-cursor
+# listing pages (always a busy subreddit's 2nd+ page; page 1 and every other
+# subreddit stayed 200). Three consecutive runs died because a single 404
+# ended pagination mid-window and marked the whole Reddit source degraded.
+# Listing calls therefore also retry 404, then fall back to restarting
+# pagination from the first page (dedup absorbs the re-fetched posts).
+_LISTING_RETRYABLE_STATUS = _RETRYABLE_STATUS + (404,)
 
 
 class FatalScrapeError(Exception):
@@ -259,6 +266,7 @@ class RedditGatherer(BaseGatherer):
         after = None
         pages = 0
         consecutive_older = 0
+        restarted = False
 
         try:
             while pages < self.max_pages:
@@ -269,8 +277,29 @@ class RedditGatherer(BaseGatherer):
                 if after:
                     params["after"] = after
 
-                data = self._api_get(session, "/v1/reddit/subreddit", params)
+                data = self._api_get(
+                    session, "/v1/reddit/subreddit", params,
+                    retryable_status=_LISTING_RETRYABLE_STATUS,
+                    note=False,
+                )
                 if data is None:  # soft failure or stop_calls
+                    # A soft failure on an after-cursor page may be the vendor
+                    # cursor itself (intermittent 404s, 2026-10-15). Restart the
+                    # walk from the first page once — seen_ids dedupes the re-
+                    # walked posts — before declaring this subreddit degraded.
+                    if after and not restarted and not self._stop_calls:
+                        logger.warning(
+                            f"r/{subreddit}: listing failed mid-pagination; "
+                            "restarting from the first page"
+                        )
+                        restarted = True
+                        after = None
+                        continue
+                    if not self._stop_calls:
+                        self.note_degradation(
+                            f'r/{subreddit}: ScrapeCreators listing failed '
+                            f'after retries{" and pagination restart" if restarted else ""}'
+                        )
                     break
 
                 posts = data.get("posts") or []
@@ -483,12 +512,24 @@ class RedditGatherer(BaseGatherer):
             logger.warning(f"Could not fetch ScrapeCreators credit balance: {e}")
         return None
 
-    def _api_get(self, session: requests.Session, path: str, params: dict) -> Optional[Dict[str, Any]]:
+    def _api_get(
+        self,
+        session: requests.Session,
+        path: str,
+        params: dict,
+        retryable_status: tuple = _RETRYABLE_STATUS,
+        note: bool = True,
+    ) -> Optional[Dict[str, Any]]:
         """
         Budgeted GET against ScrapeCreators with retry/backoff.
 
         Returns the parsed JSON on success, or None on a soft failure / when the credit
         budget is exhausted. Raises FatalScrapeError on bad-key / out-of-credits.
+
+        ``retryable_status`` lets the subreddit-listing caller treat intermittent
+        404s on after-cursor pages as retryable (see _LISTING_RETRYABLE_STATUS).
+        ``note=False`` suppresses self-reporting so the caller can attempt its own
+        recovery (pagination restart) before deciding the source is degraded.
         """
         url = f"{SCRAPECREATORS_BASE}{path}"
         headers = {"x-api-key": SCRAPECREATORS_API_KEY}
@@ -518,7 +559,7 @@ class RedditGatherer(BaseGatherer):
             if status in (401, 402):
                 raise FatalScrapeError(f"ScrapeCreators HTTP {status} for {path}: {resp.text[:200]}")
 
-            if status in _RETRYABLE_STATUS:
+            if status in retryable_status:
                 delay = 2 ** attempt
                 logger.warning(f"ScrapeCreators HTTP {status} for {path}; retrying in {delay}s")
                 time.sleep(delay)
@@ -526,14 +567,16 @@ class RedditGatherer(BaseGatherer):
 
             if status != 200:
                 logger.warning(f"ScrapeCreators HTTP {status} for {path}; skipping")
-                self.note_degradation(f'ScrapeCreators HTTP {status} for {path}')
+                if note:
+                    self.note_degradation(f'ScrapeCreators HTTP {status} for {path}')
                 return None
 
             try:
                 data = resp.json()
             except ValueError:
                 logger.warning(f"ScrapeCreators returned non-JSON for {path}; skipping")
-                self.note_degradation(f'ScrapeCreators returned non-JSON for {path}')
+                if note:
+                    self.note_degradation(f'ScrapeCreators returned non-JSON for {path}')
                 return None
 
             if not data.get("success", False):
@@ -553,5 +596,6 @@ class RedditGatherer(BaseGatherer):
             return data
 
         logger.warning(f"ScrapeCreators request to {path} failed after retries; skipping")
-        self.note_degradation(f'ScrapeCreators {path} failed after retries')
+        if note:
+            self.note_degradation(f'ScrapeCreators {path} failed after retries')
         return None
