@@ -81,6 +81,7 @@ PRIMARY_SOURCE_DOMAINS = (
     "anthropic.com",
     "microsoft.com",
     "github.blog",
+    "github.com",
     "aws.amazon.com",
     "blogs.nvidia.com",
     "ai.meta.com",
@@ -878,6 +879,27 @@ class StalenessChecker:
             for domain in PRIMARY_SOURCE_DOMAINS
         )
 
+    def _is_release_page_url(self, url: str) -> bool:
+        """Release pages are themselves primary sources, never secondary coverage.
+
+        A release-tag page (github.com/<org>/<repo>/releases/tag/vX, a GitLab
+        release, a codeberg/gitea release) is the authoritative origin of a
+        release announcement. Treating it as "secondary coverage" of some other
+        primary site (e.g. github.blog) is a false positive: the release page's
+        own links to the company blog were being read as the "primary source",
+        and its old homepage date then demoted a FRESH release as a stale
+        follow-up. Skip the follow-up demotion for any release-page URL.
+        """
+        if not url:
+            return False
+        path = urlparse(url).path.lower()
+        return (
+            "/releases/tag/" in path
+            or path.endswith("/releases")
+            or "/releases/latest" in path
+            or path.rstrip("/").endswith("/releases")
+        )
+
     def _is_same_site(self, left: str, right: str) -> bool:
         left_parts = left.split(".")
         right_parts = right.split(".")
@@ -1145,6 +1167,10 @@ class StalenessChecker:
         item_url = item.item.url
         item_host = self._hostname(item_url)
         if not item_url or self._is_primary_domain(item_host):
+            return None
+        if self._is_release_page_url(item_url):
+            # A release page is the origin, not secondary coverage of another
+            # site; never hunt for a "primary source" it supposedly recaps.
             return None
 
         if item_url not in self._article_page_cache:
@@ -1484,6 +1510,9 @@ class StalenessChecker:
             if item.importance_score < MIN_SCORE_THRESHOLD:
                 continue
             if self._is_excluded_from_top(item):
+                continue
+            if self._is_release_page_url(item.item.url):
+                # A release-tag page is the primary source itself, not a recap.
                 continue
             if not self._has_followup_signal(item):
                 continue
