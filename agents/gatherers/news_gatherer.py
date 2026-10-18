@@ -215,7 +215,15 @@ class NewsGatherer(BaseGatherer):
                 if resp.status_code not in (408, 429,) and resp.status_code < 500:
                     response = resp
                     break
-                wait = min(base_wait * (2 ** (attempt - 1)), 30) + 0.25
+                # Reddit's anonymous RSS quota has a ~60-100s cooldown; the old
+                # exponential backoff (max 30s, ~61s total) never cleared it, so the
+                # single combined Reddit feed 429'd to 0 items almost every day.
+                # For a 429 honor Retry-After, else wait a full cooldown.
+                if resp.status_code == 429:
+                    ra = resp.headers.get('Retry-After')
+                    wait = min(int(ra), 120) if (ra and ra.isdigit()) else 90.0
+                else:
+                    wait = min(base_wait * (2 ** (attempt - 1)), 30) + 0.25
                 logger.warning(
                     f"Feed {feed_url} retryable HTTP {resp.status_code} "
                     f"(attempt {attempt}/{max_attempts}); retrying in {wait:.2f}s"
