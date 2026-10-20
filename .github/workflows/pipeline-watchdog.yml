@@ -148,21 +148,37 @@ jobs:
           fi
 
           # Cap retries: if THIS watchdog already ran a recovery cycle in the last
-          # 6 hours that dispatched the pipeline, don't loop-burn ~$8.50/run during a
-          # sustained outage. We key off the watchdog's own prior runs (not arbitrary
-          # manual pipeline dispatches, so a manual run by Ryan doesn't suppress a
-          # genuine recovery). Manual force_rerun bypasses this cap.
+          # 6 hours that DISPATCHED the pipeline, don't loop-burn ~$8.50/run during a
+          # sustained outage. Key off prior watchdog runs that actually dispatched —
+          # NOT every prior tick. (Bug fixed 2026-10-20: the old check counted any
+          # completed prior watchdog run, so on the 26.04 wg-quick outage every
+          # hourly tick after the first saw a capped "recovery already attempted"
+          # and suppressed the retry that could have succeeded. A tick that never
+          # dispatched consumed the cap without spending a run.) Manual force_rerun
+          # bypasses this cap. Blast radius stays bounded: this watchdog only fires
+          # in the 04:00-09:00 ET gate window, so worst case is one dispatch per
+          # hour (~6 × $8.50 during a sustained broken-VPN outage). Caveat: the
+          # 2026-07-10 recovery dispatches this cap was tuned against are ~90 days
+          # old and their logs have expired, so whether the second one came from a
+          # tick or from force_rerun is unverifiable — the worst case above was
+          # accepted deliberately.
           if [[ "${{ inputs.force_rerun }}" != "true" ]]; then
             cutoff="$(date -u -d '6 hours ago' +%FT%TZ 2>/dev/null || date -u -v-6H +%FT%TZ)"
-            # Count completed watchdog runs in the window EXCLUDING this one. A prior
-            # watchdog run existing in the last 6h means we already had a recovery
-            # opportunity; one retry is enough.
-            prior_watchdog="$(gh run list --workflow pipeline-watchdog.yml \
+            # Count completed watchdog runs in the window EXCLUDING this one, but
+            # only those whose logs show they actually dispatched a recovery run.
+            prior_ids="$(gh run list --workflow pipeline-watchdog.yml \
               --limit 20 --json createdAt,databaseId,status \
-              --jq "[.[] | select(.createdAt > \"$cutoff\") | select(.databaseId != ${{ github.run_id }}) | select(.status == \"completed\")] | length" 2>/dev/null || echo 0)"
+              --jq "[.[] | select(.createdAt > \"$cutoff\") | select(.databaseId != ${{ github.run_id }}) | select(.status == \"completed\") | .databaseId] | .[]" 2>/dev/null || true)"
+            prior_dispatched=0
+            for rid in $prior_ids; do
+              if gh run view "$rid" --log 2>/dev/null | grep -q "Recovery run dispatched."; then
+                prior_dispatched=$((prior_dispatched + 1))
+              fi
+            done
+            prior_watchdog="$prior_dispatched"
             if [[ "${prior_watchdog:-0}" -gt 0 ]]; then
               echo "should_dispatch=false" >> "$GITHUB_OUTPUT"
-              echo "A prior watchdog recovery cycle ran in the last 6h ($prior_watchdog); not re-dispatching (retry cap). Use force_rerun to override."
+              echo "A prior watchdog run already DISPATCHED a recovery in the last 6h ($prior_watchdog); not re-dispatching (retry cap). Use force_rerun to override."
               exit 0
             fi
           fi
