@@ -45,7 +45,15 @@ jobs:
   daily-pipeline:
     name: Generate and publish daily data
     if: github.repository == 'flyryan/ai-news-aggregator'
-    runs-on: ubuntu-latest
+    # Pinned 2026-10-20: `ubuntu-latest` began its gradual rollout to Ubuntu
+    # 26.04 on Oct 19. 26.04 runners mount /tmp as a private tmpfs with
+    # `usrquota`; root-owned configs written into the runner's mktemp dir then
+    # fail `wg-quick up` with "Permission denied", killing the Mullvad stage
+    # (run #369, 2026-10-20 — first 26.04 day, no report published). Proven
+    # via A/B probe: identical fake-conf `wg-quick up` passes on 24.04,
+    # fails on 26.04. Unpin only after the tunnel step is adapted for 26.04
+    # (e.g. write configs to a root-owned dir outside the runner's tmpfs).
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
       TZ: America/New_York
