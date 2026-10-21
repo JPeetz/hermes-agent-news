@@ -185,6 +185,19 @@ class NewsGatherer(BaseGatherer):
 
         return articles
 
+    def _is_reddit_empty_throttle(self, feed_url: str, parsed) -> bool:
+        """Reddit's anonymous throttle can serve HTTP 200 with an EMPTY feed body
+        (0 entries, bozo False) instead of 429. The retry loop only checks HTTP
+        status, so such a response used to be treated as success and silently
+        dropped Reddit for the day. The combined multi-sub feed always has
+        content, so a 0-entry parse from a reddit.com host is a throttle signal,
+        not a quiet feed.
+        """
+        host = (urlparse(feed_url).hostname or '').lower()
+        if host != 'reddit.com' and not host.endswith('.reddit.com'):
+            return False
+        return len(getattr(parsed, 'entries', None) or []) == 0
+
     def _fetch_feed(self, feed) -> List[CollectedItem]:
         """Fetch and parse a single RSS feed.
 
@@ -205,16 +218,35 @@ class NewsGatherer(BaseGatherer):
             # Reddit throttles anonymous RSS intermittently (HTTP 429 on the
             # shared/nat egress IP), and 5xx can be transient too. A single
             # failed request previously dropped the feed for the whole day, so
-            # retry retryable statuses with exponential backoff + jitter.
+            # retry retryable statuses with exponential backoff + jitter. Reddit
+            # can ALSO answer an in-cooldown request with HTTP 200 and an empty
+            # body (see _is_reddit_empty_throttle) — that is retried the same way.
             max_attempts = 5
             base_wait = 2.0
             response = None
             resp = None
+            feed_parsed = None
             for attempt in range(1, max_attempts + 1):
                 resp = session.get(feed_url, timeout=30)
                 if resp.status_code not in (408, 429,) and resp.status_code < 500:
-                    response = resp
-                    break
+                    feed_parsed = feedparser.parse(
+                        resp.content,
+                        response_headers={
+                            "content-type": resp.headers.get("content-type", "")
+                        }
+                    )
+                    if not self._is_reddit_empty_throttle(feed_url, feed_parsed):
+                        response = resp
+                        break
+                    # Reddit throttle answered 200 with an empty body: wait a
+                    # full cooldown and retry rather than accepting 0 items.
+                    wait = 90.0
+                    logger.warning(
+                        f"Feed {feed_url} HTTP 200 with 0 entries (Reddit anonymous "
+                        f"throttle, attempt {attempt}/{max_attempts}); retrying in {wait:.2f}s"
+                    )
+                    time.sleep(wait)
+                    continue
                 # Reddit's anonymous RSS quota has a ~60-100s cooldown; the old
                 # exponential backoff (max 30s, ~61s total) never cleared it, so the
                 # single combined Reddit feed 429'd to 0 items almost every day.
@@ -235,12 +267,9 @@ class NewsGatherer(BaseGatherer):
                     f"(last status {resp.status_code if resp else 'unknown'})"
                 )
             response.raise_for_status()
-            feed = feedparser.parse(
-                response.content,
-                response_headers={
-                    "content-type": response.headers.get("content-type", "")
-                }
-            )
+            if feed_parsed is None:  # pragma: no cover - joint invariant with response
+                raise requests.HTTPError(f"feed {feed_url} returned no parseable body")
+            feed = feed_parsed
 
             if feed.bozo:
                 # CharacterEncodingOverride is benign - feedparser handles it correctly
