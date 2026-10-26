@@ -261,7 +261,15 @@ Example format:
 
 The summary should read like a professional briefing, focusing on what matters for people following frontier AI."""
 
-    # Keywords for fast pre-filtering
+    # Keywords for fast pre-filtering.
+    # WARNING: this gate runs BEFORE the LLM relevance filter, so it must be
+    # INCLUSIVE of the whole Hermes Agent ecosystem, not just frontier-AI terms.
+    # A rebrand (frontier-AI newsletter -> Hermes Agent newsletter) updated
+    # prompts.yaml + the parser keys but left this set frontier-AI only; genuine
+    # Hermes items (release notes, tutorials with no 'llm'/'gpt' in title) were
+    # silently dropped here and NEVER reached the LLM gate, publishing an empty
+    # news category (e.g. 2026-10-25). False positives are fine -- the LLM gate
+    # rejects them; false negatives here are invisible category-killers.
     AI_KEYWORDS = {
         'ai', 'artificial intelligence', 'machine learning', 'ml', 'llm',
         'gpt', 'claude', 'gemini', 'grok', 'llama', 'mistral', 'openai',
@@ -272,7 +280,12 @@ The summary should read like a professional briefing, focusing on what matters f
         'rlhf', 'alignment', 'benchmark', 'inference', 'embedding',
         'agi', 'superintelligence', 'multimodal', 'reasoning model',
         'foundation model', 'frontier model', 'xai', 'cohere', 'databricks',
-        'deepseek', 'qwen', 'phi-', 'phi 3', 'phi 4', 'nvidia ai'
+        'deepseek', 'qwen', 'phi-', 'phi 3', 'phi 4', 'nvidia ai',
+        # Hermes Agent ecosystem terms (added 2026-10-26 — rebrand pre-filter fix)
+        'hermes', 'hermes agent', 'hermes desktop', 'hermesclaw',
+        'oh-my-hermes', 'nous research', 'nousresearch', 'teknium',
+        'skills hub', 'agent jam', 'bot mode', 'mattermost',
+        'self-hosted', 'local-first'
     }
 
     def __init__(
