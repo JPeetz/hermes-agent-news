@@ -41,6 +41,7 @@ from generators.search_indexer import SearchIndexer
 from generators.feed_generator import FeedGenerator
 from generators.sitemap_generator import SitemapGenerator
 from generators.quick_answer_generator import QuickAnswerGenerator
+from generators.edition_seo_generator import EditionSeoGenerator
 
 logging.basicConfig(
     level=getattr(logging, os.environ.get("LOG_LEVEL", "INFO").upper(), logging.INFO),
@@ -171,6 +172,7 @@ def generate_pipeline_outputs(
     try:
         SitemapGenerator(web_dir, base_url=base_url).generate()
         QuickAnswerGenerator(web_dir, base_url=base_url).generate()
+        EditionSeoGenerator(web_dir, base_url=base_url).generate()
     except Exception as exc:
         logger.warning("GEO outputs (sitemap/quick-answer) failed: %s", type(exc).__name__)
 
