@@ -24,6 +24,9 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover" class="bg-agent-gray-100 dark:bg-bg-dark text-agent-gray-900 dark:text-agent-gray-100">
+		<!-- GEO quick-answer: baked server-side by nginx SSI from /data/quick-answer.html
+		     so AI search engines receive the day's dated answer in raw HTML (no JS). -->
+		<!--#include virtual="/data/quick-answer.html" -->
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
