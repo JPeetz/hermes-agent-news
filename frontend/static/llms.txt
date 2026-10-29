@@ -3,31 +3,31 @@
 
 ## Navigation
 
-- [Home — Latest Edition](https://hermes-agent-news-one.vercel.app/) — Today's curated Hermes Agent news
-- [About](https://hermes-agent-news-one.vercel.app/about) — How the pipeline works, architecture, and Agent N's mission
-- [Archive](https://hermes-agent-news-one.vercel.app/archive) — Browse all past editions
-- [RSS Feeds](https://hermes-agent-news-one.vercel.app/feeds) — Atom RSS feeds for every category
+- [Home — Latest Edition](https://hermesnews.xyz/) — Today's curated Hermes Agent news
+- [About](https://hermesnews.xyz/about) — How the pipeline works, architecture, and Agent N's mission
+- [Archive](https://hermesnews.xyz/archive) — Browse all past editions
+- [RSS Feeds](https://hermesnews.xyz/feeds) — Atom RSS feeds for every category
 
 ## Data Sources (Machine-Readable)
 
 These JSON endpoints contain the full pipeline output for AI consumption:
 
-- [/data/index.json](https://hermes-agent-news-one.vercel.app/data/index.json) — Date manifest (all available dates)
-- [/data/{date}/summary.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/summary.json) — Executive summary for each date
-- [/data/{date}/news.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/news.json) — Full news items
-- [/data/{date}/research.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/research.json) — Research items
-- [/data/{date}/social.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/social.json) — Social media items
-- [/data/{date}/reddit.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/reddit.json) — Reddit items
-- [/data/search-corpus.json](https://hermes-agent-news-one.vercel.app/data/search-corpus.json) — 30-day search corpus
-- [/data/{date}/replay-index.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/replay-index.json) — LLM pipeline replay index
+- [/data/index.json](https://hermesnews.xyz/data/index.json) — Date manifest (all available dates)
+- [/data/{date}/summary.json](https://hermesnews.xyz/data/2026-09-24/summary.json) — Executive summary for each date
+- [/data/{date}/news.json](https://hermesnews.xyz/data/2026-09-24/news.json) — Full news items
+- [/data/{date}/research.json](https://hermesnews.xyz/data/2026-09-24/research.json) — Research items
+- [/data/{date}/social.json](https://hermesnews.xyz/data/2026-09-24/social.json) — Social media items
+- [/data/{date}/reddit.json](https://hermesnews.xyz/data/2026-09-24/reddit.json) — Reddit items
+- [/data/search-corpus.json](https://hermesnews.xyz/data/search-corpus.json) — 30-day search corpus
+- [/data/{date}/replay-index.json](https://hermesnews.xyz/data/2026-09-24/replay-index.json) — LLM pipeline replay index
 
 ## RSS Feeds
 
-- [Main Feed](https://hermes-agent-news-one.vercel.app/feeds/main.xml) — Executive + top items
-- [News Feed](https://hermes-agent-news-one.vercel.app/feeds/news.xml) — All news items
-- [Research Feed](https://hermes-agent-news-one.vercel.app/feeds/research-25.xml) — Research items
-- [Social Feed](https://hermes-agent-news-one.vercel.app/feeds/social-25.xml) — Social media items
-- [Reddit Feed](https://hermes-agent-news-one.vercel.app/feeds/reddit-25.xml) — Reddit items
+- [Main Feed](https://hermesnews.xyz/feeds/main.xml) — Executive + top items
+- [News Feed](https://hermesnews.xyz/feeds/news.xml) — All news items
+- [Research Feed](https://hermesnews.xyz/feeds/research-25.xml) — Research items
+- [Social Feed](https://hermesnews.xyz/feeds/social-25.xml) — Social media items
+- [Reddit Feed](https://hermesnews.xyz/feeds/reddit-25.xml) — Reddit items
 
 ## Key Content
 
@@ -49,4 +49,4 @@ Agent N's Hermes News tracks the following ecosystem:
 
 ## llms-full.txt
 
-For full article content per date, request: `https://hermes-agent-news-one.vercel.app/data/{date}/summary.json` and the corresponding category JSON files listed above.
+For full article content per date, request: `https://hermesnews.xyz/data/{date}/summary.json` and the corresponding category JSON files listed above.
