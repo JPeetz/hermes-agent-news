@@ -43,6 +43,7 @@ class QuickAnswerGenerator:
         # fragment into the same volume as the data. Accept an explicit
         # data_dir (e.g. "web/data") so index.json + summary.json are found
         # while the fragment still lands in the mounted dir.
+        # web_dir is the web ROOT; data lives in /data (the mounted deploy volume).
         self.data_dir = Path(data_dir) if data_dir else self.web_dir / "data"
 
     def latest_date(self) -> str | None:
@@ -141,7 +142,7 @@ class QuickAnswerGenerator:
             + "</section>"
         )
 
-        out = self.web_dir / "quick-answer.html"
+        out = self.data_dir / "quick-answer.html"
         out.write_text(html, encoding="utf-8")
         logger.info("quick-answer: wrote %s for %s (%d bytes)", out, date, len(html))
         return date, html
@@ -159,4 +160,4 @@ if __name__ == "__main__":
 
     gen = QuickAnswerGenerator(args.web_dir, args.base_url, args.data_dir)
     d, _ = gen.generate(args.date)
-    print(f"OK {d} -> {gen.web_dir / 'quick-answer.html'}" if d else "NO DATA")
+    print(f"OK {d} -> {gen.data_dir / 'quick-answer.html'}" if d else "NO DATA")

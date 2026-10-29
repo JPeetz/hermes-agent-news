@@ -39,6 +39,8 @@ from generators.json_generator import JSONGenerator
 from generators.replay_generator import generate_replay
 from generators.search_indexer import SearchIndexer
 from generators.feed_generator import FeedGenerator
+from generators.sitemap_generator import SitemapGenerator
+from generators.quick_answer_generator import QuickAnswerGenerator
 
 logging.basicConfig(
     level=getattr(logging, os.environ.get("LOG_LEVEL", "INFO").upper(), logging.INFO),
@@ -162,6 +164,15 @@ def generate_pipeline_outputs(
     logger.info("=" * 60)
     search_indexer = SearchIndexer(web_dir, rolling_window_days=30)
     search_indexer.update_index(result.to_dict())
+
+    logger.info("=" * 60)
+    logger.info("PHASE 8: SITEMAP + QUICK-ANSWER (GEO)")
+    logger.info("=" * 60)
+    try:
+        SitemapGenerator(web_dir, base_url=base_url).generate()
+        QuickAnswerGenerator(web_dir, base_url=base_url).generate()
+    except Exception as exc:
+        logger.warning("GEO outputs (sitemap/quick-answer) failed: %s", type(exc).__name__)
 
     if orchestrator is not None and hasattr(orchestrator, "capture_finished_output"):
         try:
