@@ -7,11 +7,10 @@ Uses DEEP thinking for nuanced judgment calls.
 
 import json
 import logging
-import re
 from typing import List, Dict, Any
 
 from ..llm_client import AsyncAnthropicClient, ThinkingLevel
-from ..base import AnalyzedItem, StoryMatch, ContinuationInfo
+from ..base import extract_json_str, AnalyzedItem, StoryMatch, ContinuationInfo
 
 logger = logging.getLogger(__name__)
 
@@ -189,20 +188,14 @@ Make a decision for EACH matched pair."""
     ) -> List[ContinuationInfo]:
         """Parse LLM response into ContinuationInfo objects."""
         try:
-            # Extract JSON from response
-            content = content.strip()
-
-            # Try to find JSON block
-            json_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
-            if json_match:
-                content = json_match.group(1).strip()
-
-            # Find JSON object
-            if not content.startswith('{'):
-                start = content.find('{')
-                if start == -1:
-                    return []
-                content = content[start:]
+            # Extract and repair JSON from response. Uses the shared helper's
+            # fences/preamble trimming plus its embedded-quote and control-char
+            # repairs; a raw json.loads here would drop the whole continuity
+            # stage to 0 decisions whenever a model emits one unescaped quote
+            # or literal newline inside a reasoning/reference string
+            # ("Expecting ',' delimiter"), which silently disabled editorial
+            # curations on 2026-10-30.
+            content = extract_json_str(content)
 
             # Parse JSON
             result = json.loads(content)

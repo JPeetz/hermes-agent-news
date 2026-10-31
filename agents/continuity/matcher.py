@@ -7,11 +7,10 @@ Uses QUICK thinking for fast, parallelizable matching.
 
 import json
 import logging
-import re
 from typing import List, Dict, Any
 
 from ..llm_client import AsyncAnthropicClient, ThinkingLevel
-from ..base import AnalyzedItem, StoryMatch
+from ..base import extract_json_str, AnalyzedItem, StoryMatch
 from ..prompt_security import (
     build_fenced_user_message,
     build_hardened_system,
@@ -163,20 +162,11 @@ If no matches are found, return an empty matches array."""
     ) -> List[StoryMatch]:
         """Parse LLM response into StoryMatch objects."""
         try:
-            # Extract JSON from response
-            content = content.strip()
-
-            # Try to find JSON block
-            json_match = re.search(r'```(?:json)?\s*\n?([\s\S]*?)\n?```', content)
-            if json_match:
-                content = json_match.group(1).strip()
-
-            # Find JSON object
-            if not content.startswith('{'):
-                start = content.find('{')
-                if start == -1:
-                    return []
-                content = content[start:]
+            # Extract and repair JSON from response via the shared helper
+            # (fences/preamble trimming + embedded-quote and control-char
+            # repairs). A raw json.loads here drops every matched pair to []
+            # on a single unescaped quote in an LLM reply.
+            content = extract_json_str(content)
 
             # Parse JSON
             result = json.loads(content)
