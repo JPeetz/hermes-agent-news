@@ -19,17 +19,16 @@ RUN npm run build
 # injected after <body> so nginx can bake the quick-answer + edition-seo blocks
 # into the raw HTML served to AI-search crawlers ($is_crawler swap in nginx.conf).
 # Humans get the clean index.html; only crawlers get this file.
-RUN python3 - <<'EOF'
-from pathlib import Path
-import re
-idx = Path('../web/index.html')
-html = idx.read_text()
-inject = '<!--#include virtual="/data/quick-answer.html" -->\n<!--#include virtual="/data/edition-seo.html" -->\n'
-m = re.search(r'<body[^>]*>', html)
-assert m, 'body tag not found'
-out = html[:m.end()] + inject + html[m.end():]
-Path('../web/index.crawler.html').write_text(out)
-print('wrote index.crawler.html', len(out), 'bytes')
+# NOTE: this stage is node:20-alpine — no python3, so use node for the transform.
+RUN node - <<'EOF'
+const fs = require('fs');
+const html = fs.readFileSync('../web/index.html', 'utf8');
+const inject = '<!--#include virtual="/data/quick-answer.html" -->\n<!--#include virtual="/data/edition-seo.html" -->\n';
+const m = html.match(/<body[^>]*>/);
+if (!m) throw new Error('body tag not found');
+const out = html.slice(0, m.index + m[0].length) + inject + html.slice(m.index + m[0].length);
+fs.writeFileSync('../web/index.crawler.html', out);
+console.log('wrote index.crawler.html', out.length, 'bytes');
 EOF
 
 # Stage 2: Python runtime
