@@ -14,6 +14,21 @@ RUN npm ci
 COPY frontend/ ./
 RUN npm run build
 
+# Generate the crawler-facing shell (same as Dockerfile): index.crawler.html carries
+# the GEO SSI includes; the clean index.html stays for humans.
+RUN python3 - <<'EOF'
+from pathlib import Path
+import re
+idx = Path('../web/index.html')
+html = idx.read_text()
+inject = '<!--#include virtual="/data/quick-answer.html" -->\n<!--#include virtual="/data/edition-seo.html" -->\n'
+m = re.search(r'<body[^>]*>', html)
+assert m, 'body tag not found'
+out = html[:m.end()] + inject + html[m.end():]
+Path('../web/index.crawler.html').write_text(out)
+print('wrote index.crawler.html', len(out), 'bytes')
+EOF
+
 # Stage 2: Serve with nginx (no Python, no Playwright, no scraper deps)
 FROM nginx:alpine
 

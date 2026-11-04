@@ -15,6 +15,23 @@ COPY frontend/ ./
 # Build the frontend (outputs to ../web)
 RUN npm run build
 
+# Generate the crawler-facing shell: identical SPA, but with the GEO SSI includes
+# injected after <body> so nginx can bake the quick-answer + edition-seo blocks
+# into the raw HTML served to AI-search crawlers ($is_crawler swap in nginx.conf).
+# Humans get the clean index.html; only crawlers get this file.
+RUN python3 - <<'EOF'
+from pathlib import Path
+import re
+idx = Path('../web/index.html')
+html = idx.read_text()
+inject = '<!--#include virtual="/data/quick-answer.html" -->\n<!--#include virtual="/data/edition-seo.html" -->\n'
+m = re.search(r'<body[^>]*>', html)
+assert m, 'body tag not found'
+out = html[:m.end()] + inject + html[m.end():]
+Path('../web/index.crawler.html').write_text(out)
+print('wrote index.crawler.html', len(out), 'bytes')
+EOF
+
 # Stage 2: Python runtime
 FROM python:3.11-slim
 

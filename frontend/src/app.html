@@ -24,14 +24,9 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover" class="bg-agent-gray-100 dark:bg-bg-dark text-agent-gray-900 dark:text-agent-gray-100">
-		<!-- GEO content: baked server-side by nginx SSI from /data/quick-answer.html + /data/edition-seo.html
-		     so AI search engines receive the day's dated answer + edition stories in raw HTML (no JS).
-		     ⚠️ GATED to crawler/bot user-agents ONLY (2026-11-04): before this gate, nginx SSI expanded
-		     these blocks for EVERY visitor, putting a raw text block above the banner for humans. -->
-		<!--#if expr="$http_user_agent ~* '(bot|crawl|spider|slurp|googlebot|bingbot|chatgpt|gptbot|perplexity|anthropic|claude|bytespider|diffbot|facebookexternalhit|duckduckbot|yandex|baiduspider|applebot|archive.org_bot|ia_archiver)'" -->
-		<!--#include virtual="/data/quick-answer.html" -->
-		<!--#include virtual="/data/edition-seo.html" -->
-		<!--#endif -->
+		<!-- GEO content for crawlers is served via index.crawler.html (see nginx.conf
+		     $is_crawler swap) — this clean shell never carries the SSI blocks, so
+		     humans never see a text block above the banner. -->
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
