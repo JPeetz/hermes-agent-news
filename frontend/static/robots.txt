@@ -1,6 +1,12 @@
 # robots.txt for hermesnews.xyz
-# GEO policy (2026-10-28): let AI SEARCH bots in, keep AI TRAINING crawlers + scrapers out.
-# Method: James Brooks GEO recipe — "allow ChatGPT/Perplexity search bots, block AI training crawlers."
+# SEO + GEO policy (2026-11-24, optimized by Forgewright)
+# Goal: make Google Search Console fully aware + let AI SEARCH bots in,
+# while keeping AI TRAINING crawlers + scrapers out.
+#
+# Method: James Brooks GEO recipe — "allow ChatGPT/Perplexity search bots,
+# block AI training crawlers." Plus Google best practice for SPA query URLs:
+# ?date=YYYY-MM-DD is the SPA's daily-edition route; Clean-param tells
+# Google these are variants of one page family, not separate pages.
 
 # ── ALLOW: search engines / AI assistants that send users to the site ──
 # Content-Signal: search=yes, ai-input=yes, ai-train=no
@@ -20,6 +26,9 @@ User-agent: Claude-Web
 Allow: /
 
 User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Read-Aloud
 Allow: /
 
 User-agent: Bingbot
@@ -71,6 +80,9 @@ Disallow: /
 User-agent: Meta-ExternalAgent
 Disallow: /
 
+User-agent: Perplexity-User
+Disallow: /
+
 # ── BLOCK: scrapers / SEO crawlers ──
 User-agent: omgili
 Disallow: /
@@ -93,5 +105,10 @@ Disallow: /
 # ── Allow all other well-behaved crawlers ──
 User-agent: *
 Allow: /
+
+# SPA daily-edition routes are query variants of the homepage, not duplicates.
+# (Google: "Clean-param" prevents query params from splitting crawl budget.)
+Clean-param: date /
+
 # Crawlers + GSC discovery
 Sitemap: https://hermesnews.xyz/sitemap.xml
