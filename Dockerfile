@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y \
     cron \
     nginx \
     curl \
+    libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
