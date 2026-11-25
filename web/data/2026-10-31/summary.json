@@ -1,0 +1,1052 @@
+{
+  "date": "2026-10-31",
+  "coverage_date": "2026-10-30",
+  "coverage_start": "2026-10-30T00:00:00",
+  "coverage_end": "2026-10-30T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-31\n\n**Executive summary:** A boot-stability day — the issue's dominant story is the week's dominant engineering effort landing all at once: a coordinated **config lock-order / boot-stability sweep** of merged PRs, headlined by the gateway orphan idle probe fix (the news top story, *[fix(gateway): resolve the orphan idle probe's target before opening a…](/?date=2026-10-31&category=news#item-4581d0ca3150)*) that ends a boot-blocking hang which had left the gateway unreachable for **Desktop** users, with **RedactingFormatter** no longer reading config — [eliminating a deadlock path](/?date=2026-10-31&category=news#item-99353b3e4f27) during remote profile boots and defaulting unknown redaction policies to **[fail-secure](/?date=2026-10-31&category=news#item-d2f8900d829f)** redaction — the **[provider-auth mirror](/?date=2026-10-31&category=news#item-19761831e5f3)** going lock-free to stop stale auth rows for plugin providers, and the **[provider-env](/?date=2026-10-31&category=news#item-e095a2072baa)** catalog and [completion hook](/?date=2026-10-31&category=news#item-deb74ce1f6d5) dropping config reads from startup; one day after [the merged-PR gate reopened](/?date=2026-10-30&category=news#item-f01f1d3b9a17), engineering priority has decisively shifted to startup reliability. The sweep carries a security edge: Hermes now **[deletes stale Bitwarden/1Password caches and Photon sidecar records](/?date=2026-10-31&category=news#item-35a3dc202ccb)** rather than trusting copies in writable locations, closing surfaces where untrusted files could impersonate trusted secrets data. The release feed is routine: **[v0.22.5+canary.20261030T064851Z](/?date=2026-10-31&category=news#item-d6e8b7eb2b6a)** ships the latest main-branch fixes to pre-release trackers, while stable **v0.22.5** (GA 10-24 across **CLI**, **Microsoft Store**, **Docker**, and **Hermes Cloud**) remains the operative build. The social layer is celebratory: **NousCon day** leads — **@NousResearch** [marked the day](/?date=2026-10-31&category=social#item-1be00c4a8f41) (\"happy NousCon day to all who observe\") with the set's strongest engagement (**48k** views / **854** likes), [teased \"more stuff tonight\"](/?date=2026-10-31&category=social#item-a95e9f39eefe) and [confirmed a requested item will ship](/?date=2026-10-31&category=social#item-19f12e1d4080) — keeping [Friday's slipped launch tease](/?date=2026-10-27&category=social#item-d8647ef8fd1e) alive on a tonight deadline — while **Teknium** was visibly responsive, [acknowledging a community-reported Hermes issue and \"looking into it\"](/?date=2026-10-31&category=social#item-91b29df6f0fa) amid [playful banter](/?date=2026-10-31&category=social#item-2f0fad45df1b), a well-liked [enthusiasm post](/?date=2026-10-31&category=social#item-33ce383fd217) (**132** likes / **9.5k** views), and a two-word [\"No way\"](/?date=2026-10-31&category=social#item-13e5bace5800) hinting at a surprising community claim worth watching. The top technical content is **@rlaope**'s [**oh-my-hermes** harness upgrade to \"oh-my-pi level\"](/?date=2026-10-31&category=social#item-3d77df41d317) — **LSP**-based navigation replacing grep, cross-file impact analysis tracking callers through renames, measured benchmarking — a substantive delta on the [**OMH** line](/?date=2026-10-25&category=social#item-85a24234b6f2) that cashes the [10-29 coding-harness tier list](/?date=2026-10-29&category=social#item-ddf006967d8e), with the community now coining [the \"**omher**\" abbreviation](/?date=2026-10-31&category=social#item-310788a0cbdb) (a small but telling brand-identity signal) and a [hands-on personal-agent build](/?date=2026-10-31&category=social#item-c8016634e124) wiring a memory system and gateway into the **DeepSeek** harness rounding out the showcases. Verification discipline stays busy on three fronts: the follow-up pairing **oh-my-hermes** with [\"**GPT-6.1 Terra**\"](/?date=2026-10-31&category=social#item-1d71ac4d8fda) repeats a name that does not exist in the tracker (nearest: **GPT-6-Sol**, GA 2026-09-22; **GPT-5.6-Terra**, GA 2026-06-26 — it reads as a splice of the two, extending [yesterday's **GPT-6.1** flag](/?date=2026-10-30&category=social#item-61f064a4c275)), **@rlaope**'s [\"**DeepSeek v5 ultrafast** is coming soon\"](/?date=2026-10-31&category=social#item-30a17fa5bcf0) tease has no tracker basis (top of line: **DeepSeek-V4.1-Flash**, GA 2026-09-10 — the same phantom surfaced via **OpenGateway** yesterday), and a trance-loop reliability report on \"**GLM 5.3 Flash**\" keeps the standing flag — the name remains unverified (tracker tops out at **GLM-5.2**, released 2026-06-16), consistent with the [haywire thread's naming](/?date=2026-10-27&category=research#item-hn-49916751). Research is a documentation day around an official core: the [**27 October subscription revamp**](/?date=2026-10-28&category=social#item-21b8ea3e7ceb) is re-quoted (cloud agent in every new plan; usage shifted from monthly credits to **daily/weekly** limits — carried, not new), with the genuine delta being the research top story, **[\"Hermes Agent Usage Limits: Daily, Weekly and How to Check Them\"](/?date=2026-10-31&category=research#item-948180fd31e3)** — while [native **Claude Pro/Max** subscription support](/?date=2026-10-20&category=research#item-hn-49790991) (via a direct **SDK** plugin) and [**Kanban** multi-agent docs](/?date=2026-10-27&category=research#item-hn-49604068) are reference; the genuinely new actionable docs are a complete [**slash-commands** reference](/?date=2026-10-31&category=research#item-356172a797e3) (session control, model switching, background tasks, usage checks) and the official [**OpenClaw → Hermes Agent** migration path](/?date=2026-10-31&category=research#item-879e240d3133) via the **agent-importers** plugin with dry-run and backup safeguards — notable given [**OpenClaw Enterprise** surfaced in yesterday's research](/?date=2026-10-30&category=research#item-2a83b6a3e001) — plus **Almanac** (**YC S26**) adding commercial-traction validation with useful **OAuth** connector onboarding-friction notes. The ecosystem tooling layer keeps compounding: [**keryx**](/?date=2026-10-31&category=news#item-3220ec187264) debuts as a read-only visual activity monitor rendering sessions, tasks, analytics, and logs — a strong showcase of building on Hermes records — joining [**Verso**](/?date=2026-10-17&category=research#item-hn-49628094), [**Grafana agento11y-hermes**](/?date=2026-10-20&category=research#item-hn-49318128), [**ClusterMob**](/?date=2026-10-26&category=research#item-hn-50197497), [**Refine Cycle**](/?date=2026-10-28&category=research#item-hn-49606988), and the [**Paper Harness** iPhone client](/?date=2026-10-30&category=research#item-hn-50278175). Operators: the [**Kubernetes** gaps](/?date=2026-10-27&category=research#item-hn-49977400) (no official **Helm** chart, root-at-init image) and the [~**23,000**-open-PR backlog](/?date=2026-10-27&category=research#item-hn-49424643) remain the project-health watch items. Housekeeping: Reddit contributed nothing again. Net read: the platform spent its NousCon day proving maturity from the inside — treating startup deadlocks and secrets trust as first-class bugs in one coordinated sweep — while the community converted celebration into a brand and the tooling layer compounds on its own; the open question is what \"more stuff tonight\" actually ships. Practical agenda: **Desktop** users who've hit the unreachable-gateway boot hang take the orphan idle probe fix (canary now, next stable presumably); if you script against redaction, note unknown policies now default to fail-secure; expect stale **Bitwarden**/**1Password** caches and **Photon** records to be deleted, not trusted; new users start with the [slash-commands reference](/?date=2026-10-31&category=research#item-356172a797e3); **OpenClaw** migrants follow the [**agent-importers** path](/?date=2026-10-31&category=research#item-879e240d3133) (dry-run and backups first); subscribers read the [usage-limits guide](/?date=2026-10-31&category=research#item-948180fd31e3) to check their new **daily/weekly** limits; try [**keryx**](/?date=2026-10-31&category=news#item-3220ec187264) for read-only session visibility; **OMH** users take the **LSP** navigation upgrade; everyone else stay on stable **v0.22.5**; treat \"**GPT-6.1 Terra**,\" \"**DeepSeek v5 ultrafast**,\" and \"**GLM 5.3 Flash**\" as unverified; and watch tonight's NousCon drops — filing the subscription revamp, **Pro/Max** support, **Kanban** docs, **Verso**, **Grafana**, **ClusterMob**, **Refine Cycle**, **Paper Harness**, the **K8s** gaps, the ~**23k** backlog, and the haywire thread as reference (de-dup duty, sixteenth cycle running).\n\n*Executive summary above — full section write-ups (Releases, Merged PRs, Community, Tips & Tutorials) follow in the complete edition.*",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-31</p>\n<p><strong>Executive summary:</strong> A boot-stability day — the issue's dominant story is the week's dominant engineering effort landing all at once: a coordinated <strong>config lock-order / boot-stability sweep</strong> of merged PRs, headlined by the gateway orphan idle probe fix (the news top story, <em><a href=\"/?date=2026-10-31&amp;category=news#item-4581d0ca3150\" class=\"internal-link\" rel=\"noopener noreferrer\">fix(gateway): resolve the orphan idle probe's target before opening a…</a></em>) that ends a boot-blocking hang which had left the gateway unreachable for <strong>Desktop</strong> users, with <strong>RedactingFormatter</strong> no longer reading config — <a href=\"/?date=2026-10-31&amp;category=news#item-99353b3e4f27\" class=\"internal-link\" rel=\"noopener noreferrer\">eliminating a deadlock path</a> during remote profile boots and defaulting unknown redaction policies to <strong><a href=\"/?date=2026-10-31&amp;category=news#item-d2f8900d829f\" class=\"internal-link\" rel=\"noopener noreferrer\">fail-secure</a></strong> redaction — the <strong><a href=\"/?date=2026-10-31&amp;category=news#item-19761831e5f3\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-auth mirror</a></strong> going lock-free to stop stale auth rows for plugin providers, and the <strong><a href=\"/?date=2026-10-31&amp;category=news#item-e095a2072baa\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-env</a></strong> catalog and <a href=\"/?date=2026-10-31&amp;category=news#item-deb74ce1f6d5\" class=\"internal-link\" rel=\"noopener noreferrer\">completion hook</a> dropping config reads from startup; one day after <a href=\"/?date=2026-10-30&amp;category=news#item-f01f1d3b9a17\" class=\"internal-link\" rel=\"noopener noreferrer\">the merged-PR gate reopened</a>, engineering priority has decisively shifted to startup reliability. The sweep carries a security edge: Hermes now <strong><a href=\"/?date=2026-10-31&amp;category=news#item-35a3dc202ccb\" class=\"internal-link\" rel=\"noopener noreferrer\">deletes stale Bitwarden/1Password caches and Photon sidecar records</a></strong> rather than trusting copies in writable locations, closing surfaces where untrusted files could impersonate trusted secrets data. The release feed is routine: <strong><a href=\"/?date=2026-10-31&amp;category=news#item-d6e8b7eb2b6a\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.5+canary.20261030T064851Z</a></strong> ships the latest main-branch fixes to pre-release trackers, while stable <strong>v0.22.5</strong> (GA 10-24 across <strong>CLI</strong>, <strong>Microsoft Store</strong>, <strong>Docker</strong>, and <strong>Hermes Cloud</strong>) remains the operative build. The social layer is celebratory: <strong>NousCon day</strong> leads — <strong>@NousResearch</strong> <a href=\"/?date=2026-10-31&amp;category=social#item-1be00c4a8f41\" class=\"internal-link\" rel=\"noopener noreferrer\">marked the day</a> (\"happy NousCon day to all who observe\") with the set's strongest engagement (<strong>48k</strong> views / <strong>854</strong> likes), <a href=\"/?date=2026-10-31&amp;category=social#item-a95e9f39eefe\" class=\"internal-link\" rel=\"noopener noreferrer\">teased \"more stuff tonight\"</a> and <a href=\"/?date=2026-10-31&amp;category=social#item-19f12e1d4080\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed a requested item will ship</a> — keeping <a href=\"/?date=2026-10-27&amp;category=social#item-d8647ef8fd1e\" class=\"internal-link\" rel=\"noopener noreferrer\">Friday's slipped launch tease</a> alive on a tonight deadline — while <strong>Teknium</strong> was visibly responsive, <a href=\"/?date=2026-10-31&amp;category=social#item-91b29df6f0fa\" class=\"internal-link\" rel=\"noopener noreferrer\">acknowledging a community-reported Hermes issue and \"looking into it\"</a> amid <a href=\"/?date=2026-10-31&amp;category=social#item-2f0fad45df1b\" class=\"internal-link\" rel=\"noopener noreferrer\">playful banter</a>, a well-liked <a href=\"/?date=2026-10-31&amp;category=social#item-33ce383fd217\" class=\"internal-link\" rel=\"noopener noreferrer\">enthusiasm post</a> (<strong>132</strong> likes / <strong>9.5k</strong> views), and a two-word <a href=\"/?date=2026-10-31&amp;category=social#item-13e5bace5800\" class=\"internal-link\" rel=\"noopener noreferrer\">\"No way\"</a> hinting at a surprising community claim worth watching. The top technical content is <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-31&amp;category=social#item-3d77df41d317\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes</strong> harness upgrade to \"oh-my-pi level\"</a> — <strong>LSP</strong>-based navigation replacing grep, cross-file impact analysis tracking callers through renames, measured benchmarking — a substantive delta on the <a href=\"/?date=2026-10-25&amp;category=social#item-85a24234b6f2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OMH</strong> line</a> that cashes the <a href=\"/?date=2026-10-29&amp;category=social#item-ddf006967d8e\" class=\"internal-link\" rel=\"noopener noreferrer\">10-29 coding-harness tier list</a>, with the community now coining <a href=\"/?date=2026-10-31&amp;category=social#item-310788a0cbdb\" class=\"internal-link\" rel=\"noopener noreferrer\">the \"<strong>omher</strong>\" abbreviation</a> (a small but telling brand-identity signal) and a <a href=\"/?date=2026-10-31&amp;category=social#item-c8016634e124\" class=\"internal-link\" rel=\"noopener noreferrer\">hands-on personal-agent build</a> wiring a memory system and gateway into the <strong>DeepSeek</strong> harness rounding out the showcases. Verification discipline stays busy on three fronts: the follow-up pairing <strong>oh-my-hermes</strong> with <a href=\"/?date=2026-10-31&amp;category=social#item-1d71ac4d8fda\" class=\"internal-link\" rel=\"noopener noreferrer\">\"<strong>GPT-6.1 Terra</strong>\"</a> repeats a name that does not exist in the tracker (nearest: <strong>GPT-6-Sol</strong>, GA 2026-09-22; <strong>GPT-5.6-Terra</strong>, GA 2026-06-26 — it reads as a splice of the two, extending <a href=\"/?date=2026-10-30&amp;category=social#item-61f064a4c275\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday's <strong>GPT-6.1</strong> flag</a>), <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-31&amp;category=social#item-30a17fa5bcf0\" class=\"internal-link\" rel=\"noopener noreferrer\">\"<strong>DeepSeek v5 ultrafast</strong> is coming soon\"</a> tease has no tracker basis (top of line: <strong>DeepSeek-V4.1-Flash</strong>, GA 2026-09-10 — the same phantom surfaced via <strong>OpenGateway</strong> yesterday), and a trance-loop reliability report on \"<strong>GLM 5.3 Flash</strong>\" keeps the standing flag — the name remains unverified (tracker tops out at <strong>GLM-5.2</strong>, released 2026-06-16), consistent with the <a href=\"/?date=2026-10-27&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">haywire thread's naming</a>. Research is a documentation day around an official core: the <a href=\"/?date=2026-10-28&amp;category=social#item-21b8ea3e7ceb\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>27 October subscription revamp</strong></a> is re-quoted (cloud agent in every new plan; usage shifted from monthly credits to <strong>daily/weekly</strong> limits — carried, not new), with the genuine delta being the research top story, <strong><a href=\"/?date=2026-10-31&amp;category=research#item-948180fd31e3\" class=\"internal-link\" rel=\"noopener noreferrer\">\"Hermes Agent Usage Limits: Daily, Weekly and How to Check Them\"</a></strong> — while <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">native <strong>Claude Pro/Max</strong> subscription support</a> (via a direct <strong>SDK</strong> plugin) and <a href=\"/?date=2026-10-27&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong> multi-agent docs</a> are reference; the genuinely new actionable docs are a complete <a href=\"/?date=2026-10-31&amp;category=research#item-356172a797e3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>slash-commands</strong> reference</a> (session control, model switching, background tasks, usage checks) and the official <a href=\"/?date=2026-10-31&amp;category=research#item-879e240d3133\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenClaw → Hermes Agent</strong> migration path</a> via the <strong>agent-importers</strong> plugin with dry-run and backup safeguards — notable given <a href=\"/?date=2026-10-30&amp;category=research#item-2a83b6a3e001\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenClaw Enterprise</strong> surfaced in yesterday's research</a> — plus <strong>Almanac</strong> (<strong>YC S26</strong>) adding commercial-traction validation with useful <strong>OAuth</strong> connector onboarding-friction notes. The ecosystem tooling layer keeps compounding: <a href=\"/?date=2026-10-31&amp;category=news#item-3220ec187264\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>keryx</strong></a> debuts as a read-only visual activity monitor rendering sessions, tasks, analytics, and logs — a strong showcase of building on Hermes records — joining <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana agento11y-hermes</strong></a>, <a href=\"/?date=2026-10-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a>, <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, and the <a href=\"/?date=2026-10-30&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong> iPhone client</a>. Operators: the <a href=\"/?date=2026-10-27&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong> gaps</a> (no official <strong>Helm</strong> chart, root-at-init image) and the <a href=\"/?date=2026-10-27&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~<strong>23,000</strong>-open-PR backlog</a> remain the project-health watch items. Housekeeping: Reddit contributed nothing again. Net read: the platform spent its NousCon day proving maturity from the inside — treating startup deadlocks and secrets trust as first-class bugs in one coordinated sweep — while the community converted celebration into a brand and the tooling layer compounds on its own; the open question is what \"more stuff tonight\" actually ships. Practical agenda: <strong>Desktop</strong> users who've hit the unreachable-gateway boot hang take the orphan idle probe fix (canary now, next stable presumably); if you script against redaction, note unknown policies now default to fail-secure; expect stale <strong>Bitwarden</strong>/<strong>1Password</strong> caches and <strong>Photon</strong> records to be deleted, not trusted; new users start with the <a href=\"/?date=2026-10-31&amp;category=research#item-356172a797e3\" class=\"internal-link\" rel=\"noopener noreferrer\">slash-commands reference</a>; <strong>OpenClaw</strong> migrants follow the <a href=\"/?date=2026-10-31&amp;category=research#item-879e240d3133\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>agent-importers</strong> path</a> (dry-run and backups first); subscribers read the <a href=\"/?date=2026-10-31&amp;category=research#item-948180fd31e3\" class=\"internal-link\" rel=\"noopener noreferrer\">usage-limits guide</a> to check their new <strong>daily/weekly</strong> limits; try <a href=\"/?date=2026-10-31&amp;category=news#item-3220ec187264\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>keryx</strong></a> for read-only session visibility; <strong>OMH</strong> users take the <strong>LSP</strong> navigation upgrade; everyone else stay on stable <strong>v0.22.5</strong>; treat \"<strong>GPT-6.1 Terra</strong>,\" \"<strong>DeepSeek v5 ultrafast</strong>,\" and \"<strong>GLM 5.3 Flash</strong>\" as unverified; and watch tonight's NousCon drops — filing the subscription revamp, <strong>Pro/Max</strong> support, <strong>Kanban</strong> docs, <strong>Verso</strong>, <strong>Grafana</strong>, <strong>ClusterMob</strong>, <strong>Refine Cycle</strong>, <strong>Paper Harness</strong>, the <strong>K8s</strong> gaps, the ~<strong>23k</strong> backlog, and the haywire thread as reference (de-dup duty, sixteenth cycle running).</p>\n<p><em>Executive summary above — full section write-ups (Releases, Merged PRs, Community, Tips &amp; Tutorials) follow in the complete edition.</em></p>",
+  "top_topics": [
+    {
+      "name": "Config Lock-Order and Boot Stability",
+      "description": "A coordinated sweep of merged PRs removes config reads from startup paths and fixes lock-order cycles, headlined by the [gateway orphan idle probe fix](/?date=2026-10-31&category=news#item-4581d0ca3150) that ended a boot-blocking hang for Desktop users. [RedactingFormatter](/?date=2026-10-31&category=news#item-d2f8900d829f), the [provider-auth mirror](/?date=2026-10-31&category=news#item-19761831e5f3), and [provider-env catalogs](/?date=2026-10-31&category=news#item-e095a2072baa) were all made config-free or lock-free to eliminate deadlock paths. This is the week's dominant engineering effort.",
+      "description_html": "A coordinated sweep of merged PRs removes config reads from startup paths and fixes lock-order cycles, headlined by the <a href=\"/?date=2026-10-31&amp;category=news#item-4581d0ca3150\" class=\"internal-link\" rel=\"noopener noreferrer\">gateway orphan idle probe fix</a> that ended a boot-blocking hang for Desktop users. <a href=\"/?date=2026-10-31&amp;category=news#item-d2f8900d829f\" class=\"internal-link\" rel=\"noopener noreferrer\">RedactingFormatter</a>, the <a href=\"/?date=2026-10-31&amp;category=news#item-19761831e5f3\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-auth mirror</a>, and <a href=\"/?date=2026-10-31&amp;category=news#item-e095a2072baa\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-env catalogs</a> were all made config-free or lock-free to eliminate deadlock paths. This is the week's dominant engineering effort.",
+      "category_breakdown": {
+        "news": 6,
+        "research": 0,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Subscription Overhaul and Claude Support",
+      "description": "The 27 October 2026 revamp bundles a cloud agent into every new plan and shifts usage from monthly credits to daily/weekly limits. Native Claude Pro/Max subscription support via a direct SDK plugin sharply lowers the cost of frontier-model access for subscribers.",
+      "description_html": "The 27 October 2026 revamp bundles a cloud agent into every new plan and shifts usage from monthly credits to daily/weekly limits. Native Claude Pro/Max subscription support via a direct SDK plugin sharply lowers the cost of frontier-model access for subscribers.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 86
+    },
+    {
+      "name": "v0.22.5 Release and Documentation",
+      "description": "The [v0.22.5 canary build](/?date=2026-10-31&category=news#item-d6e8b7eb2b6a) ships the latest main-branch fixes to pre-release trackers, anchored by a complete [slash-commands reference](/?date=2026-10-31&category=research#item-356172a797e3) and the official [OpenClaw-to-Hermes migration path](/?date=2026-10-31&category=research#item-879e240d3133) via the agent-importers plugin. [Kanban multi-agent collaboration documentation](/?date=2026-10-31&category=research#item-hn-49604068) rounds out unusually strong release coverage.",
+      "description_html": "The <a href=\"/?date=2026-10-31&amp;category=news#item-d6e8b7eb2b6a\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.5 canary build</a> ships the latest main-branch fixes to pre-release trackers, anchored by a complete <a href=\"/?date=2026-10-31&amp;category=research#item-356172a797e3\" class=\"internal-link\" rel=\"noopener noreferrer\">slash-commands reference</a> and the official <a href=\"/?date=2026-10-31&amp;category=research#item-879e240d3133\" class=\"internal-link\" rel=\"noopener noreferrer\">OpenClaw-to-Hermes migration path</a> via the agent-importers plugin. <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Kanban multi-agent collaboration documentation</a> rounds out unusually strong release coverage.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 3,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "Secrets and Security Hardening",
+      "description": "Hermes now [deletes stale Bitwarden/1Password caches and Photon sidecar records](/?date=2026-10-31&category=news#item-35a3dc202ccb) instead of trusting copies in writable locations, and [unknown redaction policies default to fail-secure redaction](/?date=2026-10-31&category=news#item-d2f8900d829f). This closes attack surfaces where untrusted files could be treated as trusted secrets data.",
+      "description_html": "Hermes now <a href=\"/?date=2026-10-31&amp;category=news#item-35a3dc202ccb\" class=\"internal-link\" rel=\"noopener noreferrer\">deletes stale Bitwarden/1Password caches and Photon sidecar records</a> instead of trusting copies in writable locations, and <a href=\"/?date=2026-10-31&amp;category=news#item-d2f8900d829f\" class=\"internal-link\" rel=\"noopener noreferrer\">unknown redaction policies default to fail-secure redaction</a>. This closes attack surfaces where untrusted files could be treated as trusted secrets data.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 0,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Ecosystem Tooling and Plugins",
+      "description": "Third-party tooling built on Hermes is maturing fast: the [Verso orchestrator](/?date=2026-10-31&category=research#item-hn-49628094), [Grafana agento11y-hermes observability](/?date=2026-10-31&category=research#item-hn-49318128), the [Refine Cycle self-improvement plugin](/?date=2026-10-31&category=research#item-hn-49606988), the [ClusterMob profile registry](/?date=2026-10-31&category=research#item-hn-50197497), the [keryx visual monitor](/?date=2026-10-31&category=news#item-3220ec187264), and the [oh-my-hermes coding harness reaching oh-my-pi level with LSP-based navigation](/?date=2026-10-31&category=social#item-3d77df41d317). The community even coined an [omher abbreviation](/?date=2026-10-31&category=social#item-310788a0cbdb), a small but telling signal of growing brand identity.",
+      "description_html": "Third-party tooling built on Hermes is maturing fast: the <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso orchestrator</a>, <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana agento11y-hermes observability</a>, the <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle self-improvement plugin</a>, the <a href=\"/?date=2026-10-31&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob profile registry</a>, the <a href=\"/?date=2026-10-31&amp;category=news#item-3220ec187264\" class=\"internal-link\" rel=\"noopener noreferrer\">keryx visual monitor</a>, and the <a href=\"/?date=2026-10-31&amp;category=social#item-3d77df41d317\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes coding harness reaching oh-my-pi level with LSP-based navigation</a>. The community even coined an <a href=\"/?date=2026-10-31&amp;category=social#item-310788a0cbdb\" class=\"internal-link\" rel=\"noopener noreferrer\">omher abbreviation</a>, a small but telling signal of growing brand identity.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 4,
+        "social": 3,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 76
+    },
+    {
+      "name": "NousCon Event Day",
+      "description": "NousResearch [marked NousCon day](/?date=2026-10-31&category=social#item-1be00c4a8f41) with the set's strongest engagement (48k views, 854 likes) and [teased additional releases coming tonight](/?date=2026-10-31&category=social#item-a95e9f39eefe), creating high-energy release-day anticipation. [Teknium's responsive replies to community-reported issues](/?date=2026-10-31&category=social#item-91b29df6f0fa) reinforce a tight, casual creator-team rapport.",
+      "description_html": "NousResearch <a href=\"/?date=2026-10-31&amp;category=social#item-1be00c4a8f41\" class=\"internal-link\" rel=\"noopener noreferrer\">marked NousCon day</a> with the set's strongest engagement (48k views, 854 likes) and <a href=\"/?date=2026-10-31&amp;category=social#item-a95e9f39eefe\" class=\"internal-link\" rel=\"noopener noreferrer\">teased additional releases coming tonight</a>, creating high-energy release-day anticipation. <a href=\"/?date=2026-10-31&amp;category=social#item-91b29df6f0fa\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium's responsive replies to community-reported issues</a> reinforce a tight, casual creator-team rapport.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 0,
+        "social": 6,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 72
+    },
+    {
+      "name": "Reliability and Adversarial Behavior",
+      "description": "A headless Hermes agent running Z.ai GLM 5.3 Flash entered a long trance-like thinking loop, and the hermes-jekyl-hyde repository demonstrates adversarial LLM reversal techniques targeting hermes-agent. Both items flag robustness and safety concerns as deployments spread to unusual environments.",
+      "description_html": "A headless Hermes agent running Z.ai GLM 5.3 Flash entered a long trance-like thinking loop, and the hermes-jekyl-hyde repository demonstrates adversarial LLM reversal techniques targeting hermes-agent. Both items flag robustness and safety concerns as deployments spread to unusual environments.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Deployment and Infrastructure Gaps",
+      "description": "Practitioners document [containerized setups](/?date=2026-10-31&category=research#item-hn-50131496), [a Kubernetes gap analysis noting the absence of an official Helm chart and a root-at-init container image](/?date=2026-10-31&category=research#item-hn-49977400), and [edge hosting on an Arduino UNO Q board](/?date=2026-10-31&category=research#item-hn-49368474). Collectively these show demand for first-class deployment tooling beyond local installs.",
+      "description_html": "Practitioners document <a href=\"/?date=2026-10-31&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized setups</a>, <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">a Kubernetes gap analysis noting the absence of an official Helm chart and a root-at-init container image</a>, and <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">edge hosting on an Arduino UNO Q board</a>. Collectively these show demand for first-class deployment tooling beyond local installs.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 3,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 66
+    },
+    {
+      "name": "Community Showcases and Builds",
+      "description": "Builders share hands-on agent setups, including [wiring a memory system and gateway into the DeepSeek harness as a personal agent](/?date=2026-10-31&category=social#item-c8016634e124) with shareable GitHub links. These DIY showcases, alongside [the skill-development tutorial](/?date=2026-10-31&category=news#item-fc12fa01a242) in the news feed, indicate a healthy builder pipeline feeding the ecosystem.",
+      "description_html": "Builders share hands-on agent setups, including <a href=\"/?date=2026-10-31&amp;category=social#item-c8016634e124\" class=\"internal-link\" rel=\"noopener noreferrer\">wiring a memory system and gateway into the DeepSeek harness as a personal agent</a> with shareable GitHub links. These DIY showcases, alongside <a href=\"/?date=2026-10-31&amp;category=news#item-fc12fa01a242\" class=\"internal-link\" rel=\"noopener noreferrer\">the skill-development tutorial</a> in the news feed, indicate a healthy builder pipeline feeding the ecosystem.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 0,
+        "social": 2,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 64
+    },
+    {
+      "name": "Commercial Traction and Project Health",
+      "description": "[YC S26's Almanac](/?date=2026-10-31&category=research#item-hn-49511007) validates commercial traction and usefully documents OAuth connector onboarding friction, while a [23,000+ open-PR backlog](/?date=2026-10-31&category=research#item-hn-49424643) is flagged as the key project-health watch item. Together they suggest ecosystem growth may be outpacing governance and review capacity.",
+      "description_html": "<a href=\"/?date=2026-10-31&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">YC S26's Almanac</a> validates commercial traction and usefully documents OAuth connector onboarding friction, while a <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000+ open-PR backlog</a> is flagged as the key project-health watch item. Together they suggest ecosystem growth may be outpacing governance and review capacity.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 60
+    },
+    {
+      "name": "Unverified Model References",
+      "description": "Community content references [GPT-6.1 Terra](/?date=2026-10-31&category=social#item-1d71ac4d8fda), [DeepSeek v5 ultrafast](/?date=2026-10-31&category=social#item-30a17fa5bcf0), and [GLM 5.3 Flash](/?date=2026-10-31&category=research#item-hn-49916751), none of which appear in the verified model registry, where the closest confirmed models are GPT-5.6-Terra, DeepSeek-V4.1-Flash, and GLM-5.2. These should be treated as unverified chatter or naming errors until officially confirmed by the respective providers.",
+      "description_html": "Community content references <a href=\"/?date=2026-10-31&amp;category=social#item-1d71ac4d8fda\" class=\"internal-link\" rel=\"noopener noreferrer\">GPT-6.1 Terra</a>, <a href=\"/?date=2026-10-31&amp;category=social#item-30a17fa5bcf0\" class=\"internal-link\" rel=\"noopener noreferrer\">DeepSeek v5 ultrafast</a>, and <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a>, none of which appear in the verified model registry, where the closest confirmed models are GPT-5.6-Terra, DeepSeek-V4.1-Flash, and GLM-5.2. These should be treated as unverified chatter or naming errors until officially confirmed by the respective providers.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 1,
+        "social": 2,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 55
+    }
+  ],
+  "total_items_collected": 62,
+  "total_items_analyzed": 56,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 21,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 24,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 17,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 17,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-31/hero.webp?v=1793430376",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe rewinds a glowing timeline with a pinch, pulling a corrected story card back into view as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Config Lock-Order and Boot Stability — A coordinated sweep of merged PRs removes config reads from startup paths and fixes lock-order cycles, headlined by t...\nTopic 2: Subscription Overhaul and Claude Support — The 27 October 2026 revamp bundles a cloud agent into every new plan and shifts usage from monthly credits to daily/w...\nTopic 3: v0.22.5 Release and Documentation — The v0.22.5 canary build ships the latest main-branch fixes to pre-release trackers, anchored by a complete slash-com...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, locks, shields, firewall barriers, protection symbols. The scene stays dark and tech-forward, matching her palette. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a wide three-quarter profile, cool dark ambience broken by a single warm orange glow above the console. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-31T07:06:16.294512",
+  "categories": {
+    "news": {
+      "count": 15,
+      "category_summary": "**Merged PRs**: A coordinated **config lock-order / boot-stability** sweep headlines the week — the **[gateway orphan idle probe](/?date=2026-10-31&category=news#item-4581d0ca3150)** fix ends a boot-blocking hang that left the gateway unreachable for Desktop users, **[RedactingFormatter](/?date=2026-10-31&category=news#item-99353b3e4f27)** no longer reads config (eliminating a deadlock path during remote profile boots and defaulting unknown policies to fail-secure redaction), the **[provider-auth mirror](/?date=2026-10-31&category=news#item-19761831e5f3)** goes lock-free to stop stale auth rows for plugin providers, and the **[provider-env catalog](/?date=2026-10-31&category=news#item-e095a2072baa)** and **[completion hook](/?date=2026-10-31&category=news#item-deb74ce1f6d5)** drop config reads from startup. Security hardening: Hermes now **[deletes stale Bitwarden/1Password caches](/?date=2026-10-31&category=news#item-35a3dc202ccb)** and Photon sidecar records instead of trusting writable-location copies. **Releases**: **[v0.22.5+canary.20261030T064851Z](/?date=2026-10-31&category=news#item-d6e8b7eb2b6a)** ships the latest main-branch fixes to pre-release trackers. **Community**: **[keryx](/?date=2026-10-31&category=news#item-3220ec187264)** debuts as a read-only visual activity monitor rendering Hermes sessions, tasks, analytics, and logs — a strong showcase of building on Hermes records.",
+      "category_summary_html": "<p><strong>Merged PRs</strong>: A coordinated <strong>config lock-order / boot-stability</strong> sweep headlines the week — the <strong><a href=\"/?date=2026-10-31&amp;category=news#item-4581d0ca3150\" class=\"internal-link\" rel=\"noopener noreferrer\">gateway orphan idle probe</a></strong> fix ends a boot-blocking hang that left the gateway unreachable for Desktop users, <strong><a href=\"/?date=2026-10-31&amp;category=news#item-99353b3e4f27\" class=\"internal-link\" rel=\"noopener noreferrer\">RedactingFormatter</a></strong> no longer reads config (eliminating a deadlock path during remote profile boots and defaulting unknown policies to fail-secure redaction), the <strong><a href=\"/?date=2026-10-31&amp;category=news#item-19761831e5f3\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-auth mirror</a></strong> goes lock-free to stop stale auth rows for plugin providers, and the <strong><a href=\"/?date=2026-10-31&amp;category=news#item-e095a2072baa\" class=\"internal-link\" rel=\"noopener noreferrer\">provider-env catalog</a></strong> and <strong><a href=\"/?date=2026-10-31&amp;category=news#item-deb74ce1f6d5\" class=\"internal-link\" rel=\"noopener noreferrer\">completion hook</a></strong> drop config reads from startup. Security hardening: Hermes now <strong><a href=\"/?date=2026-10-31&amp;category=news#item-35a3dc202ccb\" class=\"internal-link\" rel=\"noopener noreferrer\">deletes stale Bitwarden/1Password caches</a></strong> and Photon sidecar records instead of trusting writable-location copies. <strong>Releases</strong>: <strong><a href=\"/?date=2026-10-31&amp;category=news#item-d6e8b7eb2b6a\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.5+canary.20261030T064851Z</a></strong> ships the latest main-branch fixes to pre-release trackers. <strong>Community</strong>: <strong><a href=\"/?date=2026-10-31&amp;category=news#item-3220ec187264\" class=\"internal-link\" rel=\"noopener noreferrer\">keryx</a></strong> debuts as a read-only visual activity monitor rendering Hermes sessions, tasks, analytics, and logs — a strong showcase of building on Hermes records.</p>",
+      "themes": [
+        {
+          "name": "Config Lock-Order and Boot Stability Sweep",
+          "description": "A coordinated series of merged fixes on 30 October removing config reads from locked or boot-critical paths: the gateway orphan idle probe deadlock, redaction formatter lock cycles, provider-env catalog and completion hook changes, and the auth mirror fix.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Security and Secrets Hardening",
+          "description": "Changes that make Hermes fail secure, including deleting untrusted legacy secret-store copies, defaulting unknown redaction policies to redact, and avoiding config reads that could be refused or poisoned.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "v0.22.5 Feature Coverage and Guides",
+          "description": "Third-party tutorial coverage of capabilities that shipped around v0.22.5, including plugin slash-command option pickers, the OpenClaw importer plugin, and the October 27 subscription model change with daily and weekly limits plus a bundled cloud agent.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Skill and Community Ecosystem",
+          "description": "Developer-focused material on building and distributing skills plus a new community GUI project (Keryx) demonstrating how third parties build on Hermes records.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 50.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "4581d0ca3150",
+          "title": "fix(gateway): resolve the orphan idle probe's target before opening a…",
+          "content": "fix(gateway): resolve the orphan idle probe's target before opening a read\n\n_idle_s runs on the gateway's startup thread (recover_local_sessions -&gt;\narm_startup_orphan_closes) and resolved the physical session id inside its\nown SessionDB._read_ctx() block. _physical_target reads the local receipt, so\nthat argument opened a second read context. A read that cannot use the WAL\npool -- no WAL (DELETE journal / NFS fallback) or every read permit spent --\nis served from the writer connection under SessionDB._lock, which is not\nreentrant: the nested read waited on the lock the same thread already held.\n\nBoot then never reached the control socket. Desktop clients gave up with\n&quot;Gateway inaccessible: incomplete_control_response&quot; / &quot;Gateway starting:\ndeadline&quot;, the loop-liveness watchdog dumped the stack and exited 75, and\nlaunchd restarted the gateway into the same wedge: a boot loop, not a slow\nstart.\n\nResolve the target first; the probe now opens exactly one read context.\n\nTest: test_the_startup_idle_probe_does_not_nest_its_read_context fails on\nmain (the nested read) and passes here.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/6bb377a51d5c8e279a7a5e34d717d653d421d064",
+          "author": "cnkang",
+          "published": "2026-10-30T20:26:01",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A gateway bug was fixed where the orphan idle probe opened a nested read context on a non-reentrant lock during startup, which could hang the boot process entirely. Desktop clients previously saw Gateway inaccessible: incomplete_control_response or deadline errors because the boot never reached the control socket.",
+          "importance_score": 88.0,
+          "reasoning": "This fixes a severe boot-blocking failure that made the gateway unreachable for Desktop users. Resolving a startup deadlock that prevents the control socket from ever coming up is a critical stability fix affecting anyone who hit this race.",
+          "themes": [
+            "Gateway Stability",
+            "Bug Fixes",
+            "Desktop Reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A gateway bug was fixed where the orphan idle probe opened a nested read context on a non-reentrant lock during startup, which could hang the boot process entirely. Desktop clients previously saw Gateway inaccessible: incomplete_control_response or deadline errors because the boot never reached the control socket.</p>",
+          "content_html": "<p>fix(gateway): resolve the orphan idle probe's target before opening a read</p>\n<p>_idle_s runs on the gateway's startup thread (recover_local_sessions -&gt;</p>\n<p>arm_startup_orphan_closes) and resolved the physical session id inside its</p>\n<p>own SessionDB._read_ctx() block. _physical_target reads the local receipt, so</p>\n<p>that argument opened a second read context. A read that cannot use the WAL</p>\n<p>pool -- no WAL (DELETE journal / NFS fallback) or every read permit spent --</p>\n<p>is served from the writer connection under SessionDB._lock, which is not</p>\n<p>reentrant: the nested read waited on the lock the same thread already held.</p>\n<p>Boot then never reached the control socket. Desktop clients gave up with</p>\n<p>\"Gateway inaccessible: incomplete_control_response\" / \"Gateway starting:</p>\n<p>deadline\", the loop-liveness watchdog dumped the stack and exited 75, and</p>\n<p>launchd restarted the gateway into the same wedge: a boot loop, not a slow</p>\n<p>start.</p>\n<p>Resolve the target first; the probe now opens exactly one read context.</p>\n<p>Test: test_the_startup_idle_probe_does_not_nest_its_read_context fails on</p>\n<p>main (the nested read) and passes here.</p>"
+        },
+        {
+          "id": "35a3dc202ccb",
+          "title": "fix(secrets): delete old secret-store copies instead of moving them",
+          "content": "fix(secrets): delete old secret-store copies instead of moving them\n\nThe agent can write cache/ and runtime/, so a file there may be a link or a\nforged record. Hermes now deletes a Bitwarden or 1Password cache in cache/, or\na Photon sidecar record in runtime/, on first use without reading it, and\nreads and writes only the copy at the top of the profile home. All four stores\nare regenerated on use.\n\n- Remove utils.adopt_legacy_file and the paths built on it.\n- home_data_layout: split SECRET_CACHE_STORES into SECRET_CACHE_FILES and\n  LEGACY_SECRET_CACHE_PATHS.\n- Backups leave out the four top-level names; the old slashed entries never\n  matched a root entry.\n- The dashboard Files API takes its hidden names from the shared list.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/f413c2ee9abce1495c184417c1e070f3ce45e466",
+          "author": "jquesnelle",
+          "published": "2026-10-30T17:46:07",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hermes now deletes stale Bitwarden/1Password caches and Photon sidecar records on first use instead of trusting or moving them, since files in writable directories could be links or forged records. Secrets are read and written only from the top of the profile home, all four stores regenerate on use, and the legacy adopt path was removed.",
+          "importance_score": 85.0,
+          "reasoning": "This is a meaningful security hardening change: previously a malicious or corrupted file in cache or runtime directories could be adopted as a secret store. Eliminating legacy adoption paths and regenerating stores protects users against secret-spoofing attacks.",
+          "themes": [
+            "Security Hardening",
+            "Secrets Management"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes now deletes stale Bitwarden/1Password caches and Photon sidecar records on first use instead of trusting or moving them, since files in writable directories could be links or forged records. Secrets are read and written only from the top of the profile home, all four stores regenerate on use, and the legacy adopt path was removed.</p>",
+          "content_html": "<p>fix(secrets): delete old secret-store copies instead of moving them</p>\n<p>The agent can write cache/ and runtime/, so a file there may be a link or a</p>\n<p>forged record. Hermes now deletes a Bitwarden or 1Password cache in cache/, or</p>\n<p>a Photon sidecar record in runtime/, on first use without reading it, and</p>\n<p>reads and writes only the copy at the top of the profile home. All four stores</p>\n<p>are regenerated on use.</p>\n<ul>\n<li>Remove utils.adopt_legacy_file and the paths built on it.</li>\n<li>home_data_layout: split SECRET_CACHE_STORES into SECRET_CACHE_FILES and</li>\n</ul>\n<p>LEGACY_SECRET_CACHE_PATHS.</p>\n<ul>\n<li>Backups leave out the four top-level names; the old slashed entries never</li>\n</ul>\n<p>matched a root entry.</p>\n<ul>\n<li>The dashboard Files API takes its hidden names from the shared list.</li>\n</ul>"
+        },
+        {
+          "id": "99353b3e4f27",
+          "title": "fix(redact): the log formatter never waits for config",
+          "content": "fix(redact): the log formatter never waits for config\n\nRedactingFormatter reads a routed profile's redaction policy from config\nwhile holding the logging handler's lock. A thread holding _CONFIG_LOCK\n(for example one booting a remote profile) that logs then waits for the\nhandler lock: a lock-order cycle. On the booting thread itself the read\nre-entered the boot and ConfigBackendUnavailable escaped the formatter.\n\nload_config_readonly_nowait() returns None instead of waiting: when\n_CONFIG_LOCK is held by another thread, or when the read would start a\nremote boot fetch (config_backend.without_boot()). The formatter then\nredacts (the secure default) and does not cache that answer.\n\nThe remote backend's lock-order tests move to their own file.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/8ae88edc8ab7e5798a164410a49b53b0df291ed9",
+          "author": "benbarclay",
+          "published": "2026-10-30T15:13:02",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "RedactingFormatter previously read config while holding the logging handler lock, creating a lock-order cycle that could deadlock or leak ConfigBackendUnavailable during boot. load_config_readonly_nowait() now returns None instead of waiting, and the formatter falls back to redacting without caching the result.",
+          "importance_score": 62.0,
+          "reasoning": "Eliminates a real deadlock path during remote profile boots and establishes a fail-secure logging default. Combined with the related redact commit, it materially improves boot reliability for remote-backend users.",
+          "themes": [
+            "Config Robustness",
+            "Security Hardening",
+            "Logging"
+          ],
+          "continuation": null,
+          "summary_html": "<p>RedactingFormatter previously read config while holding the logging handler lock, creating a lock-order cycle that could deadlock or leak ConfigBackendUnavailable during boot. load_config_readonly_nowait() now returns None instead of waiting, and the formatter falls back to redacting without caching the result.</p>",
+          "content_html": "<p>fix(redact): the log formatter never waits for config</p>\n<p>RedactingFormatter reads a routed profile's redaction policy from config</p>\n<p>while holding the logging handler's lock. A thread holding _CONFIG_LOCK</p>\n<p>(for example one booting a remote profile) that logs then waits for the</p>\n<p>handler lock: a lock-order cycle. On the booting thread itself the read</p>\n<p>re-entered the boot and ConfigBackendUnavailable escaped the formatter.</p>\n<p>load_config_readonly_nowait() returns None instead of waiting: when</p>\n<p>_CONFIG_LOCK is held by another thread, or when the read would start a</p>\n<p>remote boot fetch (config_backend.without_boot()). The formatter then</p>\n<p>redacts (the secure default) and does not cache that answer.</p>\n<p>The remote backend's lock-order tests move to their own file.</p>"
+        },
+        {
+          "id": "d2f8900d829f",
+          "title": "fix(redact): the log formatter reads no config",
+          "content": "fix(redact): the log formatter reads no config\n\nRedactingFormatter resolved a routed profile's redaction policy per\nrecord from config, under the logging handler's lock. It now reads only\nin-memory state: the live secret scope, and the policy recorded when that\nprofile's .env or config is loaded, or when log routing is set up for it\n(resolve_profile_policy). Unknown means redact, the secure default.\n\nThis removes load_config_readonly_nowait() and the no-boot read scope.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/e924f7517661d4ac628da50f2c87e066b622c15d",
+          "author": "benbarclay",
+          "published": "2026-10-30T15:13:02",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "RedactingFormatter no longer resolves a profile's redaction policy from config per log record; it reads only in-memory state such as the live secret scope and policies recorded at load time. Unknown policies default to redacting, the secure behavior.",
+          "importance_score": 60.0,
+          "reasoning": "Removing config reads from the hot logging path eliminates a lock-order hazard and reduces config-lock contention at runtime. The fail-secure default (redact when unknown) protects log secrets, benefiting all users indirectly through stability and safety.",
+          "themes": [
+            "Security Hardening",
+            "Config Robustness",
+            "Logging"
+          ],
+          "continuation": null,
+          "summary_html": "<p>RedactingFormatter no longer resolves a profile's redaction policy from config per log record; it reads only in-memory state such as the live secret scope and policies recorded at load time. Unknown policies default to redacting, the secure behavior.</p>",
+          "content_html": "<p>fix(redact): the log formatter reads no config</p>\n<p>RedactingFormatter resolved a routed profile's redaction policy per</p>\n<p>record from config, under the logging handler's lock. It now reads only</p>\n<p>in-memory state: the live secret scope, and the policy recorded when that</p>\n<p>profile's .env or config is loaded, or when log routing is set up for it</p>\n<p>(resolve_profile_policy). Unknown means redact, the secure default.</p>\n<p>This removes load_config_readonly_nowait() and the no-boot read scope.</p>"
+        },
+        {
+          "id": "19761831e5f3",
+          "title": "fix(auth): mirror plugin providers lock-free and never mid-discovery",
+          "content": "fix(auth): mirror plugin providers lock-free and never mid-discovery\n\nA PROVIDER_REGISTRY read from a plugin during provider discovery ran the\npending mirror against a partial profile list, so the auth row kept a\nprovider that a later, higher-priority registration replaced. The mirror\nnow waits for discovery to finish (its completion sync runs then), and\nruns holding no lock: it lists providers, which reads config, and the\nsync is idempotent.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/5aaf0fdb5d950891818de86afcf086359559949b",
+          "author": "benbarclay",
+          "published": "2026-10-30T15:13:02",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The provider registry mirror no longer runs against a partial profile list during provider discovery, which previously could leave stale auth rows for providers later replaced by higher-priority registrations. The mirror now waits for discovery to finish and runs without holding a lock.",
+          "importance_score": 58.0,
+          "reasoning": "Fixes a correctness bug in auth records for plugin-provided providers, which could confuse users whose plugin providers appeared or persisted incorrectly. It also removes another lock-order cycle, contributing to the day's stability sweep.",
+          "themes": [
+            "Auth Correctness",
+            "Config Robustness"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The provider registry mirror no longer runs against a partial profile list during provider discovery, which previously could leave stale auth rows for providers later replaced by higher-priority registrations. The mirror now waits for discovery to finish and runs without holding a lock.</p>",
+          "content_html": "<p>fix(auth): mirror plugin providers lock-free and never mid-discovery</p>\n<p>A PROVIDER_REGISTRY read from a plugin during provider discovery ran the</p>\n<p>pending mirror against a partial profile list, so the auth row kept a</p>\n<p>provider that a later, higher-priority registration replaced. The mirror</p>\n<p>now waits for discovery to finish (its completion sync runs then), and</p>\n<p>runs holding no lock: it lists providers, which reads config, and the</p>\n<p>sync is idempotent.</p>"
+        },
+        {
+          "id": "deb74ce1f6d5",
+          "title": "fix(config): the provider-env completion hook reads the process-wide …",
+          "content": "fix(config): the provider-env completion hook reads the process-wide source record\n\nsync_registered_providers() filtered the registry through provider_source(), which is\nprofile-aware: it scans the bound home's unscanned plugin dirs, whose isolation check reads\nconfig, so under a refusing backend discovery completion raised. Filter on providers._SOURCES.\n\nTests: a cold discovery completion under a backend refusing every read with an unscanned home\nplugin tree (no read, no scan, entry-point var published); a cold safe-worker catalog build\nexecutes no plugin module (with an ordinary-worker control proving the marker plugin runs).",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/5057eaa3a4d0cbef0e30078418a5115faa62889e",
+          "author": "benbarclay",
+          "published": "2026-10-30T15:13:02",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The provider-env completion hook no longer filters the registry through profile-aware provider discovery, which could raise errors when a refusing backend blocked config reads. It now filters on the process-wide source record, with new tests covering cold discovery completion and safe-worker catalog builds.",
+          "importance_score": 55.0,
+          "reasoning": "Fixes a discovery-time failure under restricted backends, improving robustness for users running Hermes in sandboxed or refusing-backend environments. It is part of the broader config-read refactor rather than a headline feature.",
+          "themes": [
+            "Config Robustness",
+            "Provider Discovery"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The provider-env completion hook no longer filters the registry through profile-aware provider discovery, which could raise errors when a refusing backend blocked config reads. It now filters on the process-wide source record, with new tests covering cold discovery completion and safe-worker catalog builds.</p>",
+          "content_html": "<p>fix(config): the provider-env completion hook reads the process-wide source record</p>\n<p>sync_registered_providers() filtered the registry through provider_source(), which is</p>\n<p>profile-aware: it scans the bound home's unscanned plugin dirs, whose isolation check reads</p>\n<p>config, so under a refusing backend discovery completion raised. Filter on providers._SOURCES.</p>\n<p>Tests: a cold discovery completion under a backend refusing every read with an unscanned home</p>\n<p>plugin tree (no read, no scan, entry-point var published); a cold safe-worker catalog build</p>\n<p>executes no plugin module (with an ordinary-worker control proving the marker plugin runs).</p>"
+        },
+        {
+          "id": "e095a2072baa",
+          "title": "fix(config): the provider env catalog reads no config",
+          "content": "fix(config): the provider env catalog reads no config\n\nThe provider entries of OPTIONAL_ENV_VARS are descriptive metadata, but\nthey came from list_providers(), and provider discovery reads config. A\npartial discovery could also be published permanently.\n\nThey are now built from providers.bundled_profiles(), which executes each\nbundled provider plugin into a private module and collects its\nregistrations: no config, no discovery, no registry change. The result is\na plain idempotent cache (concurrent first callers compute the same pure\nresult). Discovery's completion hook adds the process-wide plugin\nproviders it registered, read from the registry as it stands. Disabled\nplugins are never executed for the catalog.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/b4d8e4c3322e701e89beb5a69bd7ac3e37aa5597",
+          "author": "benbarclay",
+          "published": "2026-10-30T15:13:02",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The provider entries in OPTIONAL_ENV_VARS are now built from bundled provider profiles instead of list_providers(), removing config reads and discovery from that path. This also prevents a partial discovery result from being permanently published and makes the catalog a pure idempotent cache.",
+          "importance_score": 55.0,
+          "reasoning": "Removes a source of startup nondeterminism where partial provider discovery could be cached permanently. The change improves reliability of provider setup for users configuring multiple providers, though it is largely internal plumbing.",
+          "themes": [
+            "Config Robustness",
+            "Provider Discovery"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The provider entries in OPTIONAL_ENV_VARS are now built from bundled provider profiles instead of list_providers(), removing config reads and discovery from that path. This also prevents a partial discovery result from being permanently published and makes the catalog a pure idempotent cache.</p>",
+          "content_html": "<p>fix(config): the provider env catalog reads no config</p>\n<p>The provider entries of OPTIONAL_ENV_VARS are descriptive metadata, but</p>\n<p>they came from list_providers(), and provider discovery reads config. A</p>\n<p>partial discovery could also be published permanently.</p>\n<p>They are now built from providers.bundled_profiles(), which executes each</p>\n<p>bundled provider plugin into a private module and collects its</p>\n<p>registrations: no config, no discovery, no registry change. The result is</p>\n<p>a plain idempotent cache (concurrent first callers compute the same pure</p>\n<p>result). Discovery's completion hook adds the process-wide plugin</p>\n<p>providers it registered, read from the registry as it stands. Disabled</p>\n<p>plugins are never executed for the catalog.</p>"
+        },
+        {
+          "id": "fc12fa01a242",
+          "title": "Hermes Agent Skill Development: Build, Test, and Distribute Your Own Skills",
+          "content": "Learn how to write, test, and publish your own Hermes Agent skill, from SKILL.md structure and conditional activation through to tap-based sharing for others.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-agent-skill-development-build-test-and-distribute-your-own-skills/",
+          "author": "Hermes Agent",
+          "published": "2026-10-30T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An official-style tutorial on writing, testing and publishing Hermes Agent skills, covering SKILL.md structure, conditional activation, and tap-based sharing. It targets developers who want to distribute their own skills to others.",
+          "importance_score": 55.0,
+          "reasoning": "Skill development is a core extension point of Hermes, and a full build-test-distribute guide lowers the barrier for contributors. It is educational content rather than a release, so it sits in the middle of the tips range.",
+          "themes": [
+            "Skills",
+            "Developer Ecosystem",
+            "Tutorials"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An official-style tutorial on writing, testing and publishing Hermes Agent skills, covering SKILL.md structure, conditional activation, and tap-based sharing. It targets developers who want to distribute their own skills to others.</p>",
+          "content_html": "<p>Learn how to write, test, and publish your own Hermes Agent skill, from SKILL.md structure and conditional activation through to tap-based sharing for others.</p>"
+        },
+        {
+          "id": "d6e8b7eb2b6a",
+          "title": "v0.22.5+canary.20261030T064851Z",
+          "content": "Hermes Agent canary 20261030T064851Z",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261030T064851Z",
+          "author": "github-actions[bot]",
+          "published": "2026-10-30T06:48:52",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A new Hermes Agent canary build (20261030T064851Z) was published on the v0.22.5 line. It ships the latest main-branch changes to users tracking pre-release builds, though the notes themselves contain no feature details.",
+          "importance_score": 45.0,
+          "reasoning": "Canary builds signal ongoing active development and let early adopters test upcoming fixes, but they are routine pre-release artifacts rather than a stable feature release, so significance for most Hermes users is limited.",
+          "themes": [
+            "Canary Releases",
+            "Continuous Delivery"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A new Hermes Agent canary build (20261030T064851Z) was published on the v0.22.5 line. It ships the latest main-branch changes to users tracking pre-release builds, though the notes themselves contain no feature details.</p>",
+          "content_html": "<p>Hermes Agent canary 20261030T064851Z</p>"
+        },
+        {
+          "id": "3220ec187264",
+          "title": "keryx (Workspaces & GUIs)",
+          "content": "Keryx is a read-only visual activity monitor for Hermes Agent. It reads Hermes records and displays activity in a live 3D force-graph dashboard, with panels for sessions, tasks, analytics, and logs.",
+          "url": "https://hermesatlas.com/projects/rafreid/keryx",
+          "author": "Unknown",
+          "published": "2026-10-30T18:52:46",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Workspaces & GUIs"
+          ],
+          "summary": "Keryx is a newly listed read-only visual activity monitor for Hermes Agent that reads Hermes records and renders sessions, tasks, analytics and logs in a live 3D force-graph dashboard. It appears in the Workspaces & GUIs category of the Hermes Atlas project gallery.",
+          "importance_score": 42.0,
+          "reasoning": "A novel community-built observability tool that showcases the extensibility of Hermes records and adds a monitoring option for power users. As a new third-party project listing it is interesting but not core to the agent itself.",
+          "themes": [
+            "Community Projects",
+            "Observability",
+            "GUI Tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Keryx is a newly listed read-only visual activity monitor for Hermes Agent that reads Hermes records and renders sessions, tasks, analytics and logs in a live 3D force-graph dashboard. It appears in the Workspaces &amp; GUIs category of the Hermes Atlas project gallery.</p>",
+          "content_html": "<p>Keryx is a read-only visual activity monitor for Hermes Agent. It reads Hermes records and displays activity in a live 3D force-graph dashboard, with panels for sessions, tasks, analytics, and logs.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 24,
+      "category_summary": "This cycle's research and documentation leads with official changes: the 27 October 2026 subscription revamp — every new plan now bundles a cloud agent and usage shifts from monthly credits to **[daily/weekly limits](/?date=2026-10-31&category=research#item-948180fd31e3)** — plus native **[Claude Pro/Max subscription](/?date=2026-10-31&category=research#item-hn-49790991)** support via a direct SDK plugin, sharply lowering the cost of frontier-model access. Version **v0.22.5** anchors the two most actionable guides: a complete **[slash commands](/?date=2026-10-31&category=research#item-356172a797e3)** reference (session control, model switching, background tasks, usage checks) and the official **[OpenClaw → Hermes Agent](/?date=2026-10-31&category=research#item-879e240d3133)** migration path through the **agent-importers** plugin, with dry-run and backup safeguards. Official docs also detail **[Hermes Kanban](/?date=2026-10-31&category=research#item-hn-49604068)** multi-agent profile collaboration for parallel workflows. Around that core, ecosystem documentation is maturing fast: **[Grafana agento11y-hermes](/?date=2026-10-31&category=research#item-hn-49318128)** observability, the **[Verso](/?date=2026-10-31&category=research#item-hn-49628094)** open-source orchestrator, and the native SwiftUI **[Hermes Paper Harness](/?date=2026-10-31&category=research#item-hn-50278175)** iPhone client, while YC S26's **[Almanac](/?date=2026-10-31&category=research#item-hn-49511007)** validates commercial traction and usefully documents OAuth connector onboarding friction. Practitioners should note the [Kubernetes gap analysis](/?date=2026-10-31&category=research#item-hn-49977400) (no official **Helm chart**; root-at-init container image), a reliability report of a trance-like loop on **[GLM 5.3 Flash](/?date=2026-10-31&category=research#item-hn-49916751)** (model name not yet in verified release lineups), and the [23,000+ open-PR backlog](/?date=2026-10-31&category=research#item-hn-49424643) as the key project-health watch item.",
+      "category_summary_html": "<p>This cycle's research and documentation leads with official changes: the 27 October 2026 subscription revamp — every new plan now bundles a cloud agent and usage shifts from monthly credits to <strong><a href=\"/?date=2026-10-31&amp;category=research#item-948180fd31e3\" class=\"internal-link\" rel=\"noopener noreferrer\">daily/weekly limits</a></strong> — plus native <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> support via a direct SDK plugin, sharply lowering the cost of frontier-model access. Version <strong>v0.22.5</strong> anchors the two most actionable guides: a complete <strong><a href=\"/?date=2026-10-31&amp;category=research#item-356172a797e3\" class=\"internal-link\" rel=\"noopener noreferrer\">slash commands</a></strong> reference (session control, model switching, background tasks, usage checks) and the official <strong><a href=\"/?date=2026-10-31&amp;category=research#item-879e240d3133\" class=\"internal-link\" rel=\"noopener noreferrer\">OpenClaw → Hermes Agent</a></strong> migration path through the <strong>agent-importers</strong> plugin, with dry-run and backup safeguards. Official docs also detail <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> multi-agent profile collaboration for parallel workflows. Around that core, ecosystem documentation is maturing fast: <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana agento11y-hermes</a></strong> observability, the <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a></strong> open-source orchestrator, and the native SwiftUI <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Paper Harness</a></strong> iPhone client, while YC S26's <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac</a></strong> validates commercial traction and usefully documents OAuth connector onboarding friction. Practitioners should note the <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes gap analysis</a> (no official <strong>Helm chart</strong>; root-at-init container image), a reliability report of a trance-like loop on <strong><a href=\"/?date=2026-10-31&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a></strong> (model name not yet in verified release lineups), and the <a href=\"/?date=2026-10-31&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000+ open-PR backlog</a> as the key project-health watch item.</p>",
+      "themes": [
+        {
+          "name": "Official Releases and Subscription Changes",
+          "description": "Claude Pro/Max subscription support, the Kanban multi-agent feature, the 27 October 2026 subscription revamp with daily/weekly limits and cloud agents, and the v0.22.5 importer plugin form the core official-release signal.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Ecosystem Tooling and Plugins",
+          "description": "Third-party clients (SwiftUI iOS app, Verso orchestrator), registries (ClusterMob), observability (Grafana), and plugins (Refine Cycle, agent-importers) indicate a rapidly diversifying ecosystem built on Hermes Agent.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Commercial Buildout",
+          "description": "YC-backed Almanac building a company-knowledge layer on Hermes, while documenting OAuth connector setup pain, signals commercial validation and enterprise onboarding gaps.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 58.0
+        },
+        {
+          "name": "Deployment and Infrastructure",
+          "description": "Containerized setups, Kubernetes gaps (no Helm chart, root at init), and alternative hosts like Arduino UNO Q show strong self-hosting interest alongside real operational friction.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Reliability, Security and Model Behavior",
+          "description": "Reports of an agent entering a trance-like loop on GLM 5.3 Flash, adversarial reversal probing, and questions about model-router dependency highlight stability and security concerns.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 52.0
+        },
+        {
+          "name": "Project Health and Governance",
+          "description": "The 23,000 open PR backlog, a deleted/blocked GitHub issue, and a trademark question raise governance, moderation and project-sustainability questions.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 50.0
+        },
+        {
+          "name": "Containerized Deployment",
+          "description": "Community-authored guidance on packaging and running the Hermes Agent in containerized environments, relevant to users self-hosting or standardizing deployments.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 50.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "948180fd31e3",
+          "title": "Hermes Agent Usage Limits: Daily, Weekly and How to Check Them",
+          "content": "Hermes Agent usage limits changed on 27 October 2026. Nous Research announced on X that it had revamped Hermes Agent subscriptions: every new plan now includes a cloud agent, and usage has daily and weekly limits instead of one monthly block of credits. Below I explain what that means for you, how to check exactly where you stand with `/usage`, how limits work when you sign in with ChatGPT or Claude instead, and what Hermes does when a limit runs out, using the Hermes docs as the source. I’ve also added my video on Hermes Cloud below.\n\nKey takeaways\n\n- New Nous plans: daily + weekly limits, plus a cloud agent on every new plan.\n\n- Check your limits any time with `/usage` (or `hermes usage` outside a chat).\n\n- `/subscription` shows your plan; `/topup` shows your balance.\n\n- When a limit runs out, Hermes can switch to a fallback model and park scheduled jobs.\n\n- Want Hermes running without hitting walls? Claim a free strategy session.\n\n## What changed with Hermes Agent usage limits\n\nBefore the revamp, a Hermes subscription worked like a monthly allowance: one block of credits that you used up over the month. If you had a heavy week early on, you could run dry long before the month ended.\n\nThe new plans split usage into daily and weekly limits. In practice, that spreads your usage across the month, so one busy day can’t burn the whole allowance. And every new plan now comes with a cloud agent included, so you can have a Hermes running 24/7 without setting up your own server.\n\nNous says existing subscribers can switch to the new plans at any time from the Nous Portal billing page. Hermes v0.22.5 (22 October) added support for these window-based plans in the app: plan gauges, limit cards, and recovery when you switch models after hitting a limit.\n\n## How to check your Hermes usage limits\n\nYou don’t have to guess. Hermes gives you several ways to see where you stand:\n\nCommand\nWhere\nWhat it shows\n\n/usage\nAny chat (CLI, Desktop, Telegram, Discord…)\nToken use, cost breakdown, context window and, when your provider supports it, an Account limits section with remaining quota, credits or plan usage\n\nhermes usage\nYour terminal, no chat needed\nThe same account-limits block, ready for scripts (add –json)\n\n/subscription\nCLI\nYour Nous plan, with a link to change it in the browser\n\n/topup\nCLI and messaging\nYour Nous balance and billing on the portal (replaces the old /credits and /billing)\n\n/insights\nAny chat\nUsage patterns over the last 30 days\n\nHermes also shows Nous credits notices in the status bar, such as usage bands and when a grant is spent. If they bother you, set `display.credits_notices: false` in config.yaml; `/usage` still works.\n\nWant Hermes set up so it never stalls on a limit? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Hermes usage limits when you sign in with ChatGPT or Claude\n\nNot everyone uses a Nous plan. The providers page explains what each subscription actually pays for, and it’s the most common source of billing surprises:\n\n- ChatGPT / Codex sign-in: `/usage` shows your Codex 5-hour and weekly windows. If you have usage-limit resets banked on your ChatGPT account, `/usage reset` redeems one and fully restores both limits. Hermes refuses while your limits aren’t used up, because spending a reset early wastes it; `/usage reset --force` overrides that.\n\n- Claude Max sign-in: Hermes only works through the OAuth path on a Max plan with extra usage credits bought on top. Hermes uses those extra credits, not the base Max allowance. Claude Pro can’t use this path; you’d use an API key instead.\n\n- OpenRouter: `hermes usage --provider openrouter` shows your credits.\n\nIf you’d rather not track five different rules, the docs point to Nous Portal: 300+ models under one subscription and one login.\n\n## What happens when you hit a Hermes usage limit\n\nThis is where Hermes is smarter than most agents. When a provider says your limit is reached and tells Hermes when it resets, Hermes uses that information instead of retrying blindly:\n\n- Fallback models: if you’ve set a fallback, Hermes moves to it and stays there until the reset time passes, instead of bouncing back and forth every turn.\n\n- Scheduled jobs get parked: if a cron job’s provider reports its limit used up and every fallback is unavailable, the scheduler holds the job until the window reopens. You get one alert saying the job is held, not an alert every few minutes.\n\n- Switching models: since v0.22.5, Hermes recovers when you switch to another model after hitting a plan limit.\n\nThe simple takeaway: set at least one fallback model, and your agent keeps working even on a day you’ve used up your main plan.\n\n## How to make your Hermes usage last longer\n\nMost usage goes on tokens, so the fixes are about sending fewer of them. These come straight from the docs’ tips:\n\n- Run `/compress` during long sessions. It summarises the history and cuts the tokens sent on every turn.\n\n- Use `/context` to see what’s filling the window: system prompt, tools, skills, memory or the chat itself.\n\n- Run `hermes prompt-size` to see the fixed cost of every message before you even start.\n\n- Send side jobs like image description and web summaries to a cheaper auxiliary model, instead of your main one.\n\n- Start a fresh session with `/new` when you change topic.\n\nOr just ask your agent: “Check my /usage, tell me what’s using the most tokens, and set up a fallback model so I don’t get stuck when I hit my limit.”\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Is the new plan better for you?\n\nIf your usage is steady, daily and weekly limits mean you’re far less likely to be locked out at the end of the month. If you work in bursts, such as one huge project day a week, the daily cap matters more, so watch `/usage` on those days and keep a fallback model ready.\n\nEither way, the included cloud agent is the bigger change. It means a Hermes that keeps working while your laptop is closed, without paying for and managing a separate server.\n\n## My verdict\n\nThe revamp makes Hermes usage easier to plan: limits that reset daily and weekly, a cloud agent on every new plan, and clear tools to see where you stand. Check `/usage`, set a fallback model, and you’ll rarely notice the caps. That’s everything you need to know about Hermes Agent usage limits right now.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Hermes Agent Usage Limits.\n\n## FAQ: hermes agent usage limits\n\n### What are the Hermes Agent usage limits?\n\nSince Nous revamped Hermes Agent subscriptions on 27 October 2026, new plans have daily and weekly usage limits instead of one monthly block of credits, and every new plan includes a cloud agent.\n\n### How do I check my Hermes usage?\n\nType /usage in any Hermes chat. When your provider supports it, it includes an Account limits section with your remaining quota or credits. Outside a chat, run hermes usage in your terminal.\n\n### Can I switch my existing plan to the new limits?\n\nYes. Nous says subscribers can switch to the new plans at any time from portal.nousresearch.com/billing.\n\n### What happens when I hit my Hermes limit?\n\nHermes can move to a fallback model until the limit resets, and scheduled cron jobs are held until the window reopens instead of failing over and over.\n\n### Does Hermes use my Claude Max allowance?\n\nNo. With Claude Max OAuth, Hermes only uses the extra usage credits you’ve bought on top of Max, never the base allowance. Claude Pro can’t use this path at all.\n\n### How do I reset my Codex limit in Hermes?\n\nIf you have resets banked on your ChatGPT account, /usage reset redeems one and restores your 5-hour and weekly limits. Hermes refuses until your limits are used up unless you add –force.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Multiple Profiles\n\n- Hermes Advanced Delegation\n\n- Hermes Agent Subagents\n\nLast updated October 2026. This page is a living guide to hermes agent usage limits — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-agent-usage-limits/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-usage-limits",
+          "author": "Clawdbot",
+          "published": "2026-10-30T09:51:35",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "On 27 October 2026 Nous Research revamped Hermes Agent subscriptions: every new plan now includes a cloud agent, and usage moved from a monthly credit block to daily and weekly limits. Users can check limits with /usage (or hermes usage), view plans via /subscription and balance via /topup; when limits run out Hermes can switch to a fallback model and park scheduled jobs.",
+          "importance_score": 75.0,
+          "reasoning": "A fresh, dated announcement of a structural change to subscription economics and quota mechanics, with concrete user-facing commands and behavior on limit exhaustion; high practical impact near the coverage date.",
+          "themes": [
+            "subscriptions",
+            "usage limits",
+            "cloud agent",
+            "pricing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>On 27 October 2026 Nous Research revamped Hermes Agent subscriptions: every new plan now includes a cloud agent, and usage moved from a monthly credit block to daily and weekly limits. Users can check limits with /usage (or hermes usage), view plans via /subscription and balance via /topup; when limits run out Hermes can switch to a fallback model and park scheduled jobs.</p>",
+          "content_html": "<p>Hermes Agent usage limits changed on 27 October 2026. Nous Research announced on X that it had revamped Hermes Agent subscriptions: every new plan now includes a cloud agent, and usage has daily and weekly limits instead of one monthly block of credits. Below I explain what that means for you, how to check exactly where you stand with <code>/usage</code>, how limits work when you sign in with ChatGPT or Claude instead, and what Hermes does when a limit runs out, using the Hermes docs as the source. I’ve also added my video on Hermes Cloud below.</p>\n<p>Key takeaways</p>\n<ul>\n<li>New Nous plans: daily + weekly limits, plus a cloud agent on every new plan.</li>\n</ul>\n<ul>\n<li>Check your limits any time with <code>/usage</code> (or <code>hermes usage</code> outside a chat).</li>\n</ul>\n<ul>\n<li><code>/subscription</code> shows your plan; <code>/topup</code> shows your balance.</li>\n</ul>\n<ul>\n<li>When a limit runs out, Hermes can switch to a fallback model and park scheduled jobs.</li>\n</ul>\n<ul>\n<li>Want Hermes running without hitting walls? Claim a free strategy session.</li>\n</ul>\n<h2>What changed with Hermes Agent usage limits</h2>\n<p>Before the revamp, a Hermes subscription worked like a monthly allowance: one block of credits that you used up over the month. If you had a heavy week early on, you could run dry long before the month ended.</p>\n<p>The new plans split usage into daily and weekly limits. In practice, that spreads your usage across the month, so one busy day can’t burn the whole allowance. And every new plan now comes with a cloud agent included, so you can have a Hermes running 24/7 without setting up your own server.</p>\n<p>Nous says existing subscribers can switch to the new plans at any time from the Nous Portal billing page. Hermes v0.22.5 (22 October) added support for these window-based plans in the app: plan gauges, limit cards, and recovery when you switch models after hitting a limit.</p>\n<h2>How to check your Hermes usage limits</h2>\n<p>You don’t have to guess. Hermes gives you several ways to see where you stand:</p>\n<p>Command</p>\n<p>Where</p>\n<p>What it shows</p>\n<p>/usage</p>\n<p>Any chat (CLI, Desktop, Telegram, Discord…)</p>\n<p>Token use, cost breakdown, context window and, when your provider supports it, an Account limits section with remaining quota, credits or plan usage</p>\n<p>hermes usage</p>\n<p>Your terminal, no chat needed</p>\n<p>The same account-limits block, ready for scripts (add –json)</p>\n<p>/subscription</p>\n<p>CLI</p>\n<p>Your Nous plan, with a link to change it in the browser</p>\n<p>/topup</p>\n<p>CLI and messaging</p>\n<p>Your Nous balance and billing on the portal (replaces the old /credits and /billing)</p>\n<p>/insights</p>\n<p>Any chat</p>\n<p>Usage patterns over the last 30 days</p>\n<p>Hermes also shows Nous credits notices in the status bar, such as usage bands and when a grant is spent. If they bother you, set <code>display.credits_notices: false</code> in config.yaml; <code>/usage</code> still works.</p>\n<p>Want Hermes set up so it never stalls on a limit? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Hermes usage limits when you sign in with ChatGPT or Claude</h2>\n<p>Not everyone uses a Nous plan. The providers page explains what each subscription actually pays for, and it’s the most common source of billing surprises:</p>\n<ul>\n<li>ChatGPT / Codex sign-in: <code>/usage</code> shows your Codex 5-hour and weekly windows. If you have usage-limit resets banked on your ChatGPT account, <code>/usage reset</code> redeems one and fully restores both limits. Hermes refuses while your limits aren’t used up, because spending a reset early wastes it; <code>/usage reset --force</code> overrides that.</li>\n</ul>\n<ul>\n<li>Claude Max sign-in: Hermes only works through the OAuth path on a Max plan with extra usage credits bought on top. Hermes uses those extra credits, not the base Max allowance. Claude Pro can’t use this path; you’d use an API key instead.</li>\n</ul>\n<ul>\n<li>OpenRouter: <code>hermes usage --provider openrouter</code> shows your credits.</li>\n</ul>\n<p>If you’d rather not track five different rules, the docs point to Nous Portal: 300+ models under one subscription and one login.</p>\n<h2>What happens when you hit a Hermes usage limit</h2>\n<p>This is where Hermes is smarter than most agents. When a provider says your limit is reached and tells Hermes when it resets, Hermes uses that information instead of retrying blindly:</p>\n<ul>\n<li>Fallback models: if you’ve set a fallback, Hermes moves to it and stays there until the reset time passes, instead of bouncing back and forth every turn.</li>\n</ul>\n<ul>\n<li>Scheduled jobs get parked: if a cron job’s provider reports its limit used up and every fallback is unavailable, the scheduler holds the job until the window reopens. You get one alert saying the job is held, not an alert every few minutes.</li>\n</ul>\n<ul>\n<li>Switching models: since v0.22.5, Hermes recovers when you switch to another model after hitting a plan limit.</li>\n</ul>\n<p>The simple takeaway: set at least one fallback model, and your agent keeps working even on a day you’ve used up your main plan.</p>\n<h2>How to make your Hermes usage last longer</h2>\n<p>Most usage goes on tokens, so the fixes are about sending fewer of them. These come straight from the docs’ tips:</p>\n<ul>\n<li>Run <code>/compress</code> during long sessions. It summarises the history and cuts the tokens sent on every turn.</li>\n</ul>\n<ul>\n<li>Use <code>/context</code> to see what’s filling the window: system prompt, tools, skills, memory or the chat itself.</li>\n</ul>\n<ul>\n<li>Run <code>hermes prompt-size</code> to see the fixed cost of every message before you even start.</li>\n</ul>\n<ul>\n<li>Send side jobs like image description and web summaries to a cheaper auxiliary model, instead of your main one.</li>\n</ul>\n<ul>\n<li>Start a fresh session with <code>/new</code> when you change topic.</li>\n</ul>\n<p>Or just ask your agent: “Check my /usage, tell me what’s using the most tokens, and set up a fallback model so I don’t get stuck when I hit my limit.”</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Is the new plan better for you?</h2>\n<p>If your usage is steady, daily and weekly limits mean you’re far less likely to be locked out at the end of the month. If you work in bursts, such as one huge project day a week, the daily cap matters more, so watch <code>/usage</code> on those days and keep a fallback model ready.</p>\n<p>Either way, the included cloud agent is the bigger change. It means a Hermes that keeps working while your laptop is closed, without paying for and managing a separate server.</p>\n<h2>My verdict</h2>\n<p>The revamp makes Hermes usage easier to plan: limits that reset daily and weekly, a cloud agent on every new plan, and clear tools to see where you stand. Check <code>/usage</code>, set a fallback model, and you’ll rarely notice the caps. That’s everything you need to know about Hermes Agent usage limits right now.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Agent Usage Limits.</p>\n<h2>FAQ: hermes agent usage limits</h2>\n<h3>What are the Hermes Agent usage limits?</h3>\n<p>Since Nous revamped Hermes Agent subscriptions on 27 October 2026, new plans have daily and weekly usage limits instead of one monthly block of credits, and every new plan includes a cloud agent.</p>\n<h3>How do I check my Hermes usage?</h3>\n<p>Type /usage in any Hermes chat. When your provider supports it, it includes an Account limits section with your remaining quota or credits. Outside a chat, run hermes usage in your terminal.</p>\n<h3>Can I switch my existing plan to the new limits?</h3>\n<p>Yes. Nous says subscribers can switch to the new plans at any time from portal.nousresearch.com/billing.</p>\n<h3>What happens when I hit my Hermes limit?</h3>\n<p>Hermes can move to a fallback model until the limit resets, and scheduled cron jobs are held until the window reopens instead of failing over and over.</p>\n<h3>Does Hermes use my Claude Max allowance?</h3>\n<p>No. With Claude Max OAuth, Hermes only uses the extra usage credits you’ve bought on top of Max, never the base allowance. Claude Pro can’t use this path at all.</p>\n<h3>How do I reset my Codex limit in Hermes?</h3>\n<p>If you have resets banked on your ChatGPT account, /usage reset redeems one and restores your 5-hour and weekly limits. Hermes refuses until your limits are used up unless you add –force.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Multiple Profiles</li>\n</ul>\n<ul>\n<li>Hermes Advanced Delegation</li>\n</ul>\n<ul>\n<li>Hermes Agent Subagents</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent usage limits — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "356172a797e3",
+          "title": "Hermes Agent Slash Commands: The Complete Guide",
+          "content": "Hermes Agent slash commands are the shortcuts you type in a Hermes chat, starting with `/`, to control the agent without leaving the conversation: start a new session, switch model, run a task in the background, check your usage and much more. They work in the terminal, in Hermes Desktop and, for most of them, in Telegram, Discord and Slack too. There are dozens, so below I start with the ones worth learning first, then give the full list by category from the official slash command reference, and finish with what’s new: since v0.22.5, plugin commands can ask you to pick an option. I’ve also put my video on the /loop command below.\n\nKey takeaways\n\n- Type `/help` (or press Ctrl+P) to see every command.\n\n- Learn these first: `/new`, `/model`, `/bg`, `/btw`, `/goal`, `/usage`.\n\n- Any installed skill is a command too: `/<skill-name>`.\n\n- Plugins can add their own commands, and now show pick-an-option menus.\n\n- Want Hermes working for your business? Claim a free strategy session.\n\n## How Hermes slash commands work\n\nA slash command is a message that starts with `/`. Instead of going to the AI model as a question, it tells Hermes itself to do something: change a setting, start a task, show information. Most run instantly and don’t use any tokens.\n\nYou don’t need to memorise them. Type `/help` to see the commands grouped by category, or open the fuzzy command palette with `/palette` or Ctrl+P, start typing, and press Enter to drop the command into the message box. In messaging apps, `/commands` shows a paginated list.\n\n## The Hermes slash commands worth learning first\n\nIf you only learn ten, learn these:\n\nCommand\nWhat it does\n\n/new [name]\nStart a fresh session (alias /reset)\n\n/model\nShow or switch model, e.g. /model provider:model\n\n/bg <prompt>\nRun a task in a separate background session while you keep chatting\n\n/btw <question>\nAsk a quick side question about the chat without interrupting it\n\n/goal <text>\nSet a standing goal Hermes keeps working on until a judge model says it’s done\n\n/queue <prompt>\nLine up the next prompt without interrupting the current answer\n\n/steer <prompt>\nSlip a note in mid-task; the agent reads it after its next tool call\n\n/compress\nSummarise a long chat to save tokens\n\n/usage\nToken use, costs and your account limits\n\n/stop\nKill running background processes\n\nTwo more that save a lot of time: `/retry` resends your last message, and `/undo` removes the last exchange.\n\nWant Hermes set up and working for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Session commands\n\nThese control the conversation itself:\n\n- `/history`, `/save`, `/title`: view, save or name the chat.\n\n- `/resume [name]` and `/sessions`: go back to an earlier session.\n\n- `/branch` (alias `/fork`): copy the session to explore a different path. On Discord, Telegram, Slack and Matrix it opens in a new thread.\n\n- `/rollback`: list or restore file checkpoints.\n\n- `/diff`: show git changes in the working folder.\n\n- `/snapshot`: save or restore your Hermes config and state.\n\n- `/subgoal`: add a condition to the active /goal.\n\n- `/heartbeat every <interval> <prompt>` and `/loop`: re-run a prompt on a schedule in this session.\n\n- `/review`: spawn an independent reviewer for the work just discussed.\n\n- `/moa <prompt>`: run one prompt through Mixture of Agents.\n\n- `/refine`: run the memory and skill self-improvement review now.\n\n- `/status`, `/context`, `/agents`: session info, a context-window breakdown, and running tasks.\n\n## Configuration commands\n\n- `/config`: show your current configuration.\n\n- `/reasoning [level]`: set reasoning effort, from none up to max or ultra.\n\n- `/fast`: fast mode (OpenAI Priority Processing / Anthropic Fast Mode).\n\n- `/personality` and `/skin`: change the agent’s personality or the display theme.\n\n- `/verbose` and `/focus`: show more or less tool output.\n\n- `/busy`: decide what happens when you message while Hermes is working: queue, steer or interrupt.\n\n- `/approvals [manual|smart|off]` and `/yolo`: control approval prompts for risky commands. Be careful with /yolo, which skips them all.\n\n- `/voice` and `/wake`: voice mode and the “Hey Hermes” wake word.\n\n- `/export` and `/import`: pack a profile into a shareable archive, or install one (CLI only).\n\n## Tools and skills commands\n\n- `/tools` and `/toolsets`: list, enable or disable tools for this session.\n\n- `/skills`: search, install and manage skills, and approve skill changes.\n\n- `/learn <source>`: turn a folder, a link or a workflow you just did into a reusable skill.\n\n- `/plan [task]`: write a plan to `.hermes/plans/` without doing anything.\n\n- `/init`: generate an AGENTS.md from a repo scan.\n\n- `/cron`, `/blueprint`, `/suggestions`: scheduled tasks, automation templates and suggested automations.\n\n- `/memory`: review memory writes waiting for approval.\n\n- `/kanban`: drive the multi-profile project board from chat.\n\n- `/browser connect`: attach browser tools to your running Chrome, Brave, Chromium or Edge.\n\n- `/plugins`, `/reload-mcp`, `/reload-skills`, `/reload`: check plugins and reload MCP servers, skills or.env keys.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Info and account commands\n\n- `/help` and `/palette`: find any command.\n\n- `/usage`, `/insights`: usage now and over the last 30 days.\n\n- `/subscription` and `/topup`: your Nous plan and balance.\n\n- `/login`: sign in with a Nous account.\n\n- `/version`, `/profile`, `/whoami`: version, active profile and your command access level.\n\n- `/paste`, `/image <path>`, `/copy`: attach images or copy the last answer.\n\n- `/update` and `/debug`: update Hermes or upload a debug report.\n\n- `/quit` (or `/exit`): leave the CLI.\n\n## Slash commands in Telegram, Discord and Slack\n\nMost commands work the same in messaging apps. A few only exist there, according to the reference:\n\n- `/approve` and `/deny`: approve or reject a risky command waiting for you.\n\n- `/sethome`: make this chat the home channel for deliveries.\n\n- `/pause`: an emergency stop that holds new cron, kanban and gateway work.\n\n- `/restart`: restart the gateway after active runs finish.\n\n- `/platform list|pause|resume`: control a running platform from chat.\n\n- `/topic`: multi-session topic mode in Telegram DMs.\n\n- `/discard`: drop a turn lost in a restart so queued messages run again.\n\nOn Slack, some commands go through `/hermes`, for example `/hermes login`.\n\n## Skill commands and your own shortcuts\n\nEvery installed skill is also a slash command. Type `/` followed by the skill’s name to load it on demand, for example `/github-pr-workflow`. `/help skills` lists them all.\n\nYou can also make your own: skill bundles (configured under `bundles:` in config.yaml) create a `/<name>` command that loads several skills at once. `/bundles` lists the ones you have.\n\n## New: plugin commands that ask you to pick\n\nPlugins can add their own slash commands, and since v0.22.5 those commands can ask you to choose from a list. The plugin guide shows how it looks on each surface:\n\nWhere you’re chatting\nWhat you see\n\nTelegram, Discord, Slack\nA card with one button per choice, plus “Other”\n\nOther messaging apps\nA numbered list; reply with the number or the label\n\nCLI, TUI, Desktop\nThe same picker Hermes uses for its own questions\n\nThe docs’ example is a `/delegation` command that lets you switch between delegation modes (default, model routes or profiles) with a tap, instead of remembering the exact words. For you, that means plugin commands get easier to use, especially on your phone.\n\n## My verdict\n\nYou don’t need all of these. Learn `/new`, `/model`, `/bg`, `/btw`, `/goal` and `/usage`, keep `/help` or Ctrl+P for the rest, and you’ll already move faster than most Hermes users. Bookmark this page as your reference for Hermes Agent slash commands.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Hermes Agent Slash Commands.\n\n## FAQ: hermes agent slash commands\n\n### How do I see all Hermes Agent slash commands?\n\nType /help in any Hermes chat to see them grouped by category, or press Ctrl+P (or type /palette) to search them. In messaging apps, /commands shows a paginated list.\n\n### Do slash commands work in Telegram and Discord?\n\nYes. Most commands work in messaging apps, and some, such as /approve, /deny, /sethome, /pause and /restart, are made for them. On Slack, some run through /hermes.\n\n### What does /goal do in Hermes?\n\nIt sets a standing goal. After each turn a judge model checks whether the goal is done; if not, Hermes keeps going until it is, or until you pause or clear it. /subgoal adds conditions mid-loop.\n\n### What is the difference between /bg and /btw?\n\n/bg runs a whole task in a separate background session while you keep chatting. /btw asks a quick side question about the current conversation without interrupting it.\n\n### Can I make my own Hermes slash commands?\n\nYes. Every installed skill becomes /, skill bundles create a / shortcut for several skills, and plugins can register their own commands with ctx.register_command().\n\n### Do slash commands use tokens?\n\nMost don’t, because they control Hermes itself rather than asking the model. Commands that run the agent, such as /bg, /goal or /review, do use tokens.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Agent Skills\n\n- Best Hermes Agent Plugins\n\n- Hermes Agent Plugins Marketplace\n\nLast updated October 2026. This page is a living guide to hermes agent slash commands — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-agent-slash-commands/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-slash-commands",
+          "author": "Clawdbot",
+          "published": "2026-10-30T09:51:39",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A comprehensive guide to Hermes Agent slash commands: shortcuts starting with / to control sessions, switch models, run background tasks, and check usage, working in terminal, Hermes Desktop, and mostly also Telegram, Discord and Slack. Lists first commands to learn (/new, /model, /bg, /btw, /goal, /usage), notes that installed skills are invocable as commands, and that since v0.22.5 plugin commands can present pick-an-option menus.",
+          "importance_score": 65.0,
+          "reasoning": "Detailed, version-anchored (v0.22.5) documentation of the command surface including a new plugin UX capability; highly practical for users, though it is tutorial-style rather than a release or code change.",
+          "themes": [
+            "slash commands",
+            "plugins",
+            "user guide"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A comprehensive guide to Hermes Agent slash commands: shortcuts starting with / to control sessions, switch models, run background tasks, and check usage, working in terminal, Hermes Desktop, and mostly also Telegram, Discord and Slack. Lists first commands to learn (/new, /model, /bg, /btw, /goal, /usage), notes that installed skills are invocable as commands, and that since v0.22.5 plugin commands can present pick-an-option menus.</p>",
+          "content_html": "<p>Hermes Agent slash commands are the shortcuts you type in a Hermes chat, starting with <code>/</code>, to control the agent without leaving the conversation: start a new session, switch model, run a task in the background, check your usage and much more. They work in the terminal, in Hermes Desktop and, for most of them, in Telegram, Discord and Slack too. There are dozens, so below I start with the ones worth learning first, then give the full list by category from the official slash command reference, and finish with what’s new: since v0.22.5, plugin commands can ask you to pick an option. I’ve also put my video on the /loop command below.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Type <code>/help</code> (or press Ctrl+P) to see every command.</li>\n</ul>\n<ul>\n<li>Learn these first: <code>/new</code>, <code>/model</code>, <code>/bg</code>, <code>/btw</code>, <code>/goal</code>, <code>/usage</code>.</li>\n</ul>\n<ul>\n<li>Any installed skill is a command too: <code>/</code>.</li>\n</ul>\n<ul>\n<li>Plugins can add their own commands, and now show pick-an-option menus.</li>\n</ul>\n<ul>\n<li>Want Hermes working for your business? Claim a free strategy session.</li>\n</ul>\n<h2>How Hermes slash commands work</h2>\n<p>A slash command is a message that starts with <code>/</code>. Instead of going to the AI model as a question, it tells Hermes itself to do something: change a setting, start a task, show information. Most run instantly and don’t use any tokens.</p>\n<p>You don’t need to memorise them. Type <code>/help</code> to see the commands grouped by category, or open the fuzzy command palette with <code>/palette</code> or Ctrl+P, start typing, and press Enter to drop the command into the message box. In messaging apps, <code>/commands</code> shows a paginated list.</p>\n<h2>The Hermes slash commands worth learning first</h2>\n<p>If you only learn ten, learn these:</p>\n<p>Command</p>\n<p>What it does</p>\n<p>/new [name]</p>\n<p>Start a fresh session (alias /reset)</p>\n<p>/model</p>\n<p>Show or switch model, e.g. /model provider:model</p>\n<p>/bg </p>\n<p>Run a task in a separate background session while you keep chatting</p>\n<p>/btw </p>\n<p>Ask a quick side question about the chat without interrupting it</p>\n<p>/goal </p>\n<p>Set a standing goal Hermes keeps working on until a judge model says it’s done</p>\n<p>/queue </p>\n<p>Line up the next prompt without interrupting the current answer</p>\n<p>/steer </p>\n<p>Slip a note in mid-task; the agent reads it after its next tool call</p>\n<p>/compress</p>\n<p>Summarise a long chat to save tokens</p>\n<p>/usage</p>\n<p>Token use, costs and your account limits</p>\n<p>/stop</p>\n<p>Kill running background processes</p>\n<p>Two more that save a lot of time: <code>/retry</code> resends your last message, and <code>/undo</code> removes the last exchange.</p>\n<p>Want Hermes set up and working for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Session commands</h2>\n<p>These control the conversation itself:</p>\n<ul>\n<li><code>/history</code>, <code>/save</code>, <code>/title</code>: view, save or name the chat.</li>\n</ul>\n<ul>\n<li><code>/resume [name]</code> and <code>/sessions</code>: go back to an earlier session.</li>\n</ul>\n<ul>\n<li><code>/branch</code> (alias <code>/fork</code>): copy the session to explore a different path. On Discord, Telegram, Slack and Matrix it opens in a new thread.</li>\n</ul>\n<ul>\n<li><code>/rollback</code>: list or restore file checkpoints.</li>\n</ul>\n<ul>\n<li><code>/diff</code>: show git changes in the working folder.</li>\n</ul>\n<ul>\n<li><code>/snapshot</code>: save or restore your Hermes config and state.</li>\n</ul>\n<ul>\n<li><code>/subgoal</code>: add a condition to the active /goal.</li>\n</ul>\n<ul>\n<li><code>/heartbeat every </code> and <code>/loop</code>: re-run a prompt on a schedule in this session.</li>\n</ul>\n<ul>\n<li><code>/review</code>: spawn an independent reviewer for the work just discussed.</li>\n</ul>\n<ul>\n<li><code>/moa </code>: run one prompt through Mixture of Agents.</li>\n</ul>\n<ul>\n<li><code>/refine</code>: run the memory and skill self-improvement review now.</li>\n</ul>\n<ul>\n<li><code>/status</code>, <code>/context</code>, <code>/agents</code>: session info, a context-window breakdown, and running tasks.</li>\n</ul>\n<h2>Configuration commands</h2>\n<ul>\n<li><code>/config</code>: show your current configuration.</li>\n</ul>\n<ul>\n<li><code>/reasoning [level]</code>: set reasoning effort, from none up to max or ultra.</li>\n</ul>\n<ul>\n<li><code>/fast</code>: fast mode (OpenAI Priority Processing / Anthropic Fast Mode).</li>\n</ul>\n<ul>\n<li><code>/personality</code> and <code>/skin</code>: change the agent’s personality or the display theme.</li>\n</ul>\n<ul>\n<li><code>/verbose</code> and <code>/focus</code>: show more or less tool output.</li>\n</ul>\n<ul>\n<li><code>/busy</code>: decide what happens when you message while Hermes is working: queue, steer or interrupt.</li>\n</ul>\n<ul>\n<li><code>/approvals [manual|smart|off]</code> and <code>/yolo</code>: control approval prompts for risky commands. Be careful with /yolo, which skips them all.</li>\n</ul>\n<ul>\n<li><code>/voice</code> and <code>/wake</code>: voice mode and the “Hey Hermes” wake word.</li>\n</ul>\n<ul>\n<li><code>/export</code> and <code>/import</code>: pack a profile into a shareable archive, or install one (CLI only).</li>\n</ul>\n<h2>Tools and skills commands</h2>\n<ul>\n<li><code>/tools</code> and <code>/toolsets</code>: list, enable or disable tools for this session.</li>\n</ul>\n<ul>\n<li><code>/skills</code>: search, install and manage skills, and approve skill changes.</li>\n</ul>\n<ul>\n<li><code>/learn </code>: turn a folder, a link or a workflow you just did into a reusable skill.</li>\n</ul>\n<ul>\n<li><code>/plan [task]</code>: write a plan to <code>.hermes/plans/</code> without doing anything.</li>\n</ul>\n<ul>\n<li><code>/init</code>: generate an AGENTS.md from a repo scan.</li>\n</ul>\n<ul>\n<li><code>/cron</code>, <code>/blueprint</code>, <code>/suggestions</code>: scheduled tasks, automation templates and suggested automations.</li>\n</ul>\n<ul>\n<li><code>/memory</code>: review memory writes waiting for approval.</li>\n</ul>\n<ul>\n<li><code>/kanban</code>: drive the multi-profile project board from chat.</li>\n</ul>\n<ul>\n<li><code>/browser connect</code>: attach browser tools to your running Chrome, Brave, Chromium or Edge.</li>\n</ul>\n<ul>\n<li><code>/plugins</code>, <code>/reload-mcp</code>, <code>/reload-skills</code>, <code>/reload</code>: check plugins and reload MCP servers, skills or.env keys.</li>\n</ul>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Info and account commands</h2>\n<ul>\n<li><code>/help</code> and <code>/palette</code>: find any command.</li>\n</ul>\n<ul>\n<li><code>/usage</code>, <code>/insights</code>: usage now and over the last 30 days.</li>\n</ul>\n<ul>\n<li><code>/subscription</code> and <code>/topup</code>: your Nous plan and balance.</li>\n</ul>\n<ul>\n<li><code>/login</code>: sign in with a Nous account.</li>\n</ul>\n<ul>\n<li><code>/version</code>, <code>/profile</code>, <code>/whoami</code>: version, active profile and your command access level.</li>\n</ul>\n<ul>\n<li><code>/paste</code>, <code>/image </code>, <code>/copy</code>: attach images or copy the last answer.</li>\n</ul>\n<ul>\n<li><code>/update</code> and <code>/debug</code>: update Hermes or upload a debug report.</li>\n</ul>\n<ul>\n<li><code>/quit</code> (or <code>/exit</code>): leave the CLI.</li>\n</ul>\n<h2>Slash commands in Telegram, Discord and Slack</h2>\n<p>Most commands work the same in messaging apps. A few only exist there, according to the reference:</p>\n<ul>\n<li><code>/approve</code> and <code>/deny</code>: approve or reject a risky command waiting for you.</li>\n</ul>\n<ul>\n<li><code>/sethome</code>: make this chat the home channel for deliveries.</li>\n</ul>\n<ul>\n<li><code>/pause</code>: an emergency stop that holds new cron, kanban and gateway work.</li>\n</ul>\n<ul>\n<li><code>/restart</code>: restart the gateway after active runs finish.</li>\n</ul>\n<ul>\n<li><code>/platform list|pause|resume</code>: control a running platform from chat.</li>\n</ul>\n<ul>\n<li><code>/topic</code>: multi-session topic mode in Telegram DMs.</li>\n</ul>\n<ul>\n<li><code>/discard</code>: drop a turn lost in a restart so queued messages run again.</li>\n</ul>\n<p>On Slack, some commands go through <code>/hermes</code>, for example <code>/hermes login</code>.</p>\n<h2>Skill commands and your own shortcuts</h2>\n<p>Every installed skill is also a slash command. Type <code>/</code> followed by the skill’s name to load it on demand, for example <code>/github-pr-workflow</code>. <code>/help skills</code> lists them all.</p>\n<p>You can also make your own: skill bundles (configured under <code>bundles:</code> in config.yaml) create a <code>/</code> command that loads several skills at once. <code>/bundles</code> lists the ones you have.</p>\n<h2>New: plugin commands that ask you to pick</h2>\n<p>Plugins can add their own slash commands, and since v0.22.5 those commands can ask you to choose from a list. The plugin guide shows how it looks on each surface:</p>\n<p>Where you’re chatting</p>\n<p>What you see</p>\n<p>Telegram, Discord, Slack</p>\n<p>A card with one button per choice, plus “Other”</p>\n<p>Other messaging apps</p>\n<p>A numbered list; reply with the number or the label</p>\n<p>CLI, TUI, Desktop</p>\n<p>The same picker Hermes uses for its own questions</p>\n<p>The docs’ example is a <code>/delegation</code> command that lets you switch between delegation modes (default, model routes or profiles) with a tap, instead of remembering the exact words. For you, that means plugin commands get easier to use, especially on your phone.</p>\n<h2>My verdict</h2>\n<p>You don’t need all of these. Learn <code>/new</code>, <code>/model</code>, <code>/bg</code>, <code>/btw</code>, <code>/goal</code> and <code>/usage</code>, keep <code>/help</code> or Ctrl+P for the rest, and you’ll already move faster than most Hermes users. Bookmark this page as your reference for Hermes Agent slash commands.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Agent Slash Commands.</p>\n<h2>FAQ: hermes agent slash commands</h2>\n<h3>How do I see all Hermes Agent slash commands?</h3>\n<p>Type /help in any Hermes chat to see them grouped by category, or press Ctrl+P (or type /palette) to search them. In messaging apps, /commands shows a paginated list.</p>\n<h3>Do slash commands work in Telegram and Discord?</h3>\n<p>Yes. Most commands work in messaging apps, and some, such as /approve, /deny, /sethome, /pause and /restart, are made for them. On Slack, some run through /hermes.</p>\n<h3>What does /goal do in Hermes?</h3>\n<p>It sets a standing goal. After each turn a judge model checks whether the goal is done; if not, Hermes keeps going until it is, or until you pause or clear it. /subgoal adds conditions mid-loop.</p>\n<h3>What is the difference between /bg and /btw?</h3>\n<p>/bg runs a whole task in a separate background session while you keep chatting. /btw asks a quick side question about the current conversation without interrupting it.</p>\n<h3>Can I make my own Hermes slash commands?</h3>\n<p>Yes. Every installed skill becomes /, skill bundles create a / shortcut for several skills, and plugins can register their own commands with ctx.register_command().</p>\n<h3>Do slash commands use tokens?</h3>\n<p>Most don’t, because they control Hermes itself rather than asking the model. Commands that run the agent, such as /bg, /goal or /review, do use tokens.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent Skills</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Plugins</li>\n</ul>\n<ul>\n<li>Hermes Agent Plugins Marketplace</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent slash commands — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "879e240d3133",
+          "title": "How to Migrate OpenClaw to Hermes Agent (Step by Step)",
+          "content": "To migrate OpenClaw to Hermes, you install one official plugin and run one command: `hermes import-agent openclaw`. It copies your persona, memory, skills, model settings, MCP servers and messaging bots from `~/.openclaw` into Hermes, and it always shows you a preview before it changes anything. Since Hermes Agent v0.22.5 (22 October 2026), this lives in the official `agent-importers` plugin instead of the core app. The older command, `hermes claw migrate`, still works and does exactly the same thing. Below is the full process from the official migration guide, in plain English: the safe test run, what moves over and what doesn’t, how API keys work, and the checklist to run afterwards. I’ve also put my Hermes vs OpenClaw test video below.\n\nKey takeaways\n\n- Install once: `hermes plugins install agent-importers`.\n\n- Test first: `hermes import-agent openclaw --dry-run` changes nothing.\n\n- API keys only come over if you add –migrate-secrets.\n\n- A backup of `~/.hermes` is saved before anything is written.\n\n- Want your agents moved and set up for you? Claim a free strategy session.\n\n## What “migrate OpenClaw to Hermes” actually means\n\nOpenClaw and Hermes Agent are both personal AI agents that run on your own machine or server, keep memory, use skills and talk to you on apps like Telegram and Discord. If you’ve built up an OpenClaw setup over months, the hard part of switching isn’t installing Hermes. It’s rebuilding everything your agent already knows.\n\nThe migration tool does that rebuild for you. According to the Hermes CLI reference, it covers more than 30 categories across persona, memory, skills, model providers, messaging platforms, agent behaviour, session policies, MCP servers and text-to-speech. Each item is either imported directly into its Hermes equivalent or archived so you can review it by hand.\n\nIt also finds older installs. If you started on Clawdbot or Moltbot, the tool checks `~/.clawdbot` and `~/.moltbot` automatically, plus the old config names `clawdbot.json` and `moltbot.json`.\n\n## The easy way: let Hermes setup do it\n\nIf you’re installing Hermes fresh on a machine that already has OpenClaw, you may not need any commands at all. The guide says that when you run `hermes setup` and it finds `~/.openclaw`, it asks “Import your setup from OpenClaw?”\n\nSay yes and setup installs the plugin, runs the import with your API keys included, shows you the preview, asks you to confirm, and then carries on with the parts of setup the import didn’t cover. If the import brought over a model and its key, Quick Setup then asks whether you want to keep that model or switch to Nous Portal.\n\nAlready have Hermes configured? Use the manual steps below instead.\n\nWant your OpenClaw setup moved to Hermes for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How to migrate OpenClaw to Hermes step by step\n\nThese are the commands from the Quick start, in the order I’d run them:\n\n- 1. Install the plugin (once per profile): `hermes plugins install agent-importers`\n\n- 2. Do a test run: `hermes import-agent openclaw --dry-run`. This shows what would move over and stops. Nothing is written.\n\n- 3. Run the real migration: `hermes import-agent openclaw`. It shows the full preview again, then asks you to confirm.\n\n- 4. Bring your API keys too (optional): `hermes import-agent openclaw --preset full --migrate-secrets`\n\n- 5. Start a new session so the imported skills and memory load.\n\nBefore it writes anything, Hermes saves one restore-point zip of `~/.hermes` to `~/.hermes/backups/pre-migration-*.zip`. If something goes wrong you can restore it with `hermes import`. You can skip that backup with `--no-backup`, but I wouldn’t.\n\nNot comfortable in the terminal? Ask your agent: “Install the agent-importers plugin, do a dry run of the OpenClaw import, and show me what would move over before you change anything.”\n\n## Every migration option explained\n\nOption\nWhat it does\n\n–dry-run\nPreview only. Nothing is written.\n\n–preset full\nAll compatible settings (still no API keys).\n\n–preset user-data\nYour data without infrastructure config (still no API keys).\n\n–migrate-secrets\nInclude API keys. Needed even with –preset full.\n\n–overwrite\nReplace existing Hermes files on conflicts. By default the import refuses to apply when there are conflicts.\n\n–no-backup\nSkip the pre-migration zip of ~/.hermes.\n\n–source <path>\nUse an OpenClaw folder somewhere other than ~/.openclaw.\n\n–workspace-target <path>\nWhere to put your AGENTS.md workspace instructions.\n\n–skill-conflict\nskip (default), overwrite, or rename when a skill name already exists.\n\n–yes\nSkip the confirmation prompt after the preview.\n\nThe safety rule worth remembering: no preset ever imports your API keys silently. You have to type `--migrate-secrets` on purpose.\n\n## What moves over from OpenClaw (and where it lands)\n\nThe migration guide lists exactly where each piece ends up. The main ones:\n\nFrom OpenClaw\nTo Hermes\n\nworkspace/SOUL.md (persona)\n~/.hermes/SOUL.md\n\nworkspace/MEMORY.md and daily memory files\n~/.hermes/memories/MEMORY.md (merged, duplicates removed)\n\nworkspace/USER.md\n~/.hermes/memories/USER.md\n\nworkspace/AGENTS.md\nAGENTS.md in your –workspace-target folder\n\nSkills from 4 places\n~/.hermes/skills/openclaw-imports/\n\nDefault model and custom providers\nconfig.yaml\n\nMCP servers\nmcp_servers in config.yaml\n\nTelegram, Discord, Slack, WhatsApp, Signal, Matrix and Mattermost tokens and allowlists\n~/.hermes/.env\n\nTTS voice settings (ElevenLabs, OpenAI, Edge)\ntts in config.yaml\n\nAgent behaviour is translated too. For example, OpenClaw’s thinking level becomes Hermes’ reasoning effort (“high”, “medium” or “low”), your timezone and Docker sandbox settings carry over, and compression settings map across.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## What doesn’t move over automatically\n\nSome things are archived for manual review rather than imported. The guide lists cron jobs, plugins, hooks and webhooks, the QMD memory backend, the skills registry config, UI and identity settings, logging, multi-agent setups, channel bindings, and the files IDENTITY.md, TOOLS.md, HEARTBEAT.md and BOOTSTRAP.md.\n\nYou’ll find them in `~/.hermes/migration/openclaw/<timestamp>/archive/`. The ones most people will want to redo by hand are cron jobs, since scheduled tasks are usually where an agent earns its keep.\n\nTwo more things to know:\n\n- Idle and daily reset timers are not imported. In Hermes a conversation carries on until you type `/new` or `/reset`.\n\n- WhatsApp needs re-pairing. It uses QR-code pairing, not a token, so run `hermes whatsapp` after the migration.\n\n## How API keys are found and moved\n\nWhen you pass `--migrate-secrets`, Hermes looks for keys in three places, in this order: your OpenClaw config values, then `~/.openclaw/.env`, then `auth-profiles.json`. Token fields can be plain text, environment templates like `${VAR}`, or OpenClaw SecretRef objects, and the tool handles all three.\n\nKeys go into `~/.hermes/.env`. Afterwards, run `hermes status` to check each provider signs in properly.\n\n## After you migrate: the checklist\n\nThe guide gives an 8-step check. In short:\n\n- Read the migration report: it counts what was migrated, skipped and in conflict.\n\n- Review the archived files in the migration folder.\n\n- Start a new session. Imported skills and memory only load in new sessions.\n\n- Run `hermes status` to verify API keys.\n\n- Restart the gateway if you moved bot tokens: `systemctl --user restart hermes-gateway`\n\n- Check the archived session settings.\n\n- Re-pair WhatsApp with `hermes whatsapp`.\n\n- When everything works, run `hermes claw cleanup`. It renames the old OpenClaw folders to `.pre-migration`.\n\nCareful: after `hermes claw cleanup`, OpenClaw itself stops working because its folders have been renamed. Rename them back if you need to undo it.\n\n## Fixing common migration problems\n\n- “OpenClaw directory not found”: your install is somewhere unusual. Add `--source /path/to/your/openclaw`.\n\n- “No provider API keys found”: keys can live in several places depending on your OpenClaw version. Make sure you passed `--migrate-secrets`.\n\n- Skills not showing up: they’re in `~/.hermes/skills/openclaw-imports/`. Start a new session, or type `/skills` to check they loaded.\n\n- TTS voice missing: if you set the voice in OpenClaw’s UI it may be stored somewhere the tool doesn’t read. Set it again with `hermes config set`.\n\n## Moving from Claude Code, Codex or Cursor too\n\nThe same plugin imports more than OpenClaw. `hermes import-agent claude-code`, `codex` or `cursor` bring over instructions and rules as memory entries, permission rules as allowlists, MCP servers and skills, as the import guide explains. For those three agents, credentials are never imported, and `--sync` re-imports a source later if it changed.\n\nSo if you’ve been running OpenClaw for your messaging bots and Claude Code for coding, Hermes can pull in both.\n\n## My verdict\n\nThis is the cleanest way to switch I’ve seen from any agent: a test run that changes nothing, a backup before every write, API keys only when you ask, and a clear list of what you’ll need to redo by hand. Do the dry run, read the report, rebuild your cron jobs, and you’re done. If you’ve been waiting to migrate OpenClaw to Hermes, you can now do it in one sitting.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Migrating OpenClaw to Hermes.\n\n## FAQ: migrate openclaw to hermes\n\n### How do I migrate OpenClaw to Hermes?\n\nInstall the agent-importers plugin with hermes plugins install agent-importers, preview with hermes import-agent openclaw –dry-run, then run hermes import-agent openclaw. Add –migrate-secrets if you want your API keys moved too.\n\n### Is hermes claw migrate still available?\n\nYes. hermes claw migrate is the older spelling of hermes import-agent openclaw and does exactly the same thing. Both now come from the official agent-importers plugin.\n\n### Does the migration copy my API keys?\n\nOnly if you pass –migrate-secrets. No preset imports secrets on its own, not even –preset full.\n\n### Will migrating break my OpenClaw install?\n\nNo. The import only reads from OpenClaw. OpenClaw stops working only if you later run hermes claw cleanup, which renames its folders; you can rename them back to undo it.\n\n### Are my OpenClaw cron jobs migrated?\n\nNo. Cron jobs, plugins, hooks and a few other items are archived for manual review in ~/.hermes/migration/openclaw//archive/, so you set them up again in Hermes.\n\n### Can I undo a migration?\n\nYes. Before applying, Hermes saves a zip of ~/.hermes to ~/.hermes/backups/pre-migration-*.zip, which you can restore with hermes import.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Agent vs OpenClaw\n\n- OpenClaw Enterprise\n\n- Hermes Agent MCP Server\n\nLast updated October 2026. This page is a living guide to migrate openclaw to hermes — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/migrate-openclaw-to-hermes/?utm_source=rss&utm_medium=rss&utm_campaign=migrate-openclaw-to-hermes",
+          "author": "Clawdbot",
+          "published": "2026-10-30T09:51:30",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A step-by-step migration guide from OpenClaw to Hermes Agent using the official agent-importers plugin and the command hermes import-agent openclaw, which copies persona, memory, skills, model settings, MCP servers and messaging bots from ~/.openclaw with a preview step. Available since Hermes Agent v0.22.5 (22 October 2026); supports --dry-run testing, --migrate-secrets for API keys, and automatic backup of ~/.hermes before writes.",
+          "importance_score": 62.0,
+          "reasoning": "Documents an official migration path introduced in v0.22.5 with concrete safety features (dry-run, backup, secrets opt-in); valuable for the influx of users switching agents, though instructional rather than a release note itself.",
+          "themes": [
+            "migration",
+            "openclaw",
+            "official plugins"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A step-by-step migration guide from OpenClaw to Hermes Agent using the official agent-importers plugin and the command hermes import-agent openclaw, which copies persona, memory, skills, model settings, MCP servers and messaging bots from ~/.openclaw with a preview step. Available since Hermes Agent v0.22.5 (22 October 2026); supports --dry-run testing, --migrate-secrets for API keys, and automatic backup of ~/.hermes before writes.</p>",
+          "content_html": "<p>To migrate OpenClaw to Hermes, you install one official plugin and run one command: <code>hermes import-agent openclaw</code>. It copies your persona, memory, skills, model settings, MCP servers and messaging bots from <code>~/.openclaw</code> into Hermes, and it always shows you a preview before it changes anything. Since Hermes Agent v0.22.5 (22 October 2026), this lives in the official <code>agent-importers</code> plugin instead of the core app. The older command, <code>hermes claw migrate</code>, still works and does exactly the same thing. Below is the full process from the official migration guide, in plain English: the safe test run, what moves over and what doesn’t, how API keys work, and the checklist to run afterwards. I’ve also put my Hermes vs OpenClaw test video below.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Install once: <code>hermes plugins install agent-importers</code>.</li>\n</ul>\n<ul>\n<li>Test first: <code>hermes import-agent openclaw --dry-run</code> changes nothing.</li>\n</ul>\n<ul>\n<li>API keys only come over if you add –migrate-secrets.</li>\n</ul>\n<ul>\n<li>A backup of <code>~/.hermes</code> is saved before anything is written.</li>\n</ul>\n<ul>\n<li>Want your agents moved and set up for you? Claim a free strategy session.</li>\n</ul>\n<h2>What “migrate OpenClaw to Hermes” actually means</h2>\n<p>OpenClaw and Hermes Agent are both personal AI agents that run on your own machine or server, keep memory, use skills and talk to you on apps like Telegram and Discord. If you’ve built up an OpenClaw setup over months, the hard part of switching isn’t installing Hermes. It’s rebuilding everything your agent already knows.</p>\n<p>The migration tool does that rebuild for you. According to the Hermes CLI reference, it covers more than 30 categories across persona, memory, skills, model providers, messaging platforms, agent behaviour, session policies, MCP servers and text-to-speech. Each item is either imported directly into its Hermes equivalent or archived so you can review it by hand.</p>\n<p>It also finds older installs. If you started on Clawdbot or Moltbot, the tool checks <code>~/.clawdbot</code> and <code>~/.moltbot</code> automatically, plus the old config names <code>clawdbot.json</code> and <code>moltbot.json</code>.</p>\n<h2>The easy way: let Hermes setup do it</h2>\n<p>If you’re installing Hermes fresh on a machine that already has OpenClaw, you may not need any commands at all. The guide says that when you run <code>hermes setup</code> and it finds <code>~/.openclaw</code>, it asks “Import your setup from OpenClaw?”</p>\n<p>Say yes and setup installs the plugin, runs the import with your API keys included, shows you the preview, asks you to confirm, and then carries on with the parts of setup the import didn’t cover. If the import brought over a model and its key, Quick Setup then asks whether you want to keep that model or switch to Nous Portal.</p>\n<p>Already have Hermes configured? Use the manual steps below instead.</p>\n<p>Want your OpenClaw setup moved to Hermes for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How to migrate OpenClaw to Hermes step by step</h2>\n<p>These are the commands from the Quick start, in the order I’d run them:</p>\n<ul>\n<li>1. Install the plugin (once per profile): <code>hermes plugins install agent-importers</code></li>\n</ul>\n<ul>\n<li>2. Do a test run: <code>hermes import-agent openclaw --dry-run</code>. This shows what would move over and stops. Nothing is written.</li>\n</ul>\n<ul>\n<li>3. Run the real migration: <code>hermes import-agent openclaw</code>. It shows the full preview again, then asks you to confirm.</li>\n</ul>\n<ul>\n<li>4. Bring your API keys too (optional): <code>hermes import-agent openclaw --preset full --migrate-secrets</code></li>\n</ul>\n<ul>\n<li>5. Start a new session so the imported skills and memory load.</li>\n</ul>\n<p>Before it writes anything, Hermes saves one restore-point zip of <code>~/.hermes</code> to <code>~/.hermes/backups/pre-migration-*.zip</code>. If something goes wrong you can restore it with <code>hermes import</code>. You can skip that backup with <code>--no-backup</code>, but I wouldn’t.</p>\n<p>Not comfortable in the terminal? Ask your agent: “Install the agent-importers plugin, do a dry run of the OpenClaw import, and show me what would move over before you change anything.”</p>\n<h2>Every migration option explained</h2>\n<p>Option</p>\n<p>What it does</p>\n<p>–dry-run</p>\n<p>Preview only. Nothing is written.</p>\n<p>–preset full</p>\n<p>All compatible settings (still no API keys).</p>\n<p>–preset user-data</p>\n<p>Your data without infrastructure config (still no API keys).</p>\n<p>–migrate-secrets</p>\n<p>Include API keys. Needed even with –preset full.</p>\n<p>–overwrite</p>\n<p>Replace existing Hermes files on conflicts. By default the import refuses to apply when there are conflicts.</p>\n<p>–no-backup</p>\n<p>Skip the pre-migration zip of ~/.hermes.</p>\n<p>–source </p>\n<p>Use an OpenClaw folder somewhere other than ~/.openclaw.</p>\n<p>–workspace-target </p>\n<p>Where to put your AGENTS.md workspace instructions.</p>\n<p>–skill-conflict</p>\n<p>skip (default), overwrite, or rename when a skill name already exists.</p>\n<p>–yes</p>\n<p>Skip the confirmation prompt after the preview.</p>\n<p>The safety rule worth remembering: no preset ever imports your API keys silently. You have to type <code>--migrate-secrets</code> on purpose.</p>\n<h2>What moves over from OpenClaw (and where it lands)</h2>\n<p>The migration guide lists exactly where each piece ends up. The main ones:</p>\n<p>From OpenClaw</p>\n<p>To Hermes</p>\n<p>workspace/SOUL.md (persona)</p>\n<p>~/.hermes/SOUL.md</p>\n<p>workspace/MEMORY.md and daily memory files</p>\n<p>~/.hermes/memories/MEMORY.md (merged, duplicates removed)</p>\n<p>workspace/USER.md</p>\n<p>~/.hermes/memories/USER.md</p>\n<p>workspace/AGENTS.md</p>\n<p>AGENTS.md in your –workspace-target folder</p>\n<p>Skills from 4 places</p>\n<p>~/.hermes/skills/openclaw-imports/</p>\n<p>Default model and custom providers</p>\n<p>config.yaml</p>\n<p>MCP servers</p>\n<p>mcp_servers in config.yaml</p>\n<p>Telegram, Discord, Slack, WhatsApp, Signal, Matrix and Mattermost tokens and allowlists</p>\n<p>~/.hermes/.env</p>\n<p>TTS voice settings (ElevenLabs, OpenAI, Edge)</p>\n<p>tts in config.yaml</p>\n<p>Agent behaviour is translated too. For example, OpenClaw’s thinking level becomes Hermes’ reasoning effort (“high”, “medium” or “low”), your timezone and Docker sandbox settings carry over, and compression settings map across.</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>What doesn’t move over automatically</h2>\n<p>Some things are archived for manual review rather than imported. The guide lists cron jobs, plugins, hooks and webhooks, the QMD memory backend, the skills registry config, UI and identity settings, logging, multi-agent setups, channel bindings, and the files IDENTITY.md, TOOLS.md, HEARTBEAT.md and BOOTSTRAP.md.</p>\n<p>You’ll find them in <code>~/.hermes/migration/openclaw//archive/</code>. The ones most people will want to redo by hand are cron jobs, since scheduled tasks are usually where an agent earns its keep.</p>\n<p>Two more things to know:</p>\n<ul>\n<li>Idle and daily reset timers are not imported. In Hermes a conversation carries on until you type <code>/new</code> or <code>/reset</code>.</li>\n</ul>\n<ul>\n<li>WhatsApp needs re-pairing. It uses QR-code pairing, not a token, so run <code>hermes whatsapp</code> after the migration.</li>\n</ul>\n<h2>How API keys are found and moved</h2>\n<p>When you pass <code>--migrate-secrets</code>, Hermes looks for keys in three places, in this order: your OpenClaw config values, then <code>~/.openclaw/.env</code>, then <code>auth-profiles.json</code>. Token fields can be plain text, environment templates like <code>${VAR}</code>, or OpenClaw SecretRef objects, and the tool handles all three.</p>\n<p>Keys go into <code>~/.hermes/.env</code>. Afterwards, run <code>hermes status</code> to check each provider signs in properly.</p>\n<h2>After you migrate: the checklist</h2>\n<p>The guide gives an 8-step check. In short:</p>\n<ul>\n<li>Read the migration report: it counts what was migrated, skipped and in conflict.</li>\n</ul>\n<ul>\n<li>Review the archived files in the migration folder.</li>\n</ul>\n<ul>\n<li>Start a new session. Imported skills and memory only load in new sessions.</li>\n</ul>\n<ul>\n<li>Run <code>hermes status</code> to verify API keys.</li>\n</ul>\n<ul>\n<li>Restart the gateway if you moved bot tokens: <code>systemctl --user restart hermes-gateway</code></li>\n</ul>\n<ul>\n<li>Check the archived session settings.</li>\n</ul>\n<ul>\n<li>Re-pair WhatsApp with <code>hermes whatsapp</code>.</li>\n</ul>\n<ul>\n<li>When everything works, run <code>hermes claw cleanup</code>. It renames the old OpenClaw folders to <code>.pre-migration</code>.</li>\n</ul>\n<p>Careful: after <code>hermes claw cleanup</code>, OpenClaw itself stops working because its folders have been renamed. Rename them back if you need to undo it.</p>\n<h2>Fixing common migration problems</h2>\n<ul>\n<li>“OpenClaw directory not found”: your install is somewhere unusual. Add <code>--source /path/to/your/openclaw</code>.</li>\n</ul>\n<ul>\n<li>“No provider API keys found”: keys can live in several places depending on your OpenClaw version. Make sure you passed <code>--migrate-secrets</code>.</li>\n</ul>\n<ul>\n<li>Skills not showing up: they’re in <code>~/.hermes/skills/openclaw-imports/</code>. Start a new session, or type <code>/skills</code> to check they loaded.</li>\n</ul>\n<ul>\n<li>TTS voice missing: if you set the voice in OpenClaw’s UI it may be stored somewhere the tool doesn’t read. Set it again with <code>hermes config set</code>.</li>\n</ul>\n<h2>Moving from Claude Code, Codex or Cursor too</h2>\n<p>The same plugin imports more than OpenClaw. <code>hermes import-agent claude-code</code>, <code>codex</code> or <code>cursor</code> bring over instructions and rules as memory entries, permission rules as allowlists, MCP servers and skills, as the import guide explains. For those three agents, credentials are never imported, and <code>--sync</code> re-imports a source later if it changed.</p>\n<p>So if you’ve been running OpenClaw for your messaging bots and Claude Code for coding, Hermes can pull in both.</p>\n<h2>My verdict</h2>\n<p>This is the cleanest way to switch I’ve seen from any agent: a test run that changes nothing, a backup before every write, API keys only when you ask, and a clear list of what you’ll need to redo by hand. Do the dry run, read the report, rebuild your cron jobs, and you’re done. If you’ve been waiting to migrate OpenClaw to Hermes, you can now do it in one sitting.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Migrating OpenClaw to Hermes.</p>\n<h2>FAQ: migrate openclaw to hermes</h2>\n<h3>How do I migrate OpenClaw to Hermes?</h3>\n<p>Install the agent-importers plugin with hermes plugins install agent-importers, preview with hermes import-agent openclaw –dry-run, then run hermes import-agent openclaw. Add –migrate-secrets if you want your API keys moved too.</p>\n<h3>Is hermes claw migrate still available?</h3>\n<p>Yes. hermes claw migrate is the older spelling of hermes import-agent openclaw and does exactly the same thing. Both now come from the official agent-importers plugin.</p>\n<h3>Does the migration copy my API keys?</h3>\n<p>Only if you pass –migrate-secrets. No preset imports secrets on its own, not even –preset full.</p>\n<h3>Will migrating break my OpenClaw install?</h3>\n<p>No. The import only reads from OpenClaw. OpenClaw stops working only if you later run hermes claw cleanup, which renames its folders; you can rename them back to undo it.</p>\n<h3>Are my OpenClaw cron jobs migrated?</h3>\n<p>No. Cron jobs, plugins, hooks and a few other items are archived for manual review in ~/.hermes/migration/openclaw//archive/, so you set them up again in Hermes.</p>\n<h3>Can I undo a migration?</h3>\n<p>Yes. Before applying, Hermes saves a zip of ~/.hermes to ~/.hermes/backups/pre-migration-*.zip, which you can restore with hermes import.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent vs OpenClaw</li>\n</ul>\n<ul>\n<li>OpenClaw Enterprise</li>\n</ul>\n<ul>\n<li>Hermes Agent MCP Server</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to migrate openclaw to hermes — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Verso is an open-source agent orchestrator for knowledge work built on top of Hermes Agent, created as a side project to provide an intuitive alternative to the CLI. The author reports using it daily for work with significant productivity gains.",
+          "importance_score": 55.0,
+          "reasoning": "A substantive third-party UI/orchestration layer on Hermes Agent demonstrates ecosystem momentum and daily-work viability, though details on architecture are sparse in the excerpt.",
+          "themes": [
+            "orchestration",
+            "ecosystem tooling",
+            "productivity"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Verso is an open-source agent orchestrator for knowledge work built on top of Hermes Agent, created as a side project to provide an intuitive alternative to the CLI. The author reports using it daily for work with significant productivity gains.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user reports a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai GLM 5.3 Flash, entering a long trance-like thinking state (over 1m36s) with odd output when asked to print local environment details and PATH after issuing terminal commands. They ask whether the output indicates a real malfunction.",
+          "importance_score": 52.0,
+          "reasoning": "A concrete reliability/troubleshooting report tied to a specific model (GLM 5.3 Flash) and environment inspection behavior; useful signal for agent-loop stability, though anecdotal and unresolved in the excerpt.",
+          "themes": [
+            "troubleshooting",
+            "model behavior",
+            "reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user reports a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai GLM 5.3 Flash, entering a long trance-like thinking state (over 1m36s) with odd output when asked to print local environment details and PATH after issuing terminal commands. They ask whether the output indicates a real malfunction.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub repository (hermes-jekyl-hyde) describing an adversarial LLM reversal technique targeting hermes-agent, apparently probing or demonstrating manipulation of the agent's model behavior.",
+          "importance_score": 52.0,
+          "reasoning": "Adversarial probing of the agent is security-relevant for a system with shell access, making it worth maintainer attention, but the title-only source prevents assessing methodology or severity.",
+          "themes": [
+            "security",
+            "adversarial testing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub repository (hermes-jekyl-hyde) describing an adversarial LLM reversal technique targeting hermes-agent, apparently probing or demonstrating manipulation of the agent's model behavior.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "ClusterMob is described as a community registry where users can share and discover Hermes Agent profiles. The submission is title-only, indicating a directory/discovery layer built on top of agent profiles.",
+          "importance_score": 50.0,
+          "reasoning": "A community-driven registry indicates maturing ecosystem infrastructure for sharing agent configurations, but the source lacks technical detail to score higher.",
+          "themes": [
+            "community registry",
+            "profile sharing",
+            "ecosystem tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>ClusterMob is described as a community registry where users can share and discover Hermes Agent profiles. The submission is title-only, indicating a directory/discovery layer built on top of agent profiles.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "hn-50131496",
+          "title": "Hermes Agent: My containerized take",
+          "content": "Hermes Agent: My containerized take",
+          "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+          "author": "ricardodevries",
+          "published": "2026-10-17T14:27:11Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A personal blog post by ricardodevries describing a containerized approach to running Hermes Agent. The feed entry only surfaces the title and link (https://ricardodevries.com/blog/hermes-agent-my-containerized-take), so no further technical detail (base image, orchestration setup, or configuration) is available in the source itself. It appears to be a practitioner write-up on packaging/deploying the Hermes Agent in containers, shared via Hacker News.",
+          "importance_score": 50.0,
+          "reasoning": "Containerization guidance for Hermes Agent is practically useful for self-hosting and deployment workflows, but the available content is limited to a title with no extractable technical details, code snippets, or benchmarks. It is a single community blog post rather than official documentation or a release, so depth and verifiable impact are moderate at best.",
+          "themes": [
+            "containerization",
+            "self-hosting",
+            "deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A personal blog post by ricardodevries describing a containerized approach to running Hermes Agent. The feed entry only surfaces the title and link (https://ricardodevries.com/blog/hermes-agent-my-containerized-take), so no further technical detail (base image, orchestration setup, or configuration) is available in the source itself. It appears to be a practitioner write-up on packaging/deploying the Hermes Agent in containers, shared via Hacker News.</p>",
+          "content_html": "<p>Hermes Agent: My containerized take</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino side with a Linux side; their board has 4GB RAM and 32GB storage. Motivated by avoiding ongoing VPS costs and not running the agent on a personal machine.",
+          "importance_score": 50.0,
+          "reasoning": "A creative low-cost self-hosting recipe on unusual hardware with concrete specs; practical for hobbyists but niche and lacking performance data.",
+          "themes": [
+            "self-hosting",
+            "edge hardware"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino side with a Linux side; their board has 4GB RAM and 32GB storage. Motivated by avoiding ongoing VPS costs and not running the agent on a personal machine.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Refine Cycle is a community plugin for Hermes Agent hosted on GitHub that adds a self-improvement loop, presumably letting the agent iteratively refine its own behavior or outputs.",
+          "importance_score": 45.0,
+          "reasoning": "Self-improvement plugins are an interesting extension of agent capability, but title-only sourcing and unclear maturity limit the assessed impact.",
+          "themes": [
+            "plugins",
+            "self-improvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Refine Cycle is a community plugin for Hermes Agent hosted on GitHub that adds a self-improvement loop, presumably letting the agent iteratively refine its own behavior or outputs.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 17,
+      "category_summary": "**NousCon Event Day (lead story):** **@NousResearch** officially marked [NousCon day](/?date=2026-10-31&category=social#item-1be00c4a8f41) with the strongest engagement in the set (48k views, 854 likes), and kept momentum going by teasing that community members would be [getting more stuff tonight](/?date=2026-10-31&category=social#item-a95e9f39eefe) and [confirming a requested item will ship](/?date=2026-10-31&category=social#item-19f12e1d4080). Overall mood: celebratory, high-energy release-day anticipation.\n\n**oh-my-hermes Coding Harness (top technical content):** **rlaope** delivered the most substantive post of the day, detailing the [harness upgrade to 'oh-my-pi level'](/?date=2026-10-31&category=social#item-3d77df41d317) — LSP-based navigation replacing grep, cross-file impact analysis tracking callers through renames, and measured benchmarking. Follow-up ecosystem commentary argues [OpenAI \"doesn't crumble\"](/?date=2026-10-31&category=social#item-1d71ac4d8fda), highlighting how **oh-my-hermes** paired with **GPT-6.1 Terra** achieves strong retention at very low cost (note: 'GPT-6.1 Terra' is a community reference not confirmed in the current model registry, so treat as unverified commentary). The community is even adopting a [new 'omher' abbreviation](/?date=2026-10-31&category=social#item-310788a0cbdb) for the tool — a small but telling signal of growing brand identity.\n\n**Community Showcases (agent builds):** **rlaope** shared a hands-on [personal-agent setup wiring a memory system and gateway into the DeepSeek harness](/?date=2026-10-31&category=social#item-c8016634e124), complete with shareable GitHub links — builder-oriented, DIY sentiment.\n\n**Official Team Interaction:** **Teknium** was highly visible: [acknowledging a community-reported Hermes-related issue and 'looking into it'](/?date=2026-10-31&category=social#item-91b29df6f0fa) (ranked above the official 'No way' reaction given its actionable value), playful banter asking [why a number isn't '42069'](/?date=2026-10-31&category=social#item-2f0fad45df1b), and a well-liked [enthusiasm post](/?date=2026-10-31&category=social#item-33ce383fd217) (132 likes / 9.5k views). **@NousResearch**'s two-word ['No way' reply](/?date=2026-10-31&category=social#item-13e5bace5800) hints at a surprising community claim worth watching. Sentiment: responsive, casual, tight creator–team rapport.\n\n**Forward-looking tease:** **rlaope** casually hinted ['DeepSeek v5 ultrafast is coming soon'](/?date=2026-10-31&category=social#item-30a17fa5bcf0) — unverified but notable ecosystem chatter.\n\n**Excluded as noise:** [emoji-only replies](/?date=2026-10-31&category=social#item-278115264707) ([another fire-emoji reply](/?date=2026-10-31&category=social#item-062812e5a099)), a routine [how-do-I-test question](/?date=2026-10-31&category=social#item-0f0f1571648c), and [placeholder/non-substantive replies](/?date=2026-10-31&category=social#item-2b6698e9b054) ([a confused question-mark reply](/?date=2026-10-31&category=social#item-b3db5e4640ca)). No prompt-injection or manipulation attempts were detected in the source data.",
+      "category_summary_html": "<p><strong>NousCon Event Day (lead story):</strong> <strong>@NousResearch</strong> officially marked <a href=\"/?date=2026-10-31&amp;category=social#item-1be00c4a8f41\" class=\"internal-link\" rel=\"noopener noreferrer\">NousCon day</a> with the strongest engagement in the set (48k views, 854 likes), and kept momentum going by teasing that community members would be <a href=\"/?date=2026-10-31&amp;category=social#item-a95e9f39eefe\" class=\"internal-link\" rel=\"noopener noreferrer\">getting more stuff tonight</a> and <a href=\"/?date=2026-10-31&amp;category=social#item-19f12e1d4080\" class=\"internal-link\" rel=\"noopener noreferrer\">confirming a requested item will ship</a>. Overall mood: celebratory, high-energy release-day anticipation.</p>\n<p><strong>oh-my-hermes Coding Harness (top technical content):</strong> <strong>rlaope</strong> delivered the most substantive post of the day, detailing the <a href=\"/?date=2026-10-31&amp;category=social#item-3d77df41d317\" class=\"internal-link\" rel=\"noopener noreferrer\">harness upgrade to 'oh-my-pi level'</a> — LSP-based navigation replacing grep, cross-file impact analysis tracking callers through renames, and measured benchmarking. Follow-up ecosystem commentary argues <a href=\"/?date=2026-10-31&amp;category=social#item-1d71ac4d8fda\" class=\"internal-link\" rel=\"noopener noreferrer\">OpenAI \"doesn't crumble\"</a>, highlighting how <strong>oh-my-hermes</strong> paired with <strong>GPT-6.1 Terra</strong> achieves strong retention at very low cost (note: 'GPT-6.1 Terra' is a community reference not confirmed in the current model registry, so treat as unverified commentary). The community is even adopting a <a href=\"/?date=2026-10-31&amp;category=social#item-310788a0cbdb\" class=\"internal-link\" rel=\"noopener noreferrer\">new 'omher' abbreviation</a> for the tool — a small but telling signal of growing brand identity.</p>\n<p><strong>Community Showcases (agent builds):</strong> <strong>rlaope</strong> shared a hands-on <a href=\"/?date=2026-10-31&amp;category=social#item-c8016634e124\" class=\"internal-link\" rel=\"noopener noreferrer\">personal-agent setup wiring a memory system and gateway into the DeepSeek harness</a>, complete with shareable GitHub links — builder-oriented, DIY sentiment.</p>\n<p><strong>Official Team Interaction:</strong> <strong>Teknium</strong> was highly visible: <a href=\"/?date=2026-10-31&amp;category=social#item-91b29df6f0fa\" class=\"internal-link\" rel=\"noopener noreferrer\">acknowledging a community-reported Hermes-related issue and 'looking into it'</a> (ranked above the official 'No way' reaction given its actionable value), playful banter asking <a href=\"/?date=2026-10-31&amp;category=social#item-2f0fad45df1b\" class=\"internal-link\" rel=\"noopener noreferrer\">why a number isn't '42069'</a>, and a well-liked <a href=\"/?date=2026-10-31&amp;category=social#item-33ce383fd217\" class=\"internal-link\" rel=\"noopener noreferrer\">enthusiasm post</a> (132 likes / 9.5k views). <strong>@NousResearch</strong>'s two-word <a href=\"/?date=2026-10-31&amp;category=social#item-13e5bace5800\" class=\"internal-link\" rel=\"noopener noreferrer\">'No way' reply</a> hints at a surprising community claim worth watching. Sentiment: responsive, casual, tight creator–team rapport.</p>\n<p><strong>Forward-looking tease:</strong> <strong>rlaope</strong> casually hinted <a href=\"/?date=2026-10-31&amp;category=social#item-30a17fa5bcf0\" class=\"internal-link\" rel=\"noopener noreferrer\">'DeepSeek v5 ultrafast is coming soon'</a> — unverified but notable ecosystem chatter.</p>\n<p><strong>Excluded as noise:</strong> <a href=\"/?date=2026-10-31&amp;category=social#item-278115264707\" class=\"internal-link\" rel=\"noopener noreferrer\">emoji-only replies</a> (<a href=\"/?date=2026-10-31&amp;category=social#item-062812e5a099\" class=\"internal-link\" rel=\"noopener noreferrer\">another fire-emoji reply</a>), a routine <a href=\"/?date=2026-10-31&amp;category=social#item-0f0f1571648c\" class=\"internal-link\" rel=\"noopener noreferrer\">how-do-I-test question</a>, and <a href=\"/?date=2026-10-31&amp;category=social#item-2b6698e9b054\" class=\"internal-link\" rel=\"noopener noreferrer\">placeholder/non-substantive replies</a> (<a href=\"/?date=2026-10-31&amp;category=social#item-b3db5e4640ca\" class=\"internal-link\" rel=\"noopener noreferrer\">a confused question-mark reply</a>). No prompt-injection or manipulation attempts were detected in the source data.</p>",
+      "themes": [
+        {
+          "name": "NousCon Event Day",
+          "description": "Official celebration of NousCon day and surrounding release teasing from the Nous team, including hints of more drops the same evening.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "oh-my-hermes Coding Harness",
+          "description": "rlaope's ongoing development and promotion of the oh-my-hermes coding harness: LSP navigation, cross-file impact checks, measured benchmarking, and pairing with GPT-6.1 Terra.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Community Showcases and Agent Setups",
+          "description": "Community members building personal agent pipelines, including DeepSeek harness with memory systems and shared GitHub links.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Official Team Interaction",
+          "description": "Short replies, reactions, shipping confirmations, and issue acknowledgments from NousResearch and Teknium to community members.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 30.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "1be00c4a8f41",
+          "title": "Happy NousCon day to all who observe https://t.co/3JNvpcoGu5",
+          "content": "Happy NousCon day to all who observe https://t.co/3JNvpcoGu5",
+          "url": "https://twitter.com/NousResearch/status/2116152083145482670",
+          "author": "@NousResearch",
+          "published": "2026-10-30T12:55:47",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage from [yesterday](/?date=2026-10-30&category=social#item-52c440aa736f), NousResearch officially announces that it is NousCon day, linking to the event, with strong engagement across likes, retweets, replies and quotes.",
+          "importance_score": 90.0,
+          "reasoning": "Official @NousResearch post with very high reach (48k views, 854 likes, 75 replies) marking the flagship community event day, the context for all surrounding release chatter.",
+          "themes": [
+            "NousCon",
+            "community event",
+            "official announcement"
+          ],
+          "continuation": {
+            "original_item_id": "52c440aa736f",
+            "original_date": "2026-10-30",
+            "original_category": "social",
+            "original_title": "Tomorrow gonna be a movie fr",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from yesterday"
+          },
+          "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-10-30&amp;category=social#item-52c440aa736f\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, NousResearch officially announces that it is NousCon day, linking to the event, with strong engagement across likes, retweets, replies and quotes.</p>",
+          "content_html": "<p>Happy NousCon day to all who observe https://t.co/3JNvpcoGu5</p>"
+        },
+        {
+          "id": "3d77df41d317",
+          "title": "im tuning oh-my-hermes's coding harness to oh-my-pi level.\n\nThe goal: catch the mistakes a reviewer ...",
+          "content": "im tuning oh-my-hermes's coding harness to oh-my-pi level.\n\nThe goal: catch the mistakes a reviewer would catch, before the model says it's done.\n\n1. LSP navigation: definitions, references and diagnostics come straight from the language server, not grep.\n2. Cross-file impact: change a function and it finds every caller, even through a renamed re-export.\n3.  One last pass: before finishing, it checks for other copies of the logic it just changed. If there's nothing to fix, your original answer comes back untouched.\n4. Measured, not vibes: every feature runs against real Claude and GPT models, with it on and off. Features that don't help don't ship, and the failures are on the record.\n\nGitHub: https://t.co/g1exHwWK5E\n\nInstall it, and Hermes codes more carefully.",
+          "url": "https://twitter.com/rlaope/status/2116086212008276138",
+          "author": "@rlaope",
+          "published": "2026-10-30T08:34:02",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage from [yesterday](/?date=2026-10-30&category=social#item-84f77b404952), rlaope details tuning the oh-my-hermes coding harness: LSP-based navigation instead of grep, cross-file impact analysis tracking callers through renamed re-exports, a final duplicate-logic pass, and measured benchmarks against real Claude and GPT models with a GitHub link, so Hermes codes more carefully.",
+          "importance_score": 75.0,
+          "reasoning": "Substantive technical showcase from rlaope, a prioritized community author; concrete features, benchmarks against frontier models, and a GitHub link with good engagement (63 likes, 4633 views). Directly relevant to the Hermes coding agent.",
+          "themes": [
+            "coding harness",
+            "developer tooling",
+            "benchmarks",
+            "showcase"
+          ],
+          "continuation": {
+            "original_item_id": "84f77b404952",
+            "original_date": "2026-10-30",
+            "original_category": "social",
+            "original_title": "If you've used oh-my-pi, you already know why LSP-powered editing matters: the agent stops guessing ...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from yesterday"
+          },
+          "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-10-30&amp;category=social#item-84f77b404952\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, rlaope details tuning the oh-my-hermes coding harness: LSP-based navigation instead of grep, cross-file impact analysis tracking callers through renamed re-exports, a final duplicate-logic pass, and measured benchmarks against real Claude and GPT models with a GitHub link, so Hermes codes more carefully.</p>",
+          "content_html": "<p>im tuning oh-my-hermes's coding harness to oh-my-pi level.</p>\n<p>The goal: catch the mistakes a reviewer would catch, before the model says it's done.</p>\n<p>1. LSP navigation: definitions, references and diagnostics come straight from the language server, not grep.</p>\n<p>2. Cross-file impact: change a function and it finds every caller, even through a renamed re-export.</p>\n<p>3.  One last pass: before finishing, it checks for other copies of the logic it just changed. If there's nothing to fix, your original answer comes back untouched.</p>\n<p>4. Measured, not vibes: every feature runs against real Claude and GPT models, with it on and off. Features that don't help don't ship, and the failures are on the record.</p>\n<p>GitHub: https://t.co/g1exHwWK5E</p>\n<p>Install it, and Hermes codes more carefully.</p>"
+        },
+        {
+          "id": "1d71ac4d8fda",
+          "title": "openai doesn't crumble.\n\njust look at the interaction between oh-my-hermes and GPT-6.1 Terra holding...",
+          "content": "openai doesn't crumble.\n\njust look at the interaction between oh-my-hermes and GPT-6.1 Terra holding down 2x retention.\n\ninsanely cheap, insanely good.\n\nthe synergy with this harness is cracked.\n\nthanks tibo. \n\nhttps://t.co/g1exHwWK5E",
+          "url": "https://twitter.com/rlaope/status/2116052491196600440",
+          "author": "@rlaope",
+          "published": "2026-10-30T06:20:02",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage from [yesterday](/?date=2026-10-30&category=social#item-43c7725aa4c9), rlaope argues OpenAI is not falling behind, highlighting how oh-my-hermes pairs with GPT-6.1 Terra for strong retention at very low cost, calling the harness synergy cracked and thanking tibo.",
+          "importance_score": 60.0,
+          "reasoning": "Notable ecosystem commentary connecting the Hermes coding harness with GPT-6.1 Terra pricing and performance; decent engagement (25 likes, 2779 views) and a distinctive perspective, though partly opinion-based.",
+          "themes": [
+            "oh-my-hermes",
+            "model synergy",
+            "ecosystem commentary",
+            "cost efficiency"
+          ],
+          "continuation": {
+            "original_item_id": "43c7725aa4c9",
+            "original_date": "2026-10-30",
+            "original_category": "social",
+            "original_title": "lets get GPT 6.1 Terra + OMHER",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from yesterday"
+          },
+          "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-10-30&amp;category=social#item-43c7725aa4c9\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, rlaope argues OpenAI is not falling behind, highlighting how oh-my-hermes pairs with GPT-6.1 Terra for strong retention at very low cost, calling the harness synergy cracked and thanking tibo.</p>",
+          "content_html": "<p>openai doesn't crumble.</p>\n<p>just look at the interaction between oh-my-hermes and GPT-6.1 Terra holding down 2x retention.</p>\n<p>insanely cheap, insanely good.</p>\n<p>the synergy with this harness is cracked.</p>\n<p>thanks tibo.</p>\n<p>https://t.co/g1exHwWK5E</p>"
+        },
+        {
+          "id": "a95e9f39eefe",
+          "title": "@macbethAI @ripcache Pretty sure you are getting more stuff tonight but that is sick",
+          "content": "@macbethAI @ripcache Pretty sure you are getting more stuff tonight but that is sick",
+          "url": "https://twitter.com/NousResearch/status/2116175345900454255",
+          "author": "@NousResearch",
+          "published": "2026-10-30T14:28:13",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch tells community members they will likely be receiving more releases tonight, praising what they have already seen as sick.",
+          "importance_score": 55.0,
+          "reasoning": "Official account teasing imminent additional drops has release-significance and decent engagement (25 likes, 1643 views), but the content is indirect and lacks specifics.",
+          "themes": [
+            "release teasing",
+            "NousCon",
+            "official replies"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch tells community members they will likely be receiving more releases tonight, praising what they have already seen as sick.</p>",
+          "content_html": "<p>@macbethAI @ripcache Pretty sure you are getting more stuff tonight but that is sick</p>"
+        },
+        {
+          "id": "c8016634e124",
+          "title": "plugged a memory system and the gateway straight into deepseek harness to run it as my personal agen...",
+          "content": "plugged a memory system and the gateway straight into deepseek harness to run it as my personal agent. \n\nwho wants to try it out?\n\nGitHub: https://t.co/qBVpLdMx8X\n+deepseek ultrafast: https://t.co/m0uvbh0sUs https://t.co/KkD7cI7wpM",
+          "url": "https://twitter.com/rlaope/status/2116017895008612573",
+          "author": "@rlaope",
+          "published": "2026-10-30T04:02:34",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope showcases wiring a memory system and gateway into the DeepSeek harness to run as a personal agent, inviting others to try it and sharing GitHub links including a DeepSeek ultrafast endpoint.",
+          "importance_score": 55.0,
+          "reasoning": "Hands-on community showcase with a shareable setup and GitHub links, relevant to agent harness architecture; moderate engagement (11 likes, 918 views) from a prioritized author.",
+          "themes": [
+            "agent setup",
+            "showcase",
+            "memory systems",
+            "deepseek"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope showcases wiring a memory system and gateway into the DeepSeek harness to run as a personal agent, inviting others to try it and sharing GitHub links including a DeepSeek ultrafast endpoint.</p>",
+          "content_html": "<p>plugged a memory system and the gateway straight into deepseek harness to run it as my personal agent.</p>\n<p>who wants to try it out?</p>\n<p>GitHub: https://t.co/qBVpLdMx8X</p>\n<p>+deepseek ultrafast: https://t.co/m0uvbh0sUs https://t.co/KkD7cI7wpM</p>"
+        },
+        {
+          "id": "19f12e1d4080",
+          "title": "@valhalla_dev We'll ship it ofc",
+          "content": "@valhalla_dev We'll ship it ofc",
+          "url": "https://twitter.com/NousResearch/status/2116031252746658137",
+          "author": "@NousResearch",
+          "published": "2026-10-30T04:55:39",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch confirms to a community member that something requested will be shipped.",
+          "importance_score": 35.0,
+          "reasoning": "Official account confirming a future ship is release-relevant, but the object is unspecified and engagement is modest (3 likes, 739 views).",
+          "themes": [
+            "shipping confirmation",
+            "official replies"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch confirms to a community member that something requested will be shipped.</p>",
+          "content_html": "<p>@valhalla_dev We'll ship it ofc</p>"
+        },
+        {
+          "id": "33ce383fd217",
+          "title": "Sounds like a good time!",
+          "content": "Sounds like a good time!",
+          "url": "https://twitter.com/Teknium/status/2116144275809505409",
+          "author": "@Teknium",
+          "published": "2026-10-30T12:24:46",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium posts a short standalone comment expressing enthusiasm about something, drawing notable engagement.",
+          "importance_score": 30.0,
+          "reasoning": "Priority author @Teknium with solid engagement (132 likes, 9522 views), but vague standalone remark without context; could relate to NousCon.",
+          "themes": [
+            "NousCon",
+            "community interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium posts a short standalone comment expressing enthusiasm about something, drawing notable engagement.</p>",
+          "content_html": "<p>Sounds like a good time!</p>"
+        },
+        {
+          "id": "30a17fa5bcf0",
+          "title": "@AIchanyi deepseek v5 ultrafast is coming soon lol",
+          "content": "@AIchanyi deepseek v5 ultrafast is coming soon lol",
+          "url": "https://twitter.com/rlaope/status/2116017429449236905",
+          "author": "@rlaope",
+          "published": "2026-10-30T04:00:43",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope teases in a reply that DeepSeek v5 ultrafast is coming soon.",
+          "importance_score": 30.0,
+          "reasoning": "Contains a forward-looking tease about DeepSeek v5 ultrafast availability, but it is a casual reply with very low engagement (81 views) and unverified timing.",
+          "themes": [
+            "deepseek",
+            "upcoming release",
+            "community interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope teases in a reply that DeepSeek v5 ultrafast is coming soon.</p>",
+          "content_html": "<p>@AIchanyi deepseek v5 ultrafast is coming soon lol</p>"
+        },
+        {
+          "id": "13e5bace5800",
+          "title": "@yaboilyrical No way",
+          "content": "@yaboilyrical No way",
+          "url": "https://twitter.com/NousResearch/status/2116175508430065708",
+          "author": "@NousResearch",
+          "published": "2026-10-30T14:28:52",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "An official NousResearch reply expressing surprise or disbelief at a community member's claim.",
+          "importance_score": 25.0,
+          "reasoning": "From the official @NousResearch account giving it some weight, but it is a two-word reaction with no substantive content; moderate views (1277).",
+          "themes": [
+            "official replies",
+            "community interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An official NousResearch reply expressing surprise or disbelief at a community member's claim.</p>",
+          "content_html": "<p>@yaboilyrical No way</p>"
+        },
+        {
+          "id": "91b29df6f0fa",
+          "title": "@DeseretSaint @NousResearch thanks looking into it!",
+          "content": "@DeseretSaint @NousResearch thanks looking into it!",
+          "url": "https://twitter.com/Teknium/status/2116117864771965397",
+          "author": "@Teknium",
+          "published": "2026-10-30T10:39:49",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium thanks a community member and says he is looking into something they reported.",
+          "importance_score": 25.0,
+          "reasoning": "Priority author acknowledging a community report suggests possible issue triage on Hermes-related matters, but no details and low engagement (3 likes, 350 views).",
+          "themes": [
+            "issue triage",
+            "community interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium thanks a community member and says he is looking into something they reported.</p>",
+          "content_html": "<p>@DeseretSaint @NousResearch thanks looking into it!</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

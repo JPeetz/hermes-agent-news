@@ -1,0 +1,967 @@
+{
+  "date": "2026-10-12",
+  "coverage_date": "2026-10-11",
+  "coverage_start": "2026-10-11T00:00:00",
+  "coverage_end": "2026-10-11T23:59:59.999999",
+  "executive_summary": "**Executive summary:** The version picture that has dogged the week finally sharpens — and launch momentum carries it. The [News feed](/?date=2026-10-12&category=news) now treats **Hermes Agent v0.21.6** as the current stable, and its top story is an operator's guide — \"[**Hermes Agent v0.21.6: Dashboard Auth, Git Filter and Email Sender Fixes**](/?date=2026-10-12&category=news#item-a3e3807260aa)\" — covering **dashboard authentication** hardening, a **git filter** lockdown, and an **email sender** fix, must-read material for anyone running production. The **v0.21.7** train stays hot with four same-day RCs, **[rc.10](/?date=2026-10-12&category=news#item-cbe579ccb9b5)** through **rc.13** (**[rc.11](/?date=2026-10-12&category=news#item-c19a22c9ff13)** the freshest representative; the feed itself filtered the **rc.12**–**rc.13** write-ups as redundant, so cite the range rather than chase individual tags) — an imminent stable drop remains the live signal. The research feed's canonical [**v0.20.0** release notes](/?date=2026-10-11&category=research#item-hn-49159200) (tag **v2026.8.3**) read as official-docs catch-up — and by pairing the version with its date-style tag they all but resolve the long-running **v2026.8.3** discrepancy — while the **[Claude Pro/Max](/?date=2026-10-12&category=research#item-hn-49790991)** subscription docs (now surfaced under the **claude-subscription-directsdk** plugin name) are likewise catch-up on carried support, not a fresh launch. Social is celebratory and builder-heavy: **@NousResearch**'s terse \"[Hermes Agent is yours](/?date=2026-10-12&category=social)\" launch post (2,535 likes) headlines the cycle, and **@Teknium**'s \"[fun with Hermes](/?date=2026-10-12&category=social#item-63d9c6a50959)\" teaser drew the batch's biggest reach (~1,420 likes, ~82K views). The new infrastructure story is official skills/plugins plumbing: **@Teknium** announced [official plugins are consolidating into a **mono-repo**](/?date=2026-10-12&category=social#item-b2da2d2b0312) for centralized issue tracking, confirmed the [**anatomy skill**](/?date=2026-10-12&category=social#item-f63377423812) (wireframes and interactive prototypes) as an officially integrated optional skill, and publicly [asked **@wheresryan22** for permission](/?date=2026-10-12&category=social#item-0f5b54d8981d) to promote their community creation to a built-in — a permission-first adoption pipeline readers received warmly. He also set the contribution model explicitly: [no direct contributors — ship a plugin for the catalog instead](/?date=2026-10-12&category=social#item-29cc3440078a), and [only Nous-created/maintained plugins count as official](/?date=2026-10-12&category=social#item-b8ffcffb6f26). Third-party momentum: **@rlaope** shipped [**Oh-My-Hermes 3.0.2**](/?date=2026-10-12&category=social#item-d889c32305ce), adding **SkillEx** and **FenceGuard** and framing Hermes Agent as a multi-model team with skills, routing, and long-term memory — while transparently [spinning up another worker node](/?date=2026-10-12&category=social#item-a1bfa0dbd79e) after a traffic surge and clarifying the **~1,000 TPS** figure is peak, not average. The community showcase is **TOTS (Thoughts On Terminal Screen)** — an [open-source, Love, Death & Robots-inspired screensaver](/?date=2026-10-12&category=news#item-876bf1b2193c) that passively visualizes your agent's reasoning, responses, and tool activity — a real monitoring pain point, solved with style. **@Teknium** also handled rumor control: \"[beyond all doubt](/?date=2026-10-12&category=social#item-1c7ba80e94e8),\" a tracker-attributed model is not Nous's, and [it isn't a router either](/?date=2026-10-12&category=social#item-f8dd7db72030) — firm, good-natured myth-busting. Research watch: **@hardmaru** surfaced [Sakana AI's **MASS** paper](/?date=2026-10-12&category=social#item-d648c1b54651) — recursive self-improvement via multi-agent self-supervision, [framed through Minsky's Society of Mind](/?date=2026-10-12&category=social#item-37fbc6f41417) — reporting a **27B** open-weights model improving [**1.2–1.6x** per output token after two cycles](/?date=2026-10-12&category=social#item-84c0404d433d), an open-weights result that lands well with this community and rhymes with the carried [**Refine Cycle** self-improvement plugin](/?date=2026-10-12&category=research#item-hn-49606988). Carried, not new: [**Hermes Kanban**](/?date=2026-10-11&category=research#item-hn-49604068), [**LanceDB** semantic memory](/?date=2026-10-11&category=research#item-hn-49133145), [**verso**](/?date=2026-10-11&category=research#item-hn-49628094), [**Grafana**](/?date=2026-10-11&category=research#item-hn-49318128), the [**Kubernetes** gaps](/?date=2026-10-11&category=research#item-hn-49977400) (no official **Helm** chart; **root-at-init** image), the [**Arduino UNO Q**](/?date=2026-10-11&category=research#item-hn-49368474) hobbyist host, the [**~23,000 open-PR** backlog](/?date=2026-10-11&category=research#item-hn-49424643), and [**Almanac (YC S26)**](/?date=2026-10-11&category=research#item-hn-49511007) again topping research (\"Launch HN: AI that knows your company\"). Fresher on the ops side: a [headless-Debian debugging walkthrough](/?date=2026-10-12&category=research#item-hn-49916751) with captured traces and a [**Bifrost** model-router reliability discussion](/?date=2026-10-12&category=research#item-hn-49159529) — the former repeats the caution that its \"**GLM 5.3 Flash**\" reference stays unverified against the confirmed Z.ai catalog, which tops out at **GLM-5.2** (2026-06-16). Housekeeping: Reddit contributed nothing again; the routine [daily repo sync](/?date=2026-10-12&category=news#item-b093d6f7db37) and off-topic [listicles](/?date=2026-10-12&category=research#item-ecaec348555b)/[trademark threads](/?date=2026-10-12&category=research#item-hn-49357715) were filtered as noise. One carried deadline bears repeating precisely because it's three days out: [three memory providers leave Hermes Agent core on **2026-10-15**](/?date=2026-10-11&category=news#item-d96f0bcb45e6) — migrate external backends (e.g., **Honcho**) now. Net read: no stable **v0.21.7** yet, but **v0.21.6**'s confirmation plus a same-day four-RC burst say it's close — the cycle's real story is official infrastructure absorbing community creations under a clear contribution model, with security hardening leading the stable line.",
+  "executive_summary_html": "<p><strong>Executive summary:</strong> The version picture that has dogged the week finally sharpens — and launch momentum carries it. The <a href=\"/?date=2026-10-12&amp;category=news\" class=\"internal-link\" rel=\"noopener noreferrer\">News feed</a> now treats <strong>Hermes Agent v0.21.6</strong> as the current stable, and its top story is an operator's guide — \"<a href=\"/?date=2026-10-12&amp;category=news#item-a3e3807260aa\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent v0.21.6: Dashboard Auth, Git Filter and Email Sender Fixes</strong></a>\" — covering <strong>dashboard authentication</strong> hardening, a <strong>git filter</strong> lockdown, and an <strong>email sender</strong> fix, must-read material for anyone running production. The <strong>v0.21.7</strong> train stays hot with four same-day RCs, <strong><a href=\"/?date=2026-10-12&amp;category=news#item-cbe579ccb9b5\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.10</a></strong> through <strong>rc.13</strong> (<strong><a href=\"/?date=2026-10-12&amp;category=news#item-c19a22c9ff13\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.11</a></strong> the freshest representative; the feed itself filtered the <strong>rc.12</strong>–<strong>rc.13</strong> write-ups as redundant, so cite the range rather than chase individual tags) — an imminent stable drop remains the live signal. The research feed's canonical <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.20.0</strong> release notes</a> (tag <strong>v2026.8.3</strong>) read as official-docs catch-up — and by pairing the version with its date-style tag they all but resolve the long-running <strong>v2026.8.3</strong> discrepancy — while the <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscription docs (now surfaced under the <strong>claude-subscription-directsdk</strong> plugin name) are likewise catch-up on carried support, not a fresh launch. Social is celebratory and builder-heavy: <strong>@NousResearch</strong>'s terse \"<a href=\"/?date=2026-10-12&amp;category=social\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent is yours</a>\" launch post (2,535 likes) headlines the cycle, and <strong>@Teknium</strong>'s \"<a href=\"/?date=2026-10-12&amp;category=social#item-63d9c6a50959\" class=\"internal-link\" rel=\"noopener noreferrer\">fun with Hermes</a>\" teaser drew the batch's biggest reach (~1,420 likes, ~82K views). The new infrastructure story is official skills/plugins plumbing: <strong>@Teknium</strong> announced <a href=\"/?date=2026-10-12&amp;category=social#item-b2da2d2b0312\" class=\"internal-link\" rel=\"noopener noreferrer\">official plugins are consolidating into a <strong>mono-repo</strong></a> for centralized issue tracking, confirmed the <a href=\"/?date=2026-10-12&amp;category=social#item-f63377423812\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>anatomy skill</strong></a> (wireframes and interactive prototypes) as an officially integrated optional skill, and publicly <a href=\"/?date=2026-10-12&amp;category=social#item-0f5b54d8981d\" class=\"internal-link\" rel=\"noopener noreferrer\">asked <strong>@wheresryan22</strong> for permission</a> to promote their community creation to a built-in — a permission-first adoption pipeline readers received warmly. He also set the contribution model explicitly: <a href=\"/?date=2026-10-12&amp;category=social#item-29cc3440078a\" class=\"internal-link\" rel=\"noopener noreferrer\">no direct contributors — ship a plugin for the catalog instead</a>, and <a href=\"/?date=2026-10-12&amp;category=social#item-b8ffcffb6f26\" class=\"internal-link\" rel=\"noopener noreferrer\">only Nous-created/maintained plugins count as official</a>. Third-party momentum: <strong>@rlaope</strong> shipped <a href=\"/?date=2026-10-12&amp;category=social#item-d889c32305ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh-My-Hermes 3.0.2</strong></a>, adding <strong>SkillEx</strong> and <strong>FenceGuard</strong> and framing Hermes Agent as a multi-model team with skills, routing, and long-term memory — while transparently <a href=\"/?date=2026-10-12&amp;category=social#item-a1bfa0dbd79e\" class=\"internal-link\" rel=\"noopener noreferrer\">spinning up another worker node</a> after a traffic surge and clarifying the <strong>~1,000 TPS</strong> figure is peak, not average. The community showcase is <strong>TOTS (Thoughts On Terminal Screen)</strong> — an <a href=\"/?date=2026-10-12&amp;category=news#item-876bf1b2193c\" class=\"internal-link\" rel=\"noopener noreferrer\">open-source, Love, Death &amp; Robots-inspired screensaver</a> that passively visualizes your agent's reasoning, responses, and tool activity — a real monitoring pain point, solved with style. <strong>@Teknium</strong> also handled rumor control: \"<a href=\"/?date=2026-10-12&amp;category=social#item-1c7ba80e94e8\" class=\"internal-link\" rel=\"noopener noreferrer\">beyond all doubt</a>,\" a tracker-attributed model is not Nous's, and <a href=\"/?date=2026-10-12&amp;category=social#item-f8dd7db72030\" class=\"internal-link\" rel=\"noopener noreferrer\">it isn't a router either</a> — firm, good-natured myth-busting. Research watch: <strong>@hardmaru</strong> surfaced <a href=\"/?date=2026-10-12&amp;category=social#item-d648c1b54651\" class=\"internal-link\" rel=\"noopener noreferrer\">Sakana AI's <strong>MASS</strong> paper</a> — recursive self-improvement via multi-agent self-supervision, <a href=\"/?date=2026-10-12&amp;category=social#item-37fbc6f41417\" class=\"internal-link\" rel=\"noopener noreferrer\">framed through Minsky's Society of Mind</a> — reporting a <strong>27B</strong> open-weights model improving <a href=\"/?date=2026-10-12&amp;category=social#item-84c0404d433d\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>1.2–1.6x</strong> per output token after two cycles</a>, an open-weights result that lands well with this community and rhymes with the carried <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong> self-improvement plugin</a>. Carried, not new: <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong></a>, <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong> semantic memory</a>, <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verso</strong></a>, <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong></a>, the <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong> gaps</a> (no official <strong>Helm</strong> chart; <strong>root-at-init</strong> image), the <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong></a> hobbyist host, the <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>~23,000 open-PR</strong> backlog</a>, and <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac (YC S26)</strong></a> again topping research (\"Launch HN: AI that knows your company\"). Fresher on the ops side: a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">headless-Debian debugging walkthrough</a> with captured traces and a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Bifrost</strong> model-router reliability discussion</a> — the former repeats the caution that its \"<strong>GLM 5.3 Flash</strong>\" reference stays unverified against the confirmed Z.ai catalog, which tops out at <strong>GLM-5.2</strong> (2026-06-16). Housekeeping: Reddit contributed nothing again; the routine <a href=\"/?date=2026-10-12&amp;category=news#item-b093d6f7db37\" class=\"internal-link\" rel=\"noopener noreferrer\">daily repo sync</a> and off-topic <a href=\"/?date=2026-10-12&amp;category=research#item-ecaec348555b\" class=\"internal-link\" rel=\"noopener noreferrer\">listicles</a>/<a href=\"/?date=2026-10-12&amp;category=research#item-hn-49357715\" class=\"internal-link\" rel=\"noopener noreferrer\">trademark threads</a> were filtered as noise. One carried deadline bears repeating precisely because it's three days out: <a href=\"/?date=2026-10-11&amp;category=news#item-d96f0bcb45e6\" class=\"internal-link\" rel=\"noopener noreferrer\">three memory providers leave Hermes Agent core on <strong>2026-10-15</strong></a> — migrate external backends (e.g., <strong>Honcho</strong>) now. Net read: no stable <strong>v0.21.7</strong> yet, but <strong>v0.21.6</strong>'s confirmation plus a same-day four-RC burst say it's close — the cycle's real story is official infrastructure absorbing community creations under a clear contribution model, with security hardening leading the stable line.</p>",
+  "top_topics": [
+    {
+      "name": "Launch and Release Momentum",
+      "description": "The Hermes Agent's public launch and an active release train dominate this cycle: the headline ['Hermes Agent is yours' announcement](/?date=2026-10-12&category=social#item-d586a63d28e6), canonical [v0.20.0 release notes](/?date=2026-10-12&category=research#item-hn-49159200), the security-focused [v0.21.6 stable](/?date=2026-10-12&category=news#item-a3e3807260aa), and four same-day [v0.21.7 release candidates](/?date=2026-10-12&category=news#item-c19a22c9ff13) (rc.10-rc.13) signaling an imminent stable drop. [High-engagement teasers from Teknium](/?date=2026-10-12&category=social#item-63d9c6a50959) keep anticipation elevated, and sentiment is celebratory and builder-heavy. This is the week's central storyline across all content categories.",
+      "description_html": "The Hermes Agent's public launch and an active release train dominate this cycle: the headline <a href=\"/?date=2026-10-12&amp;category=social#item-d586a63d28e6\" class=\"internal-link\" rel=\"noopener noreferrer\">'Hermes Agent is yours' announcement</a>, canonical <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.20.0 release notes</a>, the security-focused <a href=\"/?date=2026-10-12&amp;category=news#item-a3e3807260aa\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.21.6 stable</a>, and four same-day <a href=\"/?date=2026-10-12&amp;category=news#item-c19a22c9ff13\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.21.7 release candidates</a> (rc.10-rc.13) signaling an imminent stable drop. <a href=\"/?date=2026-10-12&amp;category=social#item-63d9c6a50959\" class=\"internal-link\" rel=\"noopener noreferrer\">High-engagement teasers from Teknium</a> keep anticipation elevated, and sentiment is celebratory and builder-heavy. This is the week's central storyline across all content categories.",
+      "category_breakdown": {
+        "news": 5,
+        "research": 1,
+        "social": 2,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Skills and Plugin Ecosystem",
+      "description": "Official and community plugin infrastructure is expanding rapidly: [official plugins are consolidating into a mono-repo for centralized issue tracking](/?date=2026-10-12&category=social#item-b2da2d2b0312), [the anatomy skill became an officially integrated optional skill](/?date=2026-10-12&category=social#item-f63377423812), and [Teknium is adopting community creations through a permission-first pipeline](/?date=2026-10-12&category=social#item-0f5b54d8981d). Third-party layers like [Oh-My-Hermes 3.0.2 (SkillEx, FenceGuard)](/?date=2026-10-12&category=social#item-d889c32305ce) and projects like [Refine Cycle](/?date=2026-10-12&category=research#item-hn-49606988) and [verso](/?date=2026-10-12&category=research#item-hn-49628094) show a maturing extension ecosystem. The contribution model is also being clarified - [ship a plugin for the catalog rather than contributing directly](/?date=2026-10-12&category=social#item-29cc3440078a), with [only Nous-created and maintained plugins counting as official](/?date=2026-10-12&category=social#item-b8ffcffb6f26).",
+      "description_html": "Official and community plugin infrastructure is expanding rapidly: <a href=\"/?date=2026-10-12&amp;category=social#item-b2da2d2b0312\" class=\"internal-link\" rel=\"noopener noreferrer\">official plugins are consolidating into a mono-repo for centralized issue tracking</a>, <a href=\"/?date=2026-10-12&amp;category=social#item-f63377423812\" class=\"internal-link\" rel=\"noopener noreferrer\">the anatomy skill became an officially integrated optional skill</a>, and <a href=\"/?date=2026-10-12&amp;category=social#item-0f5b54d8981d\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium is adopting community creations through a permission-first pipeline</a>. Third-party layers like <a href=\"/?date=2026-10-12&amp;category=social#item-d889c32305ce\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh-My-Hermes 3.0.2 (SkillEx, FenceGuard)</a> and projects like <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a> and <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a> show a maturing extension ecosystem. The contribution model is also being clarified - <a href=\"/?date=2026-10-12&amp;category=social#item-29cc3440078a\" class=\"internal-link\" rel=\"noopener noreferrer\">ship a plugin for the catalog rather than contributing directly</a>, with <a href=\"/?date=2026-10-12&amp;category=social#item-b8ffcffb6f26\" class=\"internal-link\" rel=\"noopener noreferrer\">only Nous-created and maintained plugins counting as official</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 5,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 87
+    },
+    {
+      "name": "Memory and Multi-Agent Orchestration",
+      "description": "Persistence and coordination capabilities are advancing together, with [LanceDB-backed semantic memory](/?date=2026-10-12&category=research#item-hn-49133145) for durable recall and the new [Hermes Kanban multi-agent profile collaboration](/?date=2026-10-12&category=research#item-hn-49604068). [Oh-My-Hermes](/?date=2026-10-12&category=social#item-d889c32305ce) similarly positions the agent as a multi-model team with routing and long-term memory. Adjacent research such as [Sakana's MASS](/?date=2026-10-12&category=social#item-d648c1b54651) frames multi-agent self-supervision as the path to continual capability gains.",
+      "description_html": "Persistence and coordination capabilities are advancing together, with <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB-backed semantic memory</a> for durable recall and the new <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban multi-agent profile collaboration</a>. <a href=\"/?date=2026-10-12&amp;category=social#item-d889c32305ce\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh-My-Hermes</a> similarly positions the agent as a multi-model team with routing and long-term memory. Adjacent research such as <a href=\"/?date=2026-10-12&amp;category=social#item-d648c1b54651\" class=\"internal-link\" rel=\"noopener noreferrer\">Sakana's MASS</a> frames multi-agent self-supervision as the path to continual capability gains.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 76
+    },
+    {
+      "name": "Security and Operational Hardening",
+      "description": "Security fixes lead the current stable release: [v0.21.6 hardens dashboard authentication and locks down the git filter, alongside an email sender fix](/?date=2026-10-12&category=news#item-a3e3807260aa). Deployment documentation also exposes a security-relevant gap with a [root-at-init container image on Kubernetes](/?date=2026-10-12&category=research#item-hn-49977400). Operators running production deployments are the clear audience for this theme.",
+      "description_html": "Security fixes lead the current stable release: <a href=\"/?date=2026-10-12&amp;category=news#item-a3e3807260aa\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.21.6 hardens dashboard authentication and locks down the git filter, alongside an email sender fix</a>. Deployment documentation also exposes a security-relevant gap with a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">root-at-init container image on Kubernetes</a>. Operators running production deployments are the clear audience for this theme.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Deployment and Self-Hosting Practices",
+      "description": "Self-hosting guidance is maturing but reveals real operational gaps: no official Helm chart, root-privileged containers on Kubernetes, and a headless-Debian debugging walkthrough with captured traces. Low-cost hardware recipes like running the agent on an [Arduino UNO Q](/?date=2026-10-12&category=research#item-hn-49368474) highlight grassroots experimentation. Production-readiness [documentation](/?date=2026-10-12&category=news#item-a3e3807260aa) is emerging as a visible community need.",
+      "description_html": "Self-hosting guidance is maturing but reveals real operational gaps: no official Helm chart, root-privileged containers on Kubernetes, and a headless-Debian debugging walkthrough with captured traces. Low-cost hardware recipes like running the agent on an <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q</a> highlight grassroots experimentation. Production-readiness <a href=\"/?date=2026-10-12&amp;category=news#item-a3e3807260aa\" class=\"internal-link\" rel=\"noopener noreferrer\">documentation</a> is emerging as a visible community need.",
+      "category_breakdown": {
+        "research": 4,
+        "news": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 72
+    },
+    {
+      "name": "Recursive Self-Improvement Research",
+      "description": "Self-improvement appears on both the practice and research sides: the [Refine Cycle plugin](/?date=2026-10-12&category=research#item-hn-49606988) lets the agent iterate on and refine its own behavior, while [Sakana AI's MASS paper](/?date=2026-10-12&category=social#item-d648c1b54651) reports a [27B open-weights model improving 1.2-1.6x per output token](/?date=2026-10-12&category=social#item-84c0404d433d) after two cycles. The open-weights framing of MASS resonates strongly with the Hermes community's ethos.",
+      "description_html": "Self-improvement appears on both the practice and research sides: the <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle plugin</a> lets the agent iterate on and refine its own behavior, while <a href=\"/?date=2026-10-12&amp;category=social#item-d648c1b54651\" class=\"internal-link\" rel=\"noopener noreferrer\">Sakana AI's MASS paper</a> reports a <a href=\"/?date=2026-10-12&amp;category=social#item-84c0404d433d\" class=\"internal-link\" rel=\"noopener noreferrer\">27B open-weights model improving 1.2-1.6x per output token</a> after two cycles. The open-weights framing of MASS resonates strongly with the Hermes community's ethos.",
+      "category_breakdown": {
+        "research": 1,
+        "social": 2,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 68
+    },
+    {
+      "name": "Ecosystem Health and Governance",
+      "description": "Growth signals are strong but strained, with [roughly 23,000 open PRs](/?date=2026-10-12&category=research#item-hn-49424643) and enterprise demand validated by [Almanac (YC S26)](/?date=2026-10-12&category=research#item-hn-49511007), a startup built on tamed Hermes deployments. Governance friction is surfacing, including a [deleted GitHub issue about design references](/?date=2026-10-12&category=research#item-hn-49208206) and [trademark questions around the name](/?date=2026-10-12&category=research#item-hn-49357715). The [official contribution model](/?date=2026-10-12&category=social#item-29cc3440078a) is being spelled out as the project scales.",
+      "description_html": "Growth signals are strong but strained, with <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">roughly 23,000 open PRs</a> and enterprise demand validated by <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a>, a startup built on tamed Hermes deployments. Governance friction is surfacing, including a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49208206\" class=\"internal-link\" rel=\"noopener noreferrer\">deleted GitHub issue about design references</a> and <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49357715\" class=\"internal-link\" rel=\"noopener noreferrer\">trademark questions around the name</a>. The <a href=\"/?date=2026-10-12&amp;category=social#item-29cc3440078a\" class=\"internal-link\" rel=\"noopener noreferrer\">official contribution model</a> is being spelled out as the project scales.",
+      "category_breakdown": {
+        "research": 3,
+        "social": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 66
+    },
+    {
+      "name": "Agent Observability and Monitoring",
+      "description": "Visualizing what an agent is doing is an emerging need, addressed by TOTS (Thoughts On Terminal Screen), an open-source Love, Death & Robots-inspired screensaver that passively renders reasoning, responses, and tool activity. A Grafana dashboard integration fills the same observability gap for metrics-minded operators. Both solve the common pain point of limited visibility into agent behavior.\n\nLinks added:\n- \"TOTS (Thoughts On Terminal Screen)\" → [TOTS (Thoughts On Terminal Screen)](/?date=2026-10-12&category=news#item-876bf1b2193c)\n- \"Grafana dashboard integration\" → [Grafana dashboard integration](/?date=2026-10-12&category=research#item-hn-49318128)",
+      "description_html": "Visualizing what an agent is doing is an emerging need, addressed by TOTS (Thoughts On Terminal Screen), an open-source Love, Death &amp; Robots-inspired screensaver that passively renders reasoning, responses, and tool activity. A Grafana dashboard integration fills the same observability gap for metrics-minded operators. Both solve the common pain point of limited visibility into agent behavior.\n\nLinks added:\n- \"TOTS (Thoughts On Terminal Screen)\" → <a href=\"/?date=2026-10-12&amp;category=news#item-876bf1b2193c\" class=\"internal-link\" rel=\"noopener noreferrer\">TOTS (Thoughts On Terminal Screen)</a>\n- \"Grafana dashboard integration\" → <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana dashboard integration</a>",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 64
+    },
+    {
+      "name": "External Integrations and Model Routing",
+      "description": "Hermes is increasingly positioned within a broader coding-agent stack, with [reproducible skill loops pairing it with Codex and Claude Code](/?date=2026-10-12&category=research#item-hn-49136162), and a [claude-subscription-directsdk plugin enabling Claude Pro/Max subscription access](/?date=2026-10-12&category=research#item-hn-49790991) instead of API keys. Reliability discussions around the [Bifrost model router](/?date=2026-10-12&category=research#item-hn-49159529) even ask whether the agent is usable without multi-model routing. Integration with external providers and routers is becoming a core expectation.",
+      "description_html": "Hermes is increasingly positioned within a broader coding-agent stack, with <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">reproducible skill loops pairing it with Codex and Claude Code</a>, and a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">claude-subscription-directsdk plugin enabling Claude Pro/Max subscription access</a> instead of API keys. Reliability discussions around the <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">Bifrost model router</a> even ask whether the agent is usable without multi-model routing. Integration with external providers and routers is becoming a core expectation.",
+      "category_breakdown": {
+        "research": 3,
+        "social": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "Model Attribution and Rumor Control",
+      "description": "Attribution questions prompted direct responses: Teknium stated 'beyond all doubt' that a tracker-attributed model is not Nous's and separately ruled out router involvement, later naming Opus 5.5 in a follow-up. A reported 'GLM 5.3 Flash' mention also fails verification against the confirmed Z.ai catalog, whose latest release is GLM-5.2, and should be treated as unverified. The firm, good-natured myth-busting was well received by the community.",
+      "description_html": "Attribution questions prompted direct responses: Teknium stated 'beyond all doubt' that a tracker-attributed model is not Nous's and separately ruled out router involvement, later naming Opus 5.5 in a follow-up. A reported 'GLM 5.3 Flash' mention also fails verification against the confirmed Z.ai catalog, whose latest release is GLM-5.2, and should be treated as unverified. The firm, good-natured myth-busting was well received by the community.",
+      "category_breakdown": {
+        "social": 3,
+        "research": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 54
+    }
+  ],
+  "total_items_collected": 87,
+  "total_items_analyzed": 73,
+  "collection_status": {
+    "overall": "partial",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 21,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "partial",
+        "count": 22,
+        "error": "arXiv returned 0 papers on a catchup day (2026-10-12); this weekday normally has papers"
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 44,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 39,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 5,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": [
+      "Research had partial collection: arXiv returned 0 papers on a catchup day (2026-10-12); this weekday normally has papers"
+    ]
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-12/hero.webp?v=1791788932",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe leans forward at a single illuminated work terminal, one hand on a keyboard, scanning the day's top story open before her as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Launch and Release Momentum — The Hermes Agent's public launch and an active release train dominate this cycle: the headline 'Hermes Agent is yours...\nTopic 2: Skills and Plugin Ecosystem — Official and community plugin infrastructure is expanding rapidly: official plugins are consolidating into a mono-rep...\nTopic 3: Memory and Multi-Agent Orchestration — Persistence and coordination capabilities are advancing together, with LanceDB-backed semantic memory for durable rec...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, autonomous systems, workflow diagrams, connected tools, Hermes interface. A launch banner glows softly overhead in amber. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a wide three-quarter profile, cool dark ambience broken by a single warm orange glow above the console. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-12T07:08:52.678641",
+  "categories": {
+    "news": {
+      "count": 7,
+      "category_summary": "**Releases:** **[Hermes Agent v0.21.6](/?date=2026-10-12&category=news#item-a3e3807260aa)** leads — a practical operator guide to the security-relevant fixes in the current stable (dashboard auth hardening, git filter lockdown, email sender fix); must-read for anyone running a production deployment. The **v0.21.7** release train is visibly active: four RCs (**rc.10–rc.13**) landed in a single day, indicating active stabilization ahead of a stable drop — **[rc.11](/?date=2026-10-12&category=news#item-c19a22c9ff13)** is the freshest representative, with **[rc.10](/?date=2026-10-12&category=news#item-cbe579ccb9b5)** as the earliest of the same-day batch. **Community:** **[TOTS (Thoughts On Terminal Screen)](/?date=2026-10-12&category=news#item-876bf1b2193c)** is the standout showcase — an open-source, Love, Death & Robots-inspired screensaver that passively visualizes your agent's reasoning, responses, and tool activity, solving a real monitoring pain point. **Filtered as noise:** the [routine automated daily repo sync](/?date=2026-10-12&category=news#item-b093d6f7db37) (no substantive changes) and stale/redundant rc.12–rc.13 coverage.",
+      "category_summary_html": "<p><strong>Releases:</strong> <strong><a href=\"/?date=2026-10-12&amp;category=news#item-a3e3807260aa\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.21.6</a></strong> leads — a practical operator guide to the security-relevant fixes in the current stable (dashboard auth hardening, git filter lockdown, email sender fix); must-read for anyone running a production deployment. The <strong>v0.21.7</strong> release train is visibly active: four RCs (<strong>rc.10–rc.13</strong>) landed in a single day, indicating active stabilization ahead of a stable drop — <strong><a href=\"/?date=2026-10-12&amp;category=news#item-c19a22c9ff13\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.11</a></strong> is the freshest representative, with <strong><a href=\"/?date=2026-10-12&amp;category=news#item-cbe579ccb9b5\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.10</a></strong> as the earliest of the same-day batch. <strong>Community:</strong> <strong><a href=\"/?date=2026-10-12&amp;category=news#item-876bf1b2193c\" class=\"internal-link\" rel=\"noopener noreferrer\">TOTS (Thoughts On Terminal Screen)</a></strong> is the standout showcase — an open-source, Love, Death &amp; Robots-inspired screensaver that passively visualizes your agent's reasoning, responses, and tool activity, solving a real monitoring pain point. <strong>Filtered as noise:</strong> the <a href=\"/?date=2026-10-12&amp;category=news#item-b093d6f7db37\" class=\"internal-link\" rel=\"noopener noreferrer\">routine automated daily repo sync</a> (no substantive changes) and stale/redundant rc.12–rc.13 coverage.</p>",
+      "themes": [
+        {
+          "name": "v0.21.7 Release Candidate Train",
+          "description": "Four release-candidate attempts (rc.10 through rc.13) for Hermes Agent v0.21.7 published within a single day, indicating active stabilization work ahead of a stable release.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Community Tooling and Visibility",
+          "description": "Community-built open-source tooling that improves agent visibility, exemplified by the TOTS screensaver for passively monitoring agent activity.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 48.0
+        },
+        {
+          "name": "Operator Guidance and Stability",
+          "description": "Practical update guidance for the v0.21.6 stable release covering security hardening of the dashboard and git filter, plus an automated community repo sync.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 45.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "a3e3807260aa",
+          "title": "Hermes Agent v0.21.6: Dashboard Auth, Git Filter and Email Sender Fixes",
+          "content": "A practical operator guide to Hermes Agent v0.21.6: dashboard auth hardening, git filter lockdown, and the email sender fix, with an update checklist.",
+          "url": "https://hermes-tutorials.dev/blog/2026-10-11-hermes-v0216-release-update/",
+          "author": "Hermes Agent",
+          "published": "2026-10-11T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A practical operator guide covering Hermes Agent v0.21.6, focusing on dashboard authentication hardening, a git filter lockdown, and an email sender fix. The post includes an update checklist to help operators apply the release safely. This is useful, actionable coverage of the most recent stable version.",
+          "importance_score": 62.0,
+          "reasoning": "Highly relevant for Hermes operators: it explains security-relevant fixes in the current stable release (auth, git filter, email) and provides a concrete update checklist, though it covers a prior version rather than new v0.21.7 changes.",
+          "themes": [
+            "v0.21.6",
+            "security hardening",
+            "update guide"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A practical operator guide covering Hermes Agent v0.21.6, focusing on dashboard authentication hardening, a git filter lockdown, and an email sender fix. The post includes an update checklist to help operators apply the release safely. This is useful, actionable coverage of the most recent stable version.</p>",
+          "content_html": "<p>A practical operator guide to Hermes Agent v0.21.6: dashboard auth hardening, git filter lockdown, and the email sender fix, with an update checklist.</p>"
+        },
+        {
+          "id": "9e82ad3da0b1",
+          "title": "rc.13-v0.21.7",
+          "content": "{\"attempt\":13,\"autopublish\":false,\"claimEpoch\":1791750773,\"commit\":\"1…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.13-v0.21.7",
+          "author": "teknium1",
+          "published": "2026-10-11T20:32:53",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Nous Research published release candidate rc.13 for Hermes Agent v0.21.7, the 13th publishing attempt for this version, tied to a specific commit. It represents the latest iteration in a rapid series of release-candidate pushes on October 11, 2026. Detailed changelog content is truncated in the feed, so specific changes are not visible.",
+          "importance_score": 55.0,
+          "reasoning": "[Freshness check: This is just the 13th release-candidate attempt for v0.21.7 in the same rapid publishing series already covered by rc.9 yesterday, with the changelog again truncated so no new substantive changes are visible.] A new release candidate for the current version is directly relevant to Hermes users tracking upcoming v0.21.7 changes, but the truncated content limits actionable detail and rc.13 is one of many same-day attempts.",
+          "themes": [
+            "release candidates",
+            "v0.21.7",
+            "continuous iteration"
+          ],
+          "continuation": null,
+          "freshness": {
+            "status": "stale_anchor",
+            "label": "Old anchor",
+            "reason": "This is just the 13th release-candidate attempt for v0.21.7 in the same rapid publishing series already covered by rc.9 yesterday, with the changelog again truncated so no new substantive changes are visible.",
+            "score_cap": 55.0,
+            "exclude_from_top": true,
+            "exclude_from_summaries": true,
+            "age_days": 1,
+            "matched_prior_items": [
+              {
+                "id": "d212a5677f22",
+                "date": "2026-10-10",
+                "category": "news",
+                "title": "rc.9-v0.21.7",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.9-v0.21.7"
+              },
+              {
+                "id": "62a56bf81859",
+                "date": "2026-10-09",
+                "category": "news",
+                "title": "rc.38-v0.21.5",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.38-v0.21.5"
+              },
+              {
+                "id": "e00a06495b94",
+                "date": "2026-10-03",
+                "category": "news",
+                "title": "rc.35-v0.21.5",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.35-v0.21.5"
+              }
+            ]
+          },
+          "summary_html": "<p>Nous Research published release candidate rc.13 for Hermes Agent v0.21.7, the 13th publishing attempt for this version, tied to a specific commit. It represents the latest iteration in a rapid series of release-candidate pushes on October 11, 2026. Detailed changelog content is truncated in the feed, so specific changes are not visible.</p>",
+          "content_html": "<p>{\"attempt\":13,\"autopublish\":false,\"claimEpoch\":1791750773,\"commit\":\"1…</p>"
+        },
+        {
+          "id": "2bf67e452d01",
+          "title": "rc.12-v0.21.7",
+          "content": "{\"attempt\":12,\"autopublish\":false,\"claimEpoch\":1791738486,\"commit\":\"9…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.12-v0.21.7",
+          "author": "ethernet8023",
+          "published": "2026-10-11T17:08:06",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "This is release candidate attempt 12 for Hermes Agent v0.21.7, published on October 11, 2026 and pinned to a commit hash. It is part of the rapid same-day cadence of release-candidate pushes leading up to rc.13. Changelog details are not available due to truncation.",
+          "importance_score": 50.0,
+          "reasoning": "[Freshness check: secondary coverage of primary source from 2024-07-23 (810d before coverage)] Relevant to users following the v0.21.7 release train, but it is superseded by rc.13 within hours and lacks visible change details, making it mostly redundant coverage.",
+          "themes": [
+            "release candidates",
+            "v0.21.7",
+            "continuous iteration"
+          ],
+          "continuation": null,
+          "freshness": {
+            "status": "stale_followup",
+            "label": "Follow-up",
+            "reason": "secondary coverage of primary source from 2024-07-23 (810d before coverage)",
+            "score_cap": 55.0,
+            "exclude_from_top": true,
+            "exclude_from_summaries": true,
+            "primary_url": "https://github.blog",
+            "primary_published": "2024-07-23",
+            "age_days": 810
+          },
+          "summary_html": "<p>This is release candidate attempt 12 for Hermes Agent v0.21.7, published on October 11, 2026 and pinned to a commit hash. It is part of the rapid same-day cadence of release-candidate pushes leading up to rc.13. Changelog details are not available due to truncation.</p>",
+          "content_html": "<p>{\"attempt\":12,\"autopublish\":false,\"claimEpoch\":1791738486,\"commit\":\"9…</p>"
+        },
+        {
+          "id": "876bf1b2193c",
+          "title": "I made a Love, Death & Robots-inspired screensaver to see what my AI agent is doing",
+          "content": "      I've been working on TOTS (Thoughts On Terminal Screen), a small open-source screensaver for Hermes Agent. I have an old laptop for my Hermes Agent that stays on my desk, and I wanted a way to see what my agent was doing without constantly checking the terminal or Telegram. TOTS listens to the agent's reasoning, responses, and tool activity, turning them into scrolling pixelated emojis. The animation is inspired by the title sequences of Love, Death &amp; Robots. The idea is pretty simple: while the agent is working, the display keeps moving. When it becomes idle, the animation gradually settles down. It's meant to be something you can notice in your peripheral vision without demanding your attention. It started as an experiment inspired by GERTY from Moon, but I eventually moved away from facial expressions and ended up with this terminal-based approach. It supports custom themes, multiple sessions and subagents, and a debug mode that shows in real time what's going on in the background. Under the hood, a small plugin streams events through a local socket. Short phrases are matched against a customizable CSV to select emojis. You can also provide your own Python converter if you want something more sophisticated.  No extra AI inference needed.  Offline/Local friendly &amp; Open source. GitHub: https://github.com/anderson-/TOTS I'd be interested to hear what you think, especially about the visual approach.  &#32; submitted by &#32;  /u/_apekind_  &#32; to &#32;  r/hermesagent   [link] &#32; [comments] ",
+          "url": "https://www.reddit.com/r/hermesagent/comments/1x3iohm/i_made_a_love_death_robotsinspired_screensaver_to/",
+          "author": "/u/_apekind_",
+          "published": "2026-10-11T20:31:09",
+          "source": "newest submissions : multi",
+          "source_type": "rss",
+          "tags": [
+            "hermesagent"
+          ],
+          "summary": "A community member open-sourced TOTS (Thoughts On Terminal Screen), a screensaver for Hermes Agent that visualizes the agent's reasoning, responses, and tool activity as pixelated emoji animations inspired by the Love, Death & Robots title sequence. The animation moves while the agent works and settles when idle, designed for at-a-glance peripheral monitoring without checking the terminal or Telegram. It runs on a dedicated desk laptop and evolved from a GERTY-inspired experiment.",
+          "importance_score": 48.0,
+          "reasoning": "A genuine community showcase of an open-source tool that solves a real Hermes monitoring pain point, which is interesting and useful to users, but it is a third-party accessory rather than a core release or capability.",
+          "themes": [
+            "community showcase",
+            "agent monitoring",
+            "open source tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A community member open-sourced TOTS (Thoughts On Terminal Screen), a screensaver for Hermes Agent that visualizes the agent's reasoning, responses, and tool activity as pixelated emoji animations inspired by the Love, Death &amp; Robots title sequence. The animation moves while the agent works and settles when idle, designed for at-a-glance peripheral monitoring without checking the terminal or Telegram. It runs on a dedicated desk laptop and evolved from a GERTY-inspired experiment.</p>",
+          "content_html": "<p>I've been working on TOTS (Thoughts On Terminal Screen), a small open-source screensaver for Hermes Agent. I have an old laptop for my Hermes Agent that stays on my desk, and I wanted a way to see what my agent was doing without constantly checking the terminal or Telegram. TOTS listens to the agent's reasoning, responses, and tool activity, turning them into scrolling pixelated emojis. The animation is inspired by the title sequences of Love, Death &amp; Robots. The idea is pretty simple: while the agent is working, the display keeps moving. When it becomes idle, the animation gradually settles down. It's meant to be something you can notice in your peripheral vision without demanding your attention. It started as an experiment inspired by GERTY from Moon, but I eventually moved away from facial expressions and ended up with this terminal-based approach. It supports custom themes, multiple sessions and subagents, and a debug mode that shows in real time what's going on in the background. Under the hood, a small plugin streams events through a local socket. Short phrases are matched against a customizable CSV to select emojis. You can also provide your own Python converter if you want something more sophisticated.  No extra AI inference needed.  Offline/Local friendly &amp; Open source. GitHub: https://github.com/anderson-/TOTS I'd be interested to hear what you think, especially about the visual approach.    submitted by    /u/_apekind_    to    r/hermesagent   [link]   [comments]</p>"
+        },
+        {
+          "id": "b093d6f7db37",
+          "title": "Daily sync: 2026-10-11 02:00:04",
+          "content": "Daily sync: 2026-10-11 02:00:04",
+          "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/8a3ea5529d8f1f1e50d1e8f6e72495fe164deeef",
+          "author": "bot@hermes-agent-community.github.io",
+          "published": "2026-10-11T06:00:04",
+          "source": "Recent Commits to hermes-agent-community:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An automated daily sync commit to the hermes-agent-community repository main branch, timestamped October 11, 2026. The commit contains only the routine sync message with no human-authored changes or noteworthy content.",
+          "importance_score": 8.0,
+          "reasoning": "This is a routine automated repository sync with no feature, fix, or discussion content; it carries essentially no significance for Hermes users.",
+          "themes": [
+            "automated sync",
+            "repository maintenance"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An automated daily sync commit to the hermes-agent-community repository main branch, timestamped October 11, 2026. The commit contains only the routine sync message with no human-authored changes or noteworthy content.</p>",
+          "content_html": "<p>Daily sync: 2026-10-11 02:00:04</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 22,
+      "category_summary": "Research and documentation this cycle centers on official capability expansion and a maturing self-hosting ecosystem. Headline items: official docs for **[Claude Pro/Max subscription](/?date=2026-10-12&category=research#item-hn-49790991)** support via the **claude-subscription-directsdk** plugin (reuse existing Anthropic plans instead of API keys) and the canonical **[Hermes Agent v0.20.0](/?date=2026-10-12&category=research#item-hn-49159200)** release notes (tag **v2026.8.3**). Orchestration and memory advance together: the new **[Hermes Kanban](/?date=2026-10-12&category=research#item-hn-49604068)** multi-agent profile collaboration, **[LanceDB](/?date=2026-10-12&category=research#item-hn-49133145)**-backed semantic memory for persistent recall, and the **[Refine Cycle](/?date=2026-10-12&category=research#item-hn-49606988)** self-improvement plugin. Deployment documentation exposes real operational gaps — no official **Helm** chart and a root-at-init container image on **[Kubernetes](/?date=2026-10-12&category=research#item-hn-49977400)**, a [headless-Debian debugging walkthrough](/?date=2026-10-12&category=research#item-hn-49916751) with captured traces, and a low-cost **[Arduino UNO Q](/?date=2026-10-12&category=research#item-hn-49368474)** host recipe. Production tooling fills observability and routing needs: a **[Grafana](/?date=2026-10-12&category=research#item-hn-49318128)** dashboard integration, the **[verso](/?date=2026-10-12&category=research#item-hn-49628094)** open-source orchestrator for knowledge work, and a **[Bifrost](/?date=2026-10-12&category=research#item-hn-49159529)** model-router reliability discussion. Ecosystem health reads strong but strained: ~**[23,000 open PRs](/?date=2026-10-12&category=research#item-hn-49424643)** signal rapid community growth, **[Almanac (YC S26)](/?date=2026-10-12&category=research#item-hn-49511007)** validates enterprise demand for tamed Hermes deployments, and reproducible skill loops pairing Hermes with **[Codex and Claude Code](/?date=2026-10-12&category=research#item-hn-49136162)** show where multi-agent coding workflows are heading. Verification note: the debugging thread's '**[GLM 5.3 Flash](/?date=2026-10-12&category=research#item-hn-49916751)**' does not match our verified Z.ai catalog (latest confirmed release is **GLM-5.2**, 2026-06-16) — treat that model name as unverified. Off-topic items (a Claude Code earnings-data plugin, a trademark thread, personal usage reflections, and two promotional SEO/Skool listicles) were excluded from the ranking.",
+      "category_summary_html": "<p>Research and documentation this cycle centers on official capability expansion and a maturing self-hosting ecosystem. Headline items: official docs for <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> support via the <strong>claude-subscription-directsdk</strong> plugin (reuse existing Anthropic plans instead of API keys) and the canonical <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> release notes (tag <strong>v2026.8.3</strong>). Orchestration and memory advance together: the new <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> multi-agent profile collaboration, <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong>-backed semantic memory for persistent recall, and the <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> self-improvement plugin. Deployment documentation exposes real operational gaps — no official <strong>Helm</strong> chart and a root-at-init container image on <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes</a></strong>, a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">headless-Debian debugging walkthrough</a> with captured traces, and a low-cost <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q</a></strong> host recipe. Production tooling fills observability and routing needs: a <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> dashboard integration, the <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong> open-source orchestrator for knowledge work, and a <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">Bifrost</a></strong> model-router reliability discussion. Ecosystem health reads strong but strained: ~<strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000 open PRs</a></strong> signal rapid community growth, <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a></strong> validates enterprise demand for tamed Hermes deployments, and reproducible skill loops pairing Hermes with <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Codex and Claude Code</a></strong> show where multi-agent coding workflows are heading. Verification note: the debugging thread's '<strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a></strong>' does not match our verified Z.ai catalog (latest confirmed release is <strong>GLM-5.2</strong>, 2026-06-16) — treat that model name as unverified. Off-topic items (a Claude Code earnings-data plugin, a trademark thread, personal usage reflections, and two promotional SEO/Skool listicles) were excluded from the ranking.</p>",
+      "themes": [
+        {
+          "name": "Memory and Multi-Agent Orchestration",
+          "description": "Official and community work on semantic memory (LanceDB) and coordinating multiple agent profiles (Hermes Kanban, Codex/Claude loops).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Integrations with Coding Agents and Model Providers",
+          "description": "Hermes Agent connecting to Claude (Pro/Max subscriptions, Claude Code), Codex, Z.ai GLM models, and model routers like Bifrost.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Deployment and Hosting",
+          "description": "Practical deployment experiences and recipes across Kubernetes, headless Debian servers, and single-board hardware like the Arduino UNO Q, exposing gaps such as missing Helm charts and root-at-init images.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Ecosystem Tools and Plugins",
+          "description": "Third-party extensions built on Hermes Agent: orchestrators (verso), observability (Grafana), plugins (Refine Cycle, memory), and skill workflows, showing an active builder community.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Project Health and Governance",
+          "description": "Signals about sustainability and trust: 23k open PRs, moderation/blocking on GitHub issues, naming/trademark questions, and the official project landing page.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Off-Topic Marketing Noise",
+          "description": "Syndicated promotional SEO/Skool-course content from a single author unrelated to Hermes Agent, indicating feed contamination.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 5.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-49511007",
+          "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+          "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+          "url": "https://usealmanac.com/",
+          "author": "kushagrchitkar",
+          "published": "2026-08-31T15:34:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Almanac, a YC S26 startup, launches an enterprise 'Hermes with a brain that knows everything about your company.' The founders describe the pain of setting up Hermes themselves, including getting it to answer contextually and building OAuth connector apps, which motivated their commercial product.",
+          "importance_score": 60.0,
+          "reasoning": "A venture-backed commercial product built on Hermes setup pain validates enterprise demand and documents real deployment pain points (connectors, OAuth, context ingestion), though it is promotional rather than technical documentation.",
+          "themes": [
+            "startups",
+            "enterprise-deployment",
+            "connectors"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Almanac, a YC S26 startup, launches an enterprise 'Hermes with a brain that knows everything about your company.' The founders describe the pain of setting up Hermes themselves, including getting it to answer contextually and building OAuth connector apps, which motivated their commercial product.</p>",
+          "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub project, Refine Cycle, adds a self-improvement plugin for Hermes Agent, presumably enabling the agent to iterate on and refine its own behavior or outputs over successive cycles.",
+          "importance_score": 58.0,
+          "reasoning": "Self-improvement loops are a technically interesting extension of agent capabilities, but the listing gives no detail on the mechanism, safety controls, or adoption; community plugin of moderate depth.",
+          "themes": [
+            "plugins",
+            "self-improvement",
+            "agent-architecture"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub project, Refine Cycle, adds a self-improvement plugin for Hermes Agent, presumably enabling the agent to iterate on and refine its own behavior or outputs over successive cycles.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to maximhq/bifrost, implying users route multiple models through a proxy like Bifrost to get acceptable reliability or cost behavior.",
+          "importance_score": 57.0,
+          "reasoning": "Surfaces an important architectural question about model-routing dependency for reliability and cost control; the linked Bifrost project is a practical answer, but the framing is open-ended.",
+          "themes": [
+            "model-routing",
+            "architecture",
+            "reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to maximhq/bifrost, implying users route multiple models through a proxy like Bifrost to get acceptable reliability or cost behavior.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs an Arduino-side MCU with a Linux-side chip, as a low-cost always-on alternative to a personal machine or paid VPS.",
+          "importance_score": 55.0,
+          "reasoning": "A novel, concrete low-cost self-hosting recipe with hardware specifics; practically useful for hobbyists though niche relative to mainstream deployment paths.",
+          "themes": [
+            "self-hosting",
+            "hardware",
+            "edge-deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs an Arduino-side MCU with a Linux-side chip, as a low-cost always-on alternative to a personal machine or paid VPS.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "hn-49208206",
+          "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+          "author": "sundarurfriend",
+          "published": "2026-08-07T10:12:27Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub issue (NousResearch/hermes-agent#10232) reports that a question asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked, raising moderation and transparency concerns on the repository.",
+          "importance_score": 54.0,
+          "reasoning": "Moderation and attribution-governance issues on the official repo affect community trust and provenance discussions; notable but limited direct technical impact.",
+          "themes": [
+            "moderation",
+            "provenance",
+            "project-governance"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub issue (NousResearch/hermes-agent#10232) reports that a question asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked, raising moderation and transparency concerns on the repository.</p>",
+          "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+        },
+        {
+          "id": "hn-49441992",
+          "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "url": "https://hermes-agent.nousresearch.com",
+          "author": "duck",
+          "published": "2026-08-25T23:14:41Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with the user. Shared on Hacker News, likely surfacing the project landing page and positioning to a broader audience.",
+          "importance_score": 52.0,
+          "reasoning": "The canonical project page is useful as a reference point and indicates active promotion of the project, but the item itself contains no new technical details beyond the marketing framing.",
+          "themes": [
+            "project-overview",
+            "open-source"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with the user. Shared on Hacker News, likely surfacing the project landing page and positioning to a broader audience.</p>",
+          "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub repository, hermes-jekyl-hyde by jnorthrup, presents an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or manipulating the agent's behavior.",
+          "importance_score": 50.0,
+          "reasoning": "Adversarial probing of the agent is security-relevant and could expose prompt-injection or control-flow weaknesses, but the bare title offers no demonstrated findings or methodology.",
+          "themes": [
+            "security",
+            "adversarial-testing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub repository, hermes-jekyl-hyde by jnorthrup, presents an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or manipulating the agent's behavior.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A personal blog post by heyjonny reflecting on a mistaken or suboptimal way of using the Hermes Agent, likely covering workflow misconceptions and lessons learned from correcting the approach.",
+          "importance_score": 48.0,
+          "reasoning": "First-person usage reflection that may contain useful pitfalls for other users, but with limited technical depth visible from the title and no concrete feature or release information.",
+          "themes": [
+            "usage-patterns",
+            "lessons-learned"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A personal blog post by heyjonny reflecting on a mistaken or suboptimal way of using the Hermes Agent, likely covering workflow misconceptions and lessons learned from correcting the approach.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        },
+        {
+          "id": "hn-49305190",
+          "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+          "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+          "url": "https://fn2.ai/claude",
+          "author": "oceanplexian",
+          "published": "2026-08-14T22:09:36Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "fn2.ai launches a Claude Code plugin for querying 10.6M earnings-call transcript embeddings, backed by sharded PostgreSQL and ElasticSearch across two regions, with example market-research queries about companies like NVIDIA.",
+          "importance_score": 32.0,
+          "reasoning": "Technically interesting financial-data tooling, but it targets Claude Code rather than Hermes Agent; only marginal relevance to the Hermes ecosystem.",
+          "themes": [
+            "plugins",
+            "financial-data",
+            "rag"
+          ],
+          "continuation": null,
+          "summary_html": "<p>fn2.ai launches a Claude Code plugin for querying 10.6M earnings-call transcript embeddings, backed by sharded PostgreSQL and ElasticSearch across two regions, with example market-research queries about companies like NVIDIA.</p>",
+          "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+        },
+        {
+          "id": "hn-49357715",
+          "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+          "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+          "url": "https://news.ycombinator.com/item?id=49357715",
+          "author": "aitravel-dev",
+          "published": "2026-08-19T06:36:39Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès fashion brand's trademark, soliciting community discussion of trademark law and naming risk.",
+          "importance_score": 28.0,
+          "reasoning": "A legal-speculation discussion with no technical content about the software itself; low relevance to documentation, releases, or practical usage of Hermes Agent.",
+          "themes": [
+            "naming",
+            "legal"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès fashion brand's trademark, soliciting community discussion of trademark law and naming risk.</p>",
+          "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 44,
+      "category_summary": "**Agent launch & momentum:** **NousResearch**'s terse '[Hermes Agent is yours](/?date=2026-10-12&category=social#item-d586a63d28e6)' post was the week's headline (2,535 likes), and **Teknium** kept hype high with a cryptic '[fun with Hermes](/?date=2026-10-12&category=social#item-63d9c6a50959)' teaser that drew the batch's biggest reach (~1,420 likes, ~82K views) — sentiment is celebratory and builder-heavy. **Official skills & plugin infrastructure:** **Teknium** announced [official plugins are consolidating into a mono-repo](/?date=2026-10-12&category=social#item-b2da2d2b0312) for centralized issue tracking, confirmed the **[anatomy skill](/?date=2026-10-12&category=social#item-f63377423812)** for wireframes and interactive prototypes as an officially integrated optional skill, and publicly asked **[@wheresryan22](/?date=2026-10-12&category=social#item-0f5b54d8981d)** for permission to promote their community creation to a built-in skill — a community-to-official pipeline readers responded to warmly. He also set the contribution model: [no direct contributors, ship a plugin for the catalog instead](/?date=2026-10-12&category=social#item-29cc3440078a), and [only Nous-created/maintained plugins count as official](/?date=2026-10-12&category=social#item-b8ffcffb6f26). **Ecosystem tooling:** **rlaope** released **[Oh-My-Hermes 3.0.2](/?date=2026-10-12&category=social#item-d889c32305ce)** adding **SkillEx** and **FenceGuard**, turning Hermes Agent into a multi-model team with skills, routing, and long-term memory, and transparently reported [spinning up another worker node after a traffic surge](/?date=2026-10-12&category=social#item-a1bfa0dbd79e) (1,000 TPS is peak, not average) — a strong organic-growth signal for the third-party ecosystem. **Rumor control:** **Teknium** stated ['beyond all doubt' that a tracker-attributed model is not Nous's](/?date=2026-10-12&category=social#item-1c7ba80e94e8) and separately [ruled out it being a router](/?date=2026-10-12&category=social#item-f8dd7db72030) — firm, good-natured myth-busting that the community appreciated. **Research watch:** **hardmaru**'s Sakana AI **[MASS paper](/?date=2026-10-12&category=social#item-d648c1b54651)** (recursive self-improvement via multi-agent self-supervision, framed through [Minsky's Society of Mind](/?date=2026-10-12&category=social#item-37fbc6f41417)) reports a [27B open-weights model improving 1.2–1.6x per output token after two cycles](/?date=2026-10-12&category=social#item-84c0404d433d) — findings that resonate with the open-weights ethos of the Hermes community. Overall: a launch-week feed dominated by official momentum, an active skills/plugins culture, and credible adjacent research.",
+      "category_summary_html": "<p><strong>Agent launch &amp; momentum:</strong> <strong>NousResearch</strong>'s terse '<a href=\"/?date=2026-10-12&amp;category=social#item-d586a63d28e6\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent is yours</a>' post was the week's headline (2,535 likes), and <strong>Teknium</strong> kept hype high with a cryptic '<a href=\"/?date=2026-10-12&amp;category=social#item-63d9c6a50959\" class=\"internal-link\" rel=\"noopener noreferrer\">fun with Hermes</a>' teaser that drew the batch's biggest reach (~1,420 likes, ~82K views) — sentiment is celebratory and builder-heavy. <strong>Official skills &amp; plugin infrastructure:</strong> <strong>Teknium</strong> announced <a href=\"/?date=2026-10-12&amp;category=social#item-b2da2d2b0312\" class=\"internal-link\" rel=\"noopener noreferrer\">official plugins are consolidating into a mono-repo</a> for centralized issue tracking, confirmed the <strong><a href=\"/?date=2026-10-12&amp;category=social#item-f63377423812\" class=\"internal-link\" rel=\"noopener noreferrer\">anatomy skill</a></strong> for wireframes and interactive prototypes as an officially integrated optional skill, and publicly asked <strong><a href=\"/?date=2026-10-12&amp;category=social#item-0f5b54d8981d\" class=\"internal-link\" rel=\"noopener noreferrer\">@wheresryan22</a></strong> for permission to promote their community creation to a built-in skill — a community-to-official pipeline readers responded to warmly. He also set the contribution model: <a href=\"/?date=2026-10-12&amp;category=social#item-29cc3440078a\" class=\"internal-link\" rel=\"noopener noreferrer\">no direct contributors, ship a plugin for the catalog instead</a>, and <a href=\"/?date=2026-10-12&amp;category=social#item-b8ffcffb6f26\" class=\"internal-link\" rel=\"noopener noreferrer\">only Nous-created/maintained plugins count as official</a>. <strong>Ecosystem tooling:</strong> <strong>rlaope</strong> released <strong><a href=\"/?date=2026-10-12&amp;category=social#item-d889c32305ce\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh-My-Hermes 3.0.2</a></strong> adding <strong>SkillEx</strong> and <strong>FenceGuard</strong>, turning Hermes Agent into a multi-model team with skills, routing, and long-term memory, and transparently reported <a href=\"/?date=2026-10-12&amp;category=social#item-a1bfa0dbd79e\" class=\"internal-link\" rel=\"noopener noreferrer\">spinning up another worker node after a traffic surge</a> (1,000 TPS is peak, not average) — a strong organic-growth signal for the third-party ecosystem. <strong>Rumor control:</strong> <strong>Teknium</strong> stated <a href=\"/?date=2026-10-12&amp;category=social#item-1c7ba80e94e8\" class=\"internal-link\" rel=\"noopener noreferrer\">'beyond all doubt' that a tracker-attributed model is not Nous's</a> and separately <a href=\"/?date=2026-10-12&amp;category=social#item-f8dd7db72030\" class=\"internal-link\" rel=\"noopener noreferrer\">ruled out it being a router</a> — firm, good-natured myth-busting that the community appreciated. <strong>Research watch:</strong> <strong>hardmaru</strong>'s Sakana AI <strong><a href=\"/?date=2026-10-12&amp;category=social#item-d648c1b54651\" class=\"internal-link\" rel=\"noopener noreferrer\">MASS paper</a></strong> (recursive self-improvement via multi-agent self-supervision, framed through <a href=\"/?date=2026-10-12&amp;category=social#item-37fbc6f41417\" class=\"internal-link\" rel=\"noopener noreferrer\">Minsky's Society of Mind</a>) reports a <a href=\"/?date=2026-10-12&amp;category=social#item-84c0404d433d\" class=\"internal-link\" rel=\"noopener noreferrer\">27B open-weights model improving 1.2–1.6x per output token after two cycles</a> — findings that resonate with the open-weights ethos of the Hermes community. Overall: a launch-week feed dominated by official momentum, an active skills/plugins culture, and credible adjacent research.</p>",
+      "themes": [
+        {
+          "name": "Hermes Agent launch and momentum",
+          "description": "Headline announcements and community excitement around the Hermes Agent becoming available to users, anchored by the official launch post and the high-engagement skill release.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Hermes skills and official integration",
+          "description": "Teknium engaging directly with community creations, including interest in adopting a community-made tool as an official built-in optional skill, and general enthusiasm about Hermes capabilities.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Oh-My-Hermes ecosystem and tooling",
+          "description": "Third-party tooling around Hermes Agent, including the Oh-My-Hermes 3.0.2 release with SkillEx and FenceGuard safety features, plus infrastructure updates from the maintainer.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Skills and plugins ecosystem",
+          "description": "Discussion of the skills catalog, official plugin maintenance, contribution policy, and consolidation of plugins into a mono-repo.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Model attribution and rumor responses",
+          "description": "Teknium definitively denying that an unidentified model or system belongs to Nous Research and clarifying it is not a router.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Multi-agent self-improvement research",
+          "description": "hardmaru's thread on Sakana AI's MASS paper covering multi-agent workflows, workflow internalization, and recursive self-improvement results on open-weights models.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Maintenance and incident updates",
+          "description": "Signals of active maintenance including a confirmed fix, restored items after a week-long gap, and teases of upcoming work.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 45.0
+        },
+        {
+          "name": "Community support and Q&A",
+          "description": "Teknium and the official account fielding user questions on installation, mobile access, memory, bundling, and usage limits, often via brief replies.",
+          "item_count": 14,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Regional community outreach",
+          "description": "Non-English community engagement, notably rlaope announcing a shift of Korean-language content to Threads.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Casual and off-topic chatter",
+          "description": "Low-substance replies from Teknium covering gaming crossovers, greetings, and follow-up questions with no direct product relevance.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 35.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "d586a63d28e6",
+          "title": "Hermes Agent is yours",
+          "content": "Hermes Agent is yours",
+          "url": "https://twitter.com/NousResearch/status/2109301268955181334",
+          "author": "@NousResearch",
+          "published": "2026-10-11T15:13:06",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch posts a terse launch-style message declaring that Hermes Agent is now available to users, which functions as the headline release announcement.",
+          "importance_score": 95.0,
+          "reasoning": "Flagship announcement from the top-priority official account with exceptional engagement (2535 likes, 217k views, 193 replies); this is the central launch moment of the batch.",
+          "themes": [
+            "Product launch",
+            "Hermes Agent availability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch posts a terse launch-style message declaring that Hermes Agent is now available to users, which functions as the headline release announcement.</p>",
+          "content_html": "<p>Hermes Agent is yours</p>"
+        },
+        {
+          "id": "b2da2d2b0312",
+          "title": "We are consolidating the official plugins for Hermes Agent into the following mono-repo to enable be...",
+          "content": "We are consolidating the official plugins for Hermes Agent into the following mono-repo to enable better issue visibility and to centralize the source to find them all: \n\nhttps://t.co/QfR4u0152K https://t.co/KF2XtAGKTU",
+          "url": "https://twitter.com/Teknium/status/2109177877543682419",
+          "author": "@Teknium",
+          "published": "2026-10-11T07:02:47",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces that official Hermes Agent plugins are being consolidated into a single mono-repo to improve issue visibility and centralize where all plugins can be found, with a repository link.",
+          "importance_score": 88.0,
+          "reasoning": "Significant infrastructure and developer-experience announcement from a top-priority author with an actionable repository link and very strong engagement (936 likes, 31112 views).",
+          "themes": [
+            "Plugins ecosystem",
+            "Repository consolidation",
+            "Developer experience"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces that official Hermes Agent plugins are being consolidated into a single mono-repo to improve issue visibility and centralize where all plugins can be found, with a repository link.</p>",
+          "content_html": "<p>We are consolidating the official plugins for Hermes Agent into the following mono-repo to enable better issue visibility and to centralize the source to find them all:</p>\n<p>https://t.co/QfR4u0152K https://t.co/KF2XtAGKTU</p>"
+        },
+        {
+          "id": "d889c32305ce",
+          "title": "Oh-My-Hermes 3.0.2 Released! SkillEx & FenceGuard\n\nOMH: https://t.co/g1exHwWK5E\n\nOh-My-Hermes turns ...",
+          "content": "Oh-My-Hermes 3.0.2 Released! SkillEx & FenceGuard\n\nOMH: https://t.co/g1exHwWK5E\n\nOh-My-Hermes turns Hermes Agent into a team: ready-made skills, a router that picks the right one for every message, long-term memory, and sandboxed parallel coding agents across GPT, Claude, DeepSeek, Kimi and GLM.\n\nSkillEx: skills that work more carefully\n\n- Quoting is safe. Pasting a message that mentions a workflow no longer starts that workflow.\n- Plans point out what is still untested before any code is written.\n- Debugging stops after three failed fixes and looks at the bigger design instead of guessing again.\n- Long-running loops agree on a clear finish line and the files they must not touch before they start.\n- A new test has to catch a real bug before it counts.\n- Small in-scope decisions are made and written down without stopping to ask you, and review rounds are capped.\n- \"Yes\" means what you said yes to. Agreeing to an idea doesn't approve the whole plan.\n- Debugging a past session is read-only.\n- Backend work keeps one source of truth for each API contract.\n\nFenceGuard: parallel agents stay in their sandbox\n\n- Parallel coding agents never run outside their sandbox unless you allow it.\n- Inside the sandbox they get no credentials and no network.\n- An agent can't plant settings that later run on your machine.\n- A run that never started is reported as a failure, not a success.\n- Codex now runs inside the macOS sandbox.\n\nMemoryEx, continued\n\n- Memories are saved as facts, not as orders. \"You must…\" style notes are rejected and rewritten as observations.\n- Vague dates like \"two weeks ago\" or \"last Monday\" are flagged instead of saved as-is.\n- Memory search now handles French accents.\n\nAlso in 3.0.2\n\n- Several open terminals share work instead of repeating it, so the status bar uses less CPU.\n- Model setup works on machines with custom providers.\n\n#hermes #ohmyhermes",
+          "url": "https://twitter.com/rlaope/status/2109149028906922243",
+          "author": "@rlaope",
+          "published": "2026-10-11T05:08:09",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope announces Oh-My-Hermes 3.0.2, an ecosystem layer that turns Hermes Agent into a multi-model team with skills, routing, long-term memory, and sandboxed parallel coding agents across GPT, Claude, DeepSeek, Kimi and GLM. The release adds SkillEx and FenceGuard: safer quoting behavior, plans flagging untested items, debugging that stops after three failed fixes, agreed file boundaries for long loops, tests that must catch real bugs, scoped decision-making, and read-only debugging of past sessions.",
+          "importance_score": 88.0,
+          "reasoning": "Substantial release announcement from a prioritized community developer with strong engagement (321 likes, ~17.7K views). Detailed safety and workflow improvements around prompt injection (FenceGuard) and skill handling make it the most informative post in the batch.",
+          "themes": [
+            "Oh-My-Hermes",
+            "tooling release",
+            "agent safety",
+            "multi-model orchestration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope announces Oh-My-Hermes 3.0.2, an ecosystem layer that turns Hermes Agent into a multi-model team with skills, routing, long-term memory, and sandboxed parallel coding agents across GPT, Claude, DeepSeek, Kimi and GLM. The release adds SkillEx and FenceGuard: safer quoting behavior, plans flagging untested items, debugging that stops after three failed fixes, agreed file boundaries for long loops, tests that must catch real bugs, scoped decision-making, and read-only debugging of past sessions.</p>",
+          "content_html": "<p>Oh-My-Hermes 3.0.2 Released! SkillEx &amp; FenceGuard</p>\n<p>OMH: https://t.co/g1exHwWK5E</p>\n<p>Oh-My-Hermes turns Hermes Agent into a team: ready-made skills, a router that picks the right one for every message, long-term memory, and sandboxed parallel coding agents across GPT, Claude, DeepSeek, Kimi and GLM.</p>\n<p>SkillEx: skills that work more carefully</p>\n<ul>\n<li>Quoting is safe. Pasting a message that mentions a workflow no longer starts that workflow.</li>\n<li>Plans point out what is still untested before any code is written.</li>\n<li>Debugging stops after three failed fixes and looks at the bigger design instead of guessing again.</li>\n<li>Long-running loops agree on a clear finish line and the files they must not touch before they start.</li>\n<li>A new test has to catch a real bug before it counts.</li>\n<li>Small in-scope decisions are made and written down without stopping to ask you, and review rounds are capped.</li>\n<li>\"Yes\" means what you said yes to. Agreeing to an idea doesn't approve the whole plan.</li>\n<li>Debugging a past session is read-only.</li>\n<li>Backend work keeps one source of truth for each API contract.</li>\n</ul>\n<p>FenceGuard: parallel agents stay in their sandbox</p>\n<ul>\n<li>Parallel coding agents never run outside their sandbox unless you allow it.</li>\n<li>Inside the sandbox they get no credentials and no network.</li>\n<li>An agent can't plant settings that later run on your machine.</li>\n<li>A run that never started is reported as a failure, not a success.</li>\n<li>Codex now runs inside the macOS sandbox.</li>\n</ul>\n<p>MemoryEx, continued</p>\n<ul>\n<li>Memories are saved as facts, not as orders. \"You must…\" style notes are rejected and rewritten as observations.</li>\n<li>Vague dates like \"two weeks ago\" or \"last Monday\" are flagged instead of saved as-is.</li>\n<li>Memory search now handles French accents.</li>\n</ul>\n<p>Also in 3.0.2</p>\n<ul>\n<li>Several open terminals share work instead of repeating it, so the status bar uses less CPU.</li>\n<li>Model setup works on machines with custom providers.</li>\n</ul>\n<p>#hermes #ohmyhermes</p>"
+        },
+        {
+          "id": "f63377423812",
+          "title": "Anatomy skill for building wireframe designs and interactive prototype machines is now an officially...",
+          "content": "Anatomy skill for building wireframe designs and interactive prototype machines is now an officially integrated optional skill in Hermes Agent\n\nYou can find it in the optional built in skills in the skills catalog or install with:\nhermes skills install official/creative/anatomy\n\nAll credit to @wheresryan22!",
+          "url": "https://twitter.com/Teknium/status/2109351160843035106",
+          "author": "@Teknium",
+          "published": "2026-10-11T18:31:21",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces that an anatomy skill for building wireframe designs and interactive prototype machines is now an officially integrated optional skill in Hermes Agent, available in the skills catalog or installable via hermes skills install official/creative/anatomy, crediting community contributor wheresryan22.",
+          "importance_score": 85.0,
+          "reasoning": "Official feature announcement from a top-priority author with concrete install instructions and contributor credit; very strong engagement (639 likes, 34k views) and a unique community-driven skill integration.",
+          "themes": [
+            "Skills catalog",
+            "New features",
+            "Community contributions"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces that an anatomy skill for building wireframe designs and interactive prototype machines is now an officially integrated optional skill in Hermes Agent, available in the skills catalog or installable via hermes skills install official/creative/anatomy, crediting community contributor wheresryan22.</p>",
+          "content_html": "<p>Anatomy skill for building wireframe designs and interactive prototype machines is now an officially integrated optional skill in Hermes Agent</p>\n<p>You can find it in the optional built in skills in the skills catalog or install with:</p>\n<p>hermes skills install official/creative/anatomy</p>\n<p>All credit to @wheresryan22!</p>"
+        },
+        {
+          "id": "63d9c6a50959",
+          "title": "Looks like it'll be fun with Hermes",
+          "content": "Looks like it'll be fun with Hermes",
+          "url": "https://twitter.com/Teknium/status/2109173479262261497",
+          "author": "@Teknium",
+          "published": "2026-10-11T06:45:18",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium posts a short standalone comment saying that something upcoming looks like it will be fun with Hermes, drawing large engagement.",
+          "importance_score": 82.0,
+          "reasoning": "By the most prioritized author with by far the highest engagement in the batch (1,420 likes, ~82K views), likely teasing a notable capability or integration for Hermes, though the vagueness limits certainty.",
+          "themes": [
+            "Hermes hype",
+            "teaser"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium posts a short standalone comment saying that something upcoming looks like it will be fun with Hermes, drawing large engagement.</p>",
+          "content_html": "<p>Looks like it'll be fun with Hermes</p>"
+        },
+        {
+          "id": "0f5b54d8981d",
+          "title": "@wheresryan22 Do you mind if this becomes an official hermes built in optional skill?",
+          "content": "@wheresryan22 Do you mind if this becomes an official hermes built in optional skill?",
+          "url": "https://twitter.com/Teknium/status/2109173423721394355",
+          "author": "@Teknium",
+          "published": "2026-10-11T06:45:05",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium asks community member wheresryan22 for permission to adopt their creation as an official built-in optional skill for Hermes.",
+          "importance_score": 80.0,
+          "reasoning": "Signals official product direction: a community-made tool being considered for first-party integration. High engagement (674 likes) and from the top-priority author, though it is a question rather than a confirmed release.",
+          "themes": [
+            "community contributions",
+            "Hermes skills",
+            "official integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium asks community member wheresryan22 for permission to adopt their creation as an official built-in optional skill for Hermes.</p>",
+          "content_html": "<p>@wheresryan22 Do you mind if this becomes an official hermes built in optional skill?</p>"
+        },
+        {
+          "id": "1c7ba80e94e8",
+          "title": "@aitrackerbot I can say beyond all doubt that it is not our model",
+          "content": "@aitrackerbot I can say beyond all doubt that it is not our model",
+          "url": "https://twitter.com/Teknium/status/2109169782180418020",
+          "author": "@Teknium",
+          "published": "2026-10-11T06:30:37",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium responds to an AI tracker account, firmly denying that some model or behavior being attributed to Nous Research belongs to them.",
+          "importance_score": 68.0,
+          "reasoning": "An authoritative debunking from the lead developer that clarifies model attribution, with solid engagement (138 likes, ~4.6K views), but it is a denial rather than new capability information.",
+          "themes": [
+            "model attribution",
+            "rumor response"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium responds to an AI tracker account, firmly denying that some model or behavior being attributed to Nous Research belongs to them.</p>",
+          "content_html": "<p>@aitrackerbot I can say beyond all doubt that it is not our model</p>"
+        },
+        {
+          "id": "d648c1b54651",
+          "title": "New Sakana AI paper: Recursive Self-Improvement through Multi-Agent Self-Supervision (MASS).\n\nBlog: ...",
+          "content": "New Sakana AI paper: Recursive Self-Improvement through Multi-Agent Self-Supervision (MASS).\n\nBlog: pub.sakana.ai/mass/\nPaper: arxiv.org/abs/2610.12176\n\nHow do we keep improving AI when tasks become too complex for humans to reliably evaluate?\n\nThe model eventually hits a supervision bottleneck.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mxmtyj2los2z",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-10-11T20:33:02.861000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "hardmaru introduces a new Sakana AI paper on Recursive Self-Improvement through Multi-Agent Self-Supervision, posing the question of how to keep improving AI when tasks become too complex for humans to reliably evaluate, identifying a supervision bottleneck.",
+          "importance_score": 65.0,
+          "reasoning": "Thread opener announcing notable research from a reputable lab with the strongest engagement of the Sakana posts (47 likes), addressing a fundamental problem, though it is adjacent to rather than about Hermes itself.",
+          "themes": [
+            "research",
+            "recursive self-improvement",
+            "supervision bottleneck"
+          ],
+          "continuation": null,
+          "summary_html": "<p>hardmaru introduces a new Sakana AI paper on Recursive Self-Improvement through Multi-Agent Self-Supervision, posing the question of how to keep improving AI when tasks become too complex for humans to reliably evaluate, identifying a supervision bottleneck.</p>",
+          "content_html": "<p>New Sakana AI paper: Recursive Self-Improvement through Multi-Agent Self-Supervision (MASS).</p>\n<p>Blog: pub.sakana.ai/mass/</p>\n<p>Paper: arxiv.org/abs/2610.12176</p>\n<p>How do we keep improving AI when tasks become too complex for humans to reliably evaluate?</p>\n<p>The model eventually hits a supervision bottleneck.</p>"
+        },
+        {
+          "id": "84c0404d433d",
+          "title": "After two cycles with a 27B open-weights model, performance improved 1.2-1.6x per output token on to...",
+          "content": "After two cycles with a 27B open-weights model, performance improved 1.2-1.6x per output token on tough research benchmarks (MLR-Bench, ScienceAgentBench, DSBench).\n\nMulti-agent traces were also much better training data than single-agent ones, using fewer tokens to learn more.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mxmu2xndek2f",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-10-11T20:34:25.266000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "hardmaru reports MASS results: after two cycles with a 27B open-weights model, performance improved 1.2-1.6x per output token on benchmarks like MLR-Bench, ScienceAgentBench and DSBench, and multi-agent traces proved better training data than single-agent ones.",
+          "importance_score": 60.0,
+          "reasoning": "Concrete quantitative findings relevant to open-weights model improvement, from a credible source; useful to the Hermes community given its open-weights focus, though engagement is modest.",
+          "themes": [
+            "research",
+            "benchmark results",
+            "open weights"
+          ],
+          "continuation": null,
+          "summary_html": "<p>hardmaru reports MASS results: after two cycles with a 27B open-weights model, performance improved 1.2-1.6x per output token on benchmarks like MLR-Bench, ScienceAgentBench and DSBench, and multi-agent traces proved better training data than single-agent ones.</p>",
+          "content_html": "<p>After two cycles with a 27B open-weights model, performance improved 1.2-1.6x per output token on tough research benchmarks (MLR-Bench, ScienceAgentBench, DSBench).</p>\n<p>Multi-agent traces were also much better training data than single-agent ones, using fewer tokens to learn more.</p>"
+        },
+        {
+          "id": "95a62dda3533",
+          "title": "@pcamp96 @openclaw Opus 5.5",
+          "content": "@pcamp96 @openclaw Opus 5.5",
+          "url": "https://twitter.com/Teknium/status/2109432688944058745",
+          "author": "@Teknium",
+          "published": "2026-10-11T23:55:19",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium answers a question by naming Opus 5.5, presumably identifying the model used or recommended in the context of the discussion.",
+          "importance_score": 55.0,
+          "reasoning": "Strong engagement for a reply (118 likes, 4148 views) and a priority author; the model identification is informative, though the reply is extremely terse and lacks context.",
+          "themes": [
+            "Model selection",
+            "Community Q&A"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium answers a question by naming Opus 5.5, presumably identifying the model used or recommended in the context of the discussion.</p>",
+          "content_html": "<p>@pcamp96 @openclaw Opus 5.5</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

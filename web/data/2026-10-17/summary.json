@@ -1,0 +1,828 @@
+{
+  "date": "2026-10-17",
+  "coverage_date": "2026-10-16",
+  "coverage_start": "2026-10-16T00:00:00",
+  "coverage_end": "2026-10-16T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-17\n\n**Executive summary:** A hardware-launch-level day. **@NousResearch** announced **Hermes Agent** as a [launch partner for **NVIDIA RTX Spark**](/?date=2026-10-17&category=social#item-eb6add8182a2) across the new generation of laptops — the week's runaway top social post (1,013 likes) — reinforced by official amplification of **@zacbowden**'s in-depth [**Windows Central** review](/?date=2026-10-17&category=social#item-b994a88307a6), extended [video coverage of hardware and security](/?date=2026-10-17&category=social#item-49831796d9c8), and a reply teasing [**OpenShell** and **MXC**](/?date=2026-10-17&category=social#item-6aeac627fd03) as upcoming products. Grounding note: the story rests entirely on official social channels this cycle, with no independent news or research corroboration — quote specifics as announced. The product story is a feedback loop working in public: after community pushback, **@Teknium** reversed the new [**90-day session auto-prune**](/?date=2026-10-17&category=social#item-33ea1f4fe9b0) (now off by default, replaced by storage-aware prompting) and candidly explained how [unbounded local session databases had been filling users' disks and blocking sessions](/?date=2026-10-17&category=social#item-a9bb334c6a24) — a [fix is confirmed for the next release](/?date=2026-10-17&category=social#item-b4ac47aa9bc1), with **cron** scheduling work and the daily-cleaned `.hermes/cache/scratch` directory rounding out the storage story, and sentiment strongly rewarded the fast turnaround. The ecosystem boom is the widest cross-category theme: [**verso** (open-source orchestrator)](/?date=2026-10-17&category=research#item-hn-49628094), **@rlaope**'s [**deepseek-bot** launch on **deepseek-harness**](/?date=2026-10-17&category=social#item-5d4f3f74b75c) and an [**Oh-My-Hermes** deep-dive guide](/?date=2026-10-17&category=social#item-b51fb165d53c), **@tonbistudio**'s ~20K-view [**Reverse Engineer Anything** guide](/?date=2026-10-17&category=social#item-ba61b5a396ce), plus the carried [**LanceDB**](/?date=2026-10-15&category=research#item-hn-49133145) and [**grafana-agento11y-hermes**](/?date=2026-10-15&category=research#item-hn-49318128) stack. Ultrafast hype centered on [**DeepSeek V4.1 Flash** at 848+ TPS](/?date=2026-10-17&category=social#item-034c1dd8dbe5) — speed coverage of an existing release (GA 2026-09-10) — while [**GLM-5.3-flash-ultrafast** (525 TPS)](/?date=2026-10-17&category=social#item-97d9c9fefec1) could not be verified against the model roster (tops out at **GLM-5.2**) and stays unconfirmed. The news feed ran quiet ([automated daily sync](/?date=2026-10-17&category=news#item-12e52f1275e3) only; no releases, no merged PRs), and the research feed re-anchored on **v0.20.0**'s docs bundle — carried reference, not a fresh launch. Net read: a positioning headline plus a visible listen-and-reverse product loop. Practical agenda: confirm session auto-prune is off and audit disk usage, keep **v0.22.2** as your build, verify **GLM-5.3** speed claims before relying on them, and mind the carried adversarial/looping reports if you run agents unattended.\n\n## Releases\n\nNo new tags today — the news feed was a quiet maintenance cycle with only the [automated daily-sync commit](/?date=2026-10-17&category=news#item-12e52f1275e3). The standing picture holds: **v0.22.2** remains the build to run (the [corrective release](/?date=2026-10-16&category=news#item-b93627ac4347) after **v0.22.1** was built from the wrong commit), so don't go chasing older tags.\n\nTwo forward-looking notes from the product loop: the [session-management fix **@Teknium** confirmed](/?date=2026-10-17&category=social#item-b4ac47aa9bc1) (auto-prune off by default, storage-aware prompting) is slated for the **next release**, alongside [**cron** scheduling work](/?date=2026-10-17&category=social#item-e19a0c47dbe7).\n\nOne framing note worth making explicit: the research feed re-centers on **Hermes Agent v0.20.0** as a \"flagship release,\" but this is the [official docs bundle](/?date=2026-10-16&category=research#item-hn-49159200) (GitHub tag **v2026.8.3**) catching up — [**Claude Pro/Max** subscription auth](/?date=2026-10-16&category=research#item-hn-49790991) and [**Hermes Kanban** multi-agent profile collaboration](/?date=2026-10-16&category=research#item-hn-49604068) are documented carried support, not a fresh launch, and neither [**Almanac (YC S26)**](/?date=2026-10-17&category=research#item-hn-49511007) adoption nor the current stable changes that. **v0.22.2** is current; **v0.20.0** is reference material.\n\n## Community\n\n- **RTX Spark launch partnership:** **@NousResearch** named [**Hermes Agent** a launch partner for **NVIDIA RTX Spark**](/?date=2026-10-17&category=social#item-eb6add8182a2) across the new generation of laptops (1,013 likes — the week's runaway top post), amplified with [**@zacbowden**'s in-depth **Windows Central** review](/?date=2026-10-17&category=social#item-b994a88307a6) and [extended video coverage of hardware and security](/?date=2026-10-17&category=social#item-49831796d9c8), plus replies [teasing **OpenShell** and **MXC** as upcoming products](/?date=2026-10-17&category=social#item-6aeac627fd03). This positions Hermes as a first-class on-device agent at the hardware-launch level — but the story rests entirely on official channels this cycle with no independent corroboration yet, so treat specifics as announced.\n- **Session auto-prune reversal:** after community pushback, **@Teknium** [reversed the new **90-day session auto-prune**](/?date=2026-10-17&category=social#item-33ea1f4fe9b0) — now off by default in favor of storage-aware prompting — then candidly explained the root cause: [unbounded local session databases had been filling users' disks and blocking sessions](/?date=2026-10-17&category=social#item-a9bb334c6a24). A [fix lands in the next release](/?date=2026-10-17&category=social#item-b4ac47aa9bc1), [**cron** scheduling work is underway](/?date=2026-10-17&category=social#item-e19a0c47dbe7), and [`.hermes/cache/scratch` is daily-cleaned](/?date=2026-10-17&category=social#item-344879e6d137). Sentiment was strongly positive.\n- **Ecosystem tooling boom:** new this cycle are [**verso**, an open-source orchestrator layer for knowledge work](/?date=2026-10-17&category=research#item-hn-49628094), and **@rlaope**'s [**deepseek-bot**, an open-source persistent-memory agent on the **deepseek-harness**](/?date=2026-10-17&category=social#item-5d4f3f74b75c). They join the carried stack — [**LanceDB**-based semantic memory](/?date=2026-10-15&category=research#item-hn-49133145), [**grafana-agento11y-hermes**](/?date=2026-10-15&category=research#item-hn-49318128) observability, and the [**Refine Cycle**](/?date=2026-10-14&category=research#item-hn-49606988) self-improvement plugin — with **Teknium**'s [open plugin-maintenance offers](/?date=2026-10-17&category=social#item-c0ad3e42da50) reinforcing a healthy builder base.\n- **Guide wave:** **@rlaope** published a [deep-dive **Oh-My-Hermes (OMH)** guide](/?date=2026-10-17&category=social#item-b51fb165d53c) (subagent routing to task-specific models, filesystem-labeled long-term memory), and [**@tonbistudio**'s **Reverse Engineer Anything** plugin guide](/?date=2026-10-17&category=social#item-ba61b5a396ce) drew ~20K views with official amplification. **OMH** [continues its run](/?date=2026-10-16&category=social#item-b84d15a8a0b3) — **4.0.0** in preparation, **3.4k stars** as previously covered.\n- **Ultrafast-inference hype:** excitement around [**DeepSeek V4.1 Flash** at 848+ TPS](/?date=2026-10-17&category=social#item-034c1dd8dbe5) ([GA 2026-09-10](/?date=2026-10-16&category=social#item-52817ec0502e) — speed coverage of an existing release, not a new launch) fueled \"agent workflows become reading-speed bound\" takes and gateway tooling like [**opengateway**](/?date=2026-10-17&category=social#item-0cf5d1a3b835). Standing caution: posts citing [**GLM-5.3-flash-ultrafast** (525 TPS)](/?date=2026-10-17&category=social#item-97d9c9fefec1) could not be verified against the roster, which tops out at **GLM-5.2** — treat as unconfirmed.\n- **Strategy & benchmarks:** **@Teknium** [defended the six-month power-user-first build](/?date=2026-10-17&category=social#item-2dd209adf49b) against consumer criticism and [claimed Hermes beats **Claude Code** using Claude on every reported benchmark](/?date=2026-10-17&category=social#item-9324877d0141), often with ~3x fewer tokens — quote as his claim.\n- **Community flavor:** the cryptic one-word [\"**Motion.**\" teaser](/?date=2026-10-17&category=social#item-c0549400cfa5) pulled ~27.7K views; **@NousResearch** [bantered with **Andrew Yang** about open source](/?date=2026-10-17&category=social#item-6988a3c15f77) (541 likes); an [editor's note clarified a satirical TIME-list tweet](/?date=2026-10-17&category=social#item-92f8c87c3dd0) and restated the no-paid-placement policy; and the [**Hermes Index** was updated](/?date=2026-10-17&category=social#item-897de9812a56) — though its \"**GPT 6.1 Sol**\" entry doesn't match the model roster (**GPT-6-Sol**, GA 2026-09-22), likely a naming slip.\n- **Watch items (carried):** the [**hermes-jekyl-hyde** adversarial repository](/?date=2026-10-14&category=research#item-hn-49231797) demonstrating an LLM-reversal technique explicitly targeting hermes-agent, and the [Ask HN thread about a freshly provisioned agent looping on a headless Debian server](/?date=2026-10-14&category=research#item-hn-49916751) with a Z.ai **GLM** backend — hardening and onboarding-friction warnings for unattended deployments. The [~**23,000 open-PR backlog**](/?date=2026-10-16&category=research#item-hn-49424643) remains the project-health number.\n\n## Tips & Tutorials\n\n- **Session storage hygiene, now that auto-prune is off:** with the **90-day** auto-prune disabled by default, session databases can grow unbounded until the next release's fix lands — [`.hermes/cache/scratch` is daily-cleaned](/?date=2026-10-17&category=social#item-344879e6d137), but the session DB is on you. If you run always-on agents, check disk usage today.\n- **Running **Nemotron 3.5 Super VL** locally:** following [yesterday's day-one integration](/?date=2026-10-16&category=social#item-e1857a6ca493), local-run guides landed — [LM Studio coverage](/?date=2026-10-17&category=research#item-9fff5474f526) notes a ~**70GB Q4 GGUF** and heavy RAM requirements. The model is **120B-A12B** with **BF16**/**NVFP4** checkpoints under the commercial-friendly [**OpenMDW-1.1** license](/?date=2026-10-17&category=research#item-bb6d6d51b588) (GA/API 2026-10-15). Plan memory accordingly.\n- **Model-router debate:** [community discussion over whether Hermes is effectively unusable without a router like **bifrost**](/?date=2026-10-17&category=research#item-hn-49159529) — worth a read if you run multi-provider setups; it pairs directly with the looping-agent cautionary tale above.\n- **Carried ops playbook:** the [**systemd** gateway walkthrough](/?date=2026-10-16&category=news#item-b32489270244) for always-on bots, the [**Kubernetes** gaps](/?date=2026-10-15&category=research#item-hn-49977400) (no official **Helm** chart; **root-at-init** image), and update hygiene (**git fetch --tags** → **hermes update**) all still apply.\n\n---\n\n**Housekeeping:** the only repo movement was the automated [**Daily sync: 2026-10-16** commit](/?date=2026-10-17&category=news#item-12e52f1275e3) — no changelog entries and no user-facing changes (safe to ignore); no merged PRs cleared the bar; Reddit contributed nothing again.\n\n**Net read:** the day belonged to positioning and listening — a hardware-launch-level [**RTX Spark** partnership](/?date=2026-10-17&category=social#item-eb6add8182a2) that puts Hermes on-device across next-gen laptops, and a public product loop that [reversed the **90-day** auto-prune](/?date=2026-10-17&category=social#item-33ea1f4fe9b0) within a single cycle. With the news feed quiet, the practical agenda is housekeeping-shaped: confirm session auto-prune is off and audit your disk usage, keep **v0.22.2** as your build (the **v0.20.0** re-coverage is reference, not fresh), verify **GLM-5.3** speed claims before relying on them, and skim the [**Windows Central** RTX Spark coverage](/?date=2026-10-17&category=social#item-b994a88307a6) if you're hardware shopping.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-17</p>\n<p><strong>Executive summary:</strong> A hardware-launch-level day. <strong>@NousResearch</strong> announced <strong>Hermes Agent</strong> as a <a href=\"/?date=2026-10-17&amp;category=social#item-eb6add8182a2\" class=\"internal-link\" rel=\"noopener noreferrer\">launch partner for <strong>NVIDIA RTX Spark</strong></a> across the new generation of laptops — the week's runaway top social post (1,013 likes) — reinforced by official amplification of <strong>@zacbowden</strong>'s in-depth <a href=\"/?date=2026-10-17&amp;category=social#item-b994a88307a6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Windows Central</strong> review</a>, extended <a href=\"/?date=2026-10-17&amp;category=social#item-49831796d9c8\" class=\"internal-link\" rel=\"noopener noreferrer\">video coverage of hardware and security</a>, and a reply teasing <a href=\"/?date=2026-10-17&amp;category=social#item-6aeac627fd03\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenShell</strong> and <strong>MXC</strong></a> as upcoming products. Grounding note: the story rests entirely on official social channels this cycle, with no independent news or research corroboration — quote specifics as announced. The product story is a feedback loop working in public: after community pushback, <strong>@Teknium</strong> reversed the new <a href=\"/?date=2026-10-17&amp;category=social#item-33ea1f4fe9b0\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>90-day session auto-prune</strong></a> (now off by default, replaced by storage-aware prompting) and candidly explained how <a href=\"/?date=2026-10-17&amp;category=social#item-a9bb334c6a24\" class=\"internal-link\" rel=\"noopener noreferrer\">unbounded local session databases had been filling users' disks and blocking sessions</a> — a <a href=\"/?date=2026-10-17&amp;category=social#item-b4ac47aa9bc1\" class=\"internal-link\" rel=\"noopener noreferrer\">fix is confirmed for the next release</a>, with <strong>cron</strong> scheduling work and the daily-cleaned <code>.hermes/cache/scratch</code> directory rounding out the storage story, and sentiment strongly rewarded the fast turnaround. The ecosystem boom is the widest cross-category theme: <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verso</strong> (open-source orchestrator)</a>, <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-17&amp;category=social#item-5d4f3f74b75c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>deepseek-bot</strong> launch on <strong>deepseek-harness</strong></a> and an <a href=\"/?date=2026-10-17&amp;category=social#item-b51fb165d53c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh-My-Hermes</strong> deep-dive guide</a>, <strong>@tonbistudio</strong>'s ~20K-view <a href=\"/?date=2026-10-17&amp;category=social#item-ba61b5a396ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Reverse Engineer Anything</strong> guide</a>, plus the carried <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong></a> and <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>grafana-agento11y-hermes</strong></a> stack. Ultrafast hype centered on <a href=\"/?date=2026-10-17&amp;category=social#item-034c1dd8dbe5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek V4.1 Flash</strong> at 848+ TPS</a> — speed coverage of an existing release (GA 2026-09-10) — while <a href=\"/?date=2026-10-17&amp;category=social#item-97d9c9fefec1\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GLM-5.3-flash-ultrafast</strong> (525 TPS)</a> could not be verified against the model roster (tops out at <strong>GLM-5.2</strong>) and stays unconfirmed. The news feed ran quiet (<a href=\"/?date=2026-10-17&amp;category=news#item-12e52f1275e3\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily sync</a> only; no releases, no merged PRs), and the research feed re-anchored on <strong>v0.20.0</strong>'s docs bundle — carried reference, not a fresh launch. Net read: a positioning headline plus a visible listen-and-reverse product loop. Practical agenda: confirm session auto-prune is off and audit disk usage, keep <strong>v0.22.2</strong> as your build, verify <strong>GLM-5.3</strong> speed claims before relying on them, and mind the carried adversarial/looping reports if you run agents unattended.</p>\n<h2>Releases</h2>\n<p>No new tags today — the news feed was a quiet maintenance cycle with only the <a href=\"/?date=2026-10-17&amp;category=news#item-12e52f1275e3\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily-sync commit</a>. The standing picture holds: <strong>v0.22.2</strong> remains the build to run (the <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">corrective release</a> after <strong>v0.22.1</strong> was built from the wrong commit), so don't go chasing older tags.</p>\n<p>Two forward-looking notes from the product loop: the <a href=\"/?date=2026-10-17&amp;category=social#item-b4ac47aa9bc1\" class=\"internal-link\" rel=\"noopener noreferrer\">session-management fix <strong>@Teknium</strong> confirmed</a> (auto-prune off by default, storage-aware prompting) is slated for the <strong>next release</strong>, alongside <a href=\"/?date=2026-10-17&amp;category=social#item-e19a0c47dbe7\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>cron</strong> scheduling work</a>.</p>\n<p>One framing note worth making explicit: the research feed re-centers on <strong>Hermes Agent v0.20.0</strong> as a \"flagship release,\" but this is the <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">official docs bundle</a> (GitHub tag <strong>v2026.8.3</strong>) catching up — <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription auth</a> and <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> multi-agent profile collaboration</a> are documented carried support, not a fresh launch, and neither <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac (YC S26)</strong></a> adoption nor the current stable changes that. <strong>v0.22.2</strong> is current; <strong>v0.20.0</strong> is reference material.</p>\n<h2>Community</h2>\n<ul>\n<li><strong>RTX Spark launch partnership:</strong> <strong>@NousResearch</strong> named <a href=\"/?date=2026-10-17&amp;category=social#item-eb6add8182a2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent</strong> a launch partner for <strong>NVIDIA RTX Spark</strong></a> across the new generation of laptops (1,013 likes — the week's runaway top post), amplified with <a href=\"/?date=2026-10-17&amp;category=social#item-b994a88307a6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@zacbowden</strong>'s in-depth <strong>Windows Central</strong> review</a> and <a href=\"/?date=2026-10-17&amp;category=social#item-49831796d9c8\" class=\"internal-link\" rel=\"noopener noreferrer\">extended video coverage of hardware and security</a>, plus replies <a href=\"/?date=2026-10-17&amp;category=social#item-6aeac627fd03\" class=\"internal-link\" rel=\"noopener noreferrer\">teasing <strong>OpenShell</strong> and <strong>MXC</strong> as upcoming products</a>. This positions Hermes as a first-class on-device agent at the hardware-launch level — but the story rests entirely on official channels this cycle with no independent corroboration yet, so treat specifics as announced.</li>\n<li><strong>Session auto-prune reversal:</strong> after community pushback, <strong>@Teknium</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-33ea1f4fe9b0\" class=\"internal-link\" rel=\"noopener noreferrer\">reversed the new <strong>90-day session auto-prune</strong></a> — now off by default in favor of storage-aware prompting — then candidly explained the root cause: <a href=\"/?date=2026-10-17&amp;category=social#item-a9bb334c6a24\" class=\"internal-link\" rel=\"noopener noreferrer\">unbounded local session databases had been filling users' disks and blocking sessions</a>. A <a href=\"/?date=2026-10-17&amp;category=social#item-b4ac47aa9bc1\" class=\"internal-link\" rel=\"noopener noreferrer\">fix lands in the next release</a>, <a href=\"/?date=2026-10-17&amp;category=social#item-e19a0c47dbe7\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>cron</strong> scheduling work is underway</a>, and <a href=\"/?date=2026-10-17&amp;category=social#item-344879e6d137\" class=\"internal-link\" rel=\"noopener noreferrer\"><code>.hermes/cache/scratch</code> is daily-cleaned</a>. Sentiment was strongly positive.</li>\n<li><strong>Ecosystem tooling boom:</strong> new this cycle are <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verso</strong>, an open-source orchestrator layer for knowledge work</a>, and <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-17&amp;category=social#item-5d4f3f74b75c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>deepseek-bot</strong>, an open-source persistent-memory agent on the <strong>deepseek-harness</strong></a>. They join the carried stack — <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong>-based semantic memory</a>, <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>grafana-agento11y-hermes</strong></a> observability, and the <a href=\"/?date=2026-10-14&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a> self-improvement plugin — with <strong>Teknium</strong>'s <a href=\"/?date=2026-10-17&amp;category=social#item-c0ad3e42da50\" class=\"internal-link\" rel=\"noopener noreferrer\">open plugin-maintenance offers</a> reinforcing a healthy builder base.</li>\n<li><strong>Guide wave:</strong> <strong>@rlaope</strong> published a <a href=\"/?date=2026-10-17&amp;category=social#item-b51fb165d53c\" class=\"internal-link\" rel=\"noopener noreferrer\">deep-dive <strong>Oh-My-Hermes (OMH)</strong> guide</a> (subagent routing to task-specific models, filesystem-labeled long-term memory), and <a href=\"/?date=2026-10-17&amp;category=social#item-ba61b5a396ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@tonbistudio</strong>'s <strong>Reverse Engineer Anything</strong> plugin guide</a> drew ~20K views with official amplification. <strong>OMH</strong> <a href=\"/?date=2026-10-16&amp;category=social#item-b84d15a8a0b3\" class=\"internal-link\" rel=\"noopener noreferrer\">continues its run</a> — <strong>4.0.0</strong> in preparation, <strong>3.4k stars</strong> as previously covered.</li>\n<li><strong>Ultrafast-inference hype:</strong> excitement around <a href=\"/?date=2026-10-17&amp;category=social#item-034c1dd8dbe5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek V4.1 Flash</strong> at 848+ TPS</a> (<a href=\"/?date=2026-10-16&amp;category=social#item-52817ec0502e\" class=\"internal-link\" rel=\"noopener noreferrer\">GA 2026-09-10</a> — speed coverage of an existing release, not a new launch) fueled \"agent workflows become reading-speed bound\" takes and gateway tooling like <a href=\"/?date=2026-10-17&amp;category=social#item-0cf5d1a3b835\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>opengateway</strong></a>. Standing caution: posts citing <a href=\"/?date=2026-10-17&amp;category=social#item-97d9c9fefec1\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GLM-5.3-flash-ultrafast</strong> (525 TPS)</a> could not be verified against the roster, which tops out at <strong>GLM-5.2</strong> — treat as unconfirmed.</li>\n<li><strong>Strategy &amp; benchmarks:</strong> <strong>@Teknium</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-2dd209adf49b\" class=\"internal-link\" rel=\"noopener noreferrer\">defended the six-month power-user-first build</a> against consumer criticism and <a href=\"/?date=2026-10-17&amp;category=social#item-9324877d0141\" class=\"internal-link\" rel=\"noopener noreferrer\">claimed Hermes beats <strong>Claude Code</strong> using Claude on every reported benchmark</a>, often with ~3x fewer tokens — quote as his claim.</li>\n<li><strong>Community flavor:</strong> the cryptic one-word <a href=\"/?date=2026-10-17&amp;category=social#item-c0549400cfa5\" class=\"internal-link\" rel=\"noopener noreferrer\">\"<strong>Motion.</strong>\" teaser</a> pulled ~27.7K views; <strong>@NousResearch</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-6988a3c15f77\" class=\"internal-link\" rel=\"noopener noreferrer\">bantered with <strong>Andrew Yang</strong> about open source</a> (541 likes); an <a href=\"/?date=2026-10-17&amp;category=social#item-92f8c87c3dd0\" class=\"internal-link\" rel=\"noopener noreferrer\">editor's note clarified a satirical TIME-list tweet</a> and restated the no-paid-placement policy; and the <a href=\"/?date=2026-10-17&amp;category=social#item-897de9812a56\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Index</strong> was updated</a> — though its \"<strong>GPT 6.1 Sol</strong>\" entry doesn't match the model roster (<strong>GPT-6-Sol</strong>, GA 2026-09-22), likely a naming slip.</li>\n<li><strong>Watch items (carried):</strong> the <a href=\"/?date=2026-10-14&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes-jekyl-hyde</strong> adversarial repository</a> demonstrating an LLM-reversal technique explicitly targeting hermes-agent, and the <a href=\"/?date=2026-10-14&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN thread about a freshly provisioned agent looping on a headless Debian server</a> with a Z.ai <strong>GLM</strong> backend — hardening and onboarding-friction warnings for unattended deployments. The <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~<strong>23,000 open-PR backlog</strong></a> remains the project-health number.</li>\n</ul>\n<h2>Tips &amp; Tutorials</h2>\n<ul>\n<li><strong>Session storage hygiene, now that auto-prune is off:</strong> with the <strong>90-day</strong> auto-prune disabled by default, session databases can grow unbounded until the next release's fix lands — <a href=\"/?date=2026-10-17&amp;category=social#item-344879e6d137\" class=\"internal-link\" rel=\"noopener noreferrer\"><code>.hermes/cache/scratch</code> is daily-cleaned</a>, but the session DB is on you. If you run always-on agents, check disk usage today.</li>\n<li><strong>Running **Nemotron 3.5 Super VL</strong> locally:** following <a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday's day-one integration</a>, local-run guides landed — <a href=\"/?date=2026-10-17&amp;category=research#item-9fff5474f526\" class=\"internal-link\" rel=\"noopener noreferrer\">LM Studio coverage</a> notes a ~<strong>70GB Q4 GGUF</strong> and heavy RAM requirements. The model is <strong>120B-A12B</strong> with <strong>BF16</strong>/<strong>NVFP4</strong> checkpoints under the commercial-friendly <a href=\"/?date=2026-10-17&amp;category=research#item-bb6d6d51b588\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenMDW-1.1</strong> license</a> (GA/API 2026-10-15). Plan memory accordingly.</li>\n<li><strong>Model-router debate:</strong> <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">community discussion over whether Hermes is effectively unusable without a router like <strong>bifrost</strong></a> — worth a read if you run multi-provider setups; it pairs directly with the looping-agent cautionary tale above.</li>\n<li><strong>Carried ops playbook:</strong> the <a href=\"/?date=2026-10-16&amp;category=news#item-b32489270244\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>systemd</strong> gateway walkthrough</a> for always-on bots, the <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong> gaps</a> (no official <strong>Helm</strong> chart; <strong>root-at-init</strong> image), and update hygiene (<strong>git fetch --tags</strong> → <strong>hermes update</strong>) all still apply.</li>\n</ul>\n<p>---</p>\n<p><strong>Housekeeping:</strong> the only repo movement was the automated <a href=\"/?date=2026-10-17&amp;category=news#item-12e52f1275e3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Daily sync: 2026-10-16</strong> commit</a> — no changelog entries and no user-facing changes (safe to ignore); no merged PRs cleared the bar; Reddit contributed nothing again.</p>\n<p><strong>Net read:</strong> the day belonged to positioning and listening — a hardware-launch-level <a href=\"/?date=2026-10-17&amp;category=social#item-eb6add8182a2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>RTX Spark</strong> partnership</a> that puts Hermes on-device across next-gen laptops, and a public product loop that <a href=\"/?date=2026-10-17&amp;category=social#item-33ea1f4fe9b0\" class=\"internal-link\" rel=\"noopener noreferrer\">reversed the <strong>90-day</strong> auto-prune</a> within a single cycle. With the news feed quiet, the practical agenda is housekeeping-shaped: confirm session auto-prune is off and audit your disk usage, keep <strong>v0.22.2</strong> as your build (the <strong>v0.20.0</strong> re-coverage is reference, not fresh), verify <strong>GLM-5.3</strong> speed claims before relying on them, and skim the <a href=\"/?date=2026-10-17&amp;category=social#item-b994a88307a6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Windows Central</strong> RTX Spark coverage</a> if you're hardware shopping.</p>",
+  "top_topics": [
+    {
+      "name": "NVIDIA RTX Spark Launch Partnership",
+      "description": "NousResearch announced Hermes Agent as a [launch partner for NVIDIA RTX Spark across the new generation of laptops](/?date=2026-10-17&category=social#item-eb6add8182a2), the week's runaway top social post (1,013 likes), reinforced by official amplification of [Zac Bowden's in-depth Windows Central review](/?date=2026-10-17&category=social#item-b994a88307a6) and [extended video coverage of hardware and security](/?date=2026-10-17&category=social#item-49831796d9c8). This positions Hermes as a first-class on-device agent at the hardware-launch level. The story rests entirely on official social channels this cycle, with no independent news or research corroboration.",
+      "description_html": "NousResearch announced Hermes Agent as a <a href=\"/?date=2026-10-17&amp;category=social#item-eb6add8182a2\" class=\"internal-link\" rel=\"noopener noreferrer\">launch partner for NVIDIA RTX Spark across the new generation of laptops</a>, the week's runaway top social post (1,013 likes), reinforced by official amplification of <a href=\"/?date=2026-10-17&amp;category=social#item-b994a88307a6\" class=\"internal-link\" rel=\"noopener noreferrer\">Zac Bowden's in-depth Windows Central review</a> and <a href=\"/?date=2026-10-17&amp;category=social#item-49831796d9c8\" class=\"internal-link\" rel=\"noopener noreferrer\">extended video coverage of hardware and security</a>. This positions Hermes as a first-class on-device agent at the hardware-launch level. The story rests entirely on official social channels this cycle, with no independent news or research corroboration.",
+      "category_breakdown": {
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "v0.20.0 Release and Commercial Adoption",
+      "description": "[Hermes Agent v0.20.0](/?date=2026-10-17&category=research#item-hn-49159200) shipped as the cycle's flagship release, with [Claude Pro/Max subscription support](/?date=2026-10-17&category=research#item-hn-49790991) lowering the cost barrier to run the agent and official documentation for [Hermes Kanban multi-agent profile collaboration](/?date=2026-10-17&category=research#item-hn-49604068). Commercial traction is confirmed by [Almanac (YC S26)](/?date=2026-10-17&category=research#item-hn-49511007), a startup built directly on Hermes Agent. All of this surfaced in research coverage; social channels had not yet heavily amplified the release itself.",
+      "description_html": "<a href=\"/?date=2026-10-17&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a> shipped as the cycle's flagship release, with <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a> lowering the cost barrier to run the agent and official documentation for <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban multi-agent profile collaboration</a>. Commercial traction is confirmed by <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a>, a startup built directly on Hermes Agent. All of this surfaced in research coverage; social channels had not yet heavily amplified the release itself.",
+      "category_breakdown": {
+        "research": 4
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Plugin and Ecosystem Tooling Boom",
+      "description": "Third-party tooling matured on both fronts: [LanceDB-backed semantic memory](/?date=2026-10-17&category=research#item-hn-49133145), the [verso open-source orchestrator](/?date=2026-10-17&category=research#item-hn-49628094), [grafana-agento11y-hermes observability](/?date=2026-10-17&category=research#item-hn-49318128), and the [Refine Cycle self-improvement plugin](/?date=2026-10-17&category=research#item-hn-49606988) in research; the [Oh-My-Hermes deep-dive guide](/?date=2026-10-17&category=social#item-b51fb165d53c) (subagent routing, filesystem-labeled long-term memory), the [deepseek-bot launch on deepseek-harness](/?date=2026-10-17&category=social#item-5d4f3f74b75c), and the roughly 20K-view [Reverse Engineer Anything guide](/?date=2026-10-17&category=social#item-ba61b5a396ce) on social. Builder-health signals like [Teknium's plugin-maintenance offers](/?date=2026-10-17&category=social#item-c0ad3e42da50) round out a robust ecosystem layer. This is the widest cross-category theme of the cycle.",
+      "description_html": "Third-party tooling matured on both fronts: <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB-backed semantic memory</a>, the <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso open-source orchestrator</a>, <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">grafana-agento11y-hermes observability</a>, and the <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle self-improvement plugin</a> in research; the <a href=\"/?date=2026-10-17&amp;category=social#item-b51fb165d53c\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh-My-Hermes deep-dive guide</a> (subagent routing, filesystem-labeled long-term memory), the <a href=\"/?date=2026-10-17&amp;category=social#item-5d4f3f74b75c\" class=\"internal-link\" rel=\"noopener noreferrer\">deepseek-bot launch on deepseek-harness</a>, and the roughly 20K-view <a href=\"/?date=2026-10-17&amp;category=social#item-ba61b5a396ce\" class=\"internal-link\" rel=\"noopener noreferrer\">Reverse Engineer Anything guide</a> on social. Builder-health signals like <a href=\"/?date=2026-10-17&amp;category=social#item-c0ad3e42da50\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium's plugin-maintenance offers</a> round out a robust ecosystem layer. This is the widest cross-category theme of the cycle.",
+      "category_breakdown": {
+        "research": 4,
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "Session Management Reversal and Product Feedback",
+      "description": "[Teknium reversed the new 90-day session auto-prune after community pushback, leaving it off by default in favor of storage-aware prompting](/?date=2026-10-17&category=social#item-33ea1f4fe9b0), and [candidly explained how unbounded local session databases had been filling users' disks and blocking sessions](/?date=2026-10-17&category=social#item-a9bb334c6a24). He [confirmed a fix in the next release](/?date=2026-10-17&category=social#item-b4ac47aa9bc1), [mentioned cron scheduling work](/?date=2026-10-17&category=social#item-e19a0c47dbe7), and [noted the daily-cleaned .hermes/cache/scratch directory](/?date=2026-10-17&category=social#item-344879e6d137). Community sentiment was strongly positive, rewarding the rapid feedback-driven iteration.",
+      "description_html": "<a href=\"/?date=2026-10-17&amp;category=social#item-33ea1f4fe9b0\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium reversed the new 90-day session auto-prune after community pushback, leaving it off by default in favor of storage-aware prompting</a>, and <a href=\"/?date=2026-10-17&amp;category=social#item-a9bb334c6a24\" class=\"internal-link\" rel=\"noopener noreferrer\">candidly explained how unbounded local session databases had been filling users' disks and blocking sessions</a>. He <a href=\"/?date=2026-10-17&amp;category=social#item-b4ac47aa9bc1\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed a fix in the next release</a>, <a href=\"/?date=2026-10-17&amp;category=social#item-e19a0c47dbe7\" class=\"internal-link\" rel=\"noopener noreferrer\">mentioned cron scheduling work</a>, and <a href=\"/?date=2026-10-17&amp;category=social#item-344879e6d137\" class=\"internal-link\" rel=\"noopener noreferrer\">noted the daily-cleaned .hermes/cache/scratch directory</a>. Community sentiment was strongly positive, rewarding the rapid feedback-driven iteration.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Reliability, Misuse and Adversarial Probing",
+      "description": "Reliability cautionary tales include an [Ask HN thread about a freshly provisioned Hermes agent looping on a headless Debian server with a Z.ai GLM backend](/?date=2026-10-17&category=research#item-hn-49916751), plus a [reflective post on initial workflow misuse](/?date=2026-10-17&category=research#item-hn-49628740). More concerning, the [hermes-jekyl-hyde repository demonstrates an adversarial LLM reversal technique explicitly targeting hermes-agent](/?date=2026-10-17&category=research#item-hn-49231797). Together these highlight onboarding friction and a need for hardening against deliberate probing.",
+      "description_html": "Reliability cautionary tales include an <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN thread about a freshly provisioned Hermes agent looping on a headless Debian server with a Z.ai GLM backend</a>, plus a <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">reflective post on initial workflow misuse</a>. More concerning, the <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-jekyl-hyde repository demonstrates an adversarial LLM reversal technique explicitly targeting hermes-agent</a>. Together these highlight onboarding friction and a need for hardening against deliberate probing.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Deployment, Hosting and Local Model Runtimes",
+      "description": "Practical ops coverage flags [Kubernetes friction (no official Helm chart, a root-required init image)](/?date=2026-10-17&category=research#item-hn-49977400), debates whether Hermes is [effectively unusable without a model router](/?date=2026-10-17&category=research#item-hn-49159529) such as bifrost, and an [Arduino UNO Q write-up](/?date=2026-10-17&category=research#item-hn-49368474) shows Hermes running as an edge/embedded host. NVIDIA's freshly released [Nemotron 3.5 Super VL](/?date=2026-10-17&category=research#item-bb6d6d51b588) (GA/API 2026-10-15, right at the edge of this cycle; 120B-A12B with BF16/NVFP4 checkpoints and the commercial-friendly OpenMDW-1.1 license) immediately drew local-run guides, with [LM Studio coverage](/?date=2026-10-17&category=research#item-9fff5474f526) noting a ~70GB Q4 GGUF and heavy RAM requirements. The theme spans cloud ops down to local inference.",
+      "description_html": "Practical ops coverage flags <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes friction (no official Helm chart, a root-required init image)</a>, debates whether Hermes is <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">effectively unusable without a model router</a> such as bifrost, and an <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q write-up</a> shows Hermes running as an edge/embedded host. NVIDIA's freshly released <a href=\"/?date=2026-10-17&amp;category=research#item-bb6d6d51b588\" class=\"internal-link\" rel=\"noopener noreferrer\">Nemotron 3.5 Super VL</a> (GA/API 2026-10-15, right at the edge of this cycle; 120B-A12B with BF16/NVFP4 checkpoints and the commercial-friendly OpenMDW-1.1 license) immediately drew local-run guides, with <a href=\"/?date=2026-10-17&amp;category=research#item-9fff5474f526\" class=\"internal-link\" rel=\"noopener noreferrer\">LM Studio coverage</a> noting a ~70GB Q4 GGUF and heavy RAM requirements. The theme spans cloud ops down to local inference.",
+      "category_breakdown": {
+        "research": 4
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Competitive Positioning vs Claude Code",
+      "description": "Teknium [claimed Hermes beats Claude Code using Claude itself on every reported benchmark, often with roughly 3x fewer tokens](/?date=2026-10-17&category=social#item-9324877d0141), and [defended the six-month power-user-first build strategy against consumer criticism](/?date=2026-10-17&category=social#item-2dd209adf49b). Research adds [a reproducible skill loop that autonomously shuttles issue-to-PR work between Codex and Claude Code](/?date=2026-10-17&category=research#item-hn-49136162), showcasing Hermes as a multi-harness orchestration layer. The framing is developer-harness competition rather than consumer chatbot rivalry.",
+      "description_html": "Teknium <a href=\"/?date=2026-10-17&amp;category=social#item-9324877d0141\" class=\"internal-link\" rel=\"noopener noreferrer\">claimed Hermes beats Claude Code using Claude itself on every reported benchmark, often with roughly 3x fewer tokens</a>, and <a href=\"/?date=2026-10-17&amp;category=social#item-2dd209adf49b\" class=\"internal-link\" rel=\"noopener noreferrer\">defended the six-month power-user-first build strategy against consumer criticism</a>. Research adds <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">a reproducible skill loop that autonomously shuttles issue-to-PR work between Codex and Claude Code</a>, showcasing Hermes as a multi-harness orchestration layer. The framing is developer-harness competition rather than consumer chatbot rivalry.",
+      "category_breakdown": {
+        "social": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 68
+    },
+    {
+      "name": "Ultrafast Model Hype and Unverified Claims",
+      "description": "Social excitement around [DeepSeek V4.1 Flash at 848+ TPS](/?date=2026-10-17&category=social#item-034c1dd8dbe5) fueled 'agent workflows become reading-speed bound' takes and [gateway tooling like opengateway](/?date=2026-10-17&category=social#item-0cf5d1a3b835), but the model GA'd 2026-09-10, so this is speed coverage of an existing release rather than a new launch. [Claims about a GLM-5.3-flash-ultrafast at 525 TPS](/?date=2026-10-17&category=social#item-97d9c9fefec1) could not be verified against the current roster, which tops out at GLM 5.2, and the [Hermes Index's 'GPT 6.1 Sol' entry](/?date=2026-10-17&category=social#item-897de9812a56) appears to be a naming slip for GPT-6-Sol (GA 2026-09-22). Ultrafast throughput numbers and model naming in this cluster warrant caution.",
+      "description_html": "Social excitement around <a href=\"/?date=2026-10-17&amp;category=social#item-034c1dd8dbe5\" class=\"internal-link\" rel=\"noopener noreferrer\">DeepSeek V4.1 Flash at 848+ TPS</a> fueled 'agent workflows become reading-speed bound' takes and <a href=\"/?date=2026-10-17&amp;category=social#item-0cf5d1a3b835\" class=\"internal-link\" rel=\"noopener noreferrer\">gateway tooling like opengateway</a>, but the model GA'd 2026-09-10, so this is speed coverage of an existing release rather than a new launch. <a href=\"/?date=2026-10-17&amp;category=social#item-97d9c9fefec1\" class=\"internal-link\" rel=\"noopener noreferrer\">Claims about a GLM-5.3-flash-ultrafast at 525 TPS</a> could not be verified against the current roster, which tops out at GLM 5.2, and the <a href=\"/?date=2026-10-17&amp;category=social#item-897de9812a56\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Index's 'GPT 6.1 Sol' entry</a> appears to be a naming slip for GPT-6-Sol (GA 2026-09-22). Ultrafast throughput numbers and model naming in this cluster warrant caution.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "Repository Health and Governance",
+      "description": "Discussion of the roughly 23,000 [open-PR backlog](/?date=2026-10-17&category=research#item-hn-49424643) raises project-scalability questions, while the [deletion and blocking of a GitHub issue](/?date=2026-10-17&category=research#item-hn-49208206) asking whether EvoMap's Evolver was a reference for Hermes touched a transparency nerve. News flow was otherwise near-silent, consisting only of the [automated daily sync commit](/?date=2026-10-17&category=news#item-12e52f1275e3) to the hermes-agent-community repo with no user-facing changes. Governance and moderation, not features, were the quiet friction points this cycle.",
+      "description_html": "Discussion of the roughly 23,000 <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">open-PR backlog</a> raises project-scalability questions, while the <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49208206\" class=\"internal-link\" rel=\"noopener noreferrer\">deletion and blocking of a GitHub issue</a> asking whether EvoMap's Evolver was a reference for Hermes touched a transparency nerve. News flow was otherwise near-silent, consisting only of the <a href=\"/?date=2026-10-17&amp;category=news#item-12e52f1275e3\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily sync commit</a> to the hermes-agent-community repo with no user-facing changes. Governance and moderation, not features, were the quiet friction points this cycle.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 58
+    },
+    {
+      "name": "Community Engagement and Marketing Flair",
+      "description": "Lighter community moments included the cryptic one-word '[Motion.](/?date=2026-10-17&category=social#item-c0549400cfa5)' teaser pulling ~27.7K views, NousResearch banter [with Andrew Yang about open source](/?date=2026-10-17&category=social#item-6988a3c15f77), and [an editor's note clarifying a satirical TIME-list tweet](/?date=2026-10-17&category=social#item-92f8c87c3dd0) while restating a no-paid-placement policy. A reply also [teased OpenShell and MXC](/?date=2026-10-17&category=social#item-6aeac627fd03) as upcoming products. These items drive engagement but carry little substantive signal for the agent itself.",
+      "description_html": "Lighter community moments included the cryptic one-word '<a href=\"/?date=2026-10-17&amp;category=social#item-c0549400cfa5\" class=\"internal-link\" rel=\"noopener noreferrer\">Motion.</a>' teaser pulling ~27.7K views, NousResearch banter <a href=\"/?date=2026-10-17&amp;category=social#item-6988a3c15f77\" class=\"internal-link\" rel=\"noopener noreferrer\">with Andrew Yang about open source</a>, and <a href=\"/?date=2026-10-17&amp;category=social#item-92f8c87c3dd0\" class=\"internal-link\" rel=\"noopener noreferrer\">an editor's note clarifying a satirical TIME-list tweet</a> while restating a no-paid-placement policy. A reply also <a href=\"/?date=2026-10-17&amp;category=social#item-6aeac627fd03\" class=\"internal-link\" rel=\"noopener noreferrer\">teased OpenShell and MXC</a> as upcoming products. These items drive engagement but carry little substantive signal for the agent itself.",
+      "category_breakdown": {
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 45
+    }
+  ],
+  "total_items_collected": 91,
+  "total_items_analyzed": 82,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 10,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 24,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 57,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 57,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-17/hero.webp?v=1792221308",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe raises one hand to her headphones, pivoting her head toward the panel with the day's top story as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: NVIDIA RTX Spark Launch Partnership — NousResearch announced Hermes Agent as a launch partner for NVIDIA RTX Spark across the new generation of laptops, th...\nTopic 2: v0.20.0 Release and Commercial Adoption — Hermes Agent v0.20.0 shipped as the cycle's flagship release, with Claude Pro/Max subscription support lowering the c...\nTopic 3: Plugin and Ecosystem Tooling Boom — Third-party tooling matured on both fronts: LanceDB-backed semantic memory, the verso open-source orchestrator, grafa...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, neural network visualization, glowing nodes, architecture. The scene stays dark and tech-forward, matching her palette. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: from a low heroic angle, cool dark ambience broken by a single warm orange glow above the console. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-17T07:15:08.825060",
+  "categories": {
+    "news": {
+      "count": 1,
+      "category_summary": "**Quiet maintenance cycle — thin batch, likely skip or one-liner.** **Releases:** none. **Merged PRs:** only the automated **[Daily sync: 2026-10-16](/?date=2026-10-17&category=news#item-12e52f1275e3)** housekeeping commit to the hermes-agent-community repo; no changelog entries and no user-facing changes described. **Community:** none. **Tips:** none. The sole candidate is routine repo synchronization with zero Hermes Agent/Desktop impact, so it doesn't merit standalone newsletter coverage — fold into a housekeeping footnote or hold for a cycle with substantive items.",
+      "category_summary_html": "<p><strong>Quiet maintenance cycle — thin batch, likely skip or one-liner.</strong> <strong>Releases:</strong> none. <strong>Merged PRs:</strong> only the automated <strong><a href=\"/?date=2026-10-17&amp;category=news#item-12e52f1275e3\" class=\"internal-link\" rel=\"noopener noreferrer\">Daily sync: 2026-10-16</a></strong> housekeeping commit to the hermes-agent-community repo; no changelog entries and no user-facing changes described. <strong>Community:</strong> none. <strong>Tips:</strong> none. The sole candidate is routine repo synchronization with zero Hermes Agent/Desktop impact, so it doesn't merit standalone newsletter coverage — fold into a housekeeping footnote or hold for a cycle with substantive items.</p>",
+      "themes": [
+        {
+          "name": "Repository Maintenance",
+          "description": "Routine automated synchronization commits to the hermes-agent-community repository with no user-facing changes described.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 10.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "12e52f1275e3",
+          "title": "Daily sync: 2026-10-16 02:01:00",
+          "content": "Daily sync: 2026-10-16 02:01:00",
+          "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/8d8fb69fc934e4438a6e9c1c8931c9c26ac02ef8",
+          "author": "bot@hermes-agent-community.github.io",
+          "published": "2026-10-16T06:01:00",
+          "source": "Recent Commits to hermes-agent-community:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "This is an automated daily sync commit to the main branch of the hermes-agent-community repository, timestamped 2026-10-16 02:01:00. The commit message contains no additional details, so it appears to be a routine repository synchronization with no specific feature, fix, or announcement attached.",
+          "importance_score": 10.0,
+          "reasoning": "This is an automated housekeeping commit with no substantive changelog content, no described features, fixes, or breaking changes. It offers essentially no actionable signal for Hermes Agent or Hermes Desktop users beyond confirming the community repo is being maintained and synced regularly.",
+          "themes": [
+            "repository maintenance",
+            "automated sync"
+          ],
+          "continuation": null,
+          "summary_html": "<p>This is an automated daily sync commit to the main branch of the hermes-agent-community repository, timestamped 2026-10-16 02:01:00. The commit message contains no additional details, so it appears to be a routine repository synchronization with no specific feature, fix, or announcement attached.</p>",
+          "content_html": "<p>Daily sync: 2026-10-16 02:01:00</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 24,
+      "category_summary": "Official momentum anchors the section: **[Hermes Agent v0.20.0](/?date=2026-10-17&category=research#item-hn-49159200)** ships as the flagship release, **[Claude Pro/Max subscription](/?date=2026-10-17&category=research#item-hn-49790991)** support lowers the cost barrier for running the agent, and official docs detail **[Hermes Kanban](/?date=2026-10-17&category=research#item-hn-49604068)** multi-agent profile collaboration. Ecosystem tooling keeps maturing — **[LanceDB](/?date=2026-10-17&category=research#item-hn-49133145)**-backed semantic memory addresses the persistent-memory gap, **[verso](/?date=2026-10-17&category=research#item-hn-49628094)** adds an open-source orchestrator layer for knowledge work, and **[grafana-agento11y-hermes](/?date=2026-10-17&category=research#item-hn-49318128)** brings runtime observability to deployments. Commercial adoption is confirmed by **[Almanac (YC S26)](/?date=2026-10-17&category=research#item-hn-49511007)**, built directly on Hermes Agent. Practical ops research covers [Kubernetes friction](/?date=2026-10-17&category=research#item-hn-49977400) (no official Helm chart, root-required init image) and a [reproducible Codex↔Claude Code skill loop](/?date=2026-10-17&category=research#item-hn-49136162) for issue-to-PR automation. Project-health discussion centers on the [~23,000 open-PR backlog](/?date=2026-10-17&category=research#item-hn-49424643), while [a debugging thread on a looping agent paired with a GLM backend](/?date=2026-10-17&category=research#item-hn-49916751) serves as a useful reliability cautionary tale. For backend builders, NVIDIA's just-released **[Nemotron 3.5 Super VL](/?date=2026-10-17&category=research#item-bb6d6d51b588)** (120B-A12B, BF16/NVFP4 checkpoints, commercial-friendly **OpenMDW-1.1** license) landed with [local-run coverage](/?date=2026-10-17&category=research#item-9fff5474f526), timed right at the edge of this cycle.",
+      "category_summary_html": "<p>Official momentum anchors the section: <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> ships as the flagship release, <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> support lowers the cost barrier for running the agent, and official docs detail <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> multi-agent profile collaboration. Ecosystem tooling keeps maturing — <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong>-backed semantic memory addresses the persistent-memory gap, <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong> adds an open-source orchestrator layer for knowledge work, and <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">grafana-agento11y-hermes</a></strong> brings runtime observability to deployments. Commercial adoption is confirmed by <strong><a href=\"/?date=2026-10-17&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a></strong>, built directly on Hermes Agent. Practical ops research covers <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes friction</a> (no official Helm chart, root-required init image) and a <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">reproducible Codex↔Claude Code skill loop</a> for issue-to-PR automation. Project-health discussion centers on the <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open-PR backlog</a>, while <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">a debugging thread on a looping agent paired with a GLM backend</a> serves as a useful reliability cautionary tale. For backend builders, NVIDIA's just-released <strong><a href=\"/?date=2026-10-17&amp;category=research#item-bb6d6d51b588\" class=\"internal-link\" rel=\"noopener noreferrer\">Nemotron 3.5 Super VL</a></strong> (120B-A12B, BF16/NVFP4 checkpoints, commercial-friendly <strong>OpenMDW-1.1</strong> license) landed with <a href=\"/?date=2026-10-17&amp;category=research#item-9fff5474f526\" class=\"internal-link\" rel=\"noopener noreferrer\">local-run coverage</a>, timed right at the edge of this cycle.</p>",
+      "themes": [
+        {
+          "name": "Official Releases and Features",
+          "description": "Shipped Hermes Agent capabilities and versions, including v0.20.0, Claude Pro/Max subscription support, and the Kanban multi-agent collaboration documentation.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Hermes Agent Ecosystem Tooling",
+          "description": "Third-party and community-built tooling on top of Hermes Agent, including the verso orchestrator, Grafana observability, Refine Cycle plugin, LanceDB semantic memory, and the Almanac startup.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Deployment and Hosting",
+          "description": "Real-world deployment experiences and friction, spanning Kubernetes pain points (no Helm chart, root-required image), self-hosting on Arduino UNO Q, and questions about model router dependencies.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 56.0
+        },
+        {
+          "name": "Agent Reliability and Debugging",
+          "description": "User-facing debugging and usage narratives, including an agent trance-like loop on GLM 5.3 Flash, a lessons-learned post about incorrect usage, and an automated Codex/Claude Code skill loop workflow.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 51.0
+        },
+        {
+          "name": "Repository Health and Governance",
+          "description": "Signals about the open-source project's maintenance state: a 23,000-strong open PR backlog, moderation of a controversial issue, a trademark discussion, and adversarial research targeting the agent.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 47.0
+        },
+        {
+          "name": "Nemotron 3.5 Super VL Open Model",
+          "description": "A cluster of posts about the freshly released NVIDIA Nemotron 3.5 Super VL vision model covering local serving in LM Studio, Hugging Face checkpoints and licensing, and benchmark comparisons against Qwen, including hooking it into Hermes as a custom endpoint.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 47.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-49136162",
+          "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+          "author": "yruzin",
+          "published": "2026-08-01T17:00:56Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Blog post on codenote.net describing a Hermes Agent skill that autonomously loops work between Codex and Claude Code in an issue-to-PR workflow, using Hermes as the coordinating layer that hands tasks to each coding model and iterates until a pull request results.",
+          "importance_score": 55.0,
+          "reasoning": "Concrete, reproducible multi-model automation pattern built with Hermes skills showing interoperability with Codex and Claude Code; practical value for agentic coding workflows.",
+          "themes": [
+            "Skills",
+            "Coding automation",
+            "Multi-model orchestration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Blog post on codenote.net describing a Hermes Agent skill that autonomously loops work between Codex and Claude Code in an issue-to-PR workflow, using Hermes as the coordinating layer that hands tasks to each coding model and iterates until a pull request results.</p>",
+          "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Announcement of Refine Cycle, a self-improvement plugin for Hermes Agent hosted on GitHub. It adds a feedback/refinement loop so the agent can iteratively improve its own outputs, extending Hermes through its plugin system.",
+          "importance_score": 52.0,
+          "reasoning": "Demonstrates the plugin extensibility of Hermes Agent with an interesting self-improvement loop concept, though the announcement is minimal and effectiveness is unverified.",
+          "themes": [
+            "Plugins",
+            "Self-improvement",
+            "Agent loops"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Announcement of Refine Cycle, a self-improvement plugin for Hermes Agent hosted on GitHub. It adds a feedback/refinement loop so the agent can iteratively improve its own outputs, extending Hermes through its plugin system.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "bb6d6d51b588",
+          "title": "Nemotron 3.5 Super VL Hugging Face: Checkpoints, Licence and How to Run",
+          "content": "The Nemotron 3.5 Super VL Hugging Face release gives you everything: open weights in BF16 and NVFP4, an OpenMDW-1.1 licence that allows commercial use, and recipes for vLLM, SGLang and Transformers. Nvidia also released training data and recipes. My video below covers the model. Here’s what’s on Hugging Face and how to run it.\n\nKey takeaways\n\n- Checkpoints: BF16 (full precision) and NVFP4 (optimised).\n\n- Licence: OpenMDW-1.1 — commercial use allowed.\n\n- Hardware for BF16: 4× H100 or 2× GB200.\n\n- Community GGUF builds (e.g. Unsloth) for llama.cpp-based tools.\n\n## What’s on Hugging Face\n\nRepository\nWhat it is\n\nnvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16\nFull-precision weights\n\nnvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4\nOptimised 4-bit weights for Nvidia hardware\n\nunsloth/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-GGUF\nCommunity GGUF builds\n\nNvidia datasets\nOpen datasets for agentic tool use, long context, vision-language and more\n\n## Hardware requirements\n\nThe model card lists 4× H100 or 2× GB200 GPUs on Linux (Hopper or Blackwell) for the BF16 release. The NVFP4 version is designed for more efficient deployment, including on Nvidia’s DGX Spark desktop machine. For consumer setups, use the GGUF builds in LM Studio or Ollama (70GB+).\n\nWant this working in your business, not just bookmarked? Using free open models in your AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How to run it with vLLM\n\nThe model card’s vLLM recipe serves it with tensor parallelism across four GPUs, multi-token-prediction speculative decoding, and the served name `nemotron-3.5-super-vl` on port 8000, using the vLLM OpenAI image (nightly or v0.32.0). Tool calling uses the `qwen3_coder` parser. SGLang (v0.5.20) is supported on two GB200s, and Transformers works through the image-text-to-text pipeline with `trust_remote_code`.\n\n## Reasoning and video settings\n\n- Reasoning modes: off, medium or on, set with `enable_thinking` and medium effort.\n\n- Reasoning and the answer share the token budget.\n\n- Video: up to 256 frames at 2 FPS (1 FPS and up to 128 frames suggested for 1080p).\n\n- Inputs: text, JPEG/PNG images, document pages and MP4 video up to 2 minutes.\n\n## The licence\n\nNemotron 3.5 Super VL is released under OpenMDW-1.1, and the model card says it’s ready for commercial or non-commercial use. As always, read the licence yourself before building a product on it.\n\n## Should you self-host it?\n\nSelf-hosting makes sense for companies that need privacy, control or fine-tuning — Nvidia released the recipes to make that possible. For everyone else, OpenRouter’s free and cheap paid versions are far simpler.\n\nLet me be clear: this is not a frontier model. It’s not going to replace Claude Opus 5.5 for your hardest work. What it is: a free, open, fast model that can read screenshots, PDFs and charts and then act on them — which is exactly the job a lot of agent work starts with.\n\n## Fine-tuning Nemotron 3.5 Super VL\n\nBecause Nvidia released training recipes and datasets, you can fine-tune the model on your own data — your documents, your formats, your way of working. That’s most useful for companies with a specific, repeated visual task, like reading a particular kind of invoice or form. Fine-tuning a 120B model needs serious GPUs, so most teams will use cloud GPU providers rather than their own hardware.\n\n## BF16 vs NVFP4\n\nBF16 is the full-precision release: the best quality, but it needs the most memory. NVFP4 is a 4-bit format designed for Nvidia’s newer GPUs, cutting memory needs dramatically with little quality loss, which is what makes running it on smaller systems like DGX Spark possible. If you’re deploying on Nvidia Blackwell hardware, NVFP4 is usually the practical choice.\n\n## Hosted alternatives\n\nIf self-hosting isn’t worth it for you, the same model is available through OpenRouter, Nvidia NIM, ModelScope and other hosts, and Together AI added it at launch. That gives you the open model without managing GPUs.\n\n## Final thoughts\n\nA last practical note: model cards are updated as recipes and benchmarks improve, so check the Hugging Face page for the latest serving instructions before you deploy. Nvidia’s recipes are tuned for its own hardware, and the community often publishes faster or smaller variants within days of a release — worth watching if you want to run it on less hardware.\n\nIf you just want to use the model rather than host it, skip all of this and use OpenRouter’s free or paid version, or try it free in OpenCode.\n\nOpen weights, open data and clear recipes make this one of the easiest big models to build on.\n\n## How I’d test it this week\n\nIf you’re evaluating self-hosting, start by testing the hosted version on your real tasks. Only if it’s good enough — and you have a privacy, cost or customisation reason — is it worth renting GPUs to host it yourself.\n\nWhen you do, start with the NVFP4 checkpoint on Blackwell hardware, follow the model card’s vLLM recipe, and benchmark throughput on your own prompts before committing.\n\n## Common questions\n\nCan I download it for free? Yes — the weights are free on Hugging Face. Can I use it commercially? The OpenMDW-1.1 licence allows commercial use, but read it yourself first. Do I need Nvidia GPUs? The official recipes target Nvidia Hopper and Blackwell GPUs; community GGUF builds run in llama.cpp-based tools like LM Studio and Ollama on other hardware. Is there a smaller version? Not of Super VL itself, but Nvidia’s Bolt 74B-A9B fits in 24GB of memory.\n\n## The bottom line on Nemotron 3.5 Super VL Hugging Face\n\nThe Nemotron 3.5 Super VL Hugging Face release is unusually open: weights, data and recipes. If you have the GPUs, it’s a strong model to host yourself; if not, use the hosted versions.\n\n## FAQ: nemotron 3.5 super vl hugging face\n\n### Is Nemotron 3.5 Super VL on Hugging Face?\n\nYes — BF16 and NVFP4 checkpoints from Nvidia, plus community GGUF builds.\n\n### What licence does it use?\n\nOpenMDW-1.1, which allows commercial use.\n\n### What hardware does it need?\n\n4× H100 or 2× GB200 for BF16; NVFP4 is more efficient.\n\n### Can I run it with vLLM?\n\nYes — the model card includes a vLLM recipe with tool calling.\n\n### Did Nvidia release training data?\n\nYes — open datasets and training recipes are on Hugging Face.\n\n### Is there a GGUF version?\n\nYes — community GGUF builds such as Unsloth’s are on Hugging Face, and they power the LM Studio and llama.cpp-style setups.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your AI agent model setup gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Nemotron 3.5 Super VL\n\n- Nemotron 3.5 Super VL LM Studio\n\n- Nemotron 3.5 Super VL Ollama\n\nLast updated October 2026. This page is a living guide to nemotron 3.5 super vl hugging face — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/nemotron-3-5-super-vl-hugging-face/?utm_source=rss&utm_medium=rss&utm_campaign=nemotron-3-5-super-vl-hugging-face",
+          "author": "Clawdbot",
+          "published": "2026-10-16T09:35:35",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Overview of the Nemotron 3.5 Super VL Hugging Face release: BF16 and NVFP4 checkpoints for a 120B-A12B model, an OpenMDW-1.1 licence allowing commercial use, inference recipes for vLLM, SGLang and Transformers, released training datasets, and community GGUF builds from Unsloth. BF16 needs roughly 4x H100 or 2x GB200.",
+          "importance_score": 52.0,
+          "reasoning": "A very recent (post-2026-10-15) open-weight vision model release with commercial-friendly licensing and serving recipes; relevant to hosting backend models for agents like Hermes, though not Hermes-specific itself.",
+          "themes": [
+            "Open weights",
+            "Nemotron",
+            "Model licensing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Overview of the Nemotron 3.5 Super VL Hugging Face release: BF16 and NVFP4 checkpoints for a 120B-A12B model, an OpenMDW-1.1 licence allowing commercial use, inference recipes for vLLM, SGLang and Transformers, released training datasets, and community GGUF builds from Unsloth. BF16 needs roughly 4x H100 or 2x GB200.</p>",
+          "content_html": "<p>The Nemotron 3.5 Super VL Hugging Face release gives you everything: open weights in BF16 and NVFP4, an OpenMDW-1.1 licence that allows commercial use, and recipes for vLLM, SGLang and Transformers. Nvidia also released training data and recipes. My video below covers the model. Here’s what’s on Hugging Face and how to run it.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Checkpoints: BF16 (full precision) and NVFP4 (optimised).</li>\n</ul>\n<ul>\n<li>Licence: OpenMDW-1.1 — commercial use allowed.</li>\n</ul>\n<ul>\n<li>Hardware for BF16: 4× H100 or 2× GB200.</li>\n</ul>\n<ul>\n<li>Community GGUF builds (e.g. Unsloth) for llama.cpp-based tools.</li>\n</ul>\n<h2>What’s on Hugging Face</h2>\n<p>Repository</p>\n<p>What it is</p>\n<p>nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16</p>\n<p>Full-precision weights</p>\n<p>nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4</p>\n<p>Optimised 4-bit weights for Nvidia hardware</p>\n<p>unsloth/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-GGUF</p>\n<p>Community GGUF builds</p>\n<p>Nvidia datasets</p>\n<p>Open datasets for agentic tool use, long context, vision-language and more</p>\n<h2>Hardware requirements</h2>\n<p>The model card lists 4× H100 or 2× GB200 GPUs on Linux (Hopper or Blackwell) for the BF16 release. The NVFP4 version is designed for more efficient deployment, including on Nvidia’s DGX Spark desktop machine. For consumer setups, use the GGUF builds in LM Studio or Ollama (70GB+).</p>\n<p>Want this working in your business, not just bookmarked? Using free open models in your AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How to run it with vLLM</h2>\n<p>The model card’s vLLM recipe serves it with tensor parallelism across four GPUs, multi-token-prediction speculative decoding, and the served name <code>nemotron-3.5-super-vl</code> on port 8000, using the vLLM OpenAI image (nightly or v0.32.0). Tool calling uses the <code>qwen3_coder</code> parser. SGLang (v0.5.20) is supported on two GB200s, and Transformers works through the image-text-to-text pipeline with <code>trust_remote_code</code>.</p>\n<h2>Reasoning and video settings</h2>\n<ul>\n<li>Reasoning modes: off, medium or on, set with <code>enable_thinking</code> and medium effort.</li>\n</ul>\n<ul>\n<li>Reasoning and the answer share the token budget.</li>\n</ul>\n<ul>\n<li>Video: up to 256 frames at 2 FPS (1 FPS and up to 128 frames suggested for 1080p).</li>\n</ul>\n<ul>\n<li>Inputs: text, JPEG/PNG images, document pages and MP4 video up to 2 minutes.</li>\n</ul>\n<h2>The licence</h2>\n<p>Nemotron 3.5 Super VL is released under OpenMDW-1.1, and the model card says it’s ready for commercial or non-commercial use. As always, read the licence yourself before building a product on it.</p>\n<h2>Should you self-host it?</h2>\n<p>Self-hosting makes sense for companies that need privacy, control or fine-tuning — Nvidia released the recipes to make that possible. For everyone else, OpenRouter’s free and cheap paid versions are far simpler.</p>\n<p>Let me be clear: this is not a frontier model. It’s not going to replace Claude Opus 5.5 for your hardest work. What it is: a free, open, fast model that can read screenshots, PDFs and charts and then act on them — which is exactly the job a lot of agent work starts with.</p>\n<h2>Fine-tuning Nemotron 3.5 Super VL</h2>\n<p>Because Nvidia released training recipes and datasets, you can fine-tune the model on your own data — your documents, your formats, your way of working. That’s most useful for companies with a specific, repeated visual task, like reading a particular kind of invoice or form. Fine-tuning a 120B model needs serious GPUs, so most teams will use cloud GPU providers rather than their own hardware.</p>\n<h2>BF16 vs NVFP4</h2>\n<p>BF16 is the full-precision release: the best quality, but it needs the most memory. NVFP4 is a 4-bit format designed for Nvidia’s newer GPUs, cutting memory needs dramatically with little quality loss, which is what makes running it on smaller systems like DGX Spark possible. If you’re deploying on Nvidia Blackwell hardware, NVFP4 is usually the practical choice.</p>\n<h2>Hosted alternatives</h2>\n<p>If self-hosting isn’t worth it for you, the same model is available through OpenRouter, Nvidia NIM, ModelScope and other hosts, and Together AI added it at launch. That gives you the open model without managing GPUs.</p>\n<h2>Final thoughts</h2>\n<p>A last practical note: model cards are updated as recipes and benchmarks improve, so check the Hugging Face page for the latest serving instructions before you deploy. Nvidia’s recipes are tuned for its own hardware, and the community often publishes faster or smaller variants within days of a release — worth watching if you want to run it on less hardware.</p>\n<p>If you just want to use the model rather than host it, skip all of this and use OpenRouter’s free or paid version, or try it free in OpenCode.</p>\n<p>Open weights, open data and clear recipes make this one of the easiest big models to build on.</p>\n<h2>How I’d test it this week</h2>\n<p>If you’re evaluating self-hosting, start by testing the hosted version on your real tasks. Only if it’s good enough — and you have a privacy, cost or customisation reason — is it worth renting GPUs to host it yourself.</p>\n<p>When you do, start with the NVFP4 checkpoint on Blackwell hardware, follow the model card’s vLLM recipe, and benchmark throughput on your own prompts before committing.</p>\n<h2>Common questions</h2>\n<p>Can I download it for free? Yes — the weights are free on Hugging Face. Can I use it commercially? The OpenMDW-1.1 licence allows commercial use, but read it yourself first. Do I need Nvidia GPUs? The official recipes target Nvidia Hopper and Blackwell GPUs; community GGUF builds run in llama.cpp-based tools like LM Studio and Ollama on other hardware. Is there a smaller version? Not of Super VL itself, but Nvidia’s Bolt 74B-A9B fits in 24GB of memory.</p>\n<h2>The bottom line on Nemotron 3.5 Super VL Hugging Face</h2>\n<p>The Nemotron 3.5 Super VL Hugging Face release is unusually open: weights, data and recipes. If you have the GPUs, it’s a strong model to host yourself; if not, use the hosted versions.</p>\n<h2>FAQ: nemotron 3.5 super vl hugging face</h2>\n<h3>Is Nemotron 3.5 Super VL on Hugging Face?</h3>\n<p>Yes — BF16 and NVFP4 checkpoints from Nvidia, plus community GGUF builds.</p>\n<h3>What licence does it use?</h3>\n<p>OpenMDW-1.1, which allows commercial use.</p>\n<h3>What hardware does it need?</h3>\n<p>4× H100 or 2× GB200 for BF16; NVFP4 is more efficient.</p>\n<h3>Can I run it with vLLM?</h3>\n<p>Yes — the model card includes a vLLM recipe with tool calling.</p>\n<h3>Did Nvidia release training data?</h3>\n<p>Yes — open datasets and training recipes are on Hugging Face.</p>\n<h3>Is there a GGUF version?</h3>\n<p>Yes — community GGUF builds such as Unsloth’s are on Hugging Face, and they power the LM Studio and llama.cpp-style setups.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your AI agent model setup gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Nemotron 3.5 Super VL</li>\n</ul>\n<ul>\n<li>Nemotron 3.5 Super VL LM Studio</li>\n</ul>\n<ul>\n<li>Nemotron 3.5 Super VL Ollama</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to nemotron 3.5 super vl hugging face — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Ask HN thread from a user running a freshly provisioned Hermes agent on a headless Debian server with Z.ai GLM 5.3 Flash. After asking it to print local environment details and $PATH, the agent fired several terminal commands and then spiralled into a long trance-like thinking block with odd output, lasting over 90 seconds.",
+          "importance_score": 50.0,
+          "reasoning": "Real-world debugging report highlighting stability and loop-behavior issues with Hermes Agent paired with GLM models; actionable for diagnosing agent spirals but anecdotal and low content volume.",
+          "themes": [
+            "Agent reliability",
+            "GLM model integration",
+            "Debugging"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Ask HN thread from a user running a freshly provisioned Hermes agent on a headless Debian server with Z.ai GLM 5.3 Flash. After asking it to print local environment details and $PATH, the agent fired several terminal commands and then spiralled into a long trance-like thinking block with odd output, lasting over 90 seconds.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Personal blog post by heyjonny reflecting on misusing Hermes Agent. The author walks through lessons learned from their initial workflow mistakes and how they corrected their usage patterns, providing a practitioner-oriented retrospective on effective agent setup.",
+          "importance_score": 48.0,
+          "reasoning": "Useful firsthand usage lessons for the community and a good realism check on onboarding friction, but limited technical depth beyond one user's experience.",
+          "themes": [
+            "User experience",
+            "Onboarding",
+            "Lessons learned"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Personal blog post by heyjonny reflecting on misusing Hermes Agent. The author walks through lessons learned from their initial workflow mistakes and how they corrected their usage patterns, providing a practitioner-oriented retrospective on effective agent setup.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Discussion (linking to maximhq bifrost) asking whether Hermes Agent is effectively unusable without a model router. It explores reliance on routing layers like Bifrost to manage model fallback, rate limits, and provider switching between LLM backends.",
+          "importance_score": 48.0,
+          "reasoning": "Highlights an architectural dependency question about model routing in Hermes Agent deployments; practically useful discussion, but framed as a question with limited resolution detail.",
+          "themes": [
+            "Model routing",
+            "Resilience",
+            "LLM providers"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Discussion (linking to maximhq bifrost) asking whether Hermes Agent is effectively unusable without a model router. It explores reliance on routing layers like Bifrost to manage model fallback, rate limits, and provider switching between LLM backends.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Write-up describing running Hermes Agent on an Arduino UNO Q board: a hybrid device pairing an Arduino MCU with a Linux-capable chip that can talk to the MCU. With 4GB RAM and 32GB storage, the author finds it a cheap, always-on alternative to a VPS for hosting the agent client without running it on a personal machine.",
+          "importance_score": 47.0,
+          "reasoning": "Creative low-cost self-hosting guide with concrete hardware specs; novel and practical for hobbyists, but niche and not representative of typical deployments.",
+          "themes": [
+            "Self-hosting",
+            "Edge hardware",
+            "Always-on agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Write-up describing running Hermes Agent on an Arduino UNO Q board: a hybrid device pairing an Arduino MCU with a Linux-capable chip that can talk to the MCU. With 4GB RAM and 32GB storage, the author finds it a cheap, always-on alternative to a VPS for hosting the agent client without running it on a personal machine.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "9fff5474f526",
+          "title": "Nemotron 3.5 Super VL LM Studio: Download and Run It Locally",
+          "content": "You can run Nemotron 3.5 Super VL in LM Studio with a few clicks — it’s listed in LM Studio’s model catalogue with vision support and up to a 1M-token context. The smallest version is a Q4_K_M GGUF at about 70GB, so you need at least 70GB of RAM. My video below covers the model. Here’s how to download it, what you need, and how to plug it into your agents.\n\nKey takeaways\n\n- LM Studio offers a Q4_K_M GGUF of about 70GB.\n\n- You need at least 70GB of RAM, plus extra for images and context.\n\n- Supports vision: documents, charts, GUIs and visual Q&A.\n\n- Connect LM Studio’s local server to Hermes as a custom endpoint.\n\n&\n\n## How to get Nemotron 3.5 Super VL in LM Studio\n\n- Install LM Studio for Mac, Windows or Linux.\n\n- Search for Nemotron 3.5 Super VL in the model catalogue.\n\n- Download the Q4_K_M build (about 70GB).\n\n- Load it and start chatting — drag in an image or document page to test vision.\n\n## Hardware you need\n\nLM Studio says you need at least 70GB of RAM for the smallest version, plus extra for visual inputs, context and runtime buffers. In practice that means a high-memory Mac or a workstation. If your machine is smaller, use the free OpenRouter variant instead.\n\nMachine\nVerdict\n\n16–32GB laptop\nToo small\n\n64GB machine\nBorderline — likely too small with images\n\n96GB+ Mac or workstation\nShould work\n\nDGX Spark\nDesigned for models like this\n\nWant this working in your business, not just bookmarked? Using free open models in your AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## What it can do in LM Studio\n\n- Answer questions about documents and screenshots.\n\n- Interpret charts and tables.\n\n- Understand app and website screenshots (GUI understanding).\n\n- Reason step by step, with tool use when connected to an agent.\n\n## Connect LM Studio to Hermes Agent\n\nStart LM Studio’s local server (it uses an OpenAI-compatible API, usually on port 1234). In Hermes, add a custom endpoint pointing at it with the model’s name, in a dedicated profile. Set a context of at least 64K for agent work. You can do the same in OpenCode or any agent that supports custom endpoints.\n\n## LM Studio vs Ollama for this model\n\nBoth work. LM Studio gives you a friendly app with a model catalogue and chat window; Ollama gives you a simple command (`ollama run nemotron-3.5-super`) and an 80–90GB build. Pick whichever you already use — see my Ollama guide.\n\nLet me be clear: this is not a frontier model. It’s not going to replace Claude Opus 5.5 for your hardest work. What it is: a free, open, fast model that can read screenshots, PDFs and charts and then act on them — which is exactly the job a lot of agent work starts with.\n\n## Getting good performance in LM Studio\n\nStart with a modest context length and increase it only as needed — bigger contexts slow things down and use more memory. Offload as much of the model to your GPU as your hardware allows. Close other heavy apps before loading it. And use thinking mode only for tasks that need step-by-step reasoning, since it generates more tokens.\n\n## Using it for visual work\n\nLM Studio lets you drag images into the chat. Try a screenshot of a spreadsheet and ask for the totals, a chart and ask what trend it shows, or a photo of a document and ask for a summary. For multi-page documents, send the most important pages as images. Clear, cropped images give the best results.\n\n## Private document work\n\nThe biggest reason to run it locally is privacy. Contracts, client reports, financial statements and medical letters can all be read and summarised without anything leaving your machine. For businesses that can’t send documents to cloud AI, a local vision model like this is a genuine option for the first time.\n\n## Final thoughts\n\nIf your machine can’t fit it, don’t worry — the free OpenRouter variant gives you the same model in the cloud, and LM Studio can still run smaller models locally for quick tasks. Many people keep a small local model for private, everyday work and use the cloud version of Nemotron for heavier visual jobs.\n\nEither way, having a vision model in your toolkit that can read documents, charts and screenshots is a big upgrade for any agent setup.\n\n## How I’d test it this week\n\nBefore you download 70GB, check your free disk space and RAM, and test the cloud version on the same task first so you know what good looks like. If your machine qualifies, load it, try three private documents, and compare the answers with the cloud version.\n\nIf it works well, connect it to your agent as a private option for sensitive files.\n\n## Common questions\n\nDoes it work on a Mac? LM Studio runs on Mac, Windows and Linux; on a Mac you’ll need a high-memory model to fit the 70GB build. Is there a smaller version? LM Studio lists the Q4_K_M build as the smallest. Can it read PDFs? Send pages as images and it can read them. Is it as good as the cloud version? It’s the same model compressed to 4-bit, so expect very similar results with a small quality trade-off for much lower memory use.\n\n## The bottom line on Nemotron 3.5 Super VL LM Studio\n\nRunning Nemotron 3.5 Super VL in LM Studio is easy if you have 70GB+ of RAM: download, load and connect it to your agents for private, unlimited vision work.\n\n## FAQ: nemotron 3.5 super vl lm studio\n\n### Is Nemotron 3.5 Super VL in LM Studio?\n\nYes — it’s in LM Studio’s catalogue as a GGUF download.\n\n### How big is it in LM Studio?\n\nThe Q4_K_M build is about 70GB.\n\n### How much RAM do I need?\n\nAt least 70GB, plus extra for images and context.\n\n### Does the LM Studio version support images?\n\nYes — documents, charts, GUIs and visual Q&A.\n\n### Can I use it with Hermes?\n\nYes — connect LM Studio’s local server as a custom endpoint.\n\n### Can LM Studio run it on Windows?\n\nLM Studio runs on Windows, Mac and Linux, but you still need at least 70GB of RAM for the smallest build.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your AI agent model setup gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Nemotron 3.5 Super VL Ollama\n\n- Nemotron 3.5 Super VL Hugging Face\n\n- Nemotron 3.5 Super VL\n\nLast updated October 2026. This page is a living guide to nemotron 3.5 super vl lm studio — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/nemotron-3-5-super-vl-lm-studio/?utm_source=rss&utm_medium=rss&utm_campaign=nemotron-3-5-super-vl-lm-studio",
+          "author": "Clawdbot",
+          "published": "2026-10-16T09:35:40",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Guide to running NVIDIA Nemotron 3.5 Super VL locally in LM Studio: Q4_K_M GGUF around 70GB requiring at least 70GB RAM, vision support for documents, charts and GUIs, and up to 1M-token context. It also explains connecting LM Studio's local server to Hermes as a custom endpoint for agent use.",
+          "importance_score": 46.0,
+          "reasoning": "Practical local-serving tutorial with an explicit Hermes integration angle (custom endpoint), but it is promotional blog content and the hardware requirement limits most users.",
+          "themes": [
+            "Local inference",
+            "Nemotron",
+            "LM Studio"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Guide to running NVIDIA Nemotron 3.5 Super VL locally in LM Studio: Q4_K_M GGUF around 70GB requiring at least 70GB RAM, vision support for documents, charts and GUIs, and up to 1M-token context. It also explains connecting LM Studio's local server to Hermes as a custom endpoint for agent use.</p>",
+          "content_html": "<p>You can run Nemotron 3.5 Super VL in LM Studio with a few clicks — it’s listed in LM Studio’s model catalogue with vision support and up to a 1M-token context. The smallest version is a Q4_K_M GGUF at about 70GB, so you need at least 70GB of RAM. My video below covers the model. Here’s how to download it, what you need, and how to plug it into your agents.</p>\n<p>Key takeaways</p>\n<ul>\n<li>LM Studio offers a Q4_K_M GGUF of about 70GB.</li>\n</ul>\n<ul>\n<li>You need at least 70GB of RAM, plus extra for images and context.</li>\n</ul>\n<ul>\n<li>Supports vision: documents, charts, GUIs and visual Q&amp;A.</li>\n</ul>\n<ul>\n<li>Connect LM Studio’s local server to Hermes as a custom endpoint.</li>\n</ul>\n<p>&amp;</p>\n<h2>How to get Nemotron 3.5 Super VL in LM Studio</h2>\n<ul>\n<li>Install LM Studio for Mac, Windows or Linux.</li>\n</ul>\n<ul>\n<li>Search for Nemotron 3.5 Super VL in the model catalogue.</li>\n</ul>\n<ul>\n<li>Download the Q4_K_M build (about 70GB).</li>\n</ul>\n<ul>\n<li>Load it and start chatting — drag in an image or document page to test vision.</li>\n</ul>\n<h2>Hardware you need</h2>\n<p>LM Studio says you need at least 70GB of RAM for the smallest version, plus extra for visual inputs, context and runtime buffers. In practice that means a high-memory Mac or a workstation. If your machine is smaller, use the free OpenRouter variant instead.</p>\n<p>Machine</p>\n<p>Verdict</p>\n<p>16–32GB laptop</p>\n<p>Too small</p>\n<p>64GB machine</p>\n<p>Borderline — likely too small with images</p>\n<p>96GB+ Mac or workstation</p>\n<p>Should work</p>\n<p>DGX Spark</p>\n<p>Designed for models like this</p>\n<p>Want this working in your business, not just bookmarked? Using free open models in your AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>What it can do in LM Studio</h2>\n<ul>\n<li>Answer questions about documents and screenshots.</li>\n</ul>\n<ul>\n<li>Interpret charts and tables.</li>\n</ul>\n<ul>\n<li>Understand app and website screenshots (GUI understanding).</li>\n</ul>\n<ul>\n<li>Reason step by step, with tool use when connected to an agent.</li>\n</ul>\n<h2>Connect LM Studio to Hermes Agent</h2>\n<p>Start LM Studio’s local server (it uses an OpenAI-compatible API, usually on port 1234). In Hermes, add a custom endpoint pointing at it with the model’s name, in a dedicated profile. Set a context of at least 64K for agent work. You can do the same in OpenCode or any agent that supports custom endpoints.</p>\n<h2>LM Studio vs Ollama for this model</h2>\n<p>Both work. LM Studio gives you a friendly app with a model catalogue and chat window; Ollama gives you a simple command (<code>ollama run nemotron-3.5-super</code>) and an 80–90GB build. Pick whichever you already use — see my Ollama guide.</p>\n<p>Let me be clear: this is not a frontier model. It’s not going to replace Claude Opus 5.5 for your hardest work. What it is: a free, open, fast model that can read screenshots, PDFs and charts and then act on them — which is exactly the job a lot of agent work starts with.</p>\n<h2>Getting good performance in LM Studio</h2>\n<p>Start with a modest context length and increase it only as needed — bigger contexts slow things down and use more memory. Offload as much of the model to your GPU as your hardware allows. Close other heavy apps before loading it. And use thinking mode only for tasks that need step-by-step reasoning, since it generates more tokens.</p>\n<h2>Using it for visual work</h2>\n<p>LM Studio lets you drag images into the chat. Try a screenshot of a spreadsheet and ask for the totals, a chart and ask what trend it shows, or a photo of a document and ask for a summary. For multi-page documents, send the most important pages as images. Clear, cropped images give the best results.</p>\n<h2>Private document work</h2>\n<p>The biggest reason to run it locally is privacy. Contracts, client reports, financial statements and medical letters can all be read and summarised without anything leaving your machine. For businesses that can’t send documents to cloud AI, a local vision model like this is a genuine option for the first time.</p>\n<h2>Final thoughts</h2>\n<p>If your machine can’t fit it, don’t worry — the free OpenRouter variant gives you the same model in the cloud, and LM Studio can still run smaller models locally for quick tasks. Many people keep a small local model for private, everyday work and use the cloud version of Nemotron for heavier visual jobs.</p>\n<p>Either way, having a vision model in your toolkit that can read documents, charts and screenshots is a big upgrade for any agent setup.</p>\n<h2>How I’d test it this week</h2>\n<p>Before you download 70GB, check your free disk space and RAM, and test the cloud version on the same task first so you know what good looks like. If your machine qualifies, load it, try three private documents, and compare the answers with the cloud version.</p>\n<p>If it works well, connect it to your agent as a private option for sensitive files.</p>\n<h2>Common questions</h2>\n<p>Does it work on a Mac? LM Studio runs on Mac, Windows and Linux; on a Mac you’ll need a high-memory model to fit the 70GB build. Is there a smaller version? LM Studio lists the Q4_K_M build as the smallest. Can it read PDFs? Send pages as images and it can read them. Is it as good as the cloud version? It’s the same model compressed to 4-bit, so expect very similar results with a small quality trade-off for much lower memory use.</p>\n<h2>The bottom line on Nemotron 3.5 Super VL LM Studio</h2>\n<p>Running Nemotron 3.5 Super VL in LM Studio is easy if you have 70GB+ of RAM: download, load and connect it to your agents for private, unlimited vision work.</p>\n<h2>FAQ: nemotron 3.5 super vl lm studio</h2>\n<h3>Is Nemotron 3.5 Super VL in LM Studio?</h3>\n<p>Yes — it’s in LM Studio’s catalogue as a GGUF download.</p>\n<h3>How big is it in LM Studio?</h3>\n<p>The Q4_K_M build is about 70GB.</p>\n<h3>How much RAM do I need?</h3>\n<p>At least 70GB, plus extra for images and context.</p>\n<h3>Does the LM Studio version support images?</h3>\n<p>Yes — documents, charts, GUIs and visual Q&amp;A.</p>\n<h3>Can I use it with Hermes?</h3>\n<p>Yes — connect LM Studio’s local server as a custom endpoint.</p>\n<h3>Can LM Studio run it on Windows?</h3>\n<p>LM Studio runs on Windows, Mac and Linux, but you still need at least 70GB of RAM for the smallest build.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your AI agent model setup gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Nemotron 3.5 Super VL Ollama</li>\n</ul>\n<ul>\n<li>Nemotron 3.5 Super VL Hugging Face</li>\n</ul>\n<ul>\n<li>Nemotron 3.5 Super VL</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to nemotron 3.5 super vl lm studio — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "GitHub repository hermes-jekyl-hyde presenting an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or demonstrating ways to flip agent behavior; published by jnorthrup as a standalone repo linked from HN.",
+          "importance_score": 45.0,
+          "reasoning": "Security-relevant adversarial research against Hermes Agent could matter for prompt-injection and safety hardening, but the posting lacks detail and provenance, lowering confidence and impact.",
+          "themes": [
+            "Adversarial security",
+            "Agent safety",
+            "Red teaming"
+          ],
+          "continuation": null,
+          "summary_html": "<p>GitHub repository hermes-jekyl-hyde presenting an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or demonstrating ways to flip agent behavior; published by jnorthrup as a standalone repo linked from HN.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "hn-49208206",
+          "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+          "author": "sundarurfriend",
+          "published": "2026-08-07T10:12:27Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "HN submission noting that a GitHub issue on NousResearch/hermes-agent (issue 10232) asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked. It raises questions about how attribution questions and critical issues are handled in the repo.",
+          "importance_score": 44.0,
+          "reasoning": "Governance and moderation controversy around the official repository is community-relevant and reputational, but purely procedural with no technical content.",
+          "themes": [
+            "Repository governance",
+            "Attribution",
+            "Moderation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>HN submission noting that a GitHub issue on NousResearch/hermes-agent (issue 10232) asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked. It raises questions about how attribution questions and critical issues are handled in the repo.</p>",
+          "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 57,
+      "category_summary": "**Partnerships & press (headline week):** **@NousResearch** announced **Hermes Agent** as a [launch partner for **NVIDIA RTX Spark**](/?date=2026-10-17&category=social#item-eb6add8182a2) across the new generation of laptops (1,013 likes) — the week's runaway top post — reinforced by official amplification of **@zacbowden**'s in-depth [**Windows Central** review](/?date=2026-10-17&category=social#item-b994a88307a6), [extended video coverage of hardware and security](/?date=2026-10-17&category=social#item-49831796d9c8), and a reply teasing [**OpenShell** and **MXC**](/?date=2026-10-17&category=social#item-6aeac627fd03) as upcoming products. **Product feedback loop:** After community pushback, **@Teknium** [reversed the 90-day session auto-prune](/?date=2026-10-17&category=social#item-33ea1f4fe9b0) (now off by default, with storage-aware prompting instead), then candidly [explained why unbounded local session DBs had been filling disks](/?date=2026-10-17&category=social#item-a9bb334c6a24); he also [confirmed a fix in the next release](/?date=2026-10-17&category=social#item-b4ac47aa9bc1), confirmed [work on cron scheduling](/?date=2026-10-17&category=social#item-e19a0c47dbe7), and pointed to the [daily-cleaned `.hermes/cache/scratch` directory](/?date=2026-10-17&category=social#item-344879e6d137). Sentiment here is strongly positive — users rewarded the rapid feedback-driven iteration. **Guides, plugins & launches:** **@rlaope** published a deep-dive [**Oh-My-Hermes (OMH)** guide](/?date=2026-10-17&category=social#item-b51fb165d53c) (subagent routing to task-specific models, filesystem-labeled long-term memory) and launched [**deepseek-bot**](/?date=2026-10-17&category=social#item-5d4f3f74b75c), an open-source persistent-memory agent on the **deepseek-harness**; **@tonbistudio**'s [**Reverse Engineer Anything** plugin guide](/?date=2026-10-17&category=social#item-ba61b5a396ce) drew ~20K views with official amplification, and Teknium's [open offers to share plugin maintenance](/?date=2026-10-17&category=social#item-c0ad3e42da50) reinforced a healthy builder ecosystem. **Ultrafast model hype:** Excitement around [**DeepSeek V4.1 Flash** at 848+ TPS](/?date=2026-10-17&category=social#item-034c1dd8dbe5) (model GA'd 2026-09-10 — speed coverage of an existing release, not a new launch) fueled 'agent workflows become reading-speed bound' takes and gateway tooling like [**opengateway**](/?date=2026-10-17&category=social#item-0cf5d1a3b835); note that [posts citing **GLM-5.3-flash-ultrafast** (525 TPS)](/?date=2026-10-17&category=social#item-97d9c9fefec1) could not be verified against the current model roster (latest listed GLM is **5.2**) — treat as unconfirmed. **Strategy & benchmarks:** Teknium [defended the six-month power-user-first build](/?date=2026-10-17&category=social#item-2dd209adf49b) against consumer criticism and claimed **Hermes** [beats **Claude Code** using Claude](/?date=2026-10-17&category=social#item-9324877d0141) on every reported benchmark, often with ~3x fewer tokens. **Community flavor & housekeeping:** The cryptic one-word ['Motion.' teaser](/?date=2026-10-17&category=social#item-c0549400cfa5) pulled ~27.7K views, **@NousResearch** [bantered with **Andrew Yang**](/?date=2026-10-17&category=social#item-6988a3c15f77) about open source (541 likes), an [editor's note](/?date=2026-10-17&category=social#item-92f8c87c3dd0) clarified a satirical TIME-list tweet and restated the no-paid-placement policy, and the [**Hermes Index**](/?date=2026-10-17&category=social#item-897de9812a56) was updated — though its 'GPT 6.1 Sol' entry doesn't match the model roster (**GPT-6-Sol**, GA 2026-09-22), likely a naming slip.",
+      "category_summary_html": "<p><strong>Partnerships &amp; press (headline week):</strong> <strong>@NousResearch</strong> announced <strong>Hermes Agent</strong> as a <a href=\"/?date=2026-10-17&amp;category=social#item-eb6add8182a2\" class=\"internal-link\" rel=\"noopener noreferrer\">launch partner for <strong>NVIDIA RTX Spark</strong></a> across the new generation of laptops (1,013 likes) — the week's runaway top post — reinforced by official amplification of <strong>@zacbowden</strong>'s in-depth <a href=\"/?date=2026-10-17&amp;category=social#item-b994a88307a6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Windows Central</strong> review</a>, <a href=\"/?date=2026-10-17&amp;category=social#item-49831796d9c8\" class=\"internal-link\" rel=\"noopener noreferrer\">extended video coverage of hardware and security</a>, and a reply teasing <a href=\"/?date=2026-10-17&amp;category=social#item-6aeac627fd03\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenShell</strong> and <strong>MXC</strong></a> as upcoming products. <strong>Product feedback loop:</strong> After community pushback, <strong>@Teknium</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-33ea1f4fe9b0\" class=\"internal-link\" rel=\"noopener noreferrer\">reversed the 90-day session auto-prune</a> (now off by default, with storage-aware prompting instead), then candidly <a href=\"/?date=2026-10-17&amp;category=social#item-a9bb334c6a24\" class=\"internal-link\" rel=\"noopener noreferrer\">explained why unbounded local session DBs had been filling disks</a>; he also <a href=\"/?date=2026-10-17&amp;category=social#item-b4ac47aa9bc1\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed a fix in the next release</a>, confirmed <a href=\"/?date=2026-10-17&amp;category=social#item-e19a0c47dbe7\" class=\"internal-link\" rel=\"noopener noreferrer\">work on cron scheduling</a>, and pointed to the <a href=\"/?date=2026-10-17&amp;category=social#item-344879e6d137\" class=\"internal-link\" rel=\"noopener noreferrer\">daily-cleaned <code>.hermes/cache/scratch</code> directory</a>. Sentiment here is strongly positive — users rewarded the rapid feedback-driven iteration. <strong>Guides, plugins &amp; launches:</strong> <strong>@rlaope</strong> published a deep-dive <a href=\"/?date=2026-10-17&amp;category=social#item-b51fb165d53c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh-My-Hermes (OMH)</strong> guide</a> (subagent routing to task-specific models, filesystem-labeled long-term memory) and launched <a href=\"/?date=2026-10-17&amp;category=social#item-5d4f3f74b75c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>deepseek-bot</strong></a>, an open-source persistent-memory agent on the <strong>deepseek-harness</strong>; <strong>@tonbistudio</strong>'s <a href=\"/?date=2026-10-17&amp;category=social#item-ba61b5a396ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Reverse Engineer Anything</strong> plugin guide</a> drew ~20K views with official amplification, and Teknium's <a href=\"/?date=2026-10-17&amp;category=social#item-c0ad3e42da50\" class=\"internal-link\" rel=\"noopener noreferrer\">open offers to share plugin maintenance</a> reinforced a healthy builder ecosystem. <strong>Ultrafast model hype:</strong> Excitement around <a href=\"/?date=2026-10-17&amp;category=social#item-034c1dd8dbe5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek V4.1 Flash</strong> at 848+ TPS</a> (model GA'd 2026-09-10 — speed coverage of an existing release, not a new launch) fueled 'agent workflows become reading-speed bound' takes and gateway tooling like <a href=\"/?date=2026-10-17&amp;category=social#item-0cf5d1a3b835\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>opengateway</strong></a>; note that <a href=\"/?date=2026-10-17&amp;category=social#item-97d9c9fefec1\" class=\"internal-link\" rel=\"noopener noreferrer\">posts citing <strong>GLM-5.3-flash-ultrafast</strong> (525 TPS)</a> could not be verified against the current model roster (latest listed GLM is <strong>5.2</strong>) — treat as unconfirmed. <strong>Strategy &amp; benchmarks:</strong> Teknium <a href=\"/?date=2026-10-17&amp;category=social#item-2dd209adf49b\" class=\"internal-link\" rel=\"noopener noreferrer\">defended the six-month power-user-first build</a> against consumer criticism and claimed <strong>Hermes</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-9324877d0141\" class=\"internal-link\" rel=\"noopener noreferrer\">beats <strong>Claude Code</strong> using Claude</a> on every reported benchmark, often with ~3x fewer tokens. <strong>Community flavor &amp; housekeeping:</strong> The cryptic one-word <a href=\"/?date=2026-10-17&amp;category=social#item-c0549400cfa5\" class=\"internal-link\" rel=\"noopener noreferrer\">'Motion.' teaser</a> pulled ~27.7K views, <strong>@NousResearch</strong> <a href=\"/?date=2026-10-17&amp;category=social#item-6988a3c15f77\" class=\"internal-link\" rel=\"noopener noreferrer\">bantered with <strong>Andrew Yang</strong></a> about open source (541 likes), an <a href=\"/?date=2026-10-17&amp;category=social#item-92f8c87c3dd0\" class=\"internal-link\" rel=\"noopener noreferrer\">editor's note</a> clarified a satirical TIME-list tweet and restated the no-paid-placement policy, and the <a href=\"/?date=2026-10-17&amp;category=social#item-897de9812a56\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Index</strong></a> was updated — though its 'GPT 6.1 Sol' entry doesn't match the model roster (<strong>GPT-6-Sol</strong>, GA 2026-09-22), likely a naming slip.</p>",
+      "themes": [
+        {
+          "name": "NVIDIA RTX Spark and Windows Partnership",
+          "description": "Launch-partner announcement, press coverage from Windows Central, video coverage of hardware and security, and follow-up discussion of running models on Spark hardware.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Oh-My-Hermes ecosystem",
+          "description": "Posts about the OMH intelligence pack, its subagent routing, memory system, and configuration guides from rlaope and community members.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Session Management and Product Feedback Loop",
+          "description": "Community pushback on auto-pruning led Teknium to ship a storage-aware opt-in pruning prompt, demonstrating rapid feedback-driven iteration.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Ultrafast DeepSeek and GLM models",
+          "description": "Excitement around DeepSeek V4.1 Flash and GLM flash variants delivering very high tokens-per-second inference for agent workflows, plus gateway tooling to access them.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Community agent tooling and launches",
+          "description": "Independent agent projects inspired by or adjacent to Hermes Agent, including deepseek-bot and tool comparisons.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Plugin Ecosystem",
+          "description": "Teknium promoting the community-made Reverse Engineer Anything plugin, its guide, and offering its maintenance to community contributors.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Workarounds and Tooling",
+          "description": "Both posts deal with practical fixes and tooling: a community-discovered gateway tool for high token throughput and a developer-suggested interim workaround ahead of an official release fix.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Product Design and Developer Dialogue",
+          "description": "Teknium explaining session database policy changes and soliciting community input on safer defaults.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Hermes as a Developer Harness vs Claude Code",
+          "description": "Teknium asserts benchmark wins over Claude Code with lower token burn and probes users on why they still prefer Codex or Claude Code.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Plugin development and catalog",
+          "description": "Teknium's interactions about plugin PRs, integration decisions, updated plugins, the plugin limit bug, and catalog submissions.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 60.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "eb6add8182a2",
+          "title": "Hermes Agent is a launch partner for @nvidia's RTX Spark across the new generation of laptops. \n\nPic...",
+          "content": "Hermes Agent is a launch partner for @nvidia's RTX Spark across the new generation of laptops. \n\nPick it in the built-in @Windows agent setup flow, run the new generative onboarding, and get straight to work locally or in the cloud.\n\nLinus is impressed! https://t.co/DDL8JODmiS",
+          "url": "https://twitter.com/NousResearch/status/2111130297907470840",
+          "author": "@NousResearch",
+          "published": "2026-10-16T16:21:00",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch announces Hermes Agent is a launch partner for NVIDIA RTX Spark across the new generation of laptops; users can select it in the built-in Windows agent setup flow, run generative onboarding, and work locally or in the cloud, with Linus Sebastian reportedly impressed.",
+          "importance_score": 95.0,
+          "reasoning": "Major partnership announcement from the official account with exceptional engagement (1013 likes, ~48K views); confirms deep OS- and hardware-level integration with NVIDIA and Windows that substantially expands Hermes distribution.",
+          "themes": [
+            "nvidia partnership",
+            "rtx spark",
+            "windows integration",
+            "on-device",
+            "distribution"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch announces Hermes Agent is a launch partner for NVIDIA RTX Spark across the new generation of laptops; users can select it in the built-in Windows agent setup flow, run generative onboarding, and work locally or in the cloud, with Linus Sebastian reportedly impressed.</p>",
+          "content_html": "<p>Hermes Agent is a launch partner for @nvidia's RTX Spark across the new generation of laptops.</p>\n<p>Pick it in the built-in @Windows agent setup flow, run the new generative onboarding, and get straight to work locally or in the cloud.</p>\n<p>Linus is impressed! https://t.co/DDL8JODmiS</p>"
+        },
+        {
+          "id": "b51fb165d53c",
+          "title": "How to Get the Most Out of Oh-My-Hermes\n\nSimply put, Oh-My-Hermes (OMH) is an intelligence pack that...",
+          "content": "How to Get the Most Out of Oh-My-Hermes\n\nSimply put, Oh-My-Hermes (OMH) is an intelligence pack that makes Hermes Agent insanely good just by plugging it in.\n\nToday, instead of just a basic intro, here’s a quick guide on how to actually use it and the impact it brings.\n\n1. Set up subagent routing \nWhether you use omh-model, omh-model-setup, or just ask the agent, OMH routes each task category to the right model (e.g., ultrabrain, visual-engineering, deep-work).\nRecommended setups are in the README. Just configure the categories for your setup, and the right model will run automatically when handling subagent tasks.\n\n2. Memory system \nOMH comes with long-term memory—turn it on, and retention goes way up.\nIt mixes in smart mechanics like filesystem labeling, semantic search, TTL, and more.\nIf you want to audit or organize what the agent remembers, try using the `memory-sync` skill. It presents stored, ambiguous, or cluttered memories so you can clean them up easily.\n\n3. Calling tons of skills isn't recommended, but definitely know `ulw-XYZ` \nThe Ultra-Work skills prefixed with `ulw-` handle loops, goal engineering via plan skills, coding rules, and parallel tasks to push execution through the most optimized path.\nOther skills can be called manually or auto-routed (ulw has auto-routing too), but just dropping a quick \"ulw-work let's go\" into your prompt works even better.\n\n4. The TUI looks slick\nThe TUI is becoming standalone. OMH’s TUI provides live viewers for parallel subagent routing, omh todo, and more. It looks great, so definitely give it a try.\n\nInstall Oh-My-Hermes:\nhttps://t.co/g1exHwWcg6\n\n#hermes",
+          "url": "https://twitter.com/rlaope/status/2111000749467488317",
+          "author": "@rlaope",
+          "published": "2026-10-16T07:46:13",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage of oh-my-hermes, rlaope publishes a detailed guide to Oh-My-Hermes covering subagent routing to task-specific models, the long-term memory system with filesystem labeling, semantic search, TTL, and the memory-sync skill for auditing memories, plus handling of many tool calls.",
+          "importance_score": 88.0,
+          "reasoning": "High-quality, in-depth configuration guide from a prominent community member with strong engagement (68 likes, ~11.8k views); directly actionable for Hermes Agent users.",
+          "themes": [
+            "Oh-My-Hermes",
+            "subagent routing",
+            "memory system",
+            "configuration guide"
+          ],
+          "continuation": {
+            "original_item_id": "b84d15a8a0b3",
+            "original_date": "2026-10-16",
+            "original_category": "social",
+            "original_title": "oh-my-hermes subagents routing",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage of oh-my-hermes"
+          },
+          "summary_html": "<p>Continuing our coverage of oh-my-hermes, rlaope publishes a detailed guide to Oh-My-Hermes covering subagent routing to task-specific models, the long-term memory system with filesystem labeling, semantic search, TTL, and the memory-sync skill for auditing memories, plus handling of many tool calls.</p>",
+          "content_html": "<p>How to Get the Most Out of Oh-My-Hermes</p>\n<p>Simply put, Oh-My-Hermes (OMH) is an intelligence pack that makes Hermes Agent insanely good just by plugging it in.</p>\n<p>Today, instead of just a basic intro, here’s a quick guide on how to actually use it and the impact it brings.</p>\n<p>1. Set up subagent routing</p>\n<p>Whether you use omh-model, omh-model-setup, or just ask the agent, OMH routes each task category to the right model (e.g., ultrabrain, visual-engineering, deep-work).</p>\n<p>Recommended setups are in the README. Just configure the categories for your setup, and the right model will run automatically when handling subagent tasks.</p>\n<p>2. Memory system</p>\n<p>OMH comes with long-term memory—turn it on, and retention goes way up.</p>\n<p>It mixes in smart mechanics like filesystem labeling, semantic search, TTL, and more.</p>\n<p>If you want to audit or organize what the agent remembers, try using the <code>memory-sync</code> skill. It presents stored, ambiguous, or cluttered memories so you can clean them up easily.</p>\n<p>3. Calling tons of skills isn't recommended, but definitely know <code>ulw-XYZ</code></p>\n<p>The Ultra-Work skills prefixed with <code>ulw-</code> handle loops, goal engineering via plan skills, coding rules, and parallel tasks to push execution through the most optimized path.</p>\n<p>Other skills can be called manually or auto-routed (ulw has auto-routing too), but just dropping a quick \"ulw-work let's go\" into your prompt works even better.</p>\n<p>4. The TUI looks slick</p>\n<p>The TUI is becoming standalone. OMH’s TUI provides live viewers for parallel subagent routing, omh todo, and more. It looks great, so definitely give it a try.</p>\n<p>Install Oh-My-Hermes:</p>\n<p>https://t.co/g1exHwWcg6</p>\n<p>#hermes</p>"
+        },
+        {
+          "id": "33ea1f4fe9b0",
+          "title": "Had some pushback on the new auto-prune after 90days on sessions, found a better solution.\n\nPruning ...",
+          "content": "Had some pushback on the new auto-prune after 90days on sessions, found a better solution.\n\nPruning will be off by default, but on new sessions will do a 2microsecond check to see if your db is about to eat all your storage, and then prompt you to prune or manage it yourself.\n\nEnjoy :)",
+          "url": "https://twitter.com/Teknium/status/2111215992882004405",
+          "author": "@Teknium",
+          "published": "2026-10-16T22:01:31",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces a design change: session auto-pruning after 90 days will be off by default; instead a fast check detects when the session database is about to consume all storage and prompts the user to prune or manage it manually.",
+          "importance_score": 85.0,
+          "reasoning": "Substantive product behavior change from the lead developer responding directly to community feedback, with strong engagement (388 likes, ~14.7K views); reveals responsiveness of the team to user pushback.",
+          "themes": [
+            "session management",
+            "pruning",
+            "community feedback",
+            "product decisions"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces a design change: session auto-pruning after 90 days will be off by default; instead a fast check detects when the session database is about to consume all storage and prompts the user to prune or manage it manually.</p>",
+          "content_html": "<p>Had some pushback on the new auto-prune after 90days on sessions, found a better solution.</p>\n<p>Pruning will be off by default, but on new sessions will do a 2microsecond check to see if your db is about to eat all your storage, and then prompt you to prune or manage it yourself.</p>\n<p>Enjoy :)</p>"
+        },
+        {
+          "id": "5d4f3f74b75c",
+          "title": "Introducing deepseek-bot 🤖⚡️\n\nAn open-source, ultra-fast agent with persistent user memory, built fr...",
+          "content": "Introducing deepseek-bot 🤖⚡️\n\nAn open-source, ultra-fast agent with persistent user memory, built from the ground up on deepseek-harness.\n\nsuper cool..\n\nIf you loved Grok Bot, Hermes Agent, or Dots, this brings that same vibe fully optimized specifically for DeepSeek models.\n\nLive TUI demo running deepseek-4.1flash-ultrafast below\n\nGitHub: https://t.co/d0RZY4P4O8\n\n#deepseek #bot",
+          "url": "https://twitter.com/rlaope/status/2110997747210100891",
+          "author": "@rlaope",
+          "published": "2026-10-16T07:34:18",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope introduces deepseek-bot, an open-source ultra-fast agent with persistent user memory built on the deepseek-harness, positioned as a DeepSeek-optimized alternative in the spirit of Grok Bot and Hermes Agent, with a live TUI demo running deepseek-4.1flash-ultrafast and a GitHub link.",
+          "importance_score": 85.0,
+          "reasoning": "Substantial project launch showcase from a prioritized community author with strong engagement (75 likes, 10 retweets, ~5400 views); directly relevant to the Hermes ecosystem as a comparable agent harness.",
+          "themes": [
+            "deepseek-bot",
+            "agent launch",
+            "DeepSeek models",
+            "persistent memory"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope introduces deepseek-bot, an open-source ultra-fast agent with persistent user memory built on the deepseek-harness, positioned as a DeepSeek-optimized alternative in the spirit of Grok Bot and Hermes Agent, with a live TUI demo running deepseek-4.1flash-ultrafast and a GitHub link.</p>",
+          "content_html": "<p>Introducing deepseek-bot 🤖⚡️</p>\n<p>An open-source, ultra-fast agent with persistent user memory, built from the ground up on deepseek-harness.</p>\n<p>super cool..</p>\n<p>If you loved Grok Bot, Hermes Agent, or Dots, this brings that same vibe fully optimized specifically for DeepSeek models.</p>\n<p>Live TUI demo running deepseek-4.1flash-ultrafast below</p>\n<p>GitHub: https://t.co/d0RZY4P4O8</p>\n<p>#deepseek #bot</p>"
+        },
+        {
+          "id": "034c1dd8dbe5",
+          "title": "i just found this and holy shit\n\nDeepSeek V4.1 Flash 848+ TPS\n\nImagine running your agent workflows ...",
+          "content": "i just found this and holy shit\n\nDeepSeek V4.1 Flash 848+ TPS\n\nImagine running your agent workflows at that speed.\n\nMy bottleneck is about to be reading the output.\n\nI need this in my stack immediately.\n\ndeepseek: https://t.co/YPSUt2MLNg\n\n#ai",
+          "url": "https://twitter.com/rlaope/status/2111051803525820681",
+          "author": "@rlaope",
+          "published": "2026-10-16T11:09:06",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope is excited about DeepSeek V4.1 Flash running at 848+ tokens per second, arguing agent workflows will become reading-speed bound, and links the DeepSeek resource.",
+          "importance_score": 82.0,
+          "reasoning": "Well-known community member (rlaope), strong engagement (39 likes, ~4500 views), and highlights an inference-speed capability directly relevant to Hermes agent workflows.",
+          "themes": [
+            "DeepSeek V4.1 Flash",
+            "inference speed",
+            "agent workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope is excited about DeepSeek V4.1 Flash running at 848+ tokens per second, arguing agent workflows will become reading-speed bound, and links the DeepSeek resource.</p>",
+          "content_html": "<p>i just found this and holy shit</p>\n<p>DeepSeek V4.1 Flash 848+ TPS</p>\n<p>Imagine running your agent workflows at that speed.</p>\n<p>My bottleneck is about to be reading the output.</p>\n<p>I need this in my stack immediately.</p>\n<p>deepseek: https://t.co/YPSUt2MLNg</p>\n<p>#ai</p>"
+        },
+        {
+          "id": "2dd209adf49b",
+          "title": "@AyushSin164510 What is lame exactly? That we are admitting we hadn't built for consumers and that e...",
+          "content": "@AyushSin164510 What is lame exactly? That we are admitting we hadn't built for consumers and that everything we've done for 6 months has been to support their use cases?",
+          "url": "https://twitter.com/Teknium/status/2111050608950337573",
+          "author": "@Teknium",
+          "published": "2026-10-16T11:04:21",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium pushes back on criticism, defending that Nous Research spent six months building Hermes around power-user and developer use cases rather than consumers.",
+          "importance_score": 78.0,
+          "reasoning": "High engagement (98 likes, ~4200 views) and rare public strategic framing from the founder about Hermes target audience; notably a pushback reply rather than an announcement.",
+          "themes": [
+            "product direction",
+            "consumer vs power users",
+            "community debate"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium pushes back on criticism, defending that Nous Research spent six months building Hermes around power-user and developer use cases rather than consumers.</p>",
+          "content_html": "<p>@AyushSin164510 What is lame exactly? That we are admitting we hadn't built for consumers and that everything we've done for 6 months has been to support their use cases?</p>"
+        },
+        {
+          "id": "ba61b5a396ce",
+          "title": "Check out @tonbistudio’s guide to using the new Reverse Engineer Anything plugin in Hermes Agent!",
+          "content": "Check out @tonbistudio’s guide to using the new Reverse Engineer Anything plugin in Hermes Agent!",
+          "url": "https://twitter.com/Teknium/status/2110978534894412142",
+          "author": "@Teknium",
+          "published": "2026-10-16T06:17:57",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage of the Reverse Engineer Anything plugin, Teknium amplifies a community-authored guide by tonbistudio covering the new Reverse Engineer Anything plugin for Hermes Agent, driving attention to a third-party extension and its documentation.",
+          "importance_score": 78.0,
+          "reasoning": "High-authority author (Teknium) with strong engagement: roughly 20k views and 418 likes. Signals official endorsement of a community plugin, useful for showcasing ecosystem activity even though it is not a version release.",
+          "themes": [
+            "plugin ecosystem",
+            "community showcase"
+          ],
+          "continuation": {
+            "original_item_id": "e48d30f34d95",
+            "original_date": "2026-10-16",
+            "original_category": "social",
+            "original_title": "Check out the new official plugin I created for Hermes Agent that includes the REA MCP + a Skill for...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage of the Reverse Engineer Anything plugin"
+          },
+          "summary_html": "<p>Continuing our coverage of the Reverse Engineer Anything plugin, Teknium amplifies a community-authored guide by tonbistudio covering the new Reverse Engineer Anything plugin for Hermes Agent, driving attention to a third-party extension and its documentation.</p>",
+          "content_html": "<p>Check out @tonbistudio’s guide to using the new Reverse Engineer Anything plugin in Hermes Agent!</p>"
+        },
+        {
+          "id": "897de9812a56",
+          "title": "Hermes Index has been updated to include GPT 6.1 Sol and several other models!\n\nCheck it out here:\nh...",
+          "content": "Hermes Index has been updated to include GPT 6.1 Sol and several other models!\n\nCheck it out here:\nhttps://t.co/Ry6X5Y95KG",
+          "url": "https://twitter.com/Teknium/status/2111197448282702310",
+          "author": "@Teknium",
+          "published": "2026-10-16T20:47:50",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces the Hermes Index has been updated to include GPT 6.1 Sol and several other models, sharing a link.",
+          "importance_score": 75.0,
+          "reasoning": "Official update to a widely-used reference resource by the lead developer with strong engagement (380 likes, ~20.8K views); useful for the community tracking model coverage.",
+          "themes": [
+            "hermes index",
+            "model coverage",
+            "gpt 6.1 sol"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces the Hermes Index has been updated to include GPT 6.1 Sol and several other models, sharing a link.</p>",
+          "content_html": "<p>Hermes Index has been updated to include GPT 6.1 Sol and several other models!</p>\n<p>Check it out here:</p>\n<p>https://t.co/Ry6X5Y95KG</p>"
+        },
+        {
+          "id": "b4ac47aa9bc1",
+          "title": "@jtgronerth There's a resolution for it in the next release version, but ask hermes to find a workar...",
+          "content": "@jtgronerth There's a resolution for it in the next release version, but ask hermes to find a workaround until then, on some pc's it overloads the plugin limit",
+          "url": "https://twitter.com/Teknium/status/2111024504801751546",
+          "author": "@Teknium",
+          "published": "2026-10-16T09:20:37",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium replies to a user reporting an issue, stating that a resolution is coming in the next release version and suggesting that in the meantime the user can ask Hermes to find a workaround, noting the problem involves overloading the plugin limit on some PCs.",
+          "importance_score": 72.0,
+          "reasoning": "Direct communication from Teknium, a highly credible core figure, confirming a known bug, its cause (plugin limit overload on some PCs), and that a fix ships in the next release. Signal about upcoming release content is valuable to the community, though engagement is very low (202 views, no likes), which caps the score.",
+          "themes": [
+            "bug fix",
+            "workaround",
+            "upcoming release",
+            "developer support"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium replies to a user reporting an issue, stating that a resolution is coming in the next release version and suggesting that in the meantime the user can ask Hermes to find a workaround, noting the problem involves overloading the plugin limit on some PCs.</p>",
+          "content_html": "<p>@jtgronerth There's a resolution for it in the next release version, but ask hermes to find a workaround until then, on some pc's it overloads the plugin limit</p>"
+        },
+        {
+          "id": "a9bb334c6a24",
+          "title": "@HermesWatcher @witcheer @NousResearch That's how it was before, and the amount of issues we had to ...",
+          "content": "@HermesWatcher @witcheer @NousResearch That's how it was before, and the amount of issues we had to deal with because people's DBs grew bigger than their resources could handle, where they wouldnt be able to create or continue sessions because disk was full, etc became intense.\n\nOur goal is a default happier path, that causes less users issues. If you have an alternative to either I'd be open to it, maybe something that detects size of db, disk space, and asks if you want to prune/warns that you should prune when it detects unsafe?",
+          "url": "https://twitter.com/Teknium/status/2110956455751037063",
+          "author": "@Teknium",
+          "published": "2026-10-16T04:50:13",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains why Hermes moved away from unbounded local session databases: oversized DBs filled users' disks and blocked new sessions. He defends the new default path and invites alternatives, suggesting an approach that detects DB size and disk space and warns or prompts users to prune.",
+          "importance_score": 62.0,
+          "reasoning": "Substantive design rationale straight from the lead developer, addressing a likely community complaint and openly soliciting feedback on a pruning/warning mechanism. Decent engagement (31 likes, 9 replies) and insight into product direction.",
+          "themes": [
+            "product decisions",
+            "session management",
+            "developer responsiveness"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains why Hermes moved away from unbounded local session databases: oversized DBs filled users' disks and blocked new sessions. He defends the new default path and invites alternatives, suggesting an approach that detects DB size and disk space and warns or prompts users to prune.</p>",
+          "content_html": "<p>@HermesWatcher @witcheer @NousResearch That's how it was before, and the amount of issues we had to deal with because people's DBs grew bigger than their resources could handle, where they wouldnt be able to create or continue sessions because disk was full, etc became intense.</p>\n<p>Our goal is a default happier path, that causes less users issues. If you have an alternative to either I'd be open to it, maybe something that detects size of db, disk space, and asks if you want to prune/warns that you should prune when it detects unsafe?</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

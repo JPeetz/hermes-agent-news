@@ -1,0 +1,593 @@
+{
+  "category": "research",
+  "date": "2026-10-09",
+  "category_summary": "This cycle's research section is anchored by the official [**Hermes Agent v0.20.0**](/?date=2026-10-09&category=research#item-hn-49159200) release, flanked by two high-impact documentation drops: native [**Claude Pro/Max subscription authentication**](/?date=2026-10-09&category=research#item-hn-49790991) (the biggest practical cost and friction reducer for existing subscribers) and official docs for [**Hermes Kanban**](/?date=2026-10-09&category=research#item-hn-49604068) multi-agent profile collaboration. Ecosystem tooling matured around production needs — a [**LanceDB**](/?date=2026-10-09&category=research#item-hn-49133145) integration guide for persistent semantic memory, [**Grafana**](/?date=2026-10-09&category=research#item-hn-49318128)-based observability for monitoring agents in production, and a [reproducible skill looping between **Codex** and **Claude Code**](/?date=2026-10-09&category=research#item-hn-49136162) for autonomous issue-to-PR workflows. The standout third-party story is **Herald OS**, the free MIT-licensed agent-native operating system built on Hermes Agent, covered via a [hands-on install guide](/?date=2026-10-09&category=research#item-de4956e837b9) and an [independent feature-level review](/?date=2026-10-09&category=research#item-ab03b41cb35d). Operations and governance round out the section: a [Kubernetes write-up](/?date=2026-10-09&category=research#item-hn-49977400) flagging the missing official Helm chart and a root-at-init container image (a real security concern for production deploys), and the project's [~23,000 open-PR backlog](/?date=2026-10-09&category=research#item-hn-49424643) as a significant community-health and review-capacity signal. Excluded from the top tier: a [Claude Code-only earnings-call plugin](/?date=2026-10-09&category=research#item-hn-49305190) (off-topic for Hermes), a [speculative Hermès trademark thread](/?date=2026-10-09&category=research#item-hn-49357715), the [project landing page](/?date=2026-10-09&category=research#item-hn-49441992) (no new technical detail), and anecdotal or moderation-process items with limited actionable value.",
+  "category_summary_html": "<p>This cycle's research section is anchored by the official <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent v0.20.0</strong></a> release, flanked by two high-impact documentation drops: native <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max subscription authentication</strong></a> (the biggest practical cost and friction reducer for existing subscribers) and official docs for <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong></a> multi-agent profile collaboration. Ecosystem tooling matured around production needs — a <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong></a> integration guide for persistent semantic memory, <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong></a>-based observability for monitoring agents in production, and a <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">reproducible skill looping between <strong>Codex</strong> and <strong>Claude Code</strong></a> for autonomous issue-to-PR workflows. The standout third-party story is <strong>Herald OS</strong>, the free MIT-licensed agent-native operating system built on Hermes Agent, covered via a <a href=\"/?date=2026-10-09&amp;category=research#item-de4956e837b9\" class=\"internal-link\" rel=\"noopener noreferrer\">hands-on install guide</a> and an <a href=\"/?date=2026-10-09&amp;category=research#item-ab03b41cb35d\" class=\"internal-link\" rel=\"noopener noreferrer\">independent feature-level review</a>. Operations and governance round out the section: a <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes write-up</a> flagging the missing official Helm chart and a root-at-init container image (a real security concern for production deploys), and the project's <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open-PR backlog</a> as a significant community-health and review-capacity signal. Excluded from the top tier: a <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49305190\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Code-only earnings-call plugin</a> (off-topic for Hermes), a <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49357715\" class=\"internal-link\" rel=\"noopener noreferrer\">speculative Hermès trademark thread</a>, the <a href=\"/?date=2026-10-09&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">project landing page</a> (no new technical detail), and anecdotal or moderation-process items with limited actionable value.</p>",
+  "themes": [
+    {
+      "name": "Official Features and Releases",
+      "description": "Core project updates including the v0.20.0 (Herald) release, Claude Pro/Max subscription support, and Kanban multi-agent collaboration documentation.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "Agent-Native OS (Herald OS)",
+      "description": "A cluster of coverage around Herald OS, the independent agent-native operating system using Hermes Agent as its interface, including install guides, hands-on reviews, and permission-model explanations.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 67.0
+    },
+    {
+      "name": "Ecosystem Tools and Integrations",
+      "description": "Third-party projects extending Hermes Agent, including verso orchestrator, Grafana observability, Refine Cycle plugin, LanceDB semantic memory, and Almanac.",
+      "item_count": 8,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Deployment and Operations",
+      "description": "Running Hermes Agent in production and edge contexts: Kubernetes friction, Arduino UNO Q self-hosting, and model-router dependencies.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Reliability, Security, and Governance",
+      "description": "Concerns about agent looping behavior, adversarial reversal, moderation disputes, and the large open-PR backlog affecting project health.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 54.0
+    }
+  ],
+  "total_items": 23,
+  "items": [
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49159200) earlier this week, The Hermes Agent v0.20.0 release, pointing to the GitHub release tag v2026.8.3 in the NousResearch/hermes-agent repository. Related blog coverage elsewhere indicates the v0.20 release (codenamed Herald, August 2026) added voice and agent-to-agent features.",
+      "importance_score": 42,
+      "reasoning": "A core official release of the agent itself with new capabilities such as voice and agent-to-agent features; version releases are the highest-impact items for users tracking the project.",
+      "themes": [
+        "Version Releases",
+        "Voice Features",
+        "Agent-to-Agent"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49159200",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Hermes Agent v0.20.0",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, The Hermes Agent v0.20.0 release, pointing to the GitHub release tag v2026.8.3 in the NousResearch/hermes-agent repository. Related blog coverage elsewhere indicates the v0.20 release (codenamed Herald, August 2026) added voice and agent-to-agent features.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49790991) earlier this week, Official documentation page announcing that Hermes Agent supports Claude Pro/Max subscription authentication, allowing subscription holders to use their existing Anthropic plans with the agent via a direct SDK plugin rather than API billing.",
+      "importance_score": 41,
+      "reasoning": "Native support for Claude Pro/Max subscriptions significantly lowers the cost and friction barrier for a large user base and represents an official feature addition to the agent.",
+      "themes": [
+        "Model Integrations",
+        "Authentication and Access"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official documentation page announcing that Hermes Agent supports Claude Pro/Max subscription authentication, allowing subscription holders to use their existing Anthropic plans with the agent via a direct SDK plugin rather than API billing.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49604068) earlier this week, Official user-guide documentation for Hermes Kanban, a feature enabling multi-agent profile collaboration. The docs describe coordinating multiple agent profiles through a Kanban-style interface within Hermes Agent.",
+      "importance_score": 37,
+      "reasoning": "Official documentation of a notable multi-agent coordination feature; multi-profile collaboration is a significant capability for orchestrating parallel agent work, though it is a docs page rather than a release note.",
+      "themes": [
+        "Multi-Agent Collaboration",
+        "Official Features"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official user-guide documentation for Hermes Kanban, a feature enabling multi-agent profile collaboration. The docs describe coordinating multiple agent profiles through a Kanban-style interface within Hermes Agent.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "de4956e837b9",
+      "title": "Hermes Agent OS GitHub: Install Herald OS on Mac or Linux",
+      "content": "The Hermes Agent OS GitHub repo you want is iamlukethedev/Herald-OS — the free, open-source operating system with Hermes Agent as the interface. In the video below I show it running. This guide gives you the exact install commands for every platform, the requirements, and the gotchas to watch for.\n\nKey takeaways\n\n- The repo is github.com/iamlukethedev/Herald-OS (MIT licence).\n\n- Mac: install Hermes, run `hermes setup`, then install the DMG from Releases.\n\n- Linux: a Fedora-based ISO, an Arch package or a tarball.\n\n- It’s 0.1 alpha — read the open issues first.\n\n## The Hermes Agent OS GitHub repository\n\nHerald OS lives at iamlukethedev/Herald-OS. It’s an independent project by Luke The Dev, released under the MIT licence, and it builds on Hermes Agent by Nous Research, which is also MIT. It isn’t affiliated with Nous. The project is very active — new pull requests land almost daily.\n\nHerald OS at a glance\n\nWhat it is\nAn agent-native operating system with Hermes Agent as the interface\n\nMade by\nLuke The Dev (iamlukethedev) — independent, not affiliated with Nous Research\n\nPrice\nFree — MIT licence; you only pay for the AI model you connect\n\nVersion\n0.1 alpha — early software\n\nPlatforms\nmacOS app (Apple Silicon, macOS 13+), Herald OS Linux (Fedora-based ISO), Arch/Omarchy package, Linux tarball\n\nNeeds\nHermes Agent, plus a Nous Portal account or an API key for a supported provider\n\nSource\ngithub.com/iamlukethedev/Herald-OS\n\n## Install from the Hermes Agent OS GitHub on a Mac\n\nFor Apple Silicon Macs on macOS 13 or later, install Hermes Agent first:\n\n```\ncurl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash\nsource ~/.zshrc\nhermes setup\n```\n\nDownload the Herald OS DMG from the repo’s Releases page and drag it to Applications. The build isn’t notarised by Apple yet, so the README has you clear the quarantine flag:\n\n```\nxattr -dr com.apple.quarantine \"/Applications/Herald OS.app\"\n```\n\nOnly do that for a DMG you downloaded from the official releases page. Intel Macs don’t have an app build — use the Linux VM instead.\n\nWant this working in your business, not just bookmarked? Installing and running open-source AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## Install on Linux, Arch or Omarchy\n\nArch Linux:\n\n```\ngit clone https://github.com/iamlukethedev/Herald-OS.git\ncd Herald-OS/packaging/arch/herald-os-bin\nmakepkg -si\nherald-os setup\n```\n\nOn Omarchy, after the Arch package, run `herald-os omarchy install`.\n\nOther Linux distros use the tarball: verify the checksum, extract it to `/opt/herald-os`, run the bundled install script, then `herald-os setup`.\n\nHerald OS Linux is a full Fedora-based system for 64-bit Intel/AMD PCs. Download both ISO parts, join them with `cat`, verify the SHA-256 checksum, write it to a USB stick of 8 GB or more, and boot from it. The developer notes it’s tested in a VM in CI but hasn’t been tried on much real hardware yet.\n\n## Try it in a VM or build from source\n\nOn an Apple Silicon Mac you can try the Linux version in a virtual machine:\n\n```\nbrew install qemu zstd\ngit clone https://github.com/iamlukethedev/Herald-OS.git && cd Herald-OS\nbash linux/vm/try.sh\n```\n\nAllow about 20 GB of disk, 4 cores and 8 GB of RAM. To build the Mac app from source you need Node.js 22.12+, Git, Xcode Command Line Tools and Hermes Agent 0.21.3+, then:\n\n```\nnpm run bootstrap\nnpm run dev\n```\n\n## Or let your AI agent install it\n\nThis is how I did it: I pasted the GitHub link into Claude and said “Can you set this up?” It was running about two minutes later. Ask your agent to follow the README for your platform and to stop and check with you before running anything with `sudo`.\n\n## Hermes Agent OS GitHub: tips before you install\n\n- Read the open issues — it’s alpha, and that’s where known bugs live.\n\n- Use the official repo — not a fork or a re-upload.\n\n- Verify checksums on the Linux downloads.\n\n- Keep Hermes updated — source builds need 0.21.3 or later.\n\n- Report bugs on GitHub — Luke ships fixes fast.\n\nOnce it’s running, my Herald OS review walks through the dashboard, spaces, missions and settings.\n\n## What’s been changing in the repo\n\nThe project moves fast. Recent pull requests include:\n\n- Tool scoping — Herald’s system tools now only run in Herald OS sessions, not your other Hermes sessions.\n\n- Updater hardening — stops a Hermes session leaking into the backend or bridge.\n\n- Filing documents by voice — a new skill for finding, reading, naming and filing documents.\n\n- Safer Linux updates — update commands only act on Herald’s own image.\n\n- Calendar access on Mac — the app now asks properly for calendar permission.\n\nWatch or star the repo to get notified of new releases, and update regularly — in alpha software, fixes like these matter.\n\n## Troubleshooting a Herald OS install\n\n- “App is damaged” on Mac — that’s the missing notarisation; clear the quarantine flag as shown above.\n\n- Hermes not found — run `source ~/.zshrc` or open a new terminal after installing Hermes.\n\n- No model responding — run `hermes setup` again and check your provider.\n\n- Connections not syncing — a known rough edge in my test; ask your agent to debug it or check the issues tab.\n\n- Calendar not showing — grant calendar access when macOS asks.\n\n## Getting started from the Hermes Agent OS GitHub repo\n\nThe Hermes Agent OS GitHub repo, iamlukethedev/Herald-OS, gives you a free, beautiful operating system for Hermes on Mac or Linux. Install Hermes, grab the release for your platform, keep approvals on, and you’re up and running.\n\nIf you hit a problem that isn’t covered above, search the repo’s issues for your exact error message first — with an alpha project, someone has often reported it already and a fix may be in the next release. If not, open a new issue with your platform, version and the steps to reproduce it. Clear bug reports help Luke ship fixes faster for everyone, and they’re the best way to give back to a free project like this.\n\n## FAQ: hermes agent os github\n\n### Is Herald OS free?\n\nYes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.\n\n### Is Herald OS made by Nous Research?\n\nNo — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.\n\n### Where is the Hermes Agent OS GitHub repo?\n\ngithub.com/iamlukethedev/Herald-OS — Herald OS by Luke The Dev.\n\n### How do I install Herald OS on a Mac?\n\nInstall Hermes Agent and run hermes setup, then install the DMG from the repo’s Releases page. It needs an Apple Silicon Mac on macOS 13+.\n\n### Does Herald OS work on Linux?\n\nYes — as a Fedora-based ISO, an Arch/Omarchy package or a tarball for other distros.\n\n### What do I need to build it from source?\n\nNode.js 22.12+, Git, Xcode Command Line Tools and Hermes Agent 0.21.3+.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your open-source agent setup gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Herald OS Review\n\n- Hermes Agent OS Free\n\n- Hermes Agent OS Requirements\n\nLast updated October 2026. This page is a living guide to hermes agent os github — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-agent-os-github/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-os-github",
+      "author": "Clawdbot",
+      "published": "2026-10-08T04:00:01",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A guide to Herald OS (iamlukethedev/Herald-OS), a free MIT-licensed, agent-native operating system that uses Hermes Agent as its interface, built independently of Nous Research. It covers install paths for Mac (hermes setup plus a DMG from Releases) and Linux (Fedora-based ISO, Arch package, or tarball), notes it is version 0.1 alpha with active development, and advises reading open issues first.",
+      "importance_score": 70.0,
+      "reasoning": "Detailed practical installation guidance for a notable third-party OS-level integration of Hermes Agent; substantial technical depth and ecosystem relevance, tempered by alpha maturity and third-party provenance.",
+      "themes": [
+        "Ecosystem Tools",
+        "Agent-Native OS",
+        "Installation Guides"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A guide to Herald OS (iamlukethedev/Herald-OS), a free MIT-licensed, agent-native operating system that uses Hermes Agent as its interface, built independently of Nous Research. It covers install paths for Mac (hermes setup plus a DMG from Releases) and Linux (Fedora-based ISO, Arch package, or tarball), notes it is version 0.1 alpha with active development, and advises reading open issues first.</p>",
+      "content_html": "<p>The Hermes Agent OS GitHub repo you want is iamlukethedev/Herald-OS — the free, open-source operating system with Hermes Agent as the interface. In the video below I show it running. This guide gives you the exact install commands for every platform, the requirements, and the gotchas to watch for.</p>\n<p>Key takeaways</p>\n<ul>\n<li>The repo is github.com/iamlukethedev/Herald-OS (MIT licence).</li>\n</ul>\n<ul>\n<li>Mac: install Hermes, run <code>hermes setup</code>, then install the DMG from Releases.</li>\n</ul>\n<ul>\n<li>Linux: a Fedora-based ISO, an Arch package or a tarball.</li>\n</ul>\n<ul>\n<li>It’s 0.1 alpha — read the open issues first.</li>\n</ul>\n<h2>The Hermes Agent OS GitHub repository</h2>\n<p>Herald OS lives at iamlukethedev/Herald-OS. It’s an independent project by Luke The Dev, released under the MIT licence, and it builds on Hermes Agent by Nous Research, which is also MIT. It isn’t affiliated with Nous. The project is very active — new pull requests land almost daily.</p>\n<p>Herald OS at a glance</p>\n<p>What it is</p>\n<p>An agent-native operating system with Hermes Agent as the interface</p>\n<p>Made by</p>\n<p>Luke The Dev (iamlukethedev) — independent, not affiliated with Nous Research</p>\n<p>Price</p>\n<p>Free — MIT licence; you only pay for the AI model you connect</p>\n<p>Version</p>\n<p>0.1 alpha — early software</p>\n<p>Platforms</p>\n<p>macOS app (Apple Silicon, macOS 13+), Herald OS Linux (Fedora-based ISO), Arch/Omarchy package, Linux tarball</p>\n<p>Needs</p>\n<p>Hermes Agent, plus a Nous Portal account or an API key for a supported provider</p>\n<p>Source</p>\n<p>github.com/iamlukethedev/Herald-OS</p>\n<h2>Install from the Hermes Agent OS GitHub on a Mac</h2>\n<p>For Apple Silicon Macs on macOS 13 or later, install Hermes Agent first:</p>\n<p>```</p>\n<p>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</p>\n<p>source ~/.zshrc</p>\n<p>hermes setup</p>\n<p>```</p>\n<p>Download the Herald OS DMG from the repo’s Releases page and drag it to Applications. The build isn’t notarised by Apple yet, so the README has you clear the quarantine flag:</p>\n<p>```</p>\n<p>xattr -dr com.apple.quarantine \"/Applications/Herald OS.app\"</p>\n<p>```</p>\n<p>Only do that for a DMG you downloaded from the official releases page. Intel Macs don’t have an app build — use the Linux VM instead.</p>\n<p>Want this working in your business, not just bookmarked? Installing and running open-source AI agents is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>Install on Linux, Arch or Omarchy</h2>\n<p>Arch Linux:</p>\n<p>```</p>\n<p>git clone https://github.com/iamlukethedev/Herald-OS.git</p>\n<p>cd Herald-OS/packaging/arch/herald-os-bin</p>\n<p>makepkg -si</p>\n<p>herald-os setup</p>\n<p>```</p>\n<p>On Omarchy, after the Arch package, run <code>herald-os omarchy install</code>.</p>\n<p>Other Linux distros use the tarball: verify the checksum, extract it to <code>/opt/herald-os</code>, run the bundled install script, then <code>herald-os setup</code>.</p>\n<p>Herald OS Linux is a full Fedora-based system for 64-bit Intel/AMD PCs. Download both ISO parts, join them with <code>cat</code>, verify the SHA-256 checksum, write it to a USB stick of 8 GB or more, and boot from it. The developer notes it’s tested in a VM in CI but hasn’t been tried on much real hardware yet.</p>\n<h2>Try it in a VM or build from source</h2>\n<p>On an Apple Silicon Mac you can try the Linux version in a virtual machine:</p>\n<p>```</p>\n<p>brew install qemu zstd</p>\n<p>git clone https://github.com/iamlukethedev/Herald-OS.git &amp;&amp; cd Herald-OS</p>\n<p>bash linux/vm/try.sh</p>\n<p>```</p>\n<p>Allow about 20 GB of disk, 4 cores and 8 GB of RAM. To build the Mac app from source you need Node.js 22.12+, Git, Xcode Command Line Tools and Hermes Agent 0.21.3+, then:</p>\n<p>```</p>\n<p>npm run bootstrap</p>\n<p>npm run dev</p>\n<p>```</p>\n<h2>Or let your AI agent install it</h2>\n<p>This is how I did it: I pasted the GitHub link into Claude and said “Can you set this up?” It was running about two minutes later. Ask your agent to follow the README for your platform and to stop and check with you before running anything with <code>sudo</code>.</p>\n<h2>Hermes Agent OS GitHub: tips before you install</h2>\n<ul>\n<li>Read the open issues — it’s alpha, and that’s where known bugs live.</li>\n</ul>\n<ul>\n<li>Use the official repo — not a fork or a re-upload.</li>\n</ul>\n<ul>\n<li>Verify checksums on the Linux downloads.</li>\n</ul>\n<ul>\n<li>Keep Hermes updated — source builds need 0.21.3 or later.</li>\n</ul>\n<ul>\n<li>Report bugs on GitHub — Luke ships fixes fast.</li>\n</ul>\n<p>Once it’s running, my Herald OS review walks through the dashboard, spaces, missions and settings.</p>\n<h2>What’s been changing in the repo</h2>\n<p>The project moves fast. Recent pull requests include:</p>\n<ul>\n<li>Tool scoping — Herald’s system tools now only run in Herald OS sessions, not your other Hermes sessions.</li>\n</ul>\n<ul>\n<li>Updater hardening — stops a Hermes session leaking into the backend or bridge.</li>\n</ul>\n<ul>\n<li>Filing documents by voice — a new skill for finding, reading, naming and filing documents.</li>\n</ul>\n<ul>\n<li>Safer Linux updates — update commands only act on Herald’s own image.</li>\n</ul>\n<ul>\n<li>Calendar access on Mac — the app now asks properly for calendar permission.</li>\n</ul>\n<p>Watch or star the repo to get notified of new releases, and update regularly — in alpha software, fixes like these matter.</p>\n<h2>Troubleshooting a Herald OS install</h2>\n<ul>\n<li>“App is damaged” on Mac — that’s the missing notarisation; clear the quarantine flag as shown above.</li>\n</ul>\n<ul>\n<li>Hermes not found — run <code>source ~/.zshrc</code> or open a new terminal after installing Hermes.</li>\n</ul>\n<ul>\n<li>No model responding — run <code>hermes setup</code> again and check your provider.</li>\n</ul>\n<ul>\n<li>Connections not syncing — a known rough edge in my test; ask your agent to debug it or check the issues tab.</li>\n</ul>\n<ul>\n<li>Calendar not showing — grant calendar access when macOS asks.</li>\n</ul>\n<h2>Getting started from the Hermes Agent OS GitHub repo</h2>\n<p>The Hermes Agent OS GitHub repo, iamlukethedev/Herald-OS, gives you a free, beautiful operating system for Hermes on Mac or Linux. Install Hermes, grab the release for your platform, keep approvals on, and you’re up and running.</p>\n<p>If you hit a problem that isn’t covered above, search the repo’s issues for your exact error message first — with an alpha project, someone has often reported it already and a fix may be in the next release. If not, open a new issue with your platform, version and the steps to reproduce it. Clear bug reports help Luke ship fixes faster for everyone, and they’re the best way to give back to a free project like this.</p>\n<h2>FAQ: hermes agent os github</h2>\n<h3>Is Herald OS free?</h3>\n<p>Yes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.</p>\n<h3>Is Herald OS made by Nous Research?</h3>\n<p>No — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.</p>\n<h3>Where is the Hermes Agent OS GitHub repo?</h3>\n<p>github.com/iamlukethedev/Herald-OS — Herald OS by Luke The Dev.</p>\n<h3>How do I install Herald OS on a Mac?</h3>\n<p>Install Hermes Agent and run hermes setup, then install the DMG from the repo’s Releases page. It needs an Apple Silicon Mac on macOS 13+.</p>\n<h3>Does Herald OS work on Linux?</h3>\n<p>Yes — as a Fedora-based ISO, an Arch/Omarchy package or a tarball for other distros.</p>\n<h3>What do I need to build it from source?</h3>\n<p>Node.js 22.12+, Git, Xcode Command Line Tools and Hermes Agent 0.21.3+.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your open-source agent setup gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Herald OS Review</li>\n</ul>\n<ul>\n<li>Hermes Agent OS Free</li>\n</ul>\n<ul>\n<li>Hermes Agent OS Requirements</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent os github — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49977400) earlier this week, A blog post from revos.ai documenting the pain points of deploying Hermes Agent on Kubernetes: there is no official Helm chart, and the container image requires root privileges during initialization. It is a practical operations write-up of deployment friction for production-style installs.",
+      "importance_score": 34,
+      "reasoning": "Deployment and security concerns (root-at-init, missing official packaging) are operationally important for teams running Hermes Agent at scale, though the item is a short blog reference rather than an official fix or release.",
+      "themes": [
+        "Deployment",
+        "Operations and Security"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A blog post from revos.ai documenting the pain points of deploying Hermes Agent on Kubernetes: there is no official Helm chart, and the container image requires root privileges during initialization. It is a practical operations write-up of deployment friction for production-style installs.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "ab03b41cb35d",
+      "title": "Herald OS: The Free Hermes Agent Operating System, Tested",
+      "content": "Herald OS is a free, open-source, agent-native operating system with Hermes Agent as the interface — and honestly, it’s the best-looking way to use Hermes I’ve seen. You talk or type to Hermes, and it works across your whole machine. I set it up and gave you the full tour in the video below. Here’s what it does, how to get it, and how it compares with Hermes Desktop.\n\nKey takeaways\n\n- Herald OS is free and MIT-licensed, built by independent developer Luke The Dev.\n\n- It wraps Hermes Agent in a full OS-style interface: dashboard, spaces, missions, memory, files and automations.\n\n- It runs as a Mac app (Apple Silicon) or a full Linux system.\n\n- It’s early alpha — brilliant design, a few rough edges.\n\n## What Herald OS is\n\nHerald OS describes itself as an agent-native operating system with Hermes Agent as the interface. Instead of opening apps and clicking around yourself, you tell Hermes what you want — open an app, sort your files, run a routine — and it does it, asking permission before it changes anything.\n\nIt’s built by Luke The Dev, who posts loads of Hermes content on X. Shout out to Luke — this is a seriously impressive project. It’s independent, not made by Nous Research, but it runs on Hermes Agent, which is installed alongside it.\n\nHerald OS at a glance\n\nWhat it is\nAn agent-native operating system with Hermes Agent as the interface\n\nMade by\nLuke The Dev (iamlukethedev) — independent, not affiliated with Nous Research\n\nPrice\nFree — MIT licence; you only pay for the AI model you connect\n\nVersion\n0.1 alpha — early software\n\nPlatforms\nmacOS app (Apple Silicon, macOS 13+), Herald OS Linux (Fedora-based ISO), Arch/Omarchy package, Linux tarball\n\nNeeds\nHermes Agent, plus a Nous Portal account or an API key for a supported provider\n\nSource\ngithub.com/iamlukethedev/Herald-OS\n\n## How I set up Herald OS\n\nI literally opened Claude and said, “Can you set this up?” About two minutes later, Herald OS was running. If you’d rather do it yourself, the steps for every platform are in my Herald OS GitHub install guide.\n\nWhy bother with an operating system for your agent? Because it makes Hermes far easier to navigate and command. When Hermes first came out, back around March or April, we all ran it in the terminal and it was messy. A proper interface changes how much you actually use it.\n\nWant this working in your business, not just bookmarked? Setting up an agent operating system for your business is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## A tour of the Herald OS dashboard\n\nWhen you open it, it says “Good morning, Julian — your day already in motion.” It pulls in your scheduled tasks for the day, shows what needs attention, and suggests where to pick up where you left off, based on your recent documents, projects, chats and calendar events. You can switch that on or off. You can talk to it with your voice, and it even used screenshots I’d recently taken on my desktop to show what I’ve been working on.\n\nSection\nWhat it does\n\nOverview\nYour day at a glance: scheduled tasks, what needs attention, and up to three “pick up where you left off” suggestions\n\nHermes\nChat with Hermes normally, with a preview pane and sources Hermes can read\n\nSpaces\nSeparate Ideas, Work and Personal spaces — add more for clients or companies\n\nMissions\nGive Hermes a goal and it plans it out step by step\n\nMemory\nSee and manage everything Hermes remembers about you\n\nFiles\nRecent, favourites, projects, downloads, shared and deleted files Hermes can access\n\nAutomations\nSwitch scheduled routines on and off\n\nConnections\nBring apps and tools into your agents\n\nSettings\nModels, where agents run (including Docker), background agents, approvals, history, themes, plugins, voice and privacy\n\n## Herald OS spaces and missions\n\nSpaces are one of my favourite features. You get Ideas, Work and Personal out of the box, and you can add more. Inside the AI Profit Boardroom I constantly get the question: “If I have separate companies or clients, how should I set up my agent OS?” This is a really clean answer — one space per client or company.\n\nMissions are where you give Hermes a bigger goal — “build out a new website for me” — and it plans the work out step by step and gets going.\n\n## Herald OS settings worth knowing\n\n- Preferred model — I had GPT-6 Astra running through its CLI.\n\n- Where agents run — including Docker, which a lot of people ask about.\n\n- Background agents — how many can run at once.\n\n- Approvals — auto-approve on or off, and ask before sending messages.\n\n- Activity history — see everything Hermes has done.\n\n- General — full screen, default space, projects folder, do not disturb, stay awake, screen saver, dictation.\n\n- Themes — twelve built in, and you can make your own.\n\n- Software — manage coding agents and local models like Claude Code, Codex and LM Studio.\n\n- Plugins — paste a GitHub link and click add.\n\n- Usage — tokens used, plan and balance.\n\n- Voice — choose a local or live engine and see all the voice commands.\n\n## Herald OS vs Hermes Desktop\n\nOption\nWhat it is\nBest for\n\nHerald OS\nA full, free agent-native OS UI around Hermes — open source, alpha\nPeople who want the nicest-looking Hermes interface and don’t mind early software\n\nHermes Desktop\nNous Research’s official Hermes app, with a plugin catalogue\nStability and official support\n\nMy Agent OS (AI Profit Boardroom)\nMy agentic operating system — manages Hermes and other agents in one place\nRunning several agents, not just Hermes, with training and support\n\nHermes in the terminal\nThe original way to run Hermes\nDevelopers who live in the command line\n\nHere’s the cool part: my automations synced across Herald OS, Hermes Desktop and my Agent OS — my daily 6am to-do recap, daily Japanese practice and morning inbox triage showed up in all three. So you don’t have to pick just one. Hermes Desktop has the official plugin marketplace; Herald OS has the nicer design.\n\n## Herald OS: what to watch out for\n\n- It’s alpha software — expect rough edges. In my test the top of the window cut off slightly and Connections didn’t sync for me.\n\n- The Mac app isn’t notarised by Apple yet, which is why the setup removes the quarantine flag — only do that for a build you downloaded from the official releases page.\n\n- Check what’s on screen before you share it — the Memory page showed my Telegram details while I was recording.\n\n- Keep approvals on — leave “ask before sending messages” switched on until you trust your setup.\n\n- Review the activity history — Hermes can set things up in the background that you forget about.\n\n## My verdict on Herald OS\n\nHerald OS is super clean, easy to use and synced up quickly. If you want a beautiful interface for Hermes and you don’t love Hermes Desktop, it’s a great free option — just remember it’s alpha, and expect to fix the odd thing along the way.\n\n## FAQ: herald os\n\n### Is Herald OS free?\n\nYes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.\n\n### Is Herald OS made by Nous Research?\n\nNo — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.\n\n### What is Herald OS?\n\nAn agent-native operating system with Hermes Agent as the interface — you talk or type to Hermes and it works across your machine.\n\n### What platforms does Herald OS run on?\n\nA Mac app for Apple Silicon (macOS 13+), a Fedora-based Herald OS Linux ISO, an Arch/Omarchy package and a Linux tarball.\n\n### Is Herald OS better than Hermes Desktop?\n\nIt looks nicer and organises work into spaces and missions; Hermes Desktop is official and more stable. Your automations can sync across both.\n\n### Is Herald OS safe?\n\nIt asks before changing anything and logs actions, but it’s alpha software — keep approvals on and check the activity history.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes agent operating system gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Herald OS GitHub Install Guide\n\n- Hermes Herald AI Agent\n\n- Hermes Agent OS Free\n\nLast updated October 2026. This page is a living guide to herald os — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/herald-os/?utm_source=rss&utm_medium=rss&utm_campaign=herald-os",
+      "author": "Clawdbot",
+      "published": "2026-10-08T03:59:44",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A hands-on review of Herald OS, the free MIT-licensed agent-native OS built by independent developer Luke The Dev wrapping Hermes Agent. The reviewer describes a dashboard, spaces, missions, memory, files, and automations interface, running as a Mac app (Apple Silicon) or full Linux system, calling it early alpha with brilliant design but a few rough edges, and comparing it with Hermes Desktop.",
+      "importance_score": 67.0,
+      "reasoning": "An independent evaluation with concrete feature-level detail on a prominent third-party Hermes integration, including a comparison with Hermes Desktop; valuable ecosystem signal though from a promotional-leaning blog.",
+      "themes": [
+        "Agent-Native OS",
+        "Ecosystem Tools",
+        "Product Reviews"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A hands-on review of Herald OS, the free MIT-licensed agent-native OS built by independent developer Luke The Dev wrapping Hermes Agent. The reviewer describes a dashboard, spaces, missions, memory, files, and automations interface, running as a Mac app (Apple Silicon) or full Linux system, calling it early alpha with brilliant design but a few rough edges, and comparing it with Hermes Desktop.</p>",
+      "content_html": "<p>Herald OS is a free, open-source, agent-native operating system with Hermes Agent as the interface — and honestly, it’s the best-looking way to use Hermes I’ve seen. You talk or type to Hermes, and it works across your whole machine. I set it up and gave you the full tour in the video below. Here’s what it does, how to get it, and how it compares with Hermes Desktop.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Herald OS is free and MIT-licensed, built by independent developer Luke The Dev.</li>\n</ul>\n<ul>\n<li>It wraps Hermes Agent in a full OS-style interface: dashboard, spaces, missions, memory, files and automations.</li>\n</ul>\n<ul>\n<li>It runs as a Mac app (Apple Silicon) or a full Linux system.</li>\n</ul>\n<ul>\n<li>It’s early alpha — brilliant design, a few rough edges.</li>\n</ul>\n<h2>What Herald OS is</h2>\n<p>Herald OS describes itself as an agent-native operating system with Hermes Agent as the interface. Instead of opening apps and clicking around yourself, you tell Hermes what you want — open an app, sort your files, run a routine — and it does it, asking permission before it changes anything.</p>\n<p>It’s built by Luke The Dev, who posts loads of Hermes content on X. Shout out to Luke — this is a seriously impressive project. It’s independent, not made by Nous Research, but it runs on Hermes Agent, which is installed alongside it.</p>\n<p>Herald OS at a glance</p>\n<p>What it is</p>\n<p>An agent-native operating system with Hermes Agent as the interface</p>\n<p>Made by</p>\n<p>Luke The Dev (iamlukethedev) — independent, not affiliated with Nous Research</p>\n<p>Price</p>\n<p>Free — MIT licence; you only pay for the AI model you connect</p>\n<p>Version</p>\n<p>0.1 alpha — early software</p>\n<p>Platforms</p>\n<p>macOS app (Apple Silicon, macOS 13+), Herald OS Linux (Fedora-based ISO), Arch/Omarchy package, Linux tarball</p>\n<p>Needs</p>\n<p>Hermes Agent, plus a Nous Portal account or an API key for a supported provider</p>\n<p>Source</p>\n<p>github.com/iamlukethedev/Herald-OS</p>\n<h2>How I set up Herald OS</h2>\n<p>I literally opened Claude and said, “Can you set this up?” About two minutes later, Herald OS was running. If you’d rather do it yourself, the steps for every platform are in my Herald OS GitHub install guide.</p>\n<p>Why bother with an operating system for your agent? Because it makes Hermes far easier to navigate and command. When Hermes first came out, back around March or April, we all ran it in the terminal and it was messy. A proper interface changes how much you actually use it.</p>\n<p>Want this working in your business, not just bookmarked? Setting up an agent operating system for your business is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>A tour of the Herald OS dashboard</h2>\n<p>When you open it, it says “Good morning, Julian — your day already in motion.” It pulls in your scheduled tasks for the day, shows what needs attention, and suggests where to pick up where you left off, based on your recent documents, projects, chats and calendar events. You can switch that on or off. You can talk to it with your voice, and it even used screenshots I’d recently taken on my desktop to show what I’ve been working on.</p>\n<p>Section</p>\n<p>What it does</p>\n<p>Overview</p>\n<p>Your day at a glance: scheduled tasks, what needs attention, and up to three “pick up where you left off” suggestions</p>\n<p>Hermes</p>\n<p>Chat with Hermes normally, with a preview pane and sources Hermes can read</p>\n<p>Spaces</p>\n<p>Separate Ideas, Work and Personal spaces — add more for clients or companies</p>\n<p>Missions</p>\n<p>Give Hermes a goal and it plans it out step by step</p>\n<p>Memory</p>\n<p>See and manage everything Hermes remembers about you</p>\n<p>Files</p>\n<p>Recent, favourites, projects, downloads, shared and deleted files Hermes can access</p>\n<p>Automations</p>\n<p>Switch scheduled routines on and off</p>\n<p>Connections</p>\n<p>Bring apps and tools into your agents</p>\n<p>Settings</p>\n<p>Models, where agents run (including Docker), background agents, approvals, history, themes, plugins, voice and privacy</p>\n<h2>Herald OS spaces and missions</h2>\n<p>Spaces are one of my favourite features. You get Ideas, Work and Personal out of the box, and you can add more. Inside the AI Profit Boardroom I constantly get the question: “If I have separate companies or clients, how should I set up my agent OS?” This is a really clean answer — one space per client or company.</p>\n<p>Missions are where you give Hermes a bigger goal — “build out a new website for me” — and it plans the work out step by step and gets going.</p>\n<h2>Herald OS settings worth knowing</h2>\n<ul>\n<li>Preferred model — I had GPT-6 Astra running through its CLI.</li>\n</ul>\n<ul>\n<li>Where agents run — including Docker, which a lot of people ask about.</li>\n</ul>\n<ul>\n<li>Background agents — how many can run at once.</li>\n</ul>\n<ul>\n<li>Approvals — auto-approve on or off, and ask before sending messages.</li>\n</ul>\n<ul>\n<li>Activity history — see everything Hermes has done.</li>\n</ul>\n<ul>\n<li>General — full screen, default space, projects folder, do not disturb, stay awake, screen saver, dictation.</li>\n</ul>\n<ul>\n<li>Themes — twelve built in, and you can make your own.</li>\n</ul>\n<ul>\n<li>Software — manage coding agents and local models like Claude Code, Codex and LM Studio.</li>\n</ul>\n<ul>\n<li>Plugins — paste a GitHub link and click add.</li>\n</ul>\n<ul>\n<li>Usage — tokens used, plan and balance.</li>\n</ul>\n<ul>\n<li>Voice — choose a local or live engine and see all the voice commands.</li>\n</ul>\n<h2>Herald OS vs Hermes Desktop</h2>\n<p>Option</p>\n<p>What it is</p>\n<p>Best for</p>\n<p>Herald OS</p>\n<p>A full, free agent-native OS UI around Hermes — open source, alpha</p>\n<p>People who want the nicest-looking Hermes interface and don’t mind early software</p>\n<p>Hermes Desktop</p>\n<p>Nous Research’s official Hermes app, with a plugin catalogue</p>\n<p>Stability and official support</p>\n<p>My Agent OS (AI Profit Boardroom)</p>\n<p>My agentic operating system — manages Hermes and other agents in one place</p>\n<p>Running several agents, not just Hermes, with training and support</p>\n<p>Hermes in the terminal</p>\n<p>The original way to run Hermes</p>\n<p>Developers who live in the command line</p>\n<p>Here’s the cool part: my automations synced across Herald OS, Hermes Desktop and my Agent OS — my daily 6am to-do recap, daily Japanese practice and morning inbox triage showed up in all three. So you don’t have to pick just one. Hermes Desktop has the official plugin marketplace; Herald OS has the nicer design.</p>\n<h2>Herald OS: what to watch out for</h2>\n<ul>\n<li>It’s alpha software — expect rough edges. In my test the top of the window cut off slightly and Connections didn’t sync for me.</li>\n</ul>\n<ul>\n<li>The Mac app isn’t notarised by Apple yet, which is why the setup removes the quarantine flag — only do that for a build you downloaded from the official releases page.</li>\n</ul>\n<ul>\n<li>Check what’s on screen before you share it — the Memory page showed my Telegram details while I was recording.</li>\n</ul>\n<ul>\n<li>Keep approvals on — leave “ask before sending messages” switched on until you trust your setup.</li>\n</ul>\n<ul>\n<li>Review the activity history — Hermes can set things up in the background that you forget about.</li>\n</ul>\n<h2>My verdict on Herald OS</h2>\n<p>Herald OS is super clean, easy to use and synced up quickly. If you want a beautiful interface for Hermes and you don’t love Hermes Desktop, it’s a great free option — just remember it’s alpha, and expect to fix the odd thing along the way.</p>\n<h2>FAQ: herald os</h2>\n<h3>Is Herald OS free?</h3>\n<p>Yes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.</p>\n<h3>Is Herald OS made by Nous Research?</h3>\n<p>No — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.</p>\n<h3>What is Herald OS?</h3>\n<p>An agent-native operating system with Hermes Agent as the interface — you talk or type to Hermes and it works across your machine.</p>\n<h3>What platforms does Herald OS run on?</h3>\n<p>A Mac app for Apple Silicon (macOS 13+), a Fedora-based Herald OS Linux ISO, an Arch/Omarchy package and a Linux tarball.</p>\n<h3>Is Herald OS better than Hermes Desktop?</h3>\n<p>It looks nicer and organises work into spaces and missions; Hermes Desktop is official and more stable. Your automations can sync across both.</p>\n<h3>Is Herald OS safe?</h3>\n<p>It asks before changing anything and logs actions, but it’s alpha software — keep approvals on and check the activity history.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes agent operating system gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Herald OS GitHub Install Guide</li>\n</ul>\n<ul>\n<li>Hermes Herald AI Agent</li>\n</ul>\n<ul>\n<li>Hermes Agent OS Free</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to herald os — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49424643) earlier this week, A post pointing to the Hermes Agent GitHub pull-requests page, noting the repository has roughly 23,000 open PRs and the number is climbing. This is an observation about the scale of community contribution volume and potential maintainer review backlog.",
+      "importance_score": 33,
+      "reasoning": "A very large open-PR count is a meaningful signal about project governance, review capacity, and community growth; the observation itself is thin but the underlying signal is important for ecosystem health.",
+      "themes": [
+        "Project Governance",
+        "Community Growth"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A post pointing to the Hermes Agent GitHub pull-requests page, noting the repository has roughly 23,000 open PRs and the number is climbing. This is an observation about the scale of community contribution volume and potential maintainer review backlog.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "c46aae55bd34",
+      "title": "Hermes Herald AI Agent: How Hermes Runs Your Whole Computer in Herald OS",
+      "content": "The Hermes Herald AI agent is Hermes Agent running as the interface to Herald OS — a free, open-source operating system where you talk or type to Hermes and it works across your whole computer. In the video below I show it in action. This guide focuses on the agent side: what Hermes can do inside Herald, how it asks permission, and how to command it well.\n\nKey takeaways\n\n- In Herald OS, Hermes Agent is the interface — it opens apps, organises files and runs routines for you.\n\n- Every system tool has a permission tier; anything that changes or deletes things asks first.\n\n- Talk to it with push-to-talk or “hey Hermes”.\n\n- Not to be confused with Hermes v0.20 “Herald”, the earlier Hermes release.\n\n## What the Hermes Herald AI agent is\n\nHerald OS is an independent project by Luke The Dev that puts Hermes Agent at the centre of your computer. You don’t open apps and click through menus — you tell Hermes what you need, and it does the work across the machine.\n\nQuick clarification, because the names overlap: “Herald” was also the codename of the Hermes v0.20 release back in August, which added voice and agent-to-agent features. I covered that in my Hermes Herald release guide. This page is about Hermes as the agent inside Herald OS.\n\n## How the Hermes Herald AI agent controls your computer\n\nHerald OS connects to Hermes through a plugin called `herald-os-bridge`, which gives Hermes a set of system tools. Each tool has a permission tier:\n\nTool tier\nWhat happens\n\nRead\nRuns directly and is logged\n\nAct\nRuns directly and is logged\n\nMutate\nAsks you first\n\nDestructive\nAsks you every single time\n\nEvery action is written to an audit log, so you can always see what your agent did. The developer has also tightened things so Herald’s system tools only run inside Herald OS sessions — not in your other Hermes sessions like messaging or cron jobs.\n\nWant this working in your business, not just bookmarked? Running Hermes Agent as your AI employee is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## Giving the Hermes Herald AI agent missions\n\nMissions are for bigger goals. Type something like “build out a new website for me” and Hermes plans it out step by step, then starts working. There’s also a Studio feature that builds a project from a description with a live preview.\n\nFor day-to-day work, the dashboard does the thinking for you: it looks at your recent files, projects, chats and calendar and suggests up to three threads to pick back up. And if an app crashes, Hermes can explain the crash report in plain English.\n\n## Talking to Hermes in Herald OS\n\nVoice is one of the most useful parts. Use a push-to-talk key or say “hey Hermes”, and choose between a free voice engine and an opt-in real-time one. It feels like having Jarvis on your computer. There’s a full list of voice commands in Settings, and the latest update lets you find, read, name and file documents by voice — perfect for sorting a folder of badly named PDFs.\n\n## Memory, files and spaces\n\n- Memory — see everything Hermes remembers about you, and manage it.\n\n- Files — control exactly which files Hermes can access.\n\n- Spaces — keep Ideas, Work and Personal separate, and add spaces for each client or company.\n\n- Automations — your scheduled routines, switched on and off in one place, synced with Hermes Desktop.\n\nCareful when you screen-share: my Memory page showed my Telegram details while recording. Check what’s visible before you share your screen.\n\n## Setting up the Hermes Herald AI agent safely\n\n- Start with auto-approve off and “ask before sending messages” on.\n\n- Limit background agents until you know what’s running.\n\n- Check the activity history regularly — it’s easy to forget what you set up.\n\n- Give Hermes access to the folders it needs, not your whole drive.\n\n- Remember it’s alpha software — keep backups of anything important.\n\nFor the full install steps, see my Herald OS GitHub guide, and for the overall tour, my Herald OS review.\n\n## Hermes Herald AI agent vs Hermes Desktop\n\nHermes in Herald OS\nHermes Desktop\n\nMade by\nLuke The Dev (independent)\nNous Research (official)\n\nScope\nRuns your whole computer — apps, files, system settings\nAn app for chatting with and configuring Hermes\n\nOrganisation\nSpaces, missions, a daily dashboard\nProfiles, chats, plugin catalogue\n\nVoice\nPush-to-talk, “hey Hermes”, free or real-time engine\nVia voice plugins\n\nMaturity\n0.1 alpha\nStable releases\n\nThe big difference is scope. Hermes Desktop is where you talk to your agent; in Herald OS, Hermes is the computer’s front door. You can run both — my automations showed up in each.\n\n## Example commands to try\n\n- “Prep my day” — check my calendar and what’s scheduled, then tell me what needs attention.\n\n- “Sort my Downloads folder and rename the PDFs properly.”\n\n- “Set up a daily 6am to-do recap.”\n\n- “Start a mission: build a landing page for my new offer.”\n\n- “Explain why that app just crashed.”\n\n- “Switch to my Work space and open my latest project.”\n\nStart with read-only requests while you learn how it behaves, then move on to ones that change things once you’re comfortable with the approval prompts.\n\n## Is the Hermes Herald AI agent worth it?\n\nIf you already use Hermes, this is the most natural way I’ve seen to let it run your computer: clean design, sensible permissions and voice built in. The Hermes Herald AI agent setup is free — try it, keep approvals on, and build from there.\n\nOne last tip: treat Hermes in Herald OS like a new team member. Give it small, clear jobs first, check its work in the activity history, and widen its permissions only as it earns your trust. That approach has worked for every agent I’ve set up, and it’s the fastest way to get real value without nasty surprises.\n\n## FAQ: hermes herald ai agent\n\n### Is Herald OS free?\n\nYes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.\n\n### Is Herald OS made by Nous Research?\n\nNo — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.\n\n### What is the Hermes Herald AI agent?\n\nHermes Agent running as the interface to Herald OS, where it opens apps, organises files and runs routines across your computer.\n\n### Is it the same as the Hermes Herald release?\n\nNo — “Herald” was also the codename for Hermes v0.20 in August 2026. Herald OS is a separate, independent operating system built on Hermes.\n\n### Does Hermes ask before changing things in Herald OS?\n\nYes — tools that change things ask first, destructive tools ask every time, and everything is logged.\n\n### Can I talk to Hermes in Herald OS?\n\nYes — with a push-to-talk key or the “hey Hermes” wake phrase.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes Agent setup gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Herald OS Review\n\n- Hermes Herald (v0.20) Release\n\n- Herald OS GitHub\n\nLast updated October 2026. This page is a living guide to hermes herald ai agent — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-herald-ai-agent/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-herald-ai-agent",
+      "author": "Clawdbot",
+      "published": "2026-10-08T03:59:50",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A guide explaining how Hermes Agent functions as the interface to Herald OS: opening apps, organizing files, and running routines across the whole computer, with permission tiers requiring confirmation before destructive actions, voice control via push-to-talk or wake word. It clarifies that Herald was also the codename of the Hermes v0.20 release in August 2026, which added voice and agent-to-agent features.",
+      "importance_score": 65.0,
+      "reasoning": "Useful explanation of the permission-tiered agent-native OS interaction model and a helpful disambiguation between Herald OS and the Hermes v0.20 Herald release; lighter on deep technical detail.",
+      "themes": [
+        "Agent-Native OS",
+        "Permissions and Safety",
+        "Voice Features"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A guide explaining how Hermes Agent functions as the interface to Herald OS: opening apps, organizing files, and running routines across the whole computer, with permission tiers requiring confirmation before destructive actions, voice control via push-to-talk or wake word. It clarifies that Herald was also the codename of the Hermes v0.20 release in August 2026, which added voice and agent-to-agent features.</p>",
+      "content_html": "<p>The Hermes Herald AI agent is Hermes Agent running as the interface to Herald OS — a free, open-source operating system where you talk or type to Hermes and it works across your whole computer. In the video below I show it in action. This guide focuses on the agent side: what Hermes can do inside Herald, how it asks permission, and how to command it well.</p>\n<p>Key takeaways</p>\n<ul>\n<li>In Herald OS, Hermes Agent is the interface — it opens apps, organises files and runs routines for you.</li>\n</ul>\n<ul>\n<li>Every system tool has a permission tier; anything that changes or deletes things asks first.</li>\n</ul>\n<ul>\n<li>Talk to it with push-to-talk or “hey Hermes”.</li>\n</ul>\n<ul>\n<li>Not to be confused with Hermes v0.20 “Herald”, the earlier Hermes release.</li>\n</ul>\n<h2>What the Hermes Herald AI agent is</h2>\n<p>Herald OS is an independent project by Luke The Dev that puts Hermes Agent at the centre of your computer. You don’t open apps and click through menus — you tell Hermes what you need, and it does the work across the machine.</p>\n<p>Quick clarification, because the names overlap: “Herald” was also the codename of the Hermes v0.20 release back in August, which added voice and agent-to-agent features. I covered that in my Hermes Herald release guide. This page is about Hermes as the agent inside Herald OS.</p>\n<h2>How the Hermes Herald AI agent controls your computer</h2>\n<p>Herald OS connects to Hermes through a plugin called <code>herald-os-bridge</code>, which gives Hermes a set of system tools. Each tool has a permission tier:</p>\n<p>Tool tier</p>\n<p>What happens</p>\n<p>Read</p>\n<p>Runs directly and is logged</p>\n<p>Act</p>\n<p>Runs directly and is logged</p>\n<p>Mutate</p>\n<p>Asks you first</p>\n<p>Destructive</p>\n<p>Asks you every single time</p>\n<p>Every action is written to an audit log, so you can always see what your agent did. The developer has also tightened things so Herald’s system tools only run inside Herald OS sessions — not in your other Hermes sessions like messaging or cron jobs.</p>\n<p>Want this working in your business, not just bookmarked? Running Hermes Agent as your AI employee is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>Giving the Hermes Herald AI agent missions</h2>\n<p>Missions are for bigger goals. Type something like “build out a new website for me” and Hermes plans it out step by step, then starts working. There’s also a Studio feature that builds a project from a description with a live preview.</p>\n<p>For day-to-day work, the dashboard does the thinking for you: it looks at your recent files, projects, chats and calendar and suggests up to three threads to pick back up. And if an app crashes, Hermes can explain the crash report in plain English.</p>\n<h2>Talking to Hermes in Herald OS</h2>\n<p>Voice is one of the most useful parts. Use a push-to-talk key or say “hey Hermes”, and choose between a free voice engine and an opt-in real-time one. It feels like having Jarvis on your computer. There’s a full list of voice commands in Settings, and the latest update lets you find, read, name and file documents by voice — perfect for sorting a folder of badly named PDFs.</p>\n<h2>Memory, files and spaces</h2>\n<ul>\n<li>Memory — see everything Hermes remembers about you, and manage it.</li>\n</ul>\n<ul>\n<li>Files — control exactly which files Hermes can access.</li>\n</ul>\n<ul>\n<li>Spaces — keep Ideas, Work and Personal separate, and add spaces for each client or company.</li>\n</ul>\n<ul>\n<li>Automations — your scheduled routines, switched on and off in one place, synced with Hermes Desktop.</li>\n</ul>\n<p>Careful when you screen-share: my Memory page showed my Telegram details while recording. Check what’s visible before you share your screen.</p>\n<h2>Setting up the Hermes Herald AI agent safely</h2>\n<ul>\n<li>Start with auto-approve off and “ask before sending messages” on.</li>\n</ul>\n<ul>\n<li>Limit background agents until you know what’s running.</li>\n</ul>\n<ul>\n<li>Check the activity history regularly — it’s easy to forget what you set up.</li>\n</ul>\n<ul>\n<li>Give Hermes access to the folders it needs, not your whole drive.</li>\n</ul>\n<ul>\n<li>Remember it’s alpha software — keep backups of anything important.</li>\n</ul>\n<p>For the full install steps, see my Herald OS GitHub guide, and for the overall tour, my Herald OS review.</p>\n<h2>Hermes Herald AI agent vs Hermes Desktop</h2>\n<p>Hermes in Herald OS</p>\n<p>Hermes Desktop</p>\n<p>Made by</p>\n<p>Luke The Dev (independent)</p>\n<p>Nous Research (official)</p>\n<p>Scope</p>\n<p>Runs your whole computer — apps, files, system settings</p>\n<p>An app for chatting with and configuring Hermes</p>\n<p>Organisation</p>\n<p>Spaces, missions, a daily dashboard</p>\n<p>Profiles, chats, plugin catalogue</p>\n<p>Voice</p>\n<p>Push-to-talk, “hey Hermes”, free or real-time engine</p>\n<p>Via voice plugins</p>\n<p>Maturity</p>\n<p>0.1 alpha</p>\n<p>Stable releases</p>\n<p>The big difference is scope. Hermes Desktop is where you talk to your agent; in Herald OS, Hermes is the computer’s front door. You can run both — my automations showed up in each.</p>\n<h2>Example commands to try</h2>\n<ul>\n<li>“Prep my day” — check my calendar and what’s scheduled, then tell me what needs attention.</li>\n</ul>\n<ul>\n<li>“Sort my Downloads folder and rename the PDFs properly.”</li>\n</ul>\n<ul>\n<li>“Set up a daily 6am to-do recap.”</li>\n</ul>\n<ul>\n<li>“Start a mission: build a landing page for my new offer.”</li>\n</ul>\n<ul>\n<li>“Explain why that app just crashed.”</li>\n</ul>\n<ul>\n<li>“Switch to my Work space and open my latest project.”</li>\n</ul>\n<p>Start with read-only requests while you learn how it behaves, then move on to ones that change things once you’re comfortable with the approval prompts.</p>\n<h2>Is the Hermes Herald AI agent worth it?</h2>\n<p>If you already use Hermes, this is the most natural way I’ve seen to let it run your computer: clean design, sensible permissions and voice built in. The Hermes Herald AI agent setup is free — try it, keep approvals on, and build from there.</p>\n<p>One last tip: treat Hermes in Herald OS like a new team member. Give it small, clear jobs first, check its work in the activity history, and widen its permissions only as it earns your trust. That approach has worked for every agent I’ve set up, and it’s the fastest way to get real value without nasty surprises.</p>\n<h2>FAQ: hermes herald ai agent</h2>\n<h3>Is Herald OS free?</h3>\n<p>Yes — it’s free and open source under the MIT licence. You only pay for the AI model you connect to Hermes.</p>\n<h3>Is Herald OS made by Nous Research?</h3>\n<p>No — it’s an independent project by Luke The Dev. It runs on Hermes Agent, which is made by Nous Research.</p>\n<h3>What is the Hermes Herald AI agent?</h3>\n<p>Hermes Agent running as the interface to Herald OS, where it opens apps, organises files and runs routines across your computer.</p>\n<h3>Is it the same as the Hermes Herald release?</h3>\n<p>No — “Herald” was also the codename for Hermes v0.20 in August 2026. Herald OS is a separate, independent operating system built on Hermes.</p>\n<h3>Does Hermes ask before changing things in Herald OS?</h3>\n<p>Yes — tools that change things ask first, destructive tools ask every time, and everything is logged.</p>\n<h3>Can I talk to Hermes in Herald OS?</h3>\n<p>Yes — with a push-to-talk key or the “hey Hermes” wake phrase.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes Agent setup gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Herald OS Review</li>\n</ul>\n<ul>\n<li>Hermes Herald (v0.20) Release</li>\n</ul>\n<ul>\n<li>Herald OS GitHub</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes herald ai agent — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49136162",
+      "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+      "author": "yruzin",
+      "published": "2026-08-01T17:00:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49136162) earlier this week, A technical write-up on codenote.net describing a Hermes Agent skill that autonomously loops between Codex and Claude Code, implementing an issue-to-PR autonomous workflow that chains the two coding tools.",
+      "importance_score": 32,
+      "reasoning": "A concrete, reproducible skill demonstrating cross-tool agentic automation (issue to PR) bridging Codex and Claude Code; good technical depth for practitioners building similar workflows.",
+      "themes": [
+        "Skills and Automation",
+        "Multi-Tool Workflows"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49136162",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A technical write-up on codenote.net describing a Hermes Agent skill that autonomously loops between Codex and Claude Code, implementing an issue-to-PR autonomous workflow that chains the two coding tools.</p>",
+      "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+    },
+    {
+      "id": "hn-49133145",
+      "title": "Semantic Memory for Hermes Agent with LanceDB",
+      "content": "Semantic Memory for Hermes Agent with LanceDB",
+      "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb",
+      "author": "eigenBasis",
+      "published": "2026-08-01T10:47:04Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-07&category=research#item-hn-49133145) earlier this week, A LanceDB blog post covering how to add semantic memory to Hermes Agent using LanceDB, providing an integration pattern for persistent, vector-based memory for the agent.",
+      "importance_score": 31,
+      "reasoning": "Semantic memory is a key capability gap for long-running agents, and a vendor-backed integration guide with a specific datastore offers actionable technical value.",
+      "themes": [
+        "Memory and Context",
+        "Vector Databases"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49133145",
+        "original_date": "2026-10-07",
+        "original_category": "research",
+        "original_title": "Semantic Memory for Hermes Agent with LanceDB",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A LanceDB blog post covering how to add semantic memory to Hermes Agent using LanceDB, providing an integration pattern for persistent, vector-based memory for the agent.</p>",
+      "content_html": "<p>Semantic Memory for Hermes Agent with LanceDB</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The author introduces verso, a free open-source agent orchestrator for knowledge work built on Hermes Agent. Started as a learning exercise, it grew into a daily work tool providing an intuitive GUI-style way to interact with Hermes Agent without the CLI, and the author reports significant productivity gains.",
+      "importance_score": 62.0,
+      "reasoning": "A substantial third-party ecosystem project that extends Hermes Agent beyond the CLI; notable for ecosystem growth, though it is a community showcase rather than core functionality.",
+      "themes": [
+        "Ecosystem Tools",
+        "Agent Orchestration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The author introduces verso, a free open-source agent orchestrator for knowledge work built on Hermes Agent. Started as a learning exercise, it grew into a daily work tool providing an intuitive GUI-style way to interact with Hermes Agent without the CLI, and the author reports significant productivity gains.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub project providing Grafana-based observability for Hermes Agent (alexander-akhmetov/grafana-agento11y-hermes), enabling monitoring and visualization of agent activity and performance metrics.",
+      "importance_score": 61.0,
+      "reasoning": "Observability tooling addresses a real operational gap for running agents in production; valuable ecosystem contribution, though the announcement itself is a minimal Show HN reference.",
+      "themes": [
+        "Observability",
+        "Ecosystem Tools"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub project providing Grafana-based observability for Hermes Agent (alexander-akhmetov/grafana-agento11y-hermes), enabling monitoring and visualization of agent activity and performance metrics.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A YC S26 startup launch for Almanac, described as a Hermes with a brain that knows everything about your company. The founders describe the difficulty of setting up Hermes for company-wide context, including building OAuth apps for every connector, and position their product as a solved, context-aware company knowledge agent.",
+      "importance_score": 60.0,
+      "reasoning": "A funded startup building directly on Hermes Agent signals commercial ecosystem momentum and highlights real setup friction (connectors, OAuth), but it is a product launch rather than technical documentation.",
+      "themes": [
+        "Ecosystem Startups",
+        "Company Knowledge and Connectors"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A YC S26 startup launch for Almanac, described as a Hermes with a brain that knows everything about your company. The founders describe the difficulty of setting up Hermes for company-wide context, including building OAuth apps for every connector, and position their product as a solved, context-aware company knowledge agent.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user reports a freshly provisioned Hermes agent on a headless Debian server entering a trance-like looping state during an environment-inspection task. The agent, running Z.ai GLM 5.3 Flash, spiraled into a long thinking block after executing terminal commands to print local environment details and PATH, prompting the user to ask whether the output is meaningful.",
+      "importance_score": 58.0,
+      "reasoning": "A concrete reliability report of agent looping or degradation tied to a specific model and headless setup; useful troubleshooting signal for the community, but anecdotal and not a fix or release.",
+      "themes": [
+        "Reliability and Debugging",
+        "Model Integrations"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user reports a freshly provisioned Hermes agent on a headless Debian server entering a trance-like looping state during an environment-inspection task. The agent, running Z.ai GLM 5.3 Flash, spiraled into a long thinking block after executing terminal commands to print local environment details and PATH, prompting the user to ask whether the output is meaningful.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository (jnorthrup/hermes-jekyl-hyde) presenting adversarial LLM reversal work against hermes-agent, apparently probing or demonstrating divergent agent behaviors, potentially a jailbreak or behavioral-inversion study.",
+      "importance_score": 57.0,
+      "reasoning": "Adversarial probing of the agent is relevant to security and robustness discussions around autonomous agents; the reference lacks detail but the topic carries security significance.",
+      "themes": [
+        "Security and Adversarial Testing",
+        "Agent Behavior"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository (jnorthrup/hermes-jekyl-hyde) presenting adversarial LLM reversal work against hermes-agent, apparently probing or demonstrating divergent agent behaviors, potentially a jailbreak or behavioral-inversion study.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub project announcing Refine Cycle, a self-improvement plugin for Hermes Agent hosted at Bergschloss/Refine-Cycle-for-Hermes-Agent. The plugin targets iterative agent self-refinement loops, extending the agent through the plugin system.",
+      "importance_score": 55.0,
+      "reasoning": "Demonstrates the extensibility of the Hermes plugin ecosystem with an interesting self-improvement concept, but the reference is minimal and effectiveness is unverified.",
+      "themes": [
+        "Plugins",
+        "Agent Self-Improvement"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub project announcing Refine Cycle, a self-improvement plugin for Hermes Agent hosted at Bergschloss/Refine-Cycle-for-Hermes-Agent. The plugin targets iterative agent self-refinement loops, extending the agent through the plugin system.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs a Linux-capable chip with an Arduino microcontroller and 4GB RAM with 32GB storage. The author preferred this to a personal machine or paid VPS for always-on hosting.",
+      "importance_score": 52.0,
+      "reasoning": "A creative low-cost self-hosting recipe that shows the agent client runs on modest edge hardware; practically useful for hobbyists but not broadly applicable.",
+      "themes": [
+        "Self-Hosting",
+        "Edge Hardware"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs a Linux-capable chip with an Arduino microcontroller and 4GB RAM with 32GB storage. The author preferred this to a personal machine or paid VPS for always-on hosting.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A discussion questioning whether Hermes Agent is unusable without a model router, linking to Bifrost (maximhq/bifrost) as the referenced routing layer. It raises the question of how dependent the agent is on external model-routing infrastructure.",
+      "importance_score": 49.0,
+      "reasoning": "Touches an architecturally relevant question about model routing dependencies, but the framing is rhetorical and the reference provides limited substantive detail.",
+      "themes": [
+        "Model Routing",
+        "Architecture"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A discussion questioning whether Hermes Agent is unusable without a model router, linking to Bifrost (maximhq/bifrost) as the referenced routing layer. It raises the question of how dependent the agent is on external model-routing infrastructure.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The official Hermes Agent website and project overview, describing it as an open-source AI agent that grows with the user. Serves as the primary landing point for the project from Nous Research.",
+      "importance_score": 48.0,
+      "reasoning": "Foundational project reference with branding and positioning value, but contains no new technical detail, release information, or findings.",
+      "themes": [
+        "Project Overview"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The official Hermes Agent website and project overview, describing it as an open-source AI agent that grows with the user. Serves as the primary landing point for the project from Nous Research.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub issue (issue 10232 in NousResearch/hermes-agent) reporting that a question asking whether EvoMap's Evolver was a reference was deleted and the user blocked, raising concerns about moderation or suppression of certain questions in project channels.",
+      "importance_score": 44.0,
+      "reasoning": "Moderation and issue-handling transparency matter for community trust, but the item is a process complaint with limited technical content.",
+      "themes": [
+        "Community Moderation",
+        "Project Governance"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub issue (issue 10232 in NousResearch/hermes-agent) reporting that a question asking whether EvoMap's Evolver was a reference was deleted and the user blocked, raising concerns about moderation or suppression of certain questions in project channels.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by heyjonny reflecting on a misused or misunderstood interaction with Hermes Agent. It appears to be a lessons-learned narrative about incorrect usage patterns of the agent tool.",
+      "importance_score": 42.0,
+      "reasoning": "Anecdotal reflection on agent usage with possible instructive value on common pitfalls, but limited technical depth and no code or documentation changes.",
+      "themes": [
+        "Usage Patterns",
+        "Lessons Learned"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by heyjonny reflecting on a misused or misunderstood interaction with Hermes Agent. It appears to be a lessons-learned narrative about incorrect usage patterns of the agent tool.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A solo developer launches fn2.ai/claude, a Claude Code plugin for querying 10.6 million earnings-call transcript embeddings, backed by sharded, regionally replicated PostgreSQL and ElasticSearch. Example queries include asking what NVIDIA said about data-center demand. Tangential to Hermes Agent itself.",
+      "importance_score": 30.0,
+      "reasoning": "Technically interesting financial-data plugin, but it targets Claude Code rather than Hermes Agent and has no direct bearing on Hermes functionality or documentation.",
+      "themes": [
+        "Third-Party Plugins",
+        "Embeddings and Search"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A solo developer launches fn2.ai/claude, a Claude Code plugin for querying 10.6 million earnings-call transcript embeddings, backed by sharded, regionally replicated PostgreSQL and ElasticSearch. Example queries include asking what NVIDIA said about data-center demand. Tangential to Hermes Agent itself.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN discussion questioning whether the Hermes Agent name creates trademark conflict with the luxury brand Hermès. No resolution or legal analysis is included in the reference.",
+      "importance_score": 25.0,
+      "reasoning": "A speculative naming and trademark question with little technical content; relevant only marginally to project branding discussions.",
+      "themes": [
+        "Naming and Trademark"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN discussion questioning whether the Hermes Agent name creates trademark conflict with the luxury brand Hermès. No resolution or legal analysis is included in the reference.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    }
+  ]
+}

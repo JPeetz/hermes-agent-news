@@ -1,0 +1,502 @@
+{
+  "category": "news",
+  "date": "2026-10-26",
+  "category_summary": "**Releases & Guides:** A practical deep-dive covers the **[v0.22.x](/?date=2026-10-26&category=news#item-5997d58d23ff)** release line (from **v0.22.1** onward) — what changed, what to verify after upgrading, and what's still pending. Essential reading before your next update. **Community Projects:** **[hermes-agent-template](/?date=2026-10-26&category=news#item-188d392057ef)** offers one-click Railway deployment of Hermes Agent with a web admin dashboard; **[fnos-hermes-agent](/?date=2026-10-26&category=news#item-85d2d1119b2e)** showcases Hermes as a dedicated assistant on **fnOS** NAS; **[Hermes Project Stewardship](/?date=2026-10-26&category=news#item-bf820ff147df)** introduces long-running, governance-style agent workflows with approval gates and outcome measurement; **[Hermes Walkie Talkie](/?date=2026-10-26&category=news#item-394c4676e36d)** lets independent Hermes sessions on one machine discover and coordinate via local-only messaging; **[File Access Manager](/?date=2026-10-26&category=news#item-506586570159)** adds per-path Read/Write/Denied permissions for Hermes profiles; **[Hermes Bot Kit](/?date=2026-10-26&category=news#item-9f2f33412f7b)** brings chat-style bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop; **[Memmy](/?date=2026-10-26&category=news#item-eea60312a10a)** provides a local memory layer with Hermes support. **Themes:** multi-agent orchestration (stewardship, walkie-talkie), self-hosting (Railway, fnOS), and safety/sandboxing (approval gates, SID-bound access, Docker-enforced file permissions).",
+  "category_summary_html": "<p><strong>Releases &amp; Guides:</strong> A practical deep-dive covers the <strong><a href=\"/?date=2026-10-26&amp;category=news#item-5997d58d23ff\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.x</a></strong> release line (from <strong>v0.22.1</strong> onward) — what changed, what to verify after upgrading, and what's still pending. Essential reading before your next update. <strong>Community Projects:</strong> <strong><a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-agent-template</a></strong> offers one-click Railway deployment of Hermes Agent with a web admin dashboard; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-85d2d1119b2e\" class=\"internal-link\" rel=\"noopener noreferrer\">fnos-hermes-agent</a></strong> showcases Hermes as a dedicated assistant on <strong>fnOS</strong> NAS; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-bf820ff147df\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Project Stewardship</a></strong> introduces long-running, governance-style agent workflows with approval gates and outcome measurement; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-394c4676e36d\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Walkie Talkie</a></strong> lets independent Hermes sessions on one machine discover and coordinate via local-only messaging; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\">File Access Manager</a></strong> adds per-path Read/Write/Denied permissions for Hermes profiles; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-9f2f33412f7b\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Bot Kit</a></strong> brings chat-style bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-eea60312a10a\" class=\"internal-link\" rel=\"noopener noreferrer\">Memmy</a></strong> provides a local memory layer with Hermes support. <strong>Themes:</strong> multi-agent orchestration (stewardship, walkie-talkie), self-hosting (Railway, fnOS), and safety/sandboxing (approval gates, SID-bound access, Docker-enforced file permissions).</p>",
+  "themes": [
+    {
+      "name": "Model Integration",
+      "description": "Users are actively sharing advanced methods to integrate high-performance and cost-effective commercial models like StepFun Step 5 and Kimi K3.1 Pro into the Hermes Agent framework.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 83.0
+    },
+    {
+      "name": "Self-Hosting & Deployment",
+      "description": "The community is rapidly producing infrastructure-level projects and templates, making it easier than ever to run Hermes Agent on private or personalized hardware like fnOS and Railway.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 77.0
+    },
+    {
+      "name": "Product Development",
+      "description": "Core development remains steady with new canary builds and detailed technical breakdowns of recent release features and fixes.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "Multi-agent orchestration and coordination",
+      "description": "Multiple projects (oh-my-hermes, hermes-walkie-talkie, hermes-project-stewardship) focus on coordinating multiple Hermes sessions or agent teams, including parallel task graphs and local inter-session messaging.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "Safety, verification, and sandboxing",
+      "description": "A recurring emphasis on verified completion, approval gates, SID-bound local access controls, and Docker-enforced file permissions across the new projects.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Ecosystem project wave",
+      "description": "Seven new community projects published to Hermes Atlas in a single batch, spanning orchestration, memory, governance, voice, UI, and security tooling around Hermes Agent and Hermes Desktop.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 66.0
+    }
+  ],
+  "total_items": 13,
+  "items": [
+    {
+      "id": "188d392057ef",
+      "title": "hermes-agent-template (Deployment & Infra)",
+      "content": "This Railway template deploys Hermes Agent with a web admin dashboard for configuring providers, channels, and tools, and managing the gateway and user pairing. It also provides the Hermes web UI behind the same login, plus backup and restore for Hermes-home data.",
+      "url": "https://hermesatlas.com/projects/praveen-ks-2001/hermes-agent-template",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Deployment & Infra"
+      ],
+      "summary": "A Railway template is available for deploying Hermes Agent, simplifying the infrastructure setup for users. This solution includes a web admin dashboard for configuration, tool management, and data backup functionality for reliable operation.",
+      "importance_score": 80.0,
+      "reasoning": "This is a highly valuable resource for developers and users looking for low-overhead, stable, and professional deployment of the Hermes Agent.",
+      "themes": [
+        "Self-Hosting/Deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Railway template is available for deploying Hermes Agent, simplifying the infrastructure setup for users. This solution includes a web admin dashboard for configuration, tool management, and data backup functionality for reliable operation.</p>",
+      "content_html": "<p>This Railway template deploys Hermes Agent with a web admin dashboard for configuring providers, channels, and tools, and managing the gateway and user pairing. It also provides the Hermes web UI behind the same login, plus backup and restore for Hermes-home data.</p>"
+    },
+    {
+      "id": "85d2d1119b2e",
+      "title": "fnos-hermes-agent (Integrations & Bridges)",
+      "content": "Hermes Agent for fnOS is an AI assistant application for Feiniu NAS, deployed through the fnOS app center as an .fpk package. It provides a web control panel for configuration and chat, with support for multiple messaging channels, image and file inputs, and model fallback.",
+      "url": "https://hermesatlas.com/projects/iranee/fnos-hermes-agent",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Integrations & Bridges"
+      ],
+      "summary": "A project has been demonstrated for running Hermes Agent on Feiniu NAS (fnOS) as a dedicated AI assistant application. It showcases the capability of running complex agent software in a private, self-hosted environment with a dedicated web control panel.",
+      "importance_score": 75.0,
+      "reasoning": "This community contribution demonstrates a powerful, real-world use case for running Hermes Agent on personal or private infrastructure, emphasizing privacy and control.",
+      "themes": [
+        "Self-Hosting/Deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A project has been demonstrated for running Hermes Agent on Feiniu NAS (fnOS) as a dedicated AI assistant application. It showcases the capability of running complex agent software in a private, self-hosted environment with a dedicated web control panel.</p>",
+      "content_html": "<p>Hermes Agent for fnOS is an AI assistant application for Feiniu NAS, deployed through the fnOS app center as an .fpk package. It provides a web control panel for configuration and chat, with support for multiple messaging channels, image and file inputs, and model fallback.</p>"
+    },
+    {
+      "id": "5997d58d23ff",
+      "title": "Hermes Agent v0.22.x in Practice: What Changed, What to Check, What's Still Pending",
+      "content": "Hermes Agent v0.22.1 to v0.22.5: gateway reboot fixes, a ~620-PR rollup, the wrong-commit v0.22.1 build, and what to verify after upgrading.",
+      "url": "https://hermes-tutorials.dev/blog/hermes-agent-v022-release-line-2026/",
+      "author": "Hermes Agent",
+      "published": "2026-10-25T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades, This post is a practical guide reviewing the transitions across the Hermes Agent v0.22.x release line, specifically covering updates from v0.22.1 to v0.22.5. It highlights technical fixes related to gateway reboots and provides guidance on post-upgrade verification.",
+      "importance_score": 70.0,
+      "reasoning": "This is a crucial technical deep-dive for existing users planning to upgrade or troubleshooting deployment issues, providing necessary context on recent release changes.",
+      "themes": [
+        "Product Updates"
+      ],
+      "continuation": {
+        "original_item_id": "7608d9b01045",
+        "original_date": "2026-10-24",
+        "original_category": "news",
+        "original_title": "Hermes Agent v0.22.5",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades"
+      },
+      "summary_html": "<p>Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades, This post is a practical guide reviewing the transitions across the Hermes Agent v0.22.x release line, specifically covering updates from v0.22.1 to v0.22.5. It highlights technical fixes related to gateway reboots and provides guidance on post-upgrade verification.</p>",
+      "content_html": "<p>Hermes Agent v0.22.1 to v0.22.5: gateway reboot fixes, a ~620-PR rollup, the wrong-commit v0.22.1 build, and what to verify after upgrading.</p>"
+    },
+    {
+      "id": "bf820ff147df",
+      "title": "hermes-project-stewardship (Developer Tools)",
+      "content": "Hermes Project Stewardship lets a team of Hermes agents look after a project over time. It verifies project state before acting, proposes work with supporting evidence, supports approval gates, and measures outcomes through a desktop app. Projects, boards, and tasks remain in Hermes, while Stewardship stores its own state in a local SQLite database.",
+      "url": "https://hermesatlas.com/projects/Sahil-SS9/hermes-project-stewardship",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Developer Tools"
+      ],
+      "summary": "Hermes Project Stewardship enables a team of Hermes agents to maintain a project over time by verifying state before acting, proposing evidence-backed work, and supporting approval gates. A desktop app measures outcomes while projects and tasks stay in Hermes and Stewardship keeps its own state in a local SQLite database.",
+      "importance_score": 70.0,
+      "reasoning": "Introduces long-running, governance-style agent workflows with approval gates and outcome measurement built specifically on Hermes, addressing a notable gap for sustained autonomous project work.",
+      "themes": [
+        "Developer Tools",
+        "Agent governance and oversight"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Project Stewardship enables a team of Hermes agents to maintain a project over time by verifying state before acting, proposing evidence-backed work, and supporting approval gates. A desktop app measures outcomes while projects and tasks stay in Hermes and Stewardship keeps its own state in a local SQLite database.</p>",
+      "content_html": "<p>Hermes Project Stewardship lets a team of Hermes agents look after a project over time. It verifies project state before acting, proposes work with supporting evidence, supports approval gates, and measures outcomes through a desktop app. Projects, boards, and tasks remain in Hermes, while Stewardship stores its own state in a local SQLite database.</p>"
+    },
+    {
+      "id": "394c4676e36d",
+      "title": "hermes-walkie-talkie (Integrations & Bridges)",
+      "content": "Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on the same computer discover one another and coordinate through messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux and macOS, and Windows named pipes with SID-bound access controls; it does not connect machines over a network or use a central daemon.",
+      "url": "https://hermesatlas.com/projects/Sahil-SS9/hermes-walkie-talkie",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Integrations & Bridges"
+      ],
+      "summary": "Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on one machine discover each other and coordinate via messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux/macOS and Windows named pipes with SID-bound access controls, with no networking or central daemon.",
+      "importance_score": 65.0,
+      "reasoning": "Enables local multi-session coordination for Hermes with a thoughtful security posture (local-only transport, SID-bound pipes), filling a real gap for users running several concurrent agent sessions.",
+      "themes": [
+        "Integrations & Bridges",
+        "Multi-session coordination",
+        "Local security"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on one machine discover each other and coordinate via messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux/macOS and Windows named pipes with SID-bound access controls, with no networking or central daemon.</p>",
+      "content_html": "<p>Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on the same computer discover one another and coordinate through messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux and macOS, and Windows named pipes with SID-bound access controls; it does not connect machines over a network or use a central daemon.</p>"
+    },
+    {
+      "id": "506586570159",
+      "title": "paperclip-hermes-file-access-manager (Plugins & Extensions)",
+      "content": "File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles. It translates those rules into Docker bind mounts and uses Hermes’ Docker terminal backend to enforce access inside a container. The plugin provides a filesystem tree editor, previews generated mounts, and can apply changes by recreating the container and restarting the gateway.",
+      "url": "https://hermesatlas.com/projects/marospekarik/paperclip-hermes-file-access-manager",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Plugins & Extensions"
+      ],
+      "summary": "File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles, translating rules into Docker bind mounts enforced via Hermes' Docker terminal backend. It includes a filesystem tree editor, mount previews, and applies changes by recreating the container and restarting the gateway.",
+      "importance_score": 62.0,
+      "reasoning": "Addresses sandboxing and filesystem permission control for Hermes agents, a security-relevant capability for users running agents in containers, though it depends on the Paperclip plugin ecosystem.",
+      "themes": [
+        "Plugins & Extensions",
+        "Security and sandboxing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles, translating rules into Docker bind mounts enforced via Hermes' Docker terminal backend. It includes a filesystem tree editor, mount previews, and applies changes by recreating the container and restarting the gateway.</p>",
+      "content_html": "<p>File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles. It translates those rules into Docker bind mounts and uses Hermes’ Docker terminal backend to enforce access inside a container. The plugin provides a filesystem tree editor, previews generated mounts, and can apply changes by recreating the container and restarting the gateway.</p>"
+    },
+    {
+      "id": "eea60312a10a",
+      "title": "memmy-agent (Memory & Context)",
+      "content": "Memmy is a desktop app and CLI/TUI for local memory and AI-agent tasks. Its Memory Service stores and retrieves information, while its agent features can carry project context between supported tools, including Claude Code, Codex, OpenClaw, and Hermes.",
+      "url": "https://hermesatlas.com/projects/MemTensor/memmy-agent",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Memory & Context"
+      ],
+      "summary": "Memmy is a desktop app plus CLI/TUI providing local memory storage and retrieval via a Memory Service, with agent features that carry project context between supported tools. It interoperates with Claude Code, Codex, OpenClaw, and Hermes.",
+      "importance_score": 58.0,
+      "reasoning": "Useful cross-tool memory layer that explicitly supports Hermes among its integrations, but it is a general multi-tool utility rather than a Hermes-specific capability, so significance for Hermes users is moderate.",
+      "themes": [
+        "Memory & Context",
+        "Cross-tool interoperability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Memmy is a desktop app plus CLI/TUI providing local memory storage and retrieval via a Memory Service, with agent features that carry project context between supported tools. It interoperates with Claude Code, Codex, OpenClaw, and Hermes.</p>",
+      "content_html": "<p>Memmy is a desktop app and CLI/TUI for local memory and AI-agent tasks. Its Memory Service stores and retrieves information, while its agent features can carry project context between supported tools, including Claude Code, Codex, OpenClaw, and Hermes.</p>"
+    },
+    {
+      "id": "bc45bb433d28",
+      "title": "Kimi K3.1 Pro in Hermes: Step-by-Step Setup Guide",
+      "content": "A Kimi K3.1 Pro Hermes setup is one of the cheapest ways to get near-Opus coding power inside your own AI agent. Hermes already has a built-in Kimi provider, so setup takes a few minutes. In this guide I&rsquo;ll walk you through the API key, the exact commands, the one setting that controls your token bill, and how to save it as a reusable profile. The video below shows it running.\n\nKey takeaways\n\nHermes talks to Kimi through the built-in kimi-coding provider.\nPut your key in ~/.hermes/.env as KIMI_API_KEY.\nWatch reasoning effort: max uses about 3&times; the tokens of medium.\nSave it as a profile so one word starts a Kimi agent. Claim a free strategy session for help.\n\n\n\n\n\n\nWhy run Kimi K3.1 Pro in Hermes?\nHermes Agent gives you memory, skills, scheduled jobs and tools. The model is the brain you plug in. Kimi K3.1 Pro is a strong brain for the money: Moonshot&rsquo;s launch post puts it at 65.7 on Terminal-Bench 4.0, just behind Claude Opus 5.5 at 66.4, and it costs $2 in and $10 out per million tokens.\nThat mix matters for agents. An agent might run for hours, read big files and call tools many times. A cheaper model that still finishes the job keeps those long runs affordable. And with a 1M-token context, Hermes can hold a lot of your project in view at once.\nIf you want the full model breakdown first &mdash; benchmarks, limits and pricing &mdash; read my Kimi K3.1 Pro review. This page is just about getting it running in Hermes.\nStep 1: Get your Kimi API key\n\nGo to the Kimi platform and create an API key.\nTop up at least $1. Moonshot&rsquo;s quickstart says K3.1 Pro unlocks after a top-up, and your rate tier depends on how much you&rsquo;ve topped up in total.\nCopy the key somewhere safe. Never paste it into a chat or commit it to GitHub.\n\nIf you&rsquo;re in mainland China, Hermes has a separate provider called kimi-coding-cn, which uses KIMI_CN_API_KEY instead.\n\nWant Hermes running on the right model for your business? Inside the AI Profit Boardroom you get the Agent OS &mdash; Hermes, OpenClaw, OpenCode, Claude and Codex in one place &mdash; plus step-by-step Hermes training and four live coaching calls a week.\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;\n\nStep 2: Add the key to Hermes\nHermes reads provider keys from its .env file. Add one line:\n# ~/.hermes/.env\nKIMI_API_KEY=your-key-here\nBy default Hermes sends Kimi requests to https://api.moonshot.ai/v1. You only need KIMI_BASE_URL if you want to point somewhere else. The full provider list is in the Hermes docs.\nStep 3: Start a chat with Kimi K3.1 Pro\nRun this in your terminal:\nhermes chat --provider kimi-coding --model kimi-k3.1-pro\nThat&rsquo;s it. Give it a real task &mdash; fix a bug, build a page, summarise a folder of notes &mdash; and watch how it works through it. Want more speed? Swap in the Highspeed model:\nhermes chat --provider kimi-coding --model kimi-k3.1-pro-highspeed\nHighspeed is two to three times faster but costs double: $4 in and $20 out per million tokens. I use the normal model for long background jobs and Highspeed when I&rsquo;m sitting there waiting.\nStep 4: Control your token bill with reasoning effort\nThis is the setting most people miss. Kimi K3.1 Pro always thinks before it answers. You can&rsquo;t switch thinking off, but you can choose how hard it thinks: low, high or max.\n\n\n\n\nSetting\nWhat happens\nUse it for\n\n\n\n\nHermes default (medium)\nHermes sends medium if you don&rsquo;t set anything\nEveryday tasks\n\n\nhigh\nMore thinking, more tokens\nTricky bugs, planning\n\n\nmax\nKimi&rsquo;s own default; about 3&times; the tokens of medium\nThe hardest jobs only\n\n\nlow\nFastest replies\nQuick edits, chat\n\n\n\n\nTo set it for every session, run this inside Hermes:\n/reasoning high --global\nHermes saves that, so you don&rsquo;t have to set it again. My advice: start on medium, and only move up when the model gets stuck. Max can triple your token use on the same task.\n\nWant an AI agent setup that keeps costs under control? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\nStep 5: Make Kimi your default or save it as a profile\nIf you want Kimi every time, set it as the default model:\nhermes config set model.provider kimi-coding\nhermes config set model.default kimi-k3.1-pro\nI prefer profiles. A profile is a separate Hermes setup with its own model, memory and skills. Make a coding profile that runs on Kimi:\nhermes profile create coder\ncoder setup\ncoder chat\nNow typing coder chat starts your Kimi coding agent, while your main Hermes keeps its own model and memory. You can also add short names in model.aliases so switching models mid-chat is quicker.\nGood jobs for Kimi K3.1 Pro in Hermes\n\nLong coding sessions: Moonshot&rsquo;s internal long-horizon coding score rose from 55.95 on K3 to 61.2.\nDocuments and spreadsheets: OfficeQA Pro v2 is 64.4 and Frontier Finance is 58.6.\n3D and game builds: it works with Three.js, Unity, Unreal and Godot.\nScheduled research: pair it with a Hermes cron job for a daily summary.\n\nOne thing to skip for now: Kimi&rsquo;s built-in web search tool. Moonshot says it&rsquo;s being updated and isn&rsquo;t recommended for production yet. Use Hermes&rsquo;s own search tools instead.\nWant the short version? I also wrote a quick-start version of this guide on the AI Profit Boardroom blog.\nCommon problems and fixes\n\n\n\n\nProblem\nFix\n\n\n\n\nModel not found\nCheck you&rsquo;ve topped up at least $1 and typed kimi-k3.1-pro exactly\n\n\nAuth error\nMake sure the key is in ~/.hermes/.env as KIMI_API_KEY, then restart Hermes\n\n\nSlow replies\nLower reasoning effort or switch to kimi-k3.1-pro-highspeed\n\n\nBill higher than expected\nYou&rsquo;re probably on max effort; set /reasoning high &#8211;global or leave it on medium\n\n\nTemperature errors\nLeave temperature and top_p out; Moonshot fixes them for this model\n\n\n\n\nKimi K3.1 Pro or Highspeed?\nBoth are the same model. The only difference is speed and price. Highspeed runs two to three times faster at double the cost. For overnight cron jobs and long background work, the normal model is the smarter pick. For live coding where you&rsquo;re watching every step, Highspeed can be worth the extra spend.\nMy verdict on Kimi K3.1 Pro in Hermes\nA Kimi K3.1 Pro Hermes setup takes five minutes and gives you a near-Opus agent for a fraction of the price. Put the key in .env, run one command, keep reasoning effort sensible and save it as a profile. If you want a strong, low-cost model running your Hermes jobs, Kimi K3.1 Pro in Hermes is the setup I&rsquo;d start with.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\nFAQ: kimi k3.1 pro hermes\nHow do I use Kimi K3.1 Pro in Hermes?\nAdd KIMI_API_KEY to ~/.hermes/.env, then run hermes chat &#8211;provider kimi-coding &#8211;model kimi-k3.1-pro.\nWhat provider name does Hermes use for Kimi?\nkimi-coding, or kimi-coding-cn for mainland China with KIMI_CN_API_KEY.\nWhy is Kimi using so many tokens in Hermes?\nMax reasoning effort uses about three times the tokens of medium. Lower it with /reasoning high &#8211;global or leave it on medium.\nCan I use the Highspeed version in Hermes?\nYes. Use &#8211;model kimi-k3.1-pro-highspeed. It&rsquo;s two to three times faster and costs $4 in and $20 out per million tokens.\nDo I need to pay to use Kimi K3.1 Pro?\nYes. The API unlocks after a top-up of at least $1, then you pay per token.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\nOr claim your free strategy session and we&rsquo;ll map out your setup.\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;Get the FREE AI Course + Community &rarr;\n\nRelated reading\n\nKimi K3.1 Pro Review\nBest Model for Hermes Agent\nHermes Agent v0.22\n\nLast updated October 2026. This page is a living guide to kimi k3.1 pro hermes &mdash; the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/kimi-k3-1-pro-hermes/?utm_source=rss&utm_medium=rss&utm_campaign=kimi-k3-1-pro-hermes",
+      "author": "Clawdbot",
+      "published": "2026-10-25T03:44:30",
+      "source": "Julian Goldie",
+      "source_type": "rss",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "Already covered in [Research](/?date=2026-10-25&category=research#item-bc45bb433d28) yesterday, A detailed setup guide is available for integrating Kimi K3.1 Pro into Hermes Agent using its built-in provider. The tutorial focuses on practical aspects such as API key configuration, defining reusable profiles, and optimizing token consumption.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior social coverage from 2026-10-25] This guide is highly practical and addresses cost-optimization for users who want to utilize high-quality models while managing expenditure within their local setups.",
+      "themes": [
+        "Model Integration"
+      ],
+      "continuation": {
+        "original_item_id": "bc45bb433d28",
+        "original_date": "2026-10-25",
+        "original_category": "research",
+        "original_title": "Kimi K3.1 Pro in Hermes: Step-by-Step Setup Guide",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** yesterday"
+      },
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior social coverage from 2026-10-25",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 0,
+        "matched_prior_items": [
+          {
+            "id": "a7c6b9849421",
+            "date": "2026-10-25",
+            "category": "social",
+            "title": "Kimi K3.1 Pro @Kimi_Moonshot is crazy.\n\nJust one-shotted RESULT. \nusing oh-my-hermes + Kimi K3.1 Pro...",
+            "source": "Twitter",
+            "url": "https://twitter.com/rlaope/status/2113864233666638128"
+          },
+          {
+            "id": "fd8b7339e82c",
+            "date": "2026-10-25",
+            "category": "social",
+            "title": "@yacineMTB Hermes Agent",
+            "source": "Twitter",
+            "url": "https://twitter.com/NousResearch/status/2114030897356034237"
+          },
+          {
+            "id": "ac6418e576ea",
+            "date": "2026-10-14",
+            "category": "research",
+            "title": "How to Learn AI Agents From Scratch: A Zero-Experience Guide",
+            "source": "Julian Goldie",
+            "url": "https://juliangoldie.com/how-to-learn-ai-agents-from-scratch/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-ai-agents-from-scratch"
+          }
+        ]
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-25&amp;category=research#item-bc45bb433d28\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A detailed setup guide is available for integrating Kimi K3.1 Pro into Hermes Agent using its built-in provider. The tutorial focuses on practical aspects such as API key configuration, defining reusable profiles, and optimizing token consumption.</p>",
+      "content_html": "<p>A Kimi K3.1 Pro Hermes setup is one of the cheapest ways to get near-Opus coding power inside your own AI agent. Hermes already has a built-in Kimi provider, so setup takes a few minutes. In this guide I’ll walk you through the API key, the exact commands, the one setting that controls your token bill, and how to save it as a reusable profile. The video below shows it running.</p>\n<p>Key takeaways</p>\n<p>Hermes talks to Kimi through the built-in kimi-coding provider.</p>\n<p>Put your key in ~/.hermes/.env as KIMI_API_KEY.</p>\n<p>Watch reasoning effort: max uses about 3× the tokens of medium.</p>\n<p>Save it as a profile so one word starts a Kimi agent. Claim a free strategy session for help.</p>\n<p>Why run Kimi K3.1 Pro in Hermes?</p>\n<p>Hermes Agent gives you memory, skills, scheduled jobs and tools. The model is the brain you plug in. Kimi K3.1 Pro is a strong brain for the money: Moonshot’s launch post puts it at 65.7 on Terminal-Bench 4.0, just behind Claude Opus 5.5 at 66.4, and it costs $2 in and $10 out per million tokens.</p>\n<p>That mix matters for agents. An agent might run for hours, read big files and call tools many times. A cheaper model that still finishes the job keeps those long runs affordable. And with a 1M-token context, Hermes can hold a lot of your project in view at once.</p>\n<p>If you want the full model breakdown first — benchmarks, limits and pricing — read my Kimi K3.1 Pro review. This page is just about getting it running in Hermes.</p>\n<p>Step 1: Get your Kimi API key</p>\n<p>Go to the Kimi platform and create an API key.</p>\n<p>Top up at least $1. Moonshot’s quickstart says K3.1 Pro unlocks after a top-up, and your rate tier depends on how much you’ve topped up in total.</p>\n<p>Copy the key somewhere safe. Never paste it into a chat or commit it to GitHub.</p>\n<p>If you’re in mainland China, Hermes has a separate provider called kimi-coding-cn, which uses KIMI_CN_API_KEY instead.</p>\n<p>Want Hermes running on the right model for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<p>Step 2: Add the key to Hermes</p>\n<p>Hermes reads provider keys from its .env file. Add one line:</p>\n<p># ~/.hermes/.env</p>\n<p>KIMI_API_KEY=your-key-here</p>\n<p>By default Hermes sends Kimi requests to https://api.moonshot.ai/v1. You only need KIMI_BASE_URL if you want to point somewhere else. The full provider list is in the Hermes docs.</p>\n<p>Step 3: Start a chat with Kimi K3.1 Pro</p>\n<p>Run this in your terminal:</p>\n<p>hermes chat --provider kimi-coding --model kimi-k3.1-pro</p>\n<p>That’s it. Give it a real task — fix a bug, build a page, summarise a folder of notes — and watch how it works through it. Want more speed? Swap in the Highspeed model:</p>\n<p>hermes chat --provider kimi-coding --model kimi-k3.1-pro-highspeed</p>\n<p>Highspeed is two to three times faster but costs double: $4 in and $20 out per million tokens. I use the normal model for long background jobs and Highspeed when I’m sitting there waiting.</p>\n<p>Step 4: Control your token bill with reasoning effort</p>\n<p>This is the setting most people miss. Kimi K3.1 Pro always thinks before it answers. You can’t switch thinking off, but you can choose how hard it thinks: low, high or max.</p>\n<p>Setting</p>\n<p>What happens</p>\n<p>Use it for</p>\n<p>Hermes default (medium)</p>\n<p>Hermes sends medium if you don’t set anything</p>\n<p>Everyday tasks</p>\n<p>high</p>\n<p>More thinking, more tokens</p>\n<p>Tricky bugs, planning</p>\n<p>max</p>\n<p>Kimi’s own default; about 3× the tokens of medium</p>\n<p>The hardest jobs only</p>\n<p>low</p>\n<p>Fastest replies</p>\n<p>Quick edits, chat</p>\n<p>To set it for every session, run this inside Hermes:</p>\n<p>/reasoning high --global</p>\n<p>Hermes saves that, so you don’t have to set it again. My advice: start on medium, and only move up when the model gets stuck. Max can triple your token use on the same task.</p>\n<p>Want an AI agent setup that keeps costs under control? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Step 5: Make Kimi your default or save it as a profile</p>\n<p>If you want Kimi every time, set it as the default model:</p>\n<p>hermes config set model.provider kimi-coding</p>\n<p>hermes config set model.default kimi-k3.1-pro</p>\n<p>I prefer profiles. A profile is a separate Hermes setup with its own model, memory and skills. Make a coding profile that runs on Kimi:</p>\n<p>hermes profile create coder</p>\n<p>coder setup</p>\n<p>coder chat</p>\n<p>Now typing coder chat starts your Kimi coding agent, while your main Hermes keeps its own model and memory. You can also add short names in model.aliases so switching models mid-chat is quicker.</p>\n<p>Good jobs for Kimi K3.1 Pro in Hermes</p>\n<p>Long coding sessions: Moonshot’s internal long-horizon coding score rose from 55.95 on K3 to 61.2.</p>\n<p>Documents and spreadsheets: OfficeQA Pro v2 is 64.4 and Frontier Finance is 58.6.</p>\n<p>3D and game builds: it works with Three.js, Unity, Unreal and Godot.</p>\n<p>Scheduled research: pair it with a Hermes cron job for a daily summary.</p>\n<p>One thing to skip for now: Kimi’s built-in web search tool. Moonshot says it’s being updated and isn’t recommended for production yet. Use Hermes’s own search tools instead.</p>\n<p>Want the short version? I also wrote a quick-start version of this guide on the AI Profit Boardroom blog.</p>\n<p>Common problems and fixes</p>\n<p>Problem</p>\n<p>Fix</p>\n<p>Model not found</p>\n<p>Check you’ve topped up at least $1 and typed kimi-k3.1-pro exactly</p>\n<p>Auth error</p>\n<p>Make sure the key is in ~/.hermes/.env as KIMI_API_KEY, then restart Hermes</p>\n<p>Slow replies</p>\n<p>Lower reasoning effort or switch to kimi-k3.1-pro-highspeed</p>\n<p>Bill higher than expected</p>\n<p>You’re probably on max effort; set /reasoning high –global or leave it on medium</p>\n<p>Temperature errors</p>\n<p>Leave temperature and top_p out; Moonshot fixes them for this model</p>\n<p>Kimi K3.1 Pro or Highspeed?</p>\n<p>Both are the same model. The only difference is speed and price. Highspeed runs two to three times faster at double the cost. For overnight cron jobs and long background work, the normal model is the smarter pick. For live coding where you’re watching every step, Highspeed can be worth the extra spend.</p>\n<p>My verdict on Kimi K3.1 Pro in Hermes</p>\n<p>A Kimi K3.1 Pro Hermes setup takes five minutes and gives you a near-Opus agent for a fraction of the price. Put the key in .env, run one command, keep reasoning effort sensible and save it as a profile. If you want a strong, low-cost model running your Hermes jobs, Kimi K3.1 Pro in Hermes is the setup I’d start with.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>FAQ: kimi k3.1 pro hermes</p>\n<p>How do I use Kimi K3.1 Pro in Hermes?</p>\n<p>Add KIMI_API_KEY to ~/.hermes/.env, then run hermes chat –provider kimi-coding –model kimi-k3.1-pro.</p>\n<p>What provider name does Hermes use for Kimi?</p>\n<p>kimi-coding, or kimi-coding-cn for mainland China with KIMI_CN_API_KEY.</p>\n<p>Why is Kimi using so many tokens in Hermes?</p>\n<p>Max reasoning effort uses about three times the tokens of medium. Lower it with /reasoning high –global or leave it on medium.</p>\n<p>Can I use the Highspeed version in Hermes?</p>\n<p>Yes. Use –model kimi-k3.1-pro-highspeed. It’s two to three times faster and costs $4 in and $20 out per million tokens.</p>\n<p>Do I need to pay to use Kimi K3.1 Pro?</p>\n<p>Yes. The API unlocks after a top-up of at least $1, then you pay per token.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<p>Related reading</p>\n<p>Kimi K3.1 Pro Review</p>\n<p>Best Model for Hermes Agent</p>\n<p>Hermes Agent v0.22</p>\n<p>Last updated October 2026. This page is a living guide to kimi k3.1 pro hermes — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "922b165fd855",
+      "title": "Hermes Agent Step 5: Set Up StepFun’s Step 5 Preview in Hermes",
+      "content": "Hermes Agent Step 5 means running StepFun&#8217;s new Step 5 Preview model as the brain of Hermes Agent. Step 5 Preview is StepFun&#8217;s flagship model for agent work: a 600B mixture-of-experts model with 27B active and up to 1M tokens of context. In the video below I connect it to Hermes and use it for research, drafting, voice and chained agents. Here is how to set it up, what it costs and how it compares.\n\nKey takeaways\n\nStep 5 Preview: 600B total, 27B active, 1M context.\nOfficial pricing: $1.00 input and $2.70 output per million tokens.\nConnect it with the stepfun provider or through Nous Portal.\nOpen weights with a StepFun licence that adds conditions for very large companies.\n\n\n\n\n\n\nWhat is Step 5 Preview?\nStep 5 Preview comes from StepFun. The Hugging Face model card calls it &ldquo;StepFun&#8217;s flagship model for agentic work&rdquo;. It is a sparse mixture-of-experts model with 600B total parameters and 27B active per token, and it takes text and images as input.\n\n\n\n\nStep 5 Preview at a glance\n\n\n\n\n\nParameters\n600B total, 27B active\n\n\nContext\nUp to 1M tokens\n\n\nMax output\n64K via the StepFun API\n\n\nInput\nText and image\n\n\nReasoning effort\nlow, medium or high\n\n\nTool calling\nSupported\n\n\nAPI model id\nstep-5-preview\n\n\n\n\nThose API limits come from the StepFun docs.\nIs Step 5 free in Hermes?\nI want to be clear here. In my video it was free to run inside Hermes at the time of recording. Check current pricing before you rely on that. I couldn&#8217;t find an official source that confirms a free window, which provider offers it or when it ends.\nThe official numbers are these. StepFun&#8217;s pricing page lists step-5-preview at $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens. The Nous inference API listed stepfun/step-5-preview at the same paid price when we checked, with no free variant at that time.\n\nFree windows change fast. Before you build a workflow around Step 5, open Hermes&#8217;s model picker and check the price shown for the model you pick.\n\n\nWant Hermes Agent running the right model for your business? Inside the AI Profit Boardroom you get the Agent OS &mdash; Hermes, OpenClaw, OpenCode, Claude and Codex in one place &mdash; plus step-by-step Hermes training and four live coaching calls a week.\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;\n\nHow to set up Step 5 in Hermes Agent\nFrom the Hermes docs, there are two ways.\nOption 1: StepFun API key\n\nGet an API key from StepFun.\nAdd STEPFUN_API_KEY=your-key to ~/.hermes/.env.\nThe default base URL is https://api.stepfun.com/v1. Use STEPFUN_BASE_URL to change it.\nStart a chat: hermes chat --provider stepfun --model step-5-preview.\nTo make it your default, set model.provider and model.default in config.yaml.\n\nOption 2: Nous Portal\nRun hermes chat --provider nous or use hermes model to open the model picker, then choose Step 5 Preview. This route bills through your Nous account.\n\nWant Hermes Agent set up with the right model for your business? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\nStep 5 Preview benchmarks\nThese come from StepFun&#8217;s official chart on the model card. Step 5 Preview was tested at High reasoning, and the other models at Max.\n\n\n\n\nBenchmark\nStep 5 Preview\nOthers\n\n\n\n\nDeepSWE v1.1\n67.7\nKimi K3 67.5, GLM-5.3 66.9, GPT-6 Astra 74.1, Claude Opus 5 74.0\n\n\nProgramBench\n80.5\nGPT-6 Astra 85.4, Opus 5 82.3, Kimi K3 77.8\n\n\nTerminal-Bench v4\n33.3\nGLM-5.3 41.9, Kimi K3 12.6, GPT-6 Astra 57.9, Opus 5 52.3\n\n\nALE-CLI\n29.5\nGPT-6 Astra 33.3, Opus 5 28.6\n\n\nGDPval-AA v2.1\n1566\nOpus 5 1708, GLM-5.3 1645, GPT-6 Astra 1542\n\n\nFrontierFinance\n66.4\nOpus 5 69.7, GLM-5.3 64.1, GPT-6 Astra 55.0\n\n\nDRACO\n83.3\nOpus 5 87.6, GLM-5.3 82.3\n\n\nStepCodeBench\n49.0\nOpus 5 63.9, GPT-6 Astra 61.0\n\n\n\n\nSo it is level with Kimi K3 and GLM-5.3 on DeepSWE, ahead of GPT-6 Astra on GDPval and FrontierFinance, and behind the top closed models on Terminal-Bench and StepCodeBench. For the price, that is a strong all-round agent model.\nWhat I did with Hermes and Step 5\nIn the video I put the combo through everyday agent jobs:\n\nTaught Hermes a new skill in seconds. Hermes&#8217;s skill_manage tool writes the skill for you.\nResearch and drafting with live web search.\nTalked to it out loud with voice mode: /voice on, then Ctrl+B to record.\nShared memory through my Obsidian vault.\nChained agents, one handing work to the next.\n\nThe licence: what you need to know\nThe weights are open under the StepFun Model License 1.0, which StepFun describes as Apache-2.0-style with attribution and some commercial conditions. If your product has over 100M monthly active users or over $20M revenue a month, you must show &ldquo;Powered by StepFun AI&rdquo;. Device makers and model-as-a-service businesses with over $20M revenue over 12 months need a separate commercial licence. Internal use is exempt. For almost every small business, it works like a normal open licence.\nRunning it yourself\nYou can self-host the weights with vLLM or SGLang (OpenAI-compatible) or Transformers. It is big: the FP8 build needs a 4&times;B300 node or an 8&times;H200 node. Recommended settings are temperature 1.0, top-p 0.95 and top-k 0. For most people the API route is far easier.\nWant a shorter take? I also cover Hermes Agent with Step 5 on the AI Profit Boardroom blog.\nTips for using Step 5 in Hermes\n\nPick the effort level. Use low for quick replies and high for research and coding.\nStart a new session at task boundaries with /new, so the model works from a clean context.\nTurn repeated jobs into skills, so you don&#8217;t paste the same instructions every day.\nWatch your spend. At $2.70 per million output tokens, long agent chains add up, so check usage after your first few runs.\n\nStep 5&#8217;s 1M context is handy for long research jobs, but large prompts still cost money. Keep only what the task needs in the conversation.\nMy verdict on Hermes Agent Step 5\nStep 5 Preview is a capable, fairly cheap agent model, and it plugs into Hermes with one provider setting. Use the free window if it is still open when you read this, but plan around the official $1.00/$2.70 pricing. If you want a strong open model for research, writing and agent chains, Hermes Agent Step 5 is worth a test.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\nFAQ: hermes agent step 5\nIs Step 5 free in Hermes Agent?\nIn my video it was free to run inside Hermes at the time of recording. No official source confirms a free window, so check current pricing in the Hermes model picker.\nHow much does Step 5 Preview cost?\nStepFun lists $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens.\nHow do I connect Step 5 to Hermes?\nAdd STEPFUN_API_KEY to ~/.hermes/.env and run hermes chat &#8211;provider stepfun &#8211;model step-5-preview, or pick it through Nous Portal.\nHow big is Step 5 Preview?\n600B total parameters with 27B active, and up to 1M tokens of context.\nCan I use Step 5 commercially?\nYes. The StepFun Model License allows commercial use, with extra conditions only for very large companies, such as over 100M monthly users or over $20M revenue a month.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\nOr claim your free strategy session and we&rsquo;ll map out your setup.\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;Get the FREE AI Course + Community &rarr;\n\nRelated reading\n\nBest Model for Hermes Agent\nHermes Agent Sandbox\nSolar Mini 4 + Hermes\n\nLast updated October 2026. This page is a living guide to hermes agent step 5 &mdash; the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-agent-step-5/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-step-5",
+      "author": "Clawdbot",
+      "published": "2026-10-25T03:44:32",
+      "source": "Julian Goldie",
+      "source_type": "rss",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "This guide provides detailed instructions on integrating StepFun’s Step 5 Preview model into Hermes Agent. The author covers the technical specifications of the high-scale MoE model, its usage with the StepFun provider, and important information regarding costs.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: secondary coverage of primary source from 2026-10-15 (10d before coverage)] This is a high-value tutorial demonstrating how to leverage cutting-edge, high-performance commercial models within the Hermes framework, adding significant capability to the agent.",
+      "themes": [
+        "Model Integration"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_followup",
+        "label": "Follow-up",
+        "reason": "secondary coverage of primary source from 2026-10-15 (10d before coverage)",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "primary_url": "https://huggingface.co/stepfun-ai/Step-5-Preview",
+        "primary_published": "2026-10-15",
+        "age_days": 10
+      },
+      "summary_html": "<p>This guide provides detailed instructions on integrating StepFun’s Step 5 Preview model into Hermes Agent. The author covers the technical specifications of the high-scale MoE model, its usage with the StepFun provider, and important information regarding costs.</p>",
+      "content_html": "<p>Hermes Agent Step 5 means running StepFun’s new Step 5 Preview model as the brain of Hermes Agent. Step 5 Preview is StepFun’s flagship model for agent work: a 600B mixture-of-experts model with 27B active and up to 1M tokens of context. In the video below I connect it to Hermes and use it for research, drafting, voice and chained agents. Here is how to set it up, what it costs and how it compares.</p>\n<p>Key takeaways</p>\n<p>Step 5 Preview: 600B total, 27B active, 1M context.</p>\n<p>Official pricing: $1.00 input and $2.70 output per million tokens.</p>\n<p>Connect it with the stepfun provider or through Nous Portal.</p>\n<p>Open weights with a StepFun licence that adds conditions for very large companies.</p>\n<p>What is Step 5 Preview?</p>\n<p>Step 5 Preview comes from StepFun. The Hugging Face model card calls it “StepFun’s flagship model for agentic work”. It is a sparse mixture-of-experts model with 600B total parameters and 27B active per token, and it takes text and images as input.</p>\n<p>Step 5 Preview at a glance</p>\n<p>Parameters</p>\n<p>600B total, 27B active</p>\n<p>Context</p>\n<p>Up to 1M tokens</p>\n<p>Max output</p>\n<p>64K via the StepFun API</p>\n<p>Input</p>\n<p>Text and image</p>\n<p>Reasoning effort</p>\n<p>low, medium or high</p>\n<p>Tool calling</p>\n<p>Supported</p>\n<p>API model id</p>\n<p>step-5-preview</p>\n<p>Those API limits come from the StepFun docs.</p>\n<p>Is Step 5 free in Hermes?</p>\n<p>I want to be clear here. In my video it was free to run inside Hermes at the time of recording. Check current pricing before you rely on that. I couldn’t find an official source that confirms a free window, which provider offers it or when it ends.</p>\n<p>The official numbers are these. StepFun’s pricing page lists step-5-preview at $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens. The Nous inference API listed stepfun/step-5-preview at the same paid price when we checked, with no free variant at that time.</p>\n<p>Free windows change fast. Before you build a workflow around Step 5, open Hermes’s model picker and check the price shown for the model you pick.</p>\n<p>Want Hermes Agent running the right model for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<p>How to set up Step 5 in Hermes Agent</p>\n<p>From the Hermes docs, there are two ways.</p>\n<p>Option 1: StepFun API key</p>\n<p>Get an API key from StepFun.</p>\n<p>Add STEPFUN_API_KEY=your-key to ~/.hermes/.env.</p>\n<p>The default base URL is https://api.stepfun.com/v1. Use STEPFUN_BASE_URL to change it.</p>\n<p>Start a chat: hermes chat --provider stepfun --model step-5-preview.</p>\n<p>To make it your default, set model.provider and model.default in config.yaml.</p>\n<p>Option 2: Nous Portal</p>\n<p>Run hermes chat --provider nous or use hermes model to open the model picker, then choose Step 5 Preview. This route bills through your Nous account.</p>\n<p>Want Hermes Agent set up with the right model for your business? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Step 5 Preview benchmarks</p>\n<p>These come from StepFun’s official chart on the model card. Step 5 Preview was tested at High reasoning, and the other models at Max.</p>\n<p>Benchmark</p>\n<p>Step 5 Preview</p>\n<p>Others</p>\n<p>DeepSWE v1.1</p>\n<p>67.7</p>\n<p>Kimi K3 67.5, GLM-5.3 66.9, GPT-6 Astra 74.1, Claude Opus 5 74.0</p>\n<p>ProgramBench</p>\n<p>80.5</p>\n<p>GPT-6 Astra 85.4, Opus 5 82.3, Kimi K3 77.8</p>\n<p>Terminal-Bench v4</p>\n<p>33.3</p>\n<p>GLM-5.3 41.9, Kimi K3 12.6, GPT-6 Astra 57.9, Opus 5 52.3</p>\n<p>ALE-CLI</p>\n<p>29.5</p>\n<p>GPT-6 Astra 33.3, Opus 5 28.6</p>\n<p>GDPval-AA v2.1</p>\n<p>1566</p>\n<p>Opus 5 1708, GLM-5.3 1645, GPT-6 Astra 1542</p>\n<p>FrontierFinance</p>\n<p>66.4</p>\n<p>Opus 5 69.7, GLM-5.3 64.1, GPT-6 Astra 55.0</p>\n<p>DRACO</p>\n<p>83.3</p>\n<p>Opus 5 87.6, GLM-5.3 82.3</p>\n<p>StepCodeBench</p>\n<p>49.0</p>\n<p>Opus 5 63.9, GPT-6 Astra 61.0</p>\n<p>So it is level with Kimi K3 and GLM-5.3 on DeepSWE, ahead of GPT-6 Astra on GDPval and FrontierFinance, and behind the top closed models on Terminal-Bench and StepCodeBench. For the price, that is a strong all-round agent model.</p>\n<p>What I did with Hermes and Step 5</p>\n<p>In the video I put the combo through everyday agent jobs:</p>\n<p>Taught Hermes a new skill in seconds. Hermes’s skill_manage tool writes the skill for you.</p>\n<p>Research and drafting with live web search.</p>\n<p>Talked to it out loud with voice mode: /voice on, then Ctrl+B to record.</p>\n<p>Shared memory through my Obsidian vault.</p>\n<p>Chained agents, one handing work to the next.</p>\n<p>The licence: what you need to know</p>\n<p>The weights are open under the StepFun Model License 1.0, which StepFun describes as Apache-2.0-style with attribution and some commercial conditions. If your product has over 100M monthly active users or over $20M revenue a month, you must show “Powered by StepFun AI”. Device makers and model-as-a-service businesses with over $20M revenue over 12 months need a separate commercial licence. Internal use is exempt. For almost every small business, it works like a normal open licence.</p>\n<p>Running it yourself</p>\n<p>You can self-host the weights with vLLM or SGLang (OpenAI-compatible) or Transformers. It is big: the FP8 build needs a 4×B300 node or an 8×H200 node. Recommended settings are temperature 1.0, top-p 0.95 and top-k 0. For most people the API route is far easier.</p>\n<p>Want a shorter take? I also cover Hermes Agent with Step 5 on the AI Profit Boardroom blog.</p>\n<p>Tips for using Step 5 in Hermes</p>\n<p>Pick the effort level. Use low for quick replies and high for research and coding.</p>\n<p>Start a new session at task boundaries with /new, so the model works from a clean context.</p>\n<p>Turn repeated jobs into skills, so you don’t paste the same instructions every day.</p>\n<p>Watch your spend. At $2.70 per million output tokens, long agent chains add up, so check usage after your first few runs.</p>\n<p>Step 5’s 1M context is handy for long research jobs, but large prompts still cost money. Keep only what the task needs in the conversation.</p>\n<p>My verdict on Hermes Agent Step 5</p>\n<p>Step 5 Preview is a capable, fairly cheap agent model, and it plugs into Hermes with one provider setting. Use the free window if it is still open when you read this, but plan around the official $1.00/$2.70 pricing. If you want a strong open model for research, writing and agent chains, Hermes Agent Step 5 is worth a test.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>FAQ: hermes agent step 5</p>\n<p>Is Step 5 free in Hermes Agent?</p>\n<p>In my video it was free to run inside Hermes at the time of recording. No official source confirms a free window, so check current pricing in the Hermes model picker.</p>\n<p>How much does Step 5 Preview cost?</p>\n<p>StepFun lists $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens.</p>\n<p>How do I connect Step 5 to Hermes?</p>\n<p>Add STEPFUN_API_KEY to ~/.hermes/.env and run hermes chat –provider stepfun –model step-5-preview, or pick it through Nous Portal.</p>\n<p>How big is Step 5 Preview?</p>\n<p>600B total parameters with 27B active, and up to 1M tokens of context.</p>\n<p>Can I use Step 5 commercially?</p>\n<p>Yes. The StepFun Model License allows commercial use, with extra conditions only for very large companies, such as over 100M monthly users or over $20M revenue a month.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<p>Related reading</p>\n<p>Best Model for Hermes Agent</p>\n<p>Hermes Agent Sandbox</p>\n<p>Solar Mini 4 + Hermes</p>\n<p>Last updated October 2026. This page is a living guide to hermes agent step 5 — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "ef21ea8751be",
+      "title": "v0.22.5+canary.20261025T065651Z",
+      "content": "Hermes Agent canary 20261025T065651Z",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261025T065651Z",
+      "author": "github-actions[bot]",
+      "published": "2026-10-25T06:56:52",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A new canary build, v0.22.5+canary.20261025T065651Z, has been released for Hermes Agent. Canary versions allow users to test the latest features and bug fixes before they are part of a stable release. This indicates continuous and rapid iterative development within the project.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: Today's item is just another routine canary build timestamp of Hermes Agent, repeating the already-covered fact that the project ships rapid canary releases, with no new features, fixes, or announcements named.] This is an official release from the core developers. While a canary build is developmental, it signifies an active, healthy development pipeline for the product.",
+      "themes": [
+        "Product Updates"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "Today's item is just another routine canary build timestamp of Hermes Agent, repeating the already-covered fact that the project ships rapid canary releases, with no new features, fixes, or announcements named.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 0,
+        "matched_prior_items": [
+          {
+            "id": "9be57bb75d41",
+            "date": "2026-10-25",
+            "category": "news",
+            "title": "v0.22.5+canary.20261024T065630Z",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261024T065630Z"
+          },
+          {
+            "id": "80fc85828105",
+            "date": "2026-10-20",
+            "category": "social",
+            "title": "@iamlukethedev It’s game dev szn",
+            "source": "Twitter",
+            "url": "https://twitter.com/Teknium/status/2112116587700670920"
+          }
+        ]
+      },
+      "summary_html": "<p>A new canary build, v0.22.5+canary.20261025T065651Z, has been released for Hermes Agent. Canary versions allow users to test the latest features and bug fixes before they are part of a stable release. This indicates continuous and rapid iterative development within the project.</p>",
+      "content_html": "<p>Hermes Agent canary 20261025T065651Z</p>"
+    },
+    {
+      "id": "9854f7f894e2",
+      "title": "oh-my-hermes (Multi-Agent & Orchestration)",
+      "content": "oh-my-hermes is an operating layer for Hermes Agent that routes work to skills and model chains by category and runs graph-based tasks in parallel. It includes a TUI, task-ranked long-term memory, and status reporting that distinguishes reported completion from verified work.",
+      "url": "https://hermesatlas.com/projects/rlaope/oh-my-hermes",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Multi-Agent & Orchestration"
+      ],
+      "summary": "oh-my-hermes is a new community-built operating layer for Hermes Agent that routes work to skills and model chains by category and executes graph-based tasks in parallel. It adds a TUI, task-ranked long-term memory, and status reporting that separates reported completion from verified work.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: The oh-my-hermes orchestration layer for Hermes Agent was already announced on Oct 2, Oct 14, and even earlier on Oct 25, so today's article only restates the same core claim with added feature commentary (TUI, memory, status reporting).] A substantial orchestration layer that extends Hermes Agent with multi-model routing, parallel graph execution, and verification-aware status reporting; highly relevant to power users running complex agent workflows.",
+      "themes": [
+        "Multi-Agent & Orchestration",
+        "Orchestration and verification"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "The oh-my-hermes orchestration layer for Hermes Agent was already announced on Oct 2, Oct 14, and even earlier on Oct 25, so today's article only restates the same core claim with added feature commentary (TUI, memory, status reporting).",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 11,
+        "matched_prior_items": [
+          {
+            "id": "80eb5732478d",
+            "date": "2026-10-14",
+            "category": "social",
+            "title": "oh-my-hermes is an orchestration layer for Hermes Agent. \n\nYou install it next to Hermes and it adds...",
+            "source": "Twitter",
+            "url": "https://twitter.com/rlaope/status/2109903955962843432"
+          },
+          {
+            "id": "2eb65933f6cf",
+            "date": "2026-10-02",
+            "category": "social",
+            "title": "oh-my-hermes: an operating layer for Hermes Agent.\n\nYour bot takes the message. The main model plans...",
+            "source": "Twitter",
+            "url": "https://twitter.com/rlaope/status/2105549869050134878"
+          },
+          {
+            "id": "85a24234b6f2",
+            "date": "2026-10-25",
+            "category": "social",
+            "title": "Meet Oh-My-Hermes \n\nI burned 200B tokens tuning my Hermes Agent setup, and now you can get all of it...",
+            "source": "Twitter",
+            "url": "https://twitter.com/rlaope/status/2113900819951321240"
+          }
+        ]
+      },
+      "summary_html": "<p>oh-my-hermes is a new community-built operating layer for Hermes Agent that routes work to skills and model chains by category and executes graph-based tasks in parallel. It adds a TUI, task-ranked long-term memory, and status reporting that separates reported completion from verified work.</p>",
+      "content_html": "<p>oh-my-hermes is an operating layer for Hermes Agent that routes work to skills and model chains by category and runs graph-based tasks in parallel. It includes a TUI, task-ranked long-term memory, and status reporting that distinguishes reported completion from verified work.</p>"
+    },
+    {
+      "id": "ad542344c473",
+      "title": "hermes-talk (Plugins & Extensions)",
+      "content": "Hermes Talk is a voice plugin for Hermes Agent that lets users speak with the agent, hear spoken replies, and use its tools during a conversation. It supports terminal, Discord voice, dashboard, and Hermes Desktop sessions, with voice options including OpenAI Realtime, xAI Grok Voice, Gemini Live, GPT-Live, and Cascade voice; provider availability varies by surface.",
+      "url": "https://hermesatlas.com/projects/TheSmokeDev/hermes-talk",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Plugins & Extensions"
+      ],
+      "summary": "Hermes Talk is a voice plugin for Hermes Agent enabling spoken conversation with the agent, spoken replies, and tool use during conversation across terminal, Discord voice, dashboard, and Hermes Desktop sessions. Voice providers include OpenAI Realtime, xAI Grok Voice, Gemini Live, GPT-Live, and Cascade, with availability varying by surface.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior social coverage from 2026-10-25] Adds a major new interaction modality to Hermes across multiple surfaces with several current voice-provider backends; broad appeal for users wanting conversational agent access.",
+      "themes": [
+        "Plugins & Extensions",
+        "Voice interfaces"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior social coverage from 2026-10-25",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 0,
+        "matched_prior_items": [
+          {
+            "id": "fd8b7339e82c",
+            "date": "2026-10-25",
+            "category": "social",
+            "title": "@yacineMTB Hermes Agent",
+            "source": "Twitter",
+            "url": "https://twitter.com/NousResearch/status/2114030897356034237"
+          },
+          {
+            "id": "911795259ad7",
+            "date": "2026-10-21",
+            "category": "social",
+            "title": "@gwammyy You'd install Hermes Desktop and then in the Plugins page you'd click install, and then you...",
+            "source": "Twitter",
+            "url": "https://twitter.com/Teknium/status/2112453091400585383"
+          },
+          {
+            "id": "3e1f542add31",
+            "date": "2026-10-08",
+            "category": "social",
+            "title": "@atomicbot_ai devops is a huge use case internally",
+            "source": "Twitter",
+            "url": "https://twitter.com/Teknium/status/2107764621289623573"
+          }
+        ]
+      },
+      "summary_html": "<p>Hermes Talk is a voice plugin for Hermes Agent enabling spoken conversation with the agent, spoken replies, and tool use during conversation across terminal, Discord voice, dashboard, and Hermes Desktop sessions. Voice providers include OpenAI Realtime, xAI Grok Voice, Gemini Live, GPT-Live, and Cascade, with availability varying by surface.</p>",
+      "content_html": "<p>Hermes Talk is a voice plugin for Hermes Agent that lets users speak with the agent, hear spoken replies, and use its tools during a conversation. It supports terminal, Discord voice, dashboard, and Hermes Desktop sessions, with voice options including OpenAI Realtime, xAI Grok Voice, Gemini Live, GPT-Live, and Cascade voice; provider availability varies by surface.</p>"
+    },
+    {
+      "id": "9f2f33412f7b",
+      "title": "Hermes Bot Kit (Workspaces & GUIs)",
+      "content": "Hermes Bot Kit provides desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop. It also includes agent plugins for texting-style replies and for shell and GUI interaction with a bot’s pinned computer.",
+      "url": "https://hermesatlas.com/projects/thomasbek3/hermes-bot-kit",
+      "author": "Unknown",
+      "published": "2026-10-25T22:48:33",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Workspaces & GUIs"
+      ],
+      "summary": "Hermes Bot Kit supplies desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop, plus agent plugins for texting-style replies and shell/GUI interaction with a bot's pinned computer.",
+      "importance_score": 55.0,
+      "reasoning": "A UI/UX enhancement package for Hermes Desktop with remote-control bot workflows; valuable to a subset of users but narrower in scope than orchestration or voice additions.",
+      "themes": [
+        "Workspaces & GUIs",
+        "Desktop UX"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Bot Kit supplies desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop, plus agent plugins for texting-style replies and shell/GUI interaction with a bot's pinned computer.</p>",
+      "content_html": "<p>Hermes Bot Kit provides desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop. It also includes agent plugins for texting-style replies and for shell and GUI interaction with a bot’s pinned computer.</p>"
+    }
+  ]
+}

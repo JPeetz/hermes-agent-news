@@ -1,0 +1,406 @@
+{
+  "category": "news",
+  "date": "2026-10-10",
+  "category_summary": "**Releases:** The **v0.21.7** stabilization cycle dominates — six same-day candidate tags ([**rc.5–rc.9**](/?date=2026-10-10&category=news#item-acbbef0a9084)), with [**rc.9**](/?date=2026-10-10&category=news#item-d212a5677f22) the latest signal that a stable drop is close; cover [rc.6–rc.8](/?date=2026-10-10&category=news#item-948b31e62e64) as one storyline, not six items. **Merged PRs:** Update-path hardening leads: [pre-apply exits now report their actual reason](/?date=2026-10-10&category=news#item-09b42113efa8) instead of generic `exception`/`subprocess_failed` (a widely-felt failure mode on slow or bloated CLI and Desktop installs), the [syntax preflight now announces when it's skipped on slow object fetches](/?date=2026-10-10&category=news#item-2ad862c23ca0) and catches timed-out `git cat-file` reads, and the [dead `config_unreadable` telemetry exit was dropped](/?date=2026-10-10&category=news#item-5d5124279879). **Community:** A new [third-party guide walks through connecting Hermes Agent to **Google Workspace**](/?date=2026-10-10&category=news#item-5bf1acd8bfbf) — Gmail, Calendar, Drive, Sheets, and Docs — with OAuth setup, CLI commands, and headless troubleshooting. **Tips:** Maintainer docs confirm [telemetry **v4** accepts additive values in place after its stable release](/?date=2026-10-10&category=news#item-09ef563cb878), so schema integrators can extend events without a version bump.",
+  "category_summary_html": "<p><strong>Releases:</strong> The <strong>v0.21.7</strong> stabilization cycle dominates — six same-day candidate tags (<a href=\"/?date=2026-10-10&amp;category=news#item-acbbef0a9084\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.5–rc.9</strong></a>), with <a href=\"/?date=2026-10-10&amp;category=news#item-d212a5677f22\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.9</strong></a> the latest signal that a stable drop is close; cover <a href=\"/?date=2026-10-10&amp;category=news#item-948b31e62e64\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.6–rc.8</a> as one storyline, not six items. <strong>Merged PRs:</strong> Update-path hardening leads: <a href=\"/?date=2026-10-10&amp;category=news#item-09b42113efa8\" class=\"internal-link\" rel=\"noopener noreferrer\">pre-apply exits now report their actual reason</a> instead of generic <code>exception</code>/<code>subprocess_failed</code> (a widely-felt failure mode on slow or bloated CLI and Desktop installs), the <a href=\"/?date=2026-10-10&amp;category=news#item-2ad862c23ca0\" class=\"internal-link\" rel=\"noopener noreferrer\">syntax preflight now announces when it's skipped on slow object fetches</a> and catches timed-out <code>git cat-file</code> reads, and the <a href=\"/?date=2026-10-10&amp;category=news#item-5d5124279879\" class=\"internal-link\" rel=\"noopener noreferrer\">dead <code>config_unreadable</code> telemetry exit was dropped</a>. <strong>Community:</strong> A new <a href=\"/?date=2026-10-10&amp;category=news#item-5bf1acd8bfbf\" class=\"internal-link\" rel=\"noopener noreferrer\">third-party guide walks through connecting Hermes Agent to <strong>Google Workspace</strong></a> — Gmail, Calendar, Drive, Sheets, and Docs — with OAuth setup, CLI commands, and headless troubleshooting. <strong>Tips:</strong> Maintainer docs confirm <a href=\"/?date=2026-10-10&amp;category=news#item-09ef563cb878\" class=\"internal-link\" rel=\"noopener noreferrer\">telemetry <strong>v4</strong> accepts additive values in place after its stable release</a>, so schema integrators can extend events without a version bump.</p>",
+  "themes": [
+    {
+      "name": "Python 3.11-3.13 Compatibility Regression",
+      "description": "A ruff autofix targeting py314 semantics broke imports across roughly 300 core modules on older Pythons, crashing the update path; test-scoped fallout in the Feishu gateway test was fixed in the same batch.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "Update Pipeline Robustness",
+      "description": "Multiple fixes improve the hermes update experience: named reasons for pre-apply exits, handling of timed-out blob fetches on blobless installs, clearer preflight messaging, and removal of the dead config_unreadable telemetry exit.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "Release Stabilization",
+      "description": "Ongoing release-candidate publishing and schema governance decisions show the project actively stabilizing the v0.21.7 line and its telemetry pipeline.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Community Integration Guides",
+      "description": "Third-party tutorial content continues to expand Hermes Agent's practical coverage, notably a 2026 Google Workspace integration guide covering OAuth, CLI commands, and headless troubleshooting.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "v0.21.7 Release Candidate Cycle",
+      "description": "Six release candidate tags (rc.4 through rc.9) for v0.21.7 were published on the same day, indicating an intense, automation-driven candidate iteration ahead of a stable release.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Telemetry Schema Governance",
+      "description": "An owner ruling locks telemetry package schema v4 to additive-only in-place extension (including gateway_pause_failed) rather than bumping to v5, preserving ingest compatibility.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 50.0
+    },
+    {
+      "name": "Ecosystem Integrations",
+      "description": "Community-authored guides extending Hermes Agent into third-party platforms such as Google Workspace.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 35.0
+    }
+  ],
+  "total_items": 14,
+  "items": [
+    {
+      "id": "09b42113efa8",
+      "title": "fix(update): pre-apply exits that read exception/subprocess_failed na…",
+      "content": "fix(update): pre-apply exits that read exception/subprocess_failed name their reason\n\nhermes.update.run rows with apply_mode=unknown still had three exits with no stop_class on main:\n\n- The startup-syntax preflight (update_cmd_commit.read_target_files) runs `git cat-file --batch`\n  under a 120 s limit. On a blobless install (install.sh clones --filter=blob:none) every changed\n  blob lazily fetches in its own round trip, so a slow link times out and the uncaught\n  TimeoutExpired ended the whole update as `subprocess_failed` after 2+ minutes (31 CLI + 23\n  Desktop install-days). An unread batch now counts as unread files, which is the preflight's\n  documented contract; the post-move syntax check stays the backstop.\n- An unreadable/unparseable config.yaml (require_readable_config_before_write RuntimeError) or an\n  invalid configured channel name (ChannelError) while picking the channel read `exception`. They\n  now record `config_unreadable` (new) / `channel_unresolved`.\n- A failed Windows gateway pause (_abort_on_error / ServicePauseFailed RuntimeError) read\n  `exception`; it now records `gateway_pause_failed` (new).\n\nTwo closed UPDATE_STOP_CLASSES values, the v4 schema enum and the relay-shared-metrics doc row\nchange together; every legacy value stays valid.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/2379b2e2eb4e0b8a71588e01e11830ac7048807c",
+      "author": "teknium1",
+      "published": "2026-10-09T21:36:08",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Three update-path exit conditions that previously reported as generic exception/subprocess_failed now name their reason. Most notably, the startup syntax preflight runs git cat-file under a 120-second limit, and on blobless installs (installed via install.sh with --filter=blob:none) slow links caused lazy blob fetches to time out, killing whole updates as subprocess_failed after 2+ minutes across 31 CLI and 23 Desktop install-days; an unread batch is now treated as unread files per the preflight contract, with the post-move syntax check retained as a backstop.",
+      "importance_score": 72.0,
+      "reasoning": "Fixes a real, widely-felt update failure mode affecting both CLI and Desktop installs on slow or blobless setups, and improves diagnosability of pre-apply exits; high practical value for Hermes users even though it is not a feature release.",
+      "themes": [
+        "update pipeline",
+        "blobless installs",
+        "error handling"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Three update-path exit conditions that previously reported as generic exception/subprocess_failed now name their reason. Most notably, the startup syntax preflight runs git cat-file under a 120-second limit, and on blobless installs (installed via install.sh with --filter=blob:none) slow links caused lazy blob fetches to time out, killing whole updates as subprocess_failed after 2+ minutes across 31 CLI and 23 Desktop install-days; an unread batch is now treated as unread files per the preflight contract, with the post-move syntax check retained as a backstop.</p>",
+      "content_html": "<p>fix(update): pre-apply exits that read exception/subprocess_failed name their reason</p>\n<p>hermes.update.run rows with apply_mode=unknown still had three exits with no stop_class on main:</p>\n<ul>\n<li>The startup-syntax preflight (update_cmd_commit.read_target_files) runs <code>git cat-file --batch</code></li>\n</ul>\n<p>under a 120 s limit. On a blobless install (install.sh clones --filter=blob:none) every changed</p>\n<p>blob lazily fetches in its own round trip, so a slow link times out and the uncaught</p>\n<p>TimeoutExpired ended the whole update as <code>subprocess_failed</code> after 2+ minutes (31 CLI + 23</p>\n<p>Desktop install-days). An unread batch now counts as unread files, which is the preflight's</p>\n<p>documented contract; the post-move syntax check stays the backstop.</p>\n<ul>\n<li>An unreadable/unparseable config.yaml (require_readable_config_before_write RuntimeError) or an</li>\n</ul>\n<p>invalid configured channel name (ChannelError) while picking the channel read <code>exception</code>. They</p>\n<p>now record <code>config_unreadable</code> (new) / <code>channel_unresolved</code>.</p>\n<ul>\n<li>A failed Windows gateway pause (_abort_on_error / ServicePauseFailed RuntimeError) read</li>\n</ul>\n<p><code>exception</code>; it now records <code>gateway_pause_failed</code> (new).</p>\n<p>Two closed UPDATE_STOP_CLASSES values, the v4 schema enum and the relay-shared-metrics doc row</p>\n<p>change together; every legacy value stays valid.</p>"
+    },
+    {
+      "id": "0662f01a1c0c",
+      "title": "fix: core modules import again on Python 3.11-3.13 (re-quote eager fo…",
+      "content": "fix: core modules import again on Python 3.11-3.13 (re-quote eager forward references)\n\n#135348 ran ruff's UP037 autofix with ruff.strict.toml's target-version = &quot;py314&quot;. On 3.14\nannotations are lazy (PEP 649), so stripping quotes is safe there; on 3.11-3.13 a function or\nvariable annotation is evaluated when the def or statement runs. Every unquoted annotation that\nnames the enclosing class (`def clone_for_agent(self) -&gt; ContextEngine`), a class bound later in\nthe module, or a TYPE_CHECKING-only import now raises NameError on import: 300 modules on main\n(gateway.config, run_agent, hermes_state, cron.jobs, the Telegram adapter, ...) fail to import\nunder 3.11, the update path crashes mid-`hermes update` on any install whose interpreter is\nolder than 3.14, and the e2e-upgrade suite's retry leg fails with\n`NameError: name 'ContextEngine' is not defined`.\n\n- Re-quote exactly the 79 annotations (36 files) that name something unbound when they are\n  evaluated (including tui_gateway/server.py's `_TurnScopes`, which only reaches that module's\n  globals through register() after import); no other text changes.\n- agent/turn_scripted_prelude.py: `Generator[...]` gets its third argument back. d76cce4f116\n  applied UP043 (default type args, valid only from 3.13) to a module-level alias, so\n  `Generator[Y, S]` raises TypeError on 3.11/3.12 and takes gateway.run, agent.conversation_loop\n  and tui_gateway.{server,ws,entry} down with it.\n- ruff.strict.toml target-version = &quot;py311&quot;, the requires-python floor. With it UP037 leaves\n  these quotes alone and only strips the two that are genuinely redundant, which this commit\n  strips; any future version-gated fix stays valid on every supported Python.\n- tests/ci/test_strict_ruff_target.py pins the target to the requires-python floor (red on main).",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/a274d3388f882f751099cd9bd5ac2988bfaf8391",
+      "author": "teknium1",
+      "published": "2026-10-09T21:25:07",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A critical regression is fixed: PR #135348 ran ruff's UP037 autofix with target-version py314, stripping quotes from forward-reference annotations. On Python 3.14 annotations are lazy so this is safe, but on 3.11-3.13 they are evaluated eagerly, causing roughly 300 core modules (gateway.config, run_agent, hermes_state, cron.jobs, the Telegram adapter and more) to fail import, crashing hermes update mid-run on any install older than 3.14 and breaking the e2e-upgrade suite.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: secondary coverage of primary source from 2024-07-23 (808d before coverage)] This is a severe, install-breaking regression affecting virtually every Hermes user on Python 3.11-3.13, including crashes during the update path itself; re-quoting the annotations restores core module imports and is the most significant code fix of the day.",
+      "themes": [
+        "Python 3.11-3.13 compatibility",
+        "update pipeline",
+        "regression fixes"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_followup",
+        "label": "Follow-up",
+        "reason": "secondary coverage of primary source from 2024-07-23 (808d before coverage)",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "primary_url": "https://github.blog",
+        "primary_published": "2024-07-23",
+        "age_days": 808
+      },
+      "summary_html": "<p>A critical regression is fixed: PR #135348 ran ruff's UP037 autofix with target-version py314, stripping quotes from forward-reference annotations. On Python 3.14 annotations are lazy so this is safe, but on 3.11-3.13 they are evaluated eagerly, causing roughly 300 core modules (gateway.config, run_agent, hermes_state, cron.jobs, the Telegram adapter and more) to fail import, crashing hermes update mid-run on any install older than 3.14 and breaking the e2e-upgrade suite.</p>",
+      "content_html": "<p>fix: core modules import again on Python 3.11-3.13 (re-quote eager forward references)</p>\n<p>#135348 ran ruff's UP037 autofix with ruff.strict.toml's target-version = \"py314\". On 3.14</p>\n<p>annotations are lazy (PEP 649), so stripping quotes is safe there; on 3.11-3.13 a function or</p>\n<p>variable annotation is evaluated when the def or statement runs. Every unquoted annotation that</p>\n<p>names the enclosing class (<code>def clone_for_agent(self) -&gt; ContextEngine</code>), a class bound later in</p>\n<p>the module, or a TYPE_CHECKING-only import now raises NameError on import: 300 modules on main</p>\n<p>(gateway.config, run_agent, hermes_state, cron.jobs, the Telegram adapter, ...) fail to import</p>\n<p>under 3.11, the update path crashes mid-<code>hermes update</code> on any install whose interpreter is</p>\n<p>older than 3.14, and the e2e-upgrade suite's retry leg fails with</p>\n<p><code>NameError: name 'ContextEngine' is not defined</code>.</p>\n<ul>\n<li>Re-quote exactly the 79 annotations (36 files) that name something unbound when they are</li>\n</ul>\n<p>evaluated (including tui_gateway/server.py's <code>_TurnScopes</code>, which only reaches that module's</p>\n<p>globals through register() after import); no other text changes.</p>\n<ul>\n<li>agent/turn_scripted_prelude.py: <code>Generator[...]</code> gets its third argument back. d76cce4f116</li>\n</ul>\n<p>applied UP043 (default type args, valid only from 3.13) to a module-level alias, so</p>\n<p><code>Generator[Y, S]</code> raises TypeError on 3.11/3.12 and takes gateway.run, agent.conversation_loop</p>\n<p>and tui_gateway.{server,ws,entry} down with it.</p>\n<ul>\n<li>ruff.strict.toml target-version = \"py311\", the requires-python floor. With it UP037 leaves</li>\n</ul>\n<p>these quotes alone and only strips the two that are genuinely redundant, which this commit</p>\n<p>strips; any future version-gated fix stays valid on every supported Python.</p>\n<ul>\n<li>tests/ci/test_strict_ruff_target.py pins the target to the requires-python floor (red on main).</li>\n</ul>"
+    },
+    {
+      "id": "af9458a2aece",
+      "title": "rc.4-v0.21.7",
+      "content": "{\"attempt\":4,\"autopublish\":false,\"claimEpoch\":1791513299,\"commit\":\"90…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.4-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T02:34:59",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A new release candidate, rc.4-v0.21.7, was published for hermes-agent on GitHub. This is the fourth release candidate on the v0.21.7 line, indicating active stabilization work ahead of a stable release. Release-candidate builds give Hermes users early access to upcoming fixes and features.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: This is just the fourth incremental release candidate on the v0.21.7 line, repeating the already-covered 'active stabilization toward a stable release' claim with no new fixes, features, or announcements beyond the incremented build number.] An official Hermes Agent release tag is inherently significant for users tracking the project, though it is a release candidate rather than a stable version, and the truncated content prevents assessing the specific changes included. Still, release notes are a top-priority category for Hermes coverage.",
+      "themes": [
+        "release candidates",
+        "version updates"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "This is just the fourth incremental release candidate on the v0.21.7 line, repeating the already-covered 'active stabilization toward a stable release' claim with no new fixes, features, or announcements beyond the incremented build number.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 0,
+        "matched_prior_items": [
+          {
+            "id": "eb64a0d448a4",
+            "date": "2026-10-09",
+            "category": "news",
+            "title": "rc.3-v0.21.7",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.3-v0.21.7"
+          },
+          {
+            "id": "9f06e4ddd15e",
+            "date": "2026-10-09",
+            "category": "news",
+            "title": "rc.4-v0.21.6",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.4-v0.21.6"
+          },
+          {
+            "id": "e00a06495b94",
+            "date": "2026-10-03",
+            "category": "news",
+            "title": "rc.35-v0.21.5",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.35-v0.21.5"
+          }
+        ]
+      },
+      "summary_html": "<p>A new release candidate, rc.4-v0.21.7, was published for hermes-agent on GitHub. This is the fourth release candidate on the v0.21.7 line, indicating active stabilization work ahead of a stable release. Release-candidate builds give Hermes users early access to upcoming fixes and features.</p>",
+      "content_html": "<p>{\"attempt\":4,\"autopublish\":false,\"claimEpoch\":1791513299,\"commit\":\"90…</p>"
+    },
+    {
+      "id": "2ad862c23ca0",
+      "title": "fix(update): say when the syntax preflight is skipped on a slow objec…",
+      "content": "fix(update): say when the syntax preflight is skipped on a slow object fetch; sort gateway_pause_failed\n\nThe timed-out cat-file read is caught in target_syntax_error (the preflight) instead of\nread_target_files, so the preflight prints one line saying the post-update check still runs;\npublish_recovery_closure keeps suppressing the timeout as before.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/5e46b9591f827ef40a695523a378de0a3ddba7fd",
+      "author": "teknium1",
+      "published": "2026-10-09T21:36:08",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "This fix improves the update path's error handling: a timed-out git cat-file read is now caught in the target_syntax_error preflight rather than in read_target_files, and the preflight prints a one-line notice that the post-update check still runs. A related gateway_pause_failed sorting tweak is included, and publish_recovery_closure behavior is unchanged.",
+      "importance_score": 55.0,
+      "reasoning": "Directly improves update reliability and user feedback during slow object fetches, complementing the larger update-pipeline fixes landed the same day; moderate importance as a UX-clarity fix within the v0.21.7 cycle.",
+      "themes": [
+        "update pipeline",
+        "error handling"
+      ],
+      "continuation": null,
+      "summary_html": "<p>This fix improves the update path's error handling: a timed-out git cat-file read is now caught in the target_syntax_error preflight rather than in read_target_files, and the preflight prints a one-line notice that the post-update check still runs. A related gateway_pause_failed sorting tweak is included, and publish_recovery_closure behavior is unchanged.</p>",
+      "content_html": "<p>fix(update): say when the syntax preflight is skipped on a slow object fetch; sort gateway_pause_failed</p>\n<p>The timed-out cat-file read is caught in target_syntax_error (the preflight) instead of</p>\n<p>read_target_files, so the preflight prints one line saying the post-update check still runs;</p>\n<p>publish_recovery_closure keeps suppressing the timeout as before.</p>"
+    },
+    {
+      "id": "d212a5677f22",
+      "title": "rc.9-v0.21.7",
+      "content": "{\"attempt\":9,\"autopublish\":false,\"claimEpoch\":1791578012,\"commit\":\"b6…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.9-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T20:33:32",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A ninth release candidate tag, rc.9 of v0.21.7, was published to the hermes-agent GitHub releases feed on 2026-10-09. The visible content is truncated publish metadata showing attempt 9 with a commit reference. This appears to be the latest iteration in a rapid same-day sequence of release candidate publishes for v0.21.7.",
+      "importance_score": 52.0,
+      "reasoning": "Release candidates for an upcoming v0.21.7 are relevant to Hermes users tracking the next version, but the content is machine metadata rather than substantive changelog notes, and the high attempt number suggests iterative CI-driven republishing rather than a major announcement.",
+      "themes": [
+        "v0.21.7 release candidates",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A ninth release candidate tag, rc.9 of v0.21.7, was published to the hermes-agent GitHub releases feed on 2026-10-09. The visible content is truncated publish metadata showing attempt 9 with a commit reference. This appears to be the latest iteration in a rapid same-day sequence of release candidate publishes for v0.21.7.</p>",
+      "content_html": "<p>{\"attempt\":9,\"autopublish\":false,\"claimEpoch\":1791578012,\"commit\":\"b6…</p>"
+    },
+    {
+      "id": "5d5124279879",
+      "title": "fix(update): drop config_unreadable: an unreadable config.yaml also h…",
+      "content": "fix(update): drop config_unreadable: an unreadable config.yaml also hides consent, so no row is ever sent\n\nThe exit is real (RuntimeError from require_readable_config_before_write), but the consent gate\nreads the same config.yaml and reads it as collection off: a live run on a scratch install with\nan unparseable config.yaml wrote no metrics store at all. A closed value nothing can emit only\nwidens the contract.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/f549ce3fbd5beb68ba05c3abdddf7cba023f0346",
+      "author": "teknium1",
+      "published": "2026-10-09T21:36:08",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The config_unreadable telemetry exit code is being dropped because an unreadable config.yaml also blocks the consent gate from reading collection settings, so no metrics row is ever emitted for that case. A verified reproduction on a scratch install with an unparseable config.yaml confirmed no metrics store was written, making the closed value dead code that only widened the contract.",
+      "importance_score": 50.0,
+      "reasoning": "Contract hygiene for Hermes telemetry that removes a dead exit path; relevant to maintainers and telemetry consumers but invisible to most users, with the root-cause behavior covered by the broader pre-apply exits fix.",
+      "themes": [
+        "telemetry schema v4",
+        "update pipeline",
+        "config handling"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The config_unreadable telemetry exit code is being dropped because an unreadable config.yaml also blocks the consent gate from reading collection settings, so no metrics row is ever emitted for that case. A verified reproduction on a scratch install with an unparseable config.yaml confirmed no metrics store was written, making the closed value dead code that only widened the contract.</p>",
+      "content_html": "<p>fix(update): drop config_unreadable: an unreadable config.yaml also hides consent, so no row is ever sent</p>\n<p>The exit is real (RuntimeError from require_readable_config_before_write), but the consent gate</p>\n<p>reads the same config.yaml and reads it as collection off: a live run on a scratch install with</p>\n<p>an unparseable config.yaml wrote no metrics store at all. A closed value nothing can emit only</p>\n<p>widens the contract.</p>"
+    },
+    {
+      "id": "e4238a2efbd3",
+      "title": "rc.8-v0.21.7",
+      "content": "{\"attempt\":8,\"autopublish\":false,\"claimEpoch\":1791574408,\"commit\":\"b5…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.8-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T19:33:28",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Release candidate rc.8 of v0.21.7 was tagged on the hermes-agent releases feed on 2026-10-09, one hour after rc.7. Content is truncated publish metadata with attempt 8 and a commit hash. It is part of the same-day rapid-fire sequence of v0.21.7 candidate builds.",
+      "importance_score": 45.0,
+      "reasoning": "Another incremental candidate in a same-day series; low informational value since the notes are truncated metadata and later candidates (rc.9) supersede it within hours.",
+      "themes": [
+        "v0.21.7 release candidates",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Release candidate rc.8 of v0.21.7 was tagged on the hermes-agent releases feed on 2026-10-09, one hour after rc.7. Content is truncated publish metadata with attempt 8 and a commit hash. It is part of the same-day rapid-fire sequence of v0.21.7 candidate builds.</p>",
+      "content_html": "<p>{\"attempt\":8,\"autopublish\":false,\"claimEpoch\":1791574408,\"commit\":\"b5…</p>"
+    },
+    {
+      "id": "037804794fe6",
+      "title": "rc.7-v0.21.7",
+      "content": "{\"attempt\":7,\"autopublish\":false,\"claimEpoch\":1791568040,\"commit\":\"26…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.7-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T17:47:20",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Release candidate rc.7 of v0.21.7 was published on 2026-10-09, roughly 90 minutes after rc.6, indicating quick turnaround on fixes during the candidate cycle. The payload is truncated publish metadata (attempt 7, commit reference) with no readable changelog.",
+      "importance_score": 45.0,
+      "reasoning": "Part of the iterative v0.21.7 candidate stream; significance is limited because it is quickly superseded and the truncated content reveals no concrete changes.",
+      "themes": [
+        "v0.21.7 release candidates",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Release candidate rc.7 of v0.21.7 was published on 2026-10-09, roughly 90 minutes after rc.6, indicating quick turnaround on fixes during the candidate cycle. The payload is truncated publish metadata (attempt 7, commit reference) with no readable changelog.</p>",
+      "content_html": "<p>{\"attempt\":7,\"autopublish\":false,\"claimEpoch\":1791568040,\"commit\":\"26…</p>"
+    },
+    {
+      "id": "948b31e62e64",
+      "title": "rc.6-v0.21.7",
+      "content": "{\"attempt\":6,\"autopublish\":false,\"claimEpoch\":1791565793,\"commit\":\"cf…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.6-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T17:09:53",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Release candidate rc.6 of v0.21.7 was tagged on 2026-10-09, about 40 minutes after rc.5. The content is truncated publish metadata (attempt 6, commit hash) with no substantive notes visible.",
+      "importance_score": 45.0,
+      "reasoning": "Another incremental candidate build in the same-day v0.21.7 sequence; individual candidates carry little standalone significance for users versus the eventual stable release.",
+      "themes": [
+        "v0.21.7 release candidates",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Release candidate rc.6 of v0.21.7 was tagged on 2026-10-09, about 40 minutes after rc.5. The content is truncated publish metadata (attempt 6, commit hash) with no substantive notes visible.</p>",
+      "content_html": "<p>{\"attempt\":6,\"autopublish\":false,\"claimEpoch\":1791565793,\"commit\":\"cf…</p>"
+    },
+    {
+      "id": "acbbef0a9084",
+      "title": "rc.5-v0.21.7",
+      "content": "{\"attempt\":5,\"autopublish\":false,\"claimEpoch\":1791518021,\"commit\":\"17…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.5-v0.21.7",
+      "author": "ethernet8023",
+      "published": "2026-10-09T03:53:41",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Release candidate rc.5 of v0.21.7 was published early on 2026-10-09 (03:53 UTC), continuing the candidate series that ran through the day. Content is truncated publish metadata showing attempt 5 and a commit reference.",
+      "importance_score": 45.0,
+      "reasoning": "One of six same-day release candidate tags for v0.21.7; the truncated metadata-only content limits what users can act on, and it is superseded by later candidates.",
+      "themes": [
+        "v0.21.7 release candidates",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Release candidate rc.5 of v0.21.7 was published early on 2026-10-09 (03:53 UTC), continuing the candidate series that ran through the day. Content is truncated publish metadata showing attempt 5 and a commit reference.</p>",
+      "content_html": "<p>{\"attempt\":5,\"autopublish\":false,\"claimEpoch\":1791518021,\"commit\":\"17…</p>"
+    },
+    {
+      "id": "09ef563cb878",
+      "title": "docs(telemetry): v4 takes additive values in place after its stable r…",
+      "content": "docs(telemetry): v4 takes additive values in place after its stable release\n\nOwner ruling for gateway_pause_failed: extend package schema v4 in place\n(additive only; ingest validates the envelope and every shape already sent\nstays valid) instead of bumping to v5. The two sentences that said v4 was\nextended only while canary-only now say so.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/46d7718a52ff33accb15dc0501736fbdb6833cab",
+      "author": "teknium1",
+      "published": "2026-10-09T21:36:08",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A commit to the hermes-agent main branch documents an owner decision on telemetry schema handling: the gateway_pause_failed event extends package schema v4 additively in place rather than bumping to v5, with ingest validating envelopes so previously sent shapes remain valid. Docs were updated to remove language suggesting the extension was canary-only.",
+      "importance_score": 42.0,
+      "reasoning": "This is a documentation-only commit reflecting a maintainer ruling on telemetry schema versioning; it does not change runtime behavior or user-facing features. It is relevant mainly to contributors and anyone building on the telemetry schema, not the broader Hermes user base.",
+      "themes": [
+        "telemetry",
+        "schema governance",
+        "documentation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A commit to the hermes-agent main branch documents an owner decision on telemetry schema handling: the gateway_pause_failed event extends package schema v4 additively in place rather than bumping to v5, with ingest validating envelopes so previously sent shapes remain valid. Docs were updated to remove language suggesting the extension was canary-only.</p>",
+      "content_html": "<p>docs(telemetry): v4 takes additive values in place after its stable release</p>\n<p>Owner ruling for gateway_pause_failed: extend package schema v4 in place</p>\n<p>(additive only; ingest validates the envelope and every shape already sent</p>\n<p>stays valid) instead of bumping to v5. The two sentences that said v4 was</p>\n<p>extended only while canary-only now say so.</p>"
+    },
+    {
+      "id": "5bf1acd8bfbf",
+      "title": "How to Integrate Hermes Agent with Google Workspace: Gmail, Calendar, Drive, Sheets & Docs Setup Guide 2026",
+      "content": "Set up Hermes Agent for Gmail, Calendar, Drive, Sheets, and Docs with OAuth, exact CLI commands, scope guidance, and troubleshooting for headless use.",
+      "url": "https://hermes-tutorials.dev/blog/hermes-agent-google-workspace-integration-2026/",
+      "author": "Hermes Agent",
+      "published": "2026-10-09T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A third-party tutorial walks through connecting Hermes Agent to Google Workspace services including Gmail, Calendar, Drive, Sheets, and Docs. It covers OAuth configuration, exact CLI commands, OAuth scope guidance, and troubleshooting for headless environments.",
+      "importance_score": 35.0,
+      "reasoning": "Practical integration guides add value for users deploying Hermes Agent with common productivity tools, and Google Workspace is a widely requested integration. However, it is unofficial community content rather than an official capability announcement, so its significance is moderate.",
+      "themes": [
+        "integrations",
+        "google workspace",
+        "oauth setup"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A third-party tutorial walks through connecting Hermes Agent to Google Workspace services including Gmail, Calendar, Drive, Sheets, and Docs. It covers OAuth configuration, exact CLI commands, OAuth scope guidance, and troubleshooting for headless environments.</p>",
+      "content_html": "<p>Set up Hermes Agent for Gmail, Calendar, Drive, Sheets, and Docs with OAuth, exact CLI commands, scope guidance, and troubleshooting for headless use.</p>"
+    },
+    {
+      "id": "36af9e3ffb7d",
+      "title": "test(gateway): quote the feishu download test's function-local class …",
+      "content": "test(gateway): quote the feishu download test's function-local class annotation\n\nReview finding on #135781: `_FakeAsyncClient.__aenter__(self) -&gt; _FakeAsyncClient` lives in a\nclass defined inside the test body, so the annotation is evaluated before the name is bound and\nthe test raises NameError on 3.11-3.13 (cannot access free variable '_FakeAsyncClient'). Same\nUP037 strip as the rest of this PR; the module-level scanner skipped function bodies. A scan of\nevery function-local class for a self-referencing annotation finds only this one.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/8e0d1569f8054fed689c577995639c0c9bc21b2c",
+      "author": "teknium1",
+      "published": "2026-10-09T21:25:07",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A review finding on PR #135781 is addressed: the feishu download test's function-local _FakeAsyncClient class used an unquoted self-referencing annotation that raised NameError on Python 3.11-3.13 because the annotation evaluates before the name is bound. The same UP037 quoting treatment is applied, and a scan found this was the only function-local class with a self-referencing annotation.",
+      "importance_score": 30.0,
+      "reasoning": "A narrow test-only fix scoped to a single Feishu gateway test; relevant to the broader Python 3.11-3.13 annotation problem but with no direct user-facing impact.",
+      "themes": [
+        "Python 3.11-3.13 compatibility",
+        "test fixes",
+        "feishu gateway"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A review finding on PR #135781 is addressed: the feishu download test's function-local _FakeAsyncClient class used an unquoted self-referencing annotation that raised NameError on Python 3.11-3.13 because the annotation evaluates before the name is bound. The same UP037 quoting treatment is applied, and a scan found this was the only function-local class with a self-referencing annotation.</p>",
+      "content_html": "<p>test(gateway): quote the feishu download test's function-local class annotation</p>\n<p>Review finding on #135781: <code>_FakeAsyncClient.__aenter__(self) -&gt; _FakeAsyncClient</code> lives in a</p>\n<p>class defined inside the test body, so the annotation is evaluated before the name is bound and</p>\n<p>the test raises NameError on 3.11-3.13 (cannot access free variable '_FakeAsyncClient'). Same</p>\n<p>UP037 strip as the rest of this PR; the module-level scanner skipped function bodies. A scan of</p>\n<p>every function-local class for a self-referencing annotation finds only this one.</p>"
+    },
+    {
+      "id": "e7e48b1a52fa",
+      "title": "Daily sync: 2026-10-09 02:00:40",
+      "content": "Daily sync: 2026-10-09 02:00:40",
+      "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/389d8ed7d34dc22b959bf9b8feaa82aa5f5b16c4",
+      "author": "bot@hermes-agent-community.github.io",
+      "published": "2026-10-09T06:00:40",
+      "source": "Recent Commits to hermes-agent-community:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An automated daily sync commit was pushed to the hermes-agent-community repository's main branch on 2026-10-09. The commit contains no human-readable changelog, consistent with routine scheduled synchronization activity.",
+      "importance_score": 15.0,
+      "reasoning": "A routine automated housekeeping commit with no substantive content; signals the community mirror is active but offers nothing actionable for Hermes users.",
+      "themes": [
+        "community repo automation",
+        "daily sync"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An automated daily sync commit was pushed to the hermes-agent-community repository's main branch on 2026-10-09. The commit contains no human-readable changelog, consistent with routine scheduled synchronization activity.</p>",
+      "content_html": "<p>Daily sync: 2026-10-09 02:00:40</p>"
+    }
+  ]
+}

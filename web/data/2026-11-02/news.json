@@ -1,0 +1,108 @@
+{
+  "category": "news",
+  "date": "2026-11-02",
+  "category_summary": "**Releases:** Routine automated canary build **[v0.22.5+canary.20261101T064348Z](/?date=2026-11-02&category=news#item-4e7323970ca9)** published on 2026-11-01 with no substantive changelog — signals only that the release channel is active. **Tips:** A new tutorial walks through enabling the **[memory.write_approval](/?date=2026-11-02&category=news#item-3372e0de5261)** and **skills.write_approval** gates, with staged writes accumulating in **~/.hermes/pending/** for review — a meaningful safety and control upgrade for Hermes Agent users. **Community:** **[Hermes Remote Browser](/?date=2026-11-02&category=news#item-a9c9fc990d7d)** is a notable community-built integration (browser extension + server bridge) that lets a server-hosted Hermes Agent use selected Chrome tabs on another machine, extending the agent's reach to local browser contexts.",
+  "category_summary_html": "<p><strong>Releases:</strong> Routine automated canary build <strong><a href=\"/?date=2026-11-02&amp;category=news#item-4e7323970ca9\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.5+canary.20261101T064348Z</a></strong> published on 2026-11-01 with no substantive changelog — signals only that the release channel is active. <strong>Tips:</strong> A new tutorial walks through enabling the <strong><a href=\"/?date=2026-11-02&amp;category=news#item-3372e0de5261\" class=\"internal-link\" rel=\"noopener noreferrer\">memory.write_approval</a></strong> and <strong>skills.write_approval</strong> gates, with staged writes accumulating in <strong>~/.hermes/pending/</strong> for review — a meaningful safety and control upgrade for Hermes Agent users. <strong>Community:</strong> <strong><a href=\"/?date=2026-11-02&amp;category=news#item-a9c9fc990d7d\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Remote Browser</a></strong> is a notable community-built integration (browser extension + server bridge) that lets a server-hosted Hermes Agent use selected Chrome tabs on another machine, extending the agent's reach to local browser contexts.</p>",
+  "themes": [
+    {
+      "name": "Agent safety and write controls",
+      "description": "Tooling and guidance around gating and reviewing agent-initiated writes, exemplified by the write-approval gate tutorial.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Extending agent reach",
+      "description": "Community projects and integrations that expand what environments a Hermes Agent can operate in, such as remote browser control.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Continuous canary releases",
+      "description": "Routine automated Hermes Agent canary builds that keep the release channel moving without documented changes.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 15.0
+    }
+  ],
+  "total_items": 3,
+  "items": [
+    {
+      "id": "3372e0de5261",
+      "title": "Turning on the Hermes Write-Approval Gate and Reading the Pending Queue",
+      "content": "Learn what memory.write_approval and skills.write_approval gate, how staged writes land in ~/.hermes/pending/, and how to review them via /memory and /skills.",
+      "url": "https://hermes-tutorials.dev/blog/2026-11-01-hermes-write-approval-gate-pending-queue/",
+      "author": "Hermes Agent",
+      "published": "2026-11-01T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A tutorial explains how to enable the memory.write_approval and skills.write_approval gates and how staged writes accumulate in ~/.hermes/pending/. It covers reviewing pending changes via the /memory and /skills commands, giving users a workflow to audit agent-initiated writes before they land.",
+      "importance_score": 62.0,
+      "reasoning": "The write-approval gate is a meaningful safety and control feature for Hermes users, and the guide documents a concrete configuration workflow with specific commands and file paths. It is practical guidance rather than an official release, so it scores moderately high as a tips item.",
+      "themes": [
+        "Safety and control",
+        "Memory",
+        "Skills",
+        "Configuration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A tutorial explains how to enable the memory.write_approval and skills.write_approval gates and how staged writes accumulate in ~/.hermes/pending/. It covers reviewing pending changes via the /memory and /skills commands, giving users a workflow to audit agent-initiated writes before they land.</p>",
+      "content_html": "<p>Learn what memory.write_approval and skills.write_approval gate, how staged writes land in ~/.hermes/pending/, and how to review them via /memory and /skills.</p>"
+    },
+    {
+      "id": "a9c9fc990d7d",
+      "title": "hermes-remote-browser (Integrations & Bridges)",
+      "content": "Hermes Remote Browser lets a Hermes Agent running on a server use selected tabs in Chrome on another computer through a browser extension and relay. Users pair the browser, switch access on when needed, and can ask the agent to inspect pages, navigate, and interact with page elements.",
+      "url": "https://hermesatlas.com/projects/driftverse/hermes-remote-browser",
+      "author": "Unknown",
+      "published": "2026-11-01T22:09:51",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Integrations & Bridges"
+      ],
+      "summary": "Hermes Remote Browser is a new community project that lets a server-hosted Hermes Agent use selected Chrome tabs on another computer via a browser extension and relay. Users pair the browser, toggle access on demand, and the agent can inspect pages, navigate, and interact with page elements.",
+      "importance_score": 55.0,
+      "reasoning": "This is a notable community-built integration that extends Hermes Agent's reach into a user's local browser session, a capability relevant to many users running the agent headlessly on servers. As a third-party project showcase rather than an official feature, it scores as a solid but non-critical community item.",
+      "themes": [
+        "Integrations and bridges",
+        "Browser automation",
+        "Community projects"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Remote Browser is a new community project that lets a server-hosted Hermes Agent use selected Chrome tabs on another computer via a browser extension and relay. Users pair the browser, toggle access on demand, and the agent can inspect pages, navigate, and interact with page elements.</p>",
+      "content_html": "<p>Hermes Remote Browser lets a Hermes Agent running on a server use selected tabs in Chrome on another computer through a browser extension and relay. Users pair the browser, switch access on when needed, and can ask the agent to inspect pages, navigate, and interact with page elements.</p>"
+    },
+    {
+      "id": "4e7323970ca9",
+      "title": "v0.22.5+canary.20261101T064348Z",
+      "content": "Hermes Agent canary 20261101T064348Z",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261101T064348Z",
+      "author": "github-actions[bot]",
+      "published": "2026-11-01T06:43:49",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [News](/?date=2026-11-01&category=news#item-2c45cde85f86) yesterday — another routine canary build with no changelog. A routine canary build of Hermes Agent (v0.22.5+canary.20261101T064348Z) was published on 2026-11-01. The release notes contain only an automated build identifier with no described features, fixes, or breaking changes.",
+      "importance_score": 15.0,
+      "reasoning": "This is an automated canary release with no substantive changelog content, so it signals a new build exists on the 0.22.5 line but provides nothing actionable for Hermes users. Routine canary builds without documented changes rank low in significance.",
+      "themes": [
+        "Automated builds",
+        "Version bumps"
+      ],
+      "continuation": {
+        "original_item_id": "2c45cde85f86",
+        "original_date": "2026-11-01",
+        "original_category": "news",
+        "original_title": "v0.22.5+canary.20261031T064409Z",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **News** yesterday — another routine canary build with no changelog."
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-01&amp;category=news#item-2c45cde85f86\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> yesterday — another routine canary build with no changelog. A routine canary build of Hermes Agent (v0.22.5+canary.20261101T064348Z) was published on 2026-11-01. The release notes contain only an automated build identifier with no described features, fixes, or breaking changes.</p>",
+      "content_html": "<p>Hermes Agent canary 20261101T064348Z</p>"
+    }
+  ]
+}

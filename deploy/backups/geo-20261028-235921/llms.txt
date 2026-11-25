@@ -1,0 +1,52 @@
+# Agent N's Hermes News
+> Daily curated news about the Hermes Agent / Hermes Desktop ecosystem — powered by JP Technologies (https://jptechnologies.vercel.app/). Multi-agent pipeline collects, analyzes, and summarizes the latest Hermes Agent releases, community updates, research, and ecosystem developments.
+
+## Navigation
+
+- [Home — Latest Edition](https://hermes-agent-news-one.vercel.app/) — Today's curated Hermes Agent news
+- [About](https://hermes-agent-news-one.vercel.app/about) — How the pipeline works, architecture, and Agent N's mission
+- [Archive](https://hermes-agent-news-one.vercel.app/archive) — Browse all past editions
+- [RSS Feeds](https://hermes-agent-news-one.vercel.app/feeds) — Atom RSS feeds for every category
+
+## Data Sources (Machine-Readable)
+
+These JSON endpoints contain the full pipeline output for AI consumption:
+
+- [/data/index.json](https://hermes-agent-news-one.vercel.app/data/index.json) — Date manifest (all available dates)
+- [/data/{date}/summary.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/summary.json) — Executive summary for each date
+- [/data/{date}/news.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/news.json) — Full news items
+- [/data/{date}/research.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/research.json) — Research items
+- [/data/{date}/social.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/social.json) — Social media items
+- [/data/{date}/reddit.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/reddit.json) — Reddit items
+- [/data/search-corpus.json](https://hermes-agent-news-one.vercel.app/data/search-corpus.json) — 30-day search corpus
+- [/data/{date}/replay-index.json](https://hermes-agent-news-one.vercel.app/data/2026-09-24/replay-index.json) — LLM pipeline replay index
+
+## RSS Feeds
+
+- [Main Feed](https://hermes-agent-news-one.vercel.app/feeds/main.xml) — Executive + top items
+- [News Feed](https://hermes-agent-news-one.vercel.app/feeds/news.xml) — All news items
+- [Research Feed](https://hermes-agent-news-one.vercel.app/feeds/research-25.xml) — Research items
+- [Social Feed](https://hermes-agent-news-one.vercel.app/feeds/social-25.xml) — Social media items
+- [Reddit Feed](https://hermes-agent-news-one.vercel.app/feeds/reddit-25.xml) — Reddit items
+
+## Key Content
+
+Agent N's Hermes News tracks the following ecosystem:
+
+1. **Hermes Agent Releases** — New versions of Nous Research's Hermes Agent framework
+2. **Hermes Desktop** — Hermes Desktop application updates
+3. **Community Tools** — Awesome Hermes Agent list, Hermes Bible, community projects
+4. **AI Agent Ecosystem** — Related agent frameworks, tool-use standards, MCP developments
+5. **Major AI Model Releases** — Notable releases from OpenAI, Anthropic, Google, Meta, DeepSeek, Mistral, Moonshot AI (Kimi), MiniMax (H3), and others
+6. **HuggingFace Daily Notable Papers** — Top ~8 daily arxiv papers relevant to AI agents and LLMs
+
+## Branding
+
+- Color palette: Gold (#FFD700), Cyan (#00FFFF), deep black backgrounds
+- Mascot: Agent N — a young woman with short dark hair, brown eyes, black over-ear headphones with 'N' logo
+- Powered by [JP Technologies](https://jptechnologies.vercel.app/)
+- Forked from [flyryan/ai-news-aggregator](https://github.com/flyryan/ai-news-aggregator)
+
+## llms-full.txt
+
+For full article content per date, request: `https://hermes-agent-news-one.vercel.app/data/{date}/summary.json` and the corresponding category JSON files listed above.

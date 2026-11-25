@@ -1,0 +1,354 @@
+{
+  "category": "news",
+  "date": "2026-10-30",
+  "category_summary": "**Releases:** None this cycle — no stable or canary shipping news met the freshness bar. **Merged PRs:** **[#145222](/?date=2026-10-30&category=news#item-f01f1d3b9a17)** fixes terminal scope ordering so the per-turn managed scope applies last (touches environment setup on every agent turn); **[#145221](/?date=2026-10-30&category=news#item-b9181d850e2e)** makes an unreadable profile `.env` file non-fatal (treated as absent with a warning) so a bad file can no longer block agent startup. **Desktop fixes:** An eight-commit same-day **bot-desktop** cluster hardens idle-screen self-stop and human-lease handling: human takeovers now stamp screen activity so they count as use of an idle screen (**[5edb9e01](/?date=2026-10-30&category=news#item-5edb9e013a50)**); idle stops of abandoned leases now release the lease, un-sticking **computer_use** 'human has control' errors (**[4164f4a2](/?date=2026-10-30&category=news#item-4164f4a20dbe)**); a killed sleep (stray pkill/OOM) can no longer permanently disable the watch loop (**[99a57b3f](/?date=2026-10-30&category=news#item-99a57b3f16b4)**); the human-lease lapse is floored at ~10 minutes so aggressive **idle_stop_minutes** settings stop killing active sessions (**[2ebe6924](/?date=2026-10-30&category=news#item-2ebe6924e658)**); and infinite/non-positive idle windows behave as 'off' instead of breaking **start()** (**[f29ea724](/?date=2026-10-30&category=news#item-f29ea724eb26)**), with matching doc updates (**[0e741fe0](/?date=2026-10-30&category=news#item-0e741fe0f2aa)**). **Community:** Two new walkthroughs — the official **[elevenlabs-sound-effects plugin v1.2.0](/?date=2026-10-30&category=news#item-752f15c8e077)** added to the Hermes plugin catalog on **2026-10-26** (great for game-dev sound workflows), and the **[Hermes Agent subscription proxy](/?date=2026-10-30&category=news#item-581aa08fe9a7)** setup guide for reusing one **Nous Portal** subscription across any OpenAI-compatible app. **Tips:** Upgrade past **[#145221](/?date=2026-10-30&category=news#item-b9181d850e2e)** if an unreadable `.env` has blocked launches; if you run short idle windows, the new 10-minute lease floor prevents mid-session cutoffs. Test-only housekeeping (POSIX-only lock-race test, assertion-message tweak) omitted as low reader value.",
+  "category_summary_html": "<p><strong>Releases:</strong> None this cycle — no stable or canary shipping news met the freshness bar. <strong>Merged PRs:</strong> <strong><a href=\"/?date=2026-10-30&amp;category=news#item-f01f1d3b9a17\" class=\"internal-link\" rel=\"noopener noreferrer\">#145222</a></strong> fixes terminal scope ordering so the per-turn managed scope applies last (touches environment setup on every agent turn); <strong><a href=\"/?date=2026-10-30&amp;category=news#item-b9181d850e2e\" class=\"internal-link\" rel=\"noopener noreferrer\">#145221</a></strong> makes an unreadable profile <code>.env</code> file non-fatal (treated as absent with a warning) so a bad file can no longer block agent startup. <strong>Desktop fixes:</strong> An eight-commit same-day <strong>bot-desktop</strong> cluster hardens idle-screen self-stop and human-lease handling: human takeovers now stamp screen activity so they count as use of an idle screen (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-5edb9e013a50\" class=\"internal-link\" rel=\"noopener noreferrer\">5edb9e01</a></strong>); idle stops of abandoned leases now release the lease, un-sticking <strong>computer_use</strong> 'human has control' errors (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-4164f4a20dbe\" class=\"internal-link\" rel=\"noopener noreferrer\">4164f4a2</a></strong>); a killed sleep (stray pkill/OOM) can no longer permanently disable the watch loop (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-99a57b3f16b4\" class=\"internal-link\" rel=\"noopener noreferrer\">99a57b3f</a></strong>); the human-lease lapse is floored at ~10 minutes so aggressive <strong>idle_stop_minutes</strong> settings stop killing active sessions (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-2ebe6924e658\" class=\"internal-link\" rel=\"noopener noreferrer\">2ebe6924</a></strong>); and infinite/non-positive idle windows behave as 'off' instead of breaking <strong>start()</strong> (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-f29ea724eb26\" class=\"internal-link\" rel=\"noopener noreferrer\">f29ea724</a></strong>), with matching doc updates (<strong><a href=\"/?date=2026-10-30&amp;category=news#item-0e741fe0f2aa\" class=\"internal-link\" rel=\"noopener noreferrer\">0e741fe0</a></strong>). <strong>Community:</strong> Two new walkthroughs — the official <strong><a href=\"/?date=2026-10-30&amp;category=news#item-752f15c8e077\" class=\"internal-link\" rel=\"noopener noreferrer\">elevenlabs-sound-effects plugin v1.2.0</a></strong> added to the Hermes plugin catalog on <strong>2026-10-26</strong> (great for game-dev sound workflows), and the <strong><a href=\"/?date=2026-10-30&amp;category=news#item-581aa08fe9a7\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent subscription proxy</a></strong> setup guide for reusing one <strong>Nous Portal</strong> subscription across any OpenAI-compatible app. <strong>Tips:</strong> Upgrade past <strong><a href=\"/?date=2026-10-30&amp;category=news#item-b9181d850e2e\" class=\"internal-link\" rel=\"noopener noreferrer\">#145221</a></strong> if an unreadable <code>.env</code> has blocked launches; if you run short idle windows, the new 10-minute lease floor prevents mid-session cutoffs. Test-only housekeeping (POSIX-only lock-race test, assertion-message tweak) omitted as low reader value.</p>",
+  "themes": [
+    {
+      "name": "Desktop Idle and Human-Lease Stabilization",
+      "description": "A large same-day cluster of bot-desktop commits fixes races and edge cases in screen self-stop and human lease handling: takeover stamping, abandoned lease release, killed-watch-loop resilience, infinite idle window handling, short-window lapse floors, plus matching docs and tests.",
+      "item_count": 8,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Plugin and Subscription Ecosystem",
+      "description": "Third-party tutorials cover the official ElevenLabs sound-effects plugin (Game Dev Studio toolset) and the subscription proxy for reusing a Nous Portal subscription in OpenAI-compatible apps.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Core Fixes in Terminal and Environment Loading",
+      "description": "Merged PRs adjust per-turn terminal scope ordering and make unreadable profile .env files non-fatal, improving day-to-day agent startup robustness.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Canary Release Cadence",
+      "description": "A new v0.22.5 canary build ships the week's fixes to early adopters ahead of a stable release.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 13,
+  "items": [
+    {
+      "id": "5edb9e013a50",
+      "title": "fix(bot-desktop): a takeover counts as use of an idle screen",
+      "content": "fix(bot-desktop): a takeover counts as use of an idle screen\n\nThe idle stop times out a human lease nobody has used for four windows, judged by the screen's activity\nstamp. A takeover did not stamp it; only the viewer's first RFB frame did. A takeover landing on a long-idle\nscreen while an idle check waited on start.lock was therefore read as an already abandoned lease: the\nscreen was stopped under the human who had just taken it, and their lease handed back to the agent.\ndisplay.lease.acquire now stamps activity before it writes the lease, as the idle section's comment already\nsaid a takeover does: the new lease is visible to the screen's own idle check (and to this process's\nlisteners) from the moment it is written.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/e298669b44ce032a995c8a67ceae025801b0f4bf",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A bot-desktop fix makes lease acquisition stamp screen activity before writing the lease, so a human takeover counts as use of an idle screen. Previously a takeover landing on a long-idle screen during an idle check could cause the screen to be stopped under the human who just took it, with the lease handed back to the agent.",
+      "importance_score": 60.0,
+      "reasoning": "Directly fixes a real user-facing race where a human taking over a desktop screen could have their session killed. Part of a large same-day cluster of desktop lease/idle fixes, signaling an active stabilization push.",
+      "themes": [
+        "bot-desktop",
+        "idle screens",
+        "human lease"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A bot-desktop fix makes lease acquisition stamp screen activity before writing the lease, so a human takeover counts as use of an idle screen. Previously a takeover landing on a long-idle screen during an idle check could cause the screen to be stopped under the human who just took it, with the lease handed back to the agent.</p>",
+      "content_html": "<p>fix(bot-desktop): a takeover counts as use of an idle screen</p>\n<p>The idle stop times out a human lease nobody has used for four windows, judged by the screen's activity</p>\n<p>stamp. A takeover did not stamp it; only the viewer's first RFB frame did. A takeover landing on a long-idle</p>\n<p>screen while an idle check waited on start.lock was therefore read as an already abandoned lease: the</p>\n<p>screen was stopped under the human who had just taken it, and their lease handed back to the agent.</p>\n<p>display.lease.acquire now stamps activity before it writes the lease, as the idle section's comment already</p>\n<p>said a takeover does: the new lease is visible to the screen's own idle check (and to this process's</p>\n<p>listeners) from the moment it is written.</p>"
+    },
+    {
+      "id": "581aa08fe9a7",
+      "title": "Hermes Agent Subscription Proxy: Reuse One Nous Portal Subscription in Any OpenAI-Compatible App (2026)",
+      "content": "Set up the Hermes Agent subscription proxy so any OpenAI-compatible app can borrow your Nous Portal login, plus the security, quota, and ops details.",
+      "url": "https://hermes-tutorials.dev/blog/hermes-agent-subscription-proxy-guide-2026/",
+      "author": "Hermes Agent",
+      "published": "2026-10-29T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A 2026 tutorial explaining how to set up the Hermes Agent subscription proxy so any OpenAI-compatible app can reuse a single Nous Portal subscription login. It also covers the security, quota, and operations details involved in running the proxy.",
+      "importance_score": 60.0,
+      "reasoning": "A detailed deployment guide for a capability many users care about: sharing one subscription across third-party apps. High practical value, though it is community tutorial content rather than an official capability announcement.",
+      "themes": [
+        "subscription proxy",
+        "deployment",
+        "nous portal"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A 2026 tutorial explaining how to set up the Hermes Agent subscription proxy so any OpenAI-compatible app can reuse a single Nous Portal subscription login. It also covers the security, quota, and operations details involved in running the proxy.</p>",
+      "content_html": "<p>Set up the Hermes Agent subscription proxy so any OpenAI-compatible app can borrow your Nous Portal login, plus the security, quota, and ops details.</p>"
+    },
+    {
+      "id": "5a216f7de3b5",
+      "title": "v0.22.5+canary.20261029T064840Z",
+      "content": "Hermes Agent canary 20261029T064840Z",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261029T064840Z",
+      "author": "github-actions[bot]",
+      "published": "2026-10-29T06:48:41",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Nous Research published a canary build of Hermes Agent (20261029T064840Z) on top of v0.22.5. Canary releases let users opt into pre-release builds to test upcoming fixes before they land in stable. Users who want the latest desktop lease and terminal fixes from this week can grab this build.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: This is another routine canary build atop v0.22.5, matching the prior coverage of the same canary release cadence with only a new timestamp and no new substantive claim.] A canary release is an official build channel event, but it is a pre-release rather than a stable version bump, and the notes carry no changelog detail. Moderately useful for early adopters, less so for most users.",
+      "themes": [
+        "canary builds",
+        "release cadence"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "This is another routine canary build atop v0.22.5, matching the prior coverage of the same canary release cadence with only a new timestamp and no new substantive claim.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 2,
+        "matched_prior_items": [
+          {
+            "id": "90c18442f069",
+            "date": "2026-10-27",
+            "category": "news",
+            "title": "v0.22.5+canary.20261026T071310Z",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261026T071310Z"
+          },
+          {
+            "id": "9be57bb75d41",
+            "date": "2026-10-25",
+            "category": "news",
+            "title": "v0.22.5+canary.20261024T065630Z",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261024T065630Z"
+          },
+          {
+            "id": "ef21ea8751be",
+            "date": "2026-10-26",
+            "category": "news",
+            "title": "v0.22.5+canary.20261025T065651Z",
+            "source": "Release notes from hermes-agent",
+            "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261025T065651Z"
+          }
+        ]
+      },
+      "summary_html": "<p>Nous Research published a canary build of Hermes Agent (20261029T064840Z) on top of v0.22.5. Canary releases let users opt into pre-release builds to test upcoming fixes before they land in stable. Users who want the latest desktop lease and terminal fixes from this week can grab this build.</p>",
+      "content_html": "<p>Hermes Agent canary 20261029T064840Z</p>"
+    },
+    {
+      "id": "f01f1d3b9a17",
+      "title": "Merge pull request #145222 from NousResearch/fix/terminal-scope-manag…",
+      "content": "Merge pull request #145222 from NousResearch/fix/terminal-scope-managed-overlay\n\nfix(terminal): per-turn terminal scope applies managed scope last",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/fcc26fbd9f1641755e49793d7ed608f3b7214c3d",
+      "author": "jquesnelle",
+      "published": "2026-10-29T14:18:17",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Merged PR #145222 fixes terminal behavior so that per-turn terminal scope applies the managed scope last. This ensures managed environment or scope settings take precedence when terminal sessions are set up per turn.",
+      "importance_score": 55.0,
+      "reasoning": "A merged core PR touching terminal scope handling, which affects how every turn's terminal environment is constructed. Relevant to users relying on managed scope configuration, though the fix is narrow.",
+      "themes": [
+        "terminal",
+        "configuration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Merged PR #145222 fixes terminal behavior so that per-turn terminal scope applies the managed scope last. This ensures managed environment or scope settings take precedence when terminal sessions are set up per turn.</p>",
+      "content_html": "<p>Merge pull request #145222 from NousResearch/fix/terminal-scope-managed-overlay</p>\n<p>fix(terminal): per-turn terminal scope applies managed scope last</p>"
+    },
+    {
+      "id": "b9181d850e2e",
+      "title": "Merge pull request #145221 from NousResearch/fix/env-loader-unreadabl…",
+      "content": "Merge pull request #145221 from NousResearch/fix/env-loader-unreadable-dotenv\n\nfix(env): load an unreadable profile .env as absent, with a warning",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/e62eaa1c25f63433cded604fb9421d1b7dfb07fd",
+      "author": "jquesnelle",
+      "published": "2026-10-29T14:17:37",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Merged PR #145221 changes the environment loader so an unreadable profile .env file is treated as absent and produces a warning instead of a hard failure. This makes startup more robust when a profile's dotenv file exists but cannot be read.",
+      "importance_score": 55.0,
+      "reasoning": "A merged fix improving error handling in environment loading, a path every agent launch goes through. Users with permission-restricted or corrupted .env files will no longer hit startup blockers.",
+      "themes": [
+        "environment loading",
+        "robustness"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Merged PR #145221 changes the environment loader so an unreadable profile .env file is treated as absent and produces a warning instead of a hard failure. This makes startup more robust when a profile's dotenv file exists but cannot be read.</p>",
+      "content_html": "<p>Merge pull request #145221 from NousResearch/fix/env-loader-unreadable-dotenv</p>\n<p>fix(env): load an unreadable profile .env as absent, with a warning</p>"
+    },
+    {
+      "id": "752f15c8e077",
+      "title": "Hermes Agent ElevenLabs: Make Sound Effects With the Official Plugin",
+      "content": "Hermes Agent ElevenLabs support just got a new trick: Nous Research released an official plugin called elevenlabs-sound-effects that lets Hermes turn a short text description into a real sound effect. You type &ldquo;a heavy wooden door creaking open in a stone hall&rdquo; and Hermes makes the audio file and sends it to you in chat. The plugin (v1.2.0) was added to the Hermes plugin catalog on 26 October 2026, and Nous announced it on X the next day as part of a growing set of &ldquo;Game Dev Studio&rdquo; tools for Hermes. Below I cover what it does, how to install it, every setting, what it costs to run, and how it fits next to the ElevenLabs voice you may already use in Hermes. I&rsquo;ve also put one of my Hermes walkthrough videos below.\n\nKey takeaways\n\nOne tool, elevenlabs_sound_effect: text in, sound file out (0.5 to 30 seconds, optional seamless loop).\nInstall with hermes plugins install elevenlabs-sound-effects.\nUses the same ELEVENLABS_API_KEY as Hermes&rsquo; ElevenLabs voice.\nShips a sound-design skill, a free local ffmpeg script and a Desktop sound library.\nWant this working in your business? Claim a free strategy session.\n\n\n\n\n\n\nWhat the Hermes Agent ElevenLabs plugin does\nThe plugin connects Hermes to the ElevenLabs Sound Effects API. According to the catalog page, it adds exactly one tool to your agent: elevenlabs_sound_effect. You describe a sound in plain English and Hermes generates an audio file between 0.5 and 30 seconds long. It can also make the sound a seamless loop, which matters for things like background music, engine hums or rain.\nExamples straight from the README:\n\n&ldquo;Glass shattering on a tile floor&rdquo;\n&ldquo;A short retro coin pickup blip&rdquo;\n&ldquo;90s hip-hop drum loop, 90 BPM, loopable&rdquo;\n&ldquo;The sound of a heavy wooden door creaking open in a stone hall&rdquo;\n\nHermes picks the details for each sound itself: the description (up to 450 characters &mdash; longer prompts are refused before anything is sent), the length, whether it loops, and a prompt_influence value from 0 to 1. A higher value follows your words more literally; a lower one gives more variety. You can also ask for a specific model on a single sound.\nIt&rsquo;s an Official plugin, maintained by NousResearch, listed under Tools, and it needs Hermes 0.22.0 or newer. It runs on Linux, macOS and Windows, and its only Python dependency is httpx, which Hermes already ships.\nHow to install the ElevenLabs plugin in Hermes\nInstalling takes one command. Here are the steps, in order:\n\nMake sure you&rsquo;re on Hermes 0.22.0 or later (hermes update if you&rsquo;re not sure).\nRun hermes plugins install elevenlabs-sound-effects. You can also install it straight from the hermes-official-plugins repo with hermes plugins install NousResearch/hermes-official-plugins#elevenlabs-sound-effects.\nIf ELEVENLABS_API_KEY isn&rsquo;t set yet, the installer asks for it. You create a key in ElevenLabs under Profile &rarr; API keys.\nThe tool only shows up for the agent once the key is set.\n\nTwo details catch people out:\n\nPlugins are per profile. If you run several Hermes profiles, install it on each one you want, for example hermes -p &lt;profile&gt; plugins install elevenlabs-sound-effects.\nRestricted keys need the right permission. If your ElevenLabs key is restricted, turn on the Sound Effects permission. It&rsquo;s separate from the Text to Speech permission.\n\nPrefer not to touch the terminal? Ask your agent: &ldquo;Install the elevenlabs-sound-effects plugin on this profile and check the key works.&rdquo;\n\nWant Hermes making sounds, videos and content for your business? Inside the AI Profit Boardroom you get the Agent OS &mdash; Hermes, OpenClaw, OpenCode, Claude and Codex in one place &mdash; plus step-by-step Hermes training and four live coaching calls a week.\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;\n\nHermes ElevenLabs settings explained\nIn Hermes Desktop, open Capabilities &rarr; Plugins and click the gear icon on the plugin. Everywhere else, use hermes config set. These are the four settings the README lists:\n\n\n\n\nSetting\nDefault\nOptions and notes\n\n\n\n\napi_key\n(unset)\nStored in .env as ELEVENLABS_API_KEY\n\n\nsound_model\neleven_text_to_sound_v2\neleven_text_to_sound_v2 or eleven_text_to_sound_v3\n\n\noutput_format\nmp3_44100_128\nmp3_44100_128, mp3_44100_192, opus_48000_128, opus_48000_192, wav_44100, wav_48000\n\n\napi_base_url\nhttps://api.elevenlabs.io\nChange only for an ElevenLabs data-residency endpoint, e.g. https://api.eu.residency.elevenlabs.io\n\n\n\n\nFor example, to switch to the v3 sound model:\nhermes config set plugins.entries.elevenlabs-sound-effects.settings.sound_model eleven_text_to_sound_v3\nAnd to get 48 kHz WAV files:\nhermes config set plugins.entries.elevenlabs-sound-effects.settings.output_format wav_48000\nWatch your ElevenLabs plan. The README notes that ElevenLabs documents 192 kbps MP3 for the Creator plan and above, and 44.1 kHz WAV for Pro and above. If your plan refuses a format, the tool simply reports ElevenLabs&rsquo; error back to you.\nWhere your sounds go and how they reach you\nEvery sound is saved under your Hermes home in cache/generated/audio/, with a file name built from the description, a timestamp and an ID, so nothing is ever overwritten. Each generation also adds one line to a sounds.jsonl log in the plugin&rsquo;s own data folder: the prompt, length, model, format, file size and the credits ElevenLabs billed. That log stays on your machine.\nDelivery depends on where you&rsquo;re chatting:\n\nTelegram, Discord, Slack and other messaging apps: the tool hands the agent a MEDIA: line, and the file arrives as an attachment.\nMP3 (the default) plays inline on most chat apps. Ogg Opus and WAV can arrive as plain files &mdash; Telegram shows them that way.\nDiscord: Hermes releases after v0.22.5 send MP3 and WAV as normal attachments that play inline.\nTerminal: you get the file path.\nHermes Desktop: you get a sound card (below).\n\nSo if you run Hermes on a VPS and talk to it on Telegram, you can ask for a sound from your phone and get it back in the same chat.\nThe sound-design skill and the free ffmpeg script\nThe plugin also bundles a skill called elevenlabs-sound-design. It teaches Hermes how to write good ElevenLabs prompts (based on ElevenLabs&rsquo; own prompting guide), make loops, choose a format for where the sound is going &mdash; a game engine, a video, an app interface or a chat &mdash; and build a sound pack.\nInside that skill is sfx_tool.py, a local post-processing script that uses ffmpeg. It can downmix to mono, trim silence, normalise loudness, add fades, check a loop seam for clicks, convert between OGG, WAV and MP3, and pack a named set into a folder with a manifest.json and a zip. It can also build a game &ldquo;variation set&rdquo; with matched loudness, such as three gravel footsteps.\nThe important part: this processing costs no ElevenLabs credits, because it runs on your own machine. You pay ElevenLabs once to generate a sound, then tidy it up for free. One example from the README:\npython3 sfx_tool.py pack t1.wav t2.wav t3.wav --name \"Footstep Gravel\" --out-dir . --variations\nYou don&rsquo;t need to run this yourself. Just ask Hermes: &ldquo;Make three gravel footstep variations, mono, levelled, packed as OGG.&rdquo;\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\nHermes Desktop: sound card and sound library\nIf you use Hermes Desktop, the plugin adds two things. The Desktop half is opt-in: open Capabilities &rarr; Plugins, switch to list view and turn on Desktop: ElevenLabs Sound Effects. Without it, Desktop still plays every sound in its built-in player.\n\nSound card: each sound shows in chat with a waveform, play/pause, a gapless loop toggle so you can hear the seam, download in each format, reveal in your file manager, and &ldquo;Next&rdquo; actions &mdash; 3 variations, shorter, longer, make it loop, or try the other model. Each Next row shows its cost, and nothing is billed until the agent actually runs the tool.\nSound library: press &#8984;K and choose ElevenLabs: open sound library. You get every sound the active profile made, with its prompt and settings, a format filter and a prompt search. You can replay, download, reuse a prompt or jump back to the chat that made it.\n\nThe sound card needs a Hermes Desktop with tool-media renderers; the README says that arrives in the first release after v0.22.5. Older Desktops use the built-in player instead. Running Hermes on a remote machine? Install the plugin there and also into your Desktop via Capabilities &rarr; Plugins &rarr; Install from Git, with Desktop UI checked.\nWhat it costs and what leaves your machine\nEvery call is a paid ElevenLabs generation on your own ElevenLabs account. The README reports what it was billed while testing: about 10 credits per second when a length is set, and a flat amount (about 50 credits) per generation when ElevenLabs picks the length. Loops can come back a little longer than requested, and the tool reports the real length next to the one you asked for. Check ElevenLabs&rsquo; own pricing for your plan.\nPrivacy is simple: only the sound description and its parameters are sent to ElevenLabs, with your API key. Nothing else from your conversation goes with it. Format conversions and the processing script run locally.\nWho should use the Hermes ElevenLabs sound plugin\nNous framed this release as part of a &ldquo;Game Dev Studio&rdquo; suite, so game builders are the obvious fit. But it&rsquo;s useful well beyond games:\n\n\n\n\nYou make&hellip;\nUse it for\n\n\n\n\nGames\nFootsteps, pickups, UI blips, ambient loops and variation packs\n\n\nVideos and Shorts\nWhooshes, hits, transitions and background beds\n\n\nApps and websites\nShort interface sounds in the right format\n\n\nPodcasts and ads\nIntros, stingers and scene sounds\n\n\n\n\nIf you already use Hermes for 3D work, it pairs naturally with the Meshy plugin I covered in Hermes Meshy: models from one plugin, sounds from the other, all from the same agent.\nElevenLabs sound effects vs ElevenLabs voice in Hermes\nHermes already supports ElevenLabs for text-to-speech &mdash; that&rsquo;s the voice your agent speaks with. This plugin is different: it makes sound effects and music loops, not speech. The good news is they share the same key. If your ElevenLabs voice is already set up in Hermes, the installer finds ELEVENLABS_API_KEY and there&rsquo;s nothing to enter.\nFor more on giving your agent a voice, read my guide to Hermes Apollo Voice.\nMy verdict on Hermes Agent ElevenLabs sound effects\nThis is a tidy, well-built plugin. One tool, clear settings, a skill that knows how to prompt, and a free local script for the fiddly editing work. The Desktop sound library is a nice touch for anyone making lots of sounds. Watch your credits, start with MP3, and if you build games, videos or apps, Hermes Agent ElevenLabs sound effects are worth installing today.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\nWant another angle? Read the AI Profit Boardroom guide to Hermes Agent ElevenLabs.\nFAQ: hermes agent elevenlabs\nWhat is the Hermes Agent ElevenLabs plugin?\nIt&rsquo;s the official elevenlabs-sound-effects plugin from Nous Research. It adds one tool, elevenlabs_sound_effect, that turns a text description into an audio file from 0.5 to 30 seconds, optionally as a seamless loop.\nHow do I install ElevenLabs sound effects in Hermes?\nRun hermes plugins install elevenlabs-sound-effects. The installer asks for your ElevenLabs API key if it isn&rsquo;t set. Plugins are per profile, so use hermes -p &lt;profile&gt; plugins install elevenlabs-sound-effects for other profiles.\nDo I need a separate ElevenLabs key for sound effects?\nNo. It uses the same ELEVENLABS_API_KEY as Hermes&rsquo; ElevenLabs voice. If your key is restricted, enable the Sound Effects permission, which is separate from Text to Speech.\nDoes the Hermes ElevenLabs plugin cost money?\nEach sound is a paid ElevenLabs generation billed to your ElevenLabs account. The bundled ffmpeg script and Desktop format conversions run locally and cost no credits.\nCan Hermes send the sounds to Telegram or Discord?\nYes. The file is sent as an attachment on Telegram, Discord, Slack and other messaging platforms. MP3 plays inline on most chat apps; in Hermes Desktop it shows as a sound card.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\nOr claim your free strategy session and we&rsquo;ll map out your setup.\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;Get the FREE AI Course + Community &rarr;\n\nRelated reading\n\nHermes Apollo Voice\nHermes Meshy\nHermes Agent Plugins Marketplace\n\nLast updated October 2026. This page is a living guide to hermes agent elevenlabs &mdash; the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-agent-elevenlabs/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-elevenlabs",
+      "author": "Clawdbot",
+      "published": "2026-10-29T02:21:41",
+      "source": "Julian Goldie",
+      "source_type": "rss",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A walkthrough of the official elevenlabs-sound-effects plugin (v1.2.0) added to the Hermes plugin catalog on 2026-10-26 and announced by Nous Research as part of the Game Dev Studio toolset. The article covers what the tool does, installation steps, all settings, running costs, and how it fits alongside ElevenLabs voice in Hermes.",
+      "importance_score": 55.0,
+      "reasoning": "Third-party tutorial covering a genuine official plugin addition with clear user value for game dev and audio workflows, but it is a guide rather than a release and comes from a marketing-heavy source. Solid mid-tier tips content.",
+      "themes": [
+        "plugins",
+        "audio",
+        "game dev studio"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A walkthrough of the official elevenlabs-sound-effects plugin (v1.2.0) added to the Hermes plugin catalog on 2026-10-26 and announced by Nous Research as part of the Game Dev Studio toolset. The article covers what the tool does, installation steps, all settings, running costs, and how it fits alongside ElevenLabs voice in Hermes.</p>",
+      "content_html": "<p>Hermes Agent ElevenLabs support just got a new trick: Nous Research released an official plugin called elevenlabs-sound-effects that lets Hermes turn a short text description into a real sound effect. You type “a heavy wooden door creaking open in a stone hall” and Hermes makes the audio file and sends it to you in chat. The plugin (v1.2.0) was added to the Hermes plugin catalog on 26 October 2026, and Nous announced it on X the next day as part of a growing set of “Game Dev Studio” tools for Hermes. Below I cover what it does, how to install it, every setting, what it costs to run, and how it fits next to the ElevenLabs voice you may already use in Hermes. I’ve also put one of my Hermes walkthrough videos below.</p>\n<p>Key takeaways</p>\n<p>One tool, elevenlabs_sound_effect: text in, sound file out (0.5 to 30 seconds, optional seamless loop).</p>\n<p>Install with hermes plugins install elevenlabs-sound-effects.</p>\n<p>Uses the same ELEVENLABS_API_KEY as Hermes’ ElevenLabs voice.</p>\n<p>Ships a sound-design skill, a free local ffmpeg script and a Desktop sound library.</p>\n<p>Want this working in your business? Claim a free strategy session.</p>\n<p>What the Hermes Agent ElevenLabs plugin does</p>\n<p>The plugin connects Hermes to the ElevenLabs Sound Effects API. According to the catalog page, it adds exactly one tool to your agent: elevenlabs_sound_effect. You describe a sound in plain English and Hermes generates an audio file between 0.5 and 30 seconds long. It can also make the sound a seamless loop, which matters for things like background music, engine hums or rain.</p>\n<p>Examples straight from the README:</p>\n<p>“Glass shattering on a tile floor”</p>\n<p>“A short retro coin pickup blip”</p>\n<p>“90s hip-hop drum loop, 90 BPM, loopable”</p>\n<p>“The sound of a heavy wooden door creaking open in a stone hall”</p>\n<p>Hermes picks the details for each sound itself: the description (up to 450 characters — longer prompts are refused before anything is sent), the length, whether it loops, and a prompt_influence value from 0 to 1. A higher value follows your words more literally; a lower one gives more variety. You can also ask for a specific model on a single sound.</p>\n<p>It’s an Official plugin, maintained by NousResearch, listed under Tools, and it needs Hermes 0.22.0 or newer. It runs on Linux, macOS and Windows, and its only Python dependency is httpx, which Hermes already ships.</p>\n<p>How to install the ElevenLabs plugin in Hermes</p>\n<p>Installing takes one command. Here are the steps, in order:</p>\n<p>Make sure you’re on Hermes 0.22.0 or later (hermes update if you’re not sure).</p>\n<p>Run hermes plugins install elevenlabs-sound-effects. You can also install it straight from the hermes-official-plugins repo with hermes plugins install NousResearch/hermes-official-plugins#elevenlabs-sound-effects.</p>\n<p>If ELEVENLABS_API_KEY isn’t set yet, the installer asks for it. You create a key in ElevenLabs under Profile → API keys.</p>\n<p>The tool only shows up for the agent once the key is set.</p>\n<p>Two details catch people out:</p>\n<p>Plugins are per profile. If you run several Hermes profiles, install it on each one you want, for example hermes -p &lt;profile&gt; plugins install elevenlabs-sound-effects.</p>\n<p>Restricted keys need the right permission. If your ElevenLabs key is restricted, turn on the Sound Effects permission. It’s separate from the Text to Speech permission.</p>\n<p>Prefer not to touch the terminal? Ask your agent: “Install the elevenlabs-sound-effects plugin on this profile and check the key works.”</p>\n<p>Want Hermes making sounds, videos and content for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<p>Hermes ElevenLabs settings explained</p>\n<p>In Hermes Desktop, open Capabilities → Plugins and click the gear icon on the plugin. Everywhere else, use hermes config set. These are the four settings the README lists:</p>\n<p>Setting</p>\n<p>Default</p>\n<p>Options and notes</p>\n<p>api_key</p>\n<p>(unset)</p>\n<p>Stored in .env as ELEVENLABS_API_KEY</p>\n<p>sound_model</p>\n<p>eleven_text_to_sound_v2</p>\n<p>eleven_text_to_sound_v2 or eleven_text_to_sound_v3</p>\n<p>output_format</p>\n<p>mp3_44100_128</p>\n<p>mp3_44100_128, mp3_44100_192, opus_48000_128, opus_48000_192, wav_44100, wav_48000</p>\n<p>api_base_url</p>\n<p>https://api.elevenlabs.io</p>\n<p>Change only for an ElevenLabs data-residency endpoint, e.g. https://api.eu.residency.elevenlabs.io</p>\n<p>For example, to switch to the v3 sound model:</p>\n<p>hermes config set plugins.entries.elevenlabs-sound-effects.settings.sound_model eleven_text_to_sound_v3</p>\n<p>And to get 48 kHz WAV files:</p>\n<p>hermes config set plugins.entries.elevenlabs-sound-effects.settings.output_format wav_48000</p>\n<p>Watch your ElevenLabs plan. The README notes that ElevenLabs documents 192 kbps MP3 for the Creator plan and above, and 44.1 kHz WAV for Pro and above. If your plan refuses a format, the tool simply reports ElevenLabs’ error back to you.</p>\n<p>Where your sounds go and how they reach you</p>\n<p>Every sound is saved under your Hermes home in cache/generated/audio/, with a file name built from the description, a timestamp and an ID, so nothing is ever overwritten. Each generation also adds one line to a sounds.jsonl log in the plugin’s own data folder: the prompt, length, model, format, file size and the credits ElevenLabs billed. That log stays on your machine.</p>\n<p>Delivery depends on where you’re chatting:</p>\n<p>Telegram, Discord, Slack and other messaging apps: the tool hands the agent a MEDIA: line, and the file arrives as an attachment.</p>\n<p>MP3 (the default) plays inline on most chat apps. Ogg Opus and WAV can arrive as plain files — Telegram shows them that way.</p>\n<p>Discord: Hermes releases after v0.22.5 send MP3 and WAV as normal attachments that play inline.</p>\n<p>Terminal: you get the file path.</p>\n<p>Hermes Desktop: you get a sound card (below).</p>\n<p>So if you run Hermes on a VPS and talk to it on Telegram, you can ask for a sound from your phone and get it back in the same chat.</p>\n<p>The sound-design skill and the free ffmpeg script</p>\n<p>The plugin also bundles a skill called elevenlabs-sound-design. It teaches Hermes how to write good ElevenLabs prompts (based on ElevenLabs’ own prompting guide), make loops, choose a format for where the sound is going — a game engine, a video, an app interface or a chat — and build a sound pack.</p>\n<p>Inside that skill is sfx_tool.py, a local post-processing script that uses ffmpeg. It can downmix to mono, trim silence, normalise loudness, add fades, check a loop seam for clicks, convert between OGG, WAV and MP3, and pack a named set into a folder with a manifest.json and a zip. It can also build a game “variation set” with matched loudness, such as three gravel footsteps.</p>\n<p>The important part: this processing costs no ElevenLabs credits, because it runs on your own machine. You pay ElevenLabs once to generate a sound, then tidy it up for free. One example from the README:</p>\n<p>python3 sfx_tool.py pack t1.wav t2.wav t3.wav --name \"Footstep Gravel\" --out-dir . --variations</p>\n<p>You don’t need to run this yourself. Just ask Hermes: “Make three gravel footstep variations, mono, levelled, packed as OGG.”</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Hermes Desktop: sound card and sound library</p>\n<p>If you use Hermes Desktop, the plugin adds two things. The Desktop half is opt-in: open Capabilities → Plugins, switch to list view and turn on Desktop: ElevenLabs Sound Effects. Without it, Desktop still plays every sound in its built-in player.</p>\n<p>Sound card: each sound shows in chat with a waveform, play/pause, a gapless loop toggle so you can hear the seam, download in each format, reveal in your file manager, and “Next” actions — 3 variations, shorter, longer, make it loop, or try the other model. Each Next row shows its cost, and nothing is billed until the agent actually runs the tool.</p>\n<p>Sound library: press ⌘K and choose ElevenLabs: open sound library. You get every sound the active profile made, with its prompt and settings, a format filter and a prompt search. You can replay, download, reuse a prompt or jump back to the chat that made it.</p>\n<p>The sound card needs a Hermes Desktop with tool-media renderers; the README says that arrives in the first release after v0.22.5. Older Desktops use the built-in player instead. Running Hermes on a remote machine? Install the plugin there and also into your Desktop via Capabilities → Plugins → Install from Git, with Desktop UI checked.</p>\n<p>What it costs and what leaves your machine</p>\n<p>Every call is a paid ElevenLabs generation on your own ElevenLabs account. The README reports what it was billed while testing: about 10 credits per second when a length is set, and a flat amount (about 50 credits) per generation when ElevenLabs picks the length. Loops can come back a little longer than requested, and the tool reports the real length next to the one you asked for. Check ElevenLabs’ own pricing for your plan.</p>\n<p>Privacy is simple: only the sound description and its parameters are sent to ElevenLabs, with your API key. Nothing else from your conversation goes with it. Format conversions and the processing script run locally.</p>\n<p>Who should use the Hermes ElevenLabs sound plugin</p>\n<p>Nous framed this release as part of a “Game Dev Studio” suite, so game builders are the obvious fit. But it’s useful well beyond games:</p>\n<p>You make…</p>\n<p>Use it for</p>\n<p>Games</p>\n<p>Footsteps, pickups, UI blips, ambient loops and variation packs</p>\n<p>Videos and Shorts</p>\n<p>Whooshes, hits, transitions and background beds</p>\n<p>Apps and websites</p>\n<p>Short interface sounds in the right format</p>\n<p>Podcasts and ads</p>\n<p>Intros, stingers and scene sounds</p>\n<p>If you already use Hermes for 3D work, it pairs naturally with the Meshy plugin I covered in Hermes Meshy: models from one plugin, sounds from the other, all from the same agent.</p>\n<p>ElevenLabs sound effects vs ElevenLabs voice in Hermes</p>\n<p>Hermes already supports ElevenLabs for text-to-speech — that’s the voice your agent speaks with. This plugin is different: it makes sound effects and music loops, not speech. The good news is they share the same key. If your ElevenLabs voice is already set up in Hermes, the installer finds ELEVENLABS_API_KEY and there’s nothing to enter.</p>\n<p>For more on giving your agent a voice, read my guide to Hermes Apollo Voice.</p>\n<p>My verdict on Hermes Agent ElevenLabs sound effects</p>\n<p>This is a tidy, well-built plugin. One tool, clear settings, a skill that knows how to prompt, and a free local script for the fiddly editing work. The Desktop sound library is a nice touch for anyone making lots of sounds. Watch your credits, start with MP3, and if you build games, videos or apps, Hermes Agent ElevenLabs sound effects are worth installing today.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Agent ElevenLabs.</p>\n<p>FAQ: hermes agent elevenlabs</p>\n<p>What is the Hermes Agent ElevenLabs plugin?</p>\n<p>It’s the official elevenlabs-sound-effects plugin from Nous Research. It adds one tool, elevenlabs_sound_effect, that turns a text description into an audio file from 0.5 to 30 seconds, optionally as a seamless loop.</p>\n<p>How do I install ElevenLabs sound effects in Hermes?</p>\n<p>Run hermes plugins install elevenlabs-sound-effects. The installer asks for your ElevenLabs API key if it isn’t set. Plugins are per profile, so use hermes -p &lt;profile&gt; plugins install elevenlabs-sound-effects for other profiles.</p>\n<p>Do I need a separate ElevenLabs key for sound effects?</p>\n<p>No. It uses the same ELEVENLABS_API_KEY as Hermes’ ElevenLabs voice. If your key is restricted, enable the Sound Effects permission, which is separate from Text to Speech.</p>\n<p>Does the Hermes ElevenLabs plugin cost money?</p>\n<p>Each sound is a paid ElevenLabs generation billed to your ElevenLabs account. The bundled ffmpeg script and Desktop format conversions run locally and cost no credits.</p>\n<p>Can Hermes send the sounds to Telegram or Discord?</p>\n<p>Yes. The file is sent as an attachment on Telegram, Discord, Slack and other messaging platforms. MP3 plays inline on most chat apps; in Hermes Desktop it shows as a sound card.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<p>Related reading</p>\n<p>Hermes Apollo Voice</p>\n<p>Hermes Meshy</p>\n<p>Hermes Agent Plugins Marketplace</p>\n<p>Last updated October 2026. This page is a living guide to hermes agent elevenlabs — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "4164f4a20dbe",
+      "title": "fix(bot-desktop): the idle stop of an abandoned human lease releases …",
+      "content": "fix(bot-desktop): the idle stop of an abandoned human lease releases that lease\n\nOnce a human lease lapses (four windows, ten minutes at least) the screen is stopped, but lease.json still\nnamed the human, so computer_use and the browser refused with &quot;a human has control&quot; before anything\nstarted the next screen: the docs' &quot;the next use starts it again&quot; did not hold. After that stop the\nlease is released, but only the generation judged abandoned: lease.release() takes the epoch read before\nthe stop and does nothing if the lease changed since, so a takeover made while the screen was stopping\n(another viewer, or the same viewer handing back and taking over again) is kept, and an abandoned lease\nwith no viewer id never turns into a bare release.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/d4046152960a5f3004b389d559875001c1321a90",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A bot-desktop fix ensures that when an idle stop closes a screen under an abandoned human lease, the lease itself is released so computer_use and the browser can start the next screen. The release is generation-guarded so a concurrent takeover made while the screen was stopping is preserved.",
+      "importance_score": 50.0,
+      "reasoning": "Fixes a state bug where users got stuck with a human-has-control error after a screen stopped, but the scenario is an edge case following the new lease-lapse behavior. Part of the desktop idle cluster.",
+      "themes": [
+        "bot-desktop",
+        "human lease",
+        "idle screens"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A bot-desktop fix ensures that when an idle stop closes a screen under an abandoned human lease, the lease itself is released so computer_use and the browser can start the next screen. The release is generation-guarded so a concurrent takeover made while the screen was stopping is preserved.</p>",
+      "content_html": "<p>fix(bot-desktop): the idle stop of an abandoned human lease releases that lease</p>\n<p>Once a human lease lapses (four windows, ten minutes at least) the screen is stopped, but lease.json still</p>\n<p>named the human, so computer_use and the browser refused with \"a human has control\" before anything</p>\n<p>started the next screen: the docs' \"the next use starts it again\" did not hold. After that stop the</p>\n<p>lease is released, but only the generation judged abandoned: lease.release() takes the epoch read before</p>\n<p>the stop and does nothing if the lease changed since, so a takeover made while the screen was stopping</p>\n<p>(another viewer, or the same viewer handing back and taking over again) is kept, and an abandoned lease</p>\n<p>with no viewer id never turns into a bare release.</p>"
+    },
+    {
+      "id": "99a57b3f16b4",
+      "title": "fix(bot-desktop): a killed sleep or check no longer ends the screen's…",
+      "content": "fix(bot-desktop): a killed sleep or check no longer ends the screen's self-stop\n\nThe watch loop inherited the launcher's set -e. A sleep killed from outside (a stray pkill, the OOM\nkiller) made wait fail and ended the loop silently, so that screen never stopped itself again. The\nloop now runs with set +e: a killed sleep goes straight to the check, a failed check retries in 300 s.\nA sleep that fails on its own (it cannot sleep at all) still ends the loop rather than spinning the check.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/dacca6272f8d6d8d89e1d58c926f18f6ac7e3ba6",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A bot-desktop fix removes inherited set -e from the screen watch loop so a killed sleep (for example from a stray pkill or the OOM killer) no longer silently ends the loop and disables self-stop. Failed checks now retry after 300 seconds while a sleep that cannot run still ends the loop.",
+      "importance_score": 50.0,
+      "reasoning": "Prevents a silent, persistent failure mode where a screen would never stop itself again after an external kill signal. Reliability fix, though triggered only by uncommon events like OOM kills.",
+      "themes": [
+        "bot-desktop",
+        "reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A bot-desktop fix removes inherited set -e from the screen watch loop so a killed sleep (for example from a stray pkill or the OOM killer) no longer silently ends the loop and disables self-stop. Failed checks now retry after 300 seconds while a sleep that cannot run still ends the loop.</p>",
+      "content_html": "<p>fix(bot-desktop): a killed sleep or check no longer ends the screen's self-stop</p>\n<p>The watch loop inherited the launcher's set -e. A sleep killed from outside (a stray pkill, the OOM</p>\n<p>killer) made wait fail and ended the loop silently, so that screen never stopped itself again. The</p>\n<p>loop now runs with set +e: a killed sleep goes straight to the check, a failed check retries in 300 s.</p>\n<p>A sleep that fails on its own (it cannot sleep at all) still ends the loop rather than spinning the check.</p>"
+    },
+    {
+      "id": "2ebe6924e658",
+      "title": "fix(bot-desktop): a short idle window never times out a human between…",
+      "content": "fix(bot-desktop): a short idle window never times out a human between two viewer stamps\n\nReview (Greptile P1): the human lease lapses after four idle windows, but an attached viewer stamps\nactivity at most once a minute (and the panel clock repaints once a minute), so stamps can be about\ntwo minutes apart. With a short window (idle_stop_minutes: 0.1, four windows = 24 s) the idle stop\ncould close a screen a human was using between two stamps. The lapse is now four windows and never\nless than 10 minutes (HUMAN_LEASE_ABANDONED_MIN_S). The default 30-minute window is unchanged (its\nfour windows are 2 h). Docs say so.\n\nTest: with a 6 s window a human lease 150 s since the last stamp keeps the screen, and one past the\nfloor stops it; fails with the four-window lapse alone.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/ea25df6e570f506a9d1012aadbb0ee2abc0d6d8f",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A bot-desktop fix guarantees the human lease lapse is at least 10 minutes (HUMAN_LEASE_ABANDONED_MIN_S) in addition to four idle windows, so very short idle windows can no longer time out an actively attached human between activity stamps. The default 30-minute window is unchanged.",
+      "importance_score": 50.0,
+      "reasoning": "Prevents actively used sessions from being killed for anyone using aggressive idle_stop_minutes settings. User-facing fix flagged via review, but only affects non-default short-window configurations.",
+      "themes": [
+        "bot-desktop",
+        "human lease",
+        "idle screens"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A bot-desktop fix guarantees the human lease lapse is at least 10 minutes (HUMAN_LEASE_ABANDONED_MIN_S) in addition to four idle windows, so very short idle windows can no longer time out an actively attached human between activity stamps. The default 30-minute window is unchanged.</p>",
+      "content_html": "<p>fix(bot-desktop): a short idle window never times out a human between two viewer stamps</p>\n<p>Review (Greptile P1): the human lease lapses after four idle windows, but an attached viewer stamps</p>\n<p>activity at most once a minute (and the panel clock repaints once a minute), so stamps can be about</p>\n<p>two minutes apart. With a short window (idle_stop_minutes: 0.1, four windows = 24 s) the idle stop</p>\n<p>could close a screen a human was using between two stamps. The lapse is now four windows and never</p>\n<p>less than 10 minutes (HUMAN_LEASE_ABANDONED_MIN_S). The default 30-minute window is unchanged (its</p>\n<p>four windows are 2 h). Docs say so.</p>\n<p>Test: with a 6 s window a human lease 150 s since the last stamp keeps the screen, and one past the</p>\n<p>floor stops it; fails with the four-window lapse alone.</p>"
+    },
+    {
+      "id": "f29ea724eb26",
+      "title": "fix(bot-desktop): an infinite idle window is off and never fails start()",
+      "content": "fix(bot-desktop): an infinite idle window is off and never fails start()\n\nidle_stop_minutes: .inf meant &quot;never stop&quot; before the self-stop. start() now computes the launcher's\nfirst-check delay from the window, and next_check_in overflowed on an infinite one, so the screen\ncould not start. A non-finite or non-positive window now reads as off, like 0.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/8f40eac43852a43439e33a6398c367cc60f0964a",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A bot-desktop fix makes a non-finite or non-positive idle_stop_minutes value behave as off (never stop), instead of overflowing next_check_in and preventing the screen from starting. The launcher's first-check delay is now computed from the configured window.",
+      "importance_score": 45.0,
+      "reasoning": "Fixes a config corner case that could block screen startup for users setting an infinite idle window. Narrow but real, and it clarifies intended semantics for the idle window setting.",
+      "themes": [
+        "bot-desktop",
+        "configuration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A bot-desktop fix makes a non-finite or non-positive idle_stop_minutes value behave as off (never stop), instead of overflowing next_check_in and preventing the screen from starting. The launcher's first-check delay is now computed from the configured window.</p>",
+      "content_html": "<p>fix(bot-desktop): an infinite idle window is off and never fails start()</p>\n<p>idle_stop_minutes: .inf meant \"never stop\" before the self-stop. start() now computes the launcher's</p>\n<p>first-check delay from the window, and next_check_in overflowed on an infinite one, so the screen</p>\n<p>could not start. A non-finite or non-positive window now reads as off, like 0.</p>"
+    },
+    {
+      "id": "0e741fe0f2aa",
+      "title": "docs(bot-desktop): comments match the human-lease lapse and the stabl…",
+      "content": "docs(bot-desktop): comments match the human-lease lapse and the stable idle command\n\nThe idle check's module docstring and the launcher still said a human holding the screen is never timed\nout (the four-window lapse changed that) and that the launcher runs `python -m`; stop()'s docstring said\nthe re-check always runs under start.lock (a sandbox screen's does not); the pinning note now says it\nholds on a store install. Comments only.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/a88398c07fc94e7ca0728a2dcdb4b5039e1f3ff5",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A docs-only commit updates bot-desktop comments so they match the current human-lease lapse behavior and stable idle command details, including how stop() re-checks and pinning notes. No runtime behavior changes.",
+      "importance_score": 30.0,
+      "reasoning": "Comments and docstrings only, no functional impact for users. Useful for maintainers and contributors keeping the desktop idle logic documented, but low user significance.",
+      "themes": [
+        "bot-desktop",
+        "documentation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A docs-only commit updates bot-desktop comments so they match the current human-lease lapse behavior and stable idle command details, including how stop() re-checks and pinning notes. No runtime behavior changes.</p>",
+      "content_html": "<p>docs(bot-desktop): comments match the human-lease lapse and the stable idle command</p>\n<p>The idle check's module docstring and the launcher still said a human holding the screen is never timed</p>\n<p>out (the four-window lapse changed that) and that the launcher runs <code>python -m</code>; stop()'s docstring said</p>\n<p>the re-check always runs under start.lock (a sandbox screen's does not); the pinning note now says it</p>\n<p>holds on a store install. Comments only.</p>"
+    },
+    {
+      "id": "7a5c5b552215",
+      "title": "test(bot-desktop): the lock-race test runs on POSIX hosts only",
+      "content": "test(bot-desktop): the lock-race test runs on POSIX hosts only\n\nReview (Greptile P1): test_an_idle_check_that_waited_on_the_lock_never_stops_the_replacement_screen\ntakes the real start.lock through runtime._flocked, which imports fcntl, so it cannot run on\nWindows; tests/AGENTS.md asks host-specific tests to carry a platforms marker, as the other lock\ntests in the file do. Marker only.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/186a114d682559c938ac7a2d86a4276814cb7a3e",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A test-only change adds a platforms marker so the lock-race test runs on POSIX hosts only, following review feedback since it depends on fcntl via runtime._flocked and cannot run on Windows. Aligns with tests/AGENTS.md conventions.",
+      "importance_score": 25.0,
+      "reasoning": "Test infrastructure housekeeping with no effect on agent behavior for users. Relevant only to contributors running the test suite on Windows.",
+      "themes": [
+        "testing",
+        "bot-desktop"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A test-only change adds a platforms marker so the lock-race test runs on POSIX hosts only, following review feedback since it depends on fcntl via runtime._flocked and cannot run on Windows. Aligns with tests/AGENTS.md conventions.</p>",
+      "content_html": "<p>test(bot-desktop): the lock-race test runs on POSIX hosts only</p>\n<p>Review (Greptile P1): test_an_idle_check_that_waited_on_the_lock_never_stops_the_replacement_screen</p>\n<p>takes the real start.lock through runtime._flocked, which imports fcntl, so it cannot run on</p>\n<p>Windows; tests/AGENTS.md asks host-specific tests to carry a platforms marker, as the other lock</p>\n<p>tests in the file do. Marker only.</p>"
+    },
+    {
+      "id": "67a2a5028788",
+      "title": "test(bot-desktop): the human-lease assertion message matches the four…",
+      "content": "test(bot-desktop): the human-lease assertion message matches the four-window rule\n\nReview: in test_idle_screen_is_stopped_but_a_used_or_held_one_is_not the\nidle age moved from 3600 s to 1200 s when a human lease started lapsing\nafter four windows, but the message still said a human mid-login is\n&quot;never&quot; timed out. It now says &quot;not timed out within four windows&quot;. The\nassertion itself is unchanged.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/848b14d183b613bec3164fbeab7a879ed2c9dae0",
+      "author": "kshitijk4poor",
+      "published": "2026-10-29T13:33:57",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A test-only change updates an assertion message in the idle-screen test so it reflects the four-window lapse rule instead of claiming a human mid-login is never timed out. The assertion logic itself is unchanged.",
+      "importance_score": 20.0,
+      "reasoning": "Message text in a test with no behavioral or functional impact. Lowest-value item in the desktop cluster, relevant only to contributors.",
+      "themes": [
+        "testing",
+        "bot-desktop"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A test-only change updates an assertion message in the idle-screen test so it reflects the four-window lapse rule instead of claiming a human mid-login is never timed out. The assertion logic itself is unchanged.</p>",
+      "content_html": "<p>test(bot-desktop): the human-lease assertion message matches the four-window rule</p>\n<p>Review: in test_idle_screen_is_stopped_but_a_used_or_held_one_is_not the</p>\n<p>idle age moved from 3600 s to 1200 s when a human lease started lapsing</p>\n<p>after four windows, but the message still said a human mid-login is</p>\n<p>\"never\" timed out. It now says \"not timed out within four windows\". The</p>\n<p>assertion itself is unchanged.</p>"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "category": "news",
+  "date": "2026-10-22",
+  "category_summary": "**Releases:** Headline is **[Hermes Agent v0.22.3](/?date=2026-10-22&category=news#item-f138cfc68c9e)**, a major stable tag rolling up ~620 merged PRs (~360k lines added, 326 issues closed) after a same-day stabilization sprint of five RC tags — followed hours later by patch **[v0.22.4](/?date=2026-10-22&category=news#item-ee19ff2a1e84)** (after two more RCs) with concrete user-facing fixes; tell readers to install **v0.22.4** now. **Merged PRs:** A coordinated update-reliability cluster fixes an outage-class bug where a [damaged `.git` checkout left paused gateways stranded after `hermes update`](/?date=2026-10-22&category=news#item-975fd43cea56) (worst on Windows), improves [damaged-checkout diagnosis for custom install directories](/?date=2026-10-22&category=news#item-150ddaf9c966), and ships matching [repair docs](/?date=2026-10-22&category=news#item-17399249b04a) plus a [Windows e2e test](/?date=2026-10-22&category=news#item-6744ee288883) covering the gateway-recovery path. **Community:** [r/hermesagent thread on personal AI security](/?date=2026-10-22&category=news#item-a3d50c782b51) — how to audit what the agent did and detect/remediate unauthorized actions — signals real user demand for auditability and action-approval features. **Tips:** Point users hitting failed updates at the new [damaged-checkout repair documentation](/?date=2026-10-22&category=news#item-17399249b04a).",
+  "category_summary_html": "<p><strong>Releases:</strong> Headline is <strong><a href=\"/?date=2026-10-22&amp;category=news#item-f138cfc68c9e\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.3</a></strong>, a major stable tag rolling up ~620 merged PRs (~360k lines added, 326 issues closed) after a same-day stabilization sprint of five RC tags — followed hours later by patch <strong><a href=\"/?date=2026-10-22&amp;category=news#item-ee19ff2a1e84\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.4</a></strong> (after two more RCs) with concrete user-facing fixes; tell readers to install <strong>v0.22.4</strong> now. <strong>Merged PRs:</strong> A coordinated update-reliability cluster fixes an outage-class bug where a <a href=\"/?date=2026-10-22&amp;category=news#item-975fd43cea56\" class=\"internal-link\" rel=\"noopener noreferrer\">damaged <code>.git</code> checkout left paused gateways stranded after <code>hermes update</code></a> (worst on Windows), improves <a href=\"/?date=2026-10-22&amp;category=news#item-150ddaf9c966\" class=\"internal-link\" rel=\"noopener noreferrer\">damaged-checkout diagnosis for custom install directories</a>, and ships matching <a href=\"/?date=2026-10-22&amp;category=news#item-17399249b04a\" class=\"internal-link\" rel=\"noopener noreferrer\">repair docs</a> plus a <a href=\"/?date=2026-10-22&amp;category=news#item-6744ee288883\" class=\"internal-link\" rel=\"noopener noreferrer\">Windows e2e test</a> covering the gateway-recovery path. <strong>Community:</strong> <a href=\"/?date=2026-10-22&amp;category=news#item-a3d50c782b51\" class=\"internal-link\" rel=\"noopener noreferrer\">r/hermesagent thread on personal AI security</a> — how to audit what the agent did and detect/remediate unauthorized actions — signals real user demand for auditability and action-approval features. <strong>Tips:</strong> Point users hitting failed updates at the new <a href=\"/?date=2026-10-22&amp;category=news#item-17399249b04a\" class=\"internal-link\" rel=\"noopener noreferrer\">damaged-checkout repair documentation</a>.</p>",
+  "themes": [
+    {
+      "name": "v0.22.3 / v0.22.4 Release Cycle",
+      "description": "A burst of release-day activity: stable v0.22.3 rolling up ~620 PRs, followed by patch v0.22.4, with five RC tags showing heavy stabilization iteration on October 21.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "Update Reliability and Checkout Repair",
+      "description": "A coordinated cluster of commits fixing damaged-checkout diagnosis, gateway stranding after failed updates, plus accompanying docs and end-to-end tests.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Community Security Concerns",
+      "description": "Users raising personal AI security, auditability, and unauthorized-action remediation questions about Hermes in community forums.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 35.0
+    }
+  ],
+  "total_items": 13,
+  "items": [
+    {
+      "id": "f138cfc68c9e",
+      "title": "Hermes Agent v0.22.3",
+      "content": "Hermes Agent v0.22.3\nRelease Date: October 21, 2026\n\nPatch release. This tag rolls up the ~620 PRs merged since v0.22.2 into a stable release for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n\nAbout this release\nMeasured at commit 5b147ab036d, the window since v0.22.2 contains 2,911 non-merge commits across 4,206 changed files (+360,278 / −64,308), about 620 merged PRs and 326 closed issues.\nAlso in the window, undocumented here on purpose: MCP progress notifications streamed as live tool progress, a refreshed classic CLI layout (glyph transcript, status line under the composer, two-line header), OAuth clients that plugins declare and Hermes signs in and refreshes, hermes plugins update offering every available plugin update plus an Update button for git-installed plugins in Desktop, steering and editing a queued prompt from Desktop, a guided subagent model and provider picker in Desktop, a live /loop countdown row in the CLI and TUI, opt-in Telegram DM topic transfer, a post_compaction plugin hook, a capabilities catalog, the Microsoft Store build going live automatically when a release publishes, session auto-prune back to opt-in with a one-time prompt when disk runs low, Nemotron 3.5 Bolt and one-slot DFlash drafts in the local runtime, and dozens of new plugin catalog entries.\nFull curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\nUpdating\n\nMicrosoft Store app: updates through the Store.\nDesktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.2...v0.22.3",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.3",
+      "author": "teknium1",
+      "published": "2026-10-21T12:21:11",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Continuing our coverage from the v0.22.3 release-candidate phase, Hermes Agent v0.22.3 is a stable tag rolling up roughly 620 merged PRs since v0.22.2 (2,911 non-merge commits, ~360k lines added, 326 closed issues) across all install surfaces. Full curated notes ship with v0.23.0, but the notes also name untracked work: MCP progress notifications, a refreshed classic CLI layout, plugin-declared OAuth clients, and an expanded plugins update flow.",
+      "importance_score": 88.0,
+      "reasoning": "Major stable release consolidating a very large change window for all Hermes install surfaces. The scale of the rollup and the preview of substantial new capabilities (MCP progress streaming, CLI refresh, signed OAuth clients) make this highly significant for users.",
+      "themes": [
+        "stable release",
+        "large change rollup",
+        "CLI refresh",
+        "MCP progress"
+      ],
+      "continuation": {
+        "original_item_id": "4ff1a71ea204",
+        "original_date": "2026-10-21",
+        "original_category": "news",
+        "original_title": "rc.1-v0.22.3",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from the v0.22.3 release-candidate phase"
+      },
+      "summary_html": "<p>Continuing our coverage from the v0.22.3 release-candidate phase, Hermes Agent v0.22.3 is a stable tag rolling up roughly 620 merged PRs since v0.22.2 (2,911 non-merge commits, ~360k lines added, 326 closed issues) across all install surfaces. Full curated notes ship with v0.23.0, but the notes also name untracked work: MCP progress notifications, a refreshed classic CLI layout, plugin-declared OAuth clients, and an expanded plugins update flow.</p>",
+      "content_html": "<p>Hermes Agent v0.22.3</p>\n<p>Release Date: October 21, 2026</p>\n<p>Patch release. This tag rolls up the ~620 PRs merged since v0.22.2 into a stable release for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.</p>\n<p>About this release</p>\n<p>Measured at commit 5b147ab036d, the window since v0.22.2 contains 2,911 non-merge commits across 4,206 changed files (+360,278 / −64,308), about 620 merged PRs and 326 closed issues.</p>\n<p>Also in the window, undocumented here on purpose: MCP progress notifications streamed as live tool progress, a refreshed classic CLI layout (glyph transcript, status line under the composer, two-line header), OAuth clients that plugins declare and Hermes signs in and refreshes, hermes plugins update offering every available plugin update plus an Update button for git-installed plugins in Desktop, steering and editing a queued prompt from Desktop, a guided subagent model and provider picker in Desktop, a live /loop countdown row in the CLI and TUI, opt-in Telegram DM topic transfer, a post_compaction plugin hook, a capabilities catalog, the Microsoft Store build going live automatically when a release publishes, session auto-prune back to opt-in with a one-time prompt when disk runs low, Nemotron 3.5 Bolt and one-slot DFlash drafts in the local runtime, and dozens of new plugin catalog entries.</p>\n<p>Full curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.</p>\n<p>Updating</p>\n<p>Microsoft Store app: updates through the Store.</p>\n<p>Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.2...v0.22.3</p>"
+    },
+    {
+      "id": "ee19ff2a1e84",
+      "title": "Hermes Agent v0.22.4",
+      "content": "Hermes Agent v0.22.4\nRelease Date: October 21, 2026\n\nPatch release. Desktop stops showing suggestion pills above the composer, plus small plugin and dashboard fixes, for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud.\n\n\nFixes\n\nDesktop no longer shows suggestion pills above the composer. The pills appeared for no clear reason, mostly nudging you to set up MCP servers. They and the helpers that only they used are gone. (#142559)\nPlugins that install nothing skip the dependency consent step. A plugin that declares no dependencies, or whose pyproject.toml installs nothing, now enables without an empty consent prompt. (#142569)\nDashboard: WhatsApp can be safely re-paired after logging out. (#142439)\nDesktop plugin review: the surface lint no longer flags prototype writes; reviewers check them by hand. (#142586)\nDesktop: the approval-mode chip follows the active profile's mode. (#142565)\nRelease builds: the desktop bundle's pre-build check gets enough time to verify archived build inputs when storage is slow. (#142623)\n\nAlso new in the plugin catalog: bubblewrap (bwrap terminal backend on Linux), Singularity/Apptainer, mcp-serve (Hermes as an MCP server), agent-importers (hermes import-agent, now with Cursor), inbox and workflow-record from Hermes Labs. Telegram Business moves to the Hermes Labs community tier.\nAbout this release\nMeasured at commit 4d04303818b, the window since v0.22.3 contains 14 non-merge commits across 82 changed files (+1,475 / −3,022) and 13 merged PRs.\nUpdating\n\nMicrosoft Store app: updates through the Store.\nDesktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.3...v0.22.4",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.4",
+      "author": "teknium1",
+      "published": "2026-10-21T18:49:24",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Nous Research shipped Hermes Agent v0.22.4, a patch release dated October 21, 2026, available across the CLI/installer, Microsoft Store, Docker, and Hermes Cloud. It removes the suggestion pills that appeared above the Desktop composer, skips the dependency consent step for plugins that install nothing, fixes WhatsApp re-pairing in the dashboard, and corrects a lint false positive in plugin review.",
+      "importance_score": 72.0,
+      "reasoning": "An official patch release on the coverage date with concrete user-facing fixes, though it is minor in scope with no new capabilities. Directly relevant to Hermes Desktop and plugin users.",
+      "themes": [
+        "patch release",
+        "desktop UX fixes",
+        "plugin fixes"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Nous Research shipped Hermes Agent v0.22.4, a patch release dated October 21, 2026, available across the CLI/installer, Microsoft Store, Docker, and Hermes Cloud. It removes the suggestion pills that appeared above the Desktop composer, skips the dependency consent step for plugins that install nothing, fixes WhatsApp re-pairing in the dashboard, and corrects a lint false positive in plugin review.</p>",
+      "content_html": "<p>Hermes Agent v0.22.4</p>\n<p>Release Date: October 21, 2026</p>\n<p>Patch release. Desktop stops showing suggestion pills above the composer, plus small plugin and dashboard fixes, for the CLI and installer, the Microsoft Store app, Docker and Hermes Cloud.</p>\n<p>Fixes</p>\n<p>Desktop no longer shows suggestion pills above the composer. The pills appeared for no clear reason, mostly nudging you to set up MCP servers. They and the helpers that only they used are gone. (#142559)</p>\n<p>Plugins that install nothing skip the dependency consent step. A plugin that declares no dependencies, or whose pyproject.toml installs nothing, now enables without an empty consent prompt. (#142569)</p>\n<p>Dashboard: WhatsApp can be safely re-paired after logging out. (#142439)</p>\n<p>Desktop plugin review: the surface lint no longer flags prototype writes; reviewers check them by hand. (#142586)</p>\n<p>Desktop: the approval-mode chip follows the active profile's mode. (#142565)</p>\n<p>Release builds: the desktop bundle's pre-build check gets enough time to verify archived build inputs when storage is slow. (#142623)</p>\n<p>Also new in the plugin catalog: bubblewrap (bwrap terminal backend on Linux), Singularity/Apptainer, mcp-serve (Hermes as an MCP server), agent-importers (hermes import-agent, now with Cursor), inbox and workflow-record from Hermes Labs. Telegram Business moves to the Hermes Labs community tier.</p>\n<p>About this release</p>\n<p>Measured at commit 4d04303818b, the window since v0.22.3 contains 14 non-merge commits across 82 changed files (+1,475 / −3,022) and 13 merged PRs.</p>\n<p>Updating</p>\n<p>Microsoft Store app: updates through the Store.</p>\n<p>Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.3...v0.22.4</p>"
+    },
+    {
+      "id": "975fd43cea56",
+      "title": "fix(update): a damaged .git no longer strands paused gateways",
+      "content": "fix(update): a damaged .git no longer strands paused gateways\n\nWhen a checkout's .git exists but git rejects it (empty HEAD, a gitdir:\nfile pointing nowhere), every `hermes update` failed at the fetch with a\ngeneric &quot;Failed to fetch updates&quot; and, on Windows, left the paused\ngateways stopped with &quot;the next `hermes` command restarts them&quot;. No\nlater command could: the whole-tree gate held the set while HEAD was\nunreadable, so bots stayed down until someone repaired the checkout by\nhand.\n\n- tree gate: a set whose every pause already found HEAD unreadable and\n  that never bound a tree move resumes. The gateways were serving that\n  exact tree and no update step wrote it. A recorded move, or a HEAD\n  that was readable at the pause, still holds the set.\n- fetch failure: &quot;not a git repository&quot; now says the checkout's git data\n  is damaged and prints the installer one-liner that repairs it.\n- install.sh: a dangling `.git` file is moved aside and re-cloned like a\n  commit-less one, matching install.ps1 (Test-Path already matched it);\n  both installers' warning names a damaged .git, not only an\n  interrupted clone.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/99cc712bf37080c4428538b642bd8c17b7fa3328",
+      "author": "teknium1",
+      "published": "2026-10-21T23:57:37",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A merged fix addresses a serious update failure: when a checkout's .git exists but git rejects it, every hermes update failed and, on Windows, paused gateways stayed stopped indefinitely because the whole-tree gate held the set while HEAD was unreadable. The gate now resumes sets that never bound a tree move, and fetch failures report clearer errors, so bots recover without manual repair.",
+      "importance_score": 62.0,
+      "reasoning": "Fixes a genuine outage-class bug where Hermes agents (bots/gateways) could stay down after an update failure until manual intervention. High practical value for affected users, though it hits a narrow failure mode.",
+      "themes": [
+        "update reliability",
+        "gateway recovery",
+        "bug fixes"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A merged fix addresses a serious update failure: when a checkout's .git exists but git rejects it, every hermes update failed and, on Windows, paused gateways stayed stopped indefinitely because the whole-tree gate held the set while HEAD was unreadable. The gate now resumes sets that never bound a tree move, and fetch failures report clearer errors, so bots recover without manual repair.</p>",
+      "content_html": "<p>fix(update): a damaged .git no longer strands paused gateways</p>\n<p>When a checkout's .git exists but git rejects it (empty HEAD, a gitdir:</p>\n<p>file pointing nowhere), every <code>hermes update</code> failed at the fetch with a</p>\n<p>generic \"Failed to fetch updates\" and, on Windows, left the paused</p>\n<p>gateways stopped with \"the next <code>hermes</code> command restarts them\". No</p>\n<p>later command could: the whole-tree gate held the set while HEAD was</p>\n<p>unreadable, so bots stayed down until someone repaired the checkout by</p>\n<p>hand.</p>\n<ul>\n<li>tree gate: a set whose every pause already found HEAD unreadable and</li>\n</ul>\n<p>that never bound a tree move resumes. The gateways were serving that</p>\n<p>exact tree and no update step wrote it. A recorded move, or a HEAD</p>\n<p>that was readable at the pause, still holds the set.</p>\n<ul>\n<li>fetch failure: \"not a git repository\" now says the checkout's git data</li>\n</ul>\n<p>is damaged and prints the installer one-liner that repairs it.</p>\n<ul>\n<li>install.sh: a dangling <code>.git</code> file is moved aside and re-cloned like a</li>\n</ul>\n<p>commit-less one, matching install.ps1 (Test-Path already matched it);</p>\n<p>both installers' warning names a damaged .git, not only an</p>\n<p>interrupted clone.</p>"
+    },
+    {
+      "id": "150ddaf9c966",
+      "title": "fix(update): diagnose a damaged checkout from the checkout, not the s…",
+      "content": "fix(update): diagnose a damaged checkout from the checkout, not the stderr\n\ngit prints the same &quot;fatal: not a git repository&quot; line when the REMOTE\nhas a dangling .git file, so the line alone sent users with a healthy\ncheckout to reinstall. The diagnosis now also requires the checkout to\nfail to resolve as its own top level.\n\nThe repair command names the failing checkout (--dir / -InstallDir):\na bare one-liner rebuilt the default directory and left a custom-dir\ninstall broken.",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/3a9d585e4f1a60588237587a72d365d187094c74",
+      "author": "teknium1",
+      "published": "2026-10-21T23:57:37",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A merged fix improves how hermes update diagnoses damaged checkouts: previously a generic fatal: not a git repository message from the remote could push users with healthy checkouts to reinstall. Diagnosis now also verifies the checkout itself fails to resolve, and the repair command accepts --dir / -InstallDir so custom-directory installs are no longer rebuilt as the default directory.",
+      "importance_score": 55.0,
+      "reasoning": "Meaningful fix to the update/repair path affecting users with custom install directories, but narrow in scope. Part of a coordinated set of checkout-repair commits merged the same day.",
+      "themes": [
+        "update reliability",
+        "bug fixes"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A merged fix improves how hermes update diagnoses damaged checkouts: previously a generic fatal: not a git repository message from the remote could push users with healthy checkouts to reinstall. Diagnosis now also verifies the checkout itself fails to resolve, and the repair command accepts --dir / -InstallDir so custom-directory installs are no longer rebuilt as the default directory.</p>",
+      "content_html": "<p>fix(update): diagnose a damaged checkout from the checkout, not the stderr</p>\n<p>git prints the same \"fatal: not a git repository\" line when the REMOTE</p>\n<p>has a dangling .git file, so the line alone sent users with a healthy</p>\n<p>checkout to reinstall. The diagnosis now also requires the checkout to</p>\n<p>fail to resolve as its own top level.</p>\n<p>The repair command names the failing checkout (--dir / -InstallDir):</p>\n<p>a bare one-liner rebuilt the default directory and left a custom-dir</p>\n<p>install broken.</p>"
+    },
+    {
+      "id": "a3d50c782b51",
+      "title": "Hermes & Personal AI Security",
+      "content": "I'm excited about the potential of personal AI and agent options like Muse and Hermes. I've been running small experiments with small, safe scope. I just can't get past my need to (a) know what personal agent did on my behalf (b) if it took actions or access I didn't approve and (c) what I do if that happens. Am I alone on this? How are you managing Personal AI security?  &#32; submitted by &#32;  /u/YBME42  &#32; to &#32;  r/hermesagent   [link] &#32; [comments]",
+      "url": "https://www.reddit.com/r/hermesagent/comments/1xc30n5/hermes_personal_ai_security/",
+      "author": "/u/YBME42",
+      "published": "2026-10-21T23:37:11",
+      "source": "newest submissions : multi",
+      "source_type": "rss",
+      "tags": [
+        "hermesagent"
+      ],
+      "summary": "A Reddit post in r/hermesagent asks how others manage personal AI security with agents like Hermes, specifically how to audit what the agent did, detect unapproved actions or access, and remediate if that happens. The author is running small, safe-scope experiments and asks whether others share these concerns.",
+      "importance_score": 35.0,
+      "reasoning": "A genuine community discussion reflecting user demand for auditability and action-approval features in Hermes, but it is a question rather than a showcase or answer, and the underlying concern is largely unanswered by the post itself.",
+      "themes": [
+        "security",
+        "agent trust",
+        "community discussion"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Reddit post in r/hermesagent asks how others manage personal AI security with agents like Hermes, specifically how to audit what the agent did, detect unapproved actions or access, and remediate if that happens. The author is running small, safe-scope experiments and asks whether others share these concerns.</p>",
+      "content_html": "<p>I'm excited about the potential of personal AI and agent options like Muse and Hermes. I've been running small experiments with small, safe scope. I just can't get past my need to (a) know what personal agent did on my behalf (b) if it took actions or access I didn't approve and (c) what I do if that happens. Am I alone on this? How are you managing Personal AI security?    submitted by    /u/YBME42    to    r/hermesagent   [link]   [comments]</p>"
+    },
+    {
+      "id": "17399249b04a",
+      "title": "docs(update): repairing a checkout whose .git git rejects",
+      "content": "docs(update): repairing a checkout whose .git git rejects",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/b70aa089e48b57a4b9a3344a63bea15feab6cf4f",
+      "author": "teknium1",
+      "published": "2026-10-21T23:57:37",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A documentation commit adding guidance on repairing a checkout whose .git directory git rejects. It accompanies the damaged-checkout diagnostic and gateway-resume fixes merged the same day.",
+      "importance_score": 25.0,
+      "reasoning": "Docs-only change with modest value, though it supports users encountering damaged-checkout update failures. Noteworthy mainly as part of the same fix bundle.",
+      "themes": [
+        "documentation",
+        "update reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A documentation commit adding guidance on repairing a checkout whose .git directory git rejects. It accompanies the damaged-checkout diagnostic and gateway-resume fixes merged the same day.</p>",
+      "content_html": "<p>docs(update): repairing a checkout whose .git git rejects</p>"
+    },
+    {
+      "id": "6744ee288883",
+      "title": "test(e2e): damaged .git on Windows — paused gateway returns, installe…",
+      "content": "test(e2e): damaged .git on Windows — paused gateway returns, installer repairs",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/31ad8adc63a525f70e6f46aeeb8f9eb314ec4060",
+      "author": "teknium1",
+      "published": "2026-10-21T23:57:37",
+      "source": "Recent Commits to hermes-agent:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An end-to-end test commit covering the damaged-.git-on-Windows scenario, asserting that a paused gateway returns and the installer can repair the checkout. It validates the companion fix that keeps paused gateways from being stranded.",
+      "importance_score": 25.0,
+      "reasoning": "Test-only change that hardens a real Windows failure mode, but no direct user-facing behavior on its own. Part of the same-day checkout-repair fix cluster.",
+      "themes": [
+        "testing",
+        "windows",
+        "update reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An end-to-end test commit covering the damaged-.git-on-Windows scenario, asserting that a paused gateway returns and the installer can repair the checkout. It validates the companion fix that keeps paused gateways from being stranded.</p>",
+      "content_html": "<p>test(e2e): damaged .git on Windows — paused gateway returns, installer repairs</p>"
+    },
+    {
+      "id": "9416a4f2614d",
+      "title": "rc.5-v0.22.3",
+      "content": "{\"attempt\":5,\"autopublish\":false,\"claimEpoch\":1792581559,\"commit\":\"5b…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.5-v0.22.3",
+      "author": "teknium1",
+      "published": "2026-10-21T11:19:19",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The active v0.22.3 pre-release cycle was already reported in [News](/?date=2026-10-21&category=news#item-cb1ffab3a533); rc.5 ships no notes, A fifth release-candidate tag for Hermes Agent v0.22.3 published on October 21, 2026. The content is only release-automation metadata (attempt number, autopublish flag, claim epoch, commit hash) with no user-facing notes.",
+      "importance_score": 10.0,
+      "reasoning": "An internal RC artifact with no substantive content. It signals the v0.22.3 stabilization process was iterating, but offers nothing actionable for Hermes users.",
+      "themes": [
+        "release candidate",
+        "release automation"
+      ],
+      "continuation": {
+        "original_item_id": "cb1ffab3a533",
+        "original_date": "2026-10-21",
+        "original_category": "news",
+        "original_title": "rc.2-v0.22.3",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "The active v0.22.3 pre-release cycle was already reported in **News**; rc.5 ships no notes"
+      },
+      "summary_html": "<p>The active v0.22.3 pre-release cycle was already reported in <a href=\"/?date=2026-10-21&amp;category=news#item-cb1ffab3a533\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a>; rc.5 ships no notes, A fifth release-candidate tag for Hermes Agent v0.22.3 published on October 21, 2026. The content is only release-automation metadata (attempt number, autopublish flag, claim epoch, commit hash) with no user-facing notes.</p>",
+      "content_html": "<p>{\"attempt\":5,\"autopublish\":false,\"claimEpoch\":1792581559,\"commit\":\"5b…</p>"
+    },
+    {
+      "id": "dc1f37a374d5",
+      "title": "rc.4-v0.22.3",
+      "content": "{\"attempt\":4,\"autopublish\":false,\"claimEpoch\":1792579156,\"commit\":\"69…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.4-v0.22.3",
+      "author": "teknium1",
+      "published": "2026-10-21T10:39:16",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The v0.22.3 pre-release churn was already reported in [News](/?date=2026-10-21&category=news#item-cb1ffab3a533); this tag adds nothing, A fourth release-candidate tag for Hermes Agent v0.22.3, containing only automation metadata such as attempt count and commit reference. No notes or fixes are described.",
+      "importance_score": 10.0,
+      "reasoning": "Another empty RC metadata entry tied to the v0.22.3 stabilization cycle. Low informational value beyond showing repeated candidate attempts on release day.",
+      "themes": [
+        "release candidate",
+        "release automation"
+      ],
+      "continuation": {
+        "original_item_id": "cb1ffab3a533",
+        "original_date": "2026-10-21",
+        "original_category": "news",
+        "original_title": "rc.2-v0.22.3",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "The v0.22.3 pre-release churn was already reported in **News**; this tag adds nothing"
+      },
+      "summary_html": "<p>The v0.22.3 pre-release churn was already reported in <a href=\"/?date=2026-10-21&amp;category=news#item-cb1ffab3a533\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a>; this tag adds nothing, A fourth release-candidate tag for Hermes Agent v0.22.3, containing only automation metadata such as attempt count and commit reference. No notes or fixes are described.</p>",
+      "content_html": "<p>{\"attempt\":4,\"autopublish\":false,\"claimEpoch\":1792579156,\"commit\":\"69…</p>"
+    },
+    {
+      "id": "a9f42aa3c5ee",
+      "title": "rc.3-v0.22.3",
+      "content": "{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1792577161,\"commit\":\"64…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.3-v0.22.3",
+      "author": "teknium1",
+      "published": "2026-10-21T10:06:01",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We've been tracking the v0.22.3 RC cycle in [News](/?date=2026-10-21&category=news#item-cb1ffab3a533) — this automated tag carries no new information, A third release-candidate tag for Hermes Agent v0.22.3 published the morning of October 21, 2026. The body is solely JSON automation metadata with no descriptive content.",
+      "importance_score": 10.0,
+      "reasoning": "Internal pre-release artifact with no substance. Only useful as evidence of the iterative stabilization process behind the v0.22.3 stable tag.",
+      "themes": [
+        "release candidate",
+        "release automation"
+      ],
+      "continuation": {
+        "original_item_id": "cb1ffab3a533",
+        "original_date": "2026-10-21",
+        "original_category": "news",
+        "original_title": "rc.2-v0.22.3",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We've been tracking the v0.22.3 RC cycle in **News** — this automated tag carries no new information"
+      },
+      "summary_html": "<p>We've been tracking the v0.22.3 RC cycle in <a href=\"/?date=2026-10-21&amp;category=news#item-cb1ffab3a533\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> — this automated tag carries no new information, A third release-candidate tag for Hermes Agent v0.22.3 published the morning of October 21, 2026. The body is solely JSON automation metadata with no descriptive content.</p>",
+      "content_html": "<p>{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1792577161,\"commit\":\"64…</p>"
+    },
+    {
+      "id": "f47b3540d3b5",
+      "title": "rc.2-v0.22.4",
+      "content": "{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792601980,\"commit\":\"4d…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.22.4",
+      "author": "teknium1",
+      "published": "2026-10-21T16:59:40",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A second release-candidate tag for Hermes Agent v0.22.4, published hours before the final v0.22.4 release. Content is limited to automation metadata (attempt, autopublish flag, commit hash).",
+      "importance_score": 10.0,
+      "reasoning": "Empty RC metadata for the v0.22.4 patch cycle. No user-relevant information; the final v0.22.4 release notes supersede it entirely.",
+      "themes": [
+        "release candidate",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A second release-candidate tag for Hermes Agent v0.22.4, published hours before the final v0.22.4 release. Content is limited to automation metadata (attempt, autopublish flag, commit hash).</p>",
+      "content_html": "<p>{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792601980,\"commit\":\"4d…</p>"
+    },
+    {
+      "id": "444106e3fde4",
+      "title": "rc.1-v0.22.4",
+      "content": "{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1792596648,\"commit\":\"6f…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.22.4",
+      "author": "teknium1",
+      "published": "2026-10-21T15:30:48",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The first release-candidate tag for Hermes Agent v0.22.4, containing only JSON automation fields with no release notes. It marks the start of the patch release stabilization on October 21, 2026.",
+      "importance_score": 10.0,
+      "reasoning": "Metadata-only RC tag with no actionable content for Hermes users. Included only for completeness of the v0.22.4 release trail.",
+      "themes": [
+        "release candidate",
+        "release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The first release-candidate tag for Hermes Agent v0.22.4, containing only JSON automation fields with no release notes. It marks the start of the patch release stabilization on October 21, 2026.</p>",
+      "content_html": "<p>{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1792596648,\"commit\":\"6f…</p>"
+    },
+    {
+      "id": "b3d29d0f8e05",
+      "title": "Daily sync: 2026-10-21 02:00:56",
+      "content": "Daily sync: 2026-10-21 02:00:56",
+      "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/8d43c3b1394bb3fe36245a07a8dafb1e66727424",
+      "author": "bot@hermes-agent-community.github.io",
+      "published": "2026-10-21T06:00:56",
+      "source": "Recent Commits to hermes-agent-community:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An automated daily sync commit to the hermes-agent-community repository on AtlasOmnia, dated October 21, 2026. The commit contains no descriptive content beyond its timestamped title.",
+      "importance_score": 5.0,
+      "reasoning": "Routine automated housekeeping commit with no user-facing substance. A duplicate-pattern daily artifact that carries no news value.",
+      "themes": [
+        "automation",
+        "housekeeping"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An automated daily sync commit to the hermes-agent-community repository on AtlasOmnia, dated October 21, 2026. The commit contains no descriptive content beyond its timestamped title.</p>",
+      "content_html": "<p>Daily sync: 2026-10-21 02:00:56</p>"
+    }
+  ]
+}

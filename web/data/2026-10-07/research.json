@@ -1,0 +1,556 @@
+{
+  "category": "research",
+  "date": "2026-10-07",
+  "category_summary": "Research section clusters into five groups. Official capability changes lead: the freshest, highest-impact item is Hermes Agent's new [**Claude Pro/Max**](/?date=2026-10-07&category=research#item-hn-49790991) subscription-auth plugin (authenticate with an existing Anthropic subscription instead of API keys), ahead of the [**v0.20.0**](/?date=2026-10-07&category=research#item-hn-49159200) release note as the core anchor — caveat: its tag **v2026.8.3** corresponds to early August, roughly two months before the Oct 6 coverage date, so it is a catch-up reference rather than breaking news, and the title version **v0.20.0** vs tag **v2026.8.3** mismatch should be verified before publishing. Memory and multi-agent patterns follow: the [**LanceDB**](/?date=2026-10-07&category=research#item-hn-49133145) semantic-memory guide (embeddings-backed recall of past sessions), official [**Hermes Kanban**](/?date=2026-10-07&category=research#item-hn-49604068) documentation for multi-profile agent coordination, and a reproducible skill that loops [issue-to-PR work between **Codex** and **Claude Code**](/?date=2026-10-07&category=research#item-hn-49136162). Deployment/ops: a [Kubernetes write-up](/?date=2026-10-07&category=research#item-hn-49977400) flagging the missing official **Helm** chart and the image requiring root at init (security-relevant), an open-source [**Grafana**](/?date=2026-10-07&category=research#item-hn-49318128) observability toolkit with dashboards, and a hobbyist [**Arduino UNO Q**](/?date=2026-10-07&category=research#item-hn-49368474) self-hosting guide. Ecosystem signals: [**Almanac**](/?date=2026-10-07&category=research#item-hn-49511007) (YC S26) building commercially on Hermes, the [**verso**](/?date=2026-10-07&category=research#item-hn-49628094) open-source orchestrator UI, the [**Refine Cycle**](/?date=2026-10-07&category=research#item-hn-49606988) self-improvement plugin, and the [**Bifrost**](/?date=2026-10-07&category=research#item-hn-49159529) model-router discussion. Project health: [the ~23,000-open-PR backlog](/?date=2026-10-07&category=research#item-hn-49424643) (adoption vs maintainer capacity) and a [moderation/transparency issue](/?date=2026-10-07&category=research#item-hn-49208206) both merit careful, sourced coverage. Data-quality flags from grounding checks: (1) two distinct stories share the ID **hn-49305190** — the Grafana toolkit (Hermes-relevant, listed here once) and an off-topic [Claude Code earnings-call-embeddings plugin](/?date=2026-10-07&category=research#item-hn-49305190) (tangential to a Hermes newsletter); de-duplicate IDs before publishing; (2) item [hn-49916751](/?date=2026-10-07&category=research#item-hn-49916751) cites **Z.ai GLM 5.3 Flash**, which does not match the current Zhipu lineup — the latest release is **GLM-5.2** (June 2026) with **GLM 4.7 Flash** as the current Flash tier — so treat that model name as unverified user error or confirm independently. Bottom-ranked items (the [project homepage](/?date=2026-10-07&category=research#item-hn-49441992) and the [Hermès trademark thread](/?date=2026-10-07&category=research#item-hn-49357715)) contain no new technical detail and can be cut from the newsletter.",
+  "category_summary_html": "<p>Research section clusters into five groups. Official capability changes lead: the freshest, highest-impact item is Hermes Agent's new <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong></a> subscription-auth plugin (authenticate with an existing Anthropic subscription instead of API keys), ahead of the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.20.0</strong></a> release note as the core anchor — caveat: its tag <strong>v2026.8.3</strong> corresponds to early August, roughly two months before the Oct 6 coverage date, so it is a catch-up reference rather than breaking news, and the title version <strong>v0.20.0</strong> vs tag <strong>v2026.8.3</strong> mismatch should be verified before publishing. Memory and multi-agent patterns follow: the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong></a> semantic-memory guide (embeddings-backed recall of past sessions), official <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong></a> documentation for multi-profile agent coordination, and a reproducible skill that loops <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">issue-to-PR work between <strong>Codex</strong> and <strong>Claude Code</strong></a>. Deployment/ops: a <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes write-up</a> flagging the missing official <strong>Helm</strong> chart and the image requiring root at init (security-relevant), an open-source <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong></a> observability toolkit with dashboards, and a hobbyist <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong></a> self-hosting guide. Ecosystem signals: <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong></a> (YC S26) building commercially on Hermes, the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verso</strong></a> open-source orchestrator UI, the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a> self-improvement plugin, and the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Bifrost</strong></a> model-router discussion. Project health: <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">the ~23,000-open-PR backlog</a> (adoption vs maintainer capacity) and a <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49208206\" class=\"internal-link\" rel=\"noopener noreferrer\">moderation/transparency issue</a> both merit careful, sourced coverage. Data-quality flags from grounding checks: (1) two distinct stories share the ID <strong>hn-49305190</strong> — the Grafana toolkit (Hermes-relevant, listed here once) and an off-topic <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49305190\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Code earnings-call-embeddings plugin</a> (tangential to a Hermes newsletter); de-duplicate IDs before publishing; (2) item <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">hn-49916751</a> cites <strong>Z.ai GLM 5.3 Flash</strong>, which does not match the current Zhipu lineup — the latest release is <strong>GLM-5.2</strong> (June 2026) with <strong>GLM 4.7 Flash</strong> as the current Flash tier — so treat that model name as unverified user error or confirm independently. Bottom-ranked items (the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">project homepage</a> and the <a href=\"/?date=2026-10-07&amp;category=research#item-hn-49357715\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermès trademark thread</a>) contain no new technical detail and can be cut from the newsletter.</p>",
+  "themes": [
+    {
+      "name": "Multi-Agent and Memory Architectures",
+      "description": "Patterns for coordinating multiple agent profiles, skills, and coding agents, plus persistent semantic memory via vector databases.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Model Providers and Compatibility",
+      "description": "How Hermes Agent connects to model backends, including Claude subscription auth, Z.ai models, model routing, and reliability issues with non-default providers.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Deployment and Operations",
+      "description": "Guides and pain points around hosting Hermes Agent on Kubernetes, embedded hardware, headless servers, and low-cost always-on setups.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Ecosystem Tools and Plugins",
+      "description": "Third-party extensions built on Hermes Agent, including orchestrators, observability stacks, self-improvement plugins, and routing layers.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Project Health and Governance",
+      "description": "Signals about maintainer capacity, open PR backlog, moderation practices, and community trust in the Hermes Agent repository.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 20,
+  "items": [
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49159200), A release announcement link for Hermes Agent v0.20.0, pointing at the GitHub release tag v2026.8.3 on the NousResearch/hermes-agent repository. The submission contains no excerpt of the changelog, but it marks a new versioned milestone of the agent.",
+      "importance_score": 37,
+      "reasoning": "A new versioned release of the core agent is directly relevant to all users and developers, and release notes typically drive upgrade decisions. Score is held below the highest tier because the supplied source contains no changelog detail to assess the substance of the release.",
+      "themes": [
+        "releases",
+        "versioning",
+        "core-agent"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49159200",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Hermes Agent v0.20.0",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A release announcement link for Hermes Agent v0.20.0, pointing at the GitHub release tag v2026.8.3 on the NousResearch/hermes-agent repository. The submission contains no excerpt of the changelog, but it marks a new versioned milestone of the agent.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49790991), Official Hermes Agent documentation announces a new plugin that lets users authenticate with Claude Pro or Max subscription accounts via a direct SDK path rather than API billing. This lowers the barrier for subscribers who want to use their existing Anthropic plans as the model backend for the agent.",
+      "importance_score": 36,
+      "reasoning": "Support for subscription-based Anthropic authentication is a notable official capability change that broadens how users can power the agent and reduces API cost friction. It is official documentation of a new feature, though not a core runtime release.",
+      "themes": [
+        "plugins",
+        "model-providers",
+        "authentication"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, Official Hermes Agent documentation announces a new plugin that lets users authenticate with Claude Pro or Max subscription accounts via a direct SDK path rather than API billing. This lowers the barrier for subscribers who want to use their existing Anthropic plans as the model backend for the agent.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49133145",
+      "title": "Semantic Memory for Hermes Agent with LanceDB",
+      "content": "Semantic Memory for Hermes Agent with LanceDB",
+      "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb",
+      "author": "eigenBasis",
+      "published": "2026-08-01T10:47:04Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49133145), A LanceDB blog post showing how to give Hermes Agent semantic memory by storing and retrieving embeddings in LanceDB, enabling the agent to recall past context across sessions instead of relying only on short-term conversation state.",
+      "importance_score": 34,
+      "reasoning": "Persistent semantic memory is one of the most requested agent capabilities, and an official-adjacent vector database integration guide provides actionable technical depth for extending Hermes Agent. Score reflects strong practical relevance with moderate novelty.",
+      "themes": [
+        "memory",
+        "vector-database",
+        "integrations"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49133145",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Semantic Memory for Hermes Agent with LanceDB",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A LanceDB blog post showing how to give Hermes Agent semantic memory by storing and retrieving embeddings in LanceDB, enabling the agent to recall past context across sessions instead of relying only on short-term conversation state.</p>",
+      "content_html": "<p>Semantic Memory for Hermes Agent with LanceDB</p>"
+    },
+    {
+      "id": "hn-49136162",
+      "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+      "author": "yruzin",
+      "published": "2026-08-01T17:00:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49136162), A write-up on codenote.net describing a Hermes Agent skill that runs an autonomous issue-to-PR loop by shuttling work between Codex and Claude Code, using each coding agent at different stages of the pipeline until a pull request is produced.",
+      "importance_score": 33,
+      "reasoning": "A concrete, reproducible multi-agent workflow pattern combining Hermes skills with two major coding agents is valuable and timely for developers automating issue-to-PR pipelines. It is a blog tutorial rather than an official feature, keeping the score in the mid range.",
+      "themes": [
+        "skills",
+        "automation",
+        "multi-agent"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49136162",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A write-up on codenote.net describing a Hermes Agent skill that runs an autonomous issue-to-PR loop by shuttling work between Codex and Claude Code, using each coding agent at different stages of the pipeline until a pull request is produced.</p>",
+      "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49424643), A community post pointing at the Hermes Agent GitHub pull-queue, noting the repository has roughly 23,000 open pull requests and the number keeps rising, raising questions about maintainer capacity, review bottlenecks, and the sustainability of the project contribution model.",
+      "importance_score": 32,
+      "reasoning": "A very large and growing open PR backlog signals significant community adoption but also a serious maintenance and review bottleneck, which affects how quickly user-contributed fixes and features land. It is a process-level signal rather than a technical change itself.",
+      "themes": [
+        "maintainership",
+        "open-source-health",
+        "contribution-backlog"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A community post pointing at the Hermes Agent GitHub pull-queue, noting the repository has roughly 23,000 open pull requests and the number keeps rising, raising questions about maintainer capacity, review bottlenecks, and the sustainability of the project contribution model.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A blog post from revos.ai covering the operational pain points of deploying Hermes Agent on Kubernetes. Two main issues are highlighted: the project does not ship an official Helm chart, so users must hand-roll manifests, and the container image requires root privileges during initialization, which complicates hardened security contexts and restricted PodSecurity policies.",
+      "importance_score": 62.0,
+      "reasoning": "Deployment and security configuration guidance is practically valuable for teams running Hermes Agent at scale. Lack of an official Helm chart and root-at-init requirement are concrete, actionable gaps, but the item is a third-party blog rather than official documentation or a code change.",
+      "themes": [
+        "deployment",
+        "kubernetes",
+        "security"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A blog post from revos.ai covering the operational pain points of deploying Hermes Agent on Kubernetes. Two main issues are highlighted: the project does not ship an official Helm chart, so users must hand-roll manifests, and the container image requires root privileges during initialization, which complicates hardened security contexts and restricted PodSecurity policies.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49604068), Official documentation page describing the Hermes Kanban feature, which enables multi-agent collaboration by letting multiple agent profiles coordinate work items on a shared kanban board within Hermes Agent.",
+      "importance_score": 30,
+      "reasoning": "Multi-agent orchestration via kanban is a meaningful official capability for coordinating several agent profiles, directly relevant to users running parallel or delegated workloads. Documentation snippet is thin, keeping the score moderate.",
+      "themes": [
+        "multi-agent",
+        "orchestration",
+        "official-features"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, Official documentation page describing the Hermes Kanban feature, which enables multi-agent collaboration by letting multiple agent profiles coordinate work items on a shared kanban board within Hermes Agent.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49511007), A YC S26 startup launch for Almanac, described by a founder as a Hermes with a brain that knows everything about your company. The founders began by trying to set up Hermes internally to answer context-aware questions about their company, found the journey difficult, including configuring OAuth apps for every connector themselves, and turned that experience into a product that packages company-context setup for others.",
+      "importance_score": 58.0,
+      "reasoning": "A funded startup built directly on the Hermes Agent validates the platform as a commercial foundation and highlights real setup friction (connectors, OAuth) that affects users. As a launch announcement it is commercially interesting but not technically deep for existing users.",
+      "themes": [
+        "startups",
+        "enterprise-context",
+        "connectors"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49511007",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A YC S26 startup launch for Almanac, described by a founder as a Hermes with a brain that knows everything about your company. The founders began by trying to set up Hermes internally to answer context-aware questions about their company, found the journey difficult, including configuring OAuth apps for every connector themselves, and turned that experience into a product that packages company-context setup for others.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49318128), A Show HN for an open-source Grafana-based observability toolkit for Hermes Agent, published on GitHub under grafana-agento11y-hermes. It provides dashboards and monitoring so users can observe agent behavior, runs, and health through Grafana.",
+      "importance_score": 57.0,
+      "reasoning": "Observability is a key operational need for anyone running agents in production, and a ready-made Grafana integration fills an infrastructure gap. Score reflects practical utility balanced against limited detail in the announcement snippet.",
+      "themes": [
+        "observability",
+        "monitoring",
+        "ecosystem-tools"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, A Show HN for an open-source Grafana-based observability toolkit for Hermes Agent, published on GitHub under grafana-agento11y-hermes. It provides dashboards and monitoring so users can observe agent behavior, runs, and health through Grafana.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-05&category=research#item-hn-49628094), The author unveils verso, a free and open-source orchestrator for knowledge work built on top of Hermes Agent. Started as a side learning project a few months ago, it provides an intuitive graphical interface for interacting with the agent without the CLI, and the author reports it has become their daily work setup with a significant productivity boost.",
+      "importance_score": 55.0,
+      "reasoning": "A community-built UI layer on Hermes Agent demonstrates ecosystem growth and addresses a common complaint about CLI-only interaction. Interesting and useful to users, but it is an early personal project without detailed technical documentation in the source snippet.",
+      "themes": [
+        "ecosystem-tools",
+        "ui-orchestration",
+        "open-source"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-10-05",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research**"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-05&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a>, The author unveils verso, a free and open-source orchestrator for knowledge work built on top of Hermes Agent. Started as a side learning project a few months ago, it provides an intuitive graphical interface for interacting with the agent without the CLI, and the author reports it has become their daily work setup with a significant productivity boost.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to Bifrost, an open-source model routing layer. The framing suggests the author found multi-model routing effectively necessary for day-to-day Hermes Agent usage and points others to Bifrost as the solution.",
+      "importance_score": 52.0,
+      "reasoning": "The post surfaces a practical architectural question about whether direct provider configuration suffices or a router is de facto required, and it highlights Bifrost as a relevant integration. It is opinionated discussion rather than validated guidance.",
+      "themes": [
+        "model-routing",
+        "configuration",
+        "tooling"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to Bifrost, an open-source model routing layer. The framing suggests the author found multi-model routing effectively necessary for day-to-day Hermes Agent usage and points others to Bifrost as the solution.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub issue, number 10232 on NousResearch/hermes-agent, reports that a user question asking whether EvoMap's Evolver was a reference or inspiration for Hermes was deleted and the user blocked, raising moderation and transparency concerns about how maintainers handle provenance and attribution questions on the repo.",
+      "importance_score": 50.0,
+      "reasoning": "Moderation actions on a public tracker touch on project governance, community trust, and transparency, which matter to contributors. The underlying topic is attribution rather than agent functionality, so technical impact is limited.",
+      "themes": [
+        "moderation",
+        "project-governance",
+        "provenance"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub issue, number 10232 on NousResearch/hermes-agent, reports that a user question asking whether EvoMap's Evolver was a reference or inspiration for Hermes was deleted and the user blocked, raising moderation and transparency concerns about how maintainers handle provenance and attribution questions on the repo.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub project introducing Refine Cycle, a self-improvement plugin for Hermes Agent. The plugin is designed to let the agent iteratively review and refine its own outputs or configuration over repeated cycles, published as a third-party extension on GitHub.",
+      "importance_score": 48.0,
+      "reasoning": "A self-improvement loop plugin is an interesting extension of agent capabilities and relevant to the memory-and-reflection theme in the ecosystem, but the announcement contains minimal technical detail and its real-world effectiveness is unproven.",
+      "themes": [
+        "plugins",
+        "self-improvement",
+        "agent-architecture"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub project introducing Refine Cycle, a self-improvement plugin for Hermes Agent. The plugin is designed to let the agent iteratively review and refine its own outputs or configuration over repeated cycles, published as a third-party extension on GitHub.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user reports that a freshly provisioned Hermes Agent running on a headless Debian server, configured with Z.ai GLM 5.3 Flash, entered a prolonged trance-like loop when asked to print local environment details and PATH. After a few terminal commands, the thinking block stretched for over a minute and a half and contained a long, odd string, prompting the user to ask the community whether the output indicates a bug, model instability, or prompt-injection-style behavior.",
+      "importance_score": 45.0,
+      "reasoning": "Anecdotal troubleshooting report that touches on real reliability concerns around agentic loops and non-OpenAI model backends, but it is a question with no confirmed diagnosis or fix, so technical depth and impact are limited.",
+      "themes": [
+        "troubleshooting",
+        "model-compatibility",
+        "agent-reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user reports that a freshly provisioned Hermes Agent running on a headless Debian server, configured with Z.ai GLM 5.3 Flash, entered a prolonged trance-like loop when asked to print local environment details and PATH. After a few terminal commands, the thinking block stretched for over a minute and a half and contained a long, odd string, prompting the user to ask the community whether the output indicates a bug, model instability, or prompt-injection-style behavior.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A solo developer presents fn2.ai, a Claude Code plugin exposing a platform of 10.6 million earnings-call transcript embeddings plus financial tools, backed by sharded and replicated PostgreSQL and Elasticsearch across two regions. Example queries include asking what specific companies said about data-center demand, demonstrating retrieval over a large financial corpus.",
+      "importance_score": 44.0,
+      "reasoning": "Technically interesting use of Claude Code with a serious data infrastructure, but the project targets Claude Code rather than Hermes Agent specifically, so its relevance to this batch is adjacent ecosystem context only.",
+      "themes": [
+        "claude-code",
+        "retrieval",
+        "financial-data"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A solo developer presents fn2.ai, a Claude Code plugin exposing a platform of 10.6 million earnings-call transcript embeddings plus financial tools, backed by sharded and replicated PostgreSQL and Elasticsearch across two regions. Example queries include asking what specific companies said about data-center demand, demonstrating retrieval over a large financial corpus.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board, a hybrid device pairing an Arduino microcontroller with a Linux side. With 4GB RAM and 32GB storage, the Linux chip can talk to the Arduino side, and the author finds it an almost perfect always-on, low-cost alternative to a VPS for hosting the agent without running it on a personal machine.",
+      "importance_score": 42.0,
+      "reasoning": "A creative self-hosting write-up with concrete hardware specs that is useful to hobbyists seeking cheap always-on agent hosting, but it is a niche setup with limited relevance to most deployments.",
+      "themes": [
+        "self-hosting",
+        "hardware",
+        "edge-deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board, a hybrid device pairing an Arduino microcontroller with a Linux side. With 4GB RAM and 32GB storage, the Linux chip can talk to the Arduino side, and the author finds it an almost perfect always-on, low-cost alternative to a VPS for hosting the agent without running it on a personal machine.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository, hermes-jekyl-hyde, presenting an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or flipping the agent behavior between contrasting modes. The announcement gives no additional technical detail.",
+      "importance_score": 40.0,
+      "reasoning": "Adversarial probing of the agent is security-relevant and could expose robustness weaknesses, which matters to maintainers, but the barebones announcement offers no findings, methodology, or confirmed impact.",
+      "themes": [
+        "security",
+        "adversarial-testing",
+        "research"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository, hermes-jekyl-hyde, presenting an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or flipping the agent behavior between contrasting modes. The announcement gives no additional technical detail.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by heyjonny reflecting on a misuse of the Hermes Agent, walking through what the author did, where their mental model of the agent diverged from how it actually works, and what they learned about the correct usage patterns.",
+      "importance_score": 38.0,
+      "reasoning": "A reflective experience post that can offer practical lessons for new users about agent workflow expectations, but it lacks technical depth, benchmarks, or official guidance, limiting its broader impact.",
+      "themes": [
+        "user-experience",
+        "lessons-learned"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by heyjonny reflecting on a misuse of the Hermes Agent, walking through what the author did, where their mental model of the agent diverged from how it actually works, and what they learned about the correct usage patterns.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A link to the main Hermes Agent website, presenting the project as an open-source AI agent that grows with its user. This is the canonical project landing page rather than a specific change, release note, or detailed guide.",
+      "importance_score": 30.0,
+      "reasoning": "A general project homepage with no new technical detail, release information, or findings. It serves as baseline context for anyone unfamiliar with the project but adds little value for followers tracking developments.",
+      "themes": [
+        "project-overview",
+        "open-source"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A link to the main Hermes Agent website, presenting the project as an open-source AI agent that grows with its user. This is the canonical project landing page rather than a specific change, release note, or detailed guide.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread questioning why the Hermes Agent name does not create trademark conflict with the French luxury brand Hermes, inviting discussion of naming, trademark classes, and jurisdictional scope for open-source software projects.",
+      "importance_score": 20.0,
+      "reasoning": "A purely speculative legal-branding discussion with no technical content about the agent itself. Low relevance to users or developers beyond curiosity about naming risk.",
+      "themes": [
+        "branding",
+        "legal",
+        "discussion"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread questioning why the Hermes Agent name does not create trademark conflict with the French luxury brand Hermes, inviting discussion of naming, trademark classes, and jurisdictional scope for open-source software projects.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    }
+  ]
+}

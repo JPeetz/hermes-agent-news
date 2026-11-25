@@ -1,0 +1,573 @@
+{
+  "date": "2026-11-23",
+  "coverage_date": "2026-11-22",
+  "coverage_start": "2026-11-22T00:00:00",
+  "coverage_end": "2026-11-22T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-11-23\n\n## Executive Summary\n\nSecurity is the story of this cycle. A malicious NPM package, **[leadstack-crm-connect](/?date=2026-11-23&category=research#item-hn-50585975)**, installed **[Hermes Agent](/?date=2026-11-23&category=research#item-hn-49441992)** as root and tasked it over Telegram — a real supply-chain abuse that proves agent credentials are high-value targets. The ecosystem response is encouraging: the **[hermes-tenuo](/?date=2026-11-23&category=news#item-e639c5475729)** plugin brings signed, expiring warrants for least-privilege tool calls, and the **[DailySafe](/?date=2026-11-23&category=research#item-2611.26298)** benchmark measures dynamic safety awareness in multi-turn sessions. On the official side, **[Hermes Kanban](/?date=2026-11-23&category=research#item-hn-49604068)** adds first-party multi-agent profile collaboration and **[Claude Pro/Max](/?date=2026-11-23&category=research#item-hn-49790991)** subscription support arrives via a direct SDK plugin. Hermes Agent also earned third-party validation in [MarkTechPost's late-2026 buyer's guide](/?date=2026-11-23&category=news#item-2ca80c3108fb), while the core repo carries roughly **[23,000](/?date=2026-11-23&category=research#item-hn-49424643)** open PRs — a sign of both vitality and maintainer strain. Deployment gaps on Kubernetes (no official **[Helm chart](/?date=2026-11-23&category=research#item-hn-49977400)**, a container image requiring root at init) remain the biggest self-hosting friction point.\n\n## Releases\n\n- **[Hermes Kanban](/?date=2026-11-23&category=research#item-hn-49604068)** — first-party multi-agent profile collaboration on a kanban board. Coordinating several agent profiles through a shared board moves orchestration from niche workflow toward a core usage mode.\n- **[Claude Pro/Max subscription support](/?date=2026-11-23&category=research#item-hn-49790991)** — a direct SDK plugin lets current **Claude Pro/Max** subscribers route Hermes through their existing subscription, cutting costs for anyone already paying Anthropic.\n- **[Open-Agent-API](/?date=2026-11-23&category=news#item-4ac208e832cb)** — exposes Hermes-listed agents behind an **OpenAI/Anthropic/Gemini-compatible** gateway, using the agent ID as the model value. Standard SDKs can now reach Hermes agents with no custom client code, a major friction reduction for existing stacks.\n\n## Community\n\n- **[hermes-tenuo](/?date=2026-11-23&category=news#item-e639c5475729)** — a plugin enforcing warrant-based tool authorization: signed, expiring warrants restrict which tool calls (and arguments) can execute. A practical hardening step for anyone running tool-using agents.\n- **[Comemo](/?date=2026-11-23&category=research#item-hn-50518538)** — a composite memory provider that works around Hermes' single external memory slot by fanning out across multiple backends, complementing the **[MemOnce](/?date=2026-11-23&category=research#item-2611.27973)** research on scalable memory for continual interactions.\n- **[Verso](/?date=2026-11-23&category=research#item-hn-49628094)** — a community orchestrator for multi-agent knowledge work, extending the orchestration pattern beyond first-party tooling.\n- **[ClusterMob](/?date=2026-11-23&category=research#item-hn-50197497)** — a profile registry that joins Verso in maturing the multi-agent profile ecosystem.\n- **[Paper Harness](/?date=2026-11-23&category=research#item-hn-50278175)** — a native SwiftUI iPhone client, adding a mobile access surface for Hermes.\n- **[Almanac (YC S26)](/?date=2026-11-23&category=research#item-hn-49511007)** — a startup now being built on top of the Hermes platform, an early signal of the platform's commercial pull.\n- **[~23,000 open PRs](/?date=2026-11-23&category=research#item-hn-49424643)** on the core repository — impressive community scale, but a clear sign maintainers could use help with triage.\n- Ecosystem visibility: [MarkTechPost's late-2026 buyer's guide](/?date=2026-11-23&category=news#item-2ca80c3108fb) names **Hermes Agent** among the top personal AI agents, compared against **OpenClaw** and **Gemini Spark** on memory, security, and cost. (Note: promotional SEO listicles with self-ranking conflicts of interest were screened out of this cycle's coverage.)\n\n## Tips & Tutorials\n\n- **Theme of the week: control what your agents are allowed to do.** Authorization, sandboxing, and approval pauses for sensitive actions are the levers that matter — the supply-chain incident shows why defaults alone aren't enough.\n- **Audit your environments now.** If you've installed packages recently, check for **[leadstack-crm-connect](/?date=2026-11-23&category=research#item-hn-50585975)**; treat any agent credentials on the machine as compromised and rotate them.\n- **Adopt warrant-based authorization.** **[hermes-tenuo](/?date=2026-11-23&category=news#item-e639c5475729)**'s signed, expiring warrants let you scope exactly which tool calls and arguments an agent may execute — a concrete least-privilege setup rather than a policy document.\n- **Benchmark your safety posture.** **[DailySafe](/?date=2026-11-23&category=research#item-2611.26298)** measures dynamic safety awareness in everyday multi-turn interactions, making it applicable to Hermes' persistent, tool-using sessions.\n- **Self-hosters on Kubernetes: plan around two gaps.** There is no official **[Helm chart](/?date=2026-11-23&category=research#item-hn-49977400)** yet, and the container image requires root at init. That unnecessary-root pattern echoes the supply-chain incident — compensate with namespace isolation and least-privilege runtime settings until upstream fixes land.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-11-23</p>\n<h2>Executive Summary</h2>\n<p>Security is the story of this cycle. A malicious NPM package, <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">leadstack-crm-connect</a></strong>, installed <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent</a></strong> as root and tasked it over Telegram — a real supply-chain abuse that proves agent credentials are high-value targets. The ecosystem response is encouraging: the <strong><a href=\"/?date=2026-11-23&amp;category=news#item-e639c5475729\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-tenuo</a></strong> plugin brings signed, expiring warrants for least-privilege tool calls, and the <strong><a href=\"/?date=2026-11-23&amp;category=research#item-2611.26298\" class=\"internal-link\" rel=\"noopener noreferrer\">DailySafe</a></strong> benchmark measures dynamic safety awareness in multi-turn sessions. On the official side, <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> adds first-party multi-agent profile collaboration and <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscription support arrives via a direct SDK plugin. Hermes Agent also earned third-party validation in <a href=\"/?date=2026-11-23&amp;category=news#item-2ca80c3108fb\" class=\"internal-link\" rel=\"noopener noreferrer\">MarkTechPost's late-2026 buyer's guide</a>, while the core repo carries roughly <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000</a></strong> open PRs — a sign of both vitality and maintainer strain. Deployment gaps on Kubernetes (no official <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm chart</a></strong>, a container image requiring root at init) remain the biggest self-hosting friction point.</p>\n<h2>Releases</h2>\n<ul>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> — first-party multi-agent profile collaboration on a kanban board. Coordinating several agent profiles through a shared board moves orchestration from niche workflow toward a core usage mode.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a></strong> — a direct SDK plugin lets current <strong>Claude Pro/Max</strong> subscribers route Hermes through their existing subscription, cutting costs for anyone already paying Anthropic.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=news#item-4ac208e832cb\" class=\"internal-link\" rel=\"noopener noreferrer\">Open-Agent-API</a></strong> — exposes Hermes-listed agents behind an <strong>OpenAI/Anthropic/Gemini-compatible</strong> gateway, using the agent ID as the model value. Standard SDKs can now reach Hermes agents with no custom client code, a major friction reduction for existing stacks.</li>\n</ul>\n<h2>Community</h2>\n<ul>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=news#item-e639c5475729\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-tenuo</a></strong> — a plugin enforcing warrant-based tool authorization: signed, expiring warrants restrict which tool calls (and arguments) can execute. A practical hardening step for anyone running tool-using agents.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Comemo</a></strong> — a composite memory provider that works around Hermes' single external memory slot by fanning out across multiple backends, complementing the <strong><a href=\"/?date=2026-11-23&amp;category=research#item-2611.27973\" class=\"internal-link\" rel=\"noopener noreferrer\">MemOnce</a></strong> research on scalable memory for continual interactions.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a></strong> — a community orchestrator for multi-agent knowledge work, extending the orchestration pattern beyond first-party tooling.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob</a></strong> — a profile registry that joins Verso in maturing the multi-agent profile ecosystem.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Paper Harness</a></strong> — a native SwiftUI iPhone client, adding a mobile access surface for Hermes.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a></strong> — a startup now being built on top of the Hermes platform, an early signal of the platform's commercial pull.</li>\n<li><strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open PRs</a></strong> on the core repository — impressive community scale, but a clear sign maintainers could use help with triage.</li>\n<li>Ecosystem visibility: <a href=\"/?date=2026-11-23&amp;category=news#item-2ca80c3108fb\" class=\"internal-link\" rel=\"noopener noreferrer\">MarkTechPost's late-2026 buyer's guide</a> names <strong>Hermes Agent</strong> among the top personal AI agents, compared against <strong>OpenClaw</strong> and <strong>Gemini Spark</strong> on memory, security, and cost. (Note: promotional SEO listicles with self-ranking conflicts of interest were screened out of this cycle's coverage.)</li>\n</ul>\n<h2>Tips &amp; Tutorials</h2>\n<ul>\n<li><strong>Theme of the week: control what your agents are allowed to do.</strong> Authorization, sandboxing, and approval pauses for sensitive actions are the levers that matter — the supply-chain incident shows why defaults alone aren't enough.</li>\n<li><strong>Audit your environments now.</strong> If you've installed packages recently, check for <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">leadstack-crm-connect</a></strong>; treat any agent credentials on the machine as compromised and rotate them.</li>\n<li><strong>Adopt warrant-based authorization.</strong> <strong><a href=\"/?date=2026-11-23&amp;category=news#item-e639c5475729\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-tenuo</a></strong>'s signed, expiring warrants let you scope exactly which tool calls and arguments an agent may execute — a concrete least-privilege setup rather than a policy document.</li>\n<li><strong>Benchmark your safety posture.</strong> <strong><a href=\"/?date=2026-11-23&amp;category=research#item-2611.26298\" class=\"internal-link\" rel=\"noopener noreferrer\">DailySafe</a></strong> measures dynamic safety awareness in everyday multi-turn interactions, making it applicable to Hermes' persistent, tool-using sessions.</li>\n<li><strong>Self-hosters on Kubernetes: plan around two gaps.</strong> There is no official <strong><a href=\"/?date=2026-11-23&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm chart</a></strong> yet, and the container image requires root at init. That unnecessary-root pattern echoes the supply-chain incident — compensate with namespace isolation and least-privilege runtime settings until upstream fixes land.</li>\n</ul>",
+  "top_topics": [
+    {
+      "name": "Agent Security and Authorization",
+      "description": "The dominant cross-cutting theme this cycle is controlling what agents are allowed to do. A malicious NPM package (leadstack-crm-connect) [installed Hermes Agent as root and tasked it over Telegram](/?date=2026-11-23&category=research#item-hn-50585975), a real supply-chain abuse showing agent credentials are high-value targets. Hardening responses include the [hermes-tenuo plugin](/?date=2026-11-23&category=news#item-e639c5475729) enforcing signed, expiring warrants for least-privilege tool calls, and the [DailySafe benchmark](/?date=2026-11-23&category=research#item-2611.26298) measuring dynamic safety awareness in multi-turn sessions.",
+      "description_html": "The dominant cross-cutting theme this cycle is controlling what agents are allowed to do. A malicious NPM package (leadstack-crm-connect) <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">installed Hermes Agent as root and tasked it over Telegram</a>, a real supply-chain abuse showing agent credentials are high-value targets. Hardening responses include the <a href=\"/?date=2026-11-23&amp;category=news#item-e639c5475729\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-tenuo plugin</a> enforcing signed, expiring warrants for least-privilege tool calls, and the <a href=\"/?date=2026-11-23&amp;category=research#item-2611.26298\" class=\"internal-link\" rel=\"noopener noreferrer\">DailySafe benchmark</a> measuring dynamic safety awareness in multi-turn sessions.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 93
+    },
+    {
+      "name": "Memory Architectures and Providers",
+      "description": "Long-horizon memory is an active area of both formal research and community tooling. [MemOnce proposes a scalable memory architecture for continual interactions](/?date=2026-11-23&category=research#item-2611.27973), while [Comemo works around Hermes' single external memory slot by fanning out across multiple backends as a composite provider](/?date=2026-11-23&category=research#item-hn-50518538). The [MarkTechPost buyer's guide](/?date=2026-11-23&category=news#item-2ca80c3108fb) also uses memory as a key comparison axis among personal AI agents.",
+      "description_html": "Long-horizon memory is an active area of both formal research and community tooling. <a href=\"/?date=2026-11-23&amp;category=research#item-2611.27973\" class=\"internal-link\" rel=\"noopener noreferrer\">MemOnce proposes a scalable memory architecture for continual interactions</a>, while <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Comemo works around Hermes' single external memory slot by fanning out across multiple backends as a composite provider</a>. The <a href=\"/?date=2026-11-23&amp;category=news#item-2ca80c3108fb\" class=\"internal-link\" rel=\"noopener noreferrer\">MarkTechPost buyer's guide</a> also uses memory as a key comparison axis among personal AI agents.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Ecosystem Growth and Visibility",
+      "description": "Hermes Agent is gaining third-party validation and community scale simultaneously. The [MarkTechPost late-2026 buyer's guide](/?date=2026-11-23&category=news#item-2ca80c3108fb) names it among top personal AI agents against OpenClaw and Gemini Spark, while [roughly 23,000 open PRs](/?date=2026-11-23&category=research#item-hn-49424643) on the core repo signal both vitality and maintainer strain. Startups such as [Almanac (YC S26)](/?date=2026-11-23&category=research#item-hn-49511007) are now being built on top of the platform.",
+      "description_html": "Hermes Agent is gaining third-party validation and community scale simultaneously. The <a href=\"/?date=2026-11-23&amp;category=news#item-2ca80c3108fb\" class=\"internal-link\" rel=\"noopener noreferrer\">MarkTechPost late-2026 buyer's guide</a> names it among top personal AI agents against OpenClaw and Gemini Spark, while <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">roughly 23,000 open PRs</a> on the core repo signal both vitality and maintainer strain. Startups such as <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a> are now being built on top of the platform.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Interoperability and Integrations",
+      "description": "Several releases lower friction for adopting Hermes within existing stacks. [Open-Agent-API](/?date=2026-11-23&category=news#item-4ac208e832cb) exposes agents behind an OpenAI/Anthropic/Gemini-compatible gateway so standard SDKs can reach them, and official [Claude Pro/Max subscription support](/?date=2026-11-23&category=research#item-hn-49790991) via a direct SDK plugin cuts costs for current subscribers. The [Paper Harness SwiftUI iPhone client](/?date=2026-11-23&category=research#item-hn-50278175) adds a native mobile access surface.",
+      "description_html": "Several releases lower friction for adopting Hermes within existing stacks. <a href=\"/?date=2026-11-23&amp;category=news#item-4ac208e832cb\" class=\"internal-link\" rel=\"noopener noreferrer\">Open-Agent-API</a> exposes agents behind an OpenAI/Anthropic/Gemini-compatible gateway so standard SDKs can reach them, and official <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a> via a direct SDK plugin cuts costs for current subscribers. The <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Paper Harness SwiftUI iPhone client</a> adds a native mobile access surface.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 71
+    },
+    {
+      "name": "Multi-Agent Orchestration",
+      "description": "Coordinating multiple agent profiles is maturing on both official and community fronts. Hermes Kanban adds first-party multi-agent profile collaboration through a kanban board, while community projects like the Verso orchestrator for knowledge work and the ClusterMob profile registry extend the pattern. This suggests orchestration is becoming a core usage mode rather than a niche workflow.",
+      "description_html": "Coordinating multiple agent profiles is maturing on both official and community fronts. Hermes Kanban adds first-party multi-agent profile collaboration through a kanban board, while community projects like the Verso orchestrator for knowledge work and the ClusterMob profile registry extend the pattern. This suggests orchestration is becoming a core usage mode rather than a niche workflow.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 66
+    },
+    {
+      "name": "Deployment and Self-Hosting Gaps",
+      "description": "Production readiness on Kubernetes still lags behind the ecosystem's growth. The absence of an official Helm chart and a container image that [requires root at init](/?date=2026-11-23&category=research#item-hn-49977400) are concrete friction points for self-hosters. The unnecessary-root pattern thematically echoes the [supply-chain incident](/?date=2026-11-23&category=research#item-hn-50585975), reinforcing the need for least-privilege defaults.",
+      "description_html": "Production readiness on Kubernetes still lags behind the ecosystem's growth. The absence of an official Helm chart and a container image that <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">requires root at init</a> are concrete friction points for self-hosters. The unnecessary-root pattern thematically echoes the <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">supply-chain incident</a>, reinforcing the need for least-privilege defaults.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 54
+    },
+    {
+      "name": "Promotional SEO Noise",
+      "description": "The research feed surfaced [self-promotional SEO listicles](/?date=2026-11-23&category=research#item-59f597071873) with self-ranking conflicts of interest, which were screened out during analysis. Underlying theme labels also reference an [agentic SEO tooling market](/?date=2026-11-23&category=research#item-40eae1edccaf) and [SEO automation marketing](/?date=2026-11-23&category=research#item-8b4dc2db2187). This highlights the ongoing curation burden of filtering marketing content from genuine signal.",
+      "description_html": "The research feed surfaced <a href=\"/?date=2026-11-23&amp;category=research#item-59f597071873\" class=\"internal-link\" rel=\"noopener noreferrer\">self-promotional SEO listicles</a> with self-ranking conflicts of interest, which were screened out during analysis. Underlying theme labels also reference an <a href=\"/?date=2026-11-23&amp;category=research#item-40eae1edccaf\" class=\"internal-link\" rel=\"noopener noreferrer\">agentic SEO tooling market</a> and <a href=\"/?date=2026-11-23&amp;category=research#item-8b4dc2db2187\" class=\"internal-link\" rel=\"noopener noreferrer\">SEO automation marketing</a>. This highlights the ongoing curation burden of filtering marketing content from genuine signal.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 28
+    }
+  ],
+  "total_items_collected": 42,
+  "total_items_analyzed": 35,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 10,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 32,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 0,
+        "error": "All 1 API requests failed"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-11-23/hero.webp?v=1795427024",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe points at a large translucent story panel, tracing the line between two news items as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Agent Security and Authorization — The dominant cross-cutting theme this cycle is controlling what agents are allowed to do. A malicious NPM package (le...\nTopic 2: Memory Architectures and Providers — Long-horizon memory is an active area of both formal research and community tooling. MemOnce proposes a scalable memo...\nTopic 3: Ecosystem Growth and Visibility — Hermes Agent is gaining third-party validation and community scale simultaneously. The MarkTechPost late-2026 buyer's...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: autonomous systems, workflow diagrams, connected tools, Hermes interface, autonomous systems, workflow diagrams, connected tools, Hermes interface. Shield icons float in faint orange outline near her. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a tight over-the-shoulder frame, a warm amber pool of light in an otherwise dark command room. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-11-23T04:43:44.378029",
+  "categories": {
+    "news": {
+      "count": 3,
+      "category_summary": "**In the news**: MarkTechPost's late-2026 buyer's guide names **[Hermes Agent](/?date=2026-11-23&category=news#item-2ca80c3108fb)** among the top personal AI agents, compared against **OpenClaw** and **Gemini Spark** on memory, security, and cost — strong third-party validation worth sharing. **Community plugins**: **[hermes-tenuo](/?date=2026-11-23&category=news#item-e639c5475729)** brings warrant-based, least-privilege tool authorization to Hermes Agent — signed, expiring warrants restrict which tool calls and arguments can execute; a practical hardening step for anyone running tool-using agents. **Integrations**: **[Open-Agent-API](/?date=2026-11-23&category=news#item-4ac208e832cb)** exposes agents behind an **OpenAI/Anthropic/Gemini-compatible** gateway (agent ID as the model value), making Hermes-listed agents reachable via standard SDKs. Theme of the week: controlling what agents are allowed to do — authorization, sandboxing, and approval pauses for sensitive actions.",
+      "category_summary_html": "<p><strong>In the news</strong>: MarkTechPost's late-2026 buyer's guide names <strong><a href=\"/?date=2026-11-23&amp;category=news#item-2ca80c3108fb\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent</a></strong> among the top personal AI agents, compared against <strong>OpenClaw</strong> and <strong>Gemini Spark</strong> on memory, security, and cost — strong third-party validation worth sharing. <strong>Community plugins</strong>: <strong><a href=\"/?date=2026-11-23&amp;category=news#item-e639c5475729\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-tenuo</a></strong> brings warrant-based, least-privilege tool authorization to Hermes Agent — signed, expiring warrants restrict which tool calls and arguments can execute; a practical hardening step for anyone running tool-using agents. <strong>Integrations</strong>: <strong><a href=\"/?date=2026-11-23&amp;category=news#item-4ac208e832cb\" class=\"internal-link\" rel=\"noopener noreferrer\">Open-Agent-API</a></strong> exposes agents behind an <strong>OpenAI/Anthropic/Gemini-compatible</strong> gateway (agent ID as the model value), making Hermes-listed agents reachable via standard SDKs. Theme of the week: controlling what agents are allowed to do — authorization, sandboxing, and approval pauses for sensitive actions.</p>",
+      "themes": [
+        {
+          "name": "Ecosystem visibility and positioning",
+          "description": "Mainstream media comparison coverage that places Hermes Agent among leading personal AI agents on memory, security, and cost.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Security and controlled tool access",
+          "description": "Projects emphasizing authorization (signed warrants), sandboxing, and approval pauses for sensitive agent actions.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Interoperability and integrations",
+          "description": "Gateway and bridge projects that make agents reachable through standard SDKs and connect remote chats to local machines.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 58.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "2ca80c3108fb",
+          "title": "Best Personal AI Agents in 2026: OpenClaw, Hermes Agent, Gemini Spark and More, Compared on Memory, Security and Cost",
+          "content": "A personal AI agent runs continuously, keeps memory across sessions, and acts inside your apps. You talk to it in a chat app, by email or by voice. It keeps working after you close the window.\n\n\n\nThe category started small. OpenClaw began in November 2025 as Clawdbot, a weekend project by Peter Steinberger. Twelve months later, Google, OpenAI, Meta and Perplexity all ship their own versions.\n\n\n\nThe products split into 2 camps. Self-hosted agents run on your machine or server and use any model you choose. Managed agents run on a vendor&#8217;s cloud VM and come bundled with a subscription.\n\n\n\nHow we ranked them\n\n\n\nWe scored each agent on 3 axes that matter once an agent holds your inbox and credentials.\n\n\n\n\nMemory: what persists, where it is stored, and whether you can read, edit or delete it.\n\n\n\nSecurity: default permissions, the isolation boundary, approval gates, and the public incident record.\n\n\n\nCost: the subscription price, or token spend plus hosting for self-hosted options.\n\n\n\n\nFacts come from vendor documentation, launch posts and independent security research. Prices are US list prices as of November 21, 2026. Ranking reflects overall fit for an individual user, not raw capability.\n\n\n\nComparison table\n\n\n\nRankAgentMakerRuns onMemorySecurity defaultStarting costBest for1Hermes AgentNous ResearchYour machine or server; Docker, Modal, Daytona backendsMEMORY.md, USER.md, SQLite FTS5 session search, self-written skillsManual approvals, denied on timeout; hardline denylistFree (MIT) + model tokensDevelopers who want an agent that learns2OpenClawOpenClaw FoundationYour machine or server; opt-in sandboxEditable Markdown workspace files; SQLite sessions since 2.0Full host access unless sandbox is enabledFree (MIT) + tokens; managed hosts ~$12–$49/moWidest chat-channel reach3Gemini SparkGoogleDedicated Google Cloud VMsGoogle account context via connected appsAsks before spending money or sending email$19.99/mo AI Pro (US)Google Workspace users4OpenAI dotsOpenAIOpenAI cloud computer; optional connected computerChats, ChatGPT memory and the dot&#8217;s own notesProactive research is read-only; passwords hidden from modelIncluded in eligible ChatGPT Pro and Business Premium plansChatGPT and Codex power users5Meta MuseMetaMuse Secure VM in Meta&#8217;s cloudLearns preferences; forgets on requestSentinel agent gates internet access; approvals for email and purchasesFree; $20 and $100 tiersEveryday errands on a free tier6Perplexity Personal ComputerPerplexityYour Mac plus Perplexity cloudNot detailed publiclyOn-device authorization, 2FA, audit trailPro or Max subscriptionMac users who need local files7NanoClaw, IronClaw, ZeroClawOpen-source projectsContainers, WebAssembly or a small Rust binaryVaries by projectIsolation on by defaultFree + tokensSecurity-first self-hosters\n\n\n\n1. Hermes Agent (Nous Research)\n\n\n\nWhat it is: Hermes Agent is an open-source agent from Nous Research. \n\n\n\nIt runs from a terminal UI, a native desktop app, a local web dashboard and messaging gateways. Parallel counts about 25 supported platforms as of October 2026, including Telegram, Slack, WhatsApp, Signal, Teams and email. Native iMessage arrived in June 2026.\n\n\n\nMemory: Memory is the main reason to pick Hermes. It keeps persistent MEMORY.md and USER.md files and curates them with periodic nudges. Session history sits in SQLite with FTS5 full-text search and LLM summarization. Pluggable providers include Honcho user modeling plus 8+ community backends.\n\n\n\nHermes also writes its own skills. It turns completed complex tasks into reusable skills and refines them over time. Skills follow the agentskills.io standard. The /learn command captures a workflow as a slash command without hand-writing SKILL.md.\n\n\n\nSecurity: The docs describe a 7-layer defense-in-depth model. Layers include user allowlists, DM pairing and human approval for destructive commands. Approval mode can be manual, smart (an auxiliary LLM rates risk) or off.\n\n\n\nThe defaults fail closed. An unanswered approval prompt is denied after 300 seconds. Your own deny rules survive even YOLO mode.\n\n\n\nNous is explicit about the limits. Its docs say the denylist does not sandbox a hostile or compromised agent. The project&#8217;s SECURITY.md names OS-level isolation as the one load-bearing boundary. For broad tool access, use a container backend such as Docker, Modal, Daytona or Vercel Sandbox.\n\n\n\nCost: The agent is free. You pay for model tokens from any provider: OpenRouter, OpenAI, Anthropic, or local runtimes like Ollama and vLLM. Nous Portal is optional, with Free, $20, $100 and $200 monthly tiers. Local models cut token spend to zero; see the one-click local model setup.\n\n\n\nComments: Hermes is the best open-source pick for most developers. It pairs the deepest memory stack with fail-closed defaults. Setup is still terminal-first, and the local backend offers no protection from a compromised agent.\n\n\n\n2. OpenClaw (OpenClaw Foundation)\n\n\n\nWhat it is: OpenClaw defined the category. It started in November 2025 as Clawdbot and went viral in January 2026. \n\n\n\nOpenClaw 2.0 shipped as v2026.8.1 on August 31, 2026, built by 933 contributors. The latest release we covered is 2026.9.5, with atomic updates and plugin hot reload.\n\n\n\nA central Gateway process routes messages, runs cron jobs and hosts a Control UI. OpenClaw reached 26 channels as of v2026.6, including WhatsApp, Telegram, iMessage, Teams, Matrix and Signal. Supported models include OpenAI, Anthropic, Google, DeepSeek, xAI, Kimi, Ollama and OpenRouter.\n\n\n\nMemory: OpenClaw stores behavior in human-editable Markdown files. SOUL.md holds the persona, TOOLS.md the tool rules and USER.md what the agent knows about you. Version 2.0 moved session and transcript storage into SQLite for better persistence.\n\n\n\nThis design is transparent. You can open, diff and back up every memory file with ordinary tools.\n\n\n\nSecurity: This is OpenClaw&#8217;s weak point. The default mode gives full host access, which WIRED called incredibly risky. An opt-in sandbox runs sessions in per-session Docker containers. It defaults to no network egress, a read-only root and all capabilities dropped.\n\n\n\nThe incident record is long. CVE-2026-25253 allowed one-click remote code execution via a WebSocket origin bypass. Visiting a malicious page was enough to steal auth tokens. It was patched quickly.\n\n\n\nThe skills registry was the bigger problem. Koi Security audited 2,857 ClawHub skills and found 341 malicious entries. 335 traced back to one campaign, now tracked as ClawHavoc. Antiy CERT later counted 1,184 malicious skills as the registry grew.\n\n\n\nOpenClaw responded. It now scans every uploaded skill with VirusTotal and re-scans daily. Version 2.0 added protected credential requests and a team-scoped Secret Store. Treat ClawHub as untrusted code anyway.\n\n\n\nCost: OpenClaw is free under MIT. A survey of managed hosts found plans from about $12 to roughly $49 per month. Watch the heartbeat check. With expensive models, it can drive significant token spend.\n\n\n\nComments: Pick OpenClaw for channel breadth and the largest ecosystem. Turn on the sandbox, skip unvetted skills, and keep the gateway on loopback. For a deeper head-to-head, see our OpenClaw vs Hermes Agent comparison.\n\n\n\n3. Gemini Spark (Google)\n\n\n\nWhat it is: Google unveiled Spark at I/O on May 19, 2026. It runs on Gemini 3.5 Flash with Google&#8217;s Antigravity harness. Each user gets dedicated VMs in Google Cloud, so tasks continue with your devices off.\n\n\n\nSpark works natively across Gmail, Calendar, Drive, Docs, Sheets, Slides, YouTube and Google Maps. MCP connections extend it to third-party apps. You can message it by text and email, and a macOS app shipped in June.\n\n\n\nMemory: Spark&#8217;s memory is your Google account. It pulls context from the apps you connect through Personal Intelligence. Google has not documented a separate, editable memory store like Hermes or OpenClaw.\n\n\n\nSecurity: You choose which services Spark can see. Google says it checks in before high-stakes actions such as spending money or sending email. Purchases run through Google&#8217;s Agent Payments Protocol, with merchant and transaction limits plus user approval.\n\n\n\nTwo caveats apply. The product page tells users to supervise closely and interrupt when needed. A leaked early onboarding screen warned that Spark may share your info or make purchases without asking.\n\n\n\nThere is one structural upside. Spark cannot directly access files on your local system. That limits the blast radius on your own machine.\n\n\n\nCost: Spark launched on the $99.99 AI Ultra plan. Since July 2026 it is included in the $20 US AI Pro plan. The Ultra global rollout excludes the EEA, Switzerland, the UK and Nigeria.\n\n\n\nComments: Spark is the easiest choice if your life already runs on Google Workspace. It is also the cheapest managed agent here. You trade portability: memory and actions stay inside Google&#8217;s ecosystem.\n\n\n\n4. OpenAI dots (OpenAI)\n\n\n\nWhat it is: OpenAI launched dots at DevDay on September 29, 2026. Each dot runs on GPT-6 Astra with its own cloud computer and browser. Plugins connect it to more than 4,000 apps.\n\n\n\nYou reach the same dot in ChatGPT, Slack, Microsoft Teams or a voice call. Texting is a limited beta for some US Pro users. For heavy work, a dot hands tasks to ChatGPT Work or Codex. OpenAI says the Codex harness powering dots is open source.\n\n\n\nMemory: A dot draws on the conversation, relevant ChatGPT memory and its own saved notes. Those notes cover your preferences, decisions and ongoing work. Switching channels does not start a new dot or reset its memory.\n\n\n\nSecurity: Between requests, a dot runs proactive research across connected apps. That research is read-only; follow-up actions need the right permissions. Your computer stays separate unless you connect it.\n\n\n\nFor website logins, dots use saved passwords without exposing them to the model. You can open the dot&#8217;s computer at any time and press Take over.\n\n\n\nCost: Your first dot is included. Chatting with it does not count toward ChatGPT limits, but its Codex and Work tasks do. Reports differ on the entry plan. BGR says dots require Pro 200 or Business Premium, not the $100 Pro tier. Check OpenAI&#8217;s plan page before you buy. The Pro rollout excludes the EEA, Switzerland and the UK.\n\n\n\nComments: Dots suit people who already live in ChatGPT and Codex. Memory carries cleanly across channels, and the read-only research default is sensible. It is the most expensive way into this category.\n\n\n\n5. Meta Muse (Meta)\n\n\n\nWhat it is: Meta launched Muse on September 8, 2026. It is powered by Meta&#8217;s Muse Spark model. You reach it through iOS and Android apps, muse.ai and WhatsApp. A Mac app followed on September 19.\n\n\n\nMemory: Muse remembers what matters to you and makes unprompted suggestions. You can tell it to forget specific things it has learned.\n\n\n\nSecurity: Muse has the most detailed published isolation design of the managed agents. It runs on Muse Secure VM, a dedicated machine that holds both the agent and your data. A separate Sentinel agent sits on the same VM, isolated at the system level.\n\n\n\nMuse cannot reach the internet unless Sentinel approves. Sentinel asks you for permission when needed. Muse also asks before sending email or making a purchase, and keeps an audit trail.\n\n\n\nCredentials go into secure storage that Muse can use without seeing. Checkout runs through Link by Stripe, which issues one-time-use cards. Meta says it plans a Muse Confidential VM encrypted with a key only you hold.\n\n\n\nCost: Muse has a free tier along with $20 and $100 monthly plans. It launched in the US, then expanded to Singapore and Australia.\n\n\n\nComments: Muse is the best free starting point for errands, shopping and scheduling. Its Sentinel design is a real architectural answer to prompt injection. Until the confidential VM ships, your data still sits on Meta&#8217;s cloud.\n\n\n\n6. Perplexity Personal Computer (Perplexity)\n\n\n\nWhat it is: Personal Computer merges Perplexity&#8217;s cloud agent with your local Mac. It needs macOS 14 Sonoma or later, and Perplexity recommends a Mac mini for 24/7 work. You can start and approve tasks from an iPhone.\n\n\n\nThe agent works with local files, native Mac apps and the web. Recent updates added hybrid compute that routes sensitive steps to a local model. Multiagent mode runs up to 16 agents that cross-check work.\n\n\n\nMemory: Perplexity has not published a detailed memory model for Personal Computer.\n\n\n\nSecurity: On Mac, a privacy gate and local model handle sensitive steps inside an isolated sandbox. Remote tasks on your desktop use 2FA. Perplexity also logs a full audit trail of agent actions.\n\n\n\nCost: Personal Computer requires a Pro or Max subscription. Rework lists Pro at $17/month and Max at $167/month on annual billing. Cloud work consumes credits.\n\n\n\nComments: This is the strongest option for Mac users who want an agent inside local files and apps. It has no chat-app channels, so you control it from Perplexity&#8217;s own apps.\n\n\n\n7. Hardened OpenClaw alternatives: NanoClaw, IronClaw, ZeroClaw\n\n\n\nOpenClaw&#8217;s security record spawned a wave of smaller, stricter forks. NeuralTrust&#8217;s October 2026 review shortlists Hermes, NanoClaw, ZeroClaw and IronClaw as the main open-source options.\n\n\n\n\nNanoClaw runs each agent group in its own Linux container that sees only mounted paths. In March 2026 it partnered with Docker to run agents inside MicroVM sandboxes.\n\n\n\nIronClaw is a Rust rewrite that runs untrusted tools in a WebAssembly sandbox. Secrets are injected at the host boundary.\n\n\n\nZeroClaw is a minimal Rust binary. Composio says it runs on $10 hardware with under 5MB of RAM.\n\n\n\n\nThese projects trade ecosystem size for safety. Pick one when you handle regulated data or run tools you did not write. NVIDIA&#8217;s OpenShell sandbox work is also worth a look for hardening existing OpenClaw setups.\n\n\n\nAlso worth watching\n\n\n\n\nClaude (Anthropic): Rework lists folder-scoped access and approval before deletions, included in Claude Pro and higher plans.\n\n\n\nManus: credit-based billing and an unusual 2026: it joined Meta, then resumed independent operations on September 1.\n\n\n\nLindy: Team plan from $29.99/month for 3,000 credits; positioned as a work teammate.\n\n\n\nPoke: Free, $19 and $199 tiers, reached through Messages, WhatsApp and Telegram.\n\n\n\nKimi Work: Moonshot AI&#8217;s local desktop agent, reportedly running a 300-subagent swarm.\n\n\n\n\nMemory compared\n\n\n\nThe agents fall into 3 memory designs:\n\n\n\n\nFiles you own: Hermes and OpenClaw store memory as Markdown on your disk. You can read, edit, diff and back it up.\n\n\n\nVendor notes plus account context: dots and Muse keep their own notes and learned preferences. You can ask them to forget, but you cannot open the store directly.\n\n\n\nAccount as memory: Spark relies on your Google data rather than a separate memory file.\n\n\n\n\nIf portability matters, choose files you own. Hermes and OpenClaw memory survives a model switch or a move to new hardware. Back up Hermes&#8217;s data directory before migrating machines.\n\n\n\nSecurity compared\n\n\n\nThe key question is where the isolation boundary sits:\n\n\n\n\nManaged agents (Spark, dots, Muse) run on vendor VMs, away from your laptop. Muse adds a second agent that gates network access.\n\n\n\nHermes puts approval prompts in front of risky commands and fails closed. Real isolation needs a container backend.\n\n\n\nOpenClaw gives full host access by default. Its sandbox is strong once enabled, but you must turn it on.\n\n\n\nForks like NanoClaw and IronClaw make isolation the default.\n\n\n\n\nWhichever you choose, apply 5 rules:\n\n\n\n\nRun self-hosted agents in a container, VM or dedicated machine.\n\n\n\nGrant read-only access first; add send and purchase rights later.\n\n\n\nInstall skills only from sources you have reviewed.\n\n\n\nKeep approval gates on for email, payments and deletions.\n\n\n\nReview the audit trail weekly for the first month.\n\n\n\n\nFor isolation options, see our ranking of the best agent sandboxes.\n\n\n\nCost compared\n\n\n\nCost works differently across the 2 camps:\n\n\n\n\nSelf-hosted (Hermes, OpenClaw, forks): the software is free. You pay model tokens plus hosting, or nothing beyond hardware if you run local models.\n\n\n\nManaged (Spark, dots, Muse, Perplexity): a flat subscription covers compute and the model, subject to usage limits.\n\n\n\n\nAlways-on agents burn tokens even when idle. Heartbeat checks, scheduled jobs and proactive research all call the model. On a frontier API, that background load can exceed your chat usage.\n\n\n\nTo control spend on self-hosted agents, route background work to a cheap or local model. Our ranking of open-source agent harnesses for local LLMs covers that setup.\n\n\n\nWhich one should you pick?\n\n\n\n\nYou want your data on your disk and any model: Hermes Agent, on a container backend.\n\n\n\nYou need WhatsApp, iMessage and the most integrations: OpenClaw, with the sandbox enabled.\n\n\n\nYou live in Gmail and Google Docs: Gemini Spark on AI Pro.\n\n\n\nYou already pay for ChatGPT Pro: OpenAI dots.\n\n\n\nYou want a free tier for errands and shopping: Meta Muse.\n\n\n\nYou work on a Mac with local files: Perplexity Personal Computer.\n\n\n\nYou run untrusted tools or regulated data: NanoClaw or IronClaw.\n\n\n\n\nFAQ\n\n\n\n\nWhat is the best personal AI agent in 2026? For developers, Hermes Agent offers the best mix of memory and safe defaults. For non-technical users, Gemini Spark and Meta Muse are the easiest to start with.\n\n\n\nIs OpenClaw safe to use? It can be, with hardening. Enable the sandbox, keep the gateway on loopback, and avoid unvetted ClawHub skills.\n\n\n\nWhich personal AI agent is free? Hermes Agent, OpenClaw and the hardened forks are free software; you pay for model tokens. Meta Muse has a free tier.\n\n\n\nDo personal agents run when my computer is off? Managed agents do, because they run on cloud VMs. Self-hosted agents need an always-on machine, such as a home server or Mac mini.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSources\n\n\n\n\nHermes Agent security docs and work-machine guide\n\n\n\nHermes Agent SECURITY.md\n\n\n\nState of Hermes Agent, November 2026\n\n\n\nParallel: Hermes Agent vs OpenClaw\n\n\n\nRework: Best Personal AI Agents in 2026\n\n\n\neSecurity Planet: malicious ClawHub skills\n\n\n\nImmersive Labs: OpenClaw CVEs\n\n\n\nMeta: Introducing Muse\n\n\n\nOpenAI dots documentation\n\n\n\nDigital Trends: Gemini Spark on AI Pro\n\n\n\nTechCrunch: Perplexity Personal Computer on Mac\n\n\n\nNeuralTrust: OpenClaw alternatives\n\nThe post Best Personal AI Agents in 2026: OpenClaw, Hermes Agent, Gemini Spark and More, Compared on Memory, Security and Cost appeared first on MarkTechPost.",
+          "url": "https://www.marktechpost.com/2026/11/22/best-personal-ai-agents-2026/",
+          "author": "Asif Razzaq",
+          "published": "2026-11-22T10:36:17",
+          "source": "MarkTechPost",
+          "source_type": "rss",
+          "tags": [
+            "Agentic AI",
+            "AI Agents",
+            "Comparison",
+            "Editors Pick",
+            "Staff",
+            "Top"
+          ],
+          "summary": "MarkTechPost published a buyer's-guide comparison of personal AI agents as of late 2026, contrasting self-hosted and managed offerings across memory persistence, security, and cost. Hermes Agent is included among the compared products alongside OpenClaw, Gemini Spark, and offerings from Google, OpenAI, Meta, and Perplexity. The article frames the category as having grown from a hobby project into a mainstream market within twelve months.",
+          "importance_score": 72.0,
+          "reasoning": "Third-party media coverage positioning Hermes Agent among the leading personal AI agents is valuable for visibility and credibility, but it is editorial comparison rather than a new release or capability for existing users. It signals the project is being taken seriously in the wider ecosystem and may attract new users.",
+          "themes": [
+            "ecosystem comparison",
+            "personal AI agents",
+            "third-party coverage"
+          ],
+          "continuation": null,
+          "summary_html": "<p>MarkTechPost published a buyer's-guide comparison of personal AI agents as of late 2026, contrasting self-hosted and managed offerings across memory persistence, security, and cost. Hermes Agent is included among the compared products alongside OpenClaw, Gemini Spark, and offerings from Google, OpenAI, Meta, and Perplexity. The article frames the category as having grown from a hobby project into a mainstream market within twelve months.</p>",
+          "content_html": "<p>A personal AI agent runs continuously, keeps memory across sessions, and acts inside your apps. You talk to it in a chat app, by email or by voice. It keeps working after you close the window.</p>\n<p>The category started small. OpenClaw began in November 2025 as Clawdbot, a weekend project by Peter Steinberger. Twelve months later, Google, OpenAI, Meta and Perplexity all ship their own versions.</p>\n<p>The products split into 2 camps. Self-hosted agents run on your machine or server and use any model you choose. Managed agents run on a vendor’s cloud VM and come bundled with a subscription.</p>\n<p>How we ranked them</p>\n<p>We scored each agent on 3 axes that matter once an agent holds your inbox and credentials.</p>\n<p>Memory: what persists, where it is stored, and whether you can read, edit or delete it.</p>\n<p>Security: default permissions, the isolation boundary, approval gates, and the public incident record.</p>\n<p>Cost: the subscription price, or token spend plus hosting for self-hosted options.</p>\n<p>Facts come from vendor documentation, launch posts and independent security research. Prices are US list prices as of November 21, 2026. Ranking reflects overall fit for an individual user, not raw capability.</p>\n<p>Comparison table</p>\n<p>RankAgentMakerRuns onMemorySecurity defaultStarting costBest for1Hermes AgentNous ResearchYour machine or server; Docker, Modal, Daytona backendsMEMORY.md, USER.md, SQLite FTS5 session search, self-written skillsManual approvals, denied on timeout; hardline denylistFree (MIT) + model tokensDevelopers who want an agent that learns2OpenClawOpenClaw FoundationYour machine or server; opt-in sandboxEditable Markdown workspace files; SQLite sessions since 2.0Full host access unless sandbox is enabledFree (MIT) + tokens; managed hosts ~$12–$49/moWidest chat-channel reach3Gemini SparkGoogleDedicated Google Cloud VMsGoogle account context via connected appsAsks before spending money or sending email$19.99/mo AI Pro (US)Google Workspace users4OpenAI dotsOpenAIOpenAI cloud computer; optional connected computerChats, ChatGPT memory and the dot’s own notesProactive research is read-only; passwords hidden from modelIncluded in eligible ChatGPT Pro and Business Premium plansChatGPT and Codex power users5Meta MuseMetaMuse Secure VM in Meta’s cloudLearns preferences; forgets on requestSentinel agent gates internet access; approvals for email and purchasesFree; $20 and $100 tiersEveryday errands on a free tier6Perplexity Personal ComputerPerplexityYour Mac plus Perplexity cloudNot detailed publiclyOn-device authorization, 2FA, audit trailPro or Max subscriptionMac users who need local files7NanoClaw, IronClaw, ZeroClawOpen-source projectsContainers, WebAssembly or a small Rust binaryVaries by projectIsolation on by defaultFree + tokensSecurity-first self-hosters</p>\n<p>1. Hermes Agent (Nous Research)</p>\n<p>What it is: Hermes Agent is an open-source agent from Nous Research.</p>\n<p>It runs from a terminal UI, a native desktop app, a local web dashboard and messaging gateways. Parallel counts about 25 supported platforms as of October 2026, including Telegram, Slack, WhatsApp, Signal, Teams and email. Native iMessage arrived in June 2026.</p>\n<p>Memory: Memory is the main reason to pick Hermes. It keeps persistent MEMORY.md and USER.md files and curates them with periodic nudges. Session history sits in SQLite with FTS5 full-text search and LLM summarization. Pluggable providers include Honcho user modeling plus 8+ community backends.</p>\n<p>Hermes also writes its own skills. It turns completed complex tasks into reusable skills and refines them over time. Skills follow the agentskills.io standard. The /learn command captures a workflow as a slash command without hand-writing SKILL.md.</p>\n<p>Security: The docs describe a 7-layer defense-in-depth model. Layers include user allowlists, DM pairing and human approval for destructive commands. Approval mode can be manual, smart (an auxiliary LLM rates risk) or off.</p>\n<p>The defaults fail closed. An unanswered approval prompt is denied after 300 seconds. Your own deny rules survive even YOLO mode.</p>\n<p>Nous is explicit about the limits. Its docs say the denylist does not sandbox a hostile or compromised agent. The project’s SECURITY.md names OS-level isolation as the one load-bearing boundary. For broad tool access, use a container backend such as Docker, Modal, Daytona or Vercel Sandbox.</p>\n<p>Cost: The agent is free. You pay for model tokens from any provider: OpenRouter, OpenAI, Anthropic, or local runtimes like Ollama and vLLM. Nous Portal is optional, with Free, $20, $100 and $200 monthly tiers. Local models cut token spend to zero; see the one-click local model setup.</p>\n<p>Comments: Hermes is the best open-source pick for most developers. It pairs the deepest memory stack with fail-closed defaults. Setup is still terminal-first, and the local backend offers no protection from a compromised agent.</p>\n<p>2. OpenClaw (OpenClaw Foundation)</p>\n<p>What it is: OpenClaw defined the category. It started in November 2025 as Clawdbot and went viral in January 2026.</p>\n<p>OpenClaw 2.0 shipped as v2026.8.1 on August 31, 2026, built by 933 contributors. The latest release we covered is 2026.9.5, with atomic updates and plugin hot reload.</p>\n<p>A central Gateway process routes messages, runs cron jobs and hosts a Control UI. OpenClaw reached 26 channels as of v2026.6, including WhatsApp, Telegram, iMessage, Teams, Matrix and Signal. Supported models include OpenAI, Anthropic, Google, DeepSeek, xAI, Kimi, Ollama and OpenRouter.</p>\n<p>Memory: OpenClaw stores behavior in human-editable Markdown files. SOUL.md holds the persona, TOOLS.md the tool rules and USER.md what the agent knows about you. Version 2.0 moved session and transcript storage into SQLite for better persistence.</p>\n<p>This design is transparent. You can open, diff and back up every memory file with ordinary tools.</p>\n<p>Security: This is OpenClaw’s weak point. The default mode gives full host access, which WIRED called incredibly risky. An opt-in sandbox runs sessions in per-session Docker containers. It defaults to no network egress, a read-only root and all capabilities dropped.</p>\n<p>The incident record is long. CVE-2026-25253 allowed one-click remote code execution via a WebSocket origin bypass. Visiting a malicious page was enough to steal auth tokens. It was patched quickly.</p>\n<p>The skills registry was the bigger problem. Koi Security audited 2,857 ClawHub skills and found 341 malicious entries. 335 traced back to one campaign, now tracked as ClawHavoc. Antiy CERT later counted 1,184 malicious skills as the registry grew.</p>\n<p>OpenClaw responded. It now scans every uploaded skill with VirusTotal and re-scans daily. Version 2.0 added protected credential requests and a team-scoped Secret Store. Treat ClawHub as untrusted code anyway.</p>\n<p>Cost: OpenClaw is free under MIT. A survey of managed hosts found plans from about $12 to roughly $49 per month. Watch the heartbeat check. With expensive models, it can drive significant token spend.</p>\n<p>Comments: Pick OpenClaw for channel breadth and the largest ecosystem. Turn on the sandbox, skip unvetted skills, and keep the gateway on loopback. For a deeper head-to-head, see our OpenClaw vs Hermes Agent comparison.</p>\n<p>3. Gemini Spark (Google)</p>\n<p>What it is: Google unveiled Spark at I/O on May 19, 2026. It runs on Gemini 3.5 Flash with Google’s Antigravity harness. Each user gets dedicated VMs in Google Cloud, so tasks continue with your devices off.</p>\n<p>Spark works natively across Gmail, Calendar, Drive, Docs, Sheets, Slides, YouTube and Google Maps. MCP connections extend it to third-party apps. You can message it by text and email, and a macOS app shipped in June.</p>\n<p>Memory: Spark’s memory is your Google account. It pulls context from the apps you connect through Personal Intelligence. Google has not documented a separate, editable memory store like Hermes or OpenClaw.</p>\n<p>Security: You choose which services Spark can see. Google says it checks in before high-stakes actions such as spending money or sending email. Purchases run through Google’s Agent Payments Protocol, with merchant and transaction limits plus user approval.</p>\n<p>Two caveats apply. The product page tells users to supervise closely and interrupt when needed. A leaked early onboarding screen warned that Spark may share your info or make purchases without asking.</p>\n<p>There is one structural upside. Spark cannot directly access files on your local system. That limits the blast radius on your own machine.</p>\n<p>Cost: Spark launched on the $99.99 AI Ultra plan. Since July 2026 it is included in the $20 US AI Pro plan. The Ultra global rollout excludes the EEA, Switzerland, the UK and Nigeria.</p>\n<p>Comments: Spark is the easiest choice if your life already runs on Google Workspace. It is also the cheapest managed agent here. You trade portability: memory and actions stay inside Google’s ecosystem.</p>\n<p>4. OpenAI dots (OpenAI)</p>\n<p>What it is: OpenAI launched dots at DevDay on September 29, 2026. Each dot runs on GPT-6 Astra with its own cloud computer and browser. Plugins connect it to more than 4,000 apps.</p>\n<p>You reach the same dot in ChatGPT, Slack, Microsoft Teams or a voice call. Texting is a limited beta for some US Pro users. For heavy work, a dot hands tasks to ChatGPT Work or Codex. OpenAI says the Codex harness powering dots is open source.</p>\n<p>Memory: A dot draws on the conversation, relevant ChatGPT memory and its own saved notes. Those notes cover your preferences, decisions and ongoing work. Switching channels does not start a new dot or reset its memory.</p>\n<p>Security: Between requests, a dot runs proactive research across connected apps. That research is read-only; follow-up actions need the right permissions. Your computer stays separate unless you connect it.</p>\n<p>For website logins, dots use saved passwords without exposing them to the model. You can open the dot’s computer at any time and press Take over.</p>\n<p>Cost: Your first dot is included. Chatting with it does not count toward ChatGPT limits, but its Codex and Work tasks do. Reports differ on the entry plan. BGR says dots require Pro 200 or Business Premium, not the $100 Pro tier. Check OpenAI’s plan page before you buy. The Pro rollout excludes the EEA, Switzerland and the UK.</p>\n<p>Comments: Dots suit people who already live in ChatGPT and Codex. Memory carries cleanly across channels, and the read-only research default is sensible. It is the most expensive way into this category.</p>\n<p>5. Meta Muse (Meta)</p>\n<p>What it is: Meta launched Muse on September 8, 2026. It is powered by Meta’s Muse Spark model. You reach it through iOS and Android apps, muse.ai and WhatsApp. A Mac app followed on September 19.</p>\n<p>Memory: Muse remembers what matters to you and makes unprompted suggestions. You can tell it to forget specific things it has learned.</p>\n<p>Security: Muse has the most detailed published isolation design of the managed agents. It runs on Muse Secure VM, a dedicated machine that holds both the agent and your data. A separate Sentinel agent sits on the same VM, isolated at the system level.</p>\n<p>Muse cannot reach the internet unless Sentinel approves. Sentinel asks you for permission when needed. Muse also asks before sending email or making a purchase, and keeps an audit trail.</p>\n<p>Credentials go into secure storage that Muse can use without seeing. Checkout runs through Link by Stripe, which issues one-time-use cards. Meta says it plans a Muse Confidential VM encrypted with a key only you hold.</p>\n<p>Cost: Muse has a free tier along with $20 and $100 monthly plans. It launched in the US, then expanded to Singapore and Australia.</p>\n<p>Comments: Muse is the best free starting point for errands, shopping and scheduling. Its Sentinel design is a real architectural answer to prompt injection. Until the confidential VM ships, your data still sits on Meta’s cloud.</p>\n<p>6. Perplexity Personal Computer (Perplexity)</p>\n<p>What it is: Personal Computer merges Perplexity’s cloud agent with your local Mac. It needs macOS 14 Sonoma or later, and Perplexity recommends a Mac mini for 24/7 work. You can start and approve tasks from an iPhone.</p>\n<p>The agent works with local files, native Mac apps and the web. Recent updates added hybrid compute that routes sensitive steps to a local model. Multiagent mode runs up to 16 agents that cross-check work.</p>\n<p>Memory: Perplexity has not published a detailed memory model for Personal Computer.</p>\n<p>Security: On Mac, a privacy gate and local model handle sensitive steps inside an isolated sandbox. Remote tasks on your desktop use 2FA. Perplexity also logs a full audit trail of agent actions.</p>\n<p>Cost: Personal Computer requires a Pro or Max subscription. Rework lists Pro at $17/month and Max at $167/month on annual billing. Cloud work consumes credits.</p>\n<p>Comments: This is the strongest option for Mac users who want an agent inside local files and apps. It has no chat-app channels, so you control it from Perplexity’s own apps.</p>\n<p>7. Hardened OpenClaw alternatives: NanoClaw, IronClaw, ZeroClaw</p>\n<p>OpenClaw’s security record spawned a wave of smaller, stricter forks. NeuralTrust’s October 2026 review shortlists Hermes, NanoClaw, ZeroClaw and IronClaw as the main open-source options.</p>\n<p>NanoClaw runs each agent group in its own Linux container that sees only mounted paths. In March 2026 it partnered with Docker to run agents inside MicroVM sandboxes.</p>\n<p>IronClaw is a Rust rewrite that runs untrusted tools in a WebAssembly sandbox. Secrets are injected at the host boundary.</p>\n<p>ZeroClaw is a minimal Rust binary. Composio says it runs on $10 hardware with under 5MB of RAM.</p>\n<p>These projects trade ecosystem size for safety. Pick one when you handle regulated data or run tools you did not write. NVIDIA’s OpenShell sandbox work is also worth a look for hardening existing OpenClaw setups.</p>\n<p>Also worth watching</p>\n<p>Claude (Anthropic): Rework lists folder-scoped access and approval before deletions, included in Claude Pro and higher plans.</p>\n<p>Manus: credit-based billing and an unusual 2026: it joined Meta, then resumed independent operations on September 1.</p>\n<p>Lindy: Team plan from $29.99/month for 3,000 credits; positioned as a work teammate.</p>\n<p>Poke: Free, $19 and $199 tiers, reached through Messages, WhatsApp and Telegram.</p>\n<p>Kimi Work: Moonshot AI’s local desktop agent, reportedly running a 300-subagent swarm.</p>\n<p>Memory compared</p>\n<p>The agents fall into 3 memory designs:</p>\n<p>Files you own: Hermes and OpenClaw store memory as Markdown on your disk. You can read, edit, diff and back it up.</p>\n<p>Vendor notes plus account context: dots and Muse keep their own notes and learned preferences. You can ask them to forget, but you cannot open the store directly.</p>\n<p>Account as memory: Spark relies on your Google data rather than a separate memory file.</p>\n<p>If portability matters, choose files you own. Hermes and OpenClaw memory survives a model switch or a move to new hardware. Back up Hermes’s data directory before migrating machines.</p>\n<p>Security compared</p>\n<p>The key question is where the isolation boundary sits:</p>\n<p>Managed agents (Spark, dots, Muse) run on vendor VMs, away from your laptop. Muse adds a second agent that gates network access.</p>\n<p>Hermes puts approval prompts in front of risky commands and fails closed. Real isolation needs a container backend.</p>\n<p>OpenClaw gives full host access by default. Its sandbox is strong once enabled, but you must turn it on.</p>\n<p>Forks like NanoClaw and IronClaw make isolation the default.</p>\n<p>Whichever you choose, apply 5 rules:</p>\n<p>Run self-hosted agents in a container, VM or dedicated machine.</p>\n<p>Grant read-only access first; add send and purchase rights later.</p>\n<p>Install skills only from sources you have reviewed.</p>\n<p>Keep approval gates on for email, payments and deletions.</p>\n<p>Review the audit trail weekly for the first month.</p>\n<p>For isolation options, see our ranking of the best agent sandboxes.</p>\n<p>Cost compared</p>\n<p>Cost works differently across the 2 camps:</p>\n<p>Self-hosted (Hermes, OpenClaw, forks): the software is free. You pay model tokens plus hosting, or nothing beyond hardware if you run local models.</p>\n<p>Managed (Spark, dots, Muse, Perplexity): a flat subscription covers compute and the model, subject to usage limits.</p>\n<p>Always-on agents burn tokens even when idle. Heartbeat checks, scheduled jobs and proactive research all call the model. On a frontier API, that background load can exceed your chat usage.</p>\n<p>To control spend on self-hosted agents, route background work to a cheap or local model. Our ranking of open-source agent harnesses for local LLMs covers that setup.</p>\n<p>Which one should you pick?</p>\n<p>You want your data on your disk and any model: Hermes Agent, on a container backend.</p>\n<p>You need WhatsApp, iMessage and the most integrations: OpenClaw, with the sandbox enabled.</p>\n<p>You live in Gmail and Google Docs: Gemini Spark on AI Pro.</p>\n<p>You already pay for ChatGPT Pro: OpenAI dots.</p>\n<p>You want a free tier for errands and shopping: Meta Muse.</p>\n<p>You work on a Mac with local files: Perplexity Personal Computer.</p>\n<p>You run untrusted tools or regulated data: NanoClaw or IronClaw.</p>\n<p>FAQ</p>\n<p>What is the best personal AI agent in 2026? For developers, Hermes Agent offers the best mix of memory and safe defaults. For non-technical users, Gemini Spark and Meta Muse are the easiest to start with.</p>\n<p>Is OpenClaw safe to use? It can be, with hardening. Enable the sandbox, keep the gateway on loopback, and avoid unvetted ClawHub skills.</p>\n<p>Which personal AI agent is free? Hermes Agent, OpenClaw and the hardened forks are free software; you pay for model tokens. Meta Muse has a free tier.</p>\n<p>Do personal agents run when my computer is off? Managed agents do, because they run on cloud VMs. Self-hosted agents need an always-on machine, such as a home server or Mac mini.</p>\n<p>Sources</p>\n<p>Hermes Agent security docs and work-machine guide</p>\n<p>Hermes Agent SECURITY.md</p>\n<p>State of Hermes Agent, November 2026</p>\n<p>Parallel: Hermes Agent vs OpenClaw</p>\n<p>Rework: Best Personal AI Agents in 2026</p>\n<p>eSecurity Planet: malicious ClawHub skills</p>\n<p>Immersive Labs: OpenClaw CVEs</p>\n<p>Meta: Introducing Muse</p>\n<p>OpenAI dots documentation</p>\n<p>Digital Trends: Gemini Spark on AI Pro</p>\n<p>TechCrunch: Perplexity Personal Computer on Mac</p>\n<p>NeuralTrust: OpenClaw alternatives</p>\n<p>The post Best Personal AI Agents in 2026: OpenClaw, Hermes Agent, Gemini Spark and More, Compared on Memory, Security and Cost appeared first on MarkTechPost.</p>"
+        },
+        {
+          "id": "e639c5475729",
+          "title": "hermes-tenuo (Plugins & Extensions)",
+          "content": "hermes-tenuo is a Tenuo plugin for Hermes Agent that uses signed, expiring warrants to limit tool calls and their arguments. Its Hands feature connects a remote Hermes chat to a chosen folder on a Mac or Linux laptop for terminal and file work, with an OS sandbox.",
+          "url": "https://hermesatlas.com/projects/tenuo-ai/hermes-tenuo",
+          "author": "Unknown",
+          "published": "2026-11-22T22:20:10",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Plugins & Extensions"
+          ],
+          "summary": "A new community plugin, hermes-tenuo, integrates Tenuo with Hermes Agent by enforcing signed, expiring warrants that restrict which tool calls and arguments are permitted. Its Hands feature connects a remote Hermes chat session to a selected folder on a Mac or Linux laptop for terminal and file work, isolated by an OS-level sandbox.",
+          "importance_score": 62.0,
+          "reasoning": "This extends Hermes Agent with a meaningful security capability — warrant-based, least-privilege tool authorization — plus a practical remote-to-local bridge with sandboxing. It is community-built rather than an official release, so it is useful for power users but carries adoption and maintenance risk typical of third-party plugins.",
+          "themes": [
+            "plugin ecosystem",
+            "tool-call authorization",
+            "security",
+            "remote access"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A new community plugin, hermes-tenuo, integrates Tenuo with Hermes Agent by enforcing signed, expiring warrants that restrict which tool calls and arguments are permitted. Its Hands feature connects a remote Hermes chat session to a selected folder on a Mac or Linux laptop for terminal and file work, isolated by an OS-level sandbox.</p>",
+          "content_html": "<p>hermes-tenuo is a Tenuo plugin for Hermes Agent that uses signed, expiring warrants to limit tool calls and their arguments. Its Hands feature connects a remote Hermes chat to a chosen folder on a Mac or Linux laptop for terminal and file work, with an OS sandbox.</p>"
+        },
+        {
+          "id": "4ac208e832cb",
+          "title": "Open-Agent-API (Integrations & Bridges)",
+          "content": "Open Agent API exposes agents through an API-compatible gateway: callers use an agent ID as the `model` value and can connect through OpenAI, Anthropic, or Gemini SDKs. The README describes publishing agents, issuing API keys, and handling approval pauses for sensitive actions; it also includes a local sample agent and a quickstart flow.",
+          "url": "https://hermesatlas.com/projects/jiangxingfan1-coder/Open-Agent-API",
+          "author": "Unknown",
+          "published": "2026-11-22T04:05:12",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Integrations & Bridges"
+          ],
+          "summary": "Open Agent API is a new gateway project that exposes agents via an API-compatible endpoint where an agent ID is used as the model value, connectable through OpenAI, Anthropic, or Gemini SDKs. The README covers publishing agents, issuing API keys, approval pauses for sensitive actions, plus a local sample agent and quickstart flow.",
+          "importance_score": 55.0,
+          "reasoning": "An OpenAI/Anthropic/Gemini-compatible gateway lowers integration friction and makes Hermes-listed agents callable from existing tooling, which is genuinely useful for the integrations community. However, it is a newly listed project with no evidence of adoption, maturity, or official endorsement, so its near-term impact is moderate.",
+          "themes": [
+            "integrations",
+            "API gateway",
+            "agent interoperability",
+            "approval workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Open Agent API is a new gateway project that exposes agents via an API-compatible endpoint where an agent ID is used as the model value, connectable through OpenAI, Anthropic, or Gemini SDKs. The README covers publishing agents, issuing API keys, approval pauses for sensitive actions, plus a local sample agent and quickstart flow.</p>",
+          "content_html": "<p>Open Agent API exposes agents through an API-compatible gateway: callers use an agent ID as the <code>model</code> value and can connect through OpenAI, Anthropic, or Gemini SDKs. The README describes publishing agents, issuing API keys, and handling approval pauses for sensitive actions; it also includes a local sample agent and a quickstart flow.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 32,
+      "category_summary": "Security leads this cycle: a malicious NPM package (**leadstack-crm-connect**) [installed **Hermes Agent** as root and tasked it over Telegram](/?date=2026-11-23&category=research#item-hn-50585975) — a real supply-chain abuse, so users should audit environments and treat agent credentials as high-value targets. Official capability news lowers barriers and expands orchestration: [**Claude Pro/Max**](/?date=2026-11-23&category=research#item-hn-49790991) subscription support via a direct SDK plugin cuts costs for existing subscribers, and [**Hermes Kanban**](/?date=2026-11-23&category=research#item-hn-49604068) adds first-party multi-agent profile collaboration through a kanban board. On the research side, [**MemOnce**](/?date=2026-11-23&category=research#item-2611.27973) proposes a scalable memory architecture for long-horizon, continual interactions — directly relevant to the memory-provider ecosystem — complemented by [**Comemo**](/?date=2026-11-23&category=research#item-hn-50518538), a community composite memory provider that works around the single external memory slot by fanning out across backends; [**DailySafe**](/?date=2026-11-23&category=research#item-2611.26298) benchmarks dynamic safety awareness in everyday multi-turn interactions, applicable to Hermes' persistent tool-using sessions. Deployment documentation flagged [production gaps on Kubernetes](/?date=2026-11-23&category=research#item-hn-49977400) — no official **Helm chart** and a container image requiring root at init — thematically echoing the unnecessary-root pattern seen in the supply-chain incident. Ecosystem growth signals: roughly [**23,000 open PRs**](/?date=2026-11-23&category=research#item-hn-49424643) on the core repo (vitality and maintainer strain), plus community tooling including the [**Verso**](/?date=2026-11-23&category=research#item-hn-49628094) orchestrator for knowledge work, the [**Paper Harness**](/?date=2026-11-23&category=research#item-hn-50278175) native SwiftUI iOS client, and the [**ClusterMob**](/?date=2026-11-23&category=research#item-hn-50197497) profile registry. Promotional SEO listicles with self-ranking conflicts of interest were screened out.",
+      "category_summary_html": "<p>Security leads this cycle: a malicious NPM package (<strong>leadstack-crm-connect</strong>) <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">installed <strong>Hermes Agent</strong> as root and tasked it over Telegram</a> — a real supply-chain abuse, so users should audit environments and treat agent credentials as high-value targets. Official capability news lowers barriers and expands orchestration: <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong></a> subscription support via a direct SDK plugin cuts costs for existing subscribers, and <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong></a> adds first-party multi-agent profile collaboration through a kanban board. On the research side, <a href=\"/?date=2026-11-23&amp;category=research#item-2611.27973\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>MemOnce</strong></a> proposes a scalable memory architecture for long-horizon, continual interactions — directly relevant to the memory-provider ecosystem — complemented by <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a>, a community composite memory provider that works around the single external memory slot by fanning out across backends; <a href=\"/?date=2026-11-23&amp;category=research#item-2611.26298\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DailySafe</strong></a> benchmarks dynamic safety awareness in everyday multi-turn interactions, applicable to Hermes' persistent tool-using sessions. Deployment documentation flagged <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">production gaps on Kubernetes</a> — no official <strong>Helm chart</strong> and a container image requiring root at init — thematically echoing the unnecessary-root pattern seen in the supply-chain incident. Ecosystem growth signals: roughly <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>23,000 open PRs</strong></a> on the core repo (vitality and maintainer strain), plus community tooling including the <a href=\"/?date=2026-11-23&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a> orchestrator for knowledge work, the <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong></a> native SwiftUI iOS client, and the <a href=\"/?date=2026-11-23&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a> profile registry. Promotional SEO listicles with self-ranking conflicts of interest were screened out.</p>",
+      "themes": [
+        {
+          "name": "Security and Abuse",
+          "description": "Security-relevant signals: a malicious NPM package weaponizing Hermes Agent as a root-installed Telegram-tasked backdoor, container image root-at-init on Kubernetes, and a degenerate-loop debugging report.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Community Ecosystem Growth",
+          "description": "Rapid expansion of third-party tools, clients, registries, and startups built on Hermes Agent (Comemo, Verso, Paper Harness, ClusterMob, Almanac), alongside very high PR volume (23k open PRs) signaling both vitality and maintainer strain.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Official Features and Integrations",
+          "description": "First-party capability updates and docs: Claude Pro/Max subscription support, Hermes Kanban multi-agent collaboration, and the Discord/Telegram gateway comparison.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 76.0
+        },
+        {
+          "name": "Memory Architectures and Providers",
+          "description": "Memory as a first-class concern: Comemo's composite memory provider fanning out to Mem0/Honcho/Supermemory, and academic work (MemOnce) on scalable reusable memory states for long-horizon agents.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 74.0
+        },
+        {
+          "name": "Deployment and Self-Hosting",
+          "description": "Practical deployment patterns across environments: containerized setups, Kubernetes gaps (no Helm chart, root at init), and low-cost dedicated hardware like the Arduino UNO Q.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Content-Marketing Noise",
+          "description": "Promotional listicles from a single marketing source ranking courses with the author's own paid product on top; low technical value, marginal Hermes mentions.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 18.0
+        },
+        {
+          "name": "Agentic SEO tooling market",
+          "description": "The batch reflects a 2026 trend of framing SEO tools around AI-agent execution (agents that write, publish, link-build and track ChatGPT mentions) versus traditional report-only trackers, including MCP-server delivery of SEO capabilities to AI clients.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 14.0
+        },
+        {
+          "name": "Self-promotional SEO listicles",
+          "description": "All seven items are near-identical templated listicles by the same author that rank their own product, Polar Rank, first across different SEO tool categories and drive traffic to a paid backlink service and free trial.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 12.0
+        },
+        {
+          "name": "SEO Automation Marketing",
+          "description": "Promotional listicle content ranking SEO automation tools, centered on a vendor's own product and upsell funnels rather than objective technical analysis.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 12.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-50585975",
+          "title": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+          "content": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+          "url": "https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor",
+          "author": "tech_solver",
+          "published": "2026-11-21T04:33:56Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Security incident writeup from safedep.io describing a malicious NPM package (leadstack-crm-connect) that installed Hermes Agent as root on a victim machine and used Telegram as a remote tasking channel, effectively turning the agent framework into a backdoor.",
+          "importance_score": 95.0,
+          "reasoning": "A real-world abuse of Hermes Agent in a supply-chain attack is highly significant for the community: it demonstrates that the framework's power and easy remote-control channels (root install, Telegram tasking) create serious security risk. Highest-priority security signal in the batch.",
+          "themes": [
+            "Security",
+            "Supply chain abuse",
+            "Telegram gateway"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Security incident writeup from safedep.io describing a malicious NPM package (leadstack-crm-connect) that installed Hermes Agent as root on a victim machine and used Telegram as a remote tasking channel, effectively turning the agent framework into a backdoor.</p>",
+          "content_html": "<p>NPM package installed Hermes Agent as root and tasked it over Telegram</p>"
+        },
+        {
+          "id": "hn-49790991",
+          "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+          "author": "rob",
+          "published": "2026-09-21T18:07:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Official documentation page announcing that Hermes Agent now supports Claude Pro/Max subscriptions via a direct SDK plugin, letting subscribers use their existing Anthropic subscription auth as the model backend instead of pay-per-token API keys.",
+          "importance_score": 82.0,
+          "reasoning": "An official capability change that lowers cost barriers for a large user base and improves backend flexibility; subscription-auth support is a meaningful product update for Hermes Agent users.",
+          "themes": [
+            "Official releases",
+            "Model backends",
+            "Claude integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official documentation page announcing that Hermes Agent now supports Claude Pro/Max subscriptions via a direct SDK plugin, letting subscribers use their existing Anthropic subscription auth as the model backend instead of pay-per-token API keys.</p>",
+          "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+        },
+        {
+          "id": "hn-50518538",
+          "title": "Show HN: Comemo – composite memory provider for Hermes Agent",
+          "content": "There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.<p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.<p>I intend to add support for more memory prov",
+          "url": "https://github.com/andausman/comemo",
+          "author": "Andassyn",
+          "published": "2026-11-16T15:21:15Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN launch of Comemo, a composite memory provider for Hermes Agent. Since Hermes exposes only a single slot for an external memory provider, Comemo occupies that slot and fans out memory writes to multiple backends (Mem0, Honcho, Supermemory), then on retrieval queries all enabled providers, merges results, and deduplicates before returning context to Hermes. More backends are planned.",
+          "importance_score": 78.0,
+          "reasoning": "A well-targeted community tool that solves a real, documented limitation of the Hermes Agent plugin architecture (single memory-provider slot) with a clean aggregation pattern; useful to many self-hosters running external memory.",
+          "themes": [
+            "Memory providers",
+            "Plugins",
+            "Show HN"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN launch of Comemo, a composite memory provider for Hermes Agent. Since Hermes exposes only a single slot for an external memory provider, Comemo occupies that slot and fans out memory writes to multiple backends (Mem0, Honcho, Supermemory), then on retrieval queries all enabled providers, merges results, and deduplicates before returning context to Hermes. More backends are planned.</p>",
+          "content_html": "<p>There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.</p><p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.</p><p>I intend to add support for more memory prov</p>"
+        },
+        {
+          "id": "hn-49604068",
+          "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+          "author": "fallinditch",
+          "published": "2026-09-07T23:24:05Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Official documentation for Hermes Kanban, a feature enabling multi-agent profile collaboration through a kanban board, letting multiple Hermes agent profiles coordinate tasks.",
+          "importance_score": 75.0,
+          "reasoning": "An official multi-agent collaboration feature in the core product docs; kanban-based orchestration of agent profiles is a significant capability for teams running many agents, with authoritative source documentation.",
+          "themes": [
+            "Multi-agent collaboration",
+            "Official features",
+            "Kanban"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official documentation for Hermes Kanban, a feature enabling multi-agent profile collaboration through a kanban board, letting multiple Hermes agent profiles coordinate tasks.</p>",
+          "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+        },
+        {
+          "id": "2611.27973",
+          "title": "MemOnce: A Scalable Memory Architecture for Large Language Models",
+          "content": "Deploying large language models (LLMs) in long-horizon and continual interactions requires maintaining reusable memory states for future inference, posing challenges for existing architectures. Standard Transformers accumulate layer-wise, token-level KV caches, incurring linear GPU memory growth and quadratic computational complexity as the context expands. In contrast, linear-time architectures compress history into fixed-size states, but struggle to retain fine-grained details. We introduce Me",
+          "url": "https://arxiv.org/abs/2611.27973",
+          "author": "HF Daily Papers",
+          "published": "2026-11-20T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Research paper introducing MemOnce, a memory architecture for LLMs in long-horizon and continual interactions. It addresses the tradeoff between standard Transformers, whose token-level KV caches grow linearly in memory and quadratically in compute as context expands, and linear-time architectures that compress history into fixed-size states but lose fine-grained detail. MemOnce maintains reusable memory states for future inference.",
+          "importance_score": 72.0,
+          "reasoning": "Directly relevant to the memory-provider ecosystem around Hermes Agent, which relies heavily on external memory backends; addresses a core architectural limitation (KV cache scaling) with a novel approach. Not Hermes-specific, so not maximally impactful.",
+          "themes": [
+            "Memory architectures",
+            "Agent memory"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Research paper introducing MemOnce, a memory architecture for LLMs in long-horizon and continual interactions. It addresses the tradeoff between standard Transformers, whose token-level KV caches grow linearly in memory and quadratically in compute as context expands, and linear-time architectures that compress history into fixed-size states but lose fine-grained detail. MemOnce maintains reusable memory states for future inference.</p>",
+          "content_html": "<p>Deploying large language models (LLMs) in long-horizon and continual interactions requires maintaining reusable memory states for future inference, posing challenges for existing architectures. Standard Transformers accumulate layer-wise, token-level KV caches, incurring linear GPU memory growth and quadratic computational complexity as the context expands. In contrast, linear-time architectures compress history into fixed-size states, but struggle to retain fine-grained details. We introduce Me</p>"
+        },
+        {
+          "id": "hn-49424643",
+          "title": "Hermes Agent has 23000 open PRs and climbing",
+          "content": "Hermes Agent has 23000 open PRs and climbing",
+          "url": "https://github.com/NousResearch/hermes-agent/pulls",
+          "author": "nhecker",
+          "published": "2026-08-24T19:22:36Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Observation that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is still rising, pointing to an extremely high external contribution volume and potentially a review/maintenance bottleneck.",
+          "importance_score": 72.0,
+          "reasoning": "A quantified signal of explosive community growth and of maintainer capacity strain; 23k open PRs has real implications for release velocity, review quality, and supply-chain review risk, especially in light of the malicious-NPM item in this batch.",
+          "themes": [
+            "Open-source governance",
+            "Project growth",
+            "Maintenance bottleneck"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Observation that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is still rising, pointing to an extremely high external contribution volume and potentially a review/maintenance bottleneck.</p>",
+          "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+        },
+        {
+          "id": "hn-49977400",
+          "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+          "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+          "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+          "author": "zubairov",
+          "published": "2026-10-06T12:26:43Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Blog post examining running Hermes Agent on Kubernetes and identifying two gaps: the absence of an official Helm chart, and a container image that requires root privileges at initialization, complicating hardened cluster deployments.",
+          "importance_score": 70.0,
+          "reasoning": "Documents concrete deployment friction for production-grade Kubernetes installs, including a security-relevant root-at-init requirement; actionable feedback for maintainers and operators, though narrowly scoped.",
+          "themes": [
+            "Kubernetes",
+            "Deployment",
+            "Container security"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Blog post examining running Hermes Agent on Kubernetes and identifying two gaps: the absence of an official Helm chart, and a container image that requires root privileges at initialization, complicating hardened cluster deployments.</p>",
+          "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+        },
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Launch of Verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive GUI alternative to the Hermes CLI and has become the author's daily work setup with reported productivity gains.",
+          "importance_score": 68.0,
+          "reasoning": "A substantial community-built orchestration layer on Hermes Agent addressing CLI ergonomics; demonstrates the platform's extensibility and daily-work viability, though it is a personal project launch.",
+          "themes": [
+            "Orchestration",
+            "Open-source tools",
+            "Show HN"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Launch of Verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive GUI alternative to the Hermes CLI and has become the author's daily work setup with reported productivity gains.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "hn-50278175",
+          "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+          "author": "yourfavdev",
+          "published": "2026-10-28T18:04:37Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Announcement of Hermes Paper Harness, a native SwiftUI iPhone client for Hermes Agent, distributed via the Apple App Store, providing a mobile-native front end for interacting with agent profiles.",
+          "importance_score": 66.0,
+          "reasoning": "A native iOS client materially improves day-to-day usability and signals ecosystem maturity on mobile platforms; content detail is thin but the availability of a polished native client is notable.",
+          "themes": [
+            "Mobile clients",
+            "Ecosystem tools"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Announcement of Hermes Paper Harness, a native SwiftUI iPhone client for Hermes Agent, distributed via the Apple App Store, providing a mobile-native front end for interacting with agent profiles.</p>",
+          "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49511007",
+          "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+          "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+          "url": "https://usealmanac.com/",
+          "author": "kushagrchitkar",
+          "published": "2026-08-31T15:34:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Launch of Almanac, a YC S26 startup pitched as a Hermes-based agent that knows everything about your company. The founders describe the pain of setting up Hermes themselves: getting it to talk correctly and building OAuth apps for every connector, which motivated them to productize a company-context-aware agent.",
+          "importance_score": 65.0,
+          "reasoning": "A VC-backed startup being built directly on Hermes Agent is a strong ecosystem-maturity signal, and the OAuth-connector pain point is valuable product feedback; the launch post itself is promotional rather than technical.",
+          "themes": [
+            "Startups",
+            "Enterprise context",
+            "Connectors"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Launch of Almanac, a YC S26 startup pitched as a Hermes-based agent that knows everything about your company. The founders describe the pain of setting up Hermes themselves: getting it to talk correctly and building OAuth apps for every connector, which motivated them to productize a company-context-aware agent.</p>",
+          "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

@@ -1,0 +1,633 @@
+{
+  "category": "research",
+  "date": "2026-10-24",
+  "category_summary": "The latest updates demonstrate the Hermes Agent's rapid evolution from a basic language model interface into a highly sophisticated, autonomous, and extensible AI framework. The focus has shifted aggressively toward **Embodiment** and **Operational Robustness**.\n\n**🤖 Autonomous Embodiment & Multi-Modality:** The most impactful developments include giving the agent a physical 'body' via the **[Autonomous Lamp](/?date=2026-10-24&category=research#item-0b2d4347fa9d)** (bridging software and physical reality) and expanding its creative scope with the **[Hermes Meshy](/?date=2026-10-24&category=research#item-59864203d485)** plugin, enabling the creation of complex 3D models from natural language.\n\n**💻 Advanced Agent Control & Safety:** Core utility is being expanded through the **[computer_use](/?date=2026-10-24&category=research#item-88c0557784e6)** toolset, which allows Hermes to interact with and control a standard computer's desktop environment. Crucially, safety and sandboxing are addressed by **[Hermes Cua](/?date=2026-10-24&category=research#item-910c6d383a4e)**, which isolates terminal and file commands in 'Cua Spaces' to prevent host machine risk.\n\n**🧠 Architectural Innovation & Autonomy:** At the research level, the community is pushing boundaries with solutions like **[Refine Cycle](/?date=2026-10-24&category=research#item-hn-49606988)**, a self-improvement plugin that moves the agent toward iterative autonomy, and foundational research into **[Cross-Layer Expert Sharing for MoE](/?date=2026-10-24&category=research#item-2610.27598)**, which optimizes the underlying model architecture for better efficiency.\n\n**🛠️ Enterprise Readiness & Ecosystem Growth:** For enterprise users, the practical application is expanding via ['Almanac' (AI that knows your company)](/?date=2026-10-24&category=research#item-hn-49511007) and a growing suite of developer tools. High-value infrastructure improvements include the **[Hermes Kanban](/?date=2026-10-24&category=research#item-hn-49604068)** feature for multi-agent collaboration and dedicated monitoring solutions like the [Grafana agent](/?date=2026-10-24&category=research#item-hn-49318128), which significantly enhance production observability.",
+  "category_summary_html": "<p>The latest updates demonstrate the Hermes Agent's rapid evolution from a basic language model interface into a highly sophisticated, autonomous, and extensible AI framework. The focus has shifted aggressively toward <strong>Embodiment</strong> and <strong>Operational Robustness</strong>.</p>\n<p><strong>🤖 Autonomous Embodiment &amp; Multi-Modality:</strong> The most impactful developments include giving the agent a physical 'body' via the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-0b2d4347fa9d\" class=\"internal-link\" rel=\"noopener noreferrer\">Autonomous Lamp</a></strong> (bridging software and physical reality) and expanding its creative scope with the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-59864203d485\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Meshy</a></strong> plugin, enabling the creation of complex 3D models from natural language.</p>\n<p><strong>💻 Advanced Agent Control &amp; Safety:</strong> Core utility is being expanded through the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\">computer_use</a></strong> toolset, which allows Hermes to interact with and control a standard computer's desktop environment. Crucially, safety and sandboxing are addressed by <strong><a href=\"/?date=2026-10-24&amp;category=research#item-910c6d383a4e\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Cua</a></strong>, which isolates terminal and file commands in 'Cua Spaces' to prevent host machine risk.</p>\n<p><strong>🧠 Architectural Innovation &amp; Autonomy:</strong> At the research level, the community is pushing boundaries with solutions like <strong><a href=\"/?date=2026-10-24&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong>, a self-improvement plugin that moves the agent toward iterative autonomy, and foundational research into <strong><a href=\"/?date=2026-10-24&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\">Cross-Layer Expert Sharing for MoE</a></strong>, which optimizes the underlying model architecture for better efficiency.</p>\n<p><strong>🛠️ Enterprise Readiness &amp; Ecosystem Growth:</strong> For enterprise users, the practical application is expanding via <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">'Almanac' (AI that knows your company)</a> and a growing suite of developer tools. High-value infrastructure improvements include the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> feature for multi-agent collaboration and dedicated monitoring solutions like the <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana agent</a>, which significantly enhance production observability.</p>",
+  "themes": [
+    {
+      "name": "Agent Embodiment and Autonomy",
+      "description": "This theme covers advancements in giving the Hermes Agent physical presence (robotics), the ability to interact with a computer's UI, and higher levels of task-level autonomy (self-improvement, isolated execution).",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 90.0
+    },
+    {
+      "name": "Advanced Capabilities and Modalities",
+      "description": "Focuses on the expansion of what the agent can create and process, including 3D model generation, specialized financial data queries, and multi-agent collaboration workflows.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 88.0
+    },
+    {
+      "name": "Infrastructure and Architectural Foundations",
+      "description": "Research and development concerning the underlying technology, such as MoE model efficiency, deployment solutions (Kubernetes), and necessary architectural components (model routers).",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "Open Source Community and Practical Use",
+      "description": "Documentation of community efforts, developer tools, user-driven solutions, and high-value enterprise demonstrations of the platform's utility.",
+      "item_count": 9,
+      "example_items": [],
+      "importance": 70.0
+    }
+  ],
+  "total_items": 25,
+  "items": [
+    {
+      "id": "0b2d4347fa9d",
+      "title": "Hermes Agent Robot: Give Hermes a Body With the Autonomous Lamp",
+      "content": "Hermes Agent robot setups are here. The Autonomous Lamp is a desk-lamp robot that gives AI agents like Hermes a physical body: it moves, looks at you, listens and talks back. Autonomous announced it with one line — Hermes “just escaped” and got “a body, one eye, and two ears”. In the video below I show what it does, how it works under the hood and what you can build with it. Here’s everything you need to know before you put Hermes on your desk.\n\nKey takeaways\n\n- The Autonomous Lamp gives Hermes a camera, microphones, speakers and five motors.\n\n- It runs Hermes, Claude Code, Codex, OpenClaw, OpenCode and more, with cloud or local models.\n\n- Behaviour lives in simple files: SOUL.md, SAFETY.md and SKILL.md.\n\n- Lamp costs $999. Claim a free strategy session to plan your agent setup.\n\n## What is the Hermes Agent robot?\n\nAgents like Hermes and Claude Code live in a terminal window. They’re powerful, but they’re stuck on a screen. The Autonomous Lamp takes the same agents and puts them on your desk. Autonomous calls it your personal robot. When you walk in it can look up, turn towards you when you talk, and answer out loud.\n\nIt ships with Autonomous’s open-source Physical AI Operating System, often called lampOS. Autonomous describes it as “the Android for physical AI agents”. It sits between your agent and the hardware — camera, microphones, speakers, motors and light. Your agent asks for something, and the OS makes the hardware do it.\n\nAutonomous Lamp at a glance\n\nPrice\n$999 (bulk pricing from $969 for 3+ units)\n\nSize and weight\n7.87 × 7.87 × 18.43 in, 6.6 lb\n\nMovement\n5 position-feedback servos: turn, tilt, nod and lean\n\nVision\nWide-angle camera with face tracking and motion sensing\n\nAudio\nMicrophone array and stereo speakers\n\nCompute\n8-core ARM64 CPU, 6 GB RAM\n\nSoftware\nOpen-source Physical AI Operating System (lampOS), Apache 2.0\n\nWarranty\n1 year\n\n## Which agents run on the robot?\n\nYou’re not locked into one agent or one model. Autonomous lists Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw (its product page also mentions Pi), with more on the way. You can use a cloud model from the provider you pick, or a compatible local model running on your own hardware.\n\nSo the Hermes you already use — with its memory, skills and scheduled jobs — can now have a voice and a body. Hermes is also the first runtime the OS enables its intent routing for by default, while other runtimes wait for validation.\n\nWant your AI agents doing real work for your business? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant Hermes working for you on and off the screen? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## What it’s like to use\n\nYou just talk to it. It listens, answers and moves while it talks, so it feels like a character on your desk rather than a speaker. You pick its voice and shape how it behaves. In one of Autonomous’s own clips, two lamps chat with each other, each with its own personality.\n\n- Simple commands: “Turn off the lights”, “This lamp is too bright”, “You’re speaking too loudly” or “Make this lamp violet” run as local commands.\n\n- Lighting scenes: “I need light to read a book” switches on a reading scene.\n\n- Little nudges: Autonomous shows it reminding you to drink water, take breaks and fix your posture, and its ring light can change colour as a quiet cue.\n\n- Bigger jobs: anything it isn’t sure about goes to your main agent.\n\n## Under the hood: SOUL.md, SAFETY.md and skills\n\nThis is the part I like most. The OS can run any robot you can describe in four markdown files:\n\nFile\nWhat it controls\n\nROBOT.md\nThe body: the board and the hardware it has\n\nSOUL.md\nThe self: who it is and how it talks\n\nSAFETY.md\nThe bounds: how fast, how bright, how late\n\nSKILL.md\nThe hands: one thing it can do\n\nChange SOUL.md and it becomes someone else on the next turn. SAFETY.md is the safety gate: it sets limits like brightness, quiet hours and movement speed. Those limits apply no matter which AI model sent the request, so you can swap agents or models and the robot still stays inside your rules.\n\nEvery behaviour is a skill, and a skill is just a folder with a SKILL.md file inside — the same idea Hermes already uses. Install skills from the Skill Store in one tap, or type what you want in the app and it writes the skill for you. The OS ships with skills such as following an object with the camera and responding to touch with a gesture.\n\n## Work across your robot and your computer\n\n- Hand off computer work. The harness-use skill sends coding and research tasks to agents running in Autonomous’s Harness on your paired computer, then reads you the result.\n\n- Use Mac apps. The computer-use skill works through Autonomous Buddy, which bundles Cua Driver — the same driver behind Hermes computer use.\n\n- Smart home. You can connect it to Home Assistant, so the lamp becomes a talking, moving front end for your home.\n\nAutonomous also suggests uses like a front-desk host, a co-host for creators and a robot for classrooms.\n\n## Other robots: Intern, Reachy Mini or your own\n\nRobot\nWhat it is\n\nAutonomous Lamp\nThe full experience: sees, hears, speaks and moves\n\nAutonomous Intern\nAn always-on desk agent with a mic, speaker and LED ring\n\nReachy Mini\nHugging Face’s desk robot, which can run the OS alongside its own software\n\nYour own robot\nDescribe it in ROBOT.md, SOUL.md, SAFETY.md and SKILL.md\n\nPut a Reachy Mini next to a Lamp and each hears the other’s answer as its next input, so the two will hold a conversation until you stop them.\n\n## How to get started with a Hermes Agent robot\n\n- Add the robot in the Autonomous app (iOS or Android) and connect it to your Wi-Fi.\n\n- Pick your agent: Hermes, Claude Code, Codex or one of the others.\n\n- Choose its voice and shape its personality in SOUL.md.\n\n- Install a skill from the Skill Store, or describe a new one.\n\n- Set your limits in SAFETY.md so it behaves exactly how you want.\n\nA robot with a camera and microphones is always sensing. Decide where it lives, set quiet hours, and check which model service your audio and video go to, since inference may run remotely depending on your setup.\n\n## Is it worth $999?\n\nIf you just want reminders and a talking lamp, probably not yet. If you run agents every day and want them present — greeting visitors, reading you results, co-hosting content or running your smart home — it’s the most complete Hermes body available right now. And because the OS is open source, you can try it on a Reachy Mini or your own hardware first.\n\n## My verdict on the Hermes Agent robot\n\nAgents are leaving the screen. With an open OS, simple SOUL.md and SAFETY.md files, and support for the agents you already use, the Autonomous Lamp is a fun and genuinely useful first step into physical AI. If you want your agent on your desk and not just in your terminal, the Hermes Agent robot is worth a look.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes agent robot\n\n### What is the Hermes Agent robot?\n\nA setup that runs Hermes Agent on a physical robot such as the Autonomous Lamp, giving it a camera, microphones, speakers and motors so it can see, listen, talk and move.\n\n### How much does the Autonomous Lamp cost?\n\n$999 for one unit, with bulk pricing from $969 for three or more.\n\n### Which agents work with the Autonomous Lamp?\n\nHermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw, with cloud or local models.\n\n### What are SOUL.md and SAFETY.md?\n\nSOUL.md sets the robot’s personality and SAFETY.md sets its limits, like brightness, quiet hours and movement speed, whichever model is in charge.\n\n### Is lampOS open source?\n\nYes — Autonomous’s Physical AI Operating System is open source on GitHub under Apache 2.0.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Computer Use Skill\n\n- Hermes Apollo Voice\n\n- Hermes SOUL.md\n\nLast updated October 2026. This page is a living guide to hermes agent robot — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-agent-robot/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-robot",
+      "author": "Clawdbot",
+      "published": "2026-10-23T23:56:05",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "Detailed coverage of the 'Autonomous Lamp,' a physical desk robot that acts as a body for the Hermes Agent, providing it with sensory input and motor control to interact with the physical world.",
+      "importance_score": 95.0,
+      "reasoning": "This is a major step in AI embodiment, bridging the gap between software agents and physical reality.",
+      "themes": [
+        "embodiment",
+        "robotics"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Detailed coverage of the 'Autonomous Lamp,' a physical desk robot that acts as a body for the Hermes Agent, providing it with sensory input and motor control to interact with the physical world.</p>",
+      "content_html": "<p>Hermes Agent robot setups are here. The Autonomous Lamp is a desk-lamp robot that gives AI agents like Hermes a physical body: it moves, looks at you, listens and talks back. Autonomous announced it with one line — Hermes “just escaped” and got “a body, one eye, and two ears”. In the video below I show what it does, how it works under the hood and what you can build with it. Here’s everything you need to know before you put Hermes on your desk.</p>\n<p>Key takeaways</p>\n<ul>\n<li>The Autonomous Lamp gives Hermes a camera, microphones, speakers and five motors.</li>\n</ul>\n<ul>\n<li>It runs Hermes, Claude Code, Codex, OpenClaw, OpenCode and more, with cloud or local models.</li>\n</ul>\n<ul>\n<li>Behaviour lives in simple files: SOUL.md, SAFETY.md and SKILL.md.</li>\n</ul>\n<ul>\n<li>Lamp costs $999. Claim a free strategy session to plan your agent setup.</li>\n</ul>\n<h2>What is the Hermes Agent robot?</h2>\n<p>Agents like Hermes and Claude Code live in a terminal window. They’re powerful, but they’re stuck on a screen. The Autonomous Lamp takes the same agents and puts them on your desk. Autonomous calls it your personal robot. When you walk in it can look up, turn towards you when you talk, and answer out loud.</p>\n<p>It ships with Autonomous’s open-source Physical AI Operating System, often called lampOS. Autonomous describes it as “the Android for physical AI agents”. It sits between your agent and the hardware — camera, microphones, speakers, motors and light. Your agent asks for something, and the OS makes the hardware do it.</p>\n<p>Autonomous Lamp at a glance</p>\n<p>Price</p>\n<p>$999 (bulk pricing from $969 for 3+ units)</p>\n<p>Size and weight</p>\n<p>7.87 × 7.87 × 18.43 in, 6.6 lb</p>\n<p>Movement</p>\n<p>5 position-feedback servos: turn, tilt, nod and lean</p>\n<p>Vision</p>\n<p>Wide-angle camera with face tracking and motion sensing</p>\n<p>Audio</p>\n<p>Microphone array and stereo speakers</p>\n<p>Compute</p>\n<p>8-core ARM64 CPU, 6 GB RAM</p>\n<p>Software</p>\n<p>Open-source Physical AI Operating System (lampOS), Apache 2.0</p>\n<p>Warranty</p>\n<p>1 year</p>\n<h2>Which agents run on the robot?</h2>\n<p>You’re not locked into one agent or one model. Autonomous lists Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw (its product page also mentions Pi), with more on the way. You can use a cloud model from the provider you pick, or a compatible local model running on your own hardware.</p>\n<p>So the Hermes you already use — with its memory, skills and scheduled jobs — can now have a voice and a body. Hermes is also the first runtime the OS enables its intent routing for by default, while other runtimes wait for validation.</p>\n<p>Want your AI agents doing real work for your business? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes working for you on and off the screen? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>What it’s like to use</h2>\n<p>You just talk to it. It listens, answers and moves while it talks, so it feels like a character on your desk rather than a speaker. You pick its voice and shape how it behaves. In one of Autonomous’s own clips, two lamps chat with each other, each with its own personality.</p>\n<ul>\n<li>Simple commands: “Turn off the lights”, “This lamp is too bright”, “You’re speaking too loudly” or “Make this lamp violet” run as local commands.</li>\n</ul>\n<ul>\n<li>Lighting scenes: “I need light to read a book” switches on a reading scene.</li>\n</ul>\n<ul>\n<li>Little nudges: Autonomous shows it reminding you to drink water, take breaks and fix your posture, and its ring light can change colour as a quiet cue.</li>\n</ul>\n<ul>\n<li>Bigger jobs: anything it isn’t sure about goes to your main agent.</li>\n</ul>\n<h2>Under the hood: SOUL.md, SAFETY.md and skills</h2>\n<p>This is the part I like most. The OS can run any robot you can describe in four markdown files:</p>\n<p>File</p>\n<p>What it controls</p>\n<p>ROBOT.md</p>\n<p>The body: the board and the hardware it has</p>\n<p>SOUL.md</p>\n<p>The self: who it is and how it talks</p>\n<p>SAFETY.md</p>\n<p>The bounds: how fast, how bright, how late</p>\n<p>SKILL.md</p>\n<p>The hands: one thing it can do</p>\n<p>Change SOUL.md and it becomes someone else on the next turn. SAFETY.md is the safety gate: it sets limits like brightness, quiet hours and movement speed. Those limits apply no matter which AI model sent the request, so you can swap agents or models and the robot still stays inside your rules.</p>\n<p>Every behaviour is a skill, and a skill is just a folder with a SKILL.md file inside — the same idea Hermes already uses. Install skills from the Skill Store in one tap, or type what you want in the app and it writes the skill for you. The OS ships with skills such as following an object with the camera and responding to touch with a gesture.</p>\n<h2>Work across your robot and your computer</h2>\n<ul>\n<li>Hand off computer work. The harness-use skill sends coding and research tasks to agents running in Autonomous’s Harness on your paired computer, then reads you the result.</li>\n</ul>\n<ul>\n<li>Use Mac apps. The computer-use skill works through Autonomous Buddy, which bundles Cua Driver — the same driver behind Hermes computer use.</li>\n</ul>\n<ul>\n<li>Smart home. You can connect it to Home Assistant, so the lamp becomes a talking, moving front end for your home.</li>\n</ul>\n<p>Autonomous also suggests uses like a front-desk host, a co-host for creators and a robot for classrooms.</p>\n<h2>Other robots: Intern, Reachy Mini or your own</h2>\n<p>Robot</p>\n<p>What it is</p>\n<p>Autonomous Lamp</p>\n<p>The full experience: sees, hears, speaks and moves</p>\n<p>Autonomous Intern</p>\n<p>An always-on desk agent with a mic, speaker and LED ring</p>\n<p>Reachy Mini</p>\n<p>Hugging Face’s desk robot, which can run the OS alongside its own software</p>\n<p>Your own robot</p>\n<p>Describe it in ROBOT.md, SOUL.md, SAFETY.md and SKILL.md</p>\n<p>Put a Reachy Mini next to a Lamp and each hears the other’s answer as its next input, so the two will hold a conversation until you stop them.</p>\n<h2>How to get started with a Hermes Agent robot</h2>\n<ul>\n<li>Add the robot in the Autonomous app (iOS or Android) and connect it to your Wi-Fi.</li>\n</ul>\n<ul>\n<li>Pick your agent: Hermes, Claude Code, Codex or one of the others.</li>\n</ul>\n<ul>\n<li>Choose its voice and shape its personality in SOUL.md.</li>\n</ul>\n<ul>\n<li>Install a skill from the Skill Store, or describe a new one.</li>\n</ul>\n<ul>\n<li>Set your limits in SAFETY.md so it behaves exactly how you want.</li>\n</ul>\n<p>A robot with a camera and microphones is always sensing. Decide where it lives, set quiet hours, and check which model service your audio and video go to, since inference may run remotely depending on your setup.</p>\n<h2>Is it worth $999?</h2>\n<p>If you just want reminders and a talking lamp, probably not yet. If you run agents every day and want them present — greeting visitors, reading you results, co-hosting content or running your smart home — it’s the most complete Hermes body available right now. And because the OS is open source, you can try it on a Reachy Mini or your own hardware first.</p>\n<h2>My verdict on the Hermes Agent robot</h2>\n<p>Agents are leaving the screen. With an open OS, simple SOUL.md and SAFETY.md files, and support for the agents you already use, the Autonomous Lamp is a fun and genuinely useful first step into physical AI. If you want your agent on your desk and not just in your terminal, the Hermes Agent robot is worth a look.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes agent robot</h2>\n<h3>What is the Hermes Agent robot?</h3>\n<p>A setup that runs Hermes Agent on a physical robot such as the Autonomous Lamp, giving it a camera, microphones, speakers and motors so it can see, listen, talk and move.</p>\n<h3>How much does the Autonomous Lamp cost?</h3>\n<p>$999 for one unit, with bulk pricing from $969 for three or more.</p>\n<h3>Which agents work with the Autonomous Lamp?</h3>\n<p>Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw, with cloud or local models.</p>\n<h3>What are SOUL.md and SAFETY.md?</h3>\n<p>SOUL.md sets the robot’s personality and SAFETY.md sets its limits, like brightness, quiet hours and movement speed, whichever model is in charge.</p>\n<h3>Is lampOS open source?</h3>\n<p>Yes — Autonomous’s Physical AI Operating System is open source on GitHub under Apache 2.0.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Computer Use Skill</li>\n</ul>\n<ul>\n<li>Hermes Apollo Voice</li>\n</ul>\n<ul>\n<li>Hermes SOUL.md</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent robot — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "2610.27598",
+      "title": "Meta Expert: Cross-Layer Expert Sharing for Storage- and Retrieval-Efficient MoE",
+      "content": "As model parameters scale up, sparsely activated Mixture-of-Experts (MoE) approaches have become essential for model scaling. However, mainstream models currently adopt hierarchical architectures, where experts in different layers, although topologically independent, exhibit substantial similarity and redundancy in their stored content. Compared to the hierarchically arranged Local Expert in existing mainstream models, we hypothesize that inter-layer shared Meta Expert hold greater potential. To",
+      "url": "https://arxiv.org/abs/2610.27598",
+      "author": "HF Daily Papers",
+      "published": "2026-10-20T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We featured this paper in [Research](/?date=2026-10-23&category=research#item-2610.27598) yesterday, This research paper proposes an architectural improvement for Mixture-of-Experts (MoE) models, hypothesizing that a shared Meta Expert across model layers is more efficient than the hierarchical local experts currently used, as inter-layer experts exhibit redundancy.",
+      "importance_score": 45,
+      "reasoning": "This represents significant academic research into optimizing the core structure of state-of-the-art LLMs, impacting future foundational model development.",
+      "themes": [
+        "architectural_innovation",
+        "MoE_optimization"
+      ],
+      "continuation": {
+        "original_item_id": "2610.27598",
+        "original_date": "2026-10-23",
+        "original_category": "research",
+        "original_title": "Meta Expert: Cross-Layer Expert Sharing for Storage- and Retrieval-Efficient MoE",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We featured this paper in **Research** yesterday"
+      },
+      "summary_html": "<p>We featured this paper in <a href=\"/?date=2026-10-23&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, This research paper proposes an architectural improvement for Mixture-of-Experts (MoE) models, hypothesizing that a shared Meta Expert across model layers is more efficient than the hierarchical local experts currently used, as inter-layer experts exhibit redundancy.</p>",
+      "content_html": "<p>As model parameters scale up, sparsely activated Mixture-of-Experts (MoE) approaches have become essential for model scaling. However, mainstream models currently adopt hierarchical architectures, where experts in different layers, although topologically independent, exhibit substantial similarity and redundancy in their stored content. Compared to the hierarchically arranged Local Expert in existing mainstream models, we hypothesize that inter-layer shared Meta Expert hold greater potential. To</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-22&category=research#item-hn-49511007) yesterday, Announces 'Almanac', an enterprise AI application built using Hermes Agent, designed to ingest and utilize all available internal company context for specific business queries.",
+      "importance_score": 45,
+      "reasoning": "A powerful demonstration of the agent's value proposition in the high-value enterprise/knowledge work space.",
+      "themes": [
+        "enterprise_applications",
+        "contextual_understanding"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49511007",
+        "original_date": "2026-10-22",
+        "original_category": "research",
+        "original_title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Announces 'Almanac', an enterprise AI application built using Hermes Agent, designed to ingest and utilize all available internal company context for specific business queries.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "88c0557784e6",
+      "title": "Hermes Computer Use Skill: How Hermes Agent Controls a Computer",
+      "content": "Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in `computer_use` toolset, powered by Cua’s open-source `cua-driver`. You can add Cua’s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here’s how computer use works in Hermes, how to switch it on and how to keep it safe.\n\nKey takeaways\n\n- Hermes’ computer_use toolset controls apps with screenshots, clicks, typing and scrolling.\n\n- It runs on cua-driver and works with any tool-capable model.\n\n- It works in the background and doesn’t steal your cursor or keyboard.\n\n- Run it in a Cua Space for full isolation. Claim a free strategy session for help.\n\n## What the Hermes computer use skill does\n\nHermes’ computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.\n\nUnlike most computer-use tools, it works with any tool-capable model — Claude, GPT, Gemini or an open model on a local endpoint. It isn’t tied to one provider’s computer-use format.\n\nPlatform\nHow Hermes reads the screen\nHow it sends input\n\nmacOS\nAccessibility (AX)\nEvents posted to the app, no cursor warp\n\nWindows\nUIAutomation\nSendInput and PostMessage, no focus steal\n\nLinux\nAT-SPI (X11 and Wayland)\nXTest or virtual keyboard\n\n## Toolset vs skill: what’s the difference?\n\nIn Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run `cua-driver skills install`, and it lands in `~/.cua-driver/skills/cua-driver`.\n\nHermes doesn’t auto-detect that folder yet — Nous lists it as a planned follow-up — so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use `/learn` to save the steps (see Hermes learn skill).\n\nWant Hermes doing your computer admin for you? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How to switch on computer use in Hermes\n\nThe driver ships with Hermes: the installers and `hermes update` install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it’s missing, any of these installs it:\n\n- Run `hermes tools` and pick Computer Use.\n\n- Toggle the Computer Use toolset in the dashboard or desktop app.\n\n- Run `hermes computer-use install`, then `hermes computer-use status` to check it.\n\nThen grant the permissions for your system:\n\nPlatform\nWhat you need\n\nmacOS\nSystem Settings → Privacy & Security → Accessibility and Screen Recording for CuaDriver (run `hermes computer-use doctor` to see the exact name)\n\nWindows\nNothing at install time (driving over SSH needs Cua’s autostart pattern)\n\nLinux\nA display server (X11 or Wayland with XWayland) and AT-SPI switched on\n\nFinally, start a session with `hermes -t computer_use chat`, or add computer_use to your enabled toolsets in config.yaml.\n\n## Permission modes: how much freedom to give it\n\nMode\nWhat it means\n\nStandard (default)\nNormal Hermes approvals for actions\n\nBounded\nYou review a capability manifest once at launch — listed apps, origins and tools only; anything else fails closed\n\nUnrestricted (yolo)\nNo prompts at all — only for a disposable machine\n\nBounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can’t step outside it. Nous warns that unrestricted mode doesn’t protect against prompt injection, so only use it on a machine you can throw away.\n\n## Which computer does Hermes control?\n\ncomputer_use acts on the machine where the bot’s screen lives. On a local setup that’s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can’t host a display yet.\n\nThat’s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin’s `desktop` setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.\n\n## Best uses for the Hermes computer use skill\n\n- Apps with no API — old desktop software, internal tools or dashboards.\n\n- Repeat admin — exporting reports, updating spreadsheets, filing forms.\n\n- Testing your own site or app the way a real user would.\n\n- Checking visual work — reading a design, a chart or a layout on screen.\n\nFor web pages, Hermes’ browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.\n\n## My verdict on the Hermes computer use skill\n\nHermes’ computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes computer use skill\n\n### What is the Hermes computer use skill?\n\nHermes Agent’s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.\n\n### Which models work with Hermes computer use?\n\nAny tool-capable model, including Claude, GPT, Gemini and local open models.\n\n### Does Hermes computer use take over my mouse?\n\nNo — it works in the background without moving your cursor or stealing keyboard focus.\n\n### How do I turn on computer use in Hermes?\n\nRun hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.\n\n### Is Hermes computer use safe?\n\nUse standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Computer Use\n\n- Hermes Agent Computer Use\n\n- Hermes Cua\n\nLast updated October 2026. This page is a living guide to hermes computer use skill — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-computer-use-skill/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-computer-use-skill",
+      "author": "Clawdbot",
+      "published": "2026-10-23T00:39:59",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "Describes the 'computer_use' toolset which allows the agent to interact with and control a computer's desktop environment via screenshots, clicks, typing, and scrolling, powered by the Cua driver.",
+      "importance_score": 90.0,
+      "reasoning": "Essential functionality for advanced agents to perform complex software tasks autonomously.",
+      "themes": [
+        "autonomy",
+        "system_interaction"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Describes the 'computer_use' toolset which allows the agent to interact with and control a computer's desktop environment via screenshots, clicks, typing, and scrolling, powered by the Cua driver.</p>",
+      "content_html": "<p>Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in <code>computer_use</code> toolset, powered by Cua’s open-source <code>cua-driver</code>. You can add Cua’s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here’s how computer use works in Hermes, how to switch it on and how to keep it safe.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Hermes’ computer_use toolset controls apps with screenshots, clicks, typing and scrolling.</li>\n</ul>\n<ul>\n<li>It runs on cua-driver and works with any tool-capable model.</li>\n</ul>\n<ul>\n<li>It works in the background and doesn’t steal your cursor or keyboard.</li>\n</ul>\n<ul>\n<li>Run it in a Cua Space for full isolation. Claim a free strategy session for help.</li>\n</ul>\n<h2>What the Hermes computer use skill does</h2>\n<p>Hermes’ computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.</p>\n<p>Unlike most computer-use tools, it works with any tool-capable model — Claude, GPT, Gemini or an open model on a local endpoint. It isn’t tied to one provider’s computer-use format.</p>\n<p>Platform</p>\n<p>How Hermes reads the screen</p>\n<p>How it sends input</p>\n<p>macOS</p>\n<p>Accessibility (AX)</p>\n<p>Events posted to the app, no cursor warp</p>\n<p>Windows</p>\n<p>UIAutomation</p>\n<p>SendInput and PostMessage, no focus steal</p>\n<p>Linux</p>\n<p>AT-SPI (X11 and Wayland)</p>\n<p>XTest or virtual keyboard</p>\n<h2>Toolset vs skill: what’s the difference?</h2>\n<p>In Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run <code>cua-driver skills install</code>, and it lands in <code>~/.cua-driver/skills/cua-driver</code>.</p>\n<p>Hermes doesn’t auto-detect that folder yet — Nous lists it as a planned follow-up — so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use <code>/learn</code> to save the steps (see Hermes learn skill).</p>\n<p>Want Hermes doing your computer admin for you? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How to switch on computer use in Hermes</h2>\n<p>The driver ships with Hermes: the installers and <code>hermes update</code> install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it’s missing, any of these installs it:</p>\n<ul>\n<li>Run <code>hermes tools</code> and pick Computer Use.</li>\n</ul>\n<ul>\n<li>Toggle the Computer Use toolset in the dashboard or desktop app.</li>\n</ul>\n<ul>\n<li>Run <code>hermes computer-use install</code>, then <code>hermes computer-use status</code> to check it.</li>\n</ul>\n<p>Then grant the permissions for your system:</p>\n<p>Platform</p>\n<p>What you need</p>\n<p>macOS</p>\n<p>System Settings → Privacy &amp; Security → Accessibility and Screen Recording for CuaDriver (run <code>hermes computer-use doctor</code> to see the exact name)</p>\n<p>Windows</p>\n<p>Nothing at install time (driving over SSH needs Cua’s autostart pattern)</p>\n<p>Linux</p>\n<p>A display server (X11 or Wayland with XWayland) and AT-SPI switched on</p>\n<p>Finally, start a session with <code>hermes -t computer_use chat</code>, or add computer_use to your enabled toolsets in config.yaml.</p>\n<h2>Permission modes: how much freedom to give it</h2>\n<p>Mode</p>\n<p>What it means</p>\n<p>Standard (default)</p>\n<p>Normal Hermes approvals for actions</p>\n<p>Bounded</p>\n<p>You review a capability manifest once at launch — listed apps, origins and tools only; anything else fails closed</p>\n<p>Unrestricted (yolo)</p>\n<p>No prompts at all — only for a disposable machine</p>\n<p>Bounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can’t step outside it. Nous warns that unrestricted mode doesn’t protect against prompt injection, so only use it on a machine you can throw away.</p>\n<h2>Which computer does Hermes control?</h2>\n<p>computer_use acts on the machine where the bot’s screen lives. On a local setup that’s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can’t host a display yet.</p>\n<p>That’s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin’s <code>desktop</code> setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.</p>\n<h2>Best uses for the Hermes computer use skill</h2>\n<ul>\n<li>Apps with no API — old desktop software, internal tools or dashboards.</li>\n</ul>\n<ul>\n<li>Repeat admin — exporting reports, updating spreadsheets, filing forms.</li>\n</ul>\n<ul>\n<li>Testing your own site or app the way a real user would.</li>\n</ul>\n<ul>\n<li>Checking visual work — reading a design, a chart or a layout on screen.</li>\n</ul>\n<p>For web pages, Hermes’ browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.</p>\n<h2>My verdict on the Hermes computer use skill</h2>\n<p>Hermes’ computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes computer use skill</h2>\n<h3>What is the Hermes computer use skill?</h3>\n<p>Hermes Agent’s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.</p>\n<h3>Which models work with Hermes computer use?</h3>\n<p>Any tool-capable model, including Claude, GPT, Gemini and local open models.</p>\n<h3>Does Hermes computer use take over my mouse?</h3>\n<p>No — it works in the background without moving your cursor or stealing keyboard focus.</p>\n<h3>How do I turn on computer use in Hermes?</h3>\n<p>Run hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.</p>\n<h3>Is Hermes computer use safe?</h3>\n<p>Use standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Computer Use</li>\n</ul>\n<ul>\n<li>Hermes Agent Computer Use</li>\n</ul>\n<ul>\n<li>Hermes Cua</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes computer use skill — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-22&category=research#item-hn-49231797) yesterday, Details the implementation and study of adversarial LLM reversal techniques specifically applied to the architecture of the Hermes Agent.",
+      "importance_score": 44,
+      "reasoning": "Highly technical work concerning LLM security, robustness, and attack vectors, crucial for future agent development.",
+      "themes": [
+        "llm_security",
+        "adversarial_AI"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49231797",
+        "original_date": "2026-10-22",
+        "original_category": "research",
+        "original_title": "Adversarial LLM Reversal for hermes-agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Details the implementation and study of adversarial LLM reversal techniques specifically applied to the architecture of the Hermes Agent.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "59864203d485",
+      "title": "Hermes Meshy: Make 3D Models With Hermes Agent’s Official Meshy Plugin",
+      "content": "Hermes Meshy is Nous Research’s official plugin that lets Hermes Agent make 3D models. Type one sentence — “make a low-poly treasure chest for my game” or “turn this photo of my mug into a 3D model ready to print at 10 cm” — and you get back a real model. You can spin it in the chat, send it to a 3D printer or drop it into a game. In the video below I walk through the 28 tools, what it costs and the setting that stops it overspending. Here’s everything you need to know.\n\nKey takeaways\n\n- Official Meshy plugin for Hermes Agent, built on Meshy’s own MCP server.\n\n- 28 tools: text/image to 3D, texturing, rigging, animation and 3D-print prep.\n\n- Costs 5–62 Meshy credits per call, with a 200-credit limit per chat.\n\n- Needs a Meshy API key (Pro plan or above). Claim a free strategy session for help.\n\n## What the Hermes Meshy plugin is\n\nMaking a 3D model used to mean learning Blender, watching hours of lessons and fixing broken shapes by hand. One maker in the video put it well: getting a clean model at the right size used to eat a whole evening. The Meshy plugin puts all of those jobs in one place, and your agent does the clicking.\n\nNous didn’t build a copy of Meshy. The plugin uses Meshy’s own MCP server, pinned at version 0.6.5, so an update can’t break your setup overnight. It also bundles a meshy-3d skill that carries Meshy’s rules: confirm the cost before spending credits, never re-run a job you’re unsure about (so you don’t pay twice), and choose the output format first.\n\nHermes Meshy at a glance\n\nMade by\nNous Research (official tier), using Meshy’s own MCP server\n\nPlugin version\n0.4.0 — needs Hermes v0.22.3 or later\n\nTools\n28, loaded only when needed\n\nPlatforms\nWindows, macOS, Linux\n\nNeeds\nNode.js 18+ and a MESHY_API_KEY (Meshy Pro plan or above)\n\nCost\nMeshy credits: 5–62 per call\n\nInstall\n`hermes plugins install meshy`\n\n## The 28 Meshy tools in Hermes\n\nGroup\nWhat it can do\n\nGeneration (6)\nText to 3D, refine, image to 3D, multi-image to 3D, text to image, image to image\n\nPost-processing (5)\nRemesh, retexture, convert file type, resize to real-world size, UV unwrap\n\nCharacters (4)\nRig with a skeleton, animate, text to motion, ready-made animation library\n\n3D printing\nCheck printability, repair, multicolour 3MF, split into printable parts, send to your slicer, Creative Lab products\n\nAccount\nBalance, usage and task status\n\nAll 28 tools take about 19,000 tokens to describe, but Hermes loads them on demand through tool search. They cost nothing in your chat until Hermes actually uses one.\n\nWant to turn AI tools like this into products or leads? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant AI tools like this working in your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## What Hermes Meshy costs\n\nMost Meshy tools spend credits — between 5 and 62 per call depending on the job. The plugin builds in three safety nets:\n\n- Approval before spending. Hermes asks before every call that creates or downloads, showing the estimated cost (for example, “Costs about 5–25 credits”) and what the chat has spent so far.\n\n- A 200-credit limit per chat. Once a chat would go past it, Hermes asks again, even if you’ve turned the prompts off.\n\n- No surprise spending on autopilot. Unattended runs such as cron jobs can’t approve, so paid calls are refused there.\n\nFree jobs run without a prompt — checking your balance, task status, the animation library and slicer detection.\n\n## Hermes Desktop: 3D cards and the gallery\n\nSwitch on the plugin’s Desktop toggle in Capabilities → Plugins and models appear in the chat as 3D cards. Click to spin, zoom, show the wireframe or a size grid. While a job runs, the card shows progress such as “Meshy 38% · previewing”.\n\nEach card has a download menu listing every file type Meshy made: GLB, FBX, OBJ, STL and USDZ for a finished model. STL is the one 3D printers love, and USDZ is what iPhones use to show 3D in your room. Saving these is free. Converting to a missing format costs credits.\n\nThen there’s the gallery. Every model gets a Made from history: the prompt, settings, seed, credits and the chain of steps — photo, rebuilt, rigged, animated. You can copy the prompt back into the chat and make it again. The hardest part of making anything good is remembering how you made the last one, and the gallery remembers for you.\n\n## 3D printing with Hermes Meshy\n\nPrinting is the biggest group of tools, because a model can look perfect on screen and still fail on the printer: a wall too thin, or a part floating with nothing under it. Hermes can check how printable a model is, fix weak spots, save multicolour 3MF files, cut a big model into parts that fit your printer and send it straight to your slicer. It can even detect which slicer you have. You can go from a photo of a broken cupboard knob to a part ready to print in one chat.\n\n## How to install Hermes Meshy\n\n- Update Hermes to v0.22.3 or later: `hermes update`.\n\n- Install and enable: `hermes plugins install meshy` then `hermes plugins enable meshy` (or Capabilities → Plugins → Meshy in Hermes Desktop).\n\n- Create an API key at meshy.ai → Settings → API (Pro plan or above).\n\n- Add it in Settings → Plugins → Meshy, or run `hermes config set MESHY_API_KEY msy_...`.\n\n- Make sure Node.js 18+ is installed, then ask for your first model.\n\nSave what you want to keep. Files on Meshy’s servers normally expire after three days, and viewing a model in the chat doesn’t save it. Use Download.\n\n## Business uses for Hermes Meshy\n\n- Product mock-ups for listings and ads.\n\n- Game assets and characters, rigged and animated.\n\n- Printed products and spare parts made from a photo.\n\n- 3D views for your website that customers can spin.\n\nRead more on Hermes Agent image generation and the Hermes plugins marketplace.\n\n## My verdict on Hermes Meshy\n\nThis is the first official way to make physical things with Hermes — shapes you can print, spin and put in a game. The safety is built in, with cost approvals and a 200-credit stop per chat, and the gallery quietly makes great results repeatable. Just remember to download what you like. If you’ve ever wanted 3D without learning Blender, Hermes Meshy is worth trying.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes meshy\n\n### What is the Hermes Meshy plugin?\n\nAn official Nous Research plugin that connects Hermes Agent to Meshy’s own MCP server, giving it 28 tools for making, editing, rigging, animating and 3D-printing models.\n\n### How much does Hermes Meshy cost?\n\nThe plugin is free, but Meshy tools use credits — 5 to 62 per call — and API keys need a Meshy Pro plan or above.\n\n### How do I stop Hermes Meshy overspending?\n\nHermes asks before every paid call and has a 200-credit limit per chat that makes it ask again, even with prompts turned off.\n\n### What file types does Hermes Meshy produce?\n\nFinished models come as GLB, FBX, OBJ, STL and USDZ, plus multicolour 3MF for printing.\n\n### How long are Meshy files kept?\n\nFiles on Meshy’s servers normally expire after three days, so download anything you want to keep.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Agent Image Generation\n\n- Hermes Blender MCP\n\n- Hermes Agent Plugins Marketplace\n\nLast updated October 2026. This page is a living guide to hermes meshy — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-meshy/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-meshy",
+      "author": "Clawdbot",
+      "published": "2026-10-23T00:40:13",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "As first shared on [Social](/?date=2026-10-23&category=social#item-7ead5bf87731) yesterday, Announces the 'Hermes Meshy' official plugin, enabling the Hermes Agent to create complex 3D models from text or images using Meshy’s rendering technology.",
+      "importance_score": 44,
+      "reasoning": "Extends the agent into the realm of multimodal generative design, a significant functional expansion.",
+      "themes": [
+        "multimodality",
+        "generative_AI"
+      ],
+      "continuation": {
+        "original_item_id": "7ead5bf87731",
+        "original_date": "2026-10-23",
+        "original_category": "social",
+        "original_title": "Check out the new official @MeshyAI plugin for Hermes Agent!\n\nMake any 3D model you want, from chara...",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As first shared on **Social** yesterday"
+      },
+      "summary_html": "<p>As first shared on <a href=\"/?date=2026-10-23&amp;category=social#item-7ead5bf87731\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> yesterday, Announces the 'Hermes Meshy' official plugin, enabling the Hermes Agent to create complex 3D models from text or images using Meshy’s rendering technology.</p>",
+      "content_html": "<p>Hermes Meshy is Nous Research’s official plugin that lets Hermes Agent make 3D models. Type one sentence — “make a low-poly treasure chest for my game” or “turn this photo of my mug into a 3D model ready to print at 10 cm” — and you get back a real model. You can spin it in the chat, send it to a 3D printer or drop it into a game. In the video below I walk through the 28 tools, what it costs and the setting that stops it overspending. Here’s everything you need to know.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Official Meshy plugin for Hermes Agent, built on Meshy’s own MCP server.</li>\n</ul>\n<ul>\n<li>28 tools: text/image to 3D, texturing, rigging, animation and 3D-print prep.</li>\n</ul>\n<ul>\n<li>Costs 5–62 Meshy credits per call, with a 200-credit limit per chat.</li>\n</ul>\n<ul>\n<li>Needs a Meshy API key (Pro plan or above). Claim a free strategy session for help.</li>\n</ul>\n<h2>What the Hermes Meshy plugin is</h2>\n<p>Making a 3D model used to mean learning Blender, watching hours of lessons and fixing broken shapes by hand. One maker in the video put it well: getting a clean model at the right size used to eat a whole evening. The Meshy plugin puts all of those jobs in one place, and your agent does the clicking.</p>\n<p>Nous didn’t build a copy of Meshy. The plugin uses Meshy’s own MCP server, pinned at version 0.6.5, so an update can’t break your setup overnight. It also bundles a meshy-3d skill that carries Meshy’s rules: confirm the cost before spending credits, never re-run a job you’re unsure about (so you don’t pay twice), and choose the output format first.</p>\n<p>Hermes Meshy at a glance</p>\n<p>Made by</p>\n<p>Nous Research (official tier), using Meshy’s own MCP server</p>\n<p>Plugin version</p>\n<p>0.4.0 — needs Hermes v0.22.3 or later</p>\n<p>Tools</p>\n<p>28, loaded only when needed</p>\n<p>Platforms</p>\n<p>Windows, macOS, Linux</p>\n<p>Needs</p>\n<p>Node.js 18+ and a MESHY_API_KEY (Meshy Pro plan or above)</p>\n<p>Cost</p>\n<p>Meshy credits: 5–62 per call</p>\n<p>Install</p>\n<p><code>hermes plugins install meshy</code></p>\n<h2>The 28 Meshy tools in Hermes</h2>\n<p>Group</p>\n<p>What it can do</p>\n<p>Generation (6)</p>\n<p>Text to 3D, refine, image to 3D, multi-image to 3D, text to image, image to image</p>\n<p>Post-processing (5)</p>\n<p>Remesh, retexture, convert file type, resize to real-world size, UV unwrap</p>\n<p>Characters (4)</p>\n<p>Rig with a skeleton, animate, text to motion, ready-made animation library</p>\n<p>3D printing</p>\n<p>Check printability, repair, multicolour 3MF, split into printable parts, send to your slicer, Creative Lab products</p>\n<p>Account</p>\n<p>Balance, usage and task status</p>\n<p>All 28 tools take about 19,000 tokens to describe, but Hermes loads them on demand through tool search. They cost nothing in your chat until Hermes actually uses one.</p>\n<p>Want to turn AI tools like this into products or leads? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want AI tools like this working in your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>What Hermes Meshy costs</h2>\n<p>Most Meshy tools spend credits — between 5 and 62 per call depending on the job. The plugin builds in three safety nets:</p>\n<ul>\n<li>Approval before spending. Hermes asks before every call that creates or downloads, showing the estimated cost (for example, “Costs about 5–25 credits”) and what the chat has spent so far.</li>\n</ul>\n<ul>\n<li>A 200-credit limit per chat. Once a chat would go past it, Hermes asks again, even if you’ve turned the prompts off.</li>\n</ul>\n<ul>\n<li>No surprise spending on autopilot. Unattended runs such as cron jobs can’t approve, so paid calls are refused there.</li>\n</ul>\n<p>Free jobs run without a prompt — checking your balance, task status, the animation library and slicer detection.</p>\n<h2>Hermes Desktop: 3D cards and the gallery</h2>\n<p>Switch on the plugin’s Desktop toggle in Capabilities → Plugins and models appear in the chat as 3D cards. Click to spin, zoom, show the wireframe or a size grid. While a job runs, the card shows progress such as “Meshy 38% · previewing”.</p>\n<p>Each card has a download menu listing every file type Meshy made: GLB, FBX, OBJ, STL and USDZ for a finished model. STL is the one 3D printers love, and USDZ is what iPhones use to show 3D in your room. Saving these is free. Converting to a missing format costs credits.</p>\n<p>Then there’s the gallery. Every model gets a Made from history: the prompt, settings, seed, credits and the chain of steps — photo, rebuilt, rigged, animated. You can copy the prompt back into the chat and make it again. The hardest part of making anything good is remembering how you made the last one, and the gallery remembers for you.</p>\n<h2>3D printing with Hermes Meshy</h2>\n<p>Printing is the biggest group of tools, because a model can look perfect on screen and still fail on the printer: a wall too thin, or a part floating with nothing under it. Hermes can check how printable a model is, fix weak spots, save multicolour 3MF files, cut a big model into parts that fit your printer and send it straight to your slicer. It can even detect which slicer you have. You can go from a photo of a broken cupboard knob to a part ready to print in one chat.</p>\n<h2>How to install Hermes Meshy</h2>\n<ul>\n<li>Update Hermes to v0.22.3 or later: <code>hermes update</code>.</li>\n</ul>\n<ul>\n<li>Install and enable: <code>hermes plugins install meshy</code> then <code>hermes plugins enable meshy</code> (or Capabilities → Plugins → Meshy in Hermes Desktop).</li>\n</ul>\n<ul>\n<li>Create an API key at meshy.ai → Settings → API (Pro plan or above).</li>\n</ul>\n<ul>\n<li>Add it in Settings → Plugins → Meshy, or run <code>hermes config set MESHY_API_KEY msy_...</code>.</li>\n</ul>\n<ul>\n<li>Make sure Node.js 18+ is installed, then ask for your first model.</li>\n</ul>\n<p>Save what you want to keep. Files on Meshy’s servers normally expire after three days, and viewing a model in the chat doesn’t save it. Use Download.</p>\n<h2>Business uses for Hermes Meshy</h2>\n<ul>\n<li>Product mock-ups for listings and ads.</li>\n</ul>\n<ul>\n<li>Game assets and characters, rigged and animated.</li>\n</ul>\n<ul>\n<li>Printed products and spare parts made from a photo.</li>\n</ul>\n<ul>\n<li>3D views for your website that customers can spin.</li>\n</ul>\n<p>Read more on Hermes Agent image generation and the Hermes plugins marketplace.</p>\n<h2>My verdict on Hermes Meshy</h2>\n<p>This is the first official way to make physical things with Hermes — shapes you can print, spin and put in a game. The safety is built in, with cost approvals and a 200-credit stop per chat, and the gallery quietly makes great results repeatable. Just remember to download what you like. If you’ve ever wanted 3D without learning Blender, Hermes Meshy is worth trying.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes meshy</h2>\n<h3>What is the Hermes Meshy plugin?</h3>\n<p>An official Nous Research plugin that connects Hermes Agent to Meshy’s own MCP server, giving it 28 tools for making, editing, rigging, animating and 3D-printing models.</p>\n<h3>How much does Hermes Meshy cost?</h3>\n<p>The plugin is free, but Meshy tools use credits — 5 to 62 per call — and API keys need a Meshy Pro plan or above.</p>\n<h3>How do I stop Hermes Meshy overspending?</h3>\n<p>Hermes asks before every paid call and has a 200-credit limit per chat that makes it ask again, even with prompts turned off.</p>\n<h3>What file types does Hermes Meshy produce?</h3>\n<p>Finished models come as GLB, FBX, OBJ, STL and USDZ, plus multicolour 3MF for printing.</p>\n<h3>How long are Meshy files kept?</h3>\n<p>Files on Meshy’s servers normally expire after three days, so download anything you want to keep.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent Image Generation</li>\n</ul>\n<ul>\n<li>Hermes Blender MCP</li>\n</ul>\n<ul>\n<li>Hermes Agent Plugins Marketplace</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes meshy — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this Show HN in [Research](/?date=2026-10-22&category=research#item-hn-49628094) yesterday, Announcement of 'verso', an open-source agent orchestrator built on Hermes Agent, designed to provide an easy and intuitive interface for knowledge work tasks.",
+      "importance_score": 42,
+      "reasoning": "This significantly improves the accessibility and practical usability of the Hermes Agent for real-world tasks.",
+      "themes": [
+        "developer_tools",
+        "usability"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-10-22",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this Show HN in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this Show HN in <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Announcement of 'verso', an open-source agent orchestrator built on Hermes Agent, designed to provide an easy and intuitive interface for knowledge work tasks.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already featured in [Research](/?date=2026-10-22&category=research#item-hn-49318128) yesterday, Presents a custom Grafana agent designed to provide detailed monitoring, metrics, and observability for the complex operations of the Hermes Agent.",
+      "importance_score": 42,
+      "reasoning": "High value for MLOps teams, enabling robust production monitoring and debugging of agent behavior.",
+      "themes": [
+        "observability",
+        "monitoring"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-10-22",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already featured in **Research** yesterday"
+      },
+      "summary_html": "<p>Already featured in <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Presents a custom Grafana agent designed to provide detailed monitoring, metrics, and observability for the complex operations of the Hermes Agent.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "910c6d383a4e",
+      "title": "Hermes Cua: Give Hermes Agent Its Own Throwaway Computer",
+      "content": "Hermes Cua is the new free plugin that gives Hermes Agent its own computer. Built by Cua, `hermes-cua-spaces` sends every terminal command, file write and code run into a Cua Space. A Space is an isolated Linux, macOS or Windows machine on your laptop, another machine you own or the cloud, and by default it’s deleted when the job is done. Your laptop never gets touched. In the video below I walk through how Cua Spaces work, the 3-step setup and how to watch Hermes work live. Here’s the full breakdown.\n\nKey takeaways\n\n- Hermes Cua runs Hermes’ terminal, file and code tools inside a Cua Space.\n\n- Spaces can be Linux, macOS or Windows: local, on another machine or in the cloud.\n\n- By default each run gets a fresh Space that’s deleted afterwards.\n\n- Free and MIT-licensed. Claim a free strategy session for help setting it up.\n\n## What Hermes Cua does\n\nNormally, when you give Hermes a job, it works on your computer — your files, your folders, your apps. Most days that’s fine. But every so often an agent runs a command it shouldn’t: it deletes the wrong folder, fills your drive or installs something you never asked for. So Hermes asks before anything risky, and you end up clicking “yes” over and over. That means you can’t walk away.\n\nThe hermes-cua-spaces plugin removes that trade-off. Hermes still runs where it always has, but when it needs to run a command, write a file or execute code, that work happens in the Space instead of on your machine. Because the Space is the sandbox, Hermes skips its risky-command prompts for Spaces the plugin creates. The agent gets more freedom, and you get more safety.\n\nHermes Cua at a glance\n\nPlugin\nhermes-cua-spaces, by Cua\n\nLicence\nMIT (free)\n\nWhat moves into the Space\nTerminal commands, file reads and writes, code runs\n\nSpace types\nLinux (Ubuntu with a desktop), Windows, macOS\n\nWhere Spaces live\nYour laptop, another machine you own, or your Cua cloud account\n\nDefault behaviour\nA fresh Space per run, deleted when Hermes finishes\n\nCua project\ntrycua/cua — open source, 30,000+ GitHub stars, backed by Y Combinator\n\n## How to set up Hermes Cua in 3 steps\n\n- Install Cua and sign in: `curl -fsSL https://cua.ai/install.sh | sh` then `cua auth login`. Sign-in is only needed for Spaces on your cua.ai account; a local Space needs none.\n\n- Install the plugin: `hermes plugins install https://github.com/trycua/hermes-cua-spaces`. Say yes to the one Python package ( `cua`) and to enabling the plugin.\n\n- Point Hermes at it: `hermes config set terminal.backend cua`.\n\nStart Hermes as usual. The first Space takes a few minutes while Cua downloads the machine image; after that it’s quick. The plugin waits up to 600 seconds for a new Space by default. To check it worked, ask Hermes to run `hostname` — you’ll see the Space’s name, not your computer’s.\n\nWant Hermes running on autopilot, safely? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant Hermes working safely on its own computer? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Throwaway computers: every job starts clean\n\nBy default the plugin makes a fresh Space for each Hermes run, named `hermes-<task>-<random>`. It does the job there and deletes the Space when Hermes finishes. There’s no leftover junk from yesterday and no weird settings an old job changed.\n\nIt also means two Hermes runs at once get two separate Spaces and never touch each other’s files, so you can run as many as your machine can hold. Picture an SEO agent checking a client site in one Space while a video agent works in another — neither gets in the other’s way.\n\nSetting\nWhat happens\n\nspace: create (default)\nA new Space each run, deleted afterwards\n\ndelete_on_exit: false\nOne reusable Space called hermes-default, so files survive between sessions\n\nspace: my-box\nUses your named Space and never deletes it — Hermes keeps its risky-command prompts there\n\n## Watch Hermes live and take over\n\nOpen the Cua Spaces app and click the Space to see its screen live while Hermes works. In a terminal, `cua spaces ls` lists your Spaces and `cua viewer` opens a browser viewer for all of them. You can click in the viewer to take over the mouse, and Hermes keeps working next to you.\n\nMost agents give you a result with no idea what happened in the middle. With a Space you can actually watch: did it take the right steps, or get stuck and guess? It’s like sitting next to a new hire and grabbing the mouse for a second to show them where the button is.\n\n## Put Spaces on any computer you want\n\nA Space can live on your own laptop, another machine you own or your Cua cloud account. The plugin’s own example is a spare Mac mini: `hermes config set plugins.entries.cua-spaces.settings.on \"spare mac mini\"`. That old computer in your drawer can become the place your agent works, while your main laptop stays free.\n\nFor Windows Spaces, set `image` to `windows` or point the plugin at a Windows Space you created. Cua notes that a Windows Space on an Apple Silicon Mac runs by emulation and is slow, so use an x86 machine or the cloud for real work. Cua also says its setup runs at up to 97% of native speed on Apple Silicon.\n\n## Is Hermes Cua safe and private?\n\n- With a local Space, nothing leaves your machine.\n\n- Remote Spaces go through Cua’s encrypted relay or your own network.\n\n- The plugin never stores a token or key and doesn’t copy your Hermes skills, cache or credentials into the Space.\n\n- It adds no telemetry. The cua package has its own anonymous telemetry, which you can turn off with `cua telemetry off`.\n\nA Space protects your computer, not your online accounts. Anything you log in to from inside a Space can still be changed, so keep approvals on for actions that touch email, payments or clients.\n\n## Two other ways to use Cua with Hermes\n\nYou don’t even need the plugin for these. You can give Hermes the Cua tools as an MCP server (`cua mcp`) so it can create, drive and delete Spaces itself. Or you can run Hermes itself inside a Space with `cua agent create`, so the agent, its keys and its tools all stay in the box. For the bigger picture, see my Hermes Agent sandbox guide.\n\n## My verdict on Hermes Cua\n\nFor years the question with agents was “how much do I trust it on my computer?” Hermes Cua lets you skip that question: the agent gets its own computer, you can watch or help, and the computer disappears when the job is done. If you want Hermes doing real work without babysitting it, Hermes Cua is the setup to try.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes cua\n\n### What is Hermes Cua?\n\nA free, MIT-licensed plugin from Cua (hermes-cua-spaces) that runs Hermes Agent’s terminal, file and code tools inside an isolated Cua Space instead of on your computer.\n\n### How do I install Hermes Cua?\n\nInstall Cua, run hermes plugins install https://github.com/trycua/hermes-cua-spaces, then hermes config set terminal.backend cua.\n\n### Does Hermes still ask for approval inside a Cua Space?\n\nNot for Spaces the plugin creates, because they’re disposable. On a Space you named yourself, Hermes keeps asking before risky commands.\n\n### Can I watch Hermes work in a Cua Space?\n\nYes — open the Cua Spaces app or run cua viewer, and you can take over the mouse at any time.\n\n### Is Hermes Cua free?\n\nThe plugin is free and open source. Local Spaces are free to run; cloud Spaces use your Cua account.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Agent Sandbox\n\n- Hermes Computer Use\n\n- Hermes Bot Screen\n\nLast updated October 2026. This page is a living guide to hermes cua — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/hermes-cua/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-cua",
+      "author": "Clawdbot",
+      "published": "2026-10-23T00:39:50",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "As first announced on [Social](/?date=2026-10-23&category=social#item-e3665b446521) yesterday, Introduces 'Hermes Cua', a free plugin that executes Hermes' terminal and file-related commands within isolated Cua Spaces, ensuring host machine safety.",
+      "importance_score": 42,
+      "reasoning": "Addresses crucial safety and sandboxing concerns, allowing complex operations without risking the host system.",
+      "themes": [
+        "security",
+        "sandboxing"
+      ],
+      "continuation": {
+        "original_item_id": "e3665b446521",
+        "original_date": "2026-10-23",
+        "original_category": "social",
+        "original_title": "Your team and your Hermes can now share a computer.\n\nThe new @trycua Spaces plugin gives Hermes its ...",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As first announced on **Social** yesterday"
+      },
+      "summary_html": "<p>As first announced on <a href=\"/?date=2026-10-23&amp;category=social#item-e3665b446521\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> yesterday, Introduces 'Hermes Cua', a free plugin that executes Hermes' terminal and file-related commands within isolated Cua Spaces, ensuring host machine safety.</p>",
+      "content_html": "<p>Hermes Cua is the new free plugin that gives Hermes Agent its own computer. Built by Cua, <code>hermes-cua-spaces</code> sends every terminal command, file write and code run into a Cua Space. A Space is an isolated Linux, macOS or Windows machine on your laptop, another machine you own or the cloud, and by default it’s deleted when the job is done. Your laptop never gets touched. In the video below I walk through how Cua Spaces work, the 3-step setup and how to watch Hermes work live. Here’s the full breakdown.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Hermes Cua runs Hermes’ terminal, file and code tools inside a Cua Space.</li>\n</ul>\n<ul>\n<li>Spaces can be Linux, macOS or Windows: local, on another machine or in the cloud.</li>\n</ul>\n<ul>\n<li>By default each run gets a fresh Space that’s deleted afterwards.</li>\n</ul>\n<ul>\n<li>Free and MIT-licensed. Claim a free strategy session for help setting it up.</li>\n</ul>\n<h2>What Hermes Cua does</h2>\n<p>Normally, when you give Hermes a job, it works on your computer — your files, your folders, your apps. Most days that’s fine. But every so often an agent runs a command it shouldn’t: it deletes the wrong folder, fills your drive or installs something you never asked for. So Hermes asks before anything risky, and you end up clicking “yes” over and over. That means you can’t walk away.</p>\n<p>The hermes-cua-spaces plugin removes that trade-off. Hermes still runs where it always has, but when it needs to run a command, write a file or execute code, that work happens in the Space instead of on your machine. Because the Space is the sandbox, Hermes skips its risky-command prompts for Spaces the plugin creates. The agent gets more freedom, and you get more safety.</p>\n<p>Hermes Cua at a glance</p>\n<p>Plugin</p>\n<p>hermes-cua-spaces, by Cua</p>\n<p>Licence</p>\n<p>MIT (free)</p>\n<p>What moves into the Space</p>\n<p>Terminal commands, file reads and writes, code runs</p>\n<p>Space types</p>\n<p>Linux (Ubuntu with a desktop), Windows, macOS</p>\n<p>Where Spaces live</p>\n<p>Your laptop, another machine you own, or your Cua cloud account</p>\n<p>Default behaviour</p>\n<p>A fresh Space per run, deleted when Hermes finishes</p>\n<p>Cua project</p>\n<p>trycua/cua — open source, 30,000+ GitHub stars, backed by Y Combinator</p>\n<h2>How to set up Hermes Cua in 3 steps</h2>\n<ul>\n<li>Install Cua and sign in: <code>curl -fsSL https://cua.ai/install.sh | sh</code> then <code>cua auth login</code>. Sign-in is only needed for Spaces on your cua.ai account; a local Space needs none.</li>\n</ul>\n<ul>\n<li>Install the plugin: <code>hermes plugins install https://github.com/trycua/hermes-cua-spaces</code>. Say yes to the one Python package ( <code>cua</code>) and to enabling the plugin.</li>\n</ul>\n<ul>\n<li>Point Hermes at it: <code>hermes config set terminal.backend cua</code>.</li>\n</ul>\n<p>Start Hermes as usual. The first Space takes a few minutes while Cua downloads the machine image; after that it’s quick. The plugin waits up to 600 seconds for a new Space by default. To check it worked, ask Hermes to run <code>hostname</code> — you’ll see the Space’s name, not your computer’s.</p>\n<p>Want Hermes running on autopilot, safely? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes working safely on its own computer? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Throwaway computers: every job starts clean</h2>\n<p>By default the plugin makes a fresh Space for each Hermes run, named <code>hermes--</code>. It does the job there and deletes the Space when Hermes finishes. There’s no leftover junk from yesterday and no weird settings an old job changed.</p>\n<p>It also means two Hermes runs at once get two separate Spaces and never touch each other’s files, so you can run as many as your machine can hold. Picture an SEO agent checking a client site in one Space while a video agent works in another — neither gets in the other’s way.</p>\n<p>Setting</p>\n<p>What happens</p>\n<p>space: create (default)</p>\n<p>A new Space each run, deleted afterwards</p>\n<p>delete_on_exit: false</p>\n<p>One reusable Space called hermes-default, so files survive between sessions</p>\n<p>space: my-box</p>\n<p>Uses your named Space and never deletes it — Hermes keeps its risky-command prompts there</p>\n<h2>Watch Hermes live and take over</h2>\n<p>Open the Cua Spaces app and click the Space to see its screen live while Hermes works. In a terminal, <code>cua spaces ls</code> lists your Spaces and <code>cua viewer</code> opens a browser viewer for all of them. You can click in the viewer to take over the mouse, and Hermes keeps working next to you.</p>\n<p>Most agents give you a result with no idea what happened in the middle. With a Space you can actually watch: did it take the right steps, or get stuck and guess? It’s like sitting next to a new hire and grabbing the mouse for a second to show them where the button is.</p>\n<h2>Put Spaces on any computer you want</h2>\n<p>A Space can live on your own laptop, another machine you own or your Cua cloud account. The plugin’s own example is a spare Mac mini: <code>hermes config set plugins.entries.cua-spaces.settings.on \"spare mac mini\"</code>. That old computer in your drawer can become the place your agent works, while your main laptop stays free.</p>\n<p>For Windows Spaces, set <code>image</code> to <code>windows</code> or point the plugin at a Windows Space you created. Cua notes that a Windows Space on an Apple Silicon Mac runs by emulation and is slow, so use an x86 machine or the cloud for real work. Cua also says its setup runs at up to 97% of native speed on Apple Silicon.</p>\n<h2>Is Hermes Cua safe and private?</h2>\n<ul>\n<li>With a local Space, nothing leaves your machine.</li>\n</ul>\n<ul>\n<li>Remote Spaces go through Cua’s encrypted relay or your own network.</li>\n</ul>\n<ul>\n<li>The plugin never stores a token or key and doesn’t copy your Hermes skills, cache or credentials into the Space.</li>\n</ul>\n<ul>\n<li>It adds no telemetry. The cua package has its own anonymous telemetry, which you can turn off with <code>cua telemetry off</code>.</li>\n</ul>\n<p>A Space protects your computer, not your online accounts. Anything you log in to from inside a Space can still be changed, so keep approvals on for actions that touch email, payments or clients.</p>\n<h2>Two other ways to use Cua with Hermes</h2>\n<p>You don’t even need the plugin for these. You can give Hermes the Cua tools as an MCP server (<code>cua mcp</code>) so it can create, drive and delete Spaces itself. Or you can run Hermes itself inside a Space with <code>cua agent create</code>, so the agent, its keys and its tools all stay in the box. For the bigger picture, see my Hermes Agent sandbox guide.</p>\n<h2>My verdict on Hermes Cua</h2>\n<p>For years the question with agents was “how much do I trust it on my computer?” Hermes Cua lets you skip that question: the agent gets its own computer, you can watch or help, and the computer disappears when the job is done. If you want Hermes doing real work without babysitting it, Hermes Cua is the setup to try.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes cua</h2>\n<h3>What is Hermes Cua?</h3>\n<p>A free, MIT-licensed plugin from Cua (hermes-cua-spaces) that runs Hermes Agent’s terminal, file and code tools inside an isolated Cua Space instead of on your computer.</p>\n<h3>How do I install Hermes Cua?</h3>\n<p>Install Cua, run hermes plugins install https://github.com/trycua/hermes-cua-spaces, then hermes config set terminal.backend cua.</p>\n<h3>Does Hermes still ask for approval inside a Cua Space?</h3>\n<p>Not for Spaces the plugin creates, because they’re disposable. On a Space you named yourself, Hermes keeps asking before risky commands.</p>\n<h3>Can I watch Hermes work in a Cua Space?</h3>\n<p>Yes — open the Cua Spaces app or run cua viewer, and you can take over the mouse at any time.</p>\n<h3>Is Hermes Cua free?</h3>\n<p>The plugin is free and open source. Local Spaces are free to run; cloud Spaces use your Cua account.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent Sandbox</li>\n</ul>\n<ul>\n<li>Hermes Computer Use</li>\n</ul>\n<ul>\n<li>Hermes Bot Screen</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes cua — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-22&category=research#item-hn-49977400) yesterday, Discusses the operational challenges of deploying Hermes Agent on Kubernetes, specifically noting the lack of a standard Helm chart and the requirement for root privileges during initialization.",
+      "importance_score": 40,
+      "reasoning": "Critical information for enterprise users planning production deployments within container orchestration systems.",
+      "themes": [
+        "infrastructure_challenges",
+        "enterprise_deployment"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-10-22",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Discusses the operational challenges of deploying Hermes Agent on Kubernetes, specifically noting the lack of a standard Helm chart and the requirement for root privileges during initialization.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Details the launch of 'Refine Cycle', an open-source plugin engineered to introduce self-improvement capabilities into the operational framework of the Hermes Agent.",
+      "importance_score": 80.0,
+      "reasoning": "Moves the agent closer to achieving higher levels of autonomy and iterative capability.",
+      "themes": [
+        "agent_autonomy",
+        "self_improvement"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Details the launch of 'Refine Cycle', an open-source plugin engineered to introduce self-improvement capabilities into the operational framework of the Hermes Agent.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-50131496",
+      "title": "Hermes Agent: My containerized take",
+      "content": "Hermes Agent: My containerized take",
+      "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+      "author": "ricardodevries",
+      "published": "2026-10-17T14:27:11Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A practical guide or personal tutorial detailing the process and experience of running the Hermes Agent within a containerized environment.",
+      "importance_score": 75.0,
+      "reasoning": "Provides essential operational knowledge for developers and users looking to deploy the agent locally or in restricted environments.",
+      "themes": [
+        "deployment_optimization"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A practical guide or personal tutorial detailing the process and experience of running the Hermes Agent within a containerized environment.</p>",
+      "content_html": "<p>Hermes Agent: My containerized take</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Documentation update for Hermes Kanban, specifically outlining its features related to multi-agent profile collaboration and workflow management.",
+      "importance_score": 75.0,
+      "reasoning": "Crucial update for scaling projects that require coordinated work between multiple specialized agent profiles.",
+      "themes": [
+        "multi_agent_systems",
+        "workflow_management"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Documentation update for Hermes Kanban, specifically outlining its features related to multi-agent profile collaboration and workflow management.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A community status update noting the vast and growing volume of open pull requests (over 23,000) in the Hermes Agent codebase, signaling intense development activity.",
+      "importance_score": 75.0,
+      "reasoning": "Indicates a highly active, complex, and evolving open-source project base.",
+      "themes": [
+        "development_activity",
+        "open_source_growth"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A community status update noting the vast and growing volume of open pull requests (over 23,000) in the Hermes Agent codebase, signaling intense development activity.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Document update confirming that Hermes Agent has integrated support for utilizing Claude Pro/Max subscriptions via a specific direct SDK plugin.",
+      "importance_score": 70.0,
+      "reasoning": "Important feature update for users who wish to leverage premium models with the Hermes Agent framework.",
+      "themes": [
+        "provider_integration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Document update confirming that Hermes Agent has integrated support for utilizing Claude Pro/Max subscriptions via a specific direct SDK plugin.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Describes a platform using a Claude Code plugin to query and derive insights from a vast database of earnings call embeddings.",
+      "importance_score": 70.0,
+      "reasoning": "Demonstrates sophisticated, specialized use cases for combining LLMs with large, structured proprietary datasets.",
+      "themes": [
+        "data_retrieval",
+        "specialized_applications"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Describes a platform using a Claude Code plugin to query and derive insights from a vast database of earnings call embeddings.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Describes an experimental setup where the Hermes Agent client is successfully run on a specialized Arduino UNO Q board, demonstrating hardware adaptability.",
+      "importance_score": 65.0,
+      "reasoning": "Illustrates the potential for edge computing and extreme hardware integration for AI agents.",
+      "themes": [
+        "edge_computing",
+        "hardware_integration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Describes an experimental setup where the Hermes Agent client is successfully run on a specialized Arduino UNO Q board, demonstrating hardware adaptability.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A technical discussion regarding the architectural necessity of an external model router to maintain the functionality of the Hermes Agent.",
+      "importance_score": 65.0,
+      "reasoning": "Identifies critical architectural dependencies and design constraints for scaling agent operations.",
+      "themes": [
+        "system_architecture",
+        "system_dependencies"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A technical discussion regarding the architectural necessity of an external model router to maintain the functionality of the Hermes Agent.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user reports an issue where their Hermes Agent, running on a headless Debian server with the GLM 5.3 Flash model, began exhibiting erratic or trance-like behavior after executing environment commands.",
+      "importance_score": 60.0,
+      "reasoning": "Highlights current behavioral limitations and potential instability when agents operate in deep system contexts.",
+      "themes": [
+        "agent_reliability",
+        "troubleshooting"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user reports an issue where their Hermes Agent, running on a headless Debian server with the GLM 5.3 Flash model, began exhibiting erratic or trance-like behavior after executing environment commands.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-50197497",
+      "title": "ClusterMob – a community registry of Hermes Agent profiles",
+      "content": "ClusterMob – a community registry of Hermes Agent profiles",
+      "url": "https://clustermob.com/",
+      "author": "k_sze",
+      "published": "2026-10-22T16:19:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The announcement of ClusterMob, a dedicated community resource serving as a registry for various Hermes Agent profiles.",
+      "importance_score": 55.0,
+      "reasoning": "Useful for community resource sharing, though it is primarily an organizational tool rather than a technical breakthrough.",
+      "themes": [
+        "community_resources"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The announcement of ClusterMob, a dedicated community resource serving as a registry for various Hermes Agent profiles.</p>",
+      "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+    },
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A standard announcement regarding the release of Hermes Agent version 0.20.0.",
+      "importance_score": 50.0,
+      "reasoning": "Routine version update, indicating ongoing maintenance and iterative improvement.",
+      "themes": [
+        "product_update"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A standard announcement regarding the release of Hermes Agent version 0.20.0.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A general promotional announcement emphasizing the Hermes Agent's nature as a customizable, open-source AI companion intended to evolve with its users.",
+      "importance_score": 45.0,
+      "reasoning": "Primarily marketing in nature, offering low technical depth but high visibility for the project's mission.",
+      "themes": [
+        "product_vision"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A general promotional announcement emphasizing the Hermes Agent's nature as a customizable, open-source AI companion intended to evolve with its users.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal reflection by a user discussing their experience and perceived misapplication of the Hermes Agent.",
+      "importance_score": 40.0,
+      "reasoning": "Low technical impact, serving as general user feedback and advice.",
+      "themes": [
+        "user_experience"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal reflection by a user discussing their experience and perceived misapplication of the Hermes Agent.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Reports a moderation event within the Hermes Agent repository issues where a question concerning specific technology was removed or blocked.",
+      "importance_score": 30.0,
+      "reasoning": "Primarily an observation of moderation policies rather than a technical development.",
+      "themes": [
+        "community_standards"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Reports a moderation event within the Hermes Agent repository issues where a question concerning specific technology was removed or blocked.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user inquiry concerning the linguistic and legal distinctions regarding the Hermes Agent name versus the established Hermès trademark.",
+      "importance_score": 20.0,
+      "reasoning": "Minimal technical relevance, purely a legal and linguistic query.",
+      "themes": [
+        "naming_issues"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user inquiry concerning the linguistic and legal distinctions regarding the Hermes Agent name versus the established Hermès trademark.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    }
+  ],
+  "notice": {
+    "type": "info",
+    "title": "Weekend Edition",
+    "message": "arXiv papers are not collected on weekends. Any weekend papers will be included in Monday's report."
+  }
+}

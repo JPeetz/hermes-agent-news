@@ -1,0 +1,642 @@
+{
+  "category": "research",
+  "date": "2026-11-03",
+  "category_summary": "This section is anchored by first-party capability news: official docs now cover routing Hermes Agent through **[Claude Pro/Max](/?date=2026-11-03&category=research#item-hn-49790991)** subscriptions and the new **[Hermes Kanban](/?date=2026-11-03&category=research#item-hn-49604068)** multi-agent profile collaboration — both immediately actionable for users. Project health and traction bracket the ecosystem: a [~23,000 open-PR backlog](/?date=2026-11-03&category=research#item-hn-49424643) on the core repo raises maintainer-capacity questions, while YC-backed **[Almanac](/?date=2026-11-03&category=research#item-hn-49511007)** and third-party builds like the **[verso](/?date=2026-11-03&category=research#item-hn-49628094)** orchestrator signal commercial and builder momentum. Deployment is the most practical cluster: guides flag the missing official **[Helm](/?date=2026-11-03&category=research#item-hn-49977400)** chart and the root-at-init container image on Kubernetes, alongside [containerization patterns](/?date=2026-11-03&category=research#item-hn-50131496) for self-hosters. Access and operations improved via the **[Paper Harness](/?date=2026-11-03&category=research#item-hn-50278175)** SwiftUI iPhone client (App Store) and a **[Grafana](/?date=2026-11-03&category=research#item-hn-49318128)** observability integration. Security and reliability coverage includes the **[hermes-jekyl-hyde](/?date=2026-11-03&category=research#item-hn-49231797)** adversarial reversal research, a real-world [failure case on Z.ai's GLM 5.3 Flash](/?date=2026-11-03&category=research#item-hn-49916751), plus [post-mortems on misuse](/?date=2026-11-03&category=research#item-hn-49628740) and a [community thread on coordinating many personal agents](/?date=2026-11-03&category=research#item-hn-50326764) — a gap **Kanban** partially addresses. Research depth comes from **[MAServeBench](/?date=2026-11-03&category=research#item-2610.40293)**, benchmarking multi-agent LLM serving under hierarchical collaboration workloads. Excluded as off-target: xAI **Grok Bot** install guides, a Claude Code earnings-call plugin, a promotional project intro, and a Hermès trademark discussion.",
+  "category_summary_html": "<p>This section is anchored by first-party capability news: official docs now cover routing Hermes Agent through <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscriptions and the new <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> multi-agent profile collaboration — both immediately actionable for users. Project health and traction bracket the ecosystem: a <a href=\"/?date=2026-11-03&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open-PR backlog</a> on the core repo raises maintainer-capacity questions, while YC-backed <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac</a></strong> and third-party builds like the <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong> orchestrator signal commercial and builder momentum. Deployment is the most practical cluster: guides flag the missing official <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm</a></strong> chart and the root-at-init container image on Kubernetes, alongside <a href=\"/?date=2026-11-03&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerization patterns</a> for self-hosters. Access and operations improved via the <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Paper Harness</a></strong> SwiftUI iPhone client (App Store) and a <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> observability integration. Security and reliability coverage includes the <strong><a href=\"/?date=2026-11-03&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-jekyl-hyde</a></strong> adversarial reversal research, a real-world <a href=\"/?date=2026-11-03&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">failure case on Z.ai's GLM 5.3 Flash</a>, plus <a href=\"/?date=2026-11-03&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">post-mortems on misuse</a> and a <a href=\"/?date=2026-11-03&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">community thread on coordinating many personal agents</a> — a gap <strong>Kanban</strong> partially addresses. Research depth comes from <strong><a href=\"/?date=2026-11-03&amp;category=research#item-2610.40293\" class=\"internal-link\" rel=\"noopener noreferrer\">MAServeBench</a></strong>, benchmarking multi-agent LLM serving under hierarchical collaboration workloads. Excluded as off-target: xAI <strong>Grok Bot</strong> install guides, a Claude Code earnings-call plugin, a promotional project intro, and a Hermès trademark discussion.</p>",
+  "themes": [
+    {
+      "name": "Hermes Agent ecosystem tooling and plugins",
+      "description": "A wave of third-party and official extensions around Hermes Agent: mobile clients, registries, orchestrators, observability dashboards, and self-improvement plugins, indicating an active builder community.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Project health and commercial traction",
+      "description": "A 23k open-PR backlog, a YC-funded startup built on Hermes, and official features like Claude subscription support show both strain and momentum in the project's growth.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Deployment and self-hosting",
+      "description": "Containerization, Kubernetes gaps (no Helm chart, root-at-init), and unconventional hosts like the Arduino UNO Q, reflecting strong demand for robust self-hosting guidance.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Multi-agent orchestration and collaboration",
+      "description": "User demand for coordinating many personal agents, Hermes Kanban profile collaboration, and the MAServeBench serving benchmark all point to multi-agent workloads as a defining pattern.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Reliability, security, and adversarial behavior",
+      "description": "Reports of an agent spiraling into long thinking states, a container image needing root, adversarial reversal research, and Grok Bot's ask-by-default local command gating highlight safety and observability concerns.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Competitor agent platforms",
+      "description": "Three detailed Grok Bot platform guides (Linux, Windows, iOS) document xAI's cloud-computer-based desktop agent, useful competitive context for Hermes Agent's distribution model.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 30.0
+    }
+  ],
+  "total_items": 24,
+  "items": [
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As first reported in [Research](/?date=2026-11-01&category=research#item-hn-49790991) yesterday, Official Hermes Agent documentation page announcing support for Claude Pro/Max subscriptions via a plugin using the Claude subscription direct SDK, letting subscribers use their existing plan with the agent.",
+      "importance_score": 36,
+      "reasoning": "A significant official capability change: routing Hermes Agent through Claude consumer subscriptions lowers the cost barrier for a large user base and signals deepening integration with Anthropic's ecosystem.",
+      "themes": [
+        "Official features",
+        "Model providers"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As first reported in **Research** yesterday"
+      },
+      "summary_html": "<p>As first reported in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official Hermes Agent documentation page announcing support for Claude Pro/Max subscriptions via a plugin using the Claude subscription direct SDK, letting subscribers use their existing plan with the agent.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this in [Research](/?date=2026-11-01&category=research#item-hn-49604068) yesterday, Official Hermes Agent documentation describing the Kanban feature, which enables collaboration between multiple Hermes agent profiles through a kanban-style workflow.",
+      "importance_score": 35,
+      "reasoning": "First-party multi-agent profile coordination is a core capability for the platform, directly relevant to the broader demand for agent orchestration visible elsewhere in this batch.",
+      "themes": [
+        "Official features",
+        "Multi-agent orchestration"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official Hermes Agent documentation describing the Kanban feature, which enables collaboration between multiple Hermes agent profiles through a kanban-style workflow.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-01&category=research#item-hn-49424643) yesterday, An HN post noting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and rising, pointing to an unmerged-contributions backlog.",
+      "importance_score": 34,
+      "reasoning": "A 23k open-PR backlog is a significant signal about maintainer capacity, review processes, and project governance for a fast-growing open-source agent; it affects contributor morale and merge latency.",
+      "themes": [
+        "Project governance",
+        "Open source health"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, An HN post noting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and rising, pointing to an unmerged-contributions backlog.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-50278175",
+      "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+      "author": "yourfavdev",
+      "published": "2026-10-28T18:04:37Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "First covered in [Research](/?date=2026-11-01&category=research#item-hn-50278175) yesterday, A Show HN launch of Hermes Paper Harness, a native SwiftUI iPhone client for Hermes Agent, distributed via the Apple App Store.",
+      "importance_score": 32,
+      "reasoning": "A native mobile client materially expands how Hermes Agent is accessed day to day, and a shipped App Store app represents concrete ecosystem maturity beyond CLI-only usage.",
+      "themes": [
+        "Mobile clients",
+        "Ecosystem tooling"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50278175",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "First covered in **Research** yesterday"
+      },
+      "summary_html": "<p>First covered in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Show HN launch of Hermes Paper Harness, a native SwiftUI iPhone client for Hermes Agent, distributed via the Apple App Store.</p>",
+      "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As we reported in [Research](/?date=2026-11-01&category=research#item-hn-49977400) yesterday, A blog post documenting two friction points when running Hermes Agent on Kubernetes: the project ships no official Helm chart, and the container image requires root privileges during initialization, complicating hardened cluster deployments.",
+      "importance_score": 32,
+      "reasoning": "Identifies concrete, actionable gaps (missing Helm chart, root-at-init requirement) that affect enterprise adoption and security posture; the root requirement is a real security-relevant defect worth tracking.",
+      "themes": [
+        "Kubernetes deployment",
+        "Security hardening"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As we reported in **Research** yesterday"
+      },
+      "summary_html": "<p>As we reported in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A blog post documenting two friction points when running Hermes Agent on Kubernetes: the project ships no official Helm chart, and the container image requires root privileges during initialization, complicating hardened cluster deployments.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this in [Research](/?date=2026-11-01&category=research#item-hn-49628094) yesterday, A Show HN launch of verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise, now uses it daily for work, and built it to provide an easier, more intuitive interface than the Hermes CLI.",
+      "importance_score": 31,
+      "reasoning": "A production-quality third-party UI/orchestration layer built on Hermes demonstrates ecosystem traction and addresses a known UX gap (CLI-first interaction), though details are mostly narrative.",
+      "themes": [
+        "Ecosystem tooling",
+        "Multi-agent orchestration"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Show HN launch of verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise, now uses it daily for work, and built it to provide an easier, more intuitive interface than the Hermes CLI.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As first reported in [Research](/?date=2026-11-01&category=research#item-hn-49511007) yesterday, A YC S26 launch for Almanac, described as a Hermes with a brain that knows everything about your company. The founders describe their painful journey self-hosting Hermes for their own company, including setup difficulty and building OAuth connectors for every integration themselves, motivating the product.",
+      "importance_score": 31,
+      "reasoning": "A funded startup building directly on Hermes Agent validates the platform commercially, and the founders' pain points (setup complexity, connector/OAuth burden) are actionable product feedback for the core project.",
+      "themes": [
+        "Startup ecosystem",
+        "Enterprise deployment"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49511007",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As first reported in **Research** yesterday"
+      },
+      "summary_html": "<p>As first reported in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A YC S26 launch for Almanac, described as a Hermes with a brain that knows everything about your company. The founders describe their painful journey self-hosting Hermes for their own company, including setup difficulty and building OAuth connectors for every integration themselves, motivating the product.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-50131496",
+      "title": "Hermes Agent: My containerized take",
+      "content": "Hermes Agent: My containerized take",
+      "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+      "author": "ricardodevries",
+      "published": "2026-10-17T14:27:11Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-01&category=research#item-hn-50131496) yesterday, A blog post presenting the author's containerized deployment approach for Hermes Agent, sharing a personal setup pattern for running the agent in containers.",
+      "importance_score": 30,
+      "reasoning": "Practical self-hosting guidance in an area many users struggle with; containerization writeups are commonly referenced deployment knowledge for agent operators.",
+      "themes": [
+        "Deployment",
+        "Containerization"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50131496",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Hermes Agent: My containerized take",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A blog post presenting the author's containerized deployment approach for Hermes Agent, sharing a personal setup pattern for running the agent in containers.</p>",
+      "content_html": "<p>Hermes Agent: My containerized take</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this in [Research](/?date=2026-11-01&category=research#item-hn-49318128) yesterday, A Show HN post for an open-source Grafana-based observability integration for Hermes Agent, hosted on GitHub, enabling dashboards and monitoring of agent activity.",
+      "importance_score": 30,
+      "reasoning": "Observability is a frequently requested operational capability for long-running agents; a dedicated Grafana integration fills a real gap for self-hosters and complements the reliability discussion elsewhere in the batch.",
+      "themes": [
+        "Observability",
+        "Ecosystem tooling"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Show HN post for an open-source Grafana-based observability integration for Hermes Agent, hosted on GitHub, enabling dashboards and monitoring of agent activity.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As first reported in [Research](/?date=2026-11-01&category=research#item-hn-49916751) yesterday, An Ask HN troubleshooting post describing a freshly provisioned Hermes Agent on a headless Debian server using Z.ai's GLM 5.3 Flash model. When asked to print local environment details and PATH, the agent ran terminal commands then entered a long trance-like thinking state (~1m36s) producing a long string of odd output; the author shares the thinking-block contents asking whether it means anything.",
+      "importance_score": 58.0,
+      "reasoning": "A real-world reliability and observability failure case tied to Hermes Agent, useful for diagnosing model-driven loop behavior and for understanding how output verbosity from certain models affects the agent; the reported state is anecdotal and unresolved.",
+      "themes": [
+        "Reliability and debugging",
+        "Model compatibility"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49916751",
+        "original_date": "2026-11-01",
+        "original_category": "research",
+        "original_title": "Ask HN: My agent went haywire, does this output mean anything?",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As first reported in **Research** yesterday"
+      },
+      "summary_html": "<p>As first reported in <a href=\"/?date=2026-11-01&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, An Ask HN troubleshooting post describing a freshly provisioned Hermes Agent on a headless Debian server using Z.ai's GLM 5.3 Flash model. When asked to print local environment details and PATH, the agent ran terminal commands then entered a long trance-like thinking state (~1m36s) producing a long string of odd output; the author shares the thinking-block contents asking whether it means anything.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A retrospective blog post in which the author reflects on misunderstandings or mistakes in how they used Hermes Agent and shares lessons learned from correcting their approach.",
+      "importance_score": 58.0,
+      "reasoning": "Post-mortem-style user experience content is valuable for onboarding and reveals common misuse patterns, though the linked summary offers limited technical specifics.",
+      "themes": [
+        "User workflows",
+        "Lessons learned"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A retrospective blog post in which the author reflects on misunderstandings or mistakes in how they used Hermes Agent and shares lessons learned from correcting their approach.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository titled hermes-jekyl-hyde presenting an adversarial LLM reversal technique targeting hermes-agent, presumably probing or attempting to flip the agent's behavior.",
+      "importance_score": 57.0,
+      "reasoning": "Security research directed at Hermes Agent is inherently relevant; adversarial prompting/reversal work informs prompt-injection and safety hardening, though the summary provides no validated findings.",
+      "themes": [
+        "Security and adversarial testing",
+        "Agent safety"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository titled hermes-jekyl-hyde presenting an adversarial LLM reversal technique targeting hermes-agent, presumably probing or attempting to flip the agent's behavior.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-50326764",
+      "title": "Ask HN: How do you manage your personal agents?",
+      "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+      "url": "https://news.ycombinator.com/item?id=50326764",
+      "author": "kevinlu310",
+      "published": "2026-11-01T15:51:22Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread about coordinating many personal agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex). The author runs each separately and manually copies identical prompts between agents to compare responses, asking for better coordination approaches.",
+      "importance_score": 55.0,
+      "reasoning": "Directly mentions Hermes Agent in a real user workflow and highlights a genuine gap in multi-agent orchestration tooling, but it is an open question rather than a solution or documentation.",
+      "themes": [
+        "Multi-agent orchestration",
+        "User workflows"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread about coordinating many personal agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex). The author runs each separately and manually copies identical prompts between agents to compare responses, asking for better coordination approaches.</p>",
+      "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+    },
+    {
+      "id": "hn-50197497",
+      "title": "ClusterMob – a community registry of Hermes Agent profiles",
+      "content": "ClusterMob – a community registry of Hermes Agent profiles",
+      "url": "https://clustermob.com/",
+      "author": "k_sze",
+      "published": "2026-10-22T16:19:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Show HN post introducing ClusterMob, a community-run registry where users can publish and discover Hermes Agent profiles.",
+      "importance_score": 55.0,
+      "reasoning": "A shared registry for agent profiles points toward network effects and discoverability in the Hermes ecosystem, though the post itself is a bare link with limited technical detail.",
+      "themes": [
+        "Community ecosystem",
+        "Agent profiles"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Show HN post introducing ClusterMob, a community-run registry where users can publish and discover Hermes Agent profiles.</p>",
+      "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Show HN post for Refine Cycle, an open-source plugin on GitHub that adds a self-improvement loop to Hermes Agent, presumably letting the agent critique and refine its own behavior over iterations.",
+      "importance_score": 55.0,
+      "reasoning": "Self-improvement plugins extend Hermes Agent's plugin architecture in a technically interesting direction, but effectiveness and safety of such loops are unproven in the post.",
+      "themes": [
+        "Plugins",
+        "Agent self-improvement"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Show HN post for Refine Cycle, an open-source plugin on GitHub that adds a self-improvement loop to Hermes Agent, presumably letting the agent critique and refine its own behavior over iterations.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A writeup describing running the Hermes Agent client on an Arduino UNO Q board, which pairs a microcontroller with a Linux side; the 4GB RAM / 32GB storage variant provides enough resources for the agent, avoiding VPS costs and personal-machine exposure.",
+      "importance_score": 55.0,
+      "reasoning": "A creative low-cost always-on self-hosting option with concrete hardware details (RAM, storage, board architecture), interesting to hobbyist deployers though niche.",
+      "themes": [
+        "Self-hosting hardware",
+        "Deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A writeup describing running the Hermes Agent client on an Arduino UNO Q board, which pairs a microcontroller with a Linux side; the 4GB RAM / 32GB storage variant provides enough resources for the agent, avoiding VPS costs and personal-machine exposure.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "2610.40293",
+      "title": "MAServeBench: Benchmarking Multi-Agent LLM Serving Systems with Hierarchical Collaboration Workloads",
+      "content": "Large language model (LLM)-based multi-agent systems (MAS) coordinate specialized agents to solve complex tasks, turning each user request into interdependent model and tool operations. Unlike independent requests, these operations become ready at different times and consume evolving context as agents coordinate and exchange results. This creates changing patterns of concurrency, computation, and memory demand that can expose different bottlenecks in LLM serving hardware. Yet benchmarking these ",
+      "url": "https://arxiv.org/abs/2610.40293",
+      "author": "HF Daily Papers",
+      "published": "2026-10-29T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An arXiv paper introducing MAServeBench, a benchmark for LLM-based multi-agent systems that models how interdependent agent and tool operations create time-varying concurrency, computation, and memory demands, exposing bottlenecks in LLM serving hardware that independent-request benchmarks miss.",
+      "importance_score": 48.0,
+      "reasoning": "Technically substantive research relevant to multi-agent infrastructure, but it is a general serving-systems benchmark with no direct connection to Hermes Agent; relevance to this batch is indirect.",
+      "themes": [
+        "Multi-agent systems",
+        "LLM serving infrastructure"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An arXiv paper introducing MAServeBench, a benchmark for LLM-based multi-agent systems that models how interdependent agent and tool operations create time-varying concurrency, computation, and memory demands, exposing bottlenecks in LLM serving hardware that independent-request benchmarks miss.</p>",
+      "content_html": "<p>Large language model (LLM)-based multi-agent systems (MAS) coordinate specialized agents to solve complex tasks, turning each user request into interdependent model and tool operations. Unlike independent requests, these operations become ready at different times and consume evolving context as agents coordinate and exchange results. This creates changing patterns of concurrency, computation, and memory demand that can expose different bottlenecks in LLM serving hardware. Yet benchmarking these</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The main Hermes Agent website posted to HN, presenting the project as an open-source AI agent that grows with the user.",
+      "importance_score": 45.0,
+      "reasoning": "Useful as a canonical project introduction and for gauging general HN reception, but it is promotional/overview material with no new technical detail.",
+      "themes": [
+        "Project overview",
+        "Community ecosystem"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The main Hermes Agent website posted to HN, presenting the project as an open-source AI agent that grows with the user.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-50340083",
+      "title": "Show HN: Hanging Context – news by an agent, for other agents",
+      "content": "Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.<p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.<p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an",
+      "url": "https://hangingcontext.com/",
+      "author": "bshivarthy",
+      "published": "2026-11-02T17:16:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Show HN post for Hanging Context, a news service authored by agents and targeted at agent readers rather than humans. The builder describes pivoting from a 2022 data/news site for wealth managers to agent-oriented distribution after observing lab licensing deals for media content.",
+      "importance_score": 40.0,
+      "reasoning": "Interesting signal about agent-consumed content as an emerging market, but it is a personal project showcase with no Hermes Agent-specific technical content.",
+      "themes": [
+        "Agent-native content",
+        "Agent economy"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Show HN post for Hanging Context, a news service authored by agents and targeted at agent readers rather than humans. The builder describes pivoting from a 2022 data/news site for wealth managers to agent-oriented distribution after observing lab licensing deals for media content.</p>",
+      "content_html": "<p>Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.</p><p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.</p><p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Solo dev showcases fn2.ai, a Claude Code plugin backed by PostgreSQL and ElasticSearch (sharded and replicated across two regions) that queries 10.6M earnings-call transcript embeddings for market questions, e.g. what NVIDIA said about data-center demand.",
+      "importance_score": 35.0,
+      "reasoning": "Well-engineered retrieval product with interesting backend details, but it targets Claude Code rather than Hermes Agent, so relevance to this batch is peripheral.",
+      "themes": [
+        "Claude Code ecosystem",
+        "RAG and embeddings"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Solo dev showcases fn2.ai, a Claude Code plugin backed by PostgreSQL and ElasticSearch (sharded and replicated across two regions) that queries 10.6M earnings-call transcript embeddings for market questions, e.g. what NVIDIA said about data-center demand.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "cc85602a639c",
+      "title": "Grok Bot Linux: Install Grok Bot on Ubuntu, Debian and Fedora",
+      "content": "Grok Bot Linux support is official: the desktop app runs on Linux x64 and Arm64 as a.deb, an.rpm or an AppImage. And here’s a detail most people miss: the cloud computer your Bots actually work on runs Linux too. Below is how to install it on Ubuntu, Debian or Fedora, how updates work through apt and dnf, how to hold a version, and the few things that behave differently on Linux, all from xAI’s official docs. My video is right under this intro.\n\nKey takeaways\n\n- Runs on Linux x64 and Arm64:.deb,.rpm or AppImage.\n\n- The.deb and.rpm add a signed package repository.\n\n- Update with `apt` or `dnf`; AppImage updates itself.\n\n- Security keys and some notification routing aren’t on Linux yet.\n\n- Want AI agents set up for your business? Claim a free strategy session.\n\n## Which Linux formats Grok Bot supports\n\nThe Grok Bot FAQ lists Linux on x64 and Arm64, as a.deb package, an.rpm package or an AppImage. Download it from x.ai/bot, the download page or the Grok Bot page of your Cursor dashboard.\n\nFormat\nBest for\nHow it updates\n\n.deb\nDebian, Ubuntu\nYour package manager (apt)\n\n.rpm\nFedora and other RPM systems\nYour package manager (dnf)\n\nAppImage\nAny distro, no install\nThe app updates itself\n\nSign in with your Cursor account through the browser; there’s no separate Grok Bot login.\n\n## Install on Ubuntu or Debian\n\nInstall the.deb with your usual tool. The deployment guide says it adds a signed apt repository at `/etc/apt/sources.list.d/grok-bot.sources`, so new versions arrive with your normal upgrades. To update by hand:\n\n```\nsudo apt update && sudo apt install --only-upgrade grok-bot\n```\n\nOn Fedora or another RPM system, the.rpm adds a signed repository at `/etc/yum.repos.d/grok-bot.repo`. Update with:\n\n```\nsudo dnf upgrade --refresh grok-bot\n```\n\nOn a.deb or.rpm install, Check for Updates in the app only tells you a new version is out; your package manager does the install. Those installs don’t show the Automatic Updates switch either.\n\nWant AI agents running on their own cloud computers for you? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Hold a version or ship your own\n\nFor managed machines the docs give two ways to control when Linux devices move:\n\n- Hold the package, such as `apt-mark hold grok-bot`, and release it when you’re ready.\n\n- Turn the repository off: `Enabled: no` in `grok-bot.sources` or `enabled=0` in `grok-bot.repo`. The package keeps your choice when it rewrites the file on upgrade. Then ship tested package files yourself.\n\nEither way, don’t fall too far behind. The troubleshooting guide says the app requires an update when your version is more than 14 days old and a newer one is out. A held package still gets the Update required screen, which on Linux shows the exact command to run with a Copy command button.\n\nFleets can install the packages with Ansible, Puppet or Chef. Linux package URLs include the release’s `commitSha`, so copy them from the `debUrl` and `rpmUrl` fields of the `linux-x64` or `linux-arm64` release feed.\n\n## The Bot’s computer runs Linux too\n\nYour Linux desktop app is a client for chat, review and approvals. The actual work happens on a hosted computer in the cloud, one per member, and the deployment guide says that computer runs Linux and isn’t enrolled in MDM.\n\nThat matters in two places:\n\n- Private networks. On Enterprise, Team Setup Scripts can install a networking client (Tailscale is one documented example) as long as it runs on Debian-based Linux and starts from a shell script.\n\n- Company sign-in. The identity and access guide notes Okta FastPass doesn’t run on Linux, so admins add a Linux-scoped rule for the Bot’s computer.\n\nPackages you install on that cloud computer by hand can be removed by a computer update or reset, so ask your Bot to keep important results in the shared workspace.\n\n## What’s different on Linux\n\nA few settings behave differently on the Linux desktop app, per xAI’s docs:\n\n- Hardware security keys: supported on macOS and Windows, not yet on Linux (per the approvals and security page).\n\n- Hardware acceleration: off by default on Linux, on by default elsewhere ( settings docs).\n\n- Notifications: on Linux they’re suppressed while Grok Bot is focused, and your phone is notified as usual. The desktop-first routing only applies to macOS and Windows.\n\n- Updates:.deb and.rpm through your package manager; AppImage updates itself.\n\nKeyboard shortcuts match Windows: `Ctrl+K` to search, `Ctrl+N` for a new Bot, `Ctrl+D` to dictate, and `Ctrl+Alt+B` for conversation details.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## If the app won’t update or connect\n\n- Fully quit Grok Bot and reopen it. The docs say most setup problems clear this way.\n\n- Run the update command for your distro, then restart the app.\n\n- If the old version keeps coming back, download the latest package and reinstall. Your Bots and chats belong to your account, so they survive a reinstall.\n\n- If the cloud computer won’t connect, wait and Retry, then try Update Bot’s Computer before Recover, and Reset last.\n\n## My verdict\n\nUse the.deb or.rpm so updates ride along with your normal upgrades, use the AppImage if you just want to try it, and remember the heavy lifting runs on the Bot’s own Linux machine in the cloud. With the setup above, Grok Bot Linux is as capable as the Mac and Windows apps.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Grok Bot Linux.\n\n## FAQ: grok bot linux\n\n### Does Grok Bot work on Linux?\n\nYes. The Grok Bot desktop app runs on Linux x64 and Arm64, as a.deb package, an.rpm package or an AppImage.\n\n### How do I update Grok Bot on Ubuntu?\n\nRun sudo apt update && sudo apt install –only-upgrade grok-bot. The.deb adds a signed apt repository, so normal package upgrades also pick up new versions.\n\n### How do I update Grok Bot on Fedora?\n\nRun sudo dnf upgrade –refresh grok-bot. The.rpm adds a signed repository at /etc/yum.repos.d/grok-bot.repo.\n\n### Can I pin a Grok Bot version on Linux?\n\nYes, for a while. Hold the package with apt-mark hold grok-bot or turn the repository off, but the app still requires an update once your version is more than 14 days old and a newer one is out.\n\n### Do hardware security keys work with Grok Bot on Linux?\n\nNot yet. xAI’s docs say the hardware security key setting is supported on macOS and Windows but not yet on Linux.\n\n### Where do Grok Bot’s Bots actually run?\n\nOn a hosted computer in the cloud, one per member, which runs Linux. The desktop app on your machine is for chat, review and approvals.\n\nReady to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Grok Bot Mac\n\n- What Is Grok Bot?\n\n- Grok Bot Email\n\nLast updated November 2026. This page is a living guide to grok bot linux — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/grok-bot-linux/?utm_source=rss&utm_medium=rss&utm_campaign=grok-bot-linux",
+      "author": "Clawdbot",
+      "published": "2026-11-02T07:10:25",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A guide to xAI's Grok Bot desktop app on Linux: x64 and Arm64 builds as .deb, .rpm, or AppImage; signed package repos for apt/dnf; self-updating AppImage; notes that security keys and some notification routing are not yet on Linux. Bots run on a cloud computer rather than locally.",
+      "importance_score": 28.0,
+      "reasoning": "Detailed and practical installation documentation, but it covers a competing product (xAI Grok Bot) with no Hermes Agent connection; useful mainly as competitive intelligence on packaged desktop-agent distribution.",
+      "themes": [
+        "Competitor platforms",
+        "Desktop agent deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A guide to xAI's Grok Bot desktop app on Linux: x64 and Arm64 builds as .deb, .rpm, or AppImage; signed package repos for apt/dnf; self-updating AppImage; notes that security keys and some notification routing are not yet on Linux. Bots run on a cloud computer rather than locally.</p>",
+      "content_html": "<p>Grok Bot Linux support is official: the desktop app runs on Linux x64 and Arm64 as a.deb, an.rpm or an AppImage. And here’s a detail most people miss: the cloud computer your Bots actually work on runs Linux too. Below is how to install it on Ubuntu, Debian or Fedora, how updates work through apt and dnf, how to hold a version, and the few things that behave differently on Linux, all from xAI’s official docs. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Runs on Linux x64 and Arm64:.deb,.rpm or AppImage.</li>\n</ul>\n<ul>\n<li>The.deb and.rpm add a signed package repository.</li>\n</ul>\n<ul>\n<li>Update with <code>apt</code> or <code>dnf</code>; AppImage updates itself.</li>\n</ul>\n<ul>\n<li>Security keys and some notification routing aren’t on Linux yet.</li>\n</ul>\n<ul>\n<li>Want AI agents set up for your business? Claim a free strategy session.</li>\n</ul>\n<h2>Which Linux formats Grok Bot supports</h2>\n<p>The Grok Bot FAQ lists Linux on x64 and Arm64, as a.deb package, an.rpm package or an AppImage. Download it from x.ai/bot, the download page or the Grok Bot page of your Cursor dashboard.</p>\n<p>Format</p>\n<p>Best for</p>\n<p>How it updates</p>\n<p>.deb</p>\n<p>Debian, Ubuntu</p>\n<p>Your package manager (apt)</p>\n<p>.rpm</p>\n<p>Fedora and other RPM systems</p>\n<p>Your package manager (dnf)</p>\n<p>AppImage</p>\n<p>Any distro, no install</p>\n<p>The app updates itself</p>\n<p>Sign in with your Cursor account through the browser; there’s no separate Grok Bot login.</p>\n<h2>Install on Ubuntu or Debian</h2>\n<p>Install the.deb with your usual tool. The deployment guide says it adds a signed apt repository at <code>/etc/apt/sources.list.d/grok-bot.sources</code>, so new versions arrive with your normal upgrades. To update by hand:</p>\n<p>```</p>\n<p>sudo apt update &amp;&amp; sudo apt install --only-upgrade grok-bot</p>\n<p>```</p>\n<p>On Fedora or another RPM system, the.rpm adds a signed repository at <code>/etc/yum.repos.d/grok-bot.repo</code>. Update with:</p>\n<p>```</p>\n<p>sudo dnf upgrade --refresh grok-bot</p>\n<p>```</p>\n<p>On a.deb or.rpm install, Check for Updates in the app only tells you a new version is out; your package manager does the install. Those installs don’t show the Automatic Updates switch either.</p>\n<p>Want AI agents running on their own cloud computers for you? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Hold a version or ship your own</h2>\n<p>For managed machines the docs give two ways to control when Linux devices move:</p>\n<ul>\n<li>Hold the package, such as <code>apt-mark hold grok-bot</code>, and release it when you’re ready.</li>\n</ul>\n<ul>\n<li>Turn the repository off: <code>Enabled: no</code> in <code>grok-bot.sources</code> or <code>enabled=0</code> in <code>grok-bot.repo</code>. The package keeps your choice when it rewrites the file on upgrade. Then ship tested package files yourself.</li>\n</ul>\n<p>Either way, don’t fall too far behind. The troubleshooting guide says the app requires an update when your version is more than 14 days old and a newer one is out. A held package still gets the Update required screen, which on Linux shows the exact command to run with a Copy command button.</p>\n<p>Fleets can install the packages with Ansible, Puppet or Chef. Linux package URLs include the release’s <code>commitSha</code>, so copy them from the <code>debUrl</code> and <code>rpmUrl</code> fields of the <code>linux-x64</code> or <code>linux-arm64</code> release feed.</p>\n<h2>The Bot’s computer runs Linux too</h2>\n<p>Your Linux desktop app is a client for chat, review and approvals. The actual work happens on a hosted computer in the cloud, one per member, and the deployment guide says that computer runs Linux and isn’t enrolled in MDM.</p>\n<p>That matters in two places:</p>\n<ul>\n<li>Private networks. On Enterprise, Team Setup Scripts can install a networking client (Tailscale is one documented example) as long as it runs on Debian-based Linux and starts from a shell script.</li>\n</ul>\n<ul>\n<li>Company sign-in. The identity and access guide notes Okta FastPass doesn’t run on Linux, so admins add a Linux-scoped rule for the Bot’s computer.</li>\n</ul>\n<p>Packages you install on that cloud computer by hand can be removed by a computer update or reset, so ask your Bot to keep important results in the shared workspace.</p>\n<h2>What’s different on Linux</h2>\n<p>A few settings behave differently on the Linux desktop app, per xAI’s docs:</p>\n<ul>\n<li>Hardware security keys: supported on macOS and Windows, not yet on Linux (per the approvals and security page).</li>\n</ul>\n<ul>\n<li>Hardware acceleration: off by default on Linux, on by default elsewhere ( settings docs).</li>\n</ul>\n<ul>\n<li>Notifications: on Linux they’re suppressed while Grok Bot is focused, and your phone is notified as usual. The desktop-first routing only applies to macOS and Windows.</li>\n</ul>\n<ul>\n<li>Updates:.deb and.rpm through your package manager; AppImage updates itself.</li>\n</ul>\n<p>Keyboard shortcuts match Windows: <code>Ctrl+K</code> to search, <code>Ctrl+N</code> for a new Bot, <code>Ctrl+D</code> to dictate, and <code>Ctrl+Alt+B</code> for conversation details.</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>If the app won’t update or connect</h2>\n<ul>\n<li>Fully quit Grok Bot and reopen it. The docs say most setup problems clear this way.</li>\n</ul>\n<ul>\n<li>Run the update command for your distro, then restart the app.</li>\n</ul>\n<ul>\n<li>If the old version keeps coming back, download the latest package and reinstall. Your Bots and chats belong to your account, so they survive a reinstall.</li>\n</ul>\n<ul>\n<li>If the cloud computer won’t connect, wait and Retry, then try Update Bot’s Computer before Recover, and Reset last.</li>\n</ul>\n<h2>My verdict</h2>\n<p>Use the.deb or.rpm so updates ride along with your normal upgrades, use the AppImage if you just want to try it, and remember the heavy lifting runs on the Bot’s own Linux machine in the cloud. With the setup above, Grok Bot Linux is as capable as the Mac and Windows apps.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Grok Bot Linux.</p>\n<h2>FAQ: grok bot linux</h2>\n<h3>Does Grok Bot work on Linux?</h3>\n<p>Yes. The Grok Bot desktop app runs on Linux x64 and Arm64, as a.deb package, an.rpm package or an AppImage.</p>\n<h3>How do I update Grok Bot on Ubuntu?</h3>\n<p>Run sudo apt update &amp;&amp; sudo apt install –only-upgrade grok-bot. The.deb adds a signed apt repository, so normal package upgrades also pick up new versions.</p>\n<h3>How do I update Grok Bot on Fedora?</h3>\n<p>Run sudo dnf upgrade –refresh grok-bot. The.rpm adds a signed repository at /etc/yum.repos.d/grok-bot.repo.</p>\n<h3>Can I pin a Grok Bot version on Linux?</h3>\n<p>Yes, for a while. Hold the package with apt-mark hold grok-bot or turn the repository off, but the app still requires an update once your version is more than 14 days old and a newer one is out.</p>\n<h3>Do hardware security keys work with Grok Bot on Linux?</h3>\n<p>Not yet. xAI’s docs say the hardware security key setting is supported on macOS and Windows but not yet on Linux.</p>\n<h3>Where do Grok Bot’s Bots actually run?</h3>\n<p>On a hosted computer in the cloud, one per member, which runs Linux. The desktop app on your machine is for chat, review and approvals.</p>\n<p>Ready to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Grok Bot Mac</li>\n</ul>\n<ul>\n<li>What Is Grok Bot?</li>\n</ul>\n<ul>\n<li>Grok Bot Email</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to grok bot linux — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "b9c17f41e04d",
+      "title": "Grok Bot Windows: Install and Run Grok Bot on Windows (x64 and Arm)",
+      "content": "Grok Bot Windows support is full: the desktop app runs on Windows x64 and Arm64, installs from a Setup.exe, and keeps itself up to date. As with the Mac app, your PC isn’t where the work happens. Bots run on their own cloud computer, and the Windows app is where you chat, review and approve. Below is how to install it, the local-access setting you should check first, how updates work, the shortcuts, and how IT teams roll it out silently, all from xAI’s official docs. My video is right under this intro.\n\nKey takeaways\n\n- Runs on Windows x64 and Arm64, as a Setup.exe.\n\n- Installs per user under `%LOCALAPPDATA%\\Programs`.\n\n- Bots work on a cloud computer, not your PC.\n\n- Running commands on your PC is Ask every time by default.\n\n- Want AI agents set up for your business? Claim a free strategy session.\n\n## How to install Grok Bot on Windows\n\nThe Get Started guide says the desktop app runs on Windows (x64 and Arm64) and checks for updates on its own. Get the installer from any of these:\n\n- x.ai/bot\n\n- The Download Grok Bot row on the Grok Bot dashboard page\n\n- The download page, which lists the current installer for every platform\n\nRun the Setup.exe, choose Sign in and finish sign-in in your browser. Grok Bot uses your Cursor account; there’s no separate login. Your first Bot, named Grok Bot, is set up after a short intro.\n\nThe installer works per user: it installs into your profile under `%LOCALAPPDATA%\\Programs`, so you don’t need admin rights for a normal install.\n\n## Your PC vs the Bot’s cloud computer\n\nThis is the part most people get wrong. Per the deployment guide, Bots do their work on a hosted computer in the cloud, one per member, running Linux. The Windows app is a client for chat, review and approvals.\n\nThat’s why closing your laptop doesn’t stop a routine, and why files that exist only on your Windows machine aren’t covered by the Bot computer’s backups. The computer and apps guide says to keep your own backups for those.\n\nWant AI agents working while your PC stays free? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Check this setting first: local access\n\nA Bot can only run commands on your own PC when that’s enabled and you approve it. In Settings → Computer → Your computer, set Execution on this computer to:\n\n- Ask every time (the default): approve each command.\n\n- Always allow: no prompts.\n\n- Never allow: Bots can’t touch your PC.\n\nThe approvals and security page recommends Never allow unless a Bot has a specific reason to work on your local files. Your team admin can cap this for everyone; the stricter rule wins. None of these settings stop the Bot from using its cloud computer.\n\n## Sign-ins, Windows Hello and security keys\n\nThe Bot’s browser runs on the cloud computer, so some sign-in methods don’t carry over. The troubleshooting guide says Windows Hello, fingerprint, Face ID and passkeys saved on your laptop don’t work on the Bot’s computer. Instead, choose Take over, sign in with a method your company allows there, then I’m done.\n\nWindows does get one extra: hardware security keys such as a YubiKey. With Use hardware security keys on under Settings → General → Security Key (on by default on Windows), the Bot’s browser can use a key plugged into your PC, and every use asks for your approval. For passwords, use Vault or a Secure Form, never ordinary chat.\n\n## Updates and the “Update required” screen\n\nThe Windows app updates itself. In Settings → Updates you’ll find Check for Updates and Restart to Update. Automatic Updates is on by default: a downloaded update installs while you’re away (screen locked or idle for 10+ minutes and Grok Bot not busy).\n\nDon’t fall behind. The troubleshooting guide says Grok Bot requires an update when your version is more than 14 days old and a newer one is out, and covers the window with Update required. Your Bots keep running in the cloud while you update. Updating the app doesn’t reset the cloud computer; that’s a separate Update Bot’s Computer button.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Windows keyboard shortcuts\n\nOn Windows use `Ctrl` wherever the Mac uses `Cmd`. The ones I use most, from the chat and collaboration docs:\n\nAction\nShortcut\n\nSearch palette\nCtrl+K\n\nNew Bot\nCtrl+N\n\nNew group chat\nCtrl+Shift+N\n\nDictate into the composer\nCtrl+D\n\nConnect apps\nCtrl+Shift+M\n\nConversation details\nCtrl+Alt+B\n\nSend from anywhere\nCtrl+Enter\n\nAll shortcuts\nCtrl+/\n\nFullscreen\nF11\n\nWhile you’re using the desktop app on Windows, notifications from your own Bots go to the desktop instead of your phone. If a Bot needs input and you don’t open it, your phone gets a nudge about 3 minutes later.\n\n## Silent install for IT teams\n\nThe deployment guide covers fleets. On Windows, push the Setup.exe with Intune, Configuration Manager or another distribution tool and install silently:\n\n```\nGrok_Bot_{version}_Setup.exe /S\n```\n\nDeploy it in user context, not as SYSTEM, because it installs per user. Versioned URLs follow this pattern for x64 (swap in `win32-arm64` for Arm):\n\n```\nhttps://downloads.cursor.com/grokbot/stable/win32-x64/{version}/Grok_Bot_{version}_Setup.exe\n```\n\nThere’s no MSI; wrap the.exe if your tool needs one. Pilot it on a few devices first, and remember there’s no admin switch to turn off app updates on Windows.\n\n## My verdict\n\nInstall it, set local execution to Never allow unless you need it, turn on security keys if your company uses them, and keep Automatic Updates on. Then let the cloud computer do the work while your PC stays free. That’s how to get the most out of Grok Bot Windows.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Grok Bot Windows.\n\n## FAQ: grok bot windows\n\n### Does Grok Bot work on Windows?\n\nYes. The Grok Bot desktop app runs on Windows x64 and Arm64 and installs from a Setup.exe downloaded from x.ai/bot or the Cursor download page.\n\n### Does Grok Bot run on Windows on Arm?\n\nYes. xAI’s docs list Windows Arm64 alongside x64, each with its own Setup.exe.\n\n### Do I need admin rights to install Grok Bot on Windows?\n\nThe installer installs per user, into your profile under %LOCALAPPDATA%\\Programs, which is why IT teams are told to deploy it in user context rather than as SYSTEM.\n\n### Can Grok Bot control my Windows PC?\n\nOnly if you allow it. Execution on this computer defaults to Ask every time, and you can set Never allow. Bots normally work on their own cloud computer.\n\n### Does Windows Hello work with Grok Bot?\n\nWindows Hello and passkeys saved on your PC don’t work on the Bot’s cloud computer. Take over and sign in another way, or use a hardware security key, which is supported on Windows.\n\n### How do I install Grok Bot silently on Windows?\n\nPush the Setup.exe with Intune or Configuration Manager and run it with /S, in user context rather than as SYSTEM.\n\nReady to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Grok Bot Mac\n\n- What Is Grok Bot?\n\n- Grok Bot Templates\n\nLast updated November 2026. This page is a living guide to grok bot windows — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/grok-bot-windows/?utm_source=rss&utm_medium=rss&utm_campaign=grok-bot-windows",
+      "author": "Clawdbot",
+      "published": "2026-11-02T07:10:20",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A guide to Grok Bot on Windows x64 and Arm64: Setup.exe install per user under LOCALAPPDATA, automatic updates, local command execution defaulting to ask-every-time, and enterprise silent rollout notes. Actual bot work happens on a cloud computer, with the app as the review/approve surface.",
+      "importance_score": 28.0,
+      "reasoning": "Solid official-docs-based how-to with a notable security default (local commands gated), but again concerns a non-Hermes product and adds mainly competitive context.",
+      "themes": [
+        "Competitor platforms",
+        "Desktop agent deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A guide to Grok Bot on Windows x64 and Arm64: Setup.exe install per user under LOCALAPPDATA, automatic updates, local command execution defaulting to ask-every-time, and enterprise silent rollout notes. Actual bot work happens on a cloud computer, with the app as the review/approve surface.</p>",
+      "content_html": "<p>Grok Bot Windows support is full: the desktop app runs on Windows x64 and Arm64, installs from a Setup.exe, and keeps itself up to date. As with the Mac app, your PC isn’t where the work happens. Bots run on their own cloud computer, and the Windows app is where you chat, review and approve. Below is how to install it, the local-access setting you should check first, how updates work, the shortcuts, and how IT teams roll it out silently, all from xAI’s official docs. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Runs on Windows x64 and Arm64, as a Setup.exe.</li>\n</ul>\n<ul>\n<li>Installs per user under <code>%LOCALAPPDATA%\\Programs</code>.</li>\n</ul>\n<ul>\n<li>Bots work on a cloud computer, not your PC.</li>\n</ul>\n<ul>\n<li>Running commands on your PC is Ask every time by default.</li>\n</ul>\n<ul>\n<li>Want AI agents set up for your business? Claim a free strategy session.</li>\n</ul>\n<h2>How to install Grok Bot on Windows</h2>\n<p>The Get Started guide says the desktop app runs on Windows (x64 and Arm64) and checks for updates on its own. Get the installer from any of these:</p>\n<ul>\n<li>x.ai/bot</li>\n</ul>\n<ul>\n<li>The Download Grok Bot row on the Grok Bot dashboard page</li>\n</ul>\n<ul>\n<li>The download page, which lists the current installer for every platform</li>\n</ul>\n<p>Run the Setup.exe, choose Sign in and finish sign-in in your browser. Grok Bot uses your Cursor account; there’s no separate login. Your first Bot, named Grok Bot, is set up after a short intro.</p>\n<p>The installer works per user: it installs into your profile under <code>%LOCALAPPDATA%\\Programs</code>, so you don’t need admin rights for a normal install.</p>\n<h2>Your PC vs the Bot’s cloud computer</h2>\n<p>This is the part most people get wrong. Per the deployment guide, Bots do their work on a hosted computer in the cloud, one per member, running Linux. The Windows app is a client for chat, review and approvals.</p>\n<p>That’s why closing your laptop doesn’t stop a routine, and why files that exist only on your Windows machine aren’t covered by the Bot computer’s backups. The computer and apps guide says to keep your own backups for those.</p>\n<p>Want AI agents working while your PC stays free? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Check this setting first: local access</h2>\n<p>A Bot can only run commands on your own PC when that’s enabled and you approve it. In Settings → Computer → Your computer, set Execution on this computer to:</p>\n<ul>\n<li>Ask every time (the default): approve each command.</li>\n</ul>\n<ul>\n<li>Always allow: no prompts.</li>\n</ul>\n<ul>\n<li>Never allow: Bots can’t touch your PC.</li>\n</ul>\n<p>The approvals and security page recommends Never allow unless a Bot has a specific reason to work on your local files. Your team admin can cap this for everyone; the stricter rule wins. None of these settings stop the Bot from using its cloud computer.</p>\n<h2>Sign-ins, Windows Hello and security keys</h2>\n<p>The Bot’s browser runs on the cloud computer, so some sign-in methods don’t carry over. The troubleshooting guide says Windows Hello, fingerprint, Face ID and passkeys saved on your laptop don’t work on the Bot’s computer. Instead, choose Take over, sign in with a method your company allows there, then I’m done.</p>\n<p>Windows does get one extra: hardware security keys such as a YubiKey. With Use hardware security keys on under Settings → General → Security Key (on by default on Windows), the Bot’s browser can use a key plugged into your PC, and every use asks for your approval. For passwords, use Vault or a Secure Form, never ordinary chat.</p>\n<h2>Updates and the “Update required” screen</h2>\n<p>The Windows app updates itself. In Settings → Updates you’ll find Check for Updates and Restart to Update. Automatic Updates is on by default: a downloaded update installs while you’re away (screen locked or idle for 10+ minutes and Grok Bot not busy).</p>\n<p>Don’t fall behind. The troubleshooting guide says Grok Bot requires an update when your version is more than 14 days old and a newer one is out, and covers the window with Update required. Your Bots keep running in the cloud while you update. Updating the app doesn’t reset the cloud computer; that’s a separate Update Bot’s Computer button.</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Windows keyboard shortcuts</h2>\n<p>On Windows use <code>Ctrl</code> wherever the Mac uses <code>Cmd</code>. The ones I use most, from the chat and collaboration docs:</p>\n<p>Action</p>\n<p>Shortcut</p>\n<p>Search palette</p>\n<p>Ctrl+K</p>\n<p>New Bot</p>\n<p>Ctrl+N</p>\n<p>New group chat</p>\n<p>Ctrl+Shift+N</p>\n<p>Dictate into the composer</p>\n<p>Ctrl+D</p>\n<p>Connect apps</p>\n<p>Ctrl+Shift+M</p>\n<p>Conversation details</p>\n<p>Ctrl+Alt+B</p>\n<p>Send from anywhere</p>\n<p>Ctrl+Enter</p>\n<p>All shortcuts</p>\n<p>Ctrl+/</p>\n<p>Fullscreen</p>\n<p>F11</p>\n<p>While you’re using the desktop app on Windows, notifications from your own Bots go to the desktop instead of your phone. If a Bot needs input and you don’t open it, your phone gets a nudge about 3 minutes later.</p>\n<h2>Silent install for IT teams</h2>\n<p>The deployment guide covers fleets. On Windows, push the Setup.exe with Intune, Configuration Manager or another distribution tool and install silently:</p>\n<p>```</p>\n<p>Grok_Bot_{version}_Setup.exe /S</p>\n<p>```</p>\n<p>Deploy it in user context, not as SYSTEM, because it installs per user. Versioned URLs follow this pattern for x64 (swap in <code>win32-arm64</code> for Arm):</p>\n<p>```</p>\n<p>https://downloads.cursor.com/grokbot/stable/win32-x64/{version}/Grok_Bot_{version}_Setup.exe</p>\n<p>```</p>\n<p>There’s no MSI; wrap the.exe if your tool needs one. Pilot it on a few devices first, and remember there’s no admin switch to turn off app updates on Windows.</p>\n<h2>My verdict</h2>\n<p>Install it, set local execution to Never allow unless you need it, turn on security keys if your company uses them, and keep Automatic Updates on. Then let the cloud computer do the work while your PC stays free. That’s how to get the most out of Grok Bot Windows.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Grok Bot Windows.</p>\n<h2>FAQ: grok bot windows</h2>\n<h3>Does Grok Bot work on Windows?</h3>\n<p>Yes. The Grok Bot desktop app runs on Windows x64 and Arm64 and installs from a Setup.exe downloaded from x.ai/bot or the Cursor download page.</p>\n<h3>Does Grok Bot run on Windows on Arm?</h3>\n<p>Yes. xAI’s docs list Windows Arm64 alongside x64, each with its own Setup.exe.</p>\n<h3>Do I need admin rights to install Grok Bot on Windows?</h3>\n<p>The installer installs per user, into your profile under %LOCALAPPDATA%\\Programs, which is why IT teams are told to deploy it in user context rather than as SYSTEM.</p>\n<h3>Can Grok Bot control my Windows PC?</h3>\n<p>Only if you allow it. Execution on this computer defaults to Ask every time, and you can set Never allow. Bots normally work on their own cloud computer.</p>\n<h3>Does Windows Hello work with Grok Bot?</h3>\n<p>Windows Hello and passkeys saved on your PC don’t work on the Bot’s cloud computer. Take over and sign in another way, or use a hardware security key, which is supported on Windows.</p>\n<h3>How do I install Grok Bot silently on Windows?</h3>\n<p>Push the Setup.exe with Intune or Configuration Manager and run it with /S, in user context rather than as SYSTEM.</p>\n<p>Ready to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Grok Bot Mac</li>\n</ul>\n<ul>\n<li>What Is Grok Bot?</li>\n</ul>\n<ul>\n<li>Grok Bot Templates</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to grok bot windows — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "ba42096485e7",
+      "title": "Grok Bot iOS: Use Grok Bot on iPhone and iPad (Full Guide)",
+      "content": "Grok Bot iOS support is official: the Grok Bot app runs on iPhone with iOS 18 or later and on iPad with iPadOS 18 or later, from the App Store. It syncs the same Bots, chats, routines, connectors and cloud computer as the desktop app, and the work keeps running in the cloud after you close it. The iPhone app also gets extras Android doesn’t: Siri shortcuts, Live Activities, an Action Button voice chat, Reminders and Apple Home control. Here’s the full setup from xAI’s official mobile docs. My video is right under this intro.\n\nKey takeaways\n\n- Needs iOS 18 or later; also runs on iPad (iPadOS 18+).\n\n- Sign in with the same Cursor account as desktop.\n\n- Siri and Shortcuts: List Bots, Send Message, Start Dictation, Start Voice Chat.\n\n- Bots can use Calendar, Contacts, Location, Alarms, Reminders and Home.\n\n- Want AI agents running parts of your business? Claim a free strategy session.\n\n## What Grok Bot on iOS does\n\nThe Grok Bot for Mobile page describes the iPhone app as the way to start work, answer questions, approve steps and review results away from your desk. It connects to the same Bots, conversations, routines, connectors and shared cloud computer as the desktop app.\n\nYour iPhone doesn’t do the heavy work. Bots run on a hosted computer in the cloud, so closing the app, or your phone going to sleep, doesn’t stop a background turn or routine. The FAQ confirms it: closing the app, laptop or phone doesn’t stop the work.\n\nNew to it? Read what Grok Bot is first.\n\n## How to install Grok Bot on iPhone and iPad\n\n- You need an iPhone on iOS 18 or later, or an iPad on iPadOS 18 or later.\n\n- An eligible Grok Bot plan (see the X Subscription page).\n\n- Download Grok Bot from the App Store.\n\nOpen the app, choose Log In or Sign Up, and finish Cursor sign-in in the browser with the same Cursor account you use on desktop. If your access comes from a SuperGrok or X Premium+ subscription, choose Link Grok Account, then Finished Linking? Refresh My Status. A link you made on desktop works on the phone too.\n\nIf your plan already includes Grok Bot, the docs say not to buy a second subscription through Apple. Allow notifications on first run if you want alerts; the docs note iPhone push delivery is rolling out gradually.\n\nWant AI agents you can talk to from your iPhone? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Siri, Shortcuts, Live Activities and the Action Button\n\nThis is where the iPhone app pulls ahead. Grok Bot adds four shortcuts you can run from Siri, Spotlight or the Shortcuts app:\n\n- List Bots\n\n- Send Message: for example, say “Send a message in Grok Bot.”\n\n- Start Dictation: dictate to a Bot without opening the app while your iPhone is unlocked. A Live Activity on the Lock Screen and in the Dynamic Island shows progress, with cancel and send buttons.\n\n- Start Voice Chat: talk to a Bot live, also shown as a Live Activity.\n\nOn an iPhone with an Action Button, go to Settings → Action Button, swipe to Shortcut, and choose Grok Bot > Start Voice Chat. One press and you’re talking to your Bot; press again to hang up.\n\n## Messaging and the share sheet\n\nIn a conversation you can type, dictate, start a voice chat, play a voice memo, attach photos and files, mention Bots or `@everyone`, reply in threads and react. When a Bot drafts an email or Slack message, you can edit it, then choose Send or Discard.\n\nOn iPhone the system share sheet works fully: share a photo, file, link or text, choose Grok Bot, pick a chat and tap Attach. The item lands in that chat’s composer. (On Android the share sheet takes text only for now.)\n\n## Let a Bot use your iPhone’s apps\n\nIn your own chat with a Bot you own, a Bot can use these apps when you ask:\n\n- Calendar: read, add, change or delete events (not repeating ones; it never invites anyone).\n\n- Contacts: read-only lookups by name.\n\n- Location: your current position.\n\n- Alarms: an alarm or a timer of up to 24 hours. These need a newer iOS than the app itself; if your iPhone can’t, Alarms won’t appear.\n\n- Reminders (iPhone only): read, add, change, check off or delete.\n\n- Home (iPhone only): lights, fans, blinds, thermostats, locks, garage doors and security systems.\n\nGrant access in Settings → Connect apps → iPhone (or iPad). Grok Bot must be open on the phone for the Bot to reach it. Locks, garage doors and security systems follow the same approval rules as other Home changes, so keep Auto Review on.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Approvals, the computer and routines\n\nOpen the computer from a chat to watch work, inspect the screen, or take over for a password, a two-factor code or a CAPTCHA, then tap I’m done. If your team admin set a device limit, it shows under Manage your devices as Ask every time, Never allow or Always allow.\n\nRoutines live on each Bot’s profile: see the schedule, next run and run history, toggle Active, swipe to delete, or use Edit routine and Add routine. My Grok Bot templates guide has ready-made ideas.\n\n## Billing and what stays on desktop\n\nApple handles any subscription you buy in the app, including App Store free trials. Cancel or change it in Apple ID → Subscriptions before a trial ends if you don’t want it to convert. Cursor can’t cancel or refund an in-app plan for you. Only monthly individual plans are sold in the app.\n\nTeaching a workflow by demonstration, testing routines, and updating or recovering the cloud computer still need the desktop app on Mac, Windows or Linux.\n\n## My verdict\n\nIf you own an iPhone, this is the best mobile version of Grok Bot. Set the Action Button to Start Voice Chat, allow Calendar and Reminders, and you have a Bot you can talk to in one press while the real work runs in the cloud. That’s why Grok Bot iOS is worth setting up today.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Grok Bot iOS.\n\n## FAQ: grok bot ios\n\n### Is Grok Bot available on iPhone?\n\nYes. Grok Bot has an official iOS app on the App Store. It needs iOS 18 or later and syncs the same Bots, chats, routines and cloud computer as the desktop app.\n\n### Does Grok Bot work on iPad?\n\nYes. The iOS app also runs on iPad with iPadOS 18 or later.\n\n### Can I use Siri with Grok Bot?\n\nYes. Grok Bot adds List Bots, Send Message, Start Dictation and Start Voice Chat shortcuts that run from Siri, Spotlight or the Shortcuts app.\n\n### Can I start a Grok Bot voice chat with the Action Button?\n\nYes. In iPhone Settings choose Action Button, swipe to Shortcut, and pick Grok Bot then Start Voice Chat. Press it again to hang up.\n\n### Which iPhone apps can Grok Bot use?\n\nCalendar, Contacts, Location and Alarms, plus Reminders and Apple Home on iPhone only, with your permission and while the Grok Bot app is open.\n\n### How do I cancel a Grok Bot subscription bought on iPhone?\n\nApple handles in-app subscriptions. Cancel or change it in Apple ID, Subscriptions, before any trial ends. Cursor can’t cancel or refund an in-app plan for you.\n\nReady to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- What Is Grok Bot?\n\n- Grok Bot Mac\n\n- Grok Bot Templates\n\nLast updated November 2026. This page is a living guide to grok bot ios — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/grok-bot-ios/?utm_source=rss&utm_medium=rss&utm_campaign=grok-bot-ios",
+      "author": "Clawdbot",
+      "published": "2026-11-02T07:10:16",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A guide to Grok Bot on iOS/iPadOS 18+: syncs bots, chats, routines, connectors and cloud computer with desktop, and adds Siri Shortcuts, Live Activities, Action Button voice chat, Reminders and Apple Home control; bots can access Calendar, Contacts, Location, Alarms and Home.",
+      "importance_score": 27.0,
+      "reasoning": "Rich mobile feature detail relevant as a benchmark for what users may expect from Hermes mobile clients (see Hermes Paper Harness), but the content itself is about a competing product.",
+      "themes": [
+        "Competitor platforms",
+        "Mobile clients"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A guide to Grok Bot on iOS/iPadOS 18+: syncs bots, chats, routines, connectors and cloud computer with desktop, and adds Siri Shortcuts, Live Activities, Action Button voice chat, Reminders and Apple Home control; bots can access Calendar, Contacts, Location, Alarms and Home.</p>",
+      "content_html": "<p>Grok Bot iOS support is official: the Grok Bot app runs on iPhone with iOS 18 or later and on iPad with iPadOS 18 or later, from the App Store. It syncs the same Bots, chats, routines, connectors and cloud computer as the desktop app, and the work keeps running in the cloud after you close it. The iPhone app also gets extras Android doesn’t: Siri shortcuts, Live Activities, an Action Button voice chat, Reminders and Apple Home control. Here’s the full setup from xAI’s official mobile docs. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Needs iOS 18 or later; also runs on iPad (iPadOS 18+).</li>\n</ul>\n<ul>\n<li>Sign in with the same Cursor account as desktop.</li>\n</ul>\n<ul>\n<li>Siri and Shortcuts: List Bots, Send Message, Start Dictation, Start Voice Chat.</li>\n</ul>\n<ul>\n<li>Bots can use Calendar, Contacts, Location, Alarms, Reminders and Home.</li>\n</ul>\n<ul>\n<li>Want AI agents running parts of your business? Claim a free strategy session.</li>\n</ul>\n<h2>What Grok Bot on iOS does</h2>\n<p>The Grok Bot for Mobile page describes the iPhone app as the way to start work, answer questions, approve steps and review results away from your desk. It connects to the same Bots, conversations, routines, connectors and shared cloud computer as the desktop app.</p>\n<p>Your iPhone doesn’t do the heavy work. Bots run on a hosted computer in the cloud, so closing the app, or your phone going to sleep, doesn’t stop a background turn or routine. The FAQ confirms it: closing the app, laptop or phone doesn’t stop the work.</p>\n<p>New to it? Read what Grok Bot is first.</p>\n<h2>How to install Grok Bot on iPhone and iPad</h2>\n<ul>\n<li>You need an iPhone on iOS 18 or later, or an iPad on iPadOS 18 or later.</li>\n</ul>\n<ul>\n<li>An eligible Grok Bot plan (see the X Subscription page).</li>\n</ul>\n<ul>\n<li>Download Grok Bot from the App Store.</li>\n</ul>\n<p>Open the app, choose Log In or Sign Up, and finish Cursor sign-in in the browser with the same Cursor account you use on desktop. If your access comes from a SuperGrok or X Premium+ subscription, choose Link Grok Account, then Finished Linking? Refresh My Status. A link you made on desktop works on the phone too.</p>\n<p>If your plan already includes Grok Bot, the docs say not to buy a second subscription through Apple. Allow notifications on first run if you want alerts; the docs note iPhone push delivery is rolling out gradually.</p>\n<p>Want AI agents you can talk to from your iPhone? Inside the AI Profit Boardroom you get step-by-step AI agent training, the Agent OS, ready-made automations for your business and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Siri, Shortcuts, Live Activities and the Action Button</h2>\n<p>This is where the iPhone app pulls ahead. Grok Bot adds four shortcuts you can run from Siri, Spotlight or the Shortcuts app:</p>\n<ul>\n<li>List Bots</li>\n</ul>\n<ul>\n<li>Send Message: for example, say “Send a message in Grok Bot.”</li>\n</ul>\n<ul>\n<li>Start Dictation: dictate to a Bot without opening the app while your iPhone is unlocked. A Live Activity on the Lock Screen and in the Dynamic Island shows progress, with cancel and send buttons.</li>\n</ul>\n<ul>\n<li>Start Voice Chat: talk to a Bot live, also shown as a Live Activity.</li>\n</ul>\n<p>On an iPhone with an Action Button, go to Settings → Action Button, swipe to Shortcut, and choose Grok Bot &gt; Start Voice Chat. One press and you’re talking to your Bot; press again to hang up.</p>\n<h2>Messaging and the share sheet</h2>\n<p>In a conversation you can type, dictate, start a voice chat, play a voice memo, attach photos and files, mention Bots or <code>@everyone</code>, reply in threads and react. When a Bot drafts an email or Slack message, you can edit it, then choose Send or Discard.</p>\n<p>On iPhone the system share sheet works fully: share a photo, file, link or text, choose Grok Bot, pick a chat and tap Attach. The item lands in that chat’s composer. (On Android the share sheet takes text only for now.)</p>\n<h2>Let a Bot use your iPhone’s apps</h2>\n<p>In your own chat with a Bot you own, a Bot can use these apps when you ask:</p>\n<ul>\n<li>Calendar: read, add, change or delete events (not repeating ones; it never invites anyone).</li>\n</ul>\n<ul>\n<li>Contacts: read-only lookups by name.</li>\n</ul>\n<ul>\n<li>Location: your current position.</li>\n</ul>\n<ul>\n<li>Alarms: an alarm or a timer of up to 24 hours. These need a newer iOS than the app itself; if your iPhone can’t, Alarms won’t appear.</li>\n</ul>\n<ul>\n<li>Reminders (iPhone only): read, add, change, check off or delete.</li>\n</ul>\n<ul>\n<li>Home (iPhone only): lights, fans, blinds, thermostats, locks, garage doors and security systems.</li>\n</ul>\n<p>Grant access in Settings → Connect apps → iPhone (or iPad). Grok Bot must be open on the phone for the Bot to reach it. Locks, garage doors and security systems follow the same approval rules as other Home changes, so keep Auto Review on.</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Approvals, the computer and routines</h2>\n<p>Open the computer from a chat to watch work, inspect the screen, or take over for a password, a two-factor code or a CAPTCHA, then tap I’m done. If your team admin set a device limit, it shows under Manage your devices as Ask every time, Never allow or Always allow.</p>\n<p>Routines live on each Bot’s profile: see the schedule, next run and run history, toggle Active, swipe to delete, or use Edit routine and Add routine. My Grok Bot templates guide has ready-made ideas.</p>\n<h2>Billing and what stays on desktop</h2>\n<p>Apple handles any subscription you buy in the app, including App Store free trials. Cancel or change it in Apple ID → Subscriptions before a trial ends if you don’t want it to convert. Cursor can’t cancel or refund an in-app plan for you. Only monthly individual plans are sold in the app.</p>\n<p>Teaching a workflow by demonstration, testing routines, and updating or recovering the cloud computer still need the desktop app on Mac, Windows or Linux.</p>\n<h2>My verdict</h2>\n<p>If you own an iPhone, this is the best mobile version of Grok Bot. Set the Action Button to Start Voice Chat, allow Calendar and Reminders, and you have a Bot you can talk to in one press while the real work runs in the cloud. That’s why Grok Bot iOS is worth setting up today.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day on my channel, including Grok Bot, and show business owners how to put them to work. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Grok Bot iOS.</p>\n<h2>FAQ: grok bot ios</h2>\n<h3>Is Grok Bot available on iPhone?</h3>\n<p>Yes. Grok Bot has an official iOS app on the App Store. It needs iOS 18 or later and syncs the same Bots, chats, routines and cloud computer as the desktop app.</p>\n<h3>Does Grok Bot work on iPad?</h3>\n<p>Yes. The iOS app also runs on iPad with iPadOS 18 or later.</p>\n<h3>Can I use Siri with Grok Bot?</h3>\n<p>Yes. Grok Bot adds List Bots, Send Message, Start Dictation and Start Voice Chat shortcuts that run from Siri, Spotlight or the Shortcuts app.</p>\n<h3>Can I start a Grok Bot voice chat with the Action Button?</h3>\n<p>Yes. In iPhone Settings choose Action Button, swipe to Shortcut, and pick Grok Bot then Start Voice Chat. Press it again to hang up.</p>\n<h3>Which iPhone apps can Grok Bot use?</h3>\n<p>Calendar, Contacts, Location and Alarms, plus Reminders and Apple Home on iPhone only, with your permission and while the Grok Bot app is open.</p>\n<h3>How do I cancel a Grok Bot subscription bought on iPhone?</h3>\n<p>Apple handles in-app subscriptions. Cancel or change it in Apple ID, Subscriptions, before any trial ends. Cursor can’t cancel or refund an in-app plan for you.</p>\n<p>Ready to put AI agents like Grok Bot to work in your business? Join the AI Profit Boardroom for agent training, the Agent OS and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>What Is Grok Bot?</li>\n</ul>\n<ul>\n<li>Grok Bot Mac</li>\n</ul>\n<ul>\n<li>Grok Bot Templates</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to grok bot ios — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN question about why the Hermes Agent name does not infringe on the Hermès luxury brand trademark.",
+      "importance_score": 25.0,
+      "reasoning": "A legal/speculative discussion with no technical content; at most a minor reputational or naming consideration for the project.",
+      "themes": [
+        "Naming and legal"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN question about why the Hermes Agent name does not infringe on the Hermès luxury brand trademark.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    }
+  ]
+}

@@ -1,0 +1,985 @@
+{
+  "date": "2026-10-26",
+  "coverage_date": "2026-10-25",
+  "coverage_start": "2026-10-25T00:00:00",
+  "coverage_end": "2026-10-25T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-26\n\n**Executive summary:** A community-builds day — and the ecosystem-maturity thesis turns into artifacts. The news top story is [**hermes-agent-template**](/?date=2026-10-26&category=news#item-188d392057ef): one-click **Railway** deployment of Hermes Agent with a web admin dashboard — the week's sharpest self-hosting on-ramp and a natural companion to yesterday's [**Mattermost** walkthrough](/?date=2026-10-25&category=news#item-75ec4ff25ed0) — and it fronts an unusually rich community-project slate: [**fnos-hermes-agent**](/?date=2026-10-26&category=news#item-85d2d1119b2e) showcases Hermes as a dedicated assistant on **fnOS** NAS, [**Hermes Project Stewardship**](/?date=2026-10-26&category=news#item-bf820ff147df) runs governance-style long workflows with approval gates and outcome measurement, [**Hermes Walkie Talkie**](/?date=2026-10-26&category=news#item-394c4676e36d) lets independent sessions on one machine discover and coordinate via local-only messaging, [**File Access Manager**](/?date=2026-10-26&category=news#item-506586570159) adds per-path Read/Write/Denied permissions for profiles (**SID**-bound, Docker-enforced per the feed's theme notes), [**Hermes Bot Kit**](/?date=2026-10-26&category=news#item-9f2f33412f7b) brings chat bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop, and [**Memmy**](/?date=2026-10-26&category=news#item-eea60312a10a) ships a local memory layer — three themes (multi-agent orchestration, self-hosting, safety/sandboxing) now visible as an ecosystem rather than a wishlist. The release side is quiet: no versioned release items surfaced this cycle and the merged-PR batch is dry — none again — so [stable **v0.22.5**](/?date=2026-10-24&category=news#item-7608d9b01045) remains the operative build, with yesterday's canary (**v0.22.5+canary.20261024T065630Z**) the last tagged artifact; the only release-adjacent signal is **@Teknium**'s [social note that a fresh build is live on the main release channel](/?date=2026-10-26&category=social#item-f9fef76f0fc7), which with no version tag attached is a watch-item, not an update call. The research lead needs a flag before anything else: [**Spark-X2.6-4B**](/?date=2026-10-26&category=research#item-b24fcafcde25) — a **4B** footprint with a **1M-token** context window under **Apache 2.0** — is a compelling spec sheet attached to a name that doesn't appear in the roster (no Spark-X models tracked; Meta's **Muse-Spark** line is unrelated), so verify before installing or citing the day's top research story. The same caution applies to the [**Kimi K3.1 Pro** companion guide](/?date=2026-10-26&category=research#item-bc45bb433d28) — Moonshot's claimed **3T**-class flagship built from **Kimi K3** via extensive post-training, with provider config/API-key/profile setup to run it inside Hermes Agent — is exactly the model we flagged [yesterday](/?date=2026-10-25&category=research#item-bc45bb433d28): the roster's newest Kimi is **Kimi-K3** (GA 2026-08-06), with no K3.1 Pro anywhere, so treat the guide as unverified until the name checks out. Genuinely new in research: [**ClusterMob**](/?date=2026-10-26&category=research#item-hn-50197497) launches as a third-party profile registry — more evidence the community-infrastructure layer is maturing. The rest is de-dup duty, eleventh cycle running: the [**Claude Pro/Max** direct-SDK subscription support](/?date=2026-10-20&category=research#item-hn-49790991) (carried since 10-20 — today's \"lowering the cost barrier\" framing is a re-quote, not a new development), the stale [**v0.20.0** ships](/?date=2026-10-20&category=research#item-hn-49159200) line is back after a one-day absence — still two-plus stable builds behind reality, pure reference, the [**Hermes Kanban** multi-agent docs](/?date=2026-10-20&category=research#item-hn-49604068), [**Grafana** observability](/?date=2026-10-20&category=research#item-hn-49318128), the [**~23,000**-open-PR backlog](/?date=2026-10-16&category=research#item-hn-49424643) (now the only PR signal given the dry merged-PR feed — a real project-health datapoint for contribution flow and release velocity), and the [**Kubernetes** walkthrough](/?date=2026-10-15&category=research#item-hn-49977400) (no official **Helm** chart, root-at-init container requirement). The social feed is adoption momentum plus consumer protection. The [**Oh My Hermes** launch](/?date=2026-10-26&category=social#item-b80b06f7efa0) re-surfaces as the lead narrative — the launch itself we covered [yesterday](/?date=2026-10-25&category=social#item-85a24234b6f2) (**200B**-token tuning, one-line install, **150+** skills, memory, subagent routing) — and the fresh signal is the momentum post: **OMH** rocketed to [**4K** stars with ~1K gained in a single day](/?date=2026-10-26&category=social#item-5200058faecb), the batch's clearest adoption proof and a compounding continuation of the [**OMH** line tracked since **Zeus 4.0.0**](/?date=2026-10-20&category=social#item-5f8d061b28f5); before installing, remember [yesterday's clarification](/?date=2026-10-25&category=social#item-196e2dccee67) — **OMH's** menu configures model routing, it doesn't install or run local models. The day's essential reader-safety item is [**@NousResearch**'s high-engagement warning (~21k views)](/?date=2026-10-26&category=social#item-41265cd721b5): official Hermes mobile apps are **not** in app stores yet, and lookalike apps are likely fraudulent — this doesn't contradict yesterday's [**TestFlight** + **Android** beta note](/?date=2026-10-25&category=social#item-4ddc5b4f1188) (beta distribution isn't an app-store listing), but it does mean anything claiming to be Hermes inside an app store should be treated as suspect; don't install it. The feed's top-story slot goes to an [official reply to **@Codex_Chronus**](/?date=2026-10-26&category=social#item-99f39c68244e): an upcoming announcement will be linked from the site with **Nous Research** listed on the project roadmap, and [a \"both paths\" approach to an open product question is confirmed](/?date=2026-10-26&category=social#item-5f931ff0a523) — the second cryptic tease in two days ([yesterday's \"it's coming\"](/?date=2026-10-25&category=social#item-ccce8577ffa2)), now with a little more substance. **@Teknium**'s [onboarding defense](/?date=2026-10-26&category=social#item-56e0c44cc3f1) — one **Nous Portal** login powers everything, boiled down to \"Install Hermes Desktop, get a Nous Portal sub, done\" — drew the batch's strongest engagement (433 likes, ~12.7k views), a day after his [maintenance defense](/?date=2026-10-25&category=social#item-b976389fa4ad); his [cloud roadmap](/?date=2026-10-26&category=social#item-5c001672cf84) extends yesterday's one-month plan — every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance, with the product in [private beta and public beta \"soon.\"](/?date=2026-10-26&category=social#item-2bed6aa80136) Culture and commerce: **@rlaope**'s [\"agent harness as a gym\" metaphor](/?date=2026-10-26&category=social#item-85b35a4b8d42) (Hermes as the floor operator) crystallized community branding, official advice floated [voice-mode venting](/?date=2026-10-26&category=social#item-2af6e45efb9a) for practical life advice, and cost-conscious users got a [**DeepSeek**/**GLM** ultrafast flash sale via **OpenGateway**](/?date=2026-10-26&category=social#item-ad7c6cf9f440) — both roster-verified lines (**DeepSeek-V4.1-Flash** GA 2026-09-10, **GLM-5.2** released 2026-06-16), making it today's safe flexibility play while the unverified model names shake out. The combative edge persists: **@Teknium** contrasted the team's deliberate quality bar against **Openclaw**'s [\"rushed slop app\"](/?date=2026-10-26&category=social#item-2281d2a2b09c) and deflected comparison threads with [\"just use Hermes instead,\"](/?date=2026-10-26&category=social#item-6adbb9c6d531) while the official account showed zero tolerance for bad-faith actors; the feed's own scan reports no prompt-injection or manipulation attempts. Housekeeping: Reddit contributed nothing again — no items to analyze. Net read: ecosystem maturity is no longer a talking point — seven community projects in one feed, a third-party profile registry, and **OMH** at **4K** stars are the receipts — while leadership's scaling vision (cloud-hosted instances, subscription bundling) gives the maturity a destination, but the research feed's risk profile sharpened (two model names that don't check out against the roster) and the social feed's biggest story is protective, not promotional. Practical agenda: if you self-host, start with the [**Railway** template](/?date=2026-10-26&category=news#item-188d392057ef) or the [**fnOS** route](/?date=2026-10-26&category=news#item-85d2d1119b2e); read the [**v0.22.x** deep-dive](/?date=2026-10-26&category=news#item-5997d58d23ff) — what changed since **v0.22.1**, what to verify after upgrading, what's still pending — before your next update (it doubles as the tips item); heed the [fake-apps warning](/?date=2026-10-26&category=social#item-41265cd721b5) and treat app-store \"Hermes\" listings as fraudulent; treat [**Spark-X2.6-4B**](/?date=2026-10-26&category=research#item-b24fcafcde25) and [**Kimi K3.1 Pro**](/?date=2026-10-26&category=research#item-bc45bb433d28) as unverified until their names check out against the roster — if you want frontier-model flexibility today, the [flash sale](/?date=2026-10-26&category=social#item-ad7c6cf9f440) covers verified **DeepSeek**/**GLM** lines via **OpenGateway**; try [**File Access Manager**](/?date=2026-10-26&category=news#item-506586570159) for per-path permissions and [**Walkie Talkie**](/?date=2026-10-26&category=news#item-394c4676e36d) if you run multiple sessions per machine; and watch the [announcement tease](/?date=2026-10-26&category=social#item-99f39c68244e), the [\"both paths\" confirmation](/?date=2026-10-26&category=social#item-5f931ff0a523), and the [cloud roadmap](/?date=2026-10-26&category=social#item-5c001672cf84) (cloud-hosted instances, private → public beta \"soon\") — filing **Pro/Max**, **Kanban**, **Grafana**, the **~23k** backlog, the **Kubernetes** notes, and the stale **v0.20.0** line as reference.\n\n*Executive summary only — full section write-ups (Community, Tips & Tutorials) follow in the complete edition.*",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-26</p>\n<p><strong>Executive summary:</strong> A community-builds day — and the ecosystem-maturity thesis turns into artifacts. The news top story is <a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes-agent-template</strong></a>: one-click <strong>Railway</strong> deployment of Hermes Agent with a web admin dashboard — the week's sharpest self-hosting on-ramp and a natural companion to yesterday's <a href=\"/?date=2026-10-25&amp;category=news#item-75ec4ff25ed0\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Mattermost</strong> walkthrough</a> — and it fronts an unusually rich community-project slate: <a href=\"/?date=2026-10-26&amp;category=news#item-85d2d1119b2e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>fnos-hermes-agent</strong></a> showcases Hermes as a dedicated assistant on <strong>fnOS</strong> NAS, <a href=\"/?date=2026-10-26&amp;category=news#item-bf820ff147df\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Project Stewardship</strong></a> runs governance-style long workflows with approval gates and outcome measurement, <a href=\"/?date=2026-10-26&amp;category=news#item-394c4676e36d\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Walkie Talkie</strong></a> lets independent sessions on one machine discover and coordinate via local-only messaging, <a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>File Access Manager</strong></a> adds per-path Read/Write/Denied permissions for profiles (<strong>SID</strong>-bound, Docker-enforced per the feed's theme notes), <a href=\"/?date=2026-10-26&amp;category=news#item-9f2f33412f7b\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Bot Kit</strong></a> brings chat bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop, and <a href=\"/?date=2026-10-26&amp;category=news#item-eea60312a10a\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Memmy</strong></a> ships a local memory layer — three themes (multi-agent orchestration, self-hosting, safety/sandboxing) now visible as an ecosystem rather than a wishlist. The release side is quiet: no versioned release items surfaced this cycle and the merged-PR batch is dry — none again — so <a href=\"/?date=2026-10-24&amp;category=news#item-7608d9b01045\" class=\"internal-link\" rel=\"noopener noreferrer\">stable <strong>v0.22.5</strong></a> remains the operative build, with yesterday's canary (<strong>v0.22.5+canary.20261024T065630Z</strong>) the last tagged artifact; the only release-adjacent signal is <strong>@Teknium</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-f9fef76f0fc7\" class=\"internal-link\" rel=\"noopener noreferrer\">social note that a fresh build is live on the main release channel</a>, which with no version tag attached is a watch-item, not an update call. The research lead needs a flag before anything else: <a href=\"/?date=2026-10-26&amp;category=research#item-b24fcafcde25\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Spark-X2.6-4B</strong></a> — a <strong>4B</strong> footprint with a <strong>1M-token</strong> context window under <strong>Apache 2.0</strong> — is a compelling spec sheet attached to a name that doesn't appear in the roster (no Spark-X models tracked; Meta's <strong>Muse-Spark</strong> line is unrelated), so verify before installing or citing the day's top research story. The same caution applies to the <a href=\"/?date=2026-10-26&amp;category=research#item-bc45bb433d28\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kimi K3.1 Pro</strong> companion guide</a> — Moonshot's claimed <strong>3T</strong>-class flagship built from <strong>Kimi K3</strong> via extensive post-training, with provider config/API-key/profile setup to run it inside Hermes Agent — is exactly the model we flagged <a href=\"/?date=2026-10-25&amp;category=research#item-bc45bb433d28\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>: the roster's newest Kimi is <strong>Kimi-K3</strong> (GA 2026-08-06), with no K3.1 Pro anywhere, so treat the guide as unverified until the name checks out. Genuinely new in research: <a href=\"/?date=2026-10-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a> launches as a third-party profile registry — more evidence the community-infrastructure layer is maturing. The rest is de-dup duty, eleventh cycle running: the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> direct-SDK subscription support</a> (carried since 10-20 — today's \"lowering the cost barrier\" framing is a re-quote, not a new development), the stale <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.20.0</strong> ships</a> line is back after a one-day absence — still two-plus stable builds behind reality, pure reference, the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> multi-agent docs</a>, <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong> observability</a>, the <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>~23,000</strong>-open-PR backlog</a> (now the only PR signal given the dry merged-PR feed — a real project-health datapoint for contribution flow and release velocity), and the <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong> walkthrough</a> (no official <strong>Helm</strong> chart, root-at-init container requirement). The social feed is adoption momentum plus consumer protection. The <a href=\"/?date=2026-10-26&amp;category=social#item-b80b06f7efa0\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh My Hermes</strong> launch</a> re-surfaces as the lead narrative — the launch itself we covered <a href=\"/?date=2026-10-25&amp;category=social#item-85a24234b6f2\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a> (<strong>200B</strong>-token tuning, one-line install, <strong>150+</strong> skills, memory, subagent routing) — and the fresh signal is the momentum post: <strong>OMH</strong> rocketed to <a href=\"/?date=2026-10-26&amp;category=social#item-5200058faecb\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>4K</strong> stars with ~1K gained in a single day</a>, the batch's clearest adoption proof and a compounding continuation of the <a href=\"/?date=2026-10-20&amp;category=social#item-5f8d061b28f5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OMH</strong> line tracked since <strong>Zeus 4.0.0</strong></a>; before installing, remember <a href=\"/?date=2026-10-25&amp;category=social#item-196e2dccee67\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday's clarification</a> — <strong>OMH's</strong> menu configures model routing, it doesn't install or run local models. The day's essential reader-safety item is <a href=\"/?date=2026-10-26&amp;category=social#item-41265cd721b5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@NousResearch</strong>'s high-engagement warning (~21k views)</a>: official Hermes mobile apps are <strong>not</strong> in app stores yet, and lookalike apps are likely fraudulent — this doesn't contradict yesterday's <a href=\"/?date=2026-10-25&amp;category=social#item-4ddc5b4f1188\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>TestFlight</strong> + <strong>Android</strong> beta note</a> (beta distribution isn't an app-store listing), but it does mean anything claiming to be Hermes inside an app store should be treated as suspect; don't install it. The feed's top-story slot goes to an <a href=\"/?date=2026-10-26&amp;category=social#item-99f39c68244e\" class=\"internal-link\" rel=\"noopener noreferrer\">official reply to <strong>@Codex_Chronus</strong></a>: an upcoming announcement will be linked from the site with <strong>Nous Research</strong> listed on the project roadmap, and <a href=\"/?date=2026-10-26&amp;category=social#item-5f931ff0a523\" class=\"internal-link\" rel=\"noopener noreferrer\">a \"both paths\" approach to an open product question is confirmed</a> — the second cryptic tease in two days (<a href=\"/?date=2026-10-25&amp;category=social#item-ccce8577ffa2\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday's \"it's coming\"</a>), now with a little more substance. <strong>@Teknium</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-56e0c44cc3f1\" class=\"internal-link\" rel=\"noopener noreferrer\">onboarding defense</a> — one <strong>Nous Portal</strong> login powers everything, boiled down to \"Install Hermes Desktop, get a Nous Portal sub, done\" — drew the batch's strongest engagement (433 likes, ~12.7k views), a day after his <a href=\"/?date=2026-10-25&amp;category=social#item-b976389fa4ad\" class=\"internal-link\" rel=\"noopener noreferrer\">maintenance defense</a>; his <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">cloud roadmap</a> extends yesterday's one-month plan — every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance, with the product in <a href=\"/?date=2026-10-26&amp;category=social#item-2bed6aa80136\" class=\"internal-link\" rel=\"noopener noreferrer\">private beta and public beta \"soon.\"</a> Culture and commerce: <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-85b35a4b8d42\" class=\"internal-link\" rel=\"noopener noreferrer\">\"agent harness as a gym\" metaphor</a> (Hermes as the floor operator) crystallized community branding, official advice floated <a href=\"/?date=2026-10-26&amp;category=social#item-2af6e45efb9a\" class=\"internal-link\" rel=\"noopener noreferrer\">voice-mode venting</a> for practical life advice, and cost-conscious users got a <a href=\"/?date=2026-10-26&amp;category=social#item-ad7c6cf9f440\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek</strong>/<strong>GLM</strong> ultrafast flash sale via <strong>OpenGateway</strong></a> — both roster-verified lines (<strong>DeepSeek-V4.1-Flash</strong> GA 2026-09-10, <strong>GLM-5.2</strong> released 2026-06-16), making it today's safe flexibility play while the unverified model names shake out. The combative edge persists: <strong>@Teknium</strong> contrasted the team's deliberate quality bar against <strong>Openclaw</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-2281d2a2b09c\" class=\"internal-link\" rel=\"noopener noreferrer\">\"rushed slop app\"</a> and deflected comparison threads with <a href=\"/?date=2026-10-26&amp;category=social#item-6adbb9c6d531\" class=\"internal-link\" rel=\"noopener noreferrer\">\"just use Hermes instead,\"</a> while the official account showed zero tolerance for bad-faith actors; the feed's own scan reports no prompt-injection or manipulation attempts. Housekeeping: Reddit contributed nothing again — no items to analyze. Net read: ecosystem maturity is no longer a talking point — seven community projects in one feed, a third-party profile registry, and <strong>OMH</strong> at <strong>4K</strong> stars are the receipts — while leadership's scaling vision (cloud-hosted instances, subscription bundling) gives the maturity a destination, but the research feed's risk profile sharpened (two model names that don't check out against the roster) and the social feed's biggest story is protective, not promotional. Practical agenda: if you self-host, start with the <a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Railway</strong> template</a> or the <a href=\"/?date=2026-10-26&amp;category=news#item-85d2d1119b2e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>fnOS</strong> route</a>; read the <a href=\"/?date=2026-10-26&amp;category=news#item-5997d58d23ff\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.x</strong> deep-dive</a> — what changed since <strong>v0.22.1</strong>, what to verify after upgrading, what's still pending — before your next update (it doubles as the tips item); heed the <a href=\"/?date=2026-10-26&amp;category=social#item-41265cd721b5\" class=\"internal-link\" rel=\"noopener noreferrer\">fake-apps warning</a> and treat app-store \"Hermes\" listings as fraudulent; treat <a href=\"/?date=2026-10-26&amp;category=research#item-b24fcafcde25\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Spark-X2.6-4B</strong></a> and <a href=\"/?date=2026-10-26&amp;category=research#item-bc45bb433d28\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kimi K3.1 Pro</strong></a> as unverified until their names check out against the roster — if you want frontier-model flexibility today, the <a href=\"/?date=2026-10-26&amp;category=social#item-ad7c6cf9f440\" class=\"internal-link\" rel=\"noopener noreferrer\">flash sale</a> covers verified <strong>DeepSeek</strong>/<strong>GLM</strong> lines via <strong>OpenGateway</strong>; try <a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>File Access Manager</strong></a> for per-path permissions and <a href=\"/?date=2026-10-26&amp;category=news#item-394c4676e36d\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Walkie Talkie</strong></a> if you run multiple sessions per machine; and watch the <a href=\"/?date=2026-10-26&amp;category=social#item-99f39c68244e\" class=\"internal-link\" rel=\"noopener noreferrer\">announcement tease</a>, the <a href=\"/?date=2026-10-26&amp;category=social#item-5f931ff0a523\" class=\"internal-link\" rel=\"noopener noreferrer\">\"both paths\" confirmation</a>, and the <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">cloud roadmap</a> (cloud-hosted instances, private → public beta \"soon\") — filing <strong>Pro/Max</strong>, <strong>Kanban</strong>, <strong>Grafana</strong>, the <strong>~23k</strong> backlog, the <strong>Kubernetes</strong> notes, and the stale <strong>v0.20.0</strong> line as reference.</p>\n<p><em>Executive summary only — full section write-ups (Community, Tips &amp; Tutorials) follow in the complete edition.</em></p>",
+  "top_topics": [
+    {
+      "name": "Ecosystem Maturity and Community Growth",
+      "description": "The community is seeing a surge in development of diverse projects, including [deployment templates for cloud services](/?date=2026-10-26&category=news#item-188d392057ef) and functional plugins like [memory storage](/?date=2026-10-26&category=news#item-eea60312a10a) and [file access managers](/?date=2026-10-26&category=news#item-506586570159). This indicates a rapidly maturing and vibrant developer environment surrounding the core platform.",
+      "description_html": "The community is seeing a surge in development of diverse projects, including <a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\">deployment templates for cloud services</a> and functional plugins like <a href=\"/?date=2026-10-26&amp;category=news#item-eea60312a10a\" class=\"internal-link\" rel=\"noopener noreferrer\">memory storage</a> and <a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\">file access managers</a>. This indicates a rapidly maturing and vibrant developer environment surrounding the core platform.",
+      "category_breakdown": {
+        "news": 8,
+        "research": 2,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Platform Roadmap and Scaling Vision",
+      "description": "Leadership is actively defining a clear path toward enterprise adoption, outlining future plans for [cloud-hosted instances and subscription-based services](/?date=2026-10-26&category=social#item-5c001672cf84). User engagement is high, driven by ambitious goals and viral community projects like [Oh My Hermes](/?date=2026-10-26&category=social#item-5200058faecb).",
+      "description_html": "Leadership is actively defining a clear path toward enterprise adoption, outlining future plans for <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">cloud-hosted instances and subscription-based services</a>. User engagement is high, driven by ambitious goals and viral community projects like <a href=\"/?date=2026-10-26&amp;category=social#item-5200058faecb\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh My Hermes</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1,
+        "social": 5
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Model Diversity and Performance Optimization",
+      "description": "There is significant movement in integrating cutting-edge large language models from various global providers — such as Moonshot AI's [Kimi K3.1 Pro](/?date=2026-10-26&category=research#item-0d7f93adb5f2), StepFun's [Step 5 Preview](/?date=2026-10-26&category=research#item-922b165fd855), and OpenAI's [GPT-6.1 Sol](/?date=2026-10-26&category=research#item-48a770295ce6) — and optimizing the agent's performance for smaller models, exemplified by [Spark-X2.6-4B](/?date=2026-10-26&category=research#item-b24fcafcde25), a compact 4B-parameter model with a 1M-token context window. This flexibility allows users to leverage both frontier models and high-efficiency open weights solutions like [DeepSeek V4.1 Flash](/?date=2026-10-26&category=research#item-ead43239a4f9).",
+      "description_html": "There is significant movement in integrating cutting-edge large language models from various global providers — such as Moonshot AI's <a href=\"/?date=2026-10-26&amp;category=research#item-0d7f93adb5f2\" class=\"internal-link\" rel=\"noopener noreferrer\">Kimi K3.1 Pro</a>, StepFun's <a href=\"/?date=2026-10-26&amp;category=research#item-922b165fd855\" class=\"internal-link\" rel=\"noopener noreferrer\">Step 5 Preview</a>, and OpenAI's <a href=\"/?date=2026-10-26&amp;category=research#item-48a770295ce6\" class=\"internal-link\" rel=\"noopener noreferrer\">GPT-6.1 Sol</a> — and optimizing the agent's performance for smaller models, exemplified by <a href=\"/?date=2026-10-26&amp;category=research#item-b24fcafcde25\" class=\"internal-link\" rel=\"noopener noreferrer\">Spark-X2.6-4B</a>, a compact 4B-parameter model with a 1M-token context window. This flexibility allows users to leverage both frontier models and high-efficiency open weights solutions like <a href=\"/?date=2026-10-26&amp;category=research#item-ead43239a4f9\" class=\"internal-link\" rel=\"noopener noreferrer\">DeepSeek V4.1 Flash</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "Technical Rigor and Operational Stability",
+      "description": "Users and researchers are increasingly focused on the advanced technical challenges of running agents, ranging from [sandbox enforcement and safety guardrails](/?date=2026-10-26&category=news#item-506586570159) to [complex deployment orchestration](/?date=2026-10-26&category=news#item-188d392057ef). [Security warnings](/?date=2026-10-26&category=social#item-41265cd721b5) and [adversarial testing](/?date=2026-10-26&category=research#item-hn-49231797) suggest the project is focused on long-term robustness.",
+      "description_html": "Users and researchers are increasingly focused on the advanced technical challenges of running agents, ranging from <a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\">sandbox enforcement and safety guardrails</a> to <a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\">complex deployment orchestration</a>. <a href=\"/?date=2026-10-26&amp;category=social#item-41265cd721b5\" class=\"internal-link\" rel=\"noopener noreferrer\">Security warnings</a> and <a href=\"/?date=2026-10-26&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">adversarial testing</a> suggest the project is focused on long-term robustness.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 2,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 78
+    }
+  ],
+  "total_items_collected": 126,
+  "total_items_analyzed": 107,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 32,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 28,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 66,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 66,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-26/hero.webp?v=1792999079",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe pages through a stack of glowing story cards fanned out on the desk like a newsroom brief as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Ecosystem Maturity and Community Growth — The community is seeing a surge in development of diverse projects, including deployment templates for cloud services...\nTopic 2: Platform Roadmap and Scaling Vision — Leadership is actively defining a clear path toward enterprise adoption, outlining future plans for cloud-hosted inst...\nTopic 3: Model Diversity and Performance Optimization — There is significant movement in integrating cutting-edge large language models from various global providers — such...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: camera lens, image processing, visual recognition, neural network visualization, glowing nodes, architecture. Connected-node patterns trace along the far wall. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: from a low heroic angle, a warm amber pool of light in an otherwise dark command room. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-26T07:17:59.804899",
+  "categories": {
+    "news": {
+      "count": 13,
+      "category_summary": "**Releases & Guides:** A practical deep-dive covers the **[v0.22.x](/?date=2026-10-26&category=news#item-5997d58d23ff)** release line (from **v0.22.1** onward) — what changed, what to verify after upgrading, and what's still pending. Essential reading before your next update. **Community Projects:** **[hermes-agent-template](/?date=2026-10-26&category=news#item-188d392057ef)** offers one-click Railway deployment of Hermes Agent with a web admin dashboard; **[fnos-hermes-agent](/?date=2026-10-26&category=news#item-85d2d1119b2e)** showcases Hermes as a dedicated assistant on **fnOS** NAS; **[Hermes Project Stewardship](/?date=2026-10-26&category=news#item-bf820ff147df)** introduces long-running, governance-style agent workflows with approval gates and outcome measurement; **[Hermes Walkie Talkie](/?date=2026-10-26&category=news#item-394c4676e36d)** lets independent Hermes sessions on one machine discover and coordinate via local-only messaging; **[File Access Manager](/?date=2026-10-26&category=news#item-506586570159)** adds per-path Read/Write/Denied permissions for Hermes profiles; **[Hermes Bot Kit](/?date=2026-10-26&category=news#item-9f2f33412f7b)** brings chat-style bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop; **[Memmy](/?date=2026-10-26&category=news#item-eea60312a10a)** provides a local memory layer with Hermes support. **Themes:** multi-agent orchestration (stewardship, walkie-talkie), self-hosting (Railway, fnOS), and safety/sandboxing (approval gates, SID-bound access, Docker-enforced file permissions).",
+      "category_summary_html": "<p><strong>Releases &amp; Guides:</strong> A practical deep-dive covers the <strong><a href=\"/?date=2026-10-26&amp;category=news#item-5997d58d23ff\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.x</a></strong> release line (from <strong>v0.22.1</strong> onward) — what changed, what to verify after upgrading, and what's still pending. Essential reading before your next update. <strong>Community Projects:</strong> <strong><a href=\"/?date=2026-10-26&amp;category=news#item-188d392057ef\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-agent-template</a></strong> offers one-click Railway deployment of Hermes Agent with a web admin dashboard; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-85d2d1119b2e\" class=\"internal-link\" rel=\"noopener noreferrer\">fnos-hermes-agent</a></strong> showcases Hermes as a dedicated assistant on <strong>fnOS</strong> NAS; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-bf820ff147df\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Project Stewardship</a></strong> introduces long-running, governance-style agent workflows with approval gates and outcome measurement; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-394c4676e36d\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Walkie Talkie</a></strong> lets independent Hermes sessions on one machine discover and coordinate via local-only messaging; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-506586570159\" class=\"internal-link\" rel=\"noopener noreferrer\">File Access Manager</a></strong> adds per-path Read/Write/Denied permissions for Hermes profiles; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-9f2f33412f7b\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Bot Kit</a></strong> brings chat-style bubbles, task lists, and a docked remote-desktop pane to Hermes Desktop; <strong><a href=\"/?date=2026-10-26&amp;category=news#item-eea60312a10a\" class=\"internal-link\" rel=\"noopener noreferrer\">Memmy</a></strong> provides a local memory layer with Hermes support. <strong>Themes:</strong> multi-agent orchestration (stewardship, walkie-talkie), self-hosting (Railway, fnOS), and safety/sandboxing (approval gates, SID-bound access, Docker-enforced file permissions).</p>",
+      "themes": [
+        {
+          "name": "Model Integration",
+          "description": "Users are actively sharing advanced methods to integrate high-performance and cost-effective commercial models like StepFun Step 5 and Kimi K3.1 Pro into the Hermes Agent framework.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 83.0
+        },
+        {
+          "name": "Self-Hosting & Deployment",
+          "description": "The community is rapidly producing infrastructure-level projects and templates, making it easier than ever to run Hermes Agent on private or personalized hardware like fnOS and Railway.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 77.0
+        },
+        {
+          "name": "Product Development",
+          "description": "Core development remains steady with new canary builds and detailed technical breakdowns of recent release features and fixes.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Multi-agent orchestration and coordination",
+          "description": "Multiple projects (oh-my-hermes, hermes-walkie-talkie, hermes-project-stewardship) focus on coordinating multiple Hermes sessions or agent teams, including parallel task graphs and local inter-session messaging.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Safety, verification, and sandboxing",
+          "description": "A recurring emphasis on verified completion, approval gates, SID-bound local access controls, and Docker-enforced file permissions across the new projects.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Ecosystem project wave",
+          "description": "Seven new community projects published to Hermes Atlas in a single batch, spanning orchestration, memory, governance, voice, UI, and security tooling around Hermes Agent and Hermes Desktop.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 66.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "188d392057ef",
+          "title": "hermes-agent-template (Deployment & Infra)",
+          "content": "This Railway template deploys Hermes Agent with a web admin dashboard for configuring providers, channels, and tools, and managing the gateway and user pairing. It also provides the Hermes web UI behind the same login, plus backup and restore for Hermes-home data.",
+          "url": "https://hermesatlas.com/projects/praveen-ks-2001/hermes-agent-template",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Deployment & Infra"
+          ],
+          "summary": "A Railway template is available for deploying Hermes Agent, simplifying the infrastructure setup for users. This solution includes a web admin dashboard for configuration, tool management, and data backup functionality for reliable operation.",
+          "importance_score": 80.0,
+          "reasoning": "This is a highly valuable resource for developers and users looking for low-overhead, stable, and professional deployment of the Hermes Agent.",
+          "themes": [
+            "Self-Hosting/Deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Railway template is available for deploying Hermes Agent, simplifying the infrastructure setup for users. This solution includes a web admin dashboard for configuration, tool management, and data backup functionality for reliable operation.</p>",
+          "content_html": "<p>This Railway template deploys Hermes Agent with a web admin dashboard for configuring providers, channels, and tools, and managing the gateway and user pairing. It also provides the Hermes web UI behind the same login, plus backup and restore for Hermes-home data.</p>"
+        },
+        {
+          "id": "85d2d1119b2e",
+          "title": "fnos-hermes-agent (Integrations & Bridges)",
+          "content": "Hermes Agent for fnOS is an AI assistant application for Feiniu NAS, deployed through the fnOS app center as an .fpk package. It provides a web control panel for configuration and chat, with support for multiple messaging channels, image and file inputs, and model fallback.",
+          "url": "https://hermesatlas.com/projects/iranee/fnos-hermes-agent",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Integrations & Bridges"
+          ],
+          "summary": "A project has been demonstrated for running Hermes Agent on Feiniu NAS (fnOS) as a dedicated AI assistant application. It showcases the capability of running complex agent software in a private, self-hosted environment with a dedicated web control panel.",
+          "importance_score": 75.0,
+          "reasoning": "This community contribution demonstrates a powerful, real-world use case for running Hermes Agent on personal or private infrastructure, emphasizing privacy and control.",
+          "themes": [
+            "Self-Hosting/Deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A project has been demonstrated for running Hermes Agent on Feiniu NAS (fnOS) as a dedicated AI assistant application. It showcases the capability of running complex agent software in a private, self-hosted environment with a dedicated web control panel.</p>",
+          "content_html": "<p>Hermes Agent for fnOS is an AI assistant application for Feiniu NAS, deployed through the fnOS app center as an .fpk package. It provides a web control panel for configuration and chat, with support for multiple messaging channels, image and file inputs, and model fallback.</p>"
+        },
+        {
+          "id": "5997d58d23ff",
+          "title": "Hermes Agent v0.22.x in Practice: What Changed, What to Check, What's Still Pending",
+          "content": "Hermes Agent v0.22.1 to v0.22.5: gateway reboot fixes, a ~620-PR rollup, the wrong-commit v0.22.1 build, and what to verify after upgrading.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-agent-v022-release-line-2026/",
+          "author": "Hermes Agent",
+          "published": "2026-10-25T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades, This post is a practical guide reviewing the transitions across the Hermes Agent v0.22.x release line, specifically covering updates from v0.22.1 to v0.22.5. It highlights technical fixes related to gateway reboots and provides guidance on post-upgrade verification.",
+          "importance_score": 70.0,
+          "reasoning": "This is a crucial technical deep-dive for existing users planning to upgrade or troubleshooting deployment issues, providing necessary context on recent release changes.",
+          "themes": [
+            "Product Updates"
+          ],
+          "continuation": {
+            "original_item_id": "7608d9b01045",
+            "original_date": "2026-10-24",
+            "original_category": "news",
+            "original_title": "Hermes Agent v0.22.5",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades"
+          },
+          "summary_html": "<p>Continuing our coverage from a couple of days ago — a practical guide to the v0.22.x upgrades, This post is a practical guide reviewing the transitions across the Hermes Agent v0.22.x release line, specifically covering updates from v0.22.1 to v0.22.5. It highlights technical fixes related to gateway reboots and provides guidance on post-upgrade verification.</p>",
+          "content_html": "<p>Hermes Agent v0.22.1 to v0.22.5: gateway reboot fixes, a ~620-PR rollup, the wrong-commit v0.22.1 build, and what to verify after upgrading.</p>"
+        },
+        {
+          "id": "bf820ff147df",
+          "title": "hermes-project-stewardship (Developer Tools)",
+          "content": "Hermes Project Stewardship lets a team of Hermes agents look after a project over time. It verifies project state before acting, proposes work with supporting evidence, supports approval gates, and measures outcomes through a desktop app. Projects, boards, and tasks remain in Hermes, while Stewardship stores its own state in a local SQLite database.",
+          "url": "https://hermesatlas.com/projects/Sahil-SS9/hermes-project-stewardship",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Developer Tools"
+          ],
+          "summary": "Hermes Project Stewardship enables a team of Hermes agents to maintain a project over time by verifying state before acting, proposing evidence-backed work, and supporting approval gates. A desktop app measures outcomes while projects and tasks stay in Hermes and Stewardship keeps its own state in a local SQLite database.",
+          "importance_score": 70.0,
+          "reasoning": "Introduces long-running, governance-style agent workflows with approval gates and outcome measurement built specifically on Hermes, addressing a notable gap for sustained autonomous project work.",
+          "themes": [
+            "Developer Tools",
+            "Agent governance and oversight"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Project Stewardship enables a team of Hermes agents to maintain a project over time by verifying state before acting, proposing evidence-backed work, and supporting approval gates. A desktop app measures outcomes while projects and tasks stay in Hermes and Stewardship keeps its own state in a local SQLite database.</p>",
+          "content_html": "<p>Hermes Project Stewardship lets a team of Hermes agents look after a project over time. It verifies project state before acting, proposes work with supporting evidence, supports approval gates, and measures outcomes through a desktop app. Projects, boards, and tasks remain in Hermes, while Stewardship stores its own state in a local SQLite database.</p>"
+        },
+        {
+          "id": "394c4676e36d",
+          "title": "hermes-walkie-talkie (Integrations & Bridges)",
+          "content": "Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on the same computer discover one another and coordinate through messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux and macOS, and Windows named pipes with SID-bound access controls; it does not connect machines over a network or use a central daemon.",
+          "url": "https://hermesatlas.com/projects/Sahil-SS9/hermes-walkie-talkie",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Integrations & Bridges"
+          ],
+          "summary": "Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on one machine discover each other and coordinate via messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux/macOS and Windows named pipes with SID-bound access controls, with no networking or central daemon.",
+          "importance_score": 65.0,
+          "reasoning": "Enables local multi-session coordination for Hermes with a thoughtful security posture (local-only transport, SID-bound pipes), filling a real gap for users running several concurrent agent sessions.",
+          "themes": [
+            "Integrations & Bridges",
+            "Multi-session coordination",
+            "Local security"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on one machine discover each other and coordinate via messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux/macOS and Windows named pipes with SID-bound access controls, with no networking or central daemon.</p>",
+          "content_html": "<p>Hermes Walkie Talkie is a standalone plugin that lets independent Hermes sessions on the same computer discover one another and coordinate through messages, groups, broadcasts, and structured requests. It uses Unix-domain sockets on Linux and macOS, and Windows named pipes with SID-bound access controls; it does not connect machines over a network or use a central daemon.</p>"
+        },
+        {
+          "id": "506586570159",
+          "title": "paperclip-hermes-file-access-manager (Plugins & Extensions)",
+          "content": "File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles. It translates those rules into Docker bind mounts and uses Hermes’ Docker terminal backend to enforce access inside a container. The plugin provides a filesystem tree editor, previews generated mounts, and can apply changes by recreating the container and restarting the gateway.",
+          "url": "https://hermesatlas.com/projects/marospekarik/paperclip-hermes-file-access-manager",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Plugins & Extensions"
+          ],
+          "summary": "File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles, translating rules into Docker bind mounts enforced via Hermes' Docker terminal backend. It includes a filesystem tree editor, mount previews, and applies changes by recreating the container and restarting the gateway.",
+          "importance_score": 62.0,
+          "reasoning": "Addresses sandboxing and filesystem permission control for Hermes agents, a security-relevant capability for users running agents in containers, though it depends on the Paperclip plugin ecosystem.",
+          "themes": [
+            "Plugins & Extensions",
+            "Security and sandboxing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles, translating rules into Docker bind mounts enforced via Hermes' Docker terminal backend. It includes a filesystem tree editor, mount previews, and applies changes by recreating the container and restarting the gateway.</p>",
+          "content_html": "<p>File Access Manager is a Paperclip plugin that sets per-path Read/Write, Read Only, or Denied permissions for Hermes profiles. It translates those rules into Docker bind mounts and uses Hermes’ Docker terminal backend to enforce access inside a container. The plugin provides a filesystem tree editor, previews generated mounts, and can apply changes by recreating the container and restarting the gateway.</p>"
+        },
+        {
+          "id": "eea60312a10a",
+          "title": "memmy-agent (Memory & Context)",
+          "content": "Memmy is a desktop app and CLI/TUI for local memory and AI-agent tasks. Its Memory Service stores and retrieves information, while its agent features can carry project context between supported tools, including Claude Code, Codex, OpenClaw, and Hermes.",
+          "url": "https://hermesatlas.com/projects/MemTensor/memmy-agent",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Memory & Context"
+          ],
+          "summary": "Memmy is a desktop app plus CLI/TUI providing local memory storage and retrieval via a Memory Service, with agent features that carry project context between supported tools. It interoperates with Claude Code, Codex, OpenClaw, and Hermes.",
+          "importance_score": 58.0,
+          "reasoning": "Useful cross-tool memory layer that explicitly supports Hermes among its integrations, but it is a general multi-tool utility rather than a Hermes-specific capability, so significance for Hermes users is moderate.",
+          "themes": [
+            "Memory & Context",
+            "Cross-tool interoperability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Memmy is a desktop app plus CLI/TUI providing local memory storage and retrieval via a Memory Service, with agent features that carry project context between supported tools. It interoperates with Claude Code, Codex, OpenClaw, and Hermes.</p>",
+          "content_html": "<p>Memmy is a desktop app and CLI/TUI for local memory and AI-agent tasks. Its Memory Service stores and retrieves information, while its agent features can carry project context between supported tools, including Claude Code, Codex, OpenClaw, and Hermes.</p>"
+        },
+        {
+          "id": "9f2f33412f7b",
+          "title": "Hermes Bot Kit (Workspaces & GUIs)",
+          "content": "Hermes Bot Kit provides desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop. It also includes agent plugins for texting-style replies and for shell and GUI interaction with a bot’s pinned computer.",
+          "url": "https://hermesatlas.com/projects/thomasbek3/hermes-bot-kit",
+          "author": "Unknown",
+          "published": "2026-10-25T22:48:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Workspaces & GUIs"
+          ],
+          "summary": "Hermes Bot Kit supplies desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop, plus agent plugins for texting-style replies and shell/GUI interaction with a bot's pinned computer.",
+          "importance_score": 55.0,
+          "reasoning": "A UI/UX enhancement package for Hermes Desktop with remote-control bot workflows; valuable to a subset of users but narrower in scope than orchestration or voice additions.",
+          "themes": [
+            "Workspaces & GUIs",
+            "Desktop UX"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Bot Kit supplies desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop, plus agent plugins for texting-style replies and shell/GUI interaction with a bot's pinned computer.</p>",
+          "content_html": "<p>Hermes Bot Kit provides desktop plugins that add texting-style bubbles, named bot sections, a Tasks list, and a docked remote-desktop pane to Hermes Desktop. It also includes agent plugins for texting-style replies and for shell and GUI interaction with a bot’s pinned computer.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 28,
+      "category_summary": "This cycle's lead is **[Kimi K3.1 Pro](/?date=2026-10-26&category=research#item-0d7f93adb5f2)**, Moonshot's 3T-class flagship built from **Kimi K3** via extensive post-training and positioned directly against proprietary frontier models — with a companion [community guide](/?date=2026-10-26&category=research#item-bc45bb433d28) covering the provider config, API keys, and profile setup to run it inside Hermes Agent. On the efficiency frontier, **[Spark-X2.6-4B](/?date=2026-10-26&category=research#item-b24fcafcde25)** pairs a 4B footprint with a **1M-token context window** under **Apache 2.0**. Platform changes with direct user impact: Hermes Agent now supports **[Claude Pro/Max subscriptions](/?date=2026-10-26&category=research#item-hn-49790991)** via the direct SDK plugin (lowering the cost barrier for Claude-backed agent use), **[v0.20.0](/?date=2026-10-26&category=research#item-hn-49159200)** ships, and official **[Hermes Kanban](/?date=2026-10-26&category=research#item-hn-49604068)** docs detail multi-agent profile coordination. Community infrastructure is maturing quickly — **[ClusterMob](/?date=2026-10-26&category=research#item-hn-50197497)** launches as a third-party profile registry and a **[Grafana](/?date=2026-10-26&category=research#item-hn-49318128)** integration closes the observability gap for long-running agents — while the **[~23,000 open PR](/?date=2026-10-26&category=research#item-hn-49424643)** backlog is a real project-health signal for contribution flow and release velocity. Operations guidance is catching up to adoption: a Kubernetes walkthrough exposes concrete gaps (no official **[Helm chart](/?date=2026-10-26&category=research#item-hn-49977400)**, root-at-init container requirement).",
+      "category_summary_html": "<p>This cycle's lead is <strong><a href=\"/?date=2026-10-26&amp;category=research#item-0d7f93adb5f2\" class=\"internal-link\" rel=\"noopener noreferrer\">Kimi K3.1 Pro</a></strong>, Moonshot's 3T-class flagship built from <strong>Kimi K3</strong> via extensive post-training and positioned directly against proprietary frontier models — with a companion <a href=\"/?date=2026-10-26&amp;category=research#item-bc45bb433d28\" class=\"internal-link\" rel=\"noopener noreferrer\">community guide</a> covering the provider config, API keys, and profile setup to run it inside Hermes Agent. On the efficiency frontier, <strong><a href=\"/?date=2026-10-26&amp;category=research#item-b24fcafcde25\" class=\"internal-link\" rel=\"noopener noreferrer\">Spark-X2.6-4B</a></strong> pairs a 4B footprint with a <strong>1M-token context window</strong> under <strong>Apache 2.0</strong>. Platform changes with direct user impact: Hermes Agent now supports <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscriptions</a></strong> via the direct SDK plugin (lowering the cost barrier for Claude-backed agent use), <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.20.0</a></strong> ships, and official <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> docs detail multi-agent profile coordination. Community infrastructure is maturing quickly — <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob</a></strong> launches as a third-party profile registry and a <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> integration closes the observability gap for long-running agents — while the <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open PR</a></strong> backlog is a real project-health signal for contribution flow and release velocity. Operations guidance is catching up to adoption: a Kubernetes walkthrough exposes concrete gaps (no official <strong><a href=\"/?date=2026-10-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm chart</a></strong>, root-at-init container requirement).</p>",
+      "themes": [
+        {
+          "name": "High-Tier Chinese LLM Competition",
+          "description": "Moonshot AI is solidifying its position as a global leader by challenging proprietary models (like Claude and GPT) with Kimi K3.1 Pro and committing to open-weights.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 95.0
+        },
+        {
+          "name": "Performance in Small Parameter Models",
+          "description": "The trend towards achieving impressive capabilities and context handling using smaller, more deployable models is accelerating with the release of Spark-X2.6-4B.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Community Ecosystem and Plugins",
+          "description": "A wave of third-party tooling: ClusterMob profile registry, verso orchestrator, Refine Cycle self-improvement plugin, Grafana observability, and multi-agent kanban collaboration.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Model Integration Guides",
+          "description": "Community-authored walkthroughs for wiring third-party frontier models (here Moonshot Kimi) into the Hermes Agent runtime, covering provider config, API keys, and profiles.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Deployment and Operations",
+          "description": "Containerization, Kubernetes gaps (no Helm chart, root-at-init), hardware hosting like Arduino UNO Q, and observability tooling for running Hermes Agent in production.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 61.0
+        },
+        {
+          "name": "Model Backend Flexibility",
+          "description": "Expanding model options for the agent, including official Claude Pro/Max subscription support, StepFun Step 5 Preview wiring, model-router dependency questions, and GLM 5.3 Flash behavior issues.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Agent Cost Optimization",
+          "description": "Discussion of token pricing, reasoning-effort settings, and the economics of long-running agent sessions using cheaper coding models.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Project Health and Governance",
+          "description": "Concerns about a 23,000 open PR backlog, moderation/provenance disputes in the official repo, trademark questions, and commercial derivative launches (Almanac YC S26).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 51.0
+        },
+        {
+          "name": "Frontier Model Landscape",
+          "description": "Research-blog coverage of new backends relevant to agent work: DeepSeek V4.1 Flash (open weights, free OpenCode tier) and OpenAI GPT-6.1 Sol (agentic coding benchmarks, aggressive pricing).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 47.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "b24fcafcde25",
+          "title": "Spark-X2.6-4B: The Small 4B Model With a 1M Context Window",
+          "content": "Spark-X2.6-4B is a new 4B open model from the SparkLLM Team, and it scores well above its size on agent and coding tests. It has a 1M-token context window, three thinking levels and an Apache 2.0 licence. It came out a little over a month after Spark-X2.5-4B and uses the same architecture, so the gains come from better post-training. In the video below I test it on real jobs. Here is what it does, how it compares and how to run it.\n\nKey takeaways\n\n- 4B parameters, Apache 2.0, English and Chinese.\n\n- Average benchmark score 63.3 vs 52.1 for Spark-X2.5-4B.\n\n- 1M context, if your device has enough memory.\n\n- Runs in Ollama, LM Studio, llama.cpp, SGLang, vLLM and MLX.\n\n## What is Spark-X2.6-4B?\n\nSpark-X2.6-4B is a small language model from the SparkLLM Team, published on Hugging Face under the XHToken organisation. The model card says it keeps the same architecture as Spark-X2.5-4B, with the improvement coming from post-training. There is also a base checkpoint, Spark-X2.6-4B-Base, if you want to fine-tune it.\n\nSpark-X2.6-4B at a glance\n\nSize\n4B parameters, BF16\n\nLayers\n36, with 3 sliding-window layers to every 1 full attention layer\n\nContext\nUp to 1,048,576 tokens\n\nThinking\nnone, low or high (on by default)\n\nLanguages\nEnglish and Chinese\n\nLicence\nApache 2.0\n\n## Benchmarks vs Qwen3.5 and Gemma4\n\nAll scores below are from the model card, in thinking mode, with Spark-X2.6 on high. Some rival scores were taken from those models’ own cards.\n\nBenchmark\nSpark-X2.6-4B\nSpark-X2.5-4B\nQwen3.5-9B\nQwen3.5-4B\n\nAverage\n63.3\n52.1\n49.1\n43.2\n\nBFCL-V4 (tool calls)\n71.8\n65.1\n66.1\n50.3\n\ntau2 (agents)\n86.9\n75.1\n79.1\n79.9\n\nMCP-Atlas\n62.4\n54.6\n47.4\n40.8\n\nBrowseComp\n53.1\n40.9\n8.3\n14.3\n\nSWE-bench Verified\n62.8\n41.6\n53.1\n38.8\n\nSWE-bench Pro\n54.3\n44.4\n33.8\n29.4\n\nAIME 2026\n91.2\n90.7\n88.2\n83.0\n\nGPQA Diamond\n77.1\n73.7\n81.7\n76.2\n\nIFEval\n93.6\n93.0\n91.5\n89.8\n\nOn the average, Gemma4-12B scores 47.0 and Gemma4-E4B 29.7. The standout is agent work: tool calls, browsing and SWE-bench are well ahead of the 9B Qwen model. It isn’t best at everything, though. Qwen3.5-9B still wins on GPQA Diamond and on some long-context tests.\n\nWant small AI models running cheap jobs for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## The 1M context window\n\nThe model supports 1,048,576 tokens of context, and the server examples use that full length. The card adds a fair warning: you need enough device memory, so lower the context length if you run out. On long-context tests it does well on Graphwalks 1M (34.2 vs 2.5 for X2.5) but trails Qwen3.5-9B on MRCR v2 at 512K–1M (26.0 vs 34.3).\n\nWant small, cheap AI models doing real work for you? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Thinking levels\n\nSpark-X2.6-4B has three thinking levels: none, low and high. Thinking is on by default. To turn it off, pass `enable_thinking: false` in the chat template settings. The recommended sampling is temperature 1.0, top-p 0.95 and top-k -1. Use high for hard maths or coding, and none for quick replies.\n\n## How to run Spark-X2.6-4B\n\nThe model card lists all of these:\n\n- Ollama (v0.34.1+): `ollama run SparkLLM/Spark-X2.6-4B`\n\n- LM Studio (0.4.0+): `lms chat spark-x2.6`\n\n- llama.cpp (b10828+): `llama serve -m /path/to/Spark-X2.6-4B-GGUF`\n\n- SGLang: the lmsysorg/sglang Docker image with `--reasoning-parser qwen3 --tool-call-parser spark25`\n\n- vLLM: with the Spark plugin from GitHub (XHToken/Spark-plugin)\n\n- Transformers: `pip install transformers==4.57.1` and `trust_remote_code=True`\n\n- MLX on Mac: via XHToken/Spark-MLX-LLM\n\n- Fine-tuning: via XHToken/LlamaFactory\n\nIt targets NVIDIA GPUs, Ascend NPUs, Apple silicon and Linux CPUs. The card doesn’t give a minimum hardware spec, but a 4B model at 4-bit is small enough for most modern laptops at normal context lengths.\n\n## What I’d use it for\n\nIn my video I look at the kind of everyday jobs a small model is good at:\n\n- Onboarding new team members: load your docs and let it answer questions.\n\n- Summarising long documents: the 1M context means you can paste a lot in one go.\n\n- Cheap agent tasks: its tool-calling scores make it a good worker model behind a bigger planner.\n\n- Private work: it runs fully on your own machine.\n\nBe realistic about limits. It is still a 4B model, so for hard reasoning or big code changes, a larger model will do better. Two of the in-house benchmarks, SWebBench and PAgentBench, are not public yet; the team says they will be open-sourced soon.\n\nWant a shorter take? I also cover Spark-X2.6-4B on the AI Profit Boardroom blog.\n\n## Spark-X2.6-4B vs Spark-X2.5-4B\n\nThe architecture is the same, so everything you learned with Spark-X2.5-4B carries over. The difference is post-training, and the jump is large for a release that came only a little over a month later:\n\nBenchmark\nX2.6\nX2.5\nChange\n\nAverage\n63.3\n52.1\n+11.2\n\nSWE-bench Verified\n62.8\n41.6\n+21.2\n\nBrowseComp\n53.1\n40.9\n+12.2\n\ntau2\n86.9\n75.1\n+11.8\n\nMCP-Atlas\n62.4\n54.6\n+7.8\n\nGraphwalks 1M\n34.2\n2.5\n+31.7\n\nIf you already run X2.5, upgrading is a simple model swap. Your prompts and tools should keep working.\n\n## Who is Spark-X2.6-4B for?\n\nIt is a good fit if you want an AI model that runs on your own laptop, costs nothing per message and keeps your data private. Small business owners can use it to answer team questions from a handbook, sum up long reports or sort incoming messages. Developers can use it as a cheap worker model inside an agent, where a larger model plans and Spark carries out the tool calls.\n\nIt is not the right pick if you need the very best answers on hard reasoning or large code changes. For that, a bigger model will still do better. The smart move is to try Spark on your simplest daily jobs first, see how far it gets, then decide which tasks to hand to it for good.\n\n## How to get good results from a small model\n\n- Give it one clear job at a time instead of a long list of tasks.\n\n- Use high thinking for maths, code and multi-step tool use, and none for quick chat.\n\n- Pair it with a bigger planner. Let a large model plan and Spark do the cheap tool calls.\n\n- Watch your memory at long contexts. Start at 32K–128K and only go higher when you need it.\n\n- Test it on your own data, because benchmarks are only a guide.\n\nUsed like this, a 4B model can handle a surprising amount of daily work for close to zero cost.\n\n## My verdict on Spark-X2.6-4B\n\nFor a 4B model, the agent and coding scores are very strong, and it is easy to run in Ollama or LM Studio. If you want a small, private, free model for summaries, tool calls and support tasks, Spark-X2.6-4B is one of the best small models to try right now.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: spark-x2.6-4b\n\n### Who made Spark-X2.6-4B?\n\nThe SparkLLM Team, which publishes its models on Hugging Face under the XHToken organisation.\n\n### What is Spark-X2.6-4B’s context window?\n\nUp to 1,048,576 tokens (1M), as long as your device has enough memory.\n\n### How do I run Spark-X2.6-4B in Ollama?\n\nUse Ollama v0.34.1 or later and run: ollama run SparkLLM/Spark-X2.6-4B.\n\n### Is Spark-X2.6-4B better than Qwen3.5-9B?\n\nOn the model card’s average it scores 63.3 vs 49.1, and it leads on tool calls, browsing and SWE-bench. Qwen3.5-9B still wins on GPQA Diamond and some long-context tests.\n\n### Can I turn off thinking?\n\nYes. It has none, low and high levels. Pass enable_thinking false in the chat template settings to turn thinking off.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Best Model for Hermes Agent\n\n- Nemotron 3.5 Bolt + Hermes\n\n- Solar Mini 4 + Hermes\n\nLast updated October 2026. This page is a living guide to spark-x2.6-4b — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/spark-x2-6-4b/?utm_source=rss&utm_medium=rss&utm_campaign=spark-x2-6-4b",
+          "author": "Clawdbot",
+          "published": "2026-10-25T03:44:22",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "The Spark-X2.6-4B is a 4B parameter open model by SparkLLM. It utilizes an Apache 2.0 license and features a substantial 1 million token context window. Benchmarks show a performance improvement over the X2.5 version, and it is highly compatible with various deployment frameworks such as Ollama and vLLM.",
+          "importance_score": 85.0,
+          "reasoning": "This model represents a significant technical achievement in the efficiency category, pairing a small parameter count (4B) with a massive context window (1M tokens), which is a major appeal for researchers and developers needing high memory capacity.",
+          "themes": [
+            "Model Efficiency",
+            "Context Window Scaling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The Spark-X2.6-4B is a 4B parameter open model by SparkLLM. It utilizes an Apache 2.0 license and features a substantial 1 million token context window. Benchmarks show a performance improvement over the X2.5 version, and it is highly compatible with various deployment frameworks such as Ollama and vLLM.</p>",
+          "content_html": "<p>Spark-X2.6-4B is a new 4B open model from the SparkLLM Team, and it scores well above its size on agent and coding tests. It has a 1M-token context window, three thinking levels and an Apache 2.0 licence. It came out a little over a month after Spark-X2.5-4B and uses the same architecture, so the gains come from better post-training. In the video below I test it on real jobs. Here is what it does, how it compares and how to run it.</p>\n<p>Key takeaways</p>\n<ul>\n<li>4B parameters, Apache 2.0, English and Chinese.</li>\n</ul>\n<ul>\n<li>Average benchmark score 63.3 vs 52.1 for Spark-X2.5-4B.</li>\n</ul>\n<ul>\n<li>1M context, if your device has enough memory.</li>\n</ul>\n<ul>\n<li>Runs in Ollama, LM Studio, llama.cpp, SGLang, vLLM and MLX.</li>\n</ul>\n<h2>What is Spark-X2.6-4B?</h2>\n<p>Spark-X2.6-4B is a small language model from the SparkLLM Team, published on Hugging Face under the XHToken organisation. The model card says it keeps the same architecture as Spark-X2.5-4B, with the improvement coming from post-training. There is also a base checkpoint, Spark-X2.6-4B-Base, if you want to fine-tune it.</p>\n<p>Spark-X2.6-4B at a glance</p>\n<p>Size</p>\n<p>4B parameters, BF16</p>\n<p>Layers</p>\n<p>36, with 3 sliding-window layers to every 1 full attention layer</p>\n<p>Context</p>\n<p>Up to 1,048,576 tokens</p>\n<p>Thinking</p>\n<p>none, low or high (on by default)</p>\n<p>Languages</p>\n<p>English and Chinese</p>\n<p>Licence</p>\n<p>Apache 2.0</p>\n<h2>Benchmarks vs Qwen3.5 and Gemma4</h2>\n<p>All scores below are from the model card, in thinking mode, with Spark-X2.6 on high. Some rival scores were taken from those models’ own cards.</p>\n<p>Benchmark</p>\n<p>Spark-X2.6-4B</p>\n<p>Spark-X2.5-4B</p>\n<p>Qwen3.5-9B</p>\n<p>Qwen3.5-4B</p>\n<p>Average</p>\n<p>63.3</p>\n<p>52.1</p>\n<p>49.1</p>\n<p>43.2</p>\n<p>BFCL-V4 (tool calls)</p>\n<p>71.8</p>\n<p>65.1</p>\n<p>66.1</p>\n<p>50.3</p>\n<p>tau2 (agents)</p>\n<p>86.9</p>\n<p>75.1</p>\n<p>79.1</p>\n<p>79.9</p>\n<p>MCP-Atlas</p>\n<p>62.4</p>\n<p>54.6</p>\n<p>47.4</p>\n<p>40.8</p>\n<p>BrowseComp</p>\n<p>53.1</p>\n<p>40.9</p>\n<p>8.3</p>\n<p>14.3</p>\n<p>SWE-bench Verified</p>\n<p>62.8</p>\n<p>41.6</p>\n<p>53.1</p>\n<p>38.8</p>\n<p>SWE-bench Pro</p>\n<p>54.3</p>\n<p>44.4</p>\n<p>33.8</p>\n<p>29.4</p>\n<p>AIME 2026</p>\n<p>91.2</p>\n<p>90.7</p>\n<p>88.2</p>\n<p>83.0</p>\n<p>GPQA Diamond</p>\n<p>77.1</p>\n<p>73.7</p>\n<p>81.7</p>\n<p>76.2</p>\n<p>IFEval</p>\n<p>93.6</p>\n<p>93.0</p>\n<p>91.5</p>\n<p>89.8</p>\n<p>On the average, Gemma4-12B scores 47.0 and Gemma4-E4B 29.7. The standout is agent work: tool calls, browsing and SWE-bench are well ahead of the 9B Qwen model. It isn’t best at everything, though. Qwen3.5-9B still wins on GPQA Diamond and on some long-context tests.</p>\n<p>Want small AI models running cheap jobs for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>The 1M context window</h2>\n<p>The model supports 1,048,576 tokens of context, and the server examples use that full length. The card adds a fair warning: you need enough device memory, so lower the context length if you run out. On long-context tests it does well on Graphwalks 1M (34.2 vs 2.5 for X2.5) but trails Qwen3.5-9B on MRCR v2 at 512K–1M (26.0 vs 34.3).</p>\n<p>Want small, cheap AI models doing real work for you? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Thinking levels</h2>\n<p>Spark-X2.6-4B has three thinking levels: none, low and high. Thinking is on by default. To turn it off, pass <code>enable_thinking: false</code> in the chat template settings. The recommended sampling is temperature 1.0, top-p 0.95 and top-k -1. Use high for hard maths or coding, and none for quick replies.</p>\n<h2>How to run Spark-X2.6-4B</h2>\n<p>The model card lists all of these:</p>\n<ul>\n<li>Ollama (v0.34.1+): <code>ollama run SparkLLM/Spark-X2.6-4B</code></li>\n</ul>\n<ul>\n<li>LM Studio (0.4.0+): <code>lms chat spark-x2.6</code></li>\n</ul>\n<ul>\n<li>llama.cpp (b10828+): <code>llama serve -m /path/to/Spark-X2.6-4B-GGUF</code></li>\n</ul>\n<ul>\n<li>SGLang: the lmsysorg/sglang Docker image with <code>--reasoning-parser qwen3 --tool-call-parser spark25</code></li>\n</ul>\n<ul>\n<li>vLLM: with the Spark plugin from GitHub (XHToken/Spark-plugin)</li>\n</ul>\n<ul>\n<li>Transformers: <code>pip install transformers==4.57.1</code> and <code>trust_remote_code=True</code></li>\n</ul>\n<ul>\n<li>MLX on Mac: via XHToken/Spark-MLX-LLM</li>\n</ul>\n<ul>\n<li>Fine-tuning: via XHToken/LlamaFactory</li>\n</ul>\n<p>It targets NVIDIA GPUs, Ascend NPUs, Apple silicon and Linux CPUs. The card doesn’t give a minimum hardware spec, but a 4B model at 4-bit is small enough for most modern laptops at normal context lengths.</p>\n<h2>What I’d use it for</h2>\n<p>In my video I look at the kind of everyday jobs a small model is good at:</p>\n<ul>\n<li>Onboarding new team members: load your docs and let it answer questions.</li>\n</ul>\n<ul>\n<li>Summarising long documents: the 1M context means you can paste a lot in one go.</li>\n</ul>\n<ul>\n<li>Cheap agent tasks: its tool-calling scores make it a good worker model behind a bigger planner.</li>\n</ul>\n<ul>\n<li>Private work: it runs fully on your own machine.</li>\n</ul>\n<p>Be realistic about limits. It is still a 4B model, so for hard reasoning or big code changes, a larger model will do better. Two of the in-house benchmarks, SWebBench and PAgentBench, are not public yet; the team says they will be open-sourced soon.</p>\n<p>Want a shorter take? I also cover Spark-X2.6-4B on the AI Profit Boardroom blog.</p>\n<h2>Spark-X2.6-4B vs Spark-X2.5-4B</h2>\n<p>The architecture is the same, so everything you learned with Spark-X2.5-4B carries over. The difference is post-training, and the jump is large for a release that came only a little over a month later:</p>\n<p>Benchmark</p>\n<p>X2.6</p>\n<p>X2.5</p>\n<p>Change</p>\n<p>Average</p>\n<p>63.3</p>\n<p>52.1</p>\n<p>+11.2</p>\n<p>SWE-bench Verified</p>\n<p>62.8</p>\n<p>41.6</p>\n<p>+21.2</p>\n<p>BrowseComp</p>\n<p>53.1</p>\n<p>40.9</p>\n<p>+12.2</p>\n<p>tau2</p>\n<p>86.9</p>\n<p>75.1</p>\n<p>+11.8</p>\n<p>MCP-Atlas</p>\n<p>62.4</p>\n<p>54.6</p>\n<p>+7.8</p>\n<p>Graphwalks 1M</p>\n<p>34.2</p>\n<p>2.5</p>\n<p>+31.7</p>\n<p>If you already run X2.5, upgrading is a simple model swap. Your prompts and tools should keep working.</p>\n<h2>Who is Spark-X2.6-4B for?</h2>\n<p>It is a good fit if you want an AI model that runs on your own laptop, costs nothing per message and keeps your data private. Small business owners can use it to answer team questions from a handbook, sum up long reports or sort incoming messages. Developers can use it as a cheap worker model inside an agent, where a larger model plans and Spark carries out the tool calls.</p>\n<p>It is not the right pick if you need the very best answers on hard reasoning or large code changes. For that, a bigger model will still do better. The smart move is to try Spark on your simplest daily jobs first, see how far it gets, then decide which tasks to hand to it for good.</p>\n<h2>How to get good results from a small model</h2>\n<ul>\n<li>Give it one clear job at a time instead of a long list of tasks.</li>\n</ul>\n<ul>\n<li>Use high thinking for maths, code and multi-step tool use, and none for quick chat.</li>\n</ul>\n<ul>\n<li>Pair it with a bigger planner. Let a large model plan and Spark do the cheap tool calls.</li>\n</ul>\n<ul>\n<li>Watch your memory at long contexts. Start at 32K–128K and only go higher when you need it.</li>\n</ul>\n<ul>\n<li>Test it on your own data, because benchmarks are only a guide.</li>\n</ul>\n<p>Used like this, a 4B model can handle a surprising amount of daily work for close to zero cost.</p>\n<h2>My verdict on Spark-X2.6-4B</h2>\n<p>For a 4B model, the agent and coding scores are very strong, and it is easy to run in Ollama or LM Studio. If you want a small, private, free model for summaries, tool calls and support tasks, Spark-X2.6-4B is one of the best small models to try right now.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: spark-x2.6-4b</h2>\n<h3>Who made Spark-X2.6-4B?</h3>\n<p>The SparkLLM Team, which publishes its models on Hugging Face under the XHToken organisation.</p>\n<h3>What is Spark-X2.6-4B’s context window?</h3>\n<p>Up to 1,048,576 tokens (1M), as long as your device has enough memory.</p>\n<h3>How do I run Spark-X2.6-4B in Ollama?</h3>\n<p>Use Ollama v0.34.1 or later and run: ollama run SparkLLM/Spark-X2.6-4B.</p>\n<h3>Is Spark-X2.6-4B better than Qwen3.5-9B?</h3>\n<p>On the model card’s average it scores 63.3 vs 49.1, and it leads on tool calls, browsing and SWE-bench. Qwen3.5-9B still wins on GPQA Diamond and some long-context tests.</p>\n<h3>Can I turn off thinking?</h3>\n<p>Yes. It has none, low and high levels. Pass enable_thinking false in the chat template settings to turn thinking off.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best Model for Hermes Agent</li>\n</ul>\n<ul>\n<li>Nemotron 3.5 Bolt + Hermes</li>\n</ul>\n<ul>\n<li>Solar Mini 4 + Hermes</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to spark-x2.6-4b — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Launch of ClusterMob, a community-run registry where users can publish and discover Hermes Agent profiles, hosted at clustermob.com. Submitted by k_sze to Hacker News.",
+          "importance_score": 62.0,
+          "reasoning": "A dedicated third-party registry signals maturing community infrastructure around Hermes Agent profiles, useful for profile discovery and reuse, though the snippet lacks technical detail.",
+          "themes": [
+            "community ecosystem",
+            "profiles"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Launch of ClusterMob, a community-run registry where users can publish and discover Hermes Agent profiles, hosted at clustermob.com. Submitted by k_sze to Hacker News.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "SchezHugo presents verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent, providing a GUI-style alternative to the CLI. It grew from a learning exercise into the author's daily work setup.",
+          "importance_score": 60.0,
+          "reasoning": "A third-party orchestration layer demonstrates ecosystem growth beyond the CLI and everyday productivity value, though it is an early solo project.",
+          "themes": [
+            "orchestration",
+            "community ecosystem",
+            "UI"
+          ],
+          "continuation": null,
+          "summary_html": "<p>SchezHugo presents verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent, providing a GUI-style alternative to the CLI. It grew from a learning exercise into the author's daily work setup.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user reports a freshly provisioned Hermes agent on a headless Debian server (using Z.ai GLM 5.3 Flash) spiraling into a long trance-like thinking state after being asked to print local environment details and $PATH, with an extended thinking block full of unusual output included.",
+          "importance_score": 58.0,
+          "reasoning": "A real-world debugging case touching agent loop stability and model behavior (GLM 5.3 Flash) on minimal setups; useful troubleshooting discussion though anecdotal and incomplete.",
+          "themes": [
+            "troubleshooting",
+            "model behavior"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user reports a freshly provisioned Hermes agent on a headless Debian server (using Z.ai GLM 5.3 Flash) spiraling into a long trance-like thinking state after being asked to print local environment details and $PATH, with an extended thinking block full of unusual output included.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "922b165fd855",
+          "title": "Hermes Agent Step 5: Set Up StepFun’s Step 5 Preview in Hermes",
+          "content": "Hermes Agent Step 5 means running StepFun’s new Step 5 Preview model as the brain of Hermes Agent. Step 5 Preview is StepFun’s flagship model for agent work: a 600B mixture-of-experts model with 27B active and up to 1M tokens of context. In the video below I connect it to Hermes and use it for research, drafting, voice and chained agents. Here is how to set it up, what it costs and how it compares.\n\nKey takeaways\n\n- Step 5 Preview: 600B total, 27B active, 1M context.\n\n- Official pricing: $1.00 input and $2.70 output per million tokens.\n\n- Connect it with the stepfun provider or through Nous Portal.\n\n- Open weights with a StepFun licence that adds conditions for very large companies.\n\n## What is Step 5 Preview?\n\nStep 5 Preview comes from StepFun. The Hugging Face model card calls it “StepFun’s flagship model for agentic work”. It is a sparse mixture-of-experts model with 600B total parameters and 27B active per token, and it takes text and images as input.\n\nStep 5 Preview at a glance\n\nParameters\n600B total, 27B active\n\nContext\nUp to 1M tokens\n\nMax output\n64K via the StepFun API\n\nInput\nText and image\n\nReasoning effort\nlow, medium or high\n\nTool calling\nSupported\n\nAPI model id\nstep-5-preview\n\nThose API limits come from the StepFun docs.\n\n## Is Step 5 free in Hermes?\n\nI want to be clear here. In my video it was free to run inside Hermes at the time of recording. Check current pricing before you rely on that. I couldn’t find an official source that confirms a free window, which provider offers it or when it ends.\n\nThe official numbers are these. StepFun’s pricing page lists step-5-preview at $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens. The Nous inference API listed stepfun/step-5-preview at the same paid price when we checked, with no free variant at that time.\n\nFree windows change fast. Before you build a workflow around Step 5, open Hermes’s model picker and check the price shown for the model you pick.\n\nWant Hermes Agent running the right model for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How to set up Step 5 in Hermes Agent\n\nFrom the Hermes docs, there are two ways.\n\n### Option 1: StepFun API key\n\n- Get an API key from StepFun.\n\n- Add `STEPFUN_API_KEY=your-key` to `~/.hermes/.env`.\n\n- The default base URL is `https://api.stepfun.com/v1`. Use `STEPFUN_BASE_URL` to change it.\n\n- Start a chat: `hermes chat --provider stepfun --model step-5-preview`.\n\n- To make it your default, set `model.provider` and `model.default` in config.yaml.\n\n### Option 2: Nous Portal\n\nRun `hermes chat --provider nous` or use `hermes model` to open the model picker, then choose Step 5 Preview. This route bills through your Nous account.\n\nWant Hermes Agent set up with the right model for your business? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Step 5 Preview benchmarks\n\nThese come from StepFun’s official chart on the model card. Step 5 Preview was tested at High reasoning, and the other models at Max.\n\nBenchmark\nStep 5 Preview\nOthers\n\nDeepSWE v1.1\n67.7\nKimi K3 67.5, GLM-5.3 66.9, GPT-6 Astra 74.1, Claude Opus 5 74.0\n\nProgramBench\n80.5\nGPT-6 Astra 85.4, Opus 5 82.3, Kimi K3 77.8\n\nTerminal-Bench v4\n33.3\nGLM-5.3 41.9, Kimi K3 12.6, GPT-6 Astra 57.9, Opus 5 52.3\n\nALE-CLI\n29.5\nGPT-6 Astra 33.3, Opus 5 28.6\n\nGDPval-AA v2.1\n1566\nOpus 5 1708, GLM-5.3 1645, GPT-6 Astra 1542\n\nFrontierFinance\n66.4\nOpus 5 69.7, GLM-5.3 64.1, GPT-6 Astra 55.0\n\nDRACO\n83.3\nOpus 5 87.6, GLM-5.3 82.3\n\nStepCodeBench\n49.0\nOpus 5 63.9, GPT-6 Astra 61.0\n\nSo it is level with Kimi K3 and GLM-5.3 on DeepSWE, ahead of GPT-6 Astra on GDPval and FrontierFinance, and behind the top closed models on Terminal-Bench and StepCodeBench. For the price, that is a strong all-round agent model.\n\n## What I did with Hermes and Step 5\n\nIn the video I put the combo through everyday agent jobs:\n\n- Taught Hermes a new skill in seconds. Hermes’s skill_manage tool writes the skill for you.\n\n- Research and drafting with live web search.\n\n- Talked to it out loud with voice mode: `/voice on`, then Ctrl+B to record.\n\n- Shared memory through my Obsidian vault.\n\n- Chained agents, one handing work to the next.\n\n## The licence: what you need to know\n\nThe weights are open under the StepFun Model License 1.0, which StepFun describes as Apache-2.0-style with attribution and some commercial conditions. If your product has over 100M monthly active users or over $20M revenue a month, you must show “Powered by StepFun AI”. Device makers and model-as-a-service businesses with over $20M revenue over 12 months need a separate commercial licence. Internal use is exempt. For almost every small business, it works like a normal open licence.\n\n## Running it yourself\n\nYou can self-host the weights with vLLM or SGLang (OpenAI-compatible) or Transformers. It is big: the FP8 build needs a 4×B300 node or an 8×H200 node. Recommended settings are temperature 1.0, top-p 0.95 and top-k 0. For most people the API route is far easier.\n\nWant a shorter take? I also cover Hermes Agent with Step 5 on the AI Profit Boardroom blog.\n\n## Tips for using Step 5 in Hermes\n\n- Pick the effort level. Use low for quick replies and high for research and coding.\n\n- Start a new session at task boundaries with /new, so the model works from a clean context.\n\n- Turn repeated jobs into skills, so you don’t paste the same instructions every day.\n\n- Watch your spend. At $2.70 per million output tokens, long agent chains add up, so check usage after your first few runs.\n\nStep 5’s 1M context is handy for long research jobs, but large prompts still cost money. Keep only what the task needs in the conversation.\n\n## My verdict on Hermes Agent Step 5\n\nStep 5 Preview is a capable, fairly cheap agent model, and it plugs into Hermes with one provider setting. Use the free window if it is still open when you read this, but plan around the official $1.00/$2.70 pricing. If you want a strong open model for research, writing and agent chains, Hermes Agent Step 5 is worth a test.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes agent step 5\n\n### Is Step 5 free in Hermes Agent?\n\nIn my video it was free to run inside Hermes at the time of recording. No official source confirms a free window, so check current pricing in the Hermes model picker.\n\n### How much does Step 5 Preview cost?\n\nStepFun lists $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens.\n\n### How do I connect Step 5 to Hermes?\n\nAdd STEPFUN_API_KEY to ~/.hermes/.env and run hermes chat –provider stepfun –model step-5-preview, or pick it through Nous Portal.\n\n### How big is Step 5 Preview?\n\n600B total parameters with 27B active, and up to 1M tokens of context.\n\n### Can I use Step 5 commercially?\n\nYes. The StepFun Model License allows commercial use, with extra conditions only for very large companies, such as over 100M monthly users or over $20M revenue a month.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Best Model for Hermes Agent\n\n- Hermes Agent Sandbox\n\n- Solar Mini 4 + Hermes\n\nLast updated October 2026. This page is a living guide to hermes agent step 5 — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-agent-step-5/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-step-5",
+          "author": "Clawdbot",
+          "published": "2026-10-25T03:44:32",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A guide to running StepFun's Step 5 Preview as the model powering Hermes Agent: a 600B mixture-of-experts model with 27B active parameters, 1M-token context, text+image input, tool calling, 64K max output via API, and reasoning-effort levels. Pricing is $1.00 input / $2.70 output per million tokens; it connects via the stepfun provider or Nous Portal, with open weights under a conditional StepFun licence.",
+          "importance_score": 58.0,
+          "reasoning": "Directly Hermes-relevant backend setup guidance for a capable open-weight agentic model, including concrete provider wiring and pricing, though it is a promotional-style blog post.",
+          "themes": [
+            "stepfun",
+            "hermes setup",
+            "model backend"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A guide to running StepFun's Step 5 Preview as the model powering Hermes Agent: a 600B mixture-of-experts model with 27B active parameters, 1M-token context, text+image input, tool calling, 64K max output via API, and reasoning-effort levels. Pricing is $1.00 input / $2.70 output per million tokens; it connects via the stepfun provider or Nous Portal, with open weights under a conditional StepFun licence.</p>",
+          "content_html": "<p>Hermes Agent Step 5 means running StepFun’s new Step 5 Preview model as the brain of Hermes Agent. Step 5 Preview is StepFun’s flagship model for agent work: a 600B mixture-of-experts model with 27B active and up to 1M tokens of context. In the video below I connect it to Hermes and use it for research, drafting, voice and chained agents. Here is how to set it up, what it costs and how it compares.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Step 5 Preview: 600B total, 27B active, 1M context.</li>\n</ul>\n<ul>\n<li>Official pricing: $1.00 input and $2.70 output per million tokens.</li>\n</ul>\n<ul>\n<li>Connect it with the stepfun provider or through Nous Portal.</li>\n</ul>\n<ul>\n<li>Open weights with a StepFun licence that adds conditions for very large companies.</li>\n</ul>\n<h2>What is Step 5 Preview?</h2>\n<p>Step 5 Preview comes from StepFun. The Hugging Face model card calls it “StepFun’s flagship model for agentic work”. It is a sparse mixture-of-experts model with 600B total parameters and 27B active per token, and it takes text and images as input.</p>\n<p>Step 5 Preview at a glance</p>\n<p>Parameters</p>\n<p>600B total, 27B active</p>\n<p>Context</p>\n<p>Up to 1M tokens</p>\n<p>Max output</p>\n<p>64K via the StepFun API</p>\n<p>Input</p>\n<p>Text and image</p>\n<p>Reasoning effort</p>\n<p>low, medium or high</p>\n<p>Tool calling</p>\n<p>Supported</p>\n<p>API model id</p>\n<p>step-5-preview</p>\n<p>Those API limits come from the StepFun docs.</p>\n<h2>Is Step 5 free in Hermes?</h2>\n<p>I want to be clear here. In my video it was free to run inside Hermes at the time of recording. Check current pricing before you rely on that. I couldn’t find an official source that confirms a free window, which provider offers it or when it ends.</p>\n<p>The official numbers are these. StepFun’s pricing page lists step-5-preview at $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens. The Nous inference API listed stepfun/step-5-preview at the same paid price when we checked, with no free variant at that time.</p>\n<p>Free windows change fast. Before you build a workflow around Step 5, open Hermes’s model picker and check the price shown for the model you pick.</p>\n<p>Want Hermes Agent running the right model for your business? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How to set up Step 5 in Hermes Agent</h2>\n<p>From the Hermes docs, there are two ways.</p>\n<h3>Option 1: StepFun API key</h3>\n<ul>\n<li>Get an API key from StepFun.</li>\n</ul>\n<ul>\n<li>Add <code>STEPFUN_API_KEY=your-key</code> to <code>~/.hermes/.env</code>.</li>\n</ul>\n<ul>\n<li>The default base URL is <code>https://api.stepfun.com/v1</code>. Use <code>STEPFUN_BASE_URL</code> to change it.</li>\n</ul>\n<ul>\n<li>Start a chat: <code>hermes chat --provider stepfun --model step-5-preview</code>.</li>\n</ul>\n<ul>\n<li>To make it your default, set <code>model.provider</code> and <code>model.default</code> in config.yaml.</li>\n</ul>\n<h3>Option 2: Nous Portal</h3>\n<p>Run <code>hermes chat --provider nous</code> or use <code>hermes model</code> to open the model picker, then choose Step 5 Preview. This route bills through your Nous account.</p>\n<p>Want Hermes Agent set up with the right model for your business? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Step 5 Preview benchmarks</h2>\n<p>These come from StepFun’s official chart on the model card. Step 5 Preview was tested at High reasoning, and the other models at Max.</p>\n<p>Benchmark</p>\n<p>Step 5 Preview</p>\n<p>Others</p>\n<p>DeepSWE v1.1</p>\n<p>67.7</p>\n<p>Kimi K3 67.5, GLM-5.3 66.9, GPT-6 Astra 74.1, Claude Opus 5 74.0</p>\n<p>ProgramBench</p>\n<p>80.5</p>\n<p>GPT-6 Astra 85.4, Opus 5 82.3, Kimi K3 77.8</p>\n<p>Terminal-Bench v4</p>\n<p>33.3</p>\n<p>GLM-5.3 41.9, Kimi K3 12.6, GPT-6 Astra 57.9, Opus 5 52.3</p>\n<p>ALE-CLI</p>\n<p>29.5</p>\n<p>GPT-6 Astra 33.3, Opus 5 28.6</p>\n<p>GDPval-AA v2.1</p>\n<p>1566</p>\n<p>Opus 5 1708, GLM-5.3 1645, GPT-6 Astra 1542</p>\n<p>FrontierFinance</p>\n<p>66.4</p>\n<p>Opus 5 69.7, GLM-5.3 64.1, GPT-6 Astra 55.0</p>\n<p>DRACO</p>\n<p>83.3</p>\n<p>Opus 5 87.6, GLM-5.3 82.3</p>\n<p>StepCodeBench</p>\n<p>49.0</p>\n<p>Opus 5 63.9, GPT-6 Astra 61.0</p>\n<p>So it is level with Kimi K3 and GLM-5.3 on DeepSWE, ahead of GPT-6 Astra on GDPval and FrontierFinance, and behind the top closed models on Terminal-Bench and StepCodeBench. For the price, that is a strong all-round agent model.</p>\n<h2>What I did with Hermes and Step 5</h2>\n<p>In the video I put the combo through everyday agent jobs:</p>\n<ul>\n<li>Taught Hermes a new skill in seconds. Hermes’s skill_manage tool writes the skill for you.</li>\n</ul>\n<ul>\n<li>Research and drafting with live web search.</li>\n</ul>\n<ul>\n<li>Talked to it out loud with voice mode: <code>/voice on</code>, then Ctrl+B to record.</li>\n</ul>\n<ul>\n<li>Shared memory through my Obsidian vault.</li>\n</ul>\n<ul>\n<li>Chained agents, one handing work to the next.</li>\n</ul>\n<h2>The licence: what you need to know</h2>\n<p>The weights are open under the StepFun Model License 1.0, which StepFun describes as Apache-2.0-style with attribution and some commercial conditions. If your product has over 100M monthly active users or over $20M revenue a month, you must show “Powered by StepFun AI”. Device makers and model-as-a-service businesses with over $20M revenue over 12 months need a separate commercial licence. Internal use is exempt. For almost every small business, it works like a normal open licence.</p>\n<h2>Running it yourself</h2>\n<p>You can self-host the weights with vLLM or SGLang (OpenAI-compatible) or Transformers. It is big: the FP8 build needs a 4×B300 node or an 8×H200 node. Recommended settings are temperature 1.0, top-p 0.95 and top-k 0. For most people the API route is far easier.</p>\n<p>Want a shorter take? I also cover Hermes Agent with Step 5 on the AI Profit Boardroom blog.</p>\n<h2>Tips for using Step 5 in Hermes</h2>\n<ul>\n<li>Pick the effort level. Use low for quick replies and high for research and coding.</li>\n</ul>\n<ul>\n<li>Start a new session at task boundaries with /new, so the model works from a clean context.</li>\n</ul>\n<ul>\n<li>Turn repeated jobs into skills, so you don’t paste the same instructions every day.</li>\n</ul>\n<ul>\n<li>Watch your spend. At $2.70 per million output tokens, long agent chains add up, so check usage after your first few runs.</li>\n</ul>\n<p>Step 5’s 1M context is handy for long research jobs, but large prompts still cost money. Keep only what the task needs in the conversation.</p>\n<h2>My verdict on Hermes Agent Step 5</h2>\n<p>Step 5 Preview is a capable, fairly cheap agent model, and it plugs into Hermes with one provider setting. Use the free window if it is still open when you read this, but plan around the official $1.00/$2.70 pricing. If you want a strong open model for research, writing and agent chains, Hermes Agent Step 5 is worth a test.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes agent step 5</h2>\n<h3>Is Step 5 free in Hermes Agent?</h3>\n<p>In my video it was free to run inside Hermes at the time of recording. No official source confirms a free window, so check current pricing in the Hermes model picker.</p>\n<h3>How much does Step 5 Preview cost?</h3>\n<p>StepFun lists $1.00 per million input tokens ($0.10 on a cache hit) and $2.70 per million output tokens.</p>\n<h3>How do I connect Step 5 to Hermes?</h3>\n<p>Add STEPFUN_API_KEY to ~/.hermes/.env and run hermes chat –provider stepfun –model step-5-preview, or pick it through Nous Portal.</p>\n<h3>How big is Step 5 Preview?</h3>\n<p>600B total parameters with 27B active, and up to 1M tokens of context.</p>\n<h3>Can I use Step 5 commercially?</h3>\n<p>Yes. The StepFun Model License allows commercial use, with extra conditions only for very large companies, such as over 100M monthly users or over $20M revenue a month.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best Model for Hermes Agent</li>\n</ul>\n<ul>\n<li>Hermes Agent Sandbox</li>\n</ul>\n<ul>\n<li>Solar Mini 4 + Hermes</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent step 5 — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49511007",
+          "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+          "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+          "url": "https://usealmanac.com/",
+          "author": "kushagrchitkar",
+          "published": "2026-08-31T15:34:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Almanac, a YC S26 startup, launches a Hermes-based agent preloaded with company knowledge. The founders describe their difficult journey setting up Hermes, tuning its behavior, and hand-building OAuth apps for every connector, which motivated the product.",
+          "importance_score": 56.0,
+          "reasoning": "A YC-backed startup built directly on Hermes validates the platform commercially and exposes real setup friction (OAuth connectors, configuration), but the post is promotional.",
+          "themes": [
+            "startups",
+            "connectors",
+            "company knowledge"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Almanac, a YC S26 startup, launches a Hermes-based agent preloaded with company knowledge. The founders describe their difficult journey setting up Hermes, tuning its behavior, and hand-building OAuth apps for every connector, which motivated the product.</p>",
+          "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+        },
+        {
+          "id": "hn-50131496",
+          "title": "Hermes Agent: My containerized take",
+          "content": "Hermes Agent: My containerized take",
+          "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+          "author": "ricardodevries",
+          "published": "2026-10-17T14:27:11Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A blog post by ricardodevries describing a personal containerized deployment approach for Hermes Agent, covering how the author packaged and ran the agent in containers.",
+          "importance_score": 55.0,
+          "reasoning": "Containerization guidance is practically useful for self-hosters, but it is a single personal take rather than official documentation or a broadly validated pattern.",
+          "themes": [
+            "deployment",
+            "containers"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A blog post by ricardodevries describing a personal containerized deployment approach for Hermes Agent, covering how the author packaged and ran the agent in containers.</p>",
+          "content_html": "<p>Hermes Agent: My containerized take</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub plugin called Refine Cycle adds self-improvement loops to Hermes Agent, published by user 1134taras under the Bergschloss repository.",
+          "importance_score": 55.0,
+          "reasoning": "Self-improvement plugins are an interesting advanced pattern for agent memory/behavior tuning, but community plugins of this kind vary widely in rigor and adoption.",
+          "themes": [
+            "plugins",
+            "self-improvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub plugin called Refine Cycle adds self-improvement loops to Hermes Agent, published by user 1134taras under the Bergschloss repository.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A GitHub repository (hermes-jekyl-hyde by jnorthrup) presenting an adversarial LLM reversal technique targeting hermes-agent, apparently probing or flipping agent behavior.",
+          "importance_score": 52.0,
+          "reasoning": "Adversarial probing of the agent is security-relevant for prompt-injection and robustness concerns, but the snippet gives little detail on methodology or findings.",
+          "themes": [
+            "security",
+            "adversarial",
+            "research"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A GitHub repository (hermes-jekyl-hyde by jnorthrup) presenting an adversarial LLM reversal technique targeting hermes-agent, apparently probing or flipping agent behavior.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage) that pairs a microcontroller with a Linux-side chip, as a low-cost alternative to a VPS or personal machine.",
+          "importance_score": 50.0,
+          "reasoning": "A creative always-on low-cost host option for the agent client; interesting for hobbyists, but limited hardware specs constrain usefulness versus typical deployments.",
+          "themes": [
+            "hardware",
+            "self-hosting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage) that pairs a microcontroller with a Linux-side chip, as a low-cost alternative to a VPS or personal machine.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 66,
+      "category_summary": "**Oh My Hermes launch dominates the cycle.** The headline story is **@rlaope**'s [introduction of **Oh My Hermes**, an all-in-one layer for the **Hermes Agent**](/?date=2026-10-26&category=social#item-b80b06f7efa0) featuring 150+ workflow skills, recall, TUI, and daemon support — followed immediately by [a momentum post celebrating its rocket to **4K stars** (~1K gained in a single day)](/?date=2026-10-26&category=social#item-5200058faecb), the batch's clearest proof of community adoption. **Security and official channels:** **@NousResearch** issued a [high-engagement warning (~21k views) that official Hermes mobile apps are not yet in app stores and lookalike apps are likely fraudulent](/?date=2026-10-26&category=social#item-41265cd721b5) — essential reader-safety info. The official account also [teased an upcoming announcement listing Nous Research](/?date=2026-10-26&category=social#item-99f39c68244e) on the project roadmap, and [confirmed a 'both paths' approach to an open product question](/?date=2026-10-26&category=social#item-5f931ff0a523). **Onboarding debate drives the biggest thread:** **@Teknium**'s defense of the setup experience — [one **Nous Portal** login powers everything in Hermes](/?date=2026-10-26&category=social#item-ec97e9846500) — drew the batch's strongest engagement (433 likes, ~12.7k views), with follow-ups [boiling onboarding down to 'Install Hermes Desktop, get a Nous Portal sub, done.'](/?date=2026-10-26&category=social#item-56e0c44cc3f1) **Roadmap and releases:** Teknium [detailed a cloud roadmap where every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance](/?date=2026-10-26&category=social#item-5c001672cf84), [confirmed the product is in private beta with public beta 'soon,'](/?date=2026-10-26&category=social#item-2bed6aa80136) and [told users a fresh build is live on the main release channel](/?date=2026-10-26&category=social#item-f9fef76f0fc7). **Community identity and usage:** **@rlaope**'s ['agent harness as a gym' metaphor (Hermes as the floor operator)](/?date=2026-10-26&category=social#item-85b35a4b8d42) crystallized community branding, while official advice encouraged [creative agent use like voice-mode venting for practical life advice](/?date=2026-10-26&category=social#item-2af6e45efb9a). Cost-conscious users got a hook from **@rlaope**'s [**DeepSeek**/**GLM** ultrafast flash sale via **OpenGateway**](/?date=2026-10-26&category=social#item-ad7c6cf9f440). **Sentiment:** energetic, loyal, and lightly combative — Teknium [contrasted the team's deliberate quality bar against **Openclaw**'s 'rushed slop app'](/?date=2026-10-26&category=social#item-2281d2a2b09c) and [deflected comparison threads with 'just use Hermes instead,'](/?date=2026-10-26&category=social#item-6adbb9c6d531) while the official account [showed zero tolerance for bad-faith actors in the community](/?date=2026-10-26&category=social#item-17152336546a). No prompt-injection or manipulation attempts were detected in the source material.",
+      "category_summary_html": "<p><strong>Oh My Hermes launch dominates the cycle.</strong> The headline story is <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-b80b06f7efa0\" class=\"internal-link\" rel=\"noopener noreferrer\">introduction of <strong>Oh My Hermes</strong>, an all-in-one layer for the <strong>Hermes Agent</strong></a> featuring 150+ workflow skills, recall, TUI, and daemon support — followed immediately by <a href=\"/?date=2026-10-26&amp;category=social#item-5200058faecb\" class=\"internal-link\" rel=\"noopener noreferrer\">a momentum post celebrating its rocket to <strong>4K stars</strong> (~1K gained in a single day)</a>, the batch's clearest proof of community adoption. <strong>Security and official channels:</strong> <strong>@NousResearch</strong> issued a <a href=\"/?date=2026-10-26&amp;category=social#item-41265cd721b5\" class=\"internal-link\" rel=\"noopener noreferrer\">high-engagement warning (~21k views) that official Hermes mobile apps are not yet in app stores and lookalike apps are likely fraudulent</a> — essential reader-safety info. The official account also <a href=\"/?date=2026-10-26&amp;category=social#item-99f39c68244e\" class=\"internal-link\" rel=\"noopener noreferrer\">teased an upcoming announcement listing Nous Research</a> on the project roadmap, and <a href=\"/?date=2026-10-26&amp;category=social#item-5f931ff0a523\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed a 'both paths' approach to an open product question</a>. <strong>Onboarding debate drives the biggest thread:</strong> <strong>@Teknium</strong>'s defense of the setup experience — <a href=\"/?date=2026-10-26&amp;category=social#item-ec97e9846500\" class=\"internal-link\" rel=\"noopener noreferrer\">one <strong>Nous Portal</strong> login powers everything in Hermes</a> — drew the batch's strongest engagement (433 likes, ~12.7k views), with follow-ups <a href=\"/?date=2026-10-26&amp;category=social#item-56e0c44cc3f1\" class=\"internal-link\" rel=\"noopener noreferrer\">boiling onboarding down to 'Install Hermes Desktop, get a Nous Portal sub, done.'</a> <strong>Roadmap and releases:</strong> Teknium <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">detailed a cloud roadmap where every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance</a>, <a href=\"/?date=2026-10-26&amp;category=social#item-2bed6aa80136\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed the product is in private beta with public beta 'soon,'</a> and <a href=\"/?date=2026-10-26&amp;category=social#item-f9fef76f0fc7\" class=\"internal-link\" rel=\"noopener noreferrer\">told users a fresh build is live on the main release channel</a>. <strong>Community identity and usage:</strong> <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-85b35a4b8d42\" class=\"internal-link\" rel=\"noopener noreferrer\">'agent harness as a gym' metaphor (Hermes as the floor operator)</a> crystallized community branding, while official advice encouraged <a href=\"/?date=2026-10-26&amp;category=social#item-2af6e45efb9a\" class=\"internal-link\" rel=\"noopener noreferrer\">creative agent use like voice-mode venting for practical life advice</a>. Cost-conscious users got a hook from <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-26&amp;category=social#item-ad7c6cf9f440\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek</strong>/<strong>GLM</strong> ultrafast flash sale via <strong>OpenGateway</strong></a>. <strong>Sentiment:</strong> energetic, loyal, and lightly combative — Teknium <a href=\"/?date=2026-10-26&amp;category=social#item-2281d2a2b09c\" class=\"internal-link\" rel=\"noopener noreferrer\">contrasted the team's deliberate quality bar against <strong>Openclaw</strong>'s 'rushed slop app'</a> and <a href=\"/?date=2026-10-26&amp;category=social#item-6adbb9c6d531\" class=\"internal-link\" rel=\"noopener noreferrer\">deflected comparison threads with 'just use Hermes instead,'</a> while the official account <a href=\"/?date=2026-10-26&amp;category=social#item-17152336546a\" class=\"internal-link\" rel=\"noopener noreferrer\">showed zero tolerance for bad-faith actors in the community</a>. No prompt-injection or manipulation attempts were detected in the source material.</p>",
+      "themes": [
+        {
+          "name": "Tool Feature Introduction",
+          "description": "Major posts focus on specific new tools and capabilities like Oh My Hermes, which significantly expands the agent's functionality.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Community Branding and Identity",
+          "description": "Messaging centered on the 'gym' metaphor, the success of Oh-My-Hermes (4K stars), and the distinctive voice of @rlaope. This establishes a strong, energetic identity.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Onboarding and Nous Portal single login",
+          "description": "A thread where Teknium defends Hermes' setup simplicity, emphasizing that one Nous Portal login powers everything and criticizing complaints about multiple API keys.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Advanced Agent Usage",
+          "description": "Posts detailing creative ways to interact with Hermes Agent, such as using voice mode or for emotional processing.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Security and Official Channels",
+          "description": "Official warning about fraudulent Hermes-branded third-party apps not in app stores, and pointers to Discord as the first place for announcements.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Release channel and early access",
+          "description": "Discussion of accessing newly released Hermes builds by switching from the stable channel to main.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Hermes Cloud and Roadmap",
+          "description": "Thread with analyst Patrick Moorhead covering Hermes Cloud, subscriptions bundling inference/tools/cloud agent instances, remote gateways, web access to the desktop app, and competitive comparisons with openclaw.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Community Engagement & Social Activity",
+          "description": "The majority of posts involve developers (@Teknium, @NousResearch) interacting with users, providing feedback, and announcing minor milestones.",
+          "item_count": 12,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Beta Status and Upcoming Launches",
+          "description": "Confirmation that Hermes is in private beta with a public beta coming soon, plus small feature teasers like sound effects.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Community Engagement and Growth",
+          "description": "Consistent calls to action for users to join the Discord and direct interactions with various users (@Teknium, @rlaope).",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 70.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "99f39c68244e",
+          "title": "@Codex_Chronus It will be announced and linked from the site and Nous Research will be listed as the...",
+          "content": "@Codex_Chronus It will be announced and linked from the site and Nous Research will be listed as the developer\n\nAnd it will hopefully have more than 3.9 stars",
+          "url": "https://twitter.com/NousResearch/status/2114434510045774145",
+          "author": "@NousResearch",
+          "published": "2026-10-25T19:10:46",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Nous Research is preparing an official announcement, noting their developer status and expressing a goal of achieving a high user rating.",
+          "importance_score": 95.0,
+          "reasoning": "High credibility source (@NousResearch) making a direct statement about the project's official roadmap and development role.",
+          "themes": [
+            "Development Milestone",
+            "Team Involvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Nous Research is preparing an official announcement, noting their developer status and expressing a goal of achieving a high user rating.</p>",
+          "content_html": "<p>@Codex_Chronus It will be announced and linked from the site and Nous Research will be listed as the developer</p>\n<p>And it will hopefully have more than 3.9 stars</p>"
+        },
+        {
+          "id": "5200058faecb",
+          "title": "It jumped to 4K stars after gaining about 1K in just a single day.   \n\nThank you so much. I guess th...",
+          "content": "It jumped to 4K stars after gaining about 1K in just a single day.   \n\nThank you so much. I guess that just shows how insane Oh-My-Hermes is right now.  \n\nhttps://t.co/5OoCqbz58X https://t.co/nAvMxRXvSO",
+          "url": "https://twitter.com/rlaope/status/2114239351001628848",
+          "author": "@rlaope",
+          "published": "2026-10-25T06:15:16",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage from [yesterday](/?date=2026-10-25&category=social#item-6938307e3f10) — Oh-My-Hermes just crossed 4K stars, @rlaope celebrates the success of Oh-My-Hermes, noting its rapid growth to 4K stars.",
+          "importance_score": 95.0,
+          "reasoning": "A massive success metric; tangible proof of community adoption and high engagement for the product.",
+          "themes": [
+            "Success Metric",
+            "Branding"
+          ],
+          "continuation": {
+            "original_item_id": "6938307e3f10",
+            "original_date": "2026-10-25",
+            "original_category": "social",
+            "original_title": "The coding intelligence and skills package for Hermes Agent ⚚ 3.6k stars",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from yesterday — Oh-My-Hermes just crossed 4K stars"
+          },
+          "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-10-25&amp;category=social#item-6938307e3f10\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a> — Oh-My-Hermes just crossed 4K stars, @rlaope celebrates the success of Oh-My-Hermes, noting its rapid growth to 4K stars.</p>",
+          "content_html": "<p>It jumped to 4K stars after gaining about 1K in just a single day.</p>\n<p>Thank you so much. I guess that just shows how insane Oh-My-Hermes is right now.</p>\n<p>https://t.co/5OoCqbz58X https://t.co/nAvMxRXvSO</p>"
+        },
+        {
+          "id": "41265cd721b5",
+          "title": "Please be careful about downloading third-party apps. The official mobile apps are not in app stores...",
+          "content": "Please be careful about downloading third-party apps. The official mobile apps are not in app stores yet, and apps that closely mirror Hermes branding are typically fraudulent and not legitimate community projects.",
+          "url": "https://twitter.com/NousResearch/status/2114340383044063552",
+          "author": "@NousResearch",
+          "published": "2026-10-25T12:56:44",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Nous Research warns users that official Hermes mobile apps are not yet in app stores and that apps closely mimicking Hermes branding are likely fraudulent, not legitimate community projects.",
+          "importance_score": 90.0,
+          "reasoning": "Official security/safety warning from the primary account with very high engagement (343 likes, ~21k views); directly protects users from scams and clarifies official distribution status.",
+          "themes": [
+            "security warning",
+            "fraudulent apps",
+            "mobile apps"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Nous Research warns users that official Hermes mobile apps are not yet in app stores and that apps closely mimicking Hermes branding are likely fraudulent, not legitimate community projects.</p>",
+          "content_html": "<p>Please be careful about downloading third-party apps. The official mobile apps are not in app stores yet, and apps that closely mirror Hermes branding are typically fraudulent and not legitimate community projects.</p>"
+        },
+        {
+          "id": "85b35a4b8d42",
+          "title": "Your agent harness, but it's a gym.\n\nSlack / Discord message → goal\ngoal → machine\nmodel → gym membe...",
+          "content": "Your agent harness, but it's a gym.\n\nSlack / Discord message → goal\ngoal → machine\nmodel → gym member\n\nClaude benches. GPT squats. Gemini does pull-ups. Hermes runs the floor. Nobody skips leg day.\n\noh-my-hermes, built on Hermes Agent ⚚\n\nhttps://t.co/5OoCqbz58X https://t.co/kVqOfunaK6",
+          "url": "https://twitter.com/rlaope/status/2114264633905418254",
+          "author": "@rlaope",
+          "published": "2026-10-25T07:55:44",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@rlaope introduces a unique metaphorical framework comparing LLMs to gym members, positioning Hermes as the floor operator.",
+          "importance_score": 90.0,
+          "reasoning": "This is a high-impact, highly creative piece of branding and positioning that is highly shareable and relevant to the product's identity.",
+          "themes": [
+            "Product Branding",
+            "Showcase"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@rlaope introduces a unique metaphorical framework comparing LLMs to gym members, positioning Hermes as the floor operator.</p>",
+          "content_html": "<p>Your agent harness, but it's a gym.</p>\n<p>Slack / Discord message → goal</p>\n<p>goal → machine</p>\n<p>model → gym member</p>\n<p>Claude benches. GPT squats. Gemini does pull-ups. Hermes runs the floor. Nobody skips leg day.</p>\n<p>oh-my-hermes, built on Hermes Agent ⚚</p>\n<p>https://t.co/5OoCqbz58X https://t.co/kVqOfunaK6</p>"
+        },
+        {
+          "id": "ec97e9846500",
+          "title": "@ding_liam You literally only need one login to power everything in Hermes - Nous Portal - just beca...",
+          "content": "@ding_liam You literally only need one login to power everything in Hermes - Nous Portal - just because we gave you options outside of that does not mean that you have worse options or a bad default option.\n\nWhat I dont get is why people think it is worse to be able to login with any sub you want, or our sub which includes everything. It's really dumbass mindset",
+          "url": "https://twitter.com/Teknium/status/2114493002093875491",
+          "author": "@Teknium",
+          "published": "2026-10-25T23:03:11",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium's fuller response to setup criticism: one Nous Portal login powers everything in Hermes, and having additional options does not make the default worse; he defends offering choice of subscriptions.",
+          "importance_score": 82.0,
+          "reasoning": "High-priority author with the strongest engagement in the batch (433 likes, 52 replies, ~12.7k views). Substantive defense of Hermes' single-login architecture and subscription model, likely the anchor post of this discussion thread.",
+          "themes": [
+            "Nous Portal",
+            "onboarding",
+            "subscription model",
+            "developer response",
+            "Hermes"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium's fuller response to setup criticism: one Nous Portal login powers everything in Hermes, and having additional options does not make the default worse; he defends offering choice of subscriptions.</p>",
+          "content_html": "<p>@ding_liam You literally only need one login to power everything in Hermes - Nous Portal - just because we gave you options outside of that does not mean that you have worse options or a bad default option.</p>\n<p>What I dont get is why people think it is worse to be able to login with any sub you want, or our sub which includes everything. It's really dumbass mindset</p>"
+        },
+        {
+          "id": "2af6e45efb9a",
+          "title": "@Hikari_07_jp Try having him use voice mode and vent about his problems and frustrations and prompt ...",
+          "content": "@Hikari_07_jp Try having him use voice mode and vent about his problems and frustrations and prompt Hermes to suggest things it can do to solve them",
+          "url": "https://twitter.com/NousResearch/status/2114370617382224371",
+          "author": "@NousResearch",
+          "published": "2026-10-25T14:56:52",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch advises a specific user to utilize Hermes Agent by engaging with it through voice mode, expressing personal problems and frustrations, and subsequently prompting the agent to propose solutions or remedies.",
+          "importance_score": 80.0,
+          "reasoning": "The post originates from @NousResearch, a high-priority source. It offers a highly actionable and insightful usage tip, demonstrating a creative application of the agent's capabilities (emotional processing and suggestion generation) combined with the use of voice input, making it valuable for community members.",
+          "themes": [
+            "voice mode",
+            "problem solving",
+            "agent interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch advises a specific user to utilize Hermes Agent by engaging with it through voice mode, expressing personal problems and frustrations, and subsequently prompting the agent to propose solutions or remedies.</p>",
+          "content_html": "<p>@Hikari_07_jp Try having him use voice mode and vent about his problems and frustrations and prompt Hermes to suggest things it can do to solve them</p>"
+        },
+        {
+          "id": "5c001672cf84",
+          "title": "@PatrickMoorhead @openclaw @NousResearch In a matter of days, every sub will give inference, tools, ...",
+          "content": "@PatrickMoorhead @openclaw @NousResearch In a matter of days, every sub will give inference, tools, and also a hermes agent instance in the cloud.\n\nThe mobile app, when it launches, and the desktop app right now, can connect to it to use it. You can setup all messenger platforms from the cloud to access that instance on all devices.\n\nAnd, our desktop app will be accessible from the web.\n\nYou should have no issues with this stuff at all even now, but even less so in a matter of days",
+          "url": "https://twitter.com/Teknium/status/2114347286327328809",
+          "author": "@Teknium",
+          "published": "2026-10-25T13:24:10",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Updating the Hermes cloud roadmap Teknium laid out [yesterday](/?date=2026-10-25&category=social#item-b2c158a702f8), Teknium outlines the Hermes cloud roadmap: within days every subscription will include inference, tools, and a cloud-hosted Hermes agent instance; the mobile app and current desktop app can connect to it, messenger platforms can be set up from the cloud, and the desktop app will be web-accessible.",
+          "importance_score": 80.0,
+          "reasoning": "Detailed public roadmap from the lead developer covering cloud agent instances, subscriptions, multi-device messenger access, and web availability; shared with a prominent analyst and highly informative despite modest engagement.",
+          "themes": [
+            "hermes cloud",
+            "roadmap",
+            "subscriptions",
+            "cross-device access"
+          ],
+          "continuation": {
+            "original_item_id": "b2c158a702f8",
+            "original_date": "2026-10-25",
+            "original_category": "social",
+            "original_title": "@DarthJML @mikekarnj Well give us a month, computers with every sub, mobile app, and access the gui ...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Updating the Hermes cloud roadmap Teknium laid out yesterday"
+          },
+          "summary_html": "<p>Updating the Hermes cloud roadmap Teknium laid out <a href=\"/?date=2026-10-25&amp;category=social#item-b2c158a702f8\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, Teknium outlines the Hermes cloud roadmap: within days every subscription will include inference, tools, and a cloud-hosted Hermes agent instance; the mobile app and current desktop app can connect to it, messenger platforms can be set up from the cloud, and the desktop app will be web-accessible.</p>",
+          "content_html": "<p>@PatrickMoorhead @openclaw @NousResearch In a matter of days, every sub will give inference, tools, and also a hermes agent instance in the cloud.</p>\n<p>The mobile app, when it launches, and the desktop app right now, can connect to it to use it. You can setup all messenger platforms from the cloud to access that instance on all devices.</p>\n<p>And, our desktop app will be accessible from the web.</p>\n<p>You should have no issues with this stuff at all even now, but even less so in a matter of days</p>"
+        },
+        {
+          "id": "ad7c6cf9f440",
+          "title": "DeepSeek-4.1-flash-1017 ultrafast almost free\n\n🔥 UltraFast flash sale on @OpenGatewayai , until Oct ...",
+          "content": "DeepSeek-4.1-flash-1017 ultrafast almost free\n\n🔥 UltraFast flash sale on @OpenGatewayai , until Oct 26 00:00 UTC\n\ndeepseek-v4.1-flash-ultrafast: $1.20 → $0.12 per 1M output tokens (-90%)\nglm-5.3-flash-ultrafast: $0.50 → $0.15 per 1M output tokens (-70%)\n\nThis is the lowest it gets. Max it out before it ends.\n\nOpenGateway gives you OpenRouter-style access to every model through one API, plus extras: hidden-gem UltraFast models and limited-time deals. \n\nThink of the little backstreet spot only locals know: faster, cheaper, and on special at certain hours. Same models, more speed, lower bill.\n\nweb: https://t.co/FxUtbo2caQ\nmodel: https://t.co/LpFFqHhoWy\n\n#openrouter #opengateway",
+          "url": "https://twitter.com/rlaope/status/2114248280922320962",
+          "author": "@rlaope",
+          "published": "2026-10-25T06:50:45",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@rlaope promotes a flash sale on DeepSeek and GLM models through OpenGateway, detailing massive token discount offers.",
+          "importance_score": 80.0,
+          "reasoning": "Highly engaging content with thousands of views, offering valuable cost-saving tips for users accessing API infrastructure.",
+          "themes": [
+            "Cost Optimization",
+            "API Recommendations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@rlaope promotes a flash sale on DeepSeek and GLM models through OpenGateway, detailing massive token discount offers.</p>",
+          "content_html": "<p>DeepSeek-4.1-flash-1017 ultrafast almost free</p>\n<p>🔥 UltraFast flash sale on @OpenGatewayai , until Oct 26 00:00 UTC</p>\n<p>deepseek-v4.1-flash-ultrafast: $1.20 → $0.12 per 1M output tokens (-90%)</p>\n<p>glm-5.3-flash-ultrafast: $0.50 → $0.15 per 1M output tokens (-70%)</p>\n<p>This is the lowest it gets. Max it out before it ends.</p>\n<p>OpenGateway gives you OpenRouter-style access to every model through one API, plus extras: hidden-gem UltraFast models and limited-time deals.</p>\n<p>Think of the little backstreet spot only locals know: faster, cheaper, and on special at certain hours. Same models, more speed, lower bill.</p>\n<p>web: https://t.co/FxUtbo2caQ</p>\n<p>model: https://t.co/LpFFqHhoWy</p>\n<p>#openrouter #opengateway</p>"
+        },
+        {
+          "id": "f9fef76f0fc7",
+          "title": "@brainscott @PatrickMoorhead @openclaw @NousResearch Its released, you can get it if you change your...",
+          "content": "@brainscott @PatrickMoorhead @openclaw @NousResearch Its released, you can get it if you change your release channel to main instead of stable\n\nhttps://t.co/RSt54WyU45",
+          "url": "https://twitter.com/Teknium/status/2114453954067374241",
+          "author": "@Teknium",
+          "published": "2026-10-25T20:28:01",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces that a release is out and explains users can access it now by switching their release channel from stable to main, with a link included.",
+          "importance_score": 78.0,
+          "reasoning": "From @Teknium with actionable release information: a new build is available on the main release channel ahead of stable. Notable for users tracking Hermes Desktop updates, though engagement is low (4 likes) because it is a reply.",
+          "themes": [
+            "release channel",
+            "Hermes Desktop",
+            "early access",
+            "configuration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces that a release is out and explains users can access it now by switching their release channel from stable to main, with a link included.</p>",
+          "content_html": "<p>@brainscott @PatrickMoorhead @openclaw @NousResearch Its released, you can get it if you change your release channel to main instead of stable</p>\n<p>https://t.co/RSt54WyU45</p>"
+        },
+        {
+          "id": "2bed6aa80136",
+          "title": "@jumperz Not yet, just the private beta - public beta soon!",
+          "content": "@jumperz Not yet, just the private beta - public beta soon!",
+          "url": "https://twitter.com/Teknium/status/2114321606915088682",
+          "author": "@Teknium",
+          "published": "2026-10-25T11:42:07",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium confirms Hermes is currently in private beta and announces that a public beta is coming soon.",
+          "importance_score": 75.0,
+          "reasoning": "Clear availability-status update from the lead developer with very high engagement (378 likes, 62 replies, ~10k views); public beta timing is a key community question.",
+          "themes": [
+            "beta status",
+            "public beta",
+            "availability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium confirms Hermes is currently in private beta and announces that a public beta is coming soon.</p>",
+          "content_html": "<p>@jumperz Not yet, just the private beta - public beta soon!</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

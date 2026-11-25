@@ -1,0 +1,175 @@
+{
+  "category": "news",
+  "date": "2026-10-13",
+  "category_summary": "**Community:** The highlights this cycle are both third-party builds — **[Hermes Blind](/?date=2026-10-13&category=news#item-d07cd8ed8e17)**, a new tool that deterministically extracts the first real user turn from local Claude Code/Codex transcripts with explicit Hermes Agent hook integration, and **[Codeg](/?date=2026-10-13&category=news#item-075270f3bc5f)**, a substantial workspace layer that unifies multiple AI coding agents into structured conversations with session import for multi-agent orchestration. **Releases:** The **v0.21.7** train advanced through **[rc.14](/?date=2026-10-13&category=news#item-6c3e876fedfd)** and **[rc.15](/?date=2026-10-13&category=news#item-17d65e2d5191)** on 2026-10-12; these are automated build artifacts, not feature announcements, so treat them as a release-cycle signal only — no stable-release story runs this issue (primary v0.21.7 coverage failed freshness at 811 days old). No merged PRs or tips cleared the bar; the [daily sync commit](/?date=2026-10-13&category=news#item-8b6664f66189) is routine automation with no user-facing changes.",
+  "category_summary_html": "<p><strong>Community:</strong> The highlights this cycle are both third-party builds — <strong><a href=\"/?date=2026-10-13&amp;category=news#item-d07cd8ed8e17\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Blind</a></strong>, a new tool that deterministically extracts the first real user turn from local Claude Code/Codex transcripts with explicit Hermes Agent hook integration, and <strong><a href=\"/?date=2026-10-13&amp;category=news#item-075270f3bc5f\" class=\"internal-link\" rel=\"noopener noreferrer\">Codeg</a></strong>, a substantial workspace layer that unifies multiple AI coding agents into structured conversations with session import for multi-agent orchestration. <strong>Releases:</strong> The <strong>v0.21.7</strong> train advanced through <strong><a href=\"/?date=2026-10-13&amp;category=news#item-6c3e876fedfd\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.14</a></strong> and <strong><a href=\"/?date=2026-10-13&amp;category=news#item-17d65e2d5191\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.15</a></strong> on 2026-10-12; these are automated build artifacts, not feature announcements, so treat them as a release-cycle signal only — no stable-release story runs this issue (primary v0.21.7 coverage failed freshness at 811 days old). No merged PRs or tips cleared the bar; the <a href=\"/?date=2026-10-13&amp;category=news#item-8b6664f66189\" class=\"internal-link\" rel=\"noopener noreferrer\">daily sync commit</a> is routine automation with no user-facing changes.</p>",
+  "themes": [
+    {
+      "name": "v0.21.7 Release Cycle",
+      "description": "The stable v0.21.7 patch release and its preceding RC validation tags, covering the consolidation of ~204 PRs and the shift to tagged-release update channels.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 88.0
+    },
+    {
+      "name": "Community Ecosystem Tools",
+      "description": "New third-party projects (Hermes Blind, Codeg) extending Hermes Agent and adjacent coding agents with memory recovery, evaluation wrappers, and multi-agent workspace orchestration.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Repository Automation",
+      "description": "Automated sync and pipeline commits that carry little direct user value but reflect active maintenance infrastructure.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 5.0
+    }
+  ],
+  "total_items": 6,
+  "items": [
+    {
+      "id": "cabe88ebd6fb",
+      "title": "Hermes Agent v0.21.7",
+      "content": "Hermes Agent v0.21.7\nRelease Date: October 11, 2026\n\nPatch release. This tag rolls up the ~204 PRs merged since v0.21.6 into a stable release for the desktop app (macOS Apple silicon, Windows), the Microsoft Store and MSIX, the installer, Docker and Hermes Cloud. Full curated notes for this window ship with v0.22.0.\n\n\nWhat this patch ships for source installs (hermes update and the desktop app's updater on a git checkout):\n\nUpdates now follow tagged releases. A source install of the official repository updates to the latest published vX.Y.Z release instead of every commit on main. An install already newer than the latest release stays where it is and waits for the next one; nothing is moved back. To keep following every commit: hermes update --set-channel main. Forks and mirrors keep following main. Store, MSIX and bundled desktop installs are unchanged.\nChoose the channel in the desktop app. Settings ▸ About ▸ Updates has an Update channel switch (Stable releases / Every commit) for source installs, and the update dialog now shows which channel you are on.\nReasoning survives resume. Signed thinking replays after hermes chat --resume and on the next gateway turn, and Bedrock Converse reasoning models no longer get rejected on resumed sessions.\nUpdates no longer fail behind some firewalls. Installs on main no longer fetch a release record that regional firewalls could answer with 403. The stable check uses your GitHub token when one is set (GITHUB_TOKEN or gh auth login) and reports a GitHub rate limit as a rate limit.\n\nAbout this release\nMeasured at commit 1fd18277267152893a8a24792b79213e7ca3f899, the window since v0.21.6 contains 740 non-merge commits across 4,156 changed files (+86,775 / −26,980), 204 merged PRs and 69 closed issues.\nAlso in the window, undocumented here on purpose: plugins running built-in Desktop app actions (ctx.runAction) and a plugin SDK pet bubble (ctx.pet.say); core-made Codex requests so plugins never hold the token; skills installed mid-session reaching the model without a prompt rebuild; Krea 2 Medium Turbo as the default image lane for new paid subscribers, with a FAL fallback when managed Krea refuses a request; faster desktop updates (the React Compiler pass cached by content, the compiled renderer reused when only the install stamp changed, unchanged native inputs left in place); pinned installs that check out only the pin; compaction marks emitted to Relay; and new community plugins including memory-shield, command-ledger, Memoria, Model Router, wyoming-voice-bridge, codex-account-switch and redline.\nFull curated release notes for this window ship with v0.22.0, which will document everything from v0.21.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\nUpdating\n\nDesktop app: updates itself. Microsoft Store installs update through the Store.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.21.6...v0.21.7",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.21.7",
+      "author": "teknium1",
+      "published": "2026-10-12T05:53:41",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hermes Agent v0.21.7 is a patch release rolling up roughly 204 PRs merged since v0.21.6 into a stable build across the desktop app, Microsoft Store/MSIX, installer, Docker, and Hermes Cloud. The headline change for source installs is that updates now track tagged releases instead of every commit on main, with a --set-channel main option for users who want to keep following development. Full curated notes for this window will ship with v0.22.0.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: secondary coverage of primary source from 2024-07-23 (811d before coverage)] An official stable release consolidating about 204 merged PRs is the most significant Hermes event in this batch. The change to release-channel-based updates is a notable behavioral change for source-install users, and the promise of curated notes in v0.22.0 signals what to watch next.",
+      "themes": [
+        "Official releases",
+        "Update channels",
+        "Cross-platform packaging"
+      ],
+      "continuation": null,
+      "freshness": {
+        "status": "stale_followup",
+        "label": "Follow-up",
+        "reason": "secondary coverage of primary source from 2024-07-23 (811d before coverage)",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "primary_url": "https://github.blog",
+        "primary_published": "2024-07-23",
+        "age_days": 811
+      },
+      "summary_html": "<p>Hermes Agent v0.21.7 is a patch release rolling up roughly 204 PRs merged since v0.21.6 into a stable build across the desktop app, Microsoft Store/MSIX, installer, Docker, and Hermes Cloud. The headline change for source installs is that updates now track tagged releases instead of every commit on main, with a --set-channel main option for users who want to keep following development. Full curated notes for this window will ship with v0.22.0.</p>",
+      "content_html": "<p>Hermes Agent v0.21.7</p>\n<p>Release Date: October 11, 2026</p>\n<p>Patch release. This tag rolls up the ~204 PRs merged since v0.21.6 into a stable release for the desktop app (macOS Apple silicon, Windows), the Microsoft Store and MSIX, the installer, Docker and Hermes Cloud. Full curated notes for this window ship with v0.22.0.</p>\n<p>What this patch ships for source installs (hermes update and the desktop app's updater on a git checkout):</p>\n<p>Updates now follow tagged releases. A source install of the official repository updates to the latest published vX.Y.Z release instead of every commit on main. An install already newer than the latest release stays where it is and waits for the next one; nothing is moved back. To keep following every commit: hermes update --set-channel main. Forks and mirrors keep following main. Store, MSIX and bundled desktop installs are unchanged.</p>\n<p>Choose the channel in the desktop app. Settings ▸ About ▸ Updates has an Update channel switch (Stable releases / Every commit) for source installs, and the update dialog now shows which channel you are on.</p>\n<p>Reasoning survives resume. Signed thinking replays after hermes chat --resume and on the next gateway turn, and Bedrock Converse reasoning models no longer get rejected on resumed sessions.</p>\n<p>Updates no longer fail behind some firewalls. Installs on main no longer fetch a release record that regional firewalls could answer with 403. The stable check uses your GitHub token when one is set (GITHUB_TOKEN or gh auth login) and reports a GitHub rate limit as a rate limit.</p>\n<p>About this release</p>\n<p>Measured at commit 1fd18277267152893a8a24792b79213e7ca3f899, the window since v0.21.6 contains 740 non-merge commits across 4,156 changed files (+86,775 / −26,980), 204 merged PRs and 69 closed issues.</p>\n<p>Also in the window, undocumented here on purpose: plugins running built-in Desktop app actions (ctx.runAction) and a plugin SDK pet bubble (ctx.pet.say); core-made Codex requests so plugins never hold the token; skills installed mid-session reaching the model without a prompt rebuild; Krea 2 Medium Turbo as the default image lane for new paid subscribers, with a FAL fallback when managed Krea refuses a request; faster desktop updates (the React Compiler pass cached by content, the compiled renderer reused when only the install stamp changed, unchanged native inputs left in place); pinned installs that check out only the pin; compaction marks emitted to Relay; and new community plugins including memory-shield, command-ledger, Memoria, Model Router, wyoming-voice-bridge, codex-account-switch and redline.</p>\n<p>Full curated release notes for this window ship with v0.22.0, which will document everything from v0.21.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.</p>\n<p>Updating</p>\n<p>Desktop app: updates itself. Microsoft Store installs update through the Store.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.21.6...v0.21.7</p>"
+    },
+    {
+      "id": "d07cd8ed8e17",
+      "title": "hermes-blind (Memory & Context)",
+      "content": "Hermes Blind deterministically extracts the first real user turn from supported local Claude Code or Codex session transcripts and generates an inspectable Markdown recovery anchor. It also provides an evidence-bound prompt wrapper for evaluation workflows and integration options for Claude Code, Codex CLI, Gemini CLI, and Hermes Agent hooks.",
+      "url": "https://hermesatlas.com/projects/hermes-labs-ai/hermes-blind",
+      "author": "Unknown",
+      "published": "2026-10-12T17:14:53",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Memory & Context"
+      ],
+      "summary": "Hermes Blind is a new community project that deterministically extracts the first real user turn from local Claude Code or Codex session transcripts and generates an inspectable Markdown recovery anchor. It also offers an evidence-bound prompt wrapper for evaluation workflows plus integration hooks for Claude Code, Codex CLI, Gemini CLI, and Hermes Agent.",
+      "importance_score": 52.0,
+      "reasoning": "A fresh community project with explicit Hermes Agent hook integration, relevant to users working on memory, context recovery, and eval workflows around coding agents. It is a third-party tool rather than an official release, so importance is moderate.",
+      "themes": [
+        "Memory & Context",
+        "Community projects",
+        "Agent interoperability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Blind is a new community project that deterministically extracts the first real user turn from local Claude Code or Codex session transcripts and generates an inspectable Markdown recovery anchor. It also offers an evidence-bound prompt wrapper for evaluation workflows plus integration hooks for Claude Code, Codex CLI, Gemini CLI, and Hermes Agent.</p>",
+      "content_html": "<p>Hermes Blind deterministically extracts the first real user turn from supported local Claude Code or Codex session transcripts and generates an inspectable Markdown recovery anchor. It also provides an evidence-bound prompt wrapper for evaluation workflows and integration options for Claude Code, Codex CLI, Gemini CLI, and Hermes Agent hooks.</p>"
+    },
+    {
+      "id": "075270f3bc5f",
+      "title": "Codeg (Workspaces & GUIs)",
+      "content": "Codeg brings multiple AI coding agents into one workspace, presenting their activity as structured conversations. It can import, search, and resume agent sessions, hand sessions to another agent, and support cross-agent delegation and queued tasks in separate worktrees. The README lists desktop, self-hosted server, Docker, mobile, and messaging options for using Codeg.",
+      "url": "https://hermesatlas.com/projects/spacering-net/codeg",
+      "author": "Unknown",
+      "published": "2026-10-12T18:59:34",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Workspaces & GUIs"
+      ],
+      "summary": "Codeg is a new workspace tool that unifies multiple AI coding agents, presenting their activity as structured conversations and supporting session import, search, resume, and cross-agent handoff with queued tasks in separate worktrees. It ships with desktop, self-hosted server, Docker, mobile, and messaging deployment options.",
+      "importance_score": 48.0,
+      "reasoning": "A substantial community-built orchestration layer for multi-agent coding workflows, useful to Hermes users who juggle several agents. Listed under Workspaces & GUIs as a new project, but it is third-party tooling without a direct Hermes integration claim, keeping the score moderate.",
+      "themes": [
+        "Workspaces & GUIs",
+        "Multi-agent orchestration",
+        "Community projects"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Codeg is a new workspace tool that unifies multiple AI coding agents, presenting their activity as structured conversations and supporting session import, search, resume, and cross-agent handoff with queued tasks in separate worktrees. It ships with desktop, self-hosted server, Docker, mobile, and messaging deployment options.</p>",
+      "content_html": "<p>Codeg brings multiple AI coding agents into one workspace, presenting their activity as structured conversations. It can import, search, and resume agent sessions, hand sessions to another agent, and support cross-agent delegation and queued tasks in separate worktrees. The README lists desktop, self-hosted server, Docker, mobile, and messaging options for using Codeg.</p>"
+    },
+    {
+      "id": "17d65e2d5191",
+      "title": "rc.15-v0.21.7",
+      "content": "{\"attempt\":15,\"autopublish\":false,\"claimEpoch\":1791775065,\"commit\":\"7…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.15-v0.21.7",
+      "author": "teknium1",
+      "published": "2026-10-12T03:17:45",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An automated release-candidate tag, rc.15-v0.21.7, from the hermes-agent repository, containing only machine-generated build metadata (attempt number 15, commit reference, publish flags). It indicates the release pipeline was validating the v0.21.7 build on the coverage date.",
+      "importance_score": 12.0,
+      "reasoning": "This is pipeline noise rather than user-facing content: no changelog, features, or fixes are described. Its only relevance is confirming that the v0.21.7 stable release (item 1) went through an extended RC validation process on the same day.",
+      "themes": [
+        "Release pipeline",
+        "RC builds"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An automated release-candidate tag, rc.15-v0.21.7, from the hermes-agent repository, containing only machine-generated build metadata (attempt number 15, commit reference, publish flags). It indicates the release pipeline was validating the v0.21.7 build on the coverage date.</p>",
+      "content_html": "<p>{\"attempt\":15,\"autopublish\":false,\"claimEpoch\":1791775065,\"commit\":\"7…</p>"
+    },
+    {
+      "id": "6c3e876fedfd",
+      "title": "rc.14-v0.21.7",
+      "content": "{\"attempt\":14,\"autopublish\":false,\"claimEpoch\":1791765169,\"commit\":\"8…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.14-v0.21.7",
+      "author": "teknium1",
+      "published": "2026-10-12T00:32:49",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Another automated release-candidate tag, rc.14-v0.21.7, published in the early hours of 2026-10-12 with only serialized build metadata (attempt 14, commit hash, autopublish flag). Like rc.15, it reflects the automated validation loop preceding the v0.21.7 stable tag.",
+      "importance_score": 10.0,
+      "reasoning": "No substantive information for Hermes users; it is an intermediate build artifact superseded hours later by rc.15 and then the stable v0.21.7 release. Minimal standalone significance, only as evidence of a 15-attempt RC cycle.",
+      "themes": [
+        "Release pipeline",
+        "RC builds"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Another automated release-candidate tag, rc.14-v0.21.7, published in the early hours of 2026-10-12 with only serialized build metadata (attempt 14, commit hash, autopublish flag). Like rc.15, it reflects the automated validation loop preceding the v0.21.7 stable tag.</p>",
+      "content_html": "<p>{\"attempt\":14,\"autopublish\":false,\"claimEpoch\":1791765169,\"commit\":\"8…</p>"
+    },
+    {
+      "id": "8b6664f66189",
+      "title": "Daily sync: 2026-10-12 02:00:15",
+      "content": "Daily sync: 2026-10-12 02:00:15",
+      "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/f3edd85e640d193a695fd003fccd9f69c9bc0165",
+      "author": "bot@hermes-agent-community.github.io",
+      "published": "2026-10-12T06:00:16",
+      "source": "Recent Commits to hermes-agent-community:main",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A routine automated commit to the hermes-agent-community repository titled with its sync timestamp, containing no descriptive content beyond the sync itself. It appears to be a scheduled mirror or aggregation job running on the coverage date.",
+      "importance_score": 5.0,
+      "reasoning": "Purely automated repository housekeeping with no readable changes, features, or fixes described. It carries no actionable information for Hermes users and is the lowest-value item in the batch.",
+      "themes": [
+        "Repository automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A routine automated commit to the hermes-agent-community repository titled with its sync timestamp, containing no descriptive content beyond the sync itself. It appears to be a scheduled mirror or aggregation job running on the coverage date.</p>",
+      "content_html": "<p>Daily sync: 2026-10-12 02:00:15</p>"
+    }
+  ]
+}

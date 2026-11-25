@@ -1,0 +1,707 @@
+{
+  "category": "research",
+  "date": "2026-10-14",
+  "category_summary": "Official project momentum led the cycle. **[Hermes Agent v0.20.0](/?date=2026-10-14&category=research#item-hn-49159200)** (GitHub tag **v2026.8.3**) shipped as the latest versioned release, a new SDK plugin adds **[Claude Pro/Max subscription](/?date=2026-10-14&category=research#item-hn-49790991)** support to the agent — a major cost/access win for existing subscribers — and **[Hermes Kanban](/?date=2026-10-14&category=research#item-hn-49604068)** documentation details built-in multi-agent orchestration via agent profiles on a shared board. Self-hosters get two practical upgrades: a [Kubernetes walkthrough flagging the missing official **Helm chart**](/?date=2026-10-14&category=research#item-hn-49977400) and the container image's root-at-init requirement, plus a **[Grafana](/?date=2026-10-14&category=research#item-hn-49318128)** observability project closing the monitoring gap for agent deployments. Integration coverage matured with **[LanceDB](/?date=2026-10-14&category=research#item-hn-49133145)**'s guide to persistent semantic memory and a community skill automating an issue-to-PR loop between **[Codex](/?date=2026-10-14&category=research#item-hn-49136162)** and **Claude Code**; the free open-source **[verso](/?date=2026-10-14&category=research#item-hn-49628094)** orchestrator further extends the ecosystem for knowledge work. Project health bears watching: roughly **[23,000 open pull requests](/?date=2026-10-14&category=research#item-hn-49424643)** on the core repo signal both community scale and maintainer bottlenecks. Academic coverage rounds out with **[X-Ragent](/?date=2026-10-14&category=research#item-2610.16811)**, a tool-augmented RL framework for evidence-grounded X-ray reasoning — adjacent to Hermes but methodologically relevant to agent tool use.",
+  "category_summary_html": "<p>Official project momentum led the cycle. <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> (GitHub tag <strong>v2026.8.3</strong>) shipped as the latest versioned release, a new SDK plugin adds <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> support to the agent — a major cost/access win for existing subscribers — and <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> documentation details built-in multi-agent orchestration via agent profiles on a shared board. Self-hosters get two practical upgrades: a <a href=\"/?date=2026-10-14&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes walkthrough flagging the missing official <strong>Helm chart</strong></a> and the container image's root-at-init requirement, plus a <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> observability project closing the monitoring gap for agent deployments. Integration coverage matured with <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong>'s guide to persistent semantic memory and a community skill automating an issue-to-PR loop between <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Codex</a></strong> and <strong>Claude Code</strong>; the free open-source <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong> orchestrator further extends the ecosystem for knowledge work. Project health bears watching: roughly <strong><a href=\"/?date=2026-10-14&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000 open pull requests</a></strong> on the core repo signal both community scale and maintainer bottlenecks. Academic coverage rounds out with <strong><a href=\"/?date=2026-10-14&amp;category=research#item-2610.16811\" class=\"internal-link\" rel=\"noopener noreferrer\">X-Ragent</a></strong>, a tool-augmented RL framework for evidence-grounded X-ray reasoning — adjacent to Hermes but methodologically relevant to agent tool use.</p>",
+  "themes": [
+    {
+      "name": "Official releases and features",
+      "description": "Core project updates: v0.20.0 release, Claude Pro/Max subscription support, and the Hermes Kanban multi-agent feature.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "Ecosystem tools and plugins",
+      "description": "Community-built extensions around Hermes Agent: verso orchestrator, Refine Cycle self-improvement plugin, Grafana observability, LanceDB semantic memory, and Codex/Claude Code skill loops.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 64.0
+    },
+    {
+      "name": "Deployment and self-hosting",
+      "description": "Running Hermes Agent on Kubernetes, headless Debian, Arduino UNO Q hardware, and questions about model routers like Bifrost.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Community support and governance",
+      "description": "Troubleshooting threads, project health signals such as 23000 open PRs, moderation disputes, trademark questions, and startup builds on the platform.",
+      "item_count": 8,
+      "example_items": [],
+      "importance": 50.0
+    },
+    {
+      "name": "Education and onboarding",
+      "description": "Beginner-oriented learning roadmaps that use Hermes as the example agent for getting started with AI agents, from basic setup through business automation.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 35.0
+    },
+    {
+      "name": "Beginner learning content",
+      "description": "Promotional blog posts by Julian Goldie on designing, building, and keeping up with AI agents, mentioning Hermes among many tools.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 23.0
+    }
+  ],
+  "total_items": 26,
+  "items": [
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49790991) yesterday, Official documentation page announcing that Hermes Agent now supports Claude Pro/Max subscriptions via a direct SDK plugin, letting subscribers use their existing Anthropic subscription billing with the agent instead of API keys.",
+      "importance_score": 39,
+      "reasoning": "An official capability change that materially lowers the cost/access barrier for a large user base by enabling subscription-based auth; relevant to many Hermes Agent users.",
+      "themes": [
+        "Feature announcements",
+        "Model providers",
+        "Authentication"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official documentation page announcing that Hermes Agent now supports Claude Pro/Max subscriptions via a direct SDK plugin, letting subscribers use their existing Anthropic subscription billing with the agent instead of API keys.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49159200) yesterday, The Hermes Agent v0.20.0 release (GitHub tag v2026.8.3) for NousResearch/hermes-agent, the latest versioned release of the open-source agent.",
+      "importance_score": 37,
+      "reasoning": "An official versioned release of the core project; release notes are the primary changelog users track for new features and fixes, though detailed contents are not visible in the snippet.",
+      "themes": [
+        "Releases",
+        "Version updates",
+        "Official"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49159200",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Hermes Agent v0.20.0",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, The Hermes Agent v0.20.0 release (GitHub tag v2026.8.3) for NousResearch/hermes-agent, the latest versioned release of the open-source agent.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49977400) yesterday, A writeup on deploying Hermes Agent to Kubernetes highlighting two operational gaps: there is no official Helm chart, and the container image requires root privileges during initialization, complicating hardened, least-privilege deployments.",
+      "importance_score": 36,
+      "reasoning": "Practical, actionable deployment information touching security posture (root-at-init) and packaging gaps that affect anyone running Hermes Agent in production container environments.",
+      "themes": [
+        "Deployment",
+        "Kubernetes",
+        "Security hardening"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A writeup on deploying Hermes Agent to Kubernetes highlighting two operational gaps: there is no official Helm chart, and the container image requires root privileges during initialization, complicating hardened, least-privilege deployments.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49604068) yesterday, Official documentation describing Hermes Kanban, a feature enabling multi-agent collaboration through agent profiles managed on a kanban board, coordinating tasks across multiple configured agent personas.",
+      "importance_score": 35,
+      "reasoning": "Official documentation of a significant built-in multi-agent orchestration feature, directly expanding what Hermes Agent can do out of the box.",
+      "themes": [
+        "Multi-agent",
+        "Official features",
+        "Task management"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official documentation describing Hermes Kanban, a feature enabling multi-agent collaboration through agent profiles managed on a kanban board, coordinating tasks across multiple configured agent personas.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49424643) yesterday, A discussion noting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is climbing, pointing to extreme community contribution volume and potentially strained maintainer review capacity.",
+      "importance_score": 34,
+      "reasoning": "A meaningful signal about project health, community scale, and maintainer bottlenecks that affects contribution merge latency for the entire ecosystem.",
+      "themes": [
+        "Project health",
+        "Open source governance",
+        "Contribution volume"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A discussion noting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is climbing, pointing to extreme community contribution volume and potentially strained maintainer review capacity.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-49136162",
+      "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+      "author": "yruzin",
+      "published": "2026-08-01T17:00:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49136162) yesterday, A codenote.net post describing an issue-to-PR autonomous loop implemented as a Hermes Agent skill that shuttles work between Codex and Claude Code, automating the path from a reported issue to a pull request.",
+      "importance_score": 33,
+      "reasoning": "A concrete, technical automation pattern combining Hermes Agent skills with multiple coding agents; directly reusable for autonomous dev workflows.",
+      "themes": [
+        "Skills",
+        "Autonomous coding",
+        "Multi-agent workflows"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49136162",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A codenote.net post describing an issue-to-PR autonomous loop implemented as a Hermes Agent skill that shuttles work between Codex and Claude Code, automating the path from a reported issue to a pull request.</p>",
+      "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49628094) yesterday, Show HN for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise and now uses it daily for work, providing a GUI-style alternative to interacting with Hermes Agent without the CLI.",
+      "importance_score": 32,
+      "reasoning": "A mature third-party tool built on Hermes Agent demonstrating ecosystem growth and addressing a real UX gap (CLI-only interaction), though it is community-built rather than official.",
+      "themes": [
+        "Ecosystem tools",
+        "Orchestration",
+        "UI alternatives"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Show HN for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise and now uses it daily for work, providing a GUI-style alternative to interacting with Hermes Agent without the CLI.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49133145",
+      "title": "Semantic Memory for Hermes Agent with LanceDB",
+      "content": "Semantic Memory for Hermes Agent with LanceDB",
+      "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb",
+      "author": "eigenBasis",
+      "published": "2026-08-01T10:47:04Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49133145) yesterday, A LanceDB blog post showing how to add semantic memory to Hermes Agent using LanceDB, giving the agent persistent, vector-based recall of prior context.",
+      "importance_score": 32,
+      "reasoning": "A practical integration guide from the LanceDB team addressing a common Hermes Agent need (persistent semantic memory), with reusable implementation details.",
+      "themes": [
+        "Memory",
+        "Vector databases",
+        "Integrations"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49133145",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Semantic Memory for Hermes Agent with LanceDB",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A LanceDB blog post showing how to add semantic memory to Hermes Agent using LanceDB, giving the agent persistent, vector-based recall of prior context.</p>",
+      "content_html": "<p>Semantic Memory for Hermes Agent with LanceDB</p>"
+    },
+    {
+      "id": "2610.16811",
+      "title": "X-Ragent: Tool-Augmented Reinforcement Learning for Evidence-Grounded Chest X-Ray Reasoning",
+      "content": "Chest X-ray (CXR) interpretation often requires integrating visual findings with task-specific evidence rather than relying on direct visual recognition alone. While tool-augmented medical agents can supply such evidence via external modules, they often lack explicit mechanisms for learning when auxiliary evidence is needed and for preventing inapplicable quantitative evidence from entering diagnostic reasoning. To address this, we propose X-Ragent, a post-training framework for tool-augmented r",
+      "url": "https://arxiv.org/abs/2610.16811",
+      "author": "HF Daily Papers",
+      "published": "2026-10-12T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An arXiv paper introducing X-Ragent, a post-training framework for tool-augmented medical agents interpreting chest X-rays. It uses reinforcement learning to teach agents when to fetch auxiliary evidence and to prevent inapplicable quantitative evidence from contaminating diagnostic reasoning, addressing a gap where tool-augmented agents rely on evidence without learning when it is needed.",
+      "importance_score": 62.0,
+      "reasoning": "Technically substantive research on tool-augmented RL and evidence gating, but it is adjacent to the Hermes ecosystem rather than about Hermes Agent/Desktop itself; relevance is methodological (tool-use training) rather than direct.",
+      "themes": [
+        "Research papers",
+        "Tool-augmented agents",
+        "Medical AI"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An arXiv paper introducing X-Ragent, a post-training framework for tool-augmented medical agents interpreting chest X-rays. It uses reinforcement learning to teach agents when to fetch auxiliary evidence and to prevent inapplicable quantitative evidence from contaminating diagnostic reasoning, addressing a gap where tool-augmented agents rely on evidence without learning when it is needed.</p>",
+      "content_html": "<p>Chest X-ray (CXR) interpretation often requires integrating visual findings with task-specific evidence rather than relying on direct visual recognition alone. While tool-augmented medical agents can supply such evidence via external modules, they often lack explicit mechanisms for learning when auxiliary evidence is needed and for preventing inapplicable quantitative evidence from entering diagnostic reasoning. To address this, we propose X-Ragent, a post-training framework for tool-augmented r</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-12&category=research#item-hn-49318128) yesterday, A Show HN releasing grafana-agento11y-hermes, a GitHub project adding Grafana-based observability for Hermes Agent, enabling dashboards and monitoring of agent activity.",
+      "importance_score": 31,
+      "reasoning": "Fills a real operational gap (monitoring/observability) for self-hosted Hermes Agent deployments; practical for production users though community-maintained.",
+      "themes": [
+        "Observability",
+        "Ecosystem tools",
+        "Monitoring"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-10-12",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Show HN releasing grafana-agento11y-hermes, a GitHub project adding Grafana-based observability for Hermes Agent, enabling dashboards and monitoring of agent activity.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Launch HN for Almanac, a YC S26 startup described as a Hermes with a brain that knows everything about your company. The founders describe the pain of setting up Hermes themselves, building OAuth apps for every connector, and productized that setup into a company-knowledge agent.",
+      "importance_score": 60.0,
+      "reasoning": "A funded startup building directly on the Hermes pattern signals commercial ecosystem momentum and validates demand, though the item is promotional with modest technical detail.",
+      "themes": [
+        "Startups",
+        "Enterprise knowledge",
+        "Connectors"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Launch HN for Almanac, a YC S26 startup described as a Hermes with a brain that knows everything about your company. The founders describe the pain of setting up Hermes themselves, building OAuth apps for every connector, and productized that setup into a company-knowledge agent.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub project, Refine Cycle, a self-improvement plugin for Hermes Agent that adds a cycle for the agent to refine its own behavior/output over time.",
+      "importance_score": 58.0,
+      "reasoning": "An interesting community plugin exploring agent self-improvement, relevant to the plugin ecosystem, but early-stage with unknown robustness and safety considerations.",
+      "themes": [
+        "Plugins",
+        "Self-improvement",
+        "Agent loops"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub project, Refine Cycle, a self-improvement plugin for Hermes Agent that adds a cycle for the agent to refine its own behavior/output over time.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository (hermes-jekyl-hyde) presenting an adversarial LLM reversal technique targeting hermes-agent, probing or demonstrating manipulation of the agent's behavior.",
+      "importance_score": 58.0,
+      "reasoning": "Security-relevant work probing adversarial control of the Hermes agent; important for understanding attack surface, but content depth is unclear from the title-level data.",
+      "themes": [
+        "Security",
+        "Adversarial attacks",
+        "Red teaming"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository (hermes-jekyl-hyde) presenting an adversarial LLM reversal technique targeting hermes-agent, probing or demonstrating manipulation of the agent's behavior.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user reports a freshly provisioned Hermes agent on a headless Debian server, using Z.ai GLM 5.3 Flash, spiraling into a trance-like state after environment-inspection commands; the post includes a long 'Thinking for 1m36s...' block with odd output and asks whether it is meaningful.",
+      "importance_score": 55.0,
+      "reasoning": "A community debugging thread that surfaces a potential stability/looping issue with a specific third-party model in Hermes Agent, useful for troubleshooting but anecdotal and unresolved.",
+      "themes": [
+        "Troubleshooting",
+        "Model quirks",
+        "Community support"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user reports a freshly provisioned Hermes agent on a headless Debian server, using Z.ai GLM 5.3 Flash, spiraling into a trance-like state after environment-inspection commands; the post includes a long 'Thinking for 1m36s...' block with odd output and asks whether it is meaningful.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs a Linux-capable chip with an Arduino chip, as a low-cost always-on alternative to a VPS for hosting the agent.",
+      "importance_score": 55.0,
+      "reasoning": "A creative, concrete hardware deployment guide with practical resource details, useful to hobbyists avoiding VPS costs, though niche in applicability.",
+      "themes": [
+        "Self-hosting",
+        "Hardware",
+        "Edge deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs a Linux-capable chip with an Arduino chip, as a low-cost always-on alternative to a VPS for hosting the agent.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A question/discussion asking whether Hermes Agent is unusable without a model router, linked to maximimhq/bifrost, implying users are layering routing middleware like Bifrost in front of Hermes Agent for model selection and failover.",
+      "importance_score": 52.0,
+      "reasoning": "Surfaces a real architectural question about model routing in Hermes Agent setups and community reliance on external routers, though the item is question-form rather than a finding.",
+      "themes": [
+        "Model routing",
+        "Architecture",
+        "Reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A question/discussion asking whether Hermes Agent is unusable without a model router, linked to maximimhq/bifrost, implying users are layering routing middleware like Bifrost in front of Hermes Agent for model selection and failover.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by heyjonny reflecting on misusing the Hermes Agent, presumably covering lessons learned about correct usage patterns and mental models for working with the agent.",
+      "importance_score": 50.0,
+      "reasoning": "A first-person usage retrospective that can contain practical lessons for other users, but with limited technical depth based on the available content.",
+      "themes": [
+        "Usage patterns",
+        "Lessons learned",
+        "User experience"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by heyjonny reflecting on misusing the Hermes Agent, presumably covering lessons learned about correct usage patterns and mental models for working with the agent.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub issue (hermes-agent #10232) reporting that a question asking whether EvoMap's Evolver was a reference/inspiration for Hermes gets deleted and the poster blocked, raising moderation and transparency concerns in the project's issue tracker.",
+      "importance_score": 48.0,
+      "reasoning": "Touches on project governance, moderation, and attribution transparency — relevant to community trust — but it is a dispute with limited technical substance.",
+      "themes": [
+        "Moderation",
+        "Project governance",
+        "Attribution"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub issue (hermes-agent #10232) reporting that a question asking whether EvoMap's Evolver was a reference/inspiration for Hermes gets deleted and the poster blocked, raising moderation and transparency concerns in the project's issue tracker.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The official Hermes Agent site (hermes-agent.nousresearch.com), positioning it as an open-source AI agent that grows with the user — the canonical landing page describing the project's value proposition.",
+      "importance_score": 45.0,
+      "reasoning": "Foundational reference material for the project, but it is a static overview page rather than news, a change, or a technical finding.",
+      "themes": [
+        "Project overview",
+        "Official docs",
+        "Getting started"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The official Hermes Agent site (hermes-agent.nousresearch.com), positioning it as an open-source AI agent that grows with the user — the canonical landing page describing the project's value proposition.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Show HN for fn2.ai, a Claude Code plugin backed by PostgreSQL and ElasticSearch (sharded, replicated across two regions) that lets users query 10.6M earnings-call transcript embeddings for market questions, e.g., what NVIDIA said about data-center demand.",
+      "importance_score": 35.0,
+      "reasoning": "A well-engineered financial tool but built for Claude Code, not Hermes Agent; peripheral to the Hermes ecosystem except as adjacent agent-plugin design.",
+      "themes": [
+        "Claude Code plugins",
+        "Financial data",
+        "RAG"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Show HN for fn2.ai, a Claude Code plugin backed by PostgreSQL and ElasticSearch (sharded, replicated across two regions) that lets users query 10.6M earnings-call transcript embeddings for market questions, e.g., what NVIDIA said about data-center demand.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "a23b54e9dc04",
+      "title": "How to Learn AI Agents: My 6-Week Roadmap (2026)",
+      "content": "Here’s how to learn AI agents the fast way: pick one agent, connect a free model, and build something useful in your first week — then add tools, skills, memory and scheduling one step at a time. That’s exactly how I learned, and how I teach thousands of members. In the video below I show how to build your own AI agent operating system. Here’s my 6-week roadmap.\n\nKey takeaways\n\n- Learn by building, not by reading about agents.\n\n- Start with one agent (like Hermes) and a free model.\n\n- Follow a 6-week roadmap: setup, tools, skills, memory, multi-agent, business workflow.\n\n- Learn free in AI Money Lab; get live help in the AI Profit Boardroom.\n\n## How to learn AI agents: the 6-week roadmap\n\nWeek\nFocus\nOutcome\n\n1\nWhat agents are; set up one agent (e.g. Hermes) with a free model\nYour agent answers you on Telegram\n\n2\nTools: web search, browser, files\nIt researches a topic and saves a report\n\n3\nSkills and scheduling\nA daily brief arrives every morning\n\n4\nMemory and your own rules\nIt writes in your style without reminders\n\n5\nMulti-agent work and sub-agents\nBig jobs split across agents\n\n6\nA real business workflow\nOne task you no longer do yourself\n\n## Week 1: get one agent working\n\nDon’t start with theory. Install one agent — I recommend Hermes Agent because it’s free, works with almost any model and runs everywhere — connect a free model, and connect Telegram so you can message it from your phone. Your only goal this week is a working agent you can talk to.\n\nFREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.\n\nWant live coaching too? Upgrade to the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Weeks 2–4: tools, skills and memory\n\nNext, give it real work. Ask it to research a topic and save a report (tools). Turn that into a reusable skill and put it on a schedule, so a brief arrives every morning (skills and cron). Then teach it your rules and style, and watch it remember them (memory). By the end of week four you’ll understand the three ideas that make agents different from chatbots.\n\n## Weeks 5–6: multi-agent work and a real workflow\n\nNow go bigger: split a large job across sub-agents, then build one complete workflow for your business — inbox triage, content repurposing or lead research. When a task you used to do every week now happens without you, you’ve genuinely learned AI agents.\n\n## The best resources to learn AI agents\n\nResource\nUse it for\nCost\n\nAI Money Lab\nFree courses and 1,000+ ready-made agents\nFree\n\nMy YouTube full courses\nWatching complete builds\nFree\n\nOfficial docs\nAccurate setup steps\nFree\n\nAI Profit Boardroom\nLive coaching, the Agent OS, business workflows\nPaid\n\nFree models (Nous Portal, local)\nPractising without spending\nFree\n\n## Mistakes that slow people down\n\nTrying every new tool instead of mastering one. Starting with a huge project instead of a daily brief. Paying for frontier models before you need them. Following outdated tutorials. And learning alone — most problems take minutes to fix with the right help and hours without it.\n\n## How long does it take to learn AI agents?\n\nYou can have a useful agent running in a day. In six weeks of an hour or so a day, you can run real business workflows. Mastery takes longer, because the tools keep changing — which is why the habit of learning a little every week matters more than finishing any one course.\n\n## Choosing your first agent\n\nChoose one that is free, works with many models and runs where you already are. Hermes Agent ticks all three: it’s open source, supports free and paid models, and you can talk to it in the terminal, a desktop app or Telegram. Other good options are DeepSeek Harness for a free desktop agent or Claude Code if you mostly want to build software. What matters most is picking one and sticking with it for the first month.\n\n## Learning with free models\n\nYou don’t need to pay to learn. Free models on Nous Portal and local models through Ollama are more than good enough for practice. Save paid frontier models for when you’re building something important and need the best quality.\n\n## Learning AI agents for your business\n\nIf you’re learning agents to use in a business, point every lesson at a real task. Learning tools? Use them to research your competitors. Learning skills? Turn your weekly report into one. Learning scheduling? Automate your morning inbox review. Tying each step to your own work means you’re saving time from the first week, which makes it far easier to keep going.\n\nBy the end of the roadmap you won’t just understand agents — you’ll have several of them working for you.\n\n## What to do when you get stuck\n\nGetting stuck is part of learning agents — tools change, installs fail, models time out. First, ask your agent itself: describe the error and let it suggest a fix. Second, check the official docs, which are updated faster than tutorials. Third, ask a community: the free AI Money Lab for quick answers, or a live call in the AI Profit Boardroom for anything complex. Most problems are solved in minutes this way.\n\n## Start learning AI agents today\n\nThat’s how to learn AI agents: build first, one step a week. Start free in AI Money Lab, and join the AI Profit Boardroom when you want live help and the Agent OS.\n\nFinally, celebrate small wins. The first time an agent sends you a useful brief while you’re still asleep is a genuine milestone, and noticing it keeps you motivated. Write down what each agent saves you each week; seeing those minutes add up into hours is the best reminder of why learning agents is worth the effort, and it tells you which agent to improve next.\n\n## About Julian Goldie\n\nJulian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.\n\n## FAQ: how to learn ai agents\n\n### How do I start learning AI agents?\n\nInstall one agent like Hermes, connect a free model and Telegram, and build a daily brief in your first week.\n\n### How long does it take to learn AI agents?\n\nA day for your first agent, about six weeks to run real business workflows.\n\n### Do I need to code to learn AI agents?\n\nNo — you can start without code and learn code later if you want to build custom agents.\n\n### What is the best way to learn AI agents?\n\nBuild real projects with one agent, follow a roadmap, and get help from a community.\n\n### Where can I learn AI agents for free?\n\nAI Money Lab, Julian Goldie’s YouTube courses and free courses from Hugging Face, Microsoft and LangChain.\n\nStart learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.\n\nWhen you want live calls and the Agent OS, join the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Related reading\n\n- How to Learn AI Agents From Scratch\n\n- Learn AI Agents for Free\n\n- Best AI Agent Course\n\nLast updated October 2026. This page is a living guide to how to learn ai agents — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/how-to-learn-ai-agents/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-ai-agents",
+      "author": "Clawdbot",
+      "published": "2026-10-13T01:19:40",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A marketing-oriented educational blog post from Julian Goldie presenting a 6-week roadmap for learning AI agents, using Hermes as the recommended starter agent. The roadmap progresses from week 1 (setting up one agent with a free model that responds via Telegram) through tools (web search, browser, files), skills and scheduling (daily briefs), memory and personalized rules, multi-agent/sub-agent orchestration, and finally automating a real business workflow. The author emphasizes learning by building rather than reading, and promotes his free AI Money Lab and paid AI Profit Boardroom communities. Content is truncated mid-way through the Week 1 details.",
+      "importance_score": 35.0,
+      "reasoning": "This is promotional third-party content rather than technical documentation, a release, or a merged PR. Its technical depth is shallow: the roadmap is high-level (a week-by-week topic table) with no code, configuration details, or Hermes-specific implementation guidance in the visible portion. Its relevance is that it demonstrates Hermes being positioned as the default beginner-friendly agent in an influencer-led educational funnel, which is a mild community-adoption signal, but the primary purpose is funneling readers into the author's paid community. Moderate-low score reflecting community visibility value with minimal technical substance.",
+      "themes": [
+        "Education and onboarding",
+        "Community adoption",
+        "Agent workflows"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A marketing-oriented educational blog post from Julian Goldie presenting a 6-week roadmap for learning AI agents, using Hermes as the recommended starter agent. The roadmap progresses from week 1 (setting up one agent with a free model that responds via Telegram) through tools (web search, browser, files), skills and scheduling (daily briefs), memory and personalized rules, multi-agent/sub-agent orchestration, and finally automating a real business workflow. The author emphasizes learning by building rather than reading, and promotes his free AI Money Lab and paid AI Profit Boardroom communities. Content is truncated mid-way through the Week 1 details.</p>",
+      "content_html": "<p>Here’s how to learn AI agents the fast way: pick one agent, connect a free model, and build something useful in your first week — then add tools, skills, memory and scheduling one step at a time. That’s exactly how I learned, and how I teach thousands of members. In the video below I show how to build your own AI agent operating system. Here’s my 6-week roadmap.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Learn by building, not by reading about agents.</li>\n</ul>\n<ul>\n<li>Start with one agent (like Hermes) and a free model.</li>\n</ul>\n<ul>\n<li>Follow a 6-week roadmap: setup, tools, skills, memory, multi-agent, business workflow.</li>\n</ul>\n<ul>\n<li>Learn free in AI Money Lab; get live help in the AI Profit Boardroom.</li>\n</ul>\n<h2>How to learn AI agents: the 6-week roadmap</h2>\n<p>Week</p>\n<p>Focus</p>\n<p>Outcome</p>\n<p>1</p>\n<p>What agents are; set up one agent (e.g. Hermes) with a free model</p>\n<p>Your agent answers you on Telegram</p>\n<p>2</p>\n<p>Tools: web search, browser, files</p>\n<p>It researches a topic and saves a report</p>\n<p>3</p>\n<p>Skills and scheduling</p>\n<p>A daily brief arrives every morning</p>\n<p>4</p>\n<p>Memory and your own rules</p>\n<p>It writes in your style without reminders</p>\n<p>5</p>\n<p>Multi-agent work and sub-agents</p>\n<p>Big jobs split across agents</p>\n<p>6</p>\n<p>A real business workflow</p>\n<p>One task you no longer do yourself</p>\n<h2>Week 1: get one agent working</h2>\n<p>Don’t start with theory. Install one agent — I recommend Hermes Agent because it’s free, works with almost any model and runs everywhere — connect a free model, and connect Telegram so you can message it from your phone. Your only goal this week is a working agent you can talk to.</p>\n<p>FREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.</p>\n<p>Want live coaching too? Upgrade to the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Weeks 2–4: tools, skills and memory</h2>\n<p>Next, give it real work. Ask it to research a topic and save a report (tools). Turn that into a reusable skill and put it on a schedule, so a brief arrives every morning (skills and cron). Then teach it your rules and style, and watch it remember them (memory). By the end of week four you’ll understand the three ideas that make agents different from chatbots.</p>\n<h2>Weeks 5–6: multi-agent work and a real workflow</h2>\n<p>Now go bigger: split a large job across sub-agents, then build one complete workflow for your business — inbox triage, content repurposing or lead research. When a task you used to do every week now happens without you, you’ve genuinely learned AI agents.</p>\n<h2>The best resources to learn AI agents</h2>\n<p>Resource</p>\n<p>Use it for</p>\n<p>Cost</p>\n<p>AI Money Lab</p>\n<p>Free courses and 1,000+ ready-made agents</p>\n<p>Free</p>\n<p>My YouTube full courses</p>\n<p>Watching complete builds</p>\n<p>Free</p>\n<p>Official docs</p>\n<p>Accurate setup steps</p>\n<p>Free</p>\n<p>AI Profit Boardroom</p>\n<p>Live coaching, the Agent OS, business workflows</p>\n<p>Paid</p>\n<p>Free models (Nous Portal, local)</p>\n<p>Practising without spending</p>\n<p>Free</p>\n<h2>Mistakes that slow people down</h2>\n<p>Trying every new tool instead of mastering one. Starting with a huge project instead of a daily brief. Paying for frontier models before you need them. Following outdated tutorials. And learning alone — most problems take minutes to fix with the right help and hours without it.</p>\n<h2>How long does it take to learn AI agents?</h2>\n<p>You can have a useful agent running in a day. In six weeks of an hour or so a day, you can run real business workflows. Mastery takes longer, because the tools keep changing — which is why the habit of learning a little every week matters more than finishing any one course.</p>\n<h2>Choosing your first agent</h2>\n<p>Choose one that is free, works with many models and runs where you already are. Hermes Agent ticks all three: it’s open source, supports free and paid models, and you can talk to it in the terminal, a desktop app or Telegram. Other good options are DeepSeek Harness for a free desktop agent or Claude Code if you mostly want to build software. What matters most is picking one and sticking with it for the first month.</p>\n<h2>Learning with free models</h2>\n<p>You don’t need to pay to learn. Free models on Nous Portal and local models through Ollama are more than good enough for practice. Save paid frontier models for when you’re building something important and need the best quality.</p>\n<h2>Learning AI agents for your business</h2>\n<p>If you’re learning agents to use in a business, point every lesson at a real task. Learning tools? Use them to research your competitors. Learning skills? Turn your weekly report into one. Learning scheduling? Automate your morning inbox review. Tying each step to your own work means you’re saving time from the first week, which makes it far easier to keep going.</p>\n<p>By the end of the roadmap you won’t just understand agents — you’ll have several of them working for you.</p>\n<h2>What to do when you get stuck</h2>\n<p>Getting stuck is part of learning agents — tools change, installs fail, models time out. First, ask your agent itself: describe the error and let it suggest a fix. Second, check the official docs, which are updated faster than tutorials. Third, ask a community: the free AI Money Lab for quick answers, or a live call in the AI Profit Boardroom for anything complex. Most problems are solved in minutes this way.</p>\n<h2>Start learning AI agents today</h2>\n<p>That’s how to learn AI agents: build first, one step a week. Start free in AI Money Lab, and join the AI Profit Boardroom when you want live help and the Agent OS.</p>\n<p>Finally, celebrate small wins. The first time an agent sends you a useful brief while you’re still asleep is a genuine milestone, and noticing it keeps you motivated. Write down what each agent saves you each week; seeing those minutes add up into hours is the best reminder of why learning agents is worth the effort, and it tells you which agent to improve next.</p>\n<h2>About Julian Goldie</h2>\n<p>Julian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.</p>\n<h2>FAQ: how to learn ai agents</h2>\n<h3>How do I start learning AI agents?</h3>\n<p>Install one agent like Hermes, connect a free model and Telegram, and build a daily brief in your first week.</p>\n<h3>How long does it take to learn AI agents?</h3>\n<p>A day for your first agent, about six weeks to run real business workflows.</p>\n<h3>Do I need to code to learn AI agents?</h3>\n<p>No — you can start without code and learn code later if you want to build custom agents.</p>\n<h3>What is the best way to learn AI agents?</h3>\n<p>Build real projects with one agent, follow a roadmap, and get help from a community.</p>\n<h3>Where can I learn AI agents for free?</h3>\n<p>AI Money Lab, Julian Goldie’s YouTube courses and free courses from Hugging Face, Microsoft and LangChain.</p>\n<p>Start learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.</p>\n<p>When you want live calls and the Agent OS, join the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>How to Learn AI Agents From Scratch</li>\n</ul>\n<ul>\n<li>Learn AI Agents for Free</li>\n</ul>\n<ul>\n<li>Best AI Agent Course</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to how to learn ai agents — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès trademark, a legal/naming discussion rather than a technical one.",
+      "importance_score": 30.0,
+      "reasoning": "A speculative legal-naming discussion with no technical content about the agent itself; low relevance to users and developers.",
+      "themes": [
+        "Naming",
+        "Trademarks",
+        "Community discussion"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès trademark, a legal/naming discussion rather than a technical one.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    },
+    {
+      "id": "428c3ef3009f",
+      "title": "How to Learn Building AI Agents: No-Code to Code (2026)",
+      "content": "Wondering how to learn building AI agents? The answer is to build — small projects, one after another, each teaching one new skill. You can start with no code and move to frameworks like LangGraph or the Claude Agent SDK later. In the video below I build my own Agent OS for free. Here are the four building paths, five starter projects and the order to learn things in.\n\nKey takeaways\n\n- There are four paths: no-code, agent harnesses, code frameworks and an Agent OS.\n\n- Start with five starter projects, each teaching one skill.\n\n- Learn frameworks like LangGraph and the Claude Agent SDK when you need custom agents.\n\n- Build in public in a community to learn faster.\n\n## Four ways to learn building AI agents\n\nPath\nTools\nBest for\n\nNo-code agents\nHermes Agent, n8n, ready-made agents\nBusiness owners who want results fast\n\nAgent harnesses\nHermes, DeepSeek Harness, Claude Code\nPower users who want agents on their computer\n\nCode frameworks\nLangGraph, OpenAI Agents SDK, Claude Agent SDK, smolagents\nDevelopers building custom agents\n\nAgent OS\nAn agentic operating system to run many agents\nRunning several agents in a business\n\n## Five starter projects\n\n#\nStarter project\nWhat you learn\n\n1\nDaily news brief\nWeb search, summarising, scheduling\n\n2\nInbox triage assistant\nConnecting apps, approvals\n\n3\nResearch agent\nBrowser tools, saving files\n\n4\nContent repurposer\nSkills, style rules, memory\n\n5\nLead researcher\nMulti-step workflows, sub-agents\n\nBuild them in this order: each project adds one new idea on top of the last.\n\nFREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.\n\nWant live coaching too? Upgrade to the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Path 1: building agents without code\n\nAgent harnesses like Hermes let you build agents by describing what you want. You combine a model, tools and skills, schedule the job, and connect it to your apps — no code needed. This is the fastest way to build agents that do real work, and it teaches the same concepts developers use.\n\n## Path 2: building agents in code\n\nWhen you need a custom agent inside your own product, learn a framework. LangGraph is popular for structured agent workflows, the OpenAI Agents SDK and Claude Agent SDK are strong for building on those models, and smolagents is a lightweight option from Hugging Face. Free courses from LangChain Academy, Hugging Face and Anthropic teach them well.\n\n## What every agent builder must learn\n\nWhatever path you take, the same skills matter: writing clear instructions, choosing the right tools, giving the agent memory, adding approvals for risky actions, handling errors, and measuring results. An agent that works once is a demo; an agent that works every day is a product.\n\n## Building agents that run a business\n\nThe leap from hobby to business is reliability. Put agents on schedules, deliver results where you’ll see them, keep approvals on for anything that sends or spends, and review outputs weekly. An Agent OS helps here — one place to see and manage every agent you’ve built.\n\n## How to learn faster\n\nBuild one new agent a week. Share what you built in a community and ask for feedback. Read the README of every open-source agent you use — it’s free education. And keep a notes file of what worked and what didn’t; that file becomes your personal playbook.\n\n## A builder’s checklist\n\nBefore you call an agent finished, check: does it have a clear goal? Does it use only the tools it needs? Does it remember the right things? Does it ask before risky actions? Does it handle errors, such as a site being down? Does it deliver results somewhere you’ll see them? And have you reviewed a week of its outputs? An agent that passes all seven is ready for real work.\n\n## From no-code to code\n\nMany builders start no-code and move to code for specific needs: a custom agent inside a product, unusual integrations or tight cost control. If that’s you, learn one framework properly rather than sampling five. The concepts transfer, so the no-code agents you built first make learning a framework much easier.\n\n## Learning to build with others\n\nBuilding alone is slow. In a community you can see how other people solved the same problem, borrow their skills and templates, and get feedback on your agents before you rely on them. In the AI Profit Boardroom, members regularly share their builds on live calls — and watching someone else’s working agent is often the quickest way to understand a new technique.\n\nIf you’re starting free, the AI Money Lab community gives you 1,000+ ready-made agents and workflows to study and adapt.\n\n## Where to find ideas for agents to build\n\nLook at your own week. Any task you do more than twice a week, that follows roughly the same steps, is a candidate: reporting, research, email follow-ups, content repurposing, data entry. List five, rank them by time saved, and build the top one first. Your own work is the best source of agent ideas because you already know what good looks like.\n\n## Start learning to build AI agents\n\nThat’s how to learn building AI agents: pick a path, build five starter projects, then build one for your business. Start free in AI Money Lab and join the AI Profit Boardroom for live build help and the Agent OS.\n\nAbove all, ship. An agent that runs every day, even if it’s simple, teaches you more than a clever one that never leaves your laptop. Put your first agent on a schedule this week, watch how it behaves in the real world, and improve it from there. Every builder I know learned the most from fixing agents that were already running, not from planning the perfect one. Your fifth agent will be dramatically better than your first, and that only happens if the first one actually exists. Share it in a community when it works.\n\n## About Julian Goldie\n\nJulian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.\n\n## FAQ: how to learn building ai agents\n\n### How do I learn to build AI agents?\n\nPick a path (no-code or code), build five small starter projects, then build one for your business.\n\n### Can I build AI agents without coding?\n\nYes — agent harnesses like Hermes let you build agents by describing what you want.\n\n### Which framework should I learn to build AI agents?\n\nLangGraph, the OpenAI Agents SDK or the Claude Agent SDK are strong choices; smolagents is lightweight.\n\n### What should my first AI agent project be?\n\nA daily news brief that searches, summarises and messages you on a schedule.\n\n### How long does it take to learn to build AI agents?\n\nYour first agent takes a day; five starter projects take a few weeks.\n\nStart learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.\n\nWhen you want live calls and the Agent OS, join the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Related reading\n\n- How to Learn Creating AI Agents\n\n- How to Learn AI Agents\n\n- Best Hermes Agent Skills\n\nLast updated October 2026. This page is a living guide to how to learn building ai agents — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/how-to-learn-building-ai-agents/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-building-ai-agents",
+      "author": "Clawdbot",
+      "published": "2026-10-13T01:19:54",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A Julian Goldie blog post outlining four paths to building AI agents (no-code tools including Hermes Agent and n8n, agent harnesses, code frameworks like LangGraph and Claude Agent SDK, and an Agent OS), plus five starter projects.",
+      "importance_score": 26.0,
+      "reasoning": "Provides a mildly useful taxonomy of agent-building approaches that mentions Hermes Agent as a no-code/harness option, but remains shallow and promotional.",
+      "themes": [
+        "Learning paths",
+        "Frameworks",
+        "Beginner content"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Julian Goldie blog post outlining four paths to building AI agents (no-code tools including Hermes Agent and n8n, agent harnesses, code frameworks like LangGraph and Claude Agent SDK, and an Agent OS), plus five starter projects.</p>",
+      "content_html": "<p>Wondering how to learn building AI agents? The answer is to build — small projects, one after another, each teaching one new skill. You can start with no code and move to frameworks like LangGraph or the Claude Agent SDK later. In the video below I build my own Agent OS for free. Here are the four building paths, five starter projects and the order to learn things in.</p>\n<p>Key takeaways</p>\n<ul>\n<li>There are four paths: no-code, agent harnesses, code frameworks and an Agent OS.</li>\n</ul>\n<ul>\n<li>Start with five starter projects, each teaching one skill.</li>\n</ul>\n<ul>\n<li>Learn frameworks like LangGraph and the Claude Agent SDK when you need custom agents.</li>\n</ul>\n<ul>\n<li>Build in public in a community to learn faster.</li>\n</ul>\n<h2>Four ways to learn building AI agents</h2>\n<p>Path</p>\n<p>Tools</p>\n<p>Best for</p>\n<p>No-code agents</p>\n<p>Hermes Agent, n8n, ready-made agents</p>\n<p>Business owners who want results fast</p>\n<p>Agent harnesses</p>\n<p>Hermes, DeepSeek Harness, Claude Code</p>\n<p>Power users who want agents on their computer</p>\n<p>Code frameworks</p>\n<p>LangGraph, OpenAI Agents SDK, Claude Agent SDK, smolagents</p>\n<p>Developers building custom agents</p>\n<p>Agent OS</p>\n<p>An agentic operating system to run many agents</p>\n<p>Running several agents in a business</p>\n<h2>Five starter projects</h2>\n<p>#</p>\n<p>Starter project</p>\n<p>What you learn</p>\n<p>1</p>\n<p>Daily news brief</p>\n<p>Web search, summarising, scheduling</p>\n<p>2</p>\n<p>Inbox triage assistant</p>\n<p>Connecting apps, approvals</p>\n<p>3</p>\n<p>Research agent</p>\n<p>Browser tools, saving files</p>\n<p>4</p>\n<p>Content repurposer</p>\n<p>Skills, style rules, memory</p>\n<p>5</p>\n<p>Lead researcher</p>\n<p>Multi-step workflows, sub-agents</p>\n<p>Build them in this order: each project adds one new idea on top of the last.</p>\n<p>FREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.</p>\n<p>Want live coaching too? Upgrade to the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Path 1: building agents without code</h2>\n<p>Agent harnesses like Hermes let you build agents by describing what you want. You combine a model, tools and skills, schedule the job, and connect it to your apps — no code needed. This is the fastest way to build agents that do real work, and it teaches the same concepts developers use.</p>\n<h2>Path 2: building agents in code</h2>\n<p>When you need a custom agent inside your own product, learn a framework. LangGraph is popular for structured agent workflows, the OpenAI Agents SDK and Claude Agent SDK are strong for building on those models, and smolagents is a lightweight option from Hugging Face. Free courses from LangChain Academy, Hugging Face and Anthropic teach them well.</p>\n<h2>What every agent builder must learn</h2>\n<p>Whatever path you take, the same skills matter: writing clear instructions, choosing the right tools, giving the agent memory, adding approvals for risky actions, handling errors, and measuring results. An agent that works once is a demo; an agent that works every day is a product.</p>\n<h2>Building agents that run a business</h2>\n<p>The leap from hobby to business is reliability. Put agents on schedules, deliver results where you’ll see them, keep approvals on for anything that sends or spends, and review outputs weekly. An Agent OS helps here — one place to see and manage every agent you’ve built.</p>\n<h2>How to learn faster</h2>\n<p>Build one new agent a week. Share what you built in a community and ask for feedback. Read the README of every open-source agent you use — it’s free education. And keep a notes file of what worked and what didn’t; that file becomes your personal playbook.</p>\n<h2>A builder’s checklist</h2>\n<p>Before you call an agent finished, check: does it have a clear goal? Does it use only the tools it needs? Does it remember the right things? Does it ask before risky actions? Does it handle errors, such as a site being down? Does it deliver results somewhere you’ll see them? And have you reviewed a week of its outputs? An agent that passes all seven is ready for real work.</p>\n<h2>From no-code to code</h2>\n<p>Many builders start no-code and move to code for specific needs: a custom agent inside a product, unusual integrations or tight cost control. If that’s you, learn one framework properly rather than sampling five. The concepts transfer, so the no-code agents you built first make learning a framework much easier.</p>\n<h2>Learning to build with others</h2>\n<p>Building alone is slow. In a community you can see how other people solved the same problem, borrow their skills and templates, and get feedback on your agents before you rely on them. In the AI Profit Boardroom, members regularly share their builds on live calls — and watching someone else’s working agent is often the quickest way to understand a new technique.</p>\n<p>If you’re starting free, the AI Money Lab community gives you 1,000+ ready-made agents and workflows to study and adapt.</p>\n<h2>Where to find ideas for agents to build</h2>\n<p>Look at your own week. Any task you do more than twice a week, that follows roughly the same steps, is a candidate: reporting, research, email follow-ups, content repurposing, data entry. List five, rank them by time saved, and build the top one first. Your own work is the best source of agent ideas because you already know what good looks like.</p>\n<h2>Start learning to build AI agents</h2>\n<p>That’s how to learn building AI agents: pick a path, build five starter projects, then build one for your business. Start free in AI Money Lab and join the AI Profit Boardroom for live build help and the Agent OS.</p>\n<p>Above all, ship. An agent that runs every day, even if it’s simple, teaches you more than a clever one that never leaves your laptop. Put your first agent on a schedule this week, watch how it behaves in the real world, and improve it from there. Every builder I know learned the most from fixing agents that were already running, not from planning the perfect one. Your fifth agent will be dramatically better than your first, and that only happens if the first one actually exists. Share it in a community when it works.</p>\n<h2>About Julian Goldie</h2>\n<p>Julian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.</p>\n<h2>FAQ: how to learn building ai agents</h2>\n<h3>How do I learn to build AI agents?</h3>\n<p>Pick a path (no-code or code), build five small starter projects, then build one for your business.</p>\n<h3>Can I build AI agents without coding?</h3>\n<p>Yes — agent harnesses like Hermes let you build agents by describing what you want.</p>\n<h3>Which framework should I learn to build AI agents?</h3>\n<p>LangGraph, the OpenAI Agents SDK or the Claude Agent SDK are strong choices; smolagents is lightweight.</p>\n<h3>What should my first AI agent project be?</h3>\n<p>A daily news brief that searches, summarises and messages you on a schedule.</p>\n<h3>How long does it take to learn to build AI agents?</h3>\n<p>Your first agent takes a day; five starter projects take a few weeks.</p>\n<p>Start learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.</p>\n<p>When you want live calls and the Agent OS, join the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>How to Learn Creating AI Agents</li>\n</ul>\n<ul>\n<li>How to Learn AI Agents</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Skills</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to how to learn building ai agents — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "29ad0e9aac9a",
+      "title": "How to Learn More About AI Agents: Where to Keep Up in 2026",
+      "content": "Once you know the basics, how to learn more about AI agents becomes a question of keeping up — new models, tools and techniques land every week. The answer is a simple routine: one source for news, one community for help, the official docs for accuracy, and one new build a week. In the video below I show how agent OSs changed AI agents. Here’s my routine and the resources I use.\n\nKey takeaways\n\n- Keep up with one news source, one community and the official docs.\n\n- Build one new thing a week — it’s the fastest teacher.\n\n- Read release notes and GitHub READMEs of the tools you use.\n\n- Learn with others in AI Money Lab or the AI Profit Boardroom.\n\n## Best resources to learn more about AI agents\n\nResource\nWhy it helps\n\nJulian Goldie’s YouTube\nNew agents tested almost daily, with full courses\n\nOfficial docs\nHermes, Claude, OpenAI and LangChain docs are the source of truth\n\nGitHub repos\nRead real agent code and READMEs\n\nCommunities\nAI Money Lab (free) and the AI Profit Boardroom for live help\n\nRelease notes\nTrack what changed in the tools you use\n\nBuilding\nThe fastest teacher: one small agent a week\n\n## My weekly learning routine\n\nEvery day I scan what’s new — launches, updates, free models — and test the interesting ones on camera. You don’t need to go that far. A 30-minute weekly routine works: Monday, check what’s new in the tools you use. Midweek, try one new feature or model. Friday, build or improve one agent. That rhythm keeps you current without overwhelming you.\n\nFREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.\n\nWant live coaching too? Upgrade to the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Go deeper on the core ideas\n\nOnce you’re comfortable, deepen the fundamentals: how agents use tools, how memory works, how skills are structured, how multi-agent systems divide work, and how to keep agents safe with approvals and sandboxes. The official Hermes docs, Anthropic’s courses on tool use and MCP, and LangChain Academy are great for this.\n\n## Topics to learn next\n\nTopic\nWhy it’s worth learning\n\nMCP\nConnect agents to almost any app or data source\n\nBrowser and computer use\nAutomate websites and desktop apps\n\nMulti-agent systems\nSplit big jobs across specialised agents\n\nMemory providers\nMake agents remember more, better\n\nFast decision models\nMake agents quicker and cheaper\n\nAgent safety\nApprovals, sandboxes and guardrails\n\nRunning agents 24/7\nVPSs, cloud services and background jobs\n\n## Learn from real code and real setups\n\nGitHub is one of the best free classrooms. When a new open-source agent launches, read its README: it explains the design, the setup and the limitations. Studying how projects like Hermes, Herald OS, StarNet or jev-ultrafast are built teaches you more about agents than most courses.\n\n## Learn with other people\n\nThe quickest way to learn more is to see what others are building. Communities let you copy working setups, ask why something failed and share your own wins. AI Money Lab is free; the AI Profit Boardroom adds four live calls a week where members show their builds.\n\n## Avoid information overload\n\nYou can’t try every new tool, and you don’t need to. Pick the two or three agents you use most, follow their updates closely, and only test new tools that solve a problem you actually have. Depth beats breadth.\n\n## How I evaluate a new AI agent\n\nWhen a new agent launches, I check four things quickly. What can it actually do that my current tools can’t? Does it work with the models I use, including free ones? Is it open source or tied to one company? And can I run a real task with it in under an hour? If the answers are good, I test it properly on camera. That filter saves a lot of time and is worth copying.\n\n## Turn learning into results\n\nLearning more only matters if it changes what your agents do. After every new technique you learn, ask: which of my agents would this improve? Then update one agent that week. That habit turns a stream of news into a steadily better system.\n\n## Where I’d point an intermediate learner\n\nIf you already run a few agents, the biggest gains usually come from three areas: better skills (clear steps, examples, checks), better memory (accurate, organised and reviewed), and better orchestration (sub-agents and schedules that work together). Study how experienced builders structure those three things, and your agents will become noticeably more reliable within a few weeks.\n\n## Building a personal agent playbook\n\nKeep a simple notes file — or a folder in Obsidian — with what you’ve learned: the prompts and skills that worked, the models that suit each job, the mistakes that cost you time, and links to the docs you use most. Review it monthly. Over time it becomes your own playbook, and because agents like Hermes can read your notes, it makes your agents smarter too.\n\n## Keep learning more about AI agents\n\nThat’s how to learn more about AI agents: a weekly routine, the official docs, real code and a community. Join AI Money Lab free, follow my YouTube for new agents as they launch, and join the AI Profit Boardroom for live calls and the Agent OS.\n\nThe most important habit is consistency: thirty minutes every week, without fail, beats an occasional weekend binge. AI agents reward people who keep up steadily, because each small improvement builds on the last. Set a recurring reminder, protect that time, and use it to try one new thing and improve one existing agent. Within a few months you’ll be the person others ask for advice, and your agents will be doing far more of your work. If you want a head start, join a community where people share what’s working each week; you’ll learn from dozens of experiments instead of only your own.\n\n## About Julian Goldie\n\nJulian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.\n\n## FAQ: how to learn more about ai agents\n\n### How can I learn more about AI agents?\n\nFollow one news source, join a community, read the official docs and build one new thing a week.\n\n### What should I learn after the basics of AI agents?\n\nMCP, browser and computer use, multi-agent systems, memory providers, safety and running agents 24/7.\n\n### Where can I keep up with new AI agents?\n\nJulian Goldie’s YouTube channel covers new agents almost daily.\n\n### Are GitHub repos good for learning AI agents?\n\nYes — READMEs and code show how real agents are designed.\n\n### Is there a free community for learning AI agents?\n\nYes — AI Money Lab.\n\nStart learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.\n\nWhen you want live calls and the Agent OS, join the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Related reading\n\n- Best AI Agent Course 2026\n\n- How to Learn AI Agents\n\n- Hermes Agent by Nous Research\n\nLast updated October 2026. This page is a living guide to how to learn more about ai agents — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/how-to-learn-more-about-ai-agents/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-more-about-ai-agents",
+      "author": "Clawdbot",
+      "published": "2026-10-13T01:20:05",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A Julian Goldie blog post recommending a routine for keeping up with AI agents: one news source, one community, official docs (naming Hermes, Claude, OpenAI, LangChain), and building one new thing per week, plus promotion of the author's paid communities.",
+      "importance_score": 25.0,
+      "reasoning": "Generic listicle-style advice that mentions Hermes docs among many resources; promotional in intent and low technical depth.",
+      "themes": [
+        "Learning resources",
+        "Beginner content",
+        "Marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Julian Goldie blog post recommending a routine for keeping up with AI agents: one news source, one community, official docs (naming Hermes, Claude, OpenAI, LangChain), and building one new thing per week, plus promotion of the author's paid communities.</p>",
+      "content_html": "<p>Once you know the basics, how to learn more about AI agents becomes a question of keeping up — new models, tools and techniques land every week. The answer is a simple routine: one source for news, one community for help, the official docs for accuracy, and one new build a week. In the video below I show how agent OSs changed AI agents. Here’s my routine and the resources I use.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Keep up with one news source, one community and the official docs.</li>\n</ul>\n<ul>\n<li>Build one new thing a week — it’s the fastest teacher.</li>\n</ul>\n<ul>\n<li>Read release notes and GitHub READMEs of the tools you use.</li>\n</ul>\n<ul>\n<li>Learn with others in AI Money Lab or the AI Profit Boardroom.</li>\n</ul>\n<h2>Best resources to learn more about AI agents</h2>\n<p>Resource</p>\n<p>Why it helps</p>\n<p>Julian Goldie’s YouTube</p>\n<p>New agents tested almost daily, with full courses</p>\n<p>Official docs</p>\n<p>Hermes, Claude, OpenAI and LangChain docs are the source of truth</p>\n<p>GitHub repos</p>\n<p>Read real agent code and READMEs</p>\n<p>Communities</p>\n<p>AI Money Lab (free) and the AI Profit Boardroom for live help</p>\n<p>Release notes</p>\n<p>Track what changed in the tools you use</p>\n<p>Building</p>\n<p>The fastest teacher: one small agent a week</p>\n<h2>My weekly learning routine</h2>\n<p>Every day I scan what’s new — launches, updates, free models — and test the interesting ones on camera. You don’t need to go that far. A 30-minute weekly routine works: Monday, check what’s new in the tools you use. Midweek, try one new feature or model. Friday, build or improve one agent. That rhythm keeps you current without overwhelming you.</p>\n<p>FREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.</p>\n<p>Want live coaching too? Upgrade to the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Go deeper on the core ideas</h2>\n<p>Once you’re comfortable, deepen the fundamentals: how agents use tools, how memory works, how skills are structured, how multi-agent systems divide work, and how to keep agents safe with approvals and sandboxes. The official Hermes docs, Anthropic’s courses on tool use and MCP, and LangChain Academy are great for this.</p>\n<h2>Topics to learn next</h2>\n<p>Topic</p>\n<p>Why it’s worth learning</p>\n<p>MCP</p>\n<p>Connect agents to almost any app or data source</p>\n<p>Browser and computer use</p>\n<p>Automate websites and desktop apps</p>\n<p>Multi-agent systems</p>\n<p>Split big jobs across specialised agents</p>\n<p>Memory providers</p>\n<p>Make agents remember more, better</p>\n<p>Fast decision models</p>\n<p>Make agents quicker and cheaper</p>\n<p>Agent safety</p>\n<p>Approvals, sandboxes and guardrails</p>\n<p>Running agents 24/7</p>\n<p>VPSs, cloud services and background jobs</p>\n<h2>Learn from real code and real setups</h2>\n<p>GitHub is one of the best free classrooms. When a new open-source agent launches, read its README: it explains the design, the setup and the limitations. Studying how projects like Hermes, Herald OS, StarNet or jev-ultrafast are built teaches you more about agents than most courses.</p>\n<h2>Learn with other people</h2>\n<p>The quickest way to learn more is to see what others are building. Communities let you copy working setups, ask why something failed and share your own wins. AI Money Lab is free; the AI Profit Boardroom adds four live calls a week where members show their builds.</p>\n<h2>Avoid information overload</h2>\n<p>You can’t try every new tool, and you don’t need to. Pick the two or three agents you use most, follow their updates closely, and only test new tools that solve a problem you actually have. Depth beats breadth.</p>\n<h2>How I evaluate a new AI agent</h2>\n<p>When a new agent launches, I check four things quickly. What can it actually do that my current tools can’t? Does it work with the models I use, including free ones? Is it open source or tied to one company? And can I run a real task with it in under an hour? If the answers are good, I test it properly on camera. That filter saves a lot of time and is worth copying.</p>\n<h2>Turn learning into results</h2>\n<p>Learning more only matters if it changes what your agents do. After every new technique you learn, ask: which of my agents would this improve? Then update one agent that week. That habit turns a stream of news into a steadily better system.</p>\n<h2>Where I’d point an intermediate learner</h2>\n<p>If you already run a few agents, the biggest gains usually come from three areas: better skills (clear steps, examples, checks), better memory (accurate, organised and reviewed), and better orchestration (sub-agents and schedules that work together). Study how experienced builders structure those three things, and your agents will become noticeably more reliable within a few weeks.</p>\n<h2>Building a personal agent playbook</h2>\n<p>Keep a simple notes file — or a folder in Obsidian — with what you’ve learned: the prompts and skills that worked, the models that suit each job, the mistakes that cost you time, and links to the docs you use most. Review it monthly. Over time it becomes your own playbook, and because agents like Hermes can read your notes, it makes your agents smarter too.</p>\n<h2>Keep learning more about AI agents</h2>\n<p>That’s how to learn more about AI agents: a weekly routine, the official docs, real code and a community. Join AI Money Lab free, follow my YouTube for new agents as they launch, and join the AI Profit Boardroom for live calls and the Agent OS.</p>\n<p>The most important habit is consistency: thirty minutes every week, without fail, beats an occasional weekend binge. AI agents reward people who keep up steadily, because each small improvement builds on the last. Set a recurring reminder, protect that time, and use it to try one new thing and improve one existing agent. Within a few months you’ll be the person others ask for advice, and your agents will be doing far more of your work. If you want a head start, join a community where people share what’s working each week; you’ll learn from dozens of experiments instead of only your own.</p>\n<h2>About Julian Goldie</h2>\n<p>Julian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.</p>\n<h2>FAQ: how to learn more about ai agents</h2>\n<h3>How can I learn more about AI agents?</h3>\n<p>Follow one news source, join a community, read the official docs and build one new thing a week.</p>\n<h3>What should I learn after the basics of AI agents?</h3>\n<p>MCP, browser and computer use, multi-agent systems, memory providers, safety and running agents 24/7.</p>\n<h3>Where can I keep up with new AI agents?</h3>\n<p>Julian Goldie’s YouTube channel covers new agents almost daily.</p>\n<h3>Are GitHub repos good for learning AI agents?</h3>\n<p>Yes — READMEs and code show how real agents are designed.</p>\n<h3>Is there a free community for learning AI agents?</h3>\n<p>Yes — AI Money Lab.</p>\n<p>Start learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.</p>\n<p>When you want live calls and the Agent OS, join the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best AI Agent Course 2026</li>\n</ul>\n<ul>\n<li>How to Learn AI Agents</li>\n</ul>\n<ul>\n<li>Hermes Agent by Nous Research</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to how to learn more about ai agents — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "7e72ae7b4416",
+      "title": "How to Learn Creating AI Agents: Design Your First Agent Step by Step",
+      "content": "If you want to know how to learn creating AI agents, start with design, not code: every good agent has a clear goal, the right tools, memory, rules and a schedule. Get those five right and almost any platform will do the rest. In the video below, ElevenAgents’ Architect builds agents for you — a great example of how much creating agents has changed. Here’s my simple design template and five agents to create first.\n\nKey takeaways\n\n- Every agent needs a goal, tools, memory, rules and a schedule.\n\n- Write the design down in plain English before you build.\n\n- Create five simple agents first, then combine them.\n\n- Test, review and refine — agents improve with feedback.\n\n## The agent design template\n\nPart\nQuestion to answer\nExample\n\nGoal\nWhat job does it do?\nSend me a morning brief on AI news\n\nTools\nWhat does it need to use?\nWeb search, Telegram\n\nMemory\nWhat should it remember?\nMy audience and the sources I trust\n\nRules\nHow should it behave?\nFive stories, two sentences each, links, no old news\n\nSchedule\nWhen does it run?\nEvery day at 6am\n\n## Why design comes first\n\nMost agents fail because nobody decided exactly what they were for. “Help with marketing” isn’t a goal; “turn each new video into a blog post, three social posts and an email” is. Writing the design down in plain English takes five minutes and saves hours of re-prompting. It also makes it easy to ask an AI to build the agent for you.\n\nFREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.\n\nWant live coaching too? Upgrade to the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Five agents to create first\n\n#\nAgent\nGoal\n\n1\nMorning brief\nDaily news in your niche, delivered to your phone\n\n2\nInbox helper\nSorts email and drafts replies for approval\n\n3\nContent repurposer\nTurns videos or notes into posts and emails\n\n4\nResearch assistant\nAnswers a question with sources and saves a report\n\n5\nWeekly reporter\nPulls numbers and writes a summary\n\n## How to create your agent\n\nChoose a platform — Hermes Agent is my go-to, and builders like ElevenAgents’ Architect can now create agents from a description. Paste in your design, connect the tools it needs, and run it once with you watching. Fix anything it gets wrong by updating the rules, then save it as a skill and put it on its schedule.\n\n## Testing and improving agents\n\nReview the first week of outputs. When something’s off, don’t just fix the output — fix the rule that caused it, so it never happens again. Add one example of a perfect result to the agent’s instructions; examples improve agents more than long explanations. Keep approvals on until you trust it.\n\n## Combining agents\n\nOnce your five agents work, connect them. The research assistant can feed the content repurposer; the weekly reporter can summarise what the others did. That’s how individual agents become a team — and an Agent OS gives you one place to manage them all.\n\n## Skills that make you good at creating agents\n\nClear writing, breaking jobs into steps, knowing which tools exist, and patience to test. None of these need code. If you later want custom agents inside your own software, you can learn frameworks — but the design skills above are what make any agent work.\n\n## A worked example: the content repurposer\n\nGoal: turn each new video into a blog post draft, three social posts and an email. Tools: the transcript, files and your content folder. Memory: your style rules, audience and banned phrases. Rules: answer-first openings, short paragraphs, one call to action, links to related posts. Schedule: whenever a new transcript lands in the folder. Write that down, paste it into your agent and test it on one video; then refine the rules until the drafts need only light editing.\n\nThat one agent can save a creator several hours a week.\n\n## Common design mistakes\n\nVague goals, too many tools, no examples of good output, no approvals on sending, and no schedule. Each one makes an agent unreliable. Fix them in the design and the agent almost builds itself.\n\n## Creating agents for other people\n\nOnce you can create agents for yourself, you can create them for clients, teammates or your community. The same design template works: agree the goal, list the tools and accounts needed, write the rules with the person who’ll use it, and schedule it. Hand over the written design along with the agent, so they understand what it does and can ask for changes in plain English.\n\nThat’s a valuable skill in 2026, because most businesses know agents could help them but don’t know how to design one.\n\n## How to describe an agent so AI can build it\n\nModern tools can create agents from a description, so writing a great description is now a core skill. Include the goal, the trigger, the steps, the tools, the output format and the checks, plus one example of a perfect result. Keep each part short and specific. A description like that works in Hermes, in agent builders like ElevenAgents’ Architect, and as a starting point if you later build the agent in code.\n\n## Start creating AI agents\n\nThat’s how to learn creating AI agents: design first, build five simple agents, test and improve, then combine them. Start free in AI Money Lab, where you can copy 1,000+ ready-made agents, and join the AI Profit Boardroom for live help.\n\nStart with the morning brief this week. It’s the simplest agent to design, it teaches every part of the template, and it’s useful from the very first day. Once it works, use the same template for the other four agents on the list, and you’ll have a small team of assistants within a month. Keep every design you write in one folder; it becomes a library you can reuse and adapt for every new agent you create.\n\n## About Julian Goldie\n\nJulian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.\n\n## FAQ: how to learn creating ai agents\n\n### How do I learn to create AI agents?\n\nDesign each agent with a goal, tools, memory, rules and a schedule, then build five simple agents and improve them.\n\n### What do I need to create an AI agent?\n\nA platform like Hermes Agent, a model (free ones work), and a clear plain-English design.\n\n### Can AI create AI agents for me?\n\nYes — tools like ElevenAgents’ Architect and agents like Hermes can build agents from a description.\n\n### What is the first AI agent I should create?\n\nA morning brief that sends you the day’s news in your niche.\n\n### How do I make my AI agent better?\n\nReview outputs, fix the rules behind mistakes, and add an example of a perfect result.\n\nStart learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.\n\nWhen you want live calls and the Agent OS, join the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Related reading\n\n- How to Learn Building AI Agents\n\n- Best Hermes Agent Skills\n\n- Best Hermes Agent Use Cases\n\nLast updated October 2026. This page is a living guide to how to learn creating ai agents — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/how-to-learn-creating-ai-agents/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-creating-ai-agents",
+      "author": "Clawdbot",
+      "published": "2026-10-13T01:19:59",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A Julian Goldie blog post presenting an agent design template (goal, tools, memory, rules, schedule) before coding, with example starter agents such as a daily AI-news brief, aimed at beginners.",
+      "importance_score": 22.0,
+      "reasoning": "Beginner-oriented, platform-agnostic design advice with a marketing angle; minimal technical depth and no Hermes-specific mechanics.",
+      "themes": [
+        "Agent design",
+        "Beginner content",
+        "Templates"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Julian Goldie blog post presenting an agent design template (goal, tools, memory, rules, schedule) before coding, with example starter agents such as a daily AI-news brief, aimed at beginners.</p>",
+      "content_html": "<p>If you want to know how to learn creating AI agents, start with design, not code: every good agent has a clear goal, the right tools, memory, rules and a schedule. Get those five right and almost any platform will do the rest. In the video below, ElevenAgents’ Architect builds agents for you — a great example of how much creating agents has changed. Here’s my simple design template and five agents to create first.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Every agent needs a goal, tools, memory, rules and a schedule.</li>\n</ul>\n<ul>\n<li>Write the design down in plain English before you build.</li>\n</ul>\n<ul>\n<li>Create five simple agents first, then combine them.</li>\n</ul>\n<ul>\n<li>Test, review and refine — agents improve with feedback.</li>\n</ul>\n<h2>The agent design template</h2>\n<p>Part</p>\n<p>Question to answer</p>\n<p>Example</p>\n<p>Goal</p>\n<p>What job does it do?</p>\n<p>Send me a morning brief on AI news</p>\n<p>Tools</p>\n<p>What does it need to use?</p>\n<p>Web search, Telegram</p>\n<p>Memory</p>\n<p>What should it remember?</p>\n<p>My audience and the sources I trust</p>\n<p>Rules</p>\n<p>How should it behave?</p>\n<p>Five stories, two sentences each, links, no old news</p>\n<p>Schedule</p>\n<p>When does it run?</p>\n<p>Every day at 6am</p>\n<h2>Why design comes first</h2>\n<p>Most agents fail because nobody decided exactly what they were for. “Help with marketing” isn’t a goal; “turn each new video into a blog post, three social posts and an email” is. Writing the design down in plain English takes five minutes and saves hours of re-prompting. It also makes it easy to ask an AI to build the agent for you.</p>\n<p>FREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.</p>\n<p>Want live coaching too? Upgrade to the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Five agents to create first</h2>\n<p>#</p>\n<p>Agent</p>\n<p>Goal</p>\n<p>1</p>\n<p>Morning brief</p>\n<p>Daily news in your niche, delivered to your phone</p>\n<p>2</p>\n<p>Inbox helper</p>\n<p>Sorts email and drafts replies for approval</p>\n<p>3</p>\n<p>Content repurposer</p>\n<p>Turns videos or notes into posts and emails</p>\n<p>4</p>\n<p>Research assistant</p>\n<p>Answers a question with sources and saves a report</p>\n<p>5</p>\n<p>Weekly reporter</p>\n<p>Pulls numbers and writes a summary</p>\n<h2>How to create your agent</h2>\n<p>Choose a platform — Hermes Agent is my go-to, and builders like ElevenAgents’ Architect can now create agents from a description. Paste in your design, connect the tools it needs, and run it once with you watching. Fix anything it gets wrong by updating the rules, then save it as a skill and put it on its schedule.</p>\n<h2>Testing and improving agents</h2>\n<p>Review the first week of outputs. When something’s off, don’t just fix the output — fix the rule that caused it, so it never happens again. Add one example of a perfect result to the agent’s instructions; examples improve agents more than long explanations. Keep approvals on until you trust it.</p>\n<h2>Combining agents</h2>\n<p>Once your five agents work, connect them. The research assistant can feed the content repurposer; the weekly reporter can summarise what the others did. That’s how individual agents become a team — and an Agent OS gives you one place to manage them all.</p>\n<h2>Skills that make you good at creating agents</h2>\n<p>Clear writing, breaking jobs into steps, knowing which tools exist, and patience to test. None of these need code. If you later want custom agents inside your own software, you can learn frameworks — but the design skills above are what make any agent work.</p>\n<h2>A worked example: the content repurposer</h2>\n<p>Goal: turn each new video into a blog post draft, three social posts and an email. Tools: the transcript, files and your content folder. Memory: your style rules, audience and banned phrases. Rules: answer-first openings, short paragraphs, one call to action, links to related posts. Schedule: whenever a new transcript lands in the folder. Write that down, paste it into your agent and test it on one video; then refine the rules until the drafts need only light editing.</p>\n<p>That one agent can save a creator several hours a week.</p>\n<h2>Common design mistakes</h2>\n<p>Vague goals, too many tools, no examples of good output, no approvals on sending, and no schedule. Each one makes an agent unreliable. Fix them in the design and the agent almost builds itself.</p>\n<h2>Creating agents for other people</h2>\n<p>Once you can create agents for yourself, you can create them for clients, teammates or your community. The same design template works: agree the goal, list the tools and accounts needed, write the rules with the person who’ll use it, and schedule it. Hand over the written design along with the agent, so they understand what it does and can ask for changes in plain English.</p>\n<p>That’s a valuable skill in 2026, because most businesses know agents could help them but don’t know how to design one.</p>\n<h2>How to describe an agent so AI can build it</h2>\n<p>Modern tools can create agents from a description, so writing a great description is now a core skill. Include the goal, the trigger, the steps, the tools, the output format and the checks, plus one example of a perfect result. Keep each part short and specific. A description like that works in Hermes, in agent builders like ElevenAgents’ Architect, and as a starting point if you later build the agent in code.</p>\n<h2>Start creating AI agents</h2>\n<p>That’s how to learn creating AI agents: design first, build five simple agents, test and improve, then combine them. Start free in AI Money Lab, where you can copy 1,000+ ready-made agents, and join the AI Profit Boardroom for live help.</p>\n<p>Start with the morning brief this week. It’s the simplest agent to design, it teaches every part of the template, and it’s useful from the very first day. Once it works, use the same template for the other four agents on the list, and you’ll have a small team of assistants within a month. Keep every design you write in one folder; it becomes a library you can reuse and adapt for every new agent you create.</p>\n<h2>About Julian Goldie</h2>\n<p>Julian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.</p>\n<h2>FAQ: how to learn creating ai agents</h2>\n<h3>How do I learn to create AI agents?</h3>\n<p>Design each agent with a goal, tools, memory, rules and a schedule, then build five simple agents and improve them.</p>\n<h3>What do I need to create an AI agent?</h3>\n<p>A platform like Hermes Agent, a model (free ones work), and a clear plain-English design.</p>\n<h3>Can AI create AI agents for me?</h3>\n<p>Yes — tools like ElevenAgents’ Architect and agents like Hermes can build agents from a description.</p>\n<h3>What is the first AI agent I should create?</h3>\n<p>A morning brief that sends you the day’s news in your niche.</p>\n<h3>How do I make my AI agent better?</h3>\n<p>Review outputs, fix the rules behind mistakes, and add an example of a perfect result.</p>\n<p>Start learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.</p>\n<p>When you want live calls and the Agent OS, join the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>How to Learn Building AI Agents</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Skills</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Use Cases</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to how to learn creating ai agents — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "ac6418e576ea",
+      "title": "How to Learn AI Agents From Scratch: A Zero-Experience Guide",
+      "content": "If you’re wondering how to learn AI agents from scratch with no tech background, the good news is you can start today without writing any code. You need to understand five simple ideas, set up one agent, and give it one small job. In the video below I build an AI agent OS from scratch. Here’s the plain-English guide I wish I’d had.\n\nKey takeaways\n\n- You need no coding to start learning AI agents.\n\n- Learn five ideas: model, tools, skills, memory, schedule.\n\n- Your first agent can be running in a day.\n\n- Start free in AI Money Lab with ready-made agents.\n\n## AI agents in plain English\n\nA chatbot answers questions. An AI agent does things: it searches the web, reads and writes files, uses apps, and runs jobs on a schedule. Think of it as an assistant with hands. You tell it what you want in normal language, and it figures out the steps.\n\nTerm\nWhat it means\n\nAgent\nAn AI that can take actions with tools, not just chat\n\nModel\nThe AI “brain”, like Claude, GPT or a free open model\n\nTools\nAbilities like web search, browser, terminal and files\n\nSkill\nA saved, reusable procedure the agent follows\n\nMemory\nWhat the agent remembers about you and your work\n\nMCP\nA standard way to connect agents to apps and data\n\nCron job\nA task that runs on a schedule\n\nSub-agent\nA helper agent the main agent delegates work to\n\n## The five ideas to learn first\n\n1. The model is the brain — Claude, GPT or a free open model. 2. Tools are the hands — search, browser, files. 3. Skills are saved instructions for jobs you repeat. 4. Memory is what the agent remembers about you. 5. Schedules let it work without you. Understand these five and everything else is detail.\n\nFREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.\n\nWant live coaching too? Upgrade to the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Your first agent in a day\n\nMorning: watch one beginner video so you’ve seen an agent in action. Lunchtime: install Hermes Agent (the official one-line installer or the desktop app) and choose a free model. Afternoon: connect Telegram so you can message it from your phone. Evening: ask it to find the five most important news stories in your industry and send you a summary. Congratulations — you’ve built your first agent.\n\n## A simple from-scratch learning path\n\nStage\nGoal\nTime\n\n1\nUnderstand what agents are\n1 day\n\n2\nSet up one agent with a free model\n1 day\n\n3\nGive it one daily job\n1 week\n\n4\nTeach it your rules (memory)\n1 week\n\n5\nAdd tools and a second job\n2 weeks\n\n6\nBuild a workflow for your business\n2 weeks\n\n## What you don’t need to learn yet\n\nYou don’t need Python, APIs, vector databases or agent frameworks to start. Those matter if you want to build custom agents later, but beginners who start there usually give up. Start with a ready-made agent, get results, and learn the technical side only when you have a reason to.\n\n## Getting unstuck\n\nEvery beginner gets stuck — an install step that doesn’t match a tutorial, a model that won’t connect. The fastest fix is asking someone who’s been there. In AI Money Lab you can ask the free community; in the AI Profit Boardroom you can ask on four live calls a week and get answers from me directly. Many members also simply ask their AI agent to fix the problem for them, which works surprisingly often.\n\n## From scratch to real results\n\nWithin a month, most people learning from scratch have an agent that sends a morning brief, drafts email replies and turns their notes into content. That’s the moment it clicks: the agent is doing work you used to do yourself. From there, every new skill compounds.\n\n## A real example: my first agent\n\nThe first agent most people build with me is a morning brief. It’s simple: search for the latest news in your industry, pick the five stories that matter, summarise each in two sentences with a link, and send it to your phone at 6am. It teaches tools (search), skills (the saved instructions), scheduling (6am) and delivery (your phone) in one go, and it’s useful from day one.\n\n## Learning without getting overwhelmed\n\nThere’s a new AI tool every day, and trying to follow everything is the fastest way to give up. When you’re learning from scratch, ignore almost all of it. Learn one agent, one free model and one messaging app properly. Add new tools only when they solve a problem you actually have.\n\n## Next steps after the basics\n\nOnce your first two agents are running, pick one area to go deeper: browser automation if your work lives on websites, inbox and calendar if you’re drowning in admin, or content if you publish regularly. Learn the tools for that area, then build a third agent. That focused approach keeps learning manageable and useful.\n\n## Your first month at a glance\n\nWeek one: understand the five ideas and set up your agent. Week two: give it one daily job and adjust the instructions. Week three: teach it your preferences so the output fits your style. Week four: add a second job and connect it to an app you use. By the end of the month you’ll have two agents working for you and the confidence to build more.\n\n## Start learning AI agents from scratch\n\nNow you know how to learn AI agents from scratch: five ideas, one agent, one job. Start free in AI Money Lab with ready-made agents, and join the AI Profit Boardroom for live help.\n\nRemember that everyone who builds impressive agents today started exactly where you are. The difference is that they kept going after the first confusing week. Start small, ask for help early, and you’ll be surprised how quickly it clicks.\n\n## About Julian Goldie\n\nJulian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.\n\n## FAQ: how to learn ai agents from scratch\n\n### Can I learn AI agents with no experience?\n\nYes — no coding is needed, and you can have a working agent in a day.\n\n### What should I learn first about AI agents?\n\nFive ideas: the model, tools, skills, memory and schedules.\n\n### Do I need Python to learn AI agents from scratch?\n\nNo — start with a ready-made agent and learn code later if you need it.\n\n### What is the easiest AI agent for beginners?\n\nHermes Agent with a free model and Telegram is a great start, or a ready-made agent from AI Money Lab.\n\n### How long does it take to learn AI agents from scratch?\n\nA day for your first agent and about a month for useful business workflows.\n\nStart learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.\n\nWhen you want live calls and the Agent OS, join the AI Profit Boardroom.\n\nGet the FREE AI Course + Community →Join the AI Profit Boardroom →\n\n## Related reading\n\n- How to Learn AI Agents\n\n- Best AI Agent Course for Beginners\n\n- Learn AI Agents for Free\n\nLast updated October 2026. This page is a living guide to how to learn ai agents from scratch — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/how-to-learn-ai-agents-from-scratch/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-learn-ai-agents-from-scratch",
+      "author": "Clawdbot",
+      "published": "2026-10-13T01:19:45",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A Julian Goldie blog post offering a zero-experience guide to AI agents: five core concepts (model, tools, skills, memory, schedule/MCP), with the claim that a first agent can run in a day without coding; promotes the author's free and paid communities.",
+      "importance_score": 20.0,
+      "reasoning": "Very basic introductory marketing content with no Hermes-specific technical insight; only tangentially relevant to the ecosystem.",
+      "themes": [
+        "Beginner guides",
+        "Concepts",
+        "Marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Julian Goldie blog post offering a zero-experience guide to AI agents: five core concepts (model, tools, skills, memory, schedule/MCP), with the claim that a first agent can run in a day without coding; promotes the author's free and paid communities.</p>",
+      "content_html": "<p>If you’re wondering how to learn AI agents from scratch with no tech background, the good news is you can start today without writing any code. You need to understand five simple ideas, set up one agent, and give it one small job. In the video below I build an AI agent OS from scratch. Here’s the plain-English guide I wish I’d had.</p>\n<p>Key takeaways</p>\n<ul>\n<li>You need no coding to start learning AI agents.</li>\n</ul>\n<ul>\n<li>Learn five ideas: model, tools, skills, memory, schedule.</li>\n</ul>\n<ul>\n<li>Your first agent can be running in a day.</li>\n</ul>\n<ul>\n<li>Start free in AI Money Lab with ready-made agents.</li>\n</ul>\n<h2>AI agents in plain English</h2>\n<p>A chatbot answers questions. An AI agent does things: it searches the web, reads and writes files, uses apps, and runs jobs on a schedule. Think of it as an assistant with hands. You tell it what you want in normal language, and it figures out the steps.</p>\n<p>Term</p>\n<p>What it means</p>\n<p>Agent</p>\n<p>An AI that can take actions with tools, not just chat</p>\n<p>Model</p>\n<p>The AI “brain”, like Claude, GPT or a free open model</p>\n<p>Tools</p>\n<p>Abilities like web search, browser, terminal and files</p>\n<p>Skill</p>\n<p>A saved, reusable procedure the agent follows</p>\n<p>Memory</p>\n<p>What the agent remembers about you and your work</p>\n<p>MCP</p>\n<p>A standard way to connect agents to apps and data</p>\n<p>Cron job</p>\n<p>A task that runs on a schedule</p>\n<p>Sub-agent</p>\n<p>A helper agent the main agent delegates work to</p>\n<h2>The five ideas to learn first</h2>\n<p>1. The model is the brain — Claude, GPT or a free open model. 2. Tools are the hands — search, browser, files. 3. Skills are saved instructions for jobs you repeat. 4. Memory is what the agent remembers about you. 5. Schedules let it work without you. Understand these five and everything else is detail.</p>\n<p>FREE AI Course + Community + 1,000 AI Agents. Join AI Money Lab free — AI agent courses, ready-made agents and workflows, and 90,000+ members learning with you.</p>\n<p>Want live coaching too? Upgrade to the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Your first agent in a day</h2>\n<p>Morning: watch one beginner video so you’ve seen an agent in action. Lunchtime: install Hermes Agent (the official one-line installer or the desktop app) and choose a free model. Afternoon: connect Telegram so you can message it from your phone. Evening: ask it to find the five most important news stories in your industry and send you a summary. Congratulations — you’ve built your first agent.</p>\n<h2>A simple from-scratch learning path</h2>\n<p>Stage</p>\n<p>Goal</p>\n<p>Time</p>\n<p>1</p>\n<p>Understand what agents are</p>\n<p>1 day</p>\n<p>2</p>\n<p>Set up one agent with a free model</p>\n<p>1 day</p>\n<p>3</p>\n<p>Give it one daily job</p>\n<p>1 week</p>\n<p>4</p>\n<p>Teach it your rules (memory)</p>\n<p>1 week</p>\n<p>5</p>\n<p>Add tools and a second job</p>\n<p>2 weeks</p>\n<p>6</p>\n<p>Build a workflow for your business</p>\n<p>2 weeks</p>\n<h2>What you don’t need to learn yet</h2>\n<p>You don’t need Python, APIs, vector databases or agent frameworks to start. Those matter if you want to build custom agents later, but beginners who start there usually give up. Start with a ready-made agent, get results, and learn the technical side only when you have a reason to.</p>\n<h2>Getting unstuck</h2>\n<p>Every beginner gets stuck — an install step that doesn’t match a tutorial, a model that won’t connect. The fastest fix is asking someone who’s been there. In AI Money Lab you can ask the free community; in the AI Profit Boardroom you can ask on four live calls a week and get answers from me directly. Many members also simply ask their AI agent to fix the problem for them, which works surprisingly often.</p>\n<h2>From scratch to real results</h2>\n<p>Within a month, most people learning from scratch have an agent that sends a morning brief, drafts email replies and turns their notes into content. That’s the moment it clicks: the agent is doing work you used to do yourself. From there, every new skill compounds.</p>\n<h2>A real example: my first agent</h2>\n<p>The first agent most people build with me is a morning brief. It’s simple: search for the latest news in your industry, pick the five stories that matter, summarise each in two sentences with a link, and send it to your phone at 6am. It teaches tools (search), skills (the saved instructions), scheduling (6am) and delivery (your phone) in one go, and it’s useful from day one.</p>\n<h2>Learning without getting overwhelmed</h2>\n<p>There’s a new AI tool every day, and trying to follow everything is the fastest way to give up. When you’re learning from scratch, ignore almost all of it. Learn one agent, one free model and one messaging app properly. Add new tools only when they solve a problem you actually have.</p>\n<h2>Next steps after the basics</h2>\n<p>Once your first two agents are running, pick one area to go deeper: browser automation if your work lives on websites, inbox and calendar if you’re drowning in admin, or content if you publish regularly. Learn the tools for that area, then build a third agent. That focused approach keeps learning manageable and useful.</p>\n<h2>Your first month at a glance</h2>\n<p>Week one: understand the five ideas and set up your agent. Week two: give it one daily job and adjust the instructions. Week three: teach it your preferences so the output fits your style. Week four: add a second job and connect it to an app you use. By the end of the month you’ll have two agents working for you and the confidence to build more.</p>\n<h2>Start learning AI agents from scratch</h2>\n<p>Now you know how to learn AI agents from scratch: five ideas, one agent, one job. Start free in AI Money Lab with ready-made agents, and join the AI Profit Boardroom for live help.</p>\n<p>Remember that everyone who builds impressive agents today started exactly where you are. The difference is that they kept going after the first confusing week. Start small, ask for help early, and you’ll be surprised how quickly it clicks.</p>\n<h2>About Julian Goldie</h2>\n<p>Julian Goldie is the founder of Goldie Agency, the best-selling author of Link Building Mastery and one of the most-watched AI educators on YouTube, with 430K+ subscribers. He tests new AI agents almost every day and teaches them in the AI Profit Boardroom and the free AI Money Lab community.</p>\n<h2>FAQ: how to learn ai agents from scratch</h2>\n<h3>Can I learn AI agents with no experience?</h3>\n<p>Yes — no coding is needed, and you can have a working agent in a day.</p>\n<h3>What should I learn first about AI agents?</h3>\n<p>Five ideas: the model, tools, skills, memory and schedules.</p>\n<h3>Do I need Python to learn AI agents from scratch?</h3>\n<p>No — start with a ready-made agent and learn code later if you need it.</p>\n<h3>What is the easiest AI agent for beginners?</h3>\n<p>Hermes Agent with a free model and Telegram is a great start, or a ready-made agent from AI Money Lab.</p>\n<h3>How long does it take to learn AI agents from scratch?</h3>\n<p>A day for your first agent and about a month for useful business workflows.</p>\n<p>Start learning AI agents today, free: get the FREE AI Course + Community + 1,000 AI Agents.</p>\n<p>When you want live calls and the Agent OS, join the AI Profit Boardroom.</p>\n<p>Get the FREE AI Course + Community →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>How to Learn AI Agents</li>\n</ul>\n<ul>\n<li>Best AI Agent Course for Beginners</li>\n</ul>\n<ul>\n<li>Learn AI Agents for Free</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to how to learn ai agents from scratch — the facts here move fast and it is updated as they do.</p>"
+    }
+  ]
+}

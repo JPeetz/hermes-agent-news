@@ -1,0 +1,924 @@
+{
+  "date": "2026-10-20",
+  "coverage_date": "2026-10-19",
+  "coverage_start": "2026-10-19T00:00:00",
+  "coverage_end": "2026-10-19T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-20\n\n**Executive summary:** A vision-drop day. The cycle's runaway story is **@Teknium**'s announcement that **Hermes Agent** will become a **[DIY game dev studio](/?date=2026-10-20&category=social#item-b552172b24d8)** (~**71k views**, 1.7k+ likes), and unlike most hype posts the follow-ups added real substance: a [plugin wishlist spanning 3D model generation](/?date=2026-10-20&category=social#item-42e987f2aea6), animation, sound FX and **Unity/Godot/Blender** integration, a one-click [**profile distribution**](/?date=2026-10-20&category=social#item-275a74b35f21) bundling plugins and skills, a stated preference for [building on **existing engines**](/?date=2026-10-20&category=social#item-36fcdd14430d) rather than from scratch, and the architecturally reassuring note that everything demoed runs as [**plugins** with nothing touching the **Hermes core**](/?date=2026-10-20&category=social#item-2bb3ee71991f) (a [textless demo link](/?date=2026-10-20&category=social#item-761126d375f5) from **Teknium** pulled another 5k+ views). The pivot lands on ready soil because extensibility is the connective tissue of this whole cycle: **Teknium** publicly [invited builders to package their work as **Hermes plugins**](/?date=2026-10-20&category=social#item-0bc42f4367e7), confirmed existing [**ComfyUI** connector support](/?date=2026-10-20&category=social#item-e03cc7597aa9) for image-generation workflows, and called the [**Unreal Engine MCP** unwieldy at ~**800 tools**](/?date=2026-10-20&category=social#item-38c40f4a3869), while the **Hermes Atlas** skills registry gained the [**kisscode-agent** skill](/?date=2026-10-20&category=news#item-fb70e22ac244) with Hermes-specific install steps — flanked by third-party **GEO** coverage (a [**GEO MCP** server roundup](/?date=2026-10-20&category=news#item-65555ed53675) and a free [**DeepSeek** + **Search Console** workflow guide](/?date=2026-10-20&category=news#item-2f3816905807)). The strongest shipped artifacts are community-built: **@rlaope**'s [**Oh My Hermes 4.0.0 (Zeus)**](/?date=2026-10-20&category=social#item-5f8d061b28f5) — a genuine major release after cycles of \"in preparation\" coverage, adding a dedicated terminal, long-term memory, specialist workflows and subagent model routing, with an [approving nod from **Teknium**](/?date=2026-10-20&category=social#item-d360217b8a75) — and the news top story, a hands-on [**batch_runner.py** tutorial](/?date=2026-10-20&category=news#item-18edc8956b23) converting **JSONL** prompt files into **ShareGPT**-format trajectories for generating training data and eval sets at scale, with **rlaope** also teasing a [**200B-token** training push](/?date=2026-10-20&category=social#item-b12464aa3683) and sharing a [**Delta Rune** fan-game anecdote](/?date=2026-10-20&category=social#item-4a8876b23414) as proof of real creative agent use. Multi-model orchestration recurs everywhere — the [**Hermes Agent × REA** reverse-engineering demo](/?date=2026-10-20&category=social#item-11ba4af8c351) (binary inspection, call-graph tracing), the [**Codex**↔**Claude Code** issue-to-PR skill](/?date=2026-10-20&category=research#item-hn-49136162), the carried [**Bifrost** router debate](/?date=2026-10-20&category=research#item-hn-49159529) — while the [**Claude Pro/Max** subscription support](/?date=2026-10-20&category=research#item-hn-49790991) and [**Hermes Kanban** multi-agent collaboration](/?date=2026-10-20&category=research#item-hn-49604068) items are once again the carried [**v0.20.0** docs bundle](/?date=2026-10-20&category=research#item-hn-49159200): reference, not news. Security and reliability keep their watch-list pulse: the research top story is a [**Show HN Grafana** observability integration for Hermes Agent](/?date=2026-10-20&category=research#item-hn-49318128) (joining the carried **Grafana** stack), an [Ask HN thread reports a freshly provisioned agent spiraling into a trance-like state](/?date=2026-10-20&category=research#item-hn-49916751), the carried [adversarial LLM-reversal repository](/?date=2026-10-20&category=research#item-hn-49231797) still probes hermes-agent, and — new and cautionary — a [referenced community repo was removed after its owner was hacked, with **@sidbing** floated as a replacement](/?date=2026-10-20&category=social#item-3e57cecd3422): a concrete reminder to vet plugins and skills before installing them. Verification note, now familiar: the reliability thread cites a **GLM 5.3 Flash** backend that does not appear in **Z.ai**'s release record (latest documented: **GLM-5.2**) — treat that model name as unconfirmed. Research pairs unusually well with the ecosystem this cycle: [**MemPilot**](/?date=2026-10-20&category=research#item-2610.06830) (on-demand multimodal memory curation for long-running agents), [**RSIFlow**](/?date=2026-10-20&category=research#item-2610.21791) (adaptive self-improvement with an evolving meta-agent — effectively the academic mirror of the community [**Refine Cycle** plugin](/?date=2026-10-20&category=research#item-hn-49606988); read them together), and [**OpenVLHarness**](/?date=2026-10-20&category=research#item-2610.26860) (real-world visual agentic tool-use with multimodal memory across **22 benchmarks**). Housekeeping: repo movement was the [automated daily sync](/?date=2026-10-20&category=news#item-0c136c05af67) only — no releases and no merged PRs this cycle, so **v0.22.2** remains the build to run (the research feed's \"v0.20.0 latest release\" line is the stale docs bundle again), the [~**23,000** open-PR backlog](/?date=2026-10-20&category=research#item-hn-49424643) persists as the project-health number, deployment docs matured on the carried [**Kubernetes**](/?date=2026-10-20&category=research#item-hn-49977400)/[containerization](/?date=2026-10-20&category=research#item-hn-50131496) fronts, and Reddit contributed nothing again; the **DeepSeek 4.1 Flash** 90%-off promo chatter (claimed 848 TPS) is third-party, off-topic noise around an existing release (GA 2026-09-10). Community warmth: **@NousResearch** drew ~**19.6k views** for a Friday [**Dolores Park** meetup](/?date=2026-10-20&category=social#item-652b969744b9) — fans can find **Nightwing** with a sold-out **Rebellion** shirt — amid an upbeat, builder-heavy sentiment ([\"i love hermes-agent\"](/?date=2026-10-20&category=social#item-6b4096fcc1b0)). Net read: the game-dev pivot turned the plugin thesis into a product vision, and the ecosystem answered with real ships — a major **OMH** release, a training-data pipeline tutorial, and a growing skills registry. Practical agenda: stay on **v0.22.2**; run the **batch_runner.py** tutorial if you need trajectories for training or evals; move to **Oh My Hermes 4.0.0** if you use OMH; vet third-party plugins and skills before install (the hacked-repo removal is your cautionary tale); and treat **GLM 5.3 Flash** claims as unverified.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-20</p>\n<p><strong>Executive summary:</strong> A vision-drop day. The cycle's runaway story is <strong>@Teknium</strong>'s announcement that <strong>Hermes Agent</strong> will become a <strong><a href=\"/?date=2026-10-20&amp;category=social#item-b552172b24d8\" class=\"internal-link\" rel=\"noopener noreferrer\">DIY game dev studio</a></strong> (~<strong>71k views</strong>, 1.7k+ likes), and unlike most hype posts the follow-ups added real substance: a <a href=\"/?date=2026-10-20&amp;category=social#item-42e987f2aea6\" class=\"internal-link\" rel=\"noopener noreferrer\">plugin wishlist spanning 3D model generation</a>, animation, sound FX and <strong>Unity/Godot/Blender</strong> integration, a one-click <a href=\"/?date=2026-10-20&amp;category=social#item-275a74b35f21\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>profile distribution</strong></a> bundling plugins and skills, a stated preference for <a href=\"/?date=2026-10-20&amp;category=social#item-36fcdd14430d\" class=\"internal-link\" rel=\"noopener noreferrer\">building on <strong>existing engines</strong></a> rather than from scratch, and the architecturally reassuring note that everything demoed runs as <a href=\"/?date=2026-10-20&amp;category=social#item-2bb3ee71991f\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>plugins</strong> with nothing touching the <strong>Hermes core</strong></a> (a <a href=\"/?date=2026-10-20&amp;category=social#item-761126d375f5\" class=\"internal-link\" rel=\"noopener noreferrer\">textless demo link</a> from <strong>Teknium</strong> pulled another 5k+ views). The pivot lands on ready soil because extensibility is the connective tissue of this whole cycle: <strong>Teknium</strong> publicly <a href=\"/?date=2026-10-20&amp;category=social#item-0bc42f4367e7\" class=\"internal-link\" rel=\"noopener noreferrer\">invited builders to package their work as <strong>Hermes plugins</strong></a>, confirmed existing <a href=\"/?date=2026-10-20&amp;category=social#item-e03cc7597aa9\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ComfyUI</strong> connector support</a> for image-generation workflows, and called the <a href=\"/?date=2026-10-20&amp;category=social#item-38c40f4a3869\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Unreal Engine MCP</strong> unwieldy at ~<strong>800 tools</strong></a>, while the <strong>Hermes Atlas</strong> skills registry gained the <a href=\"/?date=2026-10-20&amp;category=news#item-fb70e22ac244\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>kisscode-agent</strong> skill</a> with Hermes-specific install steps — flanked by third-party <strong>GEO</strong> coverage (a <a href=\"/?date=2026-10-20&amp;category=news#item-65555ed53675\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GEO MCP</strong> server roundup</a> and a free <a href=\"/?date=2026-10-20&amp;category=news#item-2f3816905807\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek</strong> + <strong>Search Console</strong> workflow guide</a>). The strongest shipped artifacts are community-built: <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-20&amp;category=social#item-5f8d061b28f5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh My Hermes 4.0.0 (Zeus)</strong></a> — a genuine major release after cycles of \"in preparation\" coverage, adding a dedicated terminal, long-term memory, specialist workflows and subagent model routing, with an <a href=\"/?date=2026-10-20&amp;category=social#item-d360217b8a75\" class=\"internal-link\" rel=\"noopener noreferrer\">approving nod from <strong>Teknium</strong></a> — and the news top story, a hands-on <a href=\"/?date=2026-10-20&amp;category=news#item-18edc8956b23\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>batch_runner.py</strong> tutorial</a> converting <strong>JSONL</strong> prompt files into <strong>ShareGPT</strong>-format trajectories for generating training data and eval sets at scale, with <strong>rlaope</strong> also teasing a <a href=\"/?date=2026-10-20&amp;category=social#item-b12464aa3683\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>200B-token</strong> training push</a> and sharing a <a href=\"/?date=2026-10-20&amp;category=social#item-4a8876b23414\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Delta Rune</strong> fan-game anecdote</a> as proof of real creative agent use. Multi-model orchestration recurs everywhere — the <a href=\"/?date=2026-10-20&amp;category=social#item-11ba4af8c351\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent × REA</strong> reverse-engineering demo</a> (binary inspection, call-graph tracing), the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Codex</strong>↔<strong>Claude Code</strong> issue-to-PR skill</a>, the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Bifrost</strong> router debate</a> — while the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription support</a> and <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> multi-agent collaboration</a> items are once again the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.20.0</strong> docs bundle</a>: reference, not news. Security and reliability keep their watch-list pulse: the research top story is a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Show HN Grafana</strong> observability integration for Hermes Agent</a> (joining the carried <strong>Grafana</strong> stack), an <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN thread reports a freshly provisioned agent spiraling into a trance-like state</a>, the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">adversarial LLM-reversal repository</a> still probes hermes-agent, and — new and cautionary — a <a href=\"/?date=2026-10-20&amp;category=social#item-3e57cecd3422\" class=\"internal-link\" rel=\"noopener noreferrer\">referenced community repo was removed after its owner was hacked, with <strong>@sidbing</strong> floated as a replacement</a>: a concrete reminder to vet plugins and skills before installing them. Verification note, now familiar: the reliability thread cites a <strong>GLM 5.3 Flash</strong> backend that does not appear in <strong>Z.ai</strong>'s release record (latest documented: <strong>GLM-5.2</strong>) — treat that model name as unconfirmed. Research pairs unusually well with the ecosystem this cycle: <a href=\"/?date=2026-10-20&amp;category=research#item-2610.06830\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>MemPilot</strong></a> (on-demand multimodal memory curation for long-running agents), <a href=\"/?date=2026-10-20&amp;category=research#item-2610.21791\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>RSIFlow</strong></a> (adaptive self-improvement with an evolving meta-agent — effectively the academic mirror of the community <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong> plugin</a>; read them together), and <a href=\"/?date=2026-10-20&amp;category=research#item-2610.26860\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenVLHarness</strong></a> (real-world visual agentic tool-use with multimodal memory across <strong>22 benchmarks</strong>). Housekeeping: repo movement was the <a href=\"/?date=2026-10-20&amp;category=news#item-0c136c05af67\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily sync</a> only — no releases and no merged PRs this cycle, so <strong>v0.22.2</strong> remains the build to run (the research feed's \"v0.20.0 latest release\" line is the stale docs bundle again), the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~<strong>23,000</strong> open-PR backlog</a> persists as the project-health number, deployment docs matured on the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong></a>/<a href=\"/?date=2026-10-20&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerization</a> fronts, and Reddit contributed nothing again; the <strong>DeepSeek 4.1 Flash</strong> 90%-off promo chatter (claimed 848 TPS) is third-party, off-topic noise around an existing release (GA 2026-09-10). Community warmth: <strong>@NousResearch</strong> drew ~<strong>19.6k views</strong> for a Friday <a href=\"/?date=2026-10-20&amp;category=social#item-652b969744b9\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Dolores Park</strong> meetup</a> — fans can find <strong>Nightwing</strong> with a sold-out <strong>Rebellion</strong> shirt — amid an upbeat, builder-heavy sentiment (<a href=\"/?date=2026-10-20&amp;category=social#item-6b4096fcc1b0\" class=\"internal-link\" rel=\"noopener noreferrer\">\"i love hermes-agent\"</a>). Net read: the game-dev pivot turned the plugin thesis into a product vision, and the ecosystem answered with real ships — a major <strong>OMH</strong> release, a training-data pipeline tutorial, and a growing skills registry. Practical agenda: stay on <strong>v0.22.2</strong>; run the <strong>batch_runner.py</strong> tutorial if you need trajectories for training or evals; move to <strong>Oh My Hermes 4.0.0</strong> if you use OMH; vet third-party plugins and skills before install (the hacked-repo removal is your cautionary tale); and treat <strong>GLM 5.3 Flash</strong> claims as unverified.</p>",
+  "top_topics": [
+    {
+      "name": "Agentic Game Development Pivot",
+      "description": "Teknium's announcement that Hermes Agent will become a [DIY game dev studio](/?date=2026-10-20&category=social#item-b552172b24d8) was the cycle's dominant story, drawing roughly 71k views and anchoring social discussion. Follow-ups sketched a concrete roadmap: a [plugin wishlist spanning 3D model generation, animation, sound FX and Unity/Godot/Blender integration](/?date=2026-10-20&category=social#item-42e987f2aea6), plus a [one-click profile distribution bundling plugins and skills](/?date=2026-10-20&category=social#item-275a74b35f21). [Everything demoed runs as plugins with nothing touching the Hermes core](/?date=2026-10-20&category=social#item-2bb3ee71991f), and [building on existing engines rather than from scratch](/?date=2026-10-20&category=social#item-36fcdd14430d) was stated as the preference.",
+      "description_html": "Teknium's announcement that Hermes Agent will become a <a href=\"/?date=2026-10-20&amp;category=social#item-b552172b24d8\" class=\"internal-link\" rel=\"noopener noreferrer\">DIY game dev studio</a> was the cycle's dominant story, drawing roughly 71k views and anchoring social discussion. Follow-ups sketched a concrete roadmap: a <a href=\"/?date=2026-10-20&amp;category=social#item-42e987f2aea6\" class=\"internal-link\" rel=\"noopener noreferrer\">plugin wishlist spanning 3D model generation, animation, sound FX and Unity/Godot/Blender integration</a>, plus a <a href=\"/?date=2026-10-20&amp;category=social#item-275a74b35f21\" class=\"internal-link\" rel=\"noopener noreferrer\">one-click profile distribution bundling plugins and skills</a>. <a href=\"/?date=2026-10-20&amp;category=social#item-2bb3ee71991f\" class=\"internal-link\" rel=\"noopener noreferrer\">Everything demoed runs as plugins with nothing touching the Hermes core</a>, and <a href=\"/?date=2026-10-20&amp;category=social#item-36fcdd14430d\" class=\"internal-link\" rel=\"noopener noreferrer\">building on existing engines rather than from scratch</a> was stated as the preference.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Plugin and Skills Ecosystem",
+      "description": "Extensibility through plugins and skills recurs across every active category this cycle. Teknium publicly invited builders to [package their work as Hermes plugins](/?date=2026-10-20&category=social#item-fece77e077b6), confirmed [ComfyUI connector support](/?date=2026-10-20&category=social#item-e03cc7597aa9), and criticized [the Unreal Engine MCP as unwieldy at roughly 800 tools](/?date=2026-10-20&category=social#item-0bc42f4367e7), while the newly listed [kisscode-agent skill on Hermes Atlas](/?date=2026-10-20&category=news#item-fb70e22ac244) showcases the growing skills registry. Research coverage echoed the theme with ecosystem tooling items and a community-built [Refine Cycle plugin](/?date=2026-10-20&category=research#item-hn-49606988) that mirrors the [RSIFlow paper](/?date=2026-10-20&category=research#item-2610.21791).",
+      "description_html": "Extensibility through plugins and skills recurs across every active category this cycle. Teknium publicly invited builders to <a href=\"/?date=2026-10-20&amp;category=social#item-fece77e077b6\" class=\"internal-link\" rel=\"noopener noreferrer\">package their work as Hermes plugins</a>, confirmed <a href=\"/?date=2026-10-20&amp;category=social#item-e03cc7597aa9\" class=\"internal-link\" rel=\"noopener noreferrer\">ComfyUI connector support</a>, and criticized <a href=\"/?date=2026-10-20&amp;category=social#item-0bc42f4367e7\" class=\"internal-link\" rel=\"noopener noreferrer\">the Unreal Engine MCP as unwieldy at roughly 800 tools</a>, while the newly listed <a href=\"/?date=2026-10-20&amp;category=news#item-fb70e22ac244\" class=\"internal-link\" rel=\"noopener noreferrer\">kisscode-agent skill on Hermes Atlas</a> showcases the growing skills registry. Research coverage echoed the theme with ecosystem tooling items and a community-built <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle plugin</a> that mirrors the <a href=\"/?date=2026-10-20&amp;category=research#item-2610.21791\" class=\"internal-link\" rel=\"noopener noreferrer\">RSIFlow paper</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "social": 4,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Multi-Model and Multi-Agent Orchestration",
+      "description": "Running Hermes Agent across multiple models and coordinating several agents is a strong cross-cutting thread. New documentation for [Claude Pro/Max subscription support via an SDK plugin](/?date=2026-10-20&category=research#item-hn-49790991) lowers the cost barrier for Anthropic subscribers, [a skill alternates Codex and Claude Code in an autonomous issue-to-PR loop](/?date=2026-10-20&category=research#item-hn-49136162), and [Hermes Kanban added documented profile-based multi-agent collaboration](/?date=2026-10-20&category=research#item-hn-49604068). On the social side, rlaope demonstrated [Hermes Agent x REA multi-model reverse-engineering orchestration](/?date=2026-10-20&category=social#item-11ba4af8c351) and [Oh My Hermes 4.0 adds subagent model routing](/?date=2026-10-20&category=social#item-5f8d061b28f5), while a [research discussion questioned whether Hermes is usable without a model router like Bifrost](/?date=2026-10-20&category=research#item-hn-49159529).",
+      "description_html": "Running Hermes Agent across multiple models and coordinating several agents is a strong cross-cutting thread. New documentation for <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support via an SDK plugin</a> lowers the cost barrier for Anthropic subscribers, <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">a skill alternates Codex and Claude Code in an autonomous issue-to-PR loop</a>, and <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban added documented profile-based multi-agent collaboration</a>. On the social side, rlaope demonstrated <a href=\"/?date=2026-10-20&amp;category=social#item-11ba4af8c351\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent x REA multi-model reverse-engineering orchestration</a> and <a href=\"/?date=2026-10-20&amp;category=social#item-5f8d061b28f5\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh My Hermes 4.0 adds subagent model routing</a>, while a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">research discussion questioned whether Hermes is usable without a model router like Bifrost</a>.",
+      "category_breakdown": {
+        "research": 4,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Community Releases and Training Data Workflows",
+      "description": "Community builders shipped notable updates this cycle. rlaope's [Oh My Hermes 4.0.0 (Zeus)](/?date=2026-10-20&category=social#item-5f8d061b28f5) adds a dedicated terminal, long-term memory, specialist workflows and subagent model routing, while a [lead tutorial on Hermes Agent's batch_runner.py](/?date=2026-10-20&category=news#item-18edc8956b23) shows how to convert JSONL prompt files into ShareGPT-format trajectories for generating training data and eval sets at scale. rlaope also [teased a 200B-token training push](/?date=2026-10-20&category=social#item-b12464aa3683) and [shared a Delta Rune fan-game anecdote](/?date=2026-10-20&category=social#item-4a8876b23414) demonstrating real creative agent use.",
+      "description_html": "Community builders shipped notable updates this cycle. rlaope's <a href=\"/?date=2026-10-20&amp;category=social#item-5f8d061b28f5\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh My Hermes 4.0.0 (Zeus)</a> adds a dedicated terminal, long-term memory, specialist workflows and subagent model routing, while a <a href=\"/?date=2026-10-20&amp;category=news#item-18edc8956b23\" class=\"internal-link\" rel=\"noopener noreferrer\">lead tutorial on Hermes Agent's batch_runner.py</a> shows how to convert JSONL prompt files into ShareGPT-format trajectories for generating training data and eval sets at scale. rlaope also <a href=\"/?date=2026-10-20&amp;category=social#item-b12464aa3683\" class=\"internal-link\" rel=\"noopener noreferrer\">teased a 200B-token training push</a> and <a href=\"/?date=2026-10-20&amp;category=social#item-4a8876b23414\" class=\"internal-link\" rel=\"noopener noreferrer\">shared a Delta Rune fan-game anecdote</a> demonstrating real creative agent use.",
+      "category_breakdown": {
+        "news": 1,
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Security, Reliability and Observability",
+      "description": "Several items probe agent failure modes and defensive tooling: a [Show HN Grafana integration](/?date=2026-10-20&category=research#item-hn-49318128) adds observability for Hermes Agent, an [Ask HN thread](/?date=2026-10-20&category=research#item-hn-49916751) reports a freshly provisioned agent spiraling into a trance-like state, and an [adversarial LLM reversal repository](/?date=2026-10-20&category=research#item-hn-49231797) explores red-team angles against hermes-agent. A [referenced community repo was also removed after its owner was hacked](/?date=2026-10-20&category=social#item-3e57cecd3422), with a replacement floated. Verification note: the reliability thread cites a 'GLM 5.3 Flash' backend that does not appear in Z.ai's release record (latest documented release is GLM-5.2), so treat that model name as unconfirmed.",
+      "description_html": "Several items probe agent failure modes and defensive tooling: a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Show HN Grafana integration</a> adds observability for Hermes Agent, an <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN thread</a> reports a freshly provisioned agent spiraling into a trance-like state, and an <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">adversarial LLM reversal repository</a> explores red-team angles against hermes-agent. A <a href=\"/?date=2026-10-20&amp;category=social#item-3e57cecd3422\" class=\"internal-link\" rel=\"noopener noreferrer\">referenced community repo was also removed after its owner was hacked</a>, with a replacement floated. Verification note: the reliability thread cites a 'GLM 5.3 Flash' backend that does not appear in Z.ai's release record (latest documented release is GLM-5.2), so treat that model name as unconfirmed.",
+      "category_breakdown": {
+        "research": 4,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 72
+    },
+    {
+      "name": "Agent Memory and Self-Improvement Research",
+      "description": "Academic papers aligned closely with ecosystem needs. [MemPilot targets on-demand multimodal memory curation for long-running agents](/?date=2026-10-20&category=research#item-2610.06830), [RSIFlow describes adaptive self-improvement workflows with an evolving meta-agent](/?date=2026-10-20&category=research#item-2610.21791) that mirror the community [Refine Cycle plugin](/?date=2026-10-20&category=research#item-hn-49606988), and [OpenVLHarness studies real-world visual agentic tool-use with multimodal memory across 22 benchmarks](/?date=2026-10-20&category=research#item-2610.26860). The pairing of research with community implementations makes these items worth reading together.",
+      "description_html": "Academic papers aligned closely with ecosystem needs. <a href=\"/?date=2026-10-20&amp;category=research#item-2610.06830\" class=\"internal-link\" rel=\"noopener noreferrer\">MemPilot targets on-demand multimodal memory curation for long-running agents</a>, <a href=\"/?date=2026-10-20&amp;category=research#item-2610.21791\" class=\"internal-link\" rel=\"noopener noreferrer\">RSIFlow describes adaptive self-improvement workflows with an evolving meta-agent</a> that mirror the community <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle plugin</a>, and <a href=\"/?date=2026-10-20&amp;category=research#item-2610.26860\" class=\"internal-link\" rel=\"noopener noreferrer\">OpenVLHarness studies real-world visual agentic tool-use with multimodal memory across 22 benchmarks</a>. The pairing of research with community implementations makes these items worth reading together.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Deployment and Self-Hosting",
+      "description": "Self-hosting documentation matured on several fronts. A [Kubernetes writeup](/?date=2026-10-20&category=research#item-hn-49977400) documents the missing Helm chart and root-at-init image requirement, a [community containerization guide](/?date=2026-10-20&category=research#item-hn-50131496) covers packaging and isolation patterns, and a [hobbyist reports](/?date=2026-10-20&category=research#item-hn-49368474) the Arduino UNO Q board is an almost perfect Hermes Agent host with only 4GB RAM. These items signal growing interest in running Hermes outside managed environments on constrained hardware.",
+      "description_html": "Self-hosting documentation matured on several fronts. A <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes writeup</a> documents the missing Helm chart and root-at-init image requirement, a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">community containerization guide</a> covers packaging and isolation patterns, and a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">hobbyist reports</a> the Arduino UNO Q board is an almost perfect Hermes Agent host with only 4GB RAM. These items signal growing interest in running Hermes outside managed environments on constrained hardware.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 65
+    },
+    {
+      "name": "Project Health and Governance",
+      "description": "Maintainer capacity and moderation came into focus. Project-health reporting flags [roughly 23,000 open PRs in the hermes-agent repo](/?date=2026-10-20&category=research#item-hn-49424643), a growing review bottleneck users should expect to affect patch turnaround, and [a GitHub issue documenting the deletion of a question and blocking of a user](/?date=2026-10-20&category=research#item-hn-49208206) raised moderation concerns. Meanwhile the community repo saw only [a routine automated daily sync commit](/?date=2026-10-20&category=news#item-0c136c05af67) with no user-facing changes.",
+      "description_html": "Maintainer capacity and moderation came into focus. Project-health reporting flags <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">roughly 23,000 open PRs in the hermes-agent repo</a>, a growing review bottleneck users should expect to affect patch turnaround, and <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49208206\" class=\"internal-link\" rel=\"noopener noreferrer\">a GitHub issue documenting the deletion of a question and blocking of a user</a> raised moderation concerns. Meanwhile the community repo saw only <a href=\"/?date=2026-10-20&amp;category=news#item-0c136c05af67\" class=\"internal-link\" rel=\"noopener noreferrer\">a routine automated daily sync commit</a> with no user-facing changes.",
+      "category_breakdown": {
+        "research": 2,
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "GEO and SEO Agent Workflows",
+      "description": "Hermes Agent is being positioned in generative engine optimization (GEO) workflows. A roundup of [GEO MCP servers](/?date=2026-10-20&category=news#item-65555ed53675) shows how to wire optimization tooling into Hermes alongside Claude and Cursor, and a [step-by-step guide](/?date=2026-10-20&category=news#item-2f3816905807) builds a free workflow around Hermes with a DeepSeek model and Search Console data. However, research coverage classified much of the surrounding [GEO/AEO marketing content](/?date=2026-10-20&category=research#item-2325910f669e) as low-substance, so treat this trend as emerging but noisy.",
+      "description_html": "Hermes Agent is being positioned in generative engine optimization (GEO) workflows. A roundup of <a href=\"/?date=2026-10-20&amp;category=news#item-65555ed53675\" class=\"internal-link\" rel=\"noopener noreferrer\">GEO MCP servers</a> shows how to wire optimization tooling into Hermes alongside Claude and Cursor, and a <a href=\"/?date=2026-10-20&amp;category=news#item-2f3816905807\" class=\"internal-link\" rel=\"noopener noreferrer\">step-by-step guide</a> builds a free workflow around Hermes with a DeepSeek model and Search Console data. However, research coverage classified much of the surrounding <a href=\"/?date=2026-10-20&amp;category=research#item-2325910f669e\" class=\"internal-link\" rel=\"noopener noreferrer\">GEO/AEO marketing content</a> as low-substance, so treat this trend as emerging but noisy.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 55
+    },
+    {
+      "name": "Developer Community Engagement",
+      "description": "Official and informal community channels were notably active and upbeat. Nous Research promoted a [Dolores Park meetup with a Rebellion shirt hunt](/?date=2026-10-20&category=social#item-652b969744b9) for fans, and overall sentiment was builder-heavy, with Teknium visibly responsive, [soliciting feedback](/?date=2026-10-20&category=social#item-3109525c279b) and [DMing potential collaborators](/?date=2026-10-20&category=social#item-d84f08ecef64). Promotional chatter around a [DeepSeek 4.1 Flash discount deal](/?date=2026-10-20&category=social#item-627f7de3c410) drew only moderate, third-party and off-topic attention.",
+      "description_html": "Official and informal community channels were notably active and upbeat. Nous Research promoted a <a href=\"/?date=2026-10-20&amp;category=social#item-652b969744b9\" class=\"internal-link\" rel=\"noopener noreferrer\">Dolores Park meetup with a Rebellion shirt hunt</a> for fans, and overall sentiment was builder-heavy, with Teknium visibly responsive, <a href=\"/?date=2026-10-20&amp;category=social#item-3109525c279b\" class=\"internal-link\" rel=\"noopener noreferrer\">soliciting feedback</a> and <a href=\"/?date=2026-10-20&amp;category=social#item-d84f08ecef64\" class=\"internal-link\" rel=\"noopener noreferrer\">DMing potential collaborators</a>. Promotional chatter around a <a href=\"/?date=2026-10-20&amp;category=social#item-627f7de3c410\" class=\"internal-link\" rel=\"noopener noreferrer\">DeepSeek 4.1 Flash discount deal</a> drew only moderate, third-party and off-topic attention.",
+      "category_breakdown": {
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 50
+    }
+  ],
+  "total_items_collected": 107,
+  "total_items_analyzed": 92,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 20,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 34,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 53,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 53,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-20/hero.webp?v=1792480278",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe flicks a story card up into the air toward the glowing panel wall, building today's line-up as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Agentic Game Development Pivot — Teknium's announcement that Hermes Agent will become a DIY game dev studio was the cycle's dominant story, drawing ro...\nTopic 2: Plugin and Skills Ecosystem — Extensibility through plugins and skills recurs across every active category this cycle. Teknium publicly invited bui...\nTopic 3: Multi-Model and Multi-Agent Orchestration — Running Hermes Agent across multiple models and coordinating several agents is a strong cross-cutting thread. New doc...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: autonomous systems, workflow diagrams, connected tools, Hermes interface, neural network visualization, glowing nodes, architecture. Thin orange workflow lines connect floating nodes around the room. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a tight over-the-shoulder frame, low orange backlight that traces her silhouette edges against black. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-20T07:11:18.080380",
+  "categories": {
+    "news": {
+      "count": 5,
+      "category_summary": "**Tips:** Lead item is a hands-on tutorial for Hermes Agent's [**batch_runner.py**](/?date=2026-10-20&category=news#item-18edc8956b23), showing how to convert a JSONL prompt file into ShareGPT-format trajectories — directly useful for anyone generating training data or eval sets at scale. **Community:** New on Hermes Atlas, [**kisscode-agent**](/?date=2026-10-20&category=news#item-fb70e22ac244) ships a KissCode skill with Hermes-specific install steps, a solid showcase of the growing skills registry. Hermes also picks up third-party validation in the GEO space: a roundup of [**GEO MCP**](/?date=2026-10-20&category=news#item-65555ed53675) servers shows how to wire optimization tooling into Hermes Agent alongside Claude and Cursor, while a [step-by-step GEO guide](/?date=2026-10-20&category=news#item-2f3816905807) builds a free workflow around Hermes Agent with a DeepSeek model and Search Console data (useful workflow reference, but lighter on Hermes specifics). **Repo:** Only routine activity this cycle — an [automated daily sync commit](/?date=2026-10-20&category=news#item-0c136c05af67) to hermes-agent-community with no user-facing changes.",
+      "category_summary_html": "<p><strong>Tips:</strong> Lead item is a hands-on tutorial for Hermes Agent's <a href=\"/?date=2026-10-20&amp;category=news#item-18edc8956b23\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>batch_runner.py</strong></a>, showing how to convert a JSONL prompt file into ShareGPT-format trajectories — directly useful for anyone generating training data or eval sets at scale. <strong>Community:</strong> New on Hermes Atlas, <a href=\"/?date=2026-10-20&amp;category=news#item-fb70e22ac244\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>kisscode-agent</strong></a> ships a KissCode skill with Hermes-specific install steps, a solid showcase of the growing skills registry. Hermes also picks up third-party validation in the GEO space: a roundup of <a href=\"/?date=2026-10-20&amp;category=news#item-65555ed53675\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GEO MCP</strong></a> servers shows how to wire optimization tooling into Hermes Agent alongside Claude and Cursor, while a <a href=\"/?date=2026-10-20&amp;category=news#item-2f3816905807\" class=\"internal-link\" rel=\"noopener noreferrer\">step-by-step GEO guide</a> builds a free workflow around Hermes Agent with a DeepSeek model and Search Console data (useful workflow reference, but lighter on Hermes specifics). <strong>Repo:</strong> Only routine activity this cycle — an <a href=\"/?date=2026-10-20&amp;category=news#item-0c136c05af67\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily sync commit</a> to hermes-agent-community with no user-facing changes.</p>",
+      "themes": [
+        {
+          "name": "Skills and Tooling Ecosystem",
+          "description": "Growth of the Hermes skills ecosystem and tool integrations, including community-published skills and batch data-generation capabilities for training pipelines.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Hermes Agent in GEO/SEO Workflows",
+          "description": "Third-party SEO marketers using Hermes Agent as the agent backbone for generative engine optimization systems, including Search Console data and GEO MCP tooling.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Routine Repository Activity",
+          "description": "Automated maintenance commits to community repositories that carry little user-facing significance.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 8.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "18edc8956b23",
+          "title": "Hermes Agent Batch Processing: Generate Trajectory Training Data at Scale (2026)",
+          "content": "Learn how Hermes Agent's batch_runner.py turns a JSONL prompt file into ShareGPT trajectories, with its flags, resume behavior and output files explained.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-agent-batch-processing-trajectory-export/",
+          "author": "Hermes Agent",
+          "published": "2026-10-19T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A technical tutorial covering Hermes Agent's batch_runner.py, explaining how it converts a JSONL prompt file into ShareGPT-format trajectories, including its flags, resume behavior, and output files. This documents a built-in capability for generating training data at scale.",
+          "importance_score": 62.0,
+          "reasoning": "Directly Hermes-specific and technically substantive: batch trajectory export is relevant to users doing fine-tuning data pipelines and agent research. It is a tutorial rather than a release, so it scores below official announcements but well above generic SEO content.",
+          "themes": [
+            "batch processing",
+            "trajectory data generation",
+            "technical documentation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A technical tutorial covering Hermes Agent's batch_runner.py, explaining how it converts a JSONL prompt file into ShareGPT-format trajectories, including its flags, resume behavior, and output files. This documents a built-in capability for generating training data at scale.</p>",
+          "content_html": "<p>Learn how Hermes Agent's batch_runner.py turns a JSONL prompt file into ShareGPT trajectories, with its flags, resume behavior and output files explained.</p>"
+        },
+        {
+          "id": "fb70e22ac244",
+          "title": "kisscode-agent (Skills & Skill Registries)",
+          "content": "This repository provides a KissCode skill for AI agents, with installation instructions for Hermes and other agents. It describes registering an agent through the KissCode API and adding HEARTBEAT.md to the agent’s routine for check-ins every four or more hours.",
+          "url": "https://hermesatlas.com/projects/NickSF189/kisscode-agent",
+          "author": "Unknown",
+          "published": "2026-10-19T18:20:33",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Skills & Skill Registries"
+          ],
+          "summary": "A newly listed project on Hermes Atlas providing a KissCode skill for AI agents, with installation instructions for Hermes and other agents. It covers registering an agent through the KissCode API and adding a HEARTBEAT.md file for scheduled check-ins every four or more hours.",
+          "importance_score": 45.0,
+          "reasoning": "A genuine community showcase demonstrating the Hermes skills ecosystem in action, which is exactly the kind of project listing that shows ecosystem growth. However, it is a niche third-party skill rather than a core Hermes feature, limiting its score.",
+          "themes": [
+            "community showcase",
+            "skills registry",
+            "agent scheduling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A newly listed project on Hermes Atlas providing a KissCode skill for AI agents, with installation instructions for Hermes and other agents. It covers registering an agent through the KissCode API and adding a HEARTBEAT.md file for scheduled check-ins every four or more hours.</p>",
+          "content_html": "<p>This repository provides a KissCode skill for AI agents, with installation instructions for Hermes and other agents. It describes registering an agent through the KissCode API and adding HEARTBEAT.md to the agent’s routine for check-ins every four or more hours.</p>"
+        },
+        {
+          "id": "65555ed53675",
+          "title": "GEO MCP: The Best MCP Servers for Generative Engine Optimization",
+          "content": "A GEO MCP server plugs generative engine optimisation tools straight into your AI agent: ask Claude, Hermes or Cursor whether ChatGPT, Gemini, Perplexity and Google&rsquo;s AI Overviews mention your brand, which competitors they name and which sources they cite &mdash; or audit your site&rsquo;s AI readiness. In the video below I show my free GEO system with Hermes Agent. Here are the GEO MCP servers worth knowing and how to use them.\n\nKey takeaways\n\nMCP (Model Context Protocol) lets agents use external tools.\nGEO MCP servers do two jobs: AI visibility tracking and site GEO audits.\nOptions include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.\nPair a GEO MCP with Search Console data and real case studies.\n\n\n\n\n\n\nWhat a GEO MCP is\nMCP is a standard way to connect AI agents to tools and data. A GEO MCP server exposes GEO tools &mdash; like &ldquo;check whether ChatGPT mentions my brand for this prompt&rdquo; or &ldquo;score this page&rsquo;s AI readiness&rdquo; &mdash; so your agent can call them during a conversation. Instead of manually testing prompts in five AI engines, you ask your agent and it runs the checks for you.\nThe best GEO MCP servers\n\n\n\n\nGEO MCP\nWhat it does\nNotes\n\n\n\n\nCite42\nChecks whether ChatGPT, Claude, Perplexity, Gemini and AI Overviews mention you, which competitors they name and which sources they cite; plus keyword data\nPay per call; works in Claude, Claude Code, Codex, Cursor, ChatGPT\n\n\nmcp-geo\nRuns prompts across the major AI engines and stores citations and visibility metrics\nOpen source (MIT)\n\n\nNaia\nHosted GEO platform: visibility analysis, content generation, execution plans\nAPI key\n\n\nLuce\nGEO plus SEO audits and Reddit marketing\nOAuth sign-in\n\n\nmcp-geo-server\nTechnical SEO, AI crawler directives (GPTBot, ClaudeBot, PerplexityBot) and answer-engine readiness audits\nOpen source\n\n\ngeo-optimizer-mcp\nScores a site&rsquo;s AI readiness 0&ndash;100 with a grade\nRuns locally, no account\n\n\n\n\nThese are listings from each project&rsquo;s own pages; features and pricing change, so check the current docs before you rely on one.\n\nRather have experts run your GEO? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\n\nWant your brand named in AI answers? Claim your free GEO and SEO strategy session &mdash; we&rsquo;ll look at your site, your competitors and the keywords you&rsquo;re closest to winning, then give you a custom game plan.\nPrefer to pick a time now? Book a free SEO strategy session.\n\nClaim Your Free SEO Strategy Session &rarr;Book a Free Strategy Session &rarr;\n\nHow to use a GEO MCP with Claude or Hermes\n\nAdd the MCP server to your agent (Claude Desktop, Claude Code, Cursor or Hermes all support MCP).\nAsk it to test your 10 money prompts across AI engines and summarise who gets mentioned.\nAsk it to audit your key pages for AI readiness.\nFeed it your Search Console export to find what already works.\nTurn the findings into a content plan &mdash; then write pages built on real case studies.\n\nMy free GEO system (with or without an MCP)\n\n\n\n\nPiece\nWhat I use\nCost\n\n\n\n\nAgent\nHermes Agent (or an Agent OS)\nFree, open source\n\n\nBrain\nDeepSeek V4.1 Flash via OpenCode\nFree\n\n\nData\nGoogle Search Console export (CSV)\nFree\n\n\nWriting\nAn SEO skill &mdash; a ~100-point quality checklist\nInside the AI Profit Boardroom\n\n\nPublishing\nWordPress or Netlify, connected to the agent\nYour existing site\n\n\n\n\nI export Search Console data to a CSV, give it to Hermes running a free DeepSeek model, and ask it to analyse what&rsquo;s working and suggest GEO keywords. It builds a report in the workspace, then my SEO skill writes and publishes pages to WordPress. A GEO MCP adds live AI-visibility checks on top.\nWhat a GEO MCP can&rsquo;t do\nA tool can tell you whether you&rsquo;re cited &mdash; it can&rsquo;t make you citable. That comes from the three moves behind all my GEO results:\n\n\n\n\nMove\nWhat it means\nHow I do it\n\n\n\n\n1. Be the source\nAI repeats what it reads, so be what it reads\nA real case study or experiment in every page\n\n\n2. Be everywhere\nSeveral sources saying the same thing\nMultiple sites, a community and a subreddit, each with its own angle\n\n\n3. Be first\nThe first good page on a new topic wins\nPublish within 24 hours of a new tool or trend\n\n\n\n\nOne rule you can&rsquo;t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical &mdash; covering the page text, titles, meta descriptions, structured data and even image alt text &mdash; because AI models predict words rather than look up facts. That&rsquo;s why every page I publish is built on real experience and checked before it goes live.\nResults this approach produces\n\nGoogle&rsquo;s AI Overview and AI Mode name me first for &ldquo;best GEO expert&rdquo; &mdash; and cite several of my pages.\nThe AI Profit Boardroom ranks #1 in Google&rsquo;s AI for &ldquo;best AI community&rdquo;, cited twice.\nOne site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.\nPerplexity lists me several times in its recommendations for GEO experts.\n\nChoosing the right GEO MCP\nPick based on the job. If you want to know whether AI engines mention you and who they name instead, choose a visibility tracker like Cite42 or the open-source mcp-geo. If you want to check whether your site is technically ready for AI &mdash; crawler access, structure, schema &mdash; choose an audit tool like mcp-geo-server or geo-optimizer-mcp. If you want an all-in-one hosted platform, Naia or Luce may suit you. Start with a free or open-source option to learn what you need before paying for anything.\nA simple GEO MCP workflow\nEach Monday, ask your agent to run your ten money prompts through the GEO MCP and summarise changes from last week: where you gained or lost mentions, which competitors appeared, which sources were cited. Then pick one page to improve and one new page to publish. That one-hour weekly loop turns GEO from a guessing game into a measurable process.\nThe bottom line on GEO MCP\nA GEO MCP server turns AI-visibility tracking and GEO audits into something your agent does for you. Pick one, plug it into Claude or Hermes, and combine it with real content. Or claim a free strategy session and we&rsquo;ll show you what&rsquo;s working.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google&rsquo;s AI names me first for &ldquo;best GEO expert&rdquo;. Claim your free strategy session or join the AI Profit Boardroom.\nFAQ: geo mcp\nWhat is a GEO MCP?\nAn MCP server that gives AI agents generative engine optimisation tools, like checking AI visibility or auditing a site&rsquo;s AI readiness.\nWhich GEO MCP servers exist?\nOptions include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.\nCan I use a GEO MCP with Claude?\nYes &mdash; Claude Desktop and Claude Code support MCP servers.\nIs there a free GEO MCP?\nOpen-source options like mcp-geo and geo-optimizer-mcp are free to run; some others are paid or pay-per-call.\nDoes a GEO MCP improve rankings by itself?\nNo &mdash; it measures and audits; the gains come from real, well-structured content and authority.\nDo I need a GEO MCP to do GEO?\nNo &mdash; you can test prompts manually; a GEO MCP just automates the checks inside your agent.\n\nReady to rank in Google and AI search? Claim your free strategy session here.\nFree resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.\nWant to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.\n\nClaim Your Free SEO Strategy Session &rarr;Get the Free GEO &amp; AI SEO Checklist &rarr;Get the 200+ AI SEO Prompts &rarr;Join the AI Profit Boardroom &rarr;\n\nRelated reading\n\nClaude AI GEO\nHow to Do GEO for a Website\nFree GEO Audit\n\nLast updated October 2026. This page is a living guide to geo mcp &mdash; the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/geo-mcp/?utm_source=rss&utm_medium=rss&utm_campaign=geo-mcp",
+          "author": "Clawdbot",
+          "published": "2026-10-19T03:27:44",
+          "source": "Julian Goldie",
+          "source_type": "rss",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "An overview of MCP servers for generative engine optimization that explicitly describes plugging these tools into Hermes Agent alongside Claude and Cursor for AI visibility tracking and site audits. The author demonstrates a free GEO system built with Hermes Agent.",
+          "importance_score": 38.0,
+          "reasoning": "Highlights Hermes Agent's compatibility with the MCP ecosystem and positions it as an agent for tool-augmented workflows, which is a mildly useful ecosystem signal. Still, it is third-party SEO marketing rather than official Hermes news or a new capability.",
+          "themes": [
+            "MCP integrations",
+            "GEO workflow tutorial",
+            "agent tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An overview of MCP servers for generative engine optimization that explicitly describes plugging these tools into Hermes Agent alongside Claude and Cursor for AI visibility tracking and site audits. The author demonstrates a free GEO system built with Hermes Agent.</p>",
+          "content_html": "<p>A GEO MCP server plugs generative engine optimisation tools straight into your AI agent: ask Claude, Hermes or Cursor whether ChatGPT, Gemini, Perplexity and Google’s AI Overviews mention your brand, which competitors they name and which sources they cite — or audit your site’s AI readiness. In the video below I show my free GEO system with Hermes Agent. Here are the GEO MCP servers worth knowing and how to use them.</p>\n<p>Key takeaways</p>\n<p>MCP (Model Context Protocol) lets agents use external tools.</p>\n<p>GEO MCP servers do two jobs: AI visibility tracking and site GEO audits.</p>\n<p>Options include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.</p>\n<p>Pair a GEO MCP with Search Console data and real case studies.</p>\n<p>What a GEO MCP is</p>\n<p>MCP is a standard way to connect AI agents to tools and data. A GEO MCP server exposes GEO tools — like “check whether ChatGPT mentions my brand for this prompt” or “score this page’s AI readiness” — so your agent can call them during a conversation. Instead of manually testing prompts in five AI engines, you ask your agent and it runs the checks for you.</p>\n<p>The best GEO MCP servers</p>\n<p>GEO MCP</p>\n<p>What it does</p>\n<p>Notes</p>\n<p>Cite42</p>\n<p>Checks whether ChatGPT, Claude, Perplexity, Gemini and AI Overviews mention you, which competitors they name and which sources they cite; plus keyword data</p>\n<p>Pay per call; works in Claude, Claude Code, Codex, Cursor, ChatGPT</p>\n<p>mcp-geo</p>\n<p>Runs prompts across the major AI engines and stores citations and visibility metrics</p>\n<p>Open source (MIT)</p>\n<p>Naia</p>\n<p>Hosted GEO platform: visibility analysis, content generation, execution plans</p>\n<p>API key</p>\n<p>Luce</p>\n<p>GEO plus SEO audits and Reddit marketing</p>\n<p>OAuth sign-in</p>\n<p>mcp-geo-server</p>\n<p>Technical SEO, AI crawler directives (GPTBot, ClaudeBot, PerplexityBot) and answer-engine readiness audits</p>\n<p>Open source</p>\n<p>geo-optimizer-mcp</p>\n<p>Scores a site’s AI readiness 0–100 with a grade</p>\n<p>Runs locally, no account</p>\n<p>These are listings from each project’s own pages; features and pricing change, so check the current docs before you rely on one.</p>\n<p>Rather have experts run your GEO? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want your brand named in AI answers? Claim your free GEO and SEO strategy session — we’ll look at your site, your competitors and the keywords you’re closest to winning, then give you a custom game plan.</p>\n<p>Prefer to pick a time now? Book a free SEO strategy session.</p>\n<p>Claim Your Free SEO Strategy Session →Book a Free Strategy Session →</p>\n<p>How to use a GEO MCP with Claude or Hermes</p>\n<p>Add the MCP server to your agent (Claude Desktop, Claude Code, Cursor or Hermes all support MCP).</p>\n<p>Ask it to test your 10 money prompts across AI engines and summarise who gets mentioned.</p>\n<p>Ask it to audit your key pages for AI readiness.</p>\n<p>Feed it your Search Console export to find what already works.</p>\n<p>Turn the findings into a content plan — then write pages built on real case studies.</p>\n<p>My free GEO system (with or without an MCP)</p>\n<p>Piece</p>\n<p>What I use</p>\n<p>Cost</p>\n<p>Agent</p>\n<p>Hermes Agent (or an Agent OS)</p>\n<p>Free, open source</p>\n<p>Brain</p>\n<p>DeepSeek V4.1 Flash via OpenCode</p>\n<p>Free</p>\n<p>Data</p>\n<p>Google Search Console export (CSV)</p>\n<p>Free</p>\n<p>Writing</p>\n<p>An SEO skill — a ~100-point quality checklist</p>\n<p>Inside the AI Profit Boardroom</p>\n<p>Publishing</p>\n<p>WordPress or Netlify, connected to the agent</p>\n<p>Your existing site</p>\n<p>I export Search Console data to a CSV, give it to Hermes running a free DeepSeek model, and ask it to analyse what’s working and suggest GEO keywords. It builds a report in the workspace, then my SEO skill writes and publishes pages to WordPress. A GEO MCP adds live AI-visibility checks on top.</p>\n<p>What a GEO MCP can’t do</p>\n<p>A tool can tell you whether you’re cited — it can’t make you citable. That comes from the three moves behind all my GEO results:</p>\n<p>Move</p>\n<p>What it means</p>\n<p>How I do it</p>\n<p>1. Be the source</p>\n<p>AI repeats what it reads, so be what it reads</p>\n<p>A real case study or experiment in every page</p>\n<p>2. Be everywhere</p>\n<p>Several sources saying the same thing</p>\n<p>Multiple sites, a community and a subreddit, each with its own angle</p>\n<p>3. Be first</p>\n<p>The first good page on a new topic wins</p>\n<p>Publish within 24 hours of a new tool or trend</p>\n<p>One rule you can’t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical — covering the page text, titles, meta descriptions, structured data and even image alt text — because AI models predict words rather than look up facts. That’s why every page I publish is built on real experience and checked before it goes live.</p>\n<p>Results this approach produces</p>\n<p>Google’s AI Overview and AI Mode name me first for “best GEO expert” — and cite several of my pages.</p>\n<p>The AI Profit Boardroom ranks #1 in Google’s AI for “best AI community”, cited twice.</p>\n<p>One site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.</p>\n<p>Perplexity lists me several times in its recommendations for GEO experts.</p>\n<p>Choosing the right GEO MCP</p>\n<p>Pick based on the job. If you want to know whether AI engines mention you and who they name instead, choose a visibility tracker like Cite42 or the open-source mcp-geo. If you want to check whether your site is technically ready for AI — crawler access, structure, schema — choose an audit tool like mcp-geo-server or geo-optimizer-mcp. If you want an all-in-one hosted platform, Naia or Luce may suit you. Start with a free or open-source option to learn what you need before paying for anything.</p>\n<p>A simple GEO MCP workflow</p>\n<p>Each Monday, ask your agent to run your ten money prompts through the GEO MCP and summarise changes from last week: where you gained or lost mentions, which competitors appeared, which sources were cited. Then pick one page to improve and one new page to publish. That one-hour weekly loop turns GEO from a guessing game into a measurable process.</p>\n<p>The bottom line on GEO MCP</p>\n<p>A GEO MCP server turns AI-visibility tracking and GEO audits into something your agent does for you. Pick one, plug it into Claude or Hermes, and combine it with real content. Or claim a free strategy session and we’ll show you what’s working.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google’s AI names me first for “best GEO expert”. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>FAQ: geo mcp</p>\n<p>What is a GEO MCP?</p>\n<p>An MCP server that gives AI agents generative engine optimisation tools, like checking AI visibility or auditing a site’s AI readiness.</p>\n<p>Which GEO MCP servers exist?</p>\n<p>Options include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.</p>\n<p>Can I use a GEO MCP with Claude?</p>\n<p>Yes — Claude Desktop and Claude Code support MCP servers.</p>\n<p>Is there a free GEO MCP?</p>\n<p>Open-source options like mcp-geo and geo-optimizer-mcp are free to run; some others are paid or pay-per-call.</p>\n<p>Does a GEO MCP improve rankings by itself?</p>\n<p>No — it measures and audits; the gains come from real, well-structured content and authority.</p>\n<p>Do I need a GEO MCP to do GEO?</p>\n<p>No — you can test prompts manually; a GEO MCP just automates the checks inside your agent.</p>\n<p>Ready to rank in Google and AI search? Claim your free strategy session here.</p>\n<p>Free resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.</p>\n<p>Want to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.</p>\n<p>Claim Your Free SEO Strategy Session →Get the Free GEO &amp; AI SEO Checklist →Get the 200+ AI SEO Prompts →Join the AI Profit Boardroom →</p>\n<p>Related reading</p>\n<p>Claude AI GEO</p>\n<p>How to Do GEO for a Website</p>\n<p>Free GEO Audit</p>\n<p>Last updated October 2026. This page is a living guide to geo mcp — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "2f3816905807",
+          "title": "How to Do GEO for a Website: My Free Step-by-Step System",
+          "content": "Here&rsquo;s how to do GEO for a website using the exact free system I use to rank in Google&rsquo;s AI Mode, AI Overviews, ChatGPT and Perplexity: Hermes Agent, a free DeepSeek model, your own Search Console data, an SEO skill, and real case studies. In the video below I walk through it with real rankings and traffic. Here are the steps, in order.\n\nKey takeaways\n\nGEO = getting your website named and cited in AI answers.\nStart with your Search Console data &mdash; it&rsquo;s free and shows what works.\nWrite pages around real case studies, answer-first.\nFact-check before publishing &mdash; Google calls it critical.\n\n\n\n\n\n\nProof the system works\n\nGoogle&rsquo;s AI Overview and AI Mode name me first for &ldquo;best GEO expert&rdquo; &mdash; and cite several of my pages.\nThe AI Profit Boardroom ranks #1 in Google&rsquo;s AI for &ldquo;best AI community&rdquo;, cited twice.\nOne site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.\nPerplexity lists me several times in its recommendations for GEO experts.\n\nThe free GEO stack\n\n\n\n\nPiece\nWhat I use\nCost\n\n\n\n\nAgent\nHermes Agent (or an Agent OS)\nFree, open source\n\n\nBrain\nDeepSeek V4.1 Flash via OpenCode\nFree\n\n\nData\nGoogle Search Console export (CSV)\nFree\n\n\nWriting\nAn SEO skill &mdash; a ~100-point quality checklist\nInside the AI Profit Boardroom\n\n\nPublishing\nWordPress or Netlify, connected to the agent\nYour existing site\n\n\n\n\nHermes Agent is free and open source, and DeepSeek V4.1 Flash is free inside OpenCode &mdash; so the whole stack costs nothing except your time. You can also use Claude or an Agent OS; the process is the same.\n\nWant us to do GEO for your website? Claim your free GEO and SEO strategy session &mdash; we&rsquo;ll look at your site, your competitors and the keywords you&rsquo;re closest to winning, then give you a custom game plan.\nPrefer to pick a time now? Book a free SEO strategy session.\n\nClaim Your Free SEO Strategy Session &rarr;Book a Free Strategy Session &rarr;\n\nStep 1: export your Search Console data\nIn Google Search Console, export your performance data (queries and pages) to a CSV. This is your most valuable GEO input: it shows what Google already trusts you for.\nStep 2: let your agent analyse what&rsquo;s working\nGive the CSV to Hermes and ask: &ldquo;Analyse this. Based on what&rsquo;s working, give me keyword and topic ideas that would help us rank in AI search engines.&rdquo; Mine built a full report: clicks, brand share of clicks, non-brand click-through rate, and what was winning &mdash; comparison articles, Agent OS clusters and free AI community pages.\n\nWant us to analyse your Search Console data for you? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\nStep 3: pick keywords closest to revenue\nFrom the report, pick topics where you already have impressions, plus fresh topics nobody has covered yet. Comparison pages and &ldquo;best X&rdquo; pages are especially strong for GEO because AI engines love to summarise them.\nStep 4: write pages around real case studies\nThis is the step most people skip. Give your agent a real case study &mdash; something you tested, a result you got &mdash; and have it write the page from your perspective, answer-first, with tables and FAQs. AI engines can generate generic content themselves; they can&rsquo;t generate your experience. That&rsquo;s why Google&rsquo;s AI describes me as known for documenting GEO experiments and public testing.\nStep 5: publish with a quality checklist\nI give Hermes an SEO skill &mdash; about a 100-point checklist &mdash; and access to WordPress or Netlify, so it can write, check and publish. But I review before anything goes live.\nOne rule you can&rsquo;t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical &mdash; covering the page text, titles, meta descriptions, structured data and even image alt text &mdash; because AI models predict words rather than look up facts. That&rsquo;s why every page I publish is built on real experience and checked before it goes live.\nStep 6: be everywhere and be first\n\n\n\n\nMove\nWhat it means\nHow I do it\n\n\n\n\n1. Be the source\nAI repeats what it reads, so be what it reads\nA real case study or experiment in every page\n\n\n2. Be everywhere\nSeveral sources saying the same thing\nMultiple sites, a community and a subreddit, each with its own angle\n\n\n3. Be first\nThe first good page on a new topic wins\nPublish within 24 hours of a new tool or trend\n\n\n\n\nStep 7: check your AI visibility\nTest your money questions in Google AI Mode, ChatGPT and Perplexity every month. I use Perplexity mainly to get a feel for whether we&rsquo;re being recommended. A GEO MCP can automate the checks.\nGEO for local and service businesses\nThis isn&rsquo;t just for AI-tool sites. One of my favourite examples is &ldquo;best HARO agency&rdquo; &mdash; a normal service business &mdash; where Google&rsquo;s AI Overview lists five suppliers and links to us first. The same steps work for a dentist, a plumber or an accountant: answer the questions customers ask, build pages around your real results, get mentioned on local and industry sites, and keep facts current.\nCommon GEO mistakes on websites\nThe mistakes I see most: publishing generic AI content with no real experience, burying the answer below a long introduction, relying on one website, covering new topics too late, and never checking whether AI engines actually mention you. Avoid those five and you&rsquo;re ahead of most of your competitors, because very few businesses are doing GEO properly yet.\nGet help doing GEO for your website\nThat&rsquo;s how to do GEO for a website: your data, your experience, answer-first pages, a checklist and consistency. Claim a free strategy session and we&rsquo;ll map it out for your site, or join the AI Profit Boardroom for the full system and SEO skill.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google&rsquo;s AI names me first for &ldquo;best GEO expert&rdquo;. Claim your free strategy session or join the AI Profit Boardroom.\nFAQ: how to do geo for website\nHow do I do GEO for my website?\nExport Search Console data, have an agent find what&rsquo;s working, write answer-first pages around real case studies, fact-check, publish, and check AI visibility monthly.\nCan I do GEO for free?\nYes &mdash; Hermes Agent, a free DeepSeek model in OpenCode and Search Console are all free.\nHow long does GEO take to work?\nSome of my pages were cited by Google&rsquo;s AI within days; building authority takes longer.\nDo I need case studies for GEO?\nThey&rsquo;re the biggest advantage &mdash; AI can&rsquo;t generate your unique experience.\nWhich AI engines should I target?\nGoogle AI Mode and AI Overviews, ChatGPT, Gemini, Perplexity and Claude.\nCan GEO work for a local business?\nYes &mdash; the same steps work for service businesses like dentists, plumbers and accountants.\n\nReady to rank in Google and AI search? Claim your free strategy session here.\nFree resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.\nWant to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.\n\nClaim Your Free SEO Strategy Session &rarr;Get the Free GEO &amp; AI SEO Checklist &rarr;Get the 200+ AI SEO Prompts &rarr;Join the AI Profit Boardroom &rarr;\n\nRelated reading\n\nGEO Examples\nClaude GEO SEO\nFree GEO Audit\n\nLast updated October 2026. This page is a living guide to how to do geo for website &mdash; the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/how-to-do-geo-for-website/?utm_source=rss&utm_medium=rss&utm_campaign=how-to-do-geo-for-website",
+          "author": "Clawdbot",
+          "published": "2026-10-19T03:28:03",
+          "source": "Julian Goldie",
+          "source_type": "rss",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A step-by-step guide to generative engine optimization that names Hermes Agent as a core component of a free workflow alongside a DeepSeek model, Search Console data, and an SEO skill. The author demonstrates the system in a video and shows rankings in Google AI Mode, ChatGPT, and Perplexity.",
+          "importance_score": 35.0,
+          "reasoning": "This is third-party marketing content that only uses Hermes Agent as a tool within an SEO workflow, not news about Hermes itself. It has modest value as evidence of real-world adoption but is promotional and low-effort relative to official releases.",
+          "themes": [
+            "GEO workflow tutorial",
+            "third-party adoption",
+            "SEO automation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A step-by-step guide to generative engine optimization that names Hermes Agent as a core component of a free workflow alongside a DeepSeek model, Search Console data, and an SEO skill. The author demonstrates the system in a video and shows rankings in Google AI Mode, ChatGPT, and Perplexity.</p>",
+          "content_html": "<p>Here’s how to do GEO for a website using the exact free system I use to rank in Google’s AI Mode, AI Overviews, ChatGPT and Perplexity: Hermes Agent, a free DeepSeek model, your own Search Console data, an SEO skill, and real case studies. In the video below I walk through it with real rankings and traffic. Here are the steps, in order.</p>\n<p>Key takeaways</p>\n<p>GEO = getting your website named and cited in AI answers.</p>\n<p>Start with your Search Console data — it’s free and shows what works.</p>\n<p>Write pages around real case studies, answer-first.</p>\n<p>Fact-check before publishing — Google calls it critical.</p>\n<p>Proof the system works</p>\n<p>Google’s AI Overview and AI Mode name me first for “best GEO expert” — and cite several of my pages.</p>\n<p>The AI Profit Boardroom ranks #1 in Google’s AI for “best AI community”, cited twice.</p>\n<p>One site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.</p>\n<p>Perplexity lists me several times in its recommendations for GEO experts.</p>\n<p>The free GEO stack</p>\n<p>Piece</p>\n<p>What I use</p>\n<p>Cost</p>\n<p>Agent</p>\n<p>Hermes Agent (or an Agent OS)</p>\n<p>Free, open source</p>\n<p>Brain</p>\n<p>DeepSeek V4.1 Flash via OpenCode</p>\n<p>Free</p>\n<p>Data</p>\n<p>Google Search Console export (CSV)</p>\n<p>Free</p>\n<p>Writing</p>\n<p>An SEO skill — a ~100-point quality checklist</p>\n<p>Inside the AI Profit Boardroom</p>\n<p>Publishing</p>\n<p>WordPress or Netlify, connected to the agent</p>\n<p>Your existing site</p>\n<p>Hermes Agent is free and open source, and DeepSeek V4.1 Flash is free inside OpenCode — so the whole stack costs nothing except your time. You can also use Claude or an Agent OS; the process is the same.</p>\n<p>Want us to do GEO for your website? Claim your free GEO and SEO strategy session — we’ll look at your site, your competitors and the keywords you’re closest to winning, then give you a custom game plan.</p>\n<p>Prefer to pick a time now? Book a free SEO strategy session.</p>\n<p>Claim Your Free SEO Strategy Session →Book a Free Strategy Session →</p>\n<p>Step 1: export your Search Console data</p>\n<p>In Google Search Console, export your performance data (queries and pages) to a CSV. This is your most valuable GEO input: it shows what Google already trusts you for.</p>\n<p>Step 2: let your agent analyse what’s working</p>\n<p>Give the CSV to Hermes and ask: “Analyse this. Based on what’s working, give me keyword and topic ideas that would help us rank in AI search engines.” Mine built a full report: clicks, brand share of clicks, non-brand click-through rate, and what was winning — comparison articles, Agent OS clusters and free AI community pages.</p>\n<p>Want us to analyse your Search Console data for you? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Step 3: pick keywords closest to revenue</p>\n<p>From the report, pick topics where you already have impressions, plus fresh topics nobody has covered yet. Comparison pages and “best X” pages are especially strong for GEO because AI engines love to summarise them.</p>\n<p>Step 4: write pages around real case studies</p>\n<p>This is the step most people skip. Give your agent a real case study — something you tested, a result you got — and have it write the page from your perspective, answer-first, with tables and FAQs. AI engines can generate generic content themselves; they can’t generate your experience. That’s why Google’s AI describes me as known for documenting GEO experiments and public testing.</p>\n<p>Step 5: publish with a quality checklist</p>\n<p>I give Hermes an SEO skill — about a 100-point checklist — and access to WordPress or Netlify, so it can write, check and publish. But I review before anything goes live.</p>\n<p>One rule you can’t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical — covering the page text, titles, meta descriptions, structured data and even image alt text — because AI models predict words rather than look up facts. That’s why every page I publish is built on real experience and checked before it goes live.</p>\n<p>Step 6: be everywhere and be first</p>\n<p>Move</p>\n<p>What it means</p>\n<p>How I do it</p>\n<p>1. Be the source</p>\n<p>AI repeats what it reads, so be what it reads</p>\n<p>A real case study or experiment in every page</p>\n<p>2. Be everywhere</p>\n<p>Several sources saying the same thing</p>\n<p>Multiple sites, a community and a subreddit, each with its own angle</p>\n<p>3. Be first</p>\n<p>The first good page on a new topic wins</p>\n<p>Publish within 24 hours of a new tool or trend</p>\n<p>Step 7: check your AI visibility</p>\n<p>Test your money questions in Google AI Mode, ChatGPT and Perplexity every month. I use Perplexity mainly to get a feel for whether we’re being recommended. A GEO MCP can automate the checks.</p>\n<p>GEO for local and service businesses</p>\n<p>This isn’t just for AI-tool sites. One of my favourite examples is “best HARO agency” — a normal service business — where Google’s AI Overview lists five suppliers and links to us first. The same steps work for a dentist, a plumber or an accountant: answer the questions customers ask, build pages around your real results, get mentioned on local and industry sites, and keep facts current.</p>\n<p>Common GEO mistakes on websites</p>\n<p>The mistakes I see most: publishing generic AI content with no real experience, burying the answer below a long introduction, relying on one website, covering new topics too late, and never checking whether AI engines actually mention you. Avoid those five and you’re ahead of most of your competitors, because very few businesses are doing GEO properly yet.</p>\n<p>Get help doing GEO for your website</p>\n<p>That’s how to do GEO for a website: your data, your experience, answer-first pages, a checklist and consistency. Claim a free strategy session and we’ll map it out for your site, or join the AI Profit Boardroom for the full system and SEO skill.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google’s AI names me first for “best GEO expert”. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>FAQ: how to do geo for website</p>\n<p>How do I do GEO for my website?</p>\n<p>Export Search Console data, have an agent find what’s working, write answer-first pages around real case studies, fact-check, publish, and check AI visibility monthly.</p>\n<p>Can I do GEO for free?</p>\n<p>Yes — Hermes Agent, a free DeepSeek model in OpenCode and Search Console are all free.</p>\n<p>How long does GEO take to work?</p>\n<p>Some of my pages were cited by Google’s AI within days; building authority takes longer.</p>\n<p>Do I need case studies for GEO?</p>\n<p>They’re the biggest advantage — AI can’t generate your unique experience.</p>\n<p>Which AI engines should I target?</p>\n<p>Google AI Mode and AI Overviews, ChatGPT, Gemini, Perplexity and Claude.</p>\n<p>Can GEO work for a local business?</p>\n<p>Yes — the same steps work for service businesses like dentists, plumbers and accountants.</p>\n<p>Ready to rank in Google and AI search? Claim your free strategy session here.</p>\n<p>Free resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.</p>\n<p>Want to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.</p>\n<p>Claim Your Free SEO Strategy Session →Get the Free GEO &amp; AI SEO Checklist →Get the 200+ AI SEO Prompts →Join the AI Profit Boardroom →</p>\n<p>Related reading</p>\n<p>GEO Examples</p>\n<p>Claude GEO SEO</p>\n<p>Free GEO Audit</p>\n<p>Last updated October 2026. This page is a living guide to how to do geo for website — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "0c136c05af67",
+          "title": "Daily sync: 2026-10-19 02:00:34",
+          "content": "Daily sync: 2026-10-19 02:00:34",
+          "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/39b904e77f5b381dc78524a142fed8a9079ef25a",
+          "author": "bot@hermes-agent-community.github.io",
+          "published": "2026-10-19T06:00:34",
+          "source": "Recent Commits to hermes-agent-community:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An automated commit to the hermes-agent-community repository main branch labeled as a routine daily sync. The commit contains no descriptive content beyond its timestamped title.",
+          "importance_score": 8.0,
+          "reasoning": "This is a boilerplate automated maintenance commit with no merged features, fixes, or changelog entries described. It is low-effort and provides no meaningful information for Hermes users, so it is heavily deprioritized.",
+          "themes": [
+            "repository maintenance",
+            "automated sync"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An automated commit to the hermes-agent-community repository main branch labeled as a routine daily sync. The commit contains no descriptive content beyond its timestamped title.</p>",
+          "content_html": "<p>Daily sync: 2026-10-19 02:00:34</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 34,
+      "category_summary": "Official Hermes Agent documentation led the section: support for **[Claude Pro/Max subscriptions via a direct SDK plugin](/?date=2026-10-20&category=research#item-hn-49790991)** removes a major cost barrier for existing Anthropic subscribers, Hermes Agent shipped **[v0.20.0](/?date=2026-10-20&category=research#item-hn-49159200)** as the latest core release, and **[Hermes Kanban](/?date=2026-10-20&category=research#item-hn-49604068)** added documented [profile-based multi-agent collaboration](/?date=2026-10-20&category=research#item-hn-49604068). Project-health reporting flagged roughly [23,000 open PRs](/?date=2026-10-20&category=research#item-hn-49424643) in the hermes-agent repo — a growing maintainer review bottleneck that users should expect to affect patch turnaround. Deployment documentation matured on two fronts: a [Kubernetes writeup documenting the missing Helm chart and root-at-init image requirement](/?date=2026-10-20&category=research#item-hn-49977400), plus a [community containerization guide with packaging and isolation patterns for self-hosters](/?date=2026-10-20&category=research#item-hn-50131496). Research aligned closely with ecosystem trends: [MemPilot's on-demand multimodal memory curation](/?date=2026-10-20&category=research#item-2610.06830) targets a core need of long-running agents, and [RSIFlow's adaptive self-improvement workflows](/?date=2026-10-20&category=research#item-2610.21791) mirror the community-built **[Refine Cycle](/?date=2026-10-20&category=research#item-hn-49606988)** plugin, making the two worth reading together. Cross-tool orchestration rounded out practical coverage, led by a [skill that alternates Codex and Claude Code in an autonomous issue-to-PR loop](/?date=2026-10-20&category=research#item-hn-49136162). Verification note: a widely discussed [reliability thread](/?date=2026-10-20&category=research#item-hn-49916751) cites a 'GLM 5.3 Flash' backend that does not appear in Z.ai's release record (latest documented release: **GLM-5.2**), so treat that model name as unconfirmed. Low-substance GEO/AEO marketing content fell below the ranking cutoff.",
+      "category_summary_html": "<p>Official Hermes Agent documentation led the section: support for <strong><a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscriptions via a direct SDK plugin</a></strong> removes a major cost barrier for existing Anthropic subscribers, Hermes Agent shipped <strong><a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.20.0</a></strong> as the latest core release, and <strong><a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> added documented <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">profile-based multi-agent collaboration</a>. Project-health reporting flagged roughly <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000 open PRs</a> in the hermes-agent repo — a growing maintainer review bottleneck that users should expect to affect patch turnaround. Deployment documentation matured on two fronts: a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes writeup documenting the missing Helm chart and root-at-init image requirement</a>, plus a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">community containerization guide with packaging and isolation patterns for self-hosters</a>. Research aligned closely with ecosystem trends: <a href=\"/?date=2026-10-20&amp;category=research#item-2610.06830\" class=\"internal-link\" rel=\"noopener noreferrer\">MemPilot's on-demand multimodal memory curation</a> targets a core need of long-running agents, and <a href=\"/?date=2026-10-20&amp;category=research#item-2610.21791\" class=\"internal-link\" rel=\"noopener noreferrer\">RSIFlow's adaptive self-improvement workflows</a> mirror the community-built <strong><a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> plugin, making the two worth reading together. Cross-tool orchestration rounded out practical coverage, led by a <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">skill that alternates Codex and Claude Code in an autonomous issue-to-PR loop</a>. Verification note: a widely discussed <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">reliability thread</a> cites a 'GLM 5.3 Flash' backend that does not appear in Z.ai's release record (latest documented release: <strong>GLM-5.2</strong>), so treat that model name as unconfirmed. Low-substance GEO/AEO marketing content fell below the ranking cutoff.</p>",
+      "themes": [
+        {
+          "name": "Deployment and Self-Hosting",
+          "description": "Practical guidance and pain points for running Hermes Agent in containers, on Kubernetes, and on edge hardware, including root-at-init issues and missing Helm charts.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Ecosystem Tools and Plugins",
+          "description": "Community-built extensions around Hermes Agent, including orchestrators, observability dashboards, self-improvement plugins, and skills coordinating other coding agents.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Multi-Model and Multi-Agent Operations",
+          "description": "Operating Hermes Agent across model backends and multiple agent profiles, including model routing concerns, subscription-based model access, and kanban-based multi-agent collaboration.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 67.0
+        },
+        {
+          "name": "Project Health and Governance",
+          "description": "Signals about the Hermes Agent project itself: version releases, official feature docs, a very large open-PR backlog, moderation disputes, and trademark questions.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 66.0
+        },
+        {
+          "name": "Agent Research: Memory, Adaptation, Self-Improvement",
+          "description": "Academic papers on multimodal memory curation, proactive exploration benchmarks, visual tool-use, and recursive self-improvement workflows that inform agent harness design.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 59.0
+        },
+        {
+          "name": "Agent-Based SEO/GEO Tooling",
+          "description": "Posts describing practical agent stacks — Hermes Agent with DeepSeek models, Search Console data, and MCP servers for AI visibility tracking — showing agents being used as SEO automation infrastructure.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Agent Harness and Ecosystem Tooling",
+          "description": "Coverage of adjacent open-source agent tooling, including a review of StarNet OS as a local-first desktop harness for running agent teams with scoped permissions.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 50.0
+        },
+        {
+          "name": "Generative Engine Optimization (GEO) Marketing Content",
+          "description": "A cluster of promotional blog posts from a single author defining GEO, contrasting it with SEO and AEO, and selling strategy sessions. Low technical depth, repeated claims and tables, minimal verifiable data.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 27.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-49318128",
+          "title": "Show HN: Grafana agent observability for Hermes Agent",
+          "content": "Show HN: Grafana agent observability for Hermes Agent",
+          "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+          "author": "eventuallyacat",
+          "published": "2026-08-16T08:40:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN for grafana-agento11y-hermes, an open-source Grafana-based observability integration for Hermes Agent hosted on GitHub, enabling monitoring of agent behavior.",
+          "importance_score": 65.0,
+          "reasoning": "Observability tooling addresses a real operational need for running agents; a community-built Grafana integration is practically useful even if the entry is only a repository pointer.",
+          "themes": [
+            "Observability",
+            "Ecosystem Tools"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN for grafana-agento11y-hermes, an open-source Grafana-based observability integration for Hermes Agent hosted on GitHub, enabling monitoring of agent behavior.</p>",
+          "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai GLM 5.3 Flash spiraling into a long trance-like thinking state (over 1m36s with a long string of output) after asking it to print local environment details and PATH, asking whether the output is meaningful.",
+          "importance_score": 64.0,
+          "reasoning": "Real-world reliability debugging report involving a specific model backend (GLM 5.3 Flash) and an observed pathological behavior; useful signal on model-agent interaction failure modes despite being an open question.",
+          "themes": [
+            "Debugging",
+            "Model Backends"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai GLM 5.3 Flash spiraling into a long trance-like thinking state (over 1m36s with a long string of output) after asking it to print local environment details and PATH, asking whether the output is meaningful.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49208206",
+          "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+          "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+          "author": "sundarurfriend",
+          "published": "2026-08-07T10:12:27Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "GitHub issue reporting that asking whether EvoMap's Evolver was a reference for Hermes resulted in the question being deleted and the user blocked, raising moderation and transparency concerns in the project repository.",
+          "importance_score": 63.0,
+          "reasoning": "Community governance and moderation transparency issues can significantly affect trust in an open-source project, making this a notable reputational signal despite limited technical depth.",
+          "themes": [
+            "Governance",
+            "Moderation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>GitHub issue reporting that asking whether EvoMap's Evolver was a reference for Hermes resulted in the question being deleted and the user blocked, raising moderation and transparency concerns in the project repository.</p>",
+          "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+        },
+        {
+          "id": "2610.06830",
+          "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
+          "content": "Memory has become integral to the LLM agent ecosystem, supporting information retention and reuse across interactions. However, most existing agent memory systems construct memory in a query-agnostic manner, which can incur unnecessary preprocessing cost and discard details that later prove essential. Recent studies have begun shifting memory processing toward runtime adaptation, but typically specialize in particular operations or fixed processing schemes, leaving flexible control over performa",
+          "url": "https://arxiv.org/abs/2610.06830",
+          "author": "HF Daily Papers",
+          "published": "2026-10-05T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Research paper introducing MemPilot, a system for orchestrating on-demand multimodal memory curation in LLM agents. It critiques query-agnostic memory construction that wastes preprocessing cost and loses details, and shifts memory processing toward runtime adaptation with flexible control over performance.",
+          "importance_score": 62.0,
+          "reasoning": "Directly relevant to agent memory architecture, a core concern for long-running agents like Hermes, but it is general academic work rather than Hermes-specific documentation.",
+          "themes": [
+            "Agent Memory Research",
+            "Runtime Adaptation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Research paper introducing MemPilot, a system for orchestrating on-demand multimodal memory curation in LLM agents. It critiques query-agnostic memory construction that wastes preprocessing cost and loses details, and shifts memory processing toward runtime adaptation with flexible control over performance.</p>",
+          "content_html": "<p>Memory has become integral to the LLM agent ecosystem, supporting information retention and reuse across interactions. However, most existing agent memory systems construct memory in a query-agnostic manner, which can incur unnecessary preprocessing cost and discard details that later prove essential. Recent studies have begun shifting memory processing toward runtime adaptation, but typically specialize in particular operations or fixed processing schemes, leaving flexible control over performa</p>"
+        },
+        {
+          "id": "2610.21791",
+          "title": "RSIFlow: Adaptive Self-Improvement Workflows with an Evolving Meta-Agent",
+          "content": "Large language model (LLM) agents have demonstrated strong capabilities in complex tasks, including code generation, tool use, and multi-hop question answering. Existing self-improvement methods enhance agent performance through model optimization, harness evolution, and executable artifact refinement, while recursive self-improvement (RSI) further extends optimization to the improvement mechanisms themselves. However, adapting self-improvement workflows to evolving performance bottlenecks while",
+          "url": "https://arxiv.org/abs/2610.21791",
+          "author": "HF Daily Papers",
+          "published": "2026-10-15T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Paper describing RSIFlow, adaptive self-improvement workflows driven by an evolving meta-agent. It covers model optimization, harness evolution, and executable artifact refinement, extending recursive self-improvement to the improvement mechanisms themselves while adapting to shifting performance bottlenecks.",
+          "importance_score": 60.0,
+          "reasoning": "Self-improving agent workflows are conceptually close to Hermes ecosystem plugins like Refine Cycle, giving moderate ecosystem relevance despite being an external research artifact.",
+          "themes": [
+            "Self-Improvement",
+            "Meta-Agents"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Paper describing RSIFlow, adaptive self-improvement workflows driven by an evolving meta-agent. It covers model optimization, harness evolution, and executable artifact refinement, extending recursive self-improvement to the improvement mechanisms themselves while adapting to shifting performance bottlenecks.</p>",
+          "content_html": "<p>Large language model (LLM) agents have demonstrated strong capabilities in complex tasks, including code generation, tool use, and multi-hop question answering. Existing self-improvement methods enhance agent performance through model optimization, harness evolution, and executable artifact refinement, while recursive self-improvement (RSI) further extends optimization to the improvement mechanisms themselves. However, adapting self-improvement workflows to evolving performance bottlenecks while</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "GitHub repository (hermes-jekyl-hyde) presenting adversarial LLM reversal techniques targeting hermes-agent, exploring security or red-team angles against the agent.",
+          "importance_score": 60.0,
+          "reasoning": "Security research aimed specifically at hermes-agent is noteworthy for risk assessment and hardening, though the entry lacks detail on findings or severity.",
+          "themes": [
+            "Security",
+            "Adversarial Testing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>GitHub repository (hermes-jekyl-hyde) presenting adversarial LLM reversal techniques targeting hermes-agent, exploring security or red-team angles against the agent.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "2610.26860",
+          "title": "OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory",
+          "content": "Multimodal large language models (MLLMs) have made rapid progress on visual reasoning, yet many tasks require evidence that is difficult to obtain through internal reasoning alone: our controlled study on 22 benchmarks shows that simply increasing the inference budget of the base model yields only modest gains. Such tasks demand grounded perception, external knowledge, and numerical measurements obtained through heterogeneous tools, whose outputs must be made interpretable to the model and retai",
+          "url": "https://arxiv.org/abs/2610.26860",
+          "author": "HF Daily Papers",
+          "published": "2026-10-19T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Paper on OpenVLHarness for real-world visual agentic tool-use with multimodal memory. A controlled study across 22 benchmarks shows that increasing inference budget of the base model yields only modest gains; tasks require grounded perception, external knowledge, and heterogeneous tool outputs made interpretable and retained.",
+          "importance_score": 58.0,
+          "reasoning": "Findings on tool-use and memory retention matter for agent harness design, including Hermes-style harnesses, but the work is not Hermes-specific.",
+          "themes": [
+            "Tool Use",
+            "Multimodal Memory"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Paper on OpenVLHarness for real-world visual agentic tool-use with multimodal memory. A controlled study across 22 benchmarks shows that increasing inference budget of the base model yields only modest gains; tasks require grounded perception, external knowledge, and heterogeneous tool outputs made interpretable and retained.</p>",
+          "content_html": "<p>Multimodal large language models (MLLMs) have made rapid progress on visual reasoning, yet many tasks require evidence that is difficult to obtain through internal reasoning alone: our controlled study on 22 benchmarks shows that simply increasing the inference budget of the base model yields only modest gains. Such tasks demand grounded perception, external knowledge, and numerical measurements obtained through heterogeneous tools, whose outputs must be made interpretable to the model and retai</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage) with a Linux side communicating with an Arduino side, as an always-on low-cost alternative to a VPS or personal machine.",
+          "importance_score": 58.0,
+          "reasoning": "Creative low-power self-hosting recipe with concrete hardware specs; useful niche tip for users avoiding cloud costs, though limited in broader technical depth.",
+          "themes": [
+            "Self-Hosting",
+            "Edge Hardware"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage) with a Linux side communicating with an Arduino side, as an always-on low-cost alternative to a VPS or personal machine.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "65555ed53675",
+          "title": "GEO MCP: The Best MCP Servers for Generative Engine Optimization",
+          "content": "A GEO MCP server plugs generative engine optimisation tools straight into your AI agent: ask Claude, Hermes or Cursor whether ChatGPT, Gemini, Perplexity and Google’s AI Overviews mention your brand, which competitors they name and which sources they cite — or audit your site’s AI readiness. In the video below I show my free GEO system with Hermes Agent. Here are the GEO MCP servers worth knowing and how to use them.\n\nKey takeaways\n\n- MCP (Model Context Protocol) lets agents use external tools.\n\n- GEO MCP servers do two jobs: AI visibility tracking and site GEO audits.\n\n- Options include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.\n\n- Pair a GEO MCP with Search Console data and real case studies.\n\n## What a GEO MCP is\n\nMCP is a standard way to connect AI agents to tools and data. A GEO MCP server exposes GEO tools — like “check whether ChatGPT mentions my brand for this prompt” or “score this page’s AI readiness” — so your agent can call them during a conversation. Instead of manually testing prompts in five AI engines, you ask your agent and it runs the checks for you.\n\n## The best GEO MCP servers\n\nGEO MCP\nWhat it does\nNotes\n\nCite42\nChecks whether ChatGPT, Claude, Perplexity, Gemini and AI Overviews mention you, which competitors they name and which sources they cite; plus keyword data\nPay per call; works in Claude, Claude Code, Codex, Cursor, ChatGPT\n\nmcp-geo\nRuns prompts across the major AI engines and stores citations and visibility metrics\nOpen source (MIT)\n\nNaia\nHosted GEO platform: visibility analysis, content generation, execution plans\nAPI key\n\nLuce\nGEO plus SEO audits and Reddit marketing\nOAuth sign-in\n\nmcp-geo-server\nTechnical SEO, AI crawler directives (GPTBot, ClaudeBot, PerplexityBot) and answer-engine readiness audits\nOpen source\n\ngeo-optimizer-mcp\nScores a site’s AI readiness 0–100 with a grade\nRuns locally, no account\n\nThese are listings from each project’s own pages; features and pricing change, so check the current docs before you rely on one.\n\nRather have experts run your GEO? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant your brand named in AI answers? Claim your free GEO and SEO strategy session — we’ll look at your site, your competitors and the keywords you’re closest to winning, then give you a custom game plan.\n\nPrefer to pick a time now? Book a free SEO strategy session.\n\nClaim Your Free SEO Strategy Session →Book a Free Strategy Session →\n\n## How to use a GEO MCP with Claude or Hermes\n\n- Add the MCP server to your agent (Claude Desktop, Claude Code, Cursor or Hermes all support MCP).\n\n- Ask it to test your 10 money prompts across AI engines and summarise who gets mentioned.\n\n- Ask it to audit your key pages for AI readiness.\n\n- Feed it your Search Console export to find what already works.\n\n- Turn the findings into a content plan — then write pages built on real case studies.\n\n## My free GEO system (with or without an MCP)\n\nPiece\nWhat I use\nCost\n\nAgent\nHermes Agent (or an Agent OS)\nFree, open source\n\nBrain\nDeepSeek V4.1 Flash via OpenCode\nFree\n\nData\nGoogle Search Console export (CSV)\nFree\n\nWriting\nAn SEO skill — a ~100-point quality checklist\nInside the AI Profit Boardroom\n\nPublishing\nWordPress or Netlify, connected to the agent\nYour existing site\n\nI export Search Console data to a CSV, give it to Hermes running a free DeepSeek model, and ask it to analyse what’s working and suggest GEO keywords. It builds a report in the workspace, then my SEO skill writes and publishes pages to WordPress. A GEO MCP adds live AI-visibility checks on top.\n\n## What a GEO MCP can’t do\n\nA tool can tell you whether you’re cited — it can’t make you citable. That comes from the three moves behind all my GEO results:\n\nMove\nWhat it means\nHow I do it\n\n1. Be the source\nAI repeats what it reads, so be what it reads\nA real case study or experiment in every page\n\n2. Be everywhere\nSeveral sources saying the same thing\nMultiple sites, a community and a subreddit, each with its own angle\n\n3. Be first\nThe first good page on a new topic wins\nPublish within 24 hours of a new tool or trend\n\nOne rule you can’t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical — covering the page text, titles, meta descriptions, structured data and even image alt text — because AI models predict words rather than look up facts. That’s why every page I publish is built on real experience and checked before it goes live.\n\n## Results this approach produces\n\n- Google’s AI Overview and AI Mode name me first for “best GEO expert” — and cite several of my pages.\n\n- The AI Profit Boardroom ranks #1 in Google’s AI for “best AI community”, cited twice.\n\n- One site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.\n\n- Perplexity lists me several times in its recommendations for GEO experts.\n\n## Choosing the right GEO MCP\n\nPick based on the job. If you want to know whether AI engines mention you and who they name instead, choose a visibility tracker like Cite42 or the open-source mcp-geo. If you want to check whether your site is technically ready for AI — crawler access, structure, schema — choose an audit tool like mcp-geo-server or geo-optimizer-mcp. If you want an all-in-one hosted platform, Naia or Luce may suit you. Start with a free or open-source option to learn what you need before paying for anything.\n\n## A simple GEO MCP workflow\n\nEach Monday, ask your agent to run your ten money prompts through the GEO MCP and summarise changes from last week: where you gained or lost mentions, which competitors appeared, which sources were cited. Then pick one page to improve and one new page to publish. That one-hour weekly loop turns GEO from a guessing game into a measurable process.\n\n## The bottom line on GEO MCP\n\nA GEO MCP server turns AI-visibility tracking and GEO audits into something your agent does for you. Pick one, plug it into Claude or Hermes, and combine it with real content. Or claim a free strategy session and we’ll show you what’s working.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google’s AI names me first for “best GEO expert”. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: geo mcp\n\n### What is a GEO MCP?\n\nAn MCP server that gives AI agents generative engine optimisation tools, like checking AI visibility or auditing a site’s AI readiness.\n\n### Which GEO MCP servers exist?\n\nOptions include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.\n\n### Can I use a GEO MCP with Claude?\n\nYes — Claude Desktop and Claude Code support MCP servers.\n\n### Is there a free GEO MCP?\n\nOpen-source options like mcp-geo and geo-optimizer-mcp are free to run; some others are paid or pay-per-call.\n\n### Does a GEO MCP improve rankings by itself?\n\nNo — it measures and audits; the gains come from real, well-structured content and authority.\n\n### Do I need a GEO MCP to do GEO?\n\nNo — you can test prompts manually; a GEO MCP just automates the checks inside your agent.\n\nReady to rank in Google and AI search? Claim your free strategy session here.\n\nFree resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.\n\nWant to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.\n\nClaim Your Free SEO Strategy Session →Get the Free GEO & AI SEO Checklist →Get the 200+ AI SEO Prompts →Join the AI Profit Boardroom →\n\n## Related reading\n\n- Claude AI GEO\n\n- How to Do GEO for a Website\n\n- Free GEO Audit\n\nLast updated October 2026. This page is a living guide to geo mcp — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/geo-mcp/?utm_source=rss&utm_medium=rss&utm_campaign=geo-mcp",
+          "author": "Clawdbot",
+          "published": "2026-10-19T03:27:44",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Surveys MCP (Model Context Protocol) servers for GEO, noting they serve two functions: AI visibility tracking (checking whether ChatGPT, Gemini, Perplexity and Google AI Overviews mention a brand, name competitors, or cite sources) and site GEO-readiness audits. Lists options including Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp, and shows them being driven from agents such as Claude, Hermes and Cursor, paired with Search Console data and case studies.",
+          "importance_score": 58.0,
+          "reasoning": "Most technically substantive item: catalogs named MCP server implementations for AI visibility tracking and exposes a concrete pattern of running these tools from Hermes Agent alongside Claude and Cursor. Ecosystem-relevant as evidence of Hermes participating in the MCP tooling space, though the survey itself is shallow and promotional.",
+          "themes": [
+            "mcp",
+            "hermes-agent",
+            "generative-engine-optimization",
+            "tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Surveys MCP (Model Context Protocol) servers for GEO, noting they serve two functions: AI visibility tracking (checking whether ChatGPT, Gemini, Perplexity and Google AI Overviews mention a brand, name competitors, or cite sources) and site GEO-readiness audits. Lists options including Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp, and shows them being driven from agents such as Claude, Hermes and Cursor, paired with Search Console data and case studies.</p>",
+          "content_html": "<p>A GEO MCP server plugs generative engine optimisation tools straight into your AI agent: ask Claude, Hermes or Cursor whether ChatGPT, Gemini, Perplexity and Google’s AI Overviews mention your brand, which competitors they name and which sources they cite — or audit your site’s AI readiness. In the video below I show my free GEO system with Hermes Agent. Here are the GEO MCP servers worth knowing and how to use them.</p>\n<p>Key takeaways</p>\n<ul>\n<li>MCP (Model Context Protocol) lets agents use external tools.</li>\n</ul>\n<ul>\n<li>GEO MCP servers do two jobs: AI visibility tracking and site GEO audits.</li>\n</ul>\n<ul>\n<li>Options include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.</li>\n</ul>\n<ul>\n<li>Pair a GEO MCP with Search Console data and real case studies.</li>\n</ul>\n<h2>What a GEO MCP is</h2>\n<p>MCP is a standard way to connect AI agents to tools and data. A GEO MCP server exposes GEO tools — like “check whether ChatGPT mentions my brand for this prompt” or “score this page’s AI readiness” — so your agent can call them during a conversation. Instead of manually testing prompts in five AI engines, you ask your agent and it runs the checks for you.</p>\n<h2>The best GEO MCP servers</h2>\n<p>GEO MCP</p>\n<p>What it does</p>\n<p>Notes</p>\n<p>Cite42</p>\n<p>Checks whether ChatGPT, Claude, Perplexity, Gemini and AI Overviews mention you, which competitors they name and which sources they cite; plus keyword data</p>\n<p>Pay per call; works in Claude, Claude Code, Codex, Cursor, ChatGPT</p>\n<p>mcp-geo</p>\n<p>Runs prompts across the major AI engines and stores citations and visibility metrics</p>\n<p>Open source (MIT)</p>\n<p>Naia</p>\n<p>Hosted GEO platform: visibility analysis, content generation, execution plans</p>\n<p>API key</p>\n<p>Luce</p>\n<p>GEO plus SEO audits and Reddit marketing</p>\n<p>OAuth sign-in</p>\n<p>mcp-geo-server</p>\n<p>Technical SEO, AI crawler directives (GPTBot, ClaudeBot, PerplexityBot) and answer-engine readiness audits</p>\n<p>Open source</p>\n<p>geo-optimizer-mcp</p>\n<p>Scores a site’s AI readiness 0–100 with a grade</p>\n<p>Runs locally, no account</p>\n<p>These are listings from each project’s own pages; features and pricing change, so check the current docs before you rely on one.</p>\n<p>Rather have experts run your GEO? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want your brand named in AI answers? Claim your free GEO and SEO strategy session — we’ll look at your site, your competitors and the keywords you’re closest to winning, then give you a custom game plan.</p>\n<p>Prefer to pick a time now? Book a free SEO strategy session.</p>\n<p>Claim Your Free SEO Strategy Session →Book a Free Strategy Session →</p>\n<h2>How to use a GEO MCP with Claude or Hermes</h2>\n<ul>\n<li>Add the MCP server to your agent (Claude Desktop, Claude Code, Cursor or Hermes all support MCP).</li>\n</ul>\n<ul>\n<li>Ask it to test your 10 money prompts across AI engines and summarise who gets mentioned.</li>\n</ul>\n<ul>\n<li>Ask it to audit your key pages for AI readiness.</li>\n</ul>\n<ul>\n<li>Feed it your Search Console export to find what already works.</li>\n</ul>\n<ul>\n<li>Turn the findings into a content plan — then write pages built on real case studies.</li>\n</ul>\n<h2>My free GEO system (with or without an MCP)</h2>\n<p>Piece</p>\n<p>What I use</p>\n<p>Cost</p>\n<p>Agent</p>\n<p>Hermes Agent (or an Agent OS)</p>\n<p>Free, open source</p>\n<p>Brain</p>\n<p>DeepSeek V4.1 Flash via OpenCode</p>\n<p>Free</p>\n<p>Data</p>\n<p>Google Search Console export (CSV)</p>\n<p>Free</p>\n<p>Writing</p>\n<p>An SEO skill — a ~100-point quality checklist</p>\n<p>Inside the AI Profit Boardroom</p>\n<p>Publishing</p>\n<p>WordPress or Netlify, connected to the agent</p>\n<p>Your existing site</p>\n<p>I export Search Console data to a CSV, give it to Hermes running a free DeepSeek model, and ask it to analyse what’s working and suggest GEO keywords. It builds a report in the workspace, then my SEO skill writes and publishes pages to WordPress. A GEO MCP adds live AI-visibility checks on top.</p>\n<h2>What a GEO MCP can’t do</h2>\n<p>A tool can tell you whether you’re cited — it can’t make you citable. That comes from the three moves behind all my GEO results:</p>\n<p>Move</p>\n<p>What it means</p>\n<p>How I do it</p>\n<p>1. Be the source</p>\n<p>AI repeats what it reads, so be what it reads</p>\n<p>A real case study or experiment in every page</p>\n<p>2. Be everywhere</p>\n<p>Several sources saying the same thing</p>\n<p>Multiple sites, a community and a subreddit, each with its own angle</p>\n<p>3. Be first</p>\n<p>The first good page on a new topic wins</p>\n<p>Publish within 24 hours of a new tool or trend</p>\n<p>One rule you can’t skip: on 1 October 2026 Google updated its guidance on AI-generated content to say manual fact-checking before publishing is critical — covering the page text, titles, meta descriptions, structured data and even image alt text — because AI models predict words rather than look up facts. That’s why every page I publish is built on real experience and checked before it goes live.</p>\n<h2>Results this approach produces</h2>\n<ul>\n<li>Google’s AI Overview and AI Mode name me first for “best GEO expert” — and cite several of my pages.</li>\n</ul>\n<ul>\n<li>The AI Profit Boardroom ranks #1 in Google’s AI for “best AI community”, cited twice.</li>\n</ul>\n<ul>\n<li>One site went from zero to 1,300 Google clicks a day, with over 9,600 AI impressions in a single day.</li>\n</ul>\n<ul>\n<li>Perplexity lists me several times in its recommendations for GEO experts.</li>\n</ul>\n<h2>Choosing the right GEO MCP</h2>\n<p>Pick based on the job. If you want to know whether AI engines mention you and who they name instead, choose a visibility tracker like Cite42 or the open-source mcp-geo. If you want to check whether your site is technically ready for AI — crawler access, structure, schema — choose an audit tool like mcp-geo-server or geo-optimizer-mcp. If you want an all-in-one hosted platform, Naia or Luce may suit you. Start with a free or open-source option to learn what you need before paying for anything.</p>\n<h2>A simple GEO MCP workflow</h2>\n<p>Each Monday, ask your agent to run your ten money prompts through the GEO MCP and summarise changes from last week: where you gained or lost mentions, which competitors appeared, which sources were cited. Then pick one page to improve and one new page to publish. That one-hour weekly loop turns GEO from a guessing game into a measurable process.</p>\n<h2>The bottom line on GEO MCP</h2>\n<p>A GEO MCP server turns AI-visibility tracking and GEO audits into something your agent does for you. Pick one, plug it into Claude or Hermes, and combine it with real content. Or claim a free strategy session and we’ll show you what’s working.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author of Link Building Mastery and an AI SEO educator with 432K+ YouTube subscribers. Google’s AI names me first for “best GEO expert”. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: geo mcp</h2>\n<h3>What is a GEO MCP?</h3>\n<p>An MCP server that gives AI agents generative engine optimisation tools, like checking AI visibility or auditing a site’s AI readiness.</p>\n<h3>Which GEO MCP servers exist?</h3>\n<p>Options include Cite42, mcp-geo, Naia, Luce, mcp-geo-server and geo-optimizer-mcp.</p>\n<h3>Can I use a GEO MCP with Claude?</h3>\n<p>Yes — Claude Desktop and Claude Code support MCP servers.</p>\n<h3>Is there a free GEO MCP?</h3>\n<p>Open-source options like mcp-geo and geo-optimizer-mcp are free to run; some others are paid or pay-per-call.</p>\n<h3>Does a GEO MCP improve rankings by itself?</h3>\n<p>No — it measures and audits; the gains come from real, well-structured content and authority.</p>\n<h3>Do I need a GEO MCP to do GEO?</h3>\n<p>No — you can test prompts manually; a GEO MCP just automates the checks inside your agent.</p>\n<p>Ready to rank in Google and AI search? Claim your free strategy session here.</p>\n<p>Free resources: the free GEO and AI SEO checklist and 200+ AI SEO prompts.</p>\n<p>Want to build it yourself? Join the AI Profit Boardroom for the Agent OS, Search OS and SEO skill.</p>\n<p>Claim Your Free SEO Strategy Session →Get the Free GEO &amp; AI SEO Checklist →Get the 200+ AI SEO Prompts →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Claude AI GEO</li>\n</ul>\n<ul>\n<li>How to Do GEO for a Website</li>\n</ul>\n<ul>\n<li>Free GEO Audit</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to geo mcp — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Discussion asking whether Hermes Agent is unusable without a model router, linking to Bifrost as a candidate routing layer, reflecting concerns about multi-provider model management.",
+          "importance_score": 57.0,
+          "reasoning": "Practical question about a core architectural dependency (model routing for multi-provider setups) that affects many self-hosters, though framed as an open question.",
+          "themes": [
+            "Model Routing",
+            "Architecture"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Discussion asking whether Hermes Agent is unusable without a model router, linking to Bifrost as a candidate routing layer, reflecting concerns about multi-provider model management.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 53,
+      "category_summary": "**Game dev pivot (lead story):** **Teknium**'s announcement to [turn **Hermes agent** into a DIY game dev studio](/?date=2026-10-20&category=social#item-b552172b24d8) was the runaway top post (~71k views, 1.7k+ likes) and anchored the period's discussion. Follow-ups added real substance: a [plugin wishlist covering **3D model generation**, animation, sound FX and **Unity/Godot/Blender** integration](/?date=2026-10-20&category=social#item-42e987f2aea6); a [one-click **profile distribution** bundling plugins and skills](/?date=2026-10-20&category=social#item-275a74b35f21); a stated preference for [building on **existing engines**](/?date=2026-10-20&category=social#item-36fcdd14430d) rather than from scratch; and confirmation that [everything demoed runs as **plugins** with nothing touching the **Hermes core**](/?date=2026-10-20&category=social#item-2bb3ee71991f) (a [textless demo link](/?date=2026-10-20&category=social#item-761126d375f5) from **Teknium** also pulled 5k+ views). **Plugin ecosystem and tooling:** **Teknium** [publicly invited builders to package their work as **Hermes plugins**](/?date=2026-10-20&category=social#item-0bc42f4367e7) and called the [**Unreal Engine MCP** unwieldy at ~800 tools](/?date=2026-10-20&category=social#item-38c40f4a3869); a [referenced community repo was removed after its owner was hacked](/?date=2026-10-20&category=social#item-3e57cecd3422), with **@sidbing** floated as a replacement. **Teknium** also confirmed existing [**ComfyUI** connector support](/?date=2026-10-20&category=social#item-e03cc7597aa9) for image-generation workflows. **Community releases and showcases:** **rlaope** shipped [**Oh My Hermes 4.0.0 (Zeus)**](/?date=2026-10-20&category=social#item-5f8d061b28f5), a major update adding a dedicated terminal, long-term memory, specialist workflows and subagent model routing, earning an [approving nod from **Teknium**](/?date=2026-10-20&category=social#item-d360217b8a75); **rlaope** also demonstrated [**Hermes Agent × REA** multi-model reverse-engineering orchestration](/?date=2026-10-20&category=social#item-11ba4af8c351) (binary inspection, call-graph tracing), teased a [**200B-token** training push](/?date=2026-10-20&category=social#item-b12464aa3683), and shared a [**Delta Rune** fan-game anecdote](/?date=2026-10-20&category=social#item-4a8876b23414) showing real creative use of the agent. **Official channel and sentiment:** **@NousResearch** drew strong reach (~19.6k views) for a Friday [**Dolores Park** meetup](/?date=2026-10-20&category=social#item-652b969744b9), where fans can find **Nightwing** for a sold-out **Rebellion** shirt, and stayed playful with a [mock-chivalrous \"Yes m'lord\" reply](/?date=2026-10-20&category=social#item-1832aca28106). Overall sentiment is upbeat and builder-heavy ([\"i love hermes-agent\"](/?date=2026-10-20&category=social#item-6b4096fcc1b0)), with **Teknium** visibly responsive, [soliciting feedback](/?date=2026-10-20&category=social#item-3109525c279b) and [DMing potential collaborators](/?date=2026-10-20&category=social#item-d84f08ecef64); promotional chatter around a [**DeepSeek 4.1 Flash** 90%-off deal](/?date=2026-10-20&category=social#item-627f7de3c410) (claimed 848 TPS) drew moderate but third-party, off-topic attention.",
+      "category_summary_html": "<p><strong>Game dev pivot (lead story):</strong> <strong>Teknium</strong>'s announcement to <a href=\"/?date=2026-10-20&amp;category=social#item-b552172b24d8\" class=\"internal-link\" rel=\"noopener noreferrer\">turn <strong>Hermes agent</strong> into a DIY game dev studio</a> was the runaway top post (~71k views, 1.7k+ likes) and anchored the period's discussion. Follow-ups added real substance: a <a href=\"/?date=2026-10-20&amp;category=social#item-42e987f2aea6\" class=\"internal-link\" rel=\"noopener noreferrer\">plugin wishlist covering <strong>3D model generation</strong>, animation, sound FX and <strong>Unity/Godot/Blender</strong> integration</a>; a <a href=\"/?date=2026-10-20&amp;category=social#item-275a74b35f21\" class=\"internal-link\" rel=\"noopener noreferrer\">one-click <strong>profile distribution</strong> bundling plugins and skills</a>; a stated preference for <a href=\"/?date=2026-10-20&amp;category=social#item-36fcdd14430d\" class=\"internal-link\" rel=\"noopener noreferrer\">building on <strong>existing engines</strong></a> rather than from scratch; and confirmation that <a href=\"/?date=2026-10-20&amp;category=social#item-2bb3ee71991f\" class=\"internal-link\" rel=\"noopener noreferrer\">everything demoed runs as <strong>plugins</strong> with nothing touching the <strong>Hermes core</strong></a> (a <a href=\"/?date=2026-10-20&amp;category=social#item-761126d375f5\" class=\"internal-link\" rel=\"noopener noreferrer\">textless demo link</a> from <strong>Teknium</strong> also pulled 5k+ views). <strong>Plugin ecosystem and tooling:</strong> <strong>Teknium</strong> <a href=\"/?date=2026-10-20&amp;category=social#item-0bc42f4367e7\" class=\"internal-link\" rel=\"noopener noreferrer\">publicly invited builders to package their work as <strong>Hermes plugins</strong></a> and called the <a href=\"/?date=2026-10-20&amp;category=social#item-38c40f4a3869\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Unreal Engine MCP</strong> unwieldy at ~800 tools</a>; a <a href=\"/?date=2026-10-20&amp;category=social#item-3e57cecd3422\" class=\"internal-link\" rel=\"noopener noreferrer\">referenced community repo was removed after its owner was hacked</a>, with <strong>@sidbing</strong> floated as a replacement. <strong>Teknium</strong> also confirmed existing <a href=\"/?date=2026-10-20&amp;category=social#item-e03cc7597aa9\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ComfyUI</strong> connector support</a> for image-generation workflows. <strong>Community releases and showcases:</strong> <strong>rlaope</strong> shipped <a href=\"/?date=2026-10-20&amp;category=social#item-5f8d061b28f5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh My Hermes 4.0.0 (Zeus)</strong></a>, a major update adding a dedicated terminal, long-term memory, specialist workflows and subagent model routing, earning an <a href=\"/?date=2026-10-20&amp;category=social#item-d360217b8a75\" class=\"internal-link\" rel=\"noopener noreferrer\">approving nod from <strong>Teknium</strong></a>; <strong>rlaope</strong> also demonstrated <a href=\"/?date=2026-10-20&amp;category=social#item-11ba4af8c351\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent × REA</strong> multi-model reverse-engineering orchestration</a> (binary inspection, call-graph tracing), teased a <a href=\"/?date=2026-10-20&amp;category=social#item-b12464aa3683\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>200B-token</strong> training push</a>, and shared a <a href=\"/?date=2026-10-20&amp;category=social#item-4a8876b23414\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Delta Rune</strong> fan-game anecdote</a> showing real creative use of the agent. <strong>Official channel and sentiment:</strong> <strong>@NousResearch</strong> drew strong reach (~19.6k views) for a Friday <a href=\"/?date=2026-10-20&amp;category=social#item-652b969744b9\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Dolores Park</strong> meetup</a>, where fans can find <strong>Nightwing</strong> for a sold-out <strong>Rebellion</strong> shirt, and stayed playful with a <a href=\"/?date=2026-10-20&amp;category=social#item-1832aca28106\" class=\"internal-link\" rel=\"noopener noreferrer\">mock-chivalrous \"Yes m'lord\" reply</a>. Overall sentiment is upbeat and builder-heavy (<a href=\"/?date=2026-10-20&amp;category=social#item-6b4096fcc1b0\" class=\"internal-link\" rel=\"noopener noreferrer\">\"i love hermes-agent\"</a>), with <strong>Teknium</strong> visibly responsive, <a href=\"/?date=2026-10-20&amp;category=social#item-3109525c279b\" class=\"internal-link\" rel=\"noopener noreferrer\">soliciting feedback</a> and <a href=\"/?date=2026-10-20&amp;category=social#item-d84f08ecef64\" class=\"internal-link\" rel=\"noopener noreferrer\">DMing potential collaborators</a>; promotional chatter around a <a href=\"/?date=2026-10-20&amp;category=social#item-627f7de3c410\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>DeepSeek 4.1 Flash</strong> 90%-off deal</a> (claimed 848 TPS) drew moderate but third-party, off-topic attention.</p>",
+      "themes": [
+        {
+          "name": "Hermes as a DIY Game Dev Studio",
+          "description": "Teknium's headline announcement that Hermes agent will become a DIY game dev studio, plus follow-up discussion on engines, 3D worlds, and demos.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 92.0
+        },
+        {
+          "name": "Plugin Ecosystem and MCP Tooling",
+          "description": "Calls for game-dev plugins (3D generation, animation, sound, Unity/Godot/Blender), one-click profile distribution, and critiques of the bulky Unreal Engine MCP, including a repo removed after a hack.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Multi-Agent and Reverse Engineering Workflows",
+          "description": "Showcase of Hermes Agent subagents orchestrating multi-model parallel investigations for binary analysis and crash dump forensics.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Community Tool Releases and Showcases",
+          "description": "rlaope's Oh My Hermes 4.0.0 (Zeus) release with terminal, long-term memory, specialist workflows and subagent model routing, alongside smaller showcases and appreciation posts.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Hermes Extensibility",
+          "description": "Discussion of building plugins to bring custom workflows, tools, and UX elements into Hermes.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 58.0
+        },
+        {
+          "name": "Plugin Ecosystem and Extensibility",
+          "description": "Repeated emphasis from Teknium that Hermes capabilities are built as optional plugins without touching the core, plus encouragement for users to build their own plugins.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Alternative Model Backends (DeepSeek)",
+          "description": "Community posts from rlaope on running Hermes-style agent harnesses with DeepSeek models, including the new v4.1-flash and a 90% discount window.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 50.0
+        },
+        {
+          "name": "Agent Backends and Providers",
+          "description": "Discussion of model providers, throughput and pricing relevant to agent builders, including a DeepSeek 4.1 Flash promotion and a speculative token casino idea around provider limits.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 45.0
+        },
+        {
+          "name": "Developer-Community Engagement",
+          "description": "High volume of short Teknium replies providing support, feedback channels, teasers, and social banter, plus an official NousResearch in-person meetup announcement.",
+          "item_count": 12,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Agentic Game Development",
+          "description": "Thread of Teknium replies discussing Hermes Agent building and playtesting games autonomously, including acknowledged difficulty of the playtesting step.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 30.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "b552172b24d8",
+          "title": "Going to make hermes agent into a DIY game dev studio",
+          "content": "Going to make hermes agent into a DIY game dev studio",
+          "url": "https://twitter.com/Teknium/status/2112092888821842088",
+          "author": "@Teknium",
+          "published": "2026-10-19T08:06:00",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces the intention to turn Hermes agent into a DIY game dev studio, a major strategic direction for the project.",
+          "importance_score": 96.0,
+          "reasoning": "Flagship announcement from the project lead with exceptional engagement (1743 likes, ~71k views, 182 replies, 27 quotes); defines the project's next major focus and drives the surrounding thread of plugin and engine discussions.",
+          "themes": [
+            "game dev",
+            "roadmap",
+            "agent capabilities"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces the intention to turn Hermes agent into a DIY game dev studio, a major strategic direction for the project.</p>",
+          "content_html": "<p>Going to make hermes agent into a DIY game dev studio</p>"
+        },
+        {
+          "id": "42e987f2aea6",
+          "title": "@iamlukethedev We need powerful plugins and capabilities for:\n\n3D model generation\nAnimation (maybe ...",
+          "content": "@iamlukethedev We need powerful plugins and capabilities for:\n\n3D model generation\nAnimation (maybe video is enough idk yet)\nSound FX\nUnity/Godot (Already have Unreal afaik)\nBlender needs to come back\n\nWhat else am I missing",
+          "url": "https://twitter.com/Teknium/status/2112101528018522502",
+          "author": "@Teknium",
+          "published": "2026-10-19T08:40:19",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium lays out a wishlist of powerful plugins and capabilities needed for the game dev direction: 3D model generation, animation, sound FX, Unity/Godot support, and the return of a Blender plugin, inviting the community to suggest what else is missing.",
+          "importance_score": 88.0,
+          "reasoning": "Direct roadmap signal from the project lead with very high engagement (234 likes, 11.5k views, 60 replies), actively soliciting community input; likely to shape near-term plugin ecosystem priorities.",
+          "themes": [
+            "plugin ecosystem",
+            "game dev",
+            "roadmap"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium lays out a wishlist of powerful plugins and capabilities needed for the game dev direction: 3D model generation, animation, sound FX, Unity/Godot support, and the return of a Blender plugin, inviting the community to suggest what else is missing.</p>",
+          "content_html": "<p>@iamlukethedev We need powerful plugins and capabilities for:</p>\n<p>3D model generation</p>\n<p>Animation (maybe video is enough idk yet)</p>\n<p>Sound FX</p>\n<p>Unity/Godot (Already have Unreal afaik)</p>\n<p>Blender needs to come back</p>\n<p>What else am I missing</p>"
+        },
+        {
+          "id": "5f8d061b28f5",
+          "title": "Oh My Hermes 4.0.0 — Zeus :zap:\n\nhttps://t.co/g1exHwWK5E\n\n- A dedicated OMH terminal\nFollow tools, i...",
+          "content": "Oh My Hermes 4.0.0 — Zeus :zap:\n\nhttps://t.co/g1exHwWK5E\n\n- A dedicated OMH terminal\nFollow tools, inspect diffs, navigate sessions, and steer running work. Manage approvals and subagents in one place.\n\n- Long-term memory, maintained by talking\nRecall project context, correct outdated facts, and preserve knowledge beyond Hermes’ built-in memory limits—with relevant context carried across sessions.\n\n- Specialist workflows, native Hermes controls\nResearch, plan, code, and design with domain-specific methods connected to Hermes’ checklists, citations, reviews, and automation.\n\n- More powerful ULW workflows\nSet up subagent model routing with /omh-model. Choose the model and reasoning effort for each task category, then put your models to work with ULW.\n\n#hermes #ai",
+          "url": "https://twitter.com/rlaope/status/2112108276716576997",
+          "author": "@rlaope",
+          "published": "2026-10-19T09:07:08",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope announces Oh My Hermes 4.0.0 (Zeus), a major update adding a dedicated terminal for following tools, diffs, sessions and approvals, long-term memory maintained conversationally, specialist workflows tied to Hermes controls, and subagent model routing via /omh-model.",
+          "importance_score": 82.0,
+          "reasoning": "Substantial feature-rich community tool release with strong engagement (41 likes, ~3900 views) and endorsement from Teknium; the flagship community showcase in this batch, though not an official NousResearch release.",
+          "themes": [
+            "Oh My Hermes",
+            "agent tooling",
+            "memory",
+            "subagents"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope announces Oh My Hermes 4.0.0 (Zeus), a major update adding a dedicated terminal for following tools, diffs, sessions and approvals, long-term memory maintained conversationally, specialist workflows tied to Hermes controls, and subagent model routing via /omh-model.</p>",
+          "content_html": "<p>Oh My Hermes 4.0.0 — Zeus :zap:</p>\n<p>https://t.co/g1exHwWK5E</p>\n<ul>\n<li>A dedicated OMH terminal</li>\n</ul>\n<p>Follow tools, inspect diffs, navigate sessions, and steer running work. Manage approvals and subagents in one place.</p>\n<ul>\n<li>Long-term memory, maintained by talking</li>\n</ul>\n<p>Recall project context, correct outdated facts, and preserve knowledge beyond Hermes’ built-in memory limits—with relevant context carried across sessions.</p>\n<ul>\n<li>Specialist workflows, native Hermes controls</li>\n</ul>\n<p>Research, plan, code, and design with domain-specific methods connected to Hermes’ checklists, citations, reviews, and automation.</p>\n<ul>\n<li>More powerful ULW workflows</li>\n</ul>\n<p>Set up subagent model routing with /omh-model. Choose the model and reasoning effort for each task category, then put your models to work with ULW.</p>\n<p>#hermes #ai</p>"
+        },
+        {
+          "id": "11ba4af8c351",
+          "title": "Hermes Agent × REA: reverse engineering, inside your agent workflow.\n\nInspect binaries, trace call g...",
+          "content": "Hermes Agent × REA: reverse engineering, inside your agent workflow.\n\nInspect binaries, trace call graphs, recover pseudocode, and investigate crash dumps with REA’s analysis tools.\n\nOh My Hermes brings the multi-model synergy: split the investigation across Hermes subagents, choosing models and reasoning effort to suit each task. Explore different leads in parallel, then bring the evidence together.\n\nEight workers. Different models. One investigation.\n\nIllustrative workflow below ↓\nhttps://t.co/g1exHwWK5E",
+          "url": "https://twitter.com/rlaope/status/2112175783905280435",
+          "author": "@rlaope",
+          "published": "2026-10-19T13:35:23",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope showcases a reverse-engineering workflow combining Hermes Agent with REA analysis tools: inspecting binaries, tracing call graphs, recovering pseudocode, and investigating crash dumps, orchestrated across eight Hermes subagents with different models and reasoning efforts running in parallel.",
+          "importance_score": 78.0,
+          "reasoning": "Highly unique and detailed technical showcase demonstrating multi-model, multi-agent orchestration on a security/RE workload. Strong engagement for a community post (about 5.6k views, 107 likes) from a prolific, credible Hermes community member; not an official release so not scored higher.",
+          "themes": [
+            "multi-agent workflows",
+            "reverse engineering",
+            "subagents",
+            "security"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope showcases a reverse-engineering workflow combining Hermes Agent with REA analysis tools: inspecting binaries, tracing call graphs, recovering pseudocode, and investigating crash dumps, orchestrated across eight Hermes subagents with different models and reasoning efforts running in parallel.</p>",
+          "content_html": "<p>Hermes Agent × REA: reverse engineering, inside your agent workflow.</p>\n<p>Inspect binaries, trace call graphs, recover pseudocode, and investigate crash dumps with REA’s analysis tools.</p>\n<p>Oh My Hermes brings the multi-model synergy: split the investigation across Hermes subagents, choosing models and reasoning effort to suit each task. Explore different leads in parallel, then bring the evidence together.</p>\n<p>Eight workers. Different models. One investigation.</p>\n<p>Illustrative workflow below ↓</p>\n<p>https://t.co/g1exHwWK5E</p>"
+        },
+        {
+          "id": "275a74b35f21",
+          "title": "@thededale_ I'm thinking several plugins and skills, and then an profile distribution so you can get...",
+          "content": "@thededale_ I'm thinking several plugins and skills, and then an profile distribution so you can get the whole pack in one click at some point",
+          "url": "https://twitter.com/Teknium/status/2112101066460586319",
+          "author": "@Teknium",
+          "published": "2026-10-19T08:38:29",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium describes the plan for the game dev direction: multiple plugins and skills bundled into a one-click profile distribution so users can install the whole pack at once.",
+          "importance_score": 74.0,
+          "reasoning": "Concrete distribution strategy from the project lead for upcoming plugins and skills; low engagement but valuable roadmap detail for ecosystem contributors.",
+          "themes": [
+            "plugin ecosystem",
+            "profiles",
+            "game dev"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium describes the plan for the game dev direction: multiple plugins and skills bundled into a one-click profile distribution so users can install the whole pack at once.</p>",
+          "content_html": "<p>@thededale_ I'm thinking several plugins and skills, and then an profile distribution so you can get the whole pack in one click at some point</p>"
+        },
+        {
+          "id": "0bc42f4367e7",
+          "title": "@xikhar @iamlukethedev If you get something together put up a hermes plugin, would love to try. the ...",
+          "content": "@xikhar @iamlukethedev If you get something together put up a hermes plugin, would love to try. the UE mcp is like 800 tools so it's kinda sloptastic rn",
+          "url": "https://twitter.com/Teknium/status/2112110545029775780",
+          "author": "@Teknium",
+          "published": "2026-10-19T09:16:09",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium invites community developers to package their work as a Hermes plugin, noting the current Unreal Engine MCP has roughly 800 tools and is unwieldy.",
+          "importance_score": 72.0,
+          "reasoning": "Direct call from the project lead for plugin contributions and a candid critique of existing MCP tooling quality; signals an open plugin ecosystem opportunity.",
+          "themes": [
+            "plugin ecosystem",
+            "MCP tools",
+            "game dev"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium invites community developers to package their work as a Hermes plugin, noting the current Unreal Engine MCP has roughly 800 tools and is unwieldy.</p>",
+          "content_html": "<p>@xikhar @iamlukethedev If you get something together put up a hermes plugin, would love to try. the UE mcp is like 800 tools so it's kinda sloptastic rn</p>"
+        },
+        {
+          "id": "652b969744b9",
+          "title": "Look for Nightwing in Dolores Park this Friday for a chance to grab the sold out Rebellion shirt and...",
+          "content": "Look for Nightwing in Dolores Park this Friday for a chance to grab the sold out Rebellion shirt and hang out with fellow Hermes heads",
+          "url": "https://twitter.com/NousResearch/status/2112260376469422586",
+          "author": "@NousResearch",
+          "published": "2026-10-19T19:11:32",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Official NousResearch announcement of an in-person San Francisco meetup in Dolores Park this Friday, where community members can find a person in a Nightwing costume and win the sold-out Rebellion shirt while hanging out with other Hermes users.",
+          "importance_score": 68.0,
+          "reasoning": "Posted by the official NousResearch account with strong reach (about 19.6k views, 206 likes), signaling active community building and merch culture around Hermes. Not a release or technical update, so capped below release-level importance, but it indicates real-world community momentum.",
+          "themes": [
+            "community events",
+            "merch",
+            "San Francisco meetup"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official NousResearch announcement of an in-person San Francisco meetup in Dolores Park this Friday, where community members can find a person in a Nightwing costume and win the sold-out Rebellion shirt while hanging out with other Hermes users.</p>",
+          "content_html": "<p>Look for Nightwing in Dolores Park this Friday for a chance to grab the sold out Rebellion shirt and hang out with fellow Hermes heads</p>"
+        },
+        {
+          "id": "3e57cecd3422",
+          "title": "@adityavg13 @iamlukethedev Yea, the owner of the repo got hacked so we removed it, @sidbing mightve ...",
+          "content": "@adityavg13 @iamlukethedev Yea, the owner of the repo got hacked so we removed it, @sidbing mightve brought something back though not sure",
+          "url": "https://twitter.com/Teknium/status/2112109478841888867",
+          "author": "@Teknium",
+          "published": "2026-10-19T09:11:55",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains that a previously referenced repo was removed because its owner was hacked, and mentions a possible replacement by another community member.",
+          "importance_score": 68.0,
+          "reasoning": "Security-relevant transparency from the project lead about removing compromised third-party tooling; useful for anyone relying on that repo, though low engagement.",
+          "themes": [
+            "security",
+            "supply chain",
+            "community tools"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains that a previously referenced repo was removed because its owner was hacked, and mentions a possible replacement by another community member.</p>",
+          "content_html": "<p>@adityavg13 @iamlukethedev Yea, the owner of the repo got hacked so we removed it, @sidbing mightve brought something back though not sure</p>"
+        },
+        {
+          "id": "761126d375f5",
+          "title": "https://t.co/YGqHGTMghq",
+          "content": "https://t.co/YGqHGTMghq",
+          "url": "https://twitter.com/Teknium/status/2112109507904209212",
+          "author": "@Teknium",
+          "published": "2026-10-19T09:12:02",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium posts a bare link with no accompanying text, receiving 68 likes and over 5000 views, likely sharing a demo, screenshot, or video related to the Hermes game dev effort.",
+          "importance_score": 65.0,
+          "reasoning": "Notably high engagement for a content-less post from the project lead, suggesting it shares a significant demo; however the linked content is unverifiable from the text alone.",
+          "themes": [
+            "demos",
+            "game dev"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium posts a bare link with no accompanying text, receiving 68 likes and over 5000 views, likely sharing a demo, screenshot, or video related to the Hermes game dev effort.</p>",
+          "content_html": "<p>https://t.co/YGqHGTMghq</p>"
+        },
+        {
+          "id": "2bb3ee71991f",
+          "title": "(All built with plugins, nothing touching core of course)",
+          "content": "(All built with plugins, nothing touching core of course)",
+          "url": "https://twitter.com/Teknium/status/2112116688116470177",
+          "author": "@Teknium",
+          "published": "2026-10-19T09:40:34",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium clarifies that everything recently demonstrated was implemented purely as plugins, with no modifications to the Hermes core, highlighting the platform's extensibility architecture.",
+          "importance_score": 62.0,
+          "reasoning": "Architecturally significant statement from the lead developer showing Hermes can support complex integrations without core changes. Good engagement (about 3.5k views, 51 likes), though it is a short follow-up rather than an announcement.",
+          "themes": [
+            "plugins",
+            "architecture",
+            "extensibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium clarifies that everything recently demonstrated was implemented purely as plugins, with no modifications to the Hermes core, highlighting the platform's extensibility architecture.</p>",
+          "content_html": "<p>(All built with plugins, nothing touching core of course)</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

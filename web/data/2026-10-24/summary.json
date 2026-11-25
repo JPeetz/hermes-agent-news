@@ -1,0 +1,978 @@
+{
+  "date": "2026-10-24",
+  "coverage_date": "2026-10-23",
+  "coverage_start": "2026-10-23T00:00:00",
+  "coverage_end": "2026-10-23T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-24\n\n**Executive summary:** A stable-release day — and the week's autonomy push turns physical. The news top story closes the release-train thread the clean way: [**Hermes Agent v0.22.5** is now stable](/?date=2026-10-24&category=news#item-7608d9b01045), rolled out simultaneously across **CLI**, **Microsoft Store**, **Docker**, and **Hermes Cloud** — a mature multi-channel pipeline — and consolidating ~**81 merged PRs** since [**v0.22.4**](/?date=2026-10-22&category=news#item-ee19ff2a1e84) across **804** changed files, with the **rc.2**/**[rc.3](/?date=2026-10-24&category=news#item-e6913c63937f)** tags revealed as metadata-only and superseded, so yesterday's [\"expect **rc.2** fast\" call](/?date=2026-10-23&category=news#item-68a16d101316) cashed in as the real thing: update wherever you run Hermes, whether you're on **v0.22.4** or the **rc.1** candidate. Today's merged-PR batch is small but pointed: desktop plugin transcript-directive cards now carry a [**sessionId** prop](/?date=2026-10-24&category=news#item-e6ef772ed7fa) (ending multi-chat ambiguity for plugin developers), and new tests harden the [**MCP trust-gate**](/?date=2026-10-24&category=news#item-936a62cee7bb) so **Session**/**Always** approvals stay scoped exactly to the prompt actually offered — pairing deliberately with the research feed's [**Hermes Cua** sandboxing](/?date=2026-10-24&category=research#item-910c6d383a4e) (terminal and file commands isolated in **Cua Spaces** to protect the host), safe autonomy being engineered in step with the agent's growing permissions. The research top story is the week's most literal embodiment news: the [**Autonomous Lamp** gives Hermes a physical 'body'](/?date=2026-10-24&category=research#item-0b2d4347fa9d), bridging software and physical reality, while today's tips walkthrough covers the built-in **computer_use** toolset — screenshot-driven clicks, typing, and scrolling via **Cua**'s open-source driver — and an emerging **Hermes-on-device** effort now shows on three fronts: [**Arduino UNO Q** hardware experiments](/?date=2026-10-24&category=research#item-hn-49368474), **@Teknium** [requesting **30 M5Stack** units](/?date=2026-10-24&category=social#item-6175046c3129), and the **Cua Spaces** isolation layer keeping desktop-driving safe. The social feed is a scale-metric festival: **@Teknium**'s hand-curated inspiration site grew from ~**75** finds to [**462** demos spanning **425** libraries](/?date=2026-10-24&category=social#item-ca8de19b5942) (**653** likes, the batch's highest engagement, **460** demos confirmed live on a single page), while **@rlaope** ran a [mega session of nearly **2,000 subagents**](/?date=2026-10-24&category=social#item-534f6a2668c9) for over a day producing **8,198 commits** and **961 merged PRs** — hype the community loved, but a one-off showcase, not a benchmark. The plugin economy formalizes: **@Teknium** unveiled a [**verified tier**](/?date=2026-10-24&category=social#item-1d79613b7604) for companies maintaining their own integration plugins with a **verified-badge** path into the official plugin catalog, community skills like [**@123mikeyd**'s humanoid rigging](/?date=2026-10-24&category=social#item-eb7a58bfba23) earned shout-outs, [**Browser-Use** and **BrowserBase** browser automation](/?date=2026-10-24&category=social#item-6322f4c86d71) were confirmed alongside a [**1Password** integration live for three months](/?date=2026-10-24&category=social#item-39ae0625803c), and the community's [**deed-page-skill**](/?date=2026-10-24&category=news#item-4327b2bf1b5a) publishes any file or folder to a permanent **deed.page** URL with a single curl. **@rlaope**'s **OMH** line keeps compounding — [history/retrieval search now **2-3x** faster](/?date=2026-10-24&category=social#item-0fbd1573a602) via adaptive research skills, an [**OH MY HERMES NATIVE** tease](/?date=2026-10-24&category=social#item-fae858d611a3), and an explicit \"not leaving Hermes-Agent\" — while **@NousResearch** promoted [next week's **NYC** event](/?date=2026-10-24&category=social#item-70523966bdd9) (**22.4k** views), tersely confirmed the **Hermes Agent** name, and dropped a cryptic ['one to two orders of magnitude less' comment](/?date=2026-10-24&category=social#item-20a549a098f9) hinting at a major efficiency/cost claim — worth watching, unconfirmed; **@Teknium** also described [pointing Hermes at his own session traces weekly](/?date=2026-10-24&category=social#item-dbbfb8625828), a meta-improvement loop. Community-side, the week's **Windows** pain narrative gains a free-tier chapter: a [thread on gateway 'draining: not_ready' crash loops, **HTTP 429** rate limits, and telemetry **SQLite** permission errors](/?date=2026-10-24&category=news#item-f81fed5f8056) is a strong FAQ candidate — start from the [damaged-checkout repair docs](/?date=2026-10-22&category=news#item-17399249b04a) if you hit it. De-dup duty, ninth cycle running: the carried [**Hermes Kanban** docs](/?date=2026-10-20&category=research#item-hn-49604068), [**Grafana** observability stack](/?date=2026-10-20&category=research#item-hn-49318128), [**Claude Pro/Max** support](/?date=2026-10-20&category=research#item-hn-49790991) (still quoted today as connective reach), [**Refine Cycle**](/?date=2026-10-20&category=research#item-hn-49606988) (resurfaced as the self-improvement plugin), and [**Almanac**](/?date=2026-10-22&category=research#item-hn-49511007) remain reference, not news; today's [**Cross-Layer Expert Sharing for MoE**](/?date=2026-10-24&category=research#item-2610.27598) is the same underlying work as yesterday's [**Meta Expert** write-up](/?date=2026-10-23&category=research#item-2610.27598); the [**~23,000**-open-PR observation](/?date=2026-10-24&category=research#item-hn-49424643) is the same intensity signal as the carried [**~23k** backlog thread](/?date=2026-10-16&category=research#item-hn-49424643); and the **Meshy** mention is yesterday's [official plugin](/?date=2026-10-23&category=social#item-7ead5bf87731) re-surfacing — while **verso** fails to resurface and the stale **v0.20.0** bundle stays gone. Housekeeping: Reddit contributed nothing again. Net read: **v0.22.5** turns the week's RC sprint into a clean stable landing, the agent got a body and safer hands the same day, and the plugin wave is acquiring the trust infrastructure — verified tiers, badges, scoped approvals — of a maturing platform, with founders responsive (a same-day bug fix deployed) and sentiment openly energetic. Practical agenda: update to **v0.22.5** now; read the [**computer_use** walkthrough](/?date=2026-10-24&category=news#item-88c0557784e6) before automating any desktop workflow and keep terminal/file work in **Cua Spaces**; check the **Windows** free-tier thread if you're seeing 'draining: not_ready' or **429**s; try [**deed-page-skill**](/?date=2026-10-24&category=news#item-4327b2bf1b5a) for instant permanent URLs; if you maintain a company plugin, watch the **verified-badge** path; [periodically prune skills the raw model has outgrown](/?date=2026-10-24&category=social#item-902908f63eb5), favoring **CLI** for most work and **Desktop** for visual tasks; and keep an eye on next week's **NYC** event plus the 'orders of magnitude' efficiency claim — filing **Pro/Max**, **Kanban**, **Grafana**, **Almanac**, **Refine Cycle**, **verso**, and the PR-backlog thread as reference.\n\n*Executive summary only — full section write-ups (Releases, Merged PRs, Community, Tips & Tutorials) follow in the complete edition.*",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-24</p>\n<p><strong>Executive summary:</strong> A stable-release day — and the week's autonomy push turns physical. The news top story closes the release-train thread the clean way: <a href=\"/?date=2026-10-24&amp;category=news#item-7608d9b01045\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent v0.22.5</strong> is now stable</a>, rolled out simultaneously across <strong>CLI</strong>, <strong>Microsoft Store</strong>, <strong>Docker</strong>, and <strong>Hermes Cloud</strong> — a mature multi-channel pipeline — and consolidating ~<strong>81 merged PRs</strong> since <a href=\"/?date=2026-10-22&amp;category=news#item-ee19ff2a1e84\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.4</strong></a> across <strong>804</strong> changed files, with the <strong>rc.2</strong>/<strong><a href=\"/?date=2026-10-24&amp;category=news#item-e6913c63937f\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.3</a></strong> tags revealed as metadata-only and superseded, so yesterday's <a href=\"/?date=2026-10-23&amp;category=news#item-68a16d101316\" class=\"internal-link\" rel=\"noopener noreferrer\">\"expect <strong>rc.2</strong> fast\" call</a> cashed in as the real thing: update wherever you run Hermes, whether you're on <strong>v0.22.4</strong> or the <strong>rc.1</strong> candidate. Today's merged-PR batch is small but pointed: desktop plugin transcript-directive cards now carry a <a href=\"/?date=2026-10-24&amp;category=news#item-e6ef772ed7fa\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>sessionId</strong> prop</a> (ending multi-chat ambiguity for plugin developers), and new tests harden the <a href=\"/?date=2026-10-24&amp;category=news#item-936a62cee7bb\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>MCP trust-gate</strong></a> so <strong>Session</strong>/<strong>Always</strong> approvals stay scoped exactly to the prompt actually offered — pairing deliberately with the research feed's <a href=\"/?date=2026-10-24&amp;category=research#item-910c6d383a4e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Cua</strong> sandboxing</a> (terminal and file commands isolated in <strong>Cua Spaces</strong> to protect the host), safe autonomy being engineered in step with the agent's growing permissions. The research top story is the week's most literal embodiment news: the <a href=\"/?date=2026-10-24&amp;category=research#item-0b2d4347fa9d\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Autonomous Lamp</strong> gives Hermes a physical 'body'</a>, bridging software and physical reality, while today's tips walkthrough covers the built-in <strong>computer_use</strong> toolset — screenshot-driven clicks, typing, and scrolling via <strong>Cua</strong>'s open-source driver — and an emerging <strong>Hermes-on-device</strong> effort now shows on three fronts: <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong> hardware experiments</a>, <strong>@Teknium</strong> <a href=\"/?date=2026-10-24&amp;category=social#item-6175046c3129\" class=\"internal-link\" rel=\"noopener noreferrer\">requesting <strong>30 M5Stack</strong> units</a>, and the <strong>Cua Spaces</strong> isolation layer keeping desktop-driving safe. The social feed is a scale-metric festival: <strong>@Teknium</strong>'s hand-curated inspiration site grew from ~<strong>75</strong> finds to <a href=\"/?date=2026-10-24&amp;category=social#item-ca8de19b5942\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>462</strong> demos spanning <strong>425</strong> libraries</a> (<strong>653</strong> likes, the batch's highest engagement, <strong>460</strong> demos confirmed live on a single page), while <strong>@rlaope</strong> ran a <a href=\"/?date=2026-10-24&amp;category=social#item-534f6a2668c9\" class=\"internal-link\" rel=\"noopener noreferrer\">mega session of nearly <strong>2,000 subagents</strong></a> for over a day producing <strong>8,198 commits</strong> and <strong>961 merged PRs</strong> — hype the community loved, but a one-off showcase, not a benchmark. The plugin economy formalizes: <strong>@Teknium</strong> unveiled a <a href=\"/?date=2026-10-24&amp;category=social#item-1d79613b7604\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verified tier</strong></a> for companies maintaining their own integration plugins with a <strong>verified-badge</strong> path into the official plugin catalog, community skills like <a href=\"/?date=2026-10-24&amp;category=social#item-eb7a58bfba23\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@123mikeyd</strong>'s humanoid rigging</a> earned shout-outs, <a href=\"/?date=2026-10-24&amp;category=social#item-6322f4c86d71\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Browser-Use</strong> and <strong>BrowserBase</strong> browser automation</a> were confirmed alongside a <a href=\"/?date=2026-10-24&amp;category=social#item-39ae0625803c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>1Password</strong> integration live for three months</a>, and the community's <a href=\"/?date=2026-10-24&amp;category=news#item-4327b2bf1b5a\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>deed-page-skill</strong></a> publishes any file or folder to a permanent <strong>deed.page</strong> URL with a single curl. <strong>@rlaope</strong>'s <strong>OMH</strong> line keeps compounding — <a href=\"/?date=2026-10-24&amp;category=social#item-0fbd1573a602\" class=\"internal-link\" rel=\"noopener noreferrer\">history/retrieval search now <strong>2-3x</strong> faster</a> via adaptive research skills, an <a href=\"/?date=2026-10-24&amp;category=social#item-fae858d611a3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OH MY HERMES NATIVE</strong> tease</a>, and an explicit \"not leaving Hermes-Agent\" — while <strong>@NousResearch</strong> promoted <a href=\"/?date=2026-10-24&amp;category=social#item-70523966bdd9\" class=\"internal-link\" rel=\"noopener noreferrer\">next week's <strong>NYC</strong> event</a> (<strong>22.4k</strong> views), tersely confirmed the <strong>Hermes Agent</strong> name, and dropped a cryptic <a href=\"/?date=2026-10-24&amp;category=social#item-20a549a098f9\" class=\"internal-link\" rel=\"noopener noreferrer\">'one to two orders of magnitude less' comment</a> hinting at a major efficiency/cost claim — worth watching, unconfirmed; <strong>@Teknium</strong> also described <a href=\"/?date=2026-10-24&amp;category=social#item-dbbfb8625828\" class=\"internal-link\" rel=\"noopener noreferrer\">pointing Hermes at his own session traces weekly</a>, a meta-improvement loop. Community-side, the week's <strong>Windows</strong> pain narrative gains a free-tier chapter: a <a href=\"/?date=2026-10-24&amp;category=news#item-f81fed5f8056\" class=\"internal-link\" rel=\"noopener noreferrer\">thread on gateway 'draining: not_ready' crash loops, <strong>HTTP 429</strong> rate limits, and telemetry <strong>SQLite</strong> permission errors</a> is a strong FAQ candidate — start from the <a href=\"/?date=2026-10-22&amp;category=news#item-17399249b04a\" class=\"internal-link\" rel=\"noopener noreferrer\">damaged-checkout repair docs</a> if you hit it. De-dup duty, ninth cycle running: the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> docs</a>, <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong> observability stack</a>, <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> support</a> (still quoted today as connective reach), <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a> (resurfaced as the self-improvement plugin), and <a href=\"/?date=2026-10-22&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong></a> remain reference, not news; today's <a href=\"/?date=2026-10-24&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Cross-Layer Expert Sharing for MoE</strong></a> is the same underlying work as yesterday's <a href=\"/?date=2026-10-23&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Meta Expert</strong> write-up</a>; the <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>~23,000</strong>-open-PR observation</a> is the same intensity signal as the carried <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>~23k</strong> backlog thread</a>; and the <strong>Meshy</strong> mention is yesterday's <a href=\"/?date=2026-10-23&amp;category=social#item-7ead5bf87731\" class=\"internal-link\" rel=\"noopener noreferrer\">official plugin</a> re-surfacing — while <strong>verso</strong> fails to resurface and the stale <strong>v0.20.0</strong> bundle stays gone. Housekeeping: Reddit contributed nothing again. Net read: <strong>v0.22.5</strong> turns the week's RC sprint into a clean stable landing, the agent got a body and safer hands the same day, and the plugin wave is acquiring the trust infrastructure — verified tiers, badges, scoped approvals — of a maturing platform, with founders responsive (a same-day bug fix deployed) and sentiment openly energetic. Practical agenda: update to <strong>v0.22.5</strong> now; read the <a href=\"/?date=2026-10-24&amp;category=news#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>computer_use</strong> walkthrough</a> before automating any desktop workflow and keep terminal/file work in <strong>Cua Spaces</strong>; check the <strong>Windows</strong> free-tier thread if you're seeing 'draining: not_ready' or <strong>429</strong>s; try <a href=\"/?date=2026-10-24&amp;category=news#item-4327b2bf1b5a\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>deed-page-skill</strong></a> for instant permanent URLs; if you maintain a company plugin, watch the <strong>verified-badge</strong> path; <a href=\"/?date=2026-10-24&amp;category=social#item-902908f63eb5\" class=\"internal-link\" rel=\"noopener noreferrer\">periodically prune skills the raw model has outgrown</a>, favoring <strong>CLI</strong> for most work and <strong>Desktop</strong> for visual tasks; and keep an eye on next week's <strong>NYC</strong> event plus the 'orders of magnitude' efficiency claim — filing <strong>Pro/Max</strong>, <strong>Kanban</strong>, <strong>Grafana</strong>, <strong>Almanac</strong>, <strong>Refine Cycle</strong>, <strong>verso</strong>, and the PR-backlog thread as reference.</p>\n<p><em>Executive summary only — full section write-ups (Releases, Merged PRs, Community, Tips &amp; Tutorials) follow in the complete edition.</em></p>",
+  "top_topics": [
+    {
+      "name": "Computer Use and Physical Embodiment",
+      "description": "A major strategic push to give the agent agency over digital and physical environments: the built-in [computer_use toolset](/?date=2026-10-24&category=news#item-88c0557784e6) drives desktops via screenshots, clicks, typing, and scrolling through Cua's open-source driver, while the [Autonomous Lamp](/?date=2026-10-24&category=research#item-0b2d4347fa9d) project provides a physical robot body with sensing and actuation. Hardware experiments running the agent on an [Arduino UNO Q](/?date=2026-10-24&category=research#item-hn-49368474), plus [Teknium requesting 30 M5Stack units](/?date=2026-10-24&category=social#item-6175046c3129), signal an emerging Hermes-on-device effort.",
+      "description_html": "A major strategic push to give the agent agency over digital and physical environments: the built-in <a href=\"/?date=2026-10-24&amp;category=news#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\">computer_use toolset</a> drives desktops via screenshots, clicks, typing, and scrolling through Cua's open-source driver, while the <a href=\"/?date=2026-10-24&amp;category=research#item-0b2d4347fa9d\" class=\"internal-link\" rel=\"noopener noreferrer\">Autonomous Lamp</a> project provides a physical robot body with sensing and actuation. Hardware experiments running the agent on an <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q</a>, plus <a href=\"/?date=2026-10-24&amp;category=social#item-6175046c3129\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium requesting 30 M5Stack units</a>, signal an emerging Hermes-on-device effort.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 90
+    },
+    {
+      "name": "Plugin and Skill Ecosystem Expansion",
+      "description": "The plugin and skill layer is both growing and formalizing: Teknium unveiled a [verified tier for companies maintaining their own integration plugins](/?date=2026-10-24&category=social#item-1d79613b7604) alongside an [official plugin catalog with a verified-badge path](/?date=2026-10-24&category=social#item-3cc19e86f419), while community contributions range from the [deed-page-skill publisher](/?date=2026-10-24&category=news#item-4327b2bf1b5a) and a [humanoid rigging skill](/?date=2026-10-24&category=social#item-eb7a58bfba23) to confirmed [Browser-Use and BrowserBase](/?date=2026-10-24&category=social#item-6322f4c86d71) integrations as well as [1Password support](/?date=2026-10-24&category=social#item-39ae0625803c). [Support for Claude Pro/Max subscriptions](/?date=2026-10-24&category=research#item-hn-49790991) further widens the agent's connective reach.",
+      "description_html": "The plugin and skill layer is both growing and formalizing: Teknium unveiled a <a href=\"/?date=2026-10-24&amp;category=social#item-1d79613b7604\" class=\"internal-link\" rel=\"noopener noreferrer\">verified tier for companies maintaining their own integration plugins</a> alongside an <a href=\"/?date=2026-10-24&amp;category=social#item-3cc19e86f419\" class=\"internal-link\" rel=\"noopener noreferrer\">official plugin catalog with a verified-badge path</a>, while community contributions range from the <a href=\"/?date=2026-10-24&amp;category=news#item-4327b2bf1b5a\" class=\"internal-link\" rel=\"noopener noreferrer\">deed-page-skill publisher</a> and a <a href=\"/?date=2026-10-24&amp;category=social#item-eb7a58bfba23\" class=\"internal-link\" rel=\"noopener noreferrer\">humanoid rigging skill</a> to confirmed <a href=\"/?date=2026-10-24&amp;category=social#item-6322f4c86d71\" class=\"internal-link\" rel=\"noopener noreferrer\">Browser-Use and BrowserBase</a> integrations as well as <a href=\"/?date=2026-10-24&amp;category=social#item-39ae0625803c\" class=\"internal-link\" rel=\"noopener noreferrer\">1Password support</a>. <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Support for Claude Pro/Max subscriptions</a> further widens the agent's connective reach.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2,
+        "social": 3,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 87
+    },
+    {
+      "name": "v0.22.5 Stable Release and RC Pipeline",
+      "description": "Nous Research shipped [Hermes Agent v0.22.5](/?date=2026-10-24&category=news#item-7608d9b01045) as a stable patch consolidating roughly 81 merged PRs across 804 changed files, superseding the metadata-only [rc.2](/?date=2026-10-24&category=news#item-acaeb64d829f) and [rc.3](/?date=2026-10-24&category=news#item-e6913c63937f) tags. The release rolled out simultaneously across CLI, Microsoft Store, Docker, and Hermes Cloud, reflecting a mature multi-channel distribution pipeline.",
+      "description_html": "Nous Research shipped <a href=\"/?date=2026-10-24&amp;category=news#item-7608d9b01045\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.5</a> as a stable patch consolidating roughly 81 merged PRs across 804 changed files, superseding the metadata-only <a href=\"/?date=2026-10-24&amp;category=news#item-acaeb64d829f\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.2</a> and <a href=\"/?date=2026-10-24&amp;category=news#item-e6913c63937f\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.3</a> tags. The release rolled out simultaneously across CLI, Microsoft Store, Docker, and Hermes Cloud, reflecting a mature multi-channel distribution pipeline.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 0,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "Sandboxing and Trust-Gate Security",
+      "description": "Safety engineering advanced on two fronts: new tests ensure [MCP trust-gate approvals (Session/Always) stay scoped exactly to the prompt actually offered](/?date=2026-10-24&category=news#item-936a62cee7bb), and [Hermes Cua isolates terminal and file commands in Cua Spaces](/?date=2026-10-24&category=research#item-910c6d383a4e) to protect the host machine. This pairs with the [computer-use expansion](/?date=2026-10-24&category=news#item-88c0557784e6) to show a deliberate emphasis on safe autonomy as agent permissions grow.",
+      "description_html": "Safety engineering advanced on two fronts: new tests ensure <a href=\"/?date=2026-10-24&amp;category=news#item-936a62cee7bb\" class=\"internal-link\" rel=\"noopener noreferrer\">MCP trust-gate approvals (Session/Always) stay scoped exactly to the prompt actually offered</a>, and <a href=\"/?date=2026-10-24&amp;category=research#item-910c6d383a4e\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Cua isolates terminal and file commands in Cua Spaces</a> to protect the host machine. This pairs with the <a href=\"/?date=2026-10-24&amp;category=news#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\">computer-use expansion</a> to show a deliberate emphasis on safe autonomy as agent permissions grow.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 76
+    },
+    {
+      "name": "Autonomy and Architecture Research",
+      "description": "Deeper community research aims at iterative autonomy and model efficiency: the open-source [Refine Cycle plugin](/?date=2026-10-24&category=research#item-hn-49606988) introduces self-improvement loops into the agent's operating framework, and foundational work on [Cross-Layer Expert Sharing for MoE](/?date=2026-10-24&category=research#item-2610.27598) targets better underlying model efficiency. Teknium also described [pointing Hermes at his own session traces weekly](/?date=2026-10-24&category=social#item-dbbfb8625828) to find improvements, a meta-improvement practice.",
+      "description_html": "Deeper community research aims at iterative autonomy and model efficiency: the open-source <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle plugin</a> introduces self-improvement loops into the agent's operating framework, and foundational work on <a href=\"/?date=2026-10-24&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\">Cross-Layer Expert Sharing for MoE</a> targets better underlying model efficiency. Teknium also described <a href=\"/?date=2026-10-24&amp;category=social#item-dbbfb8625828\" class=\"internal-link\" rel=\"noopener noreferrer\">pointing Hermes at his own session traces weekly</a> to find improvements, a meta-improvement practice.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Community Scale Showcases",
+      "description": "Members are trading eye-popping scale metrics: one session ran nearly 2,000 subagents for over a day, producing [8,198 commits and 961 merged PRs](/?date=2026-10-24&category=social#item-534f6a2668c9), while Teknium's hand-curated inspiration site grew to [462 demos spanning 425 libraries](/?date=2026-10-24&category=social#item-ca8de19b5942) and became the batch's highest-engagement post. A separate observation of [over 23,000 open PRs](/?date=2026-10-24&category=research#item-hn-49424643) on the main repo underscores the intensity of development activity.",
+      "description_html": "Members are trading eye-popping scale metrics: one session ran nearly 2,000 subagents for over a day, producing <a href=\"/?date=2026-10-24&amp;category=social#item-534f6a2668c9\" class=\"internal-link\" rel=\"noopener noreferrer\">8,198 commits and 961 merged PRs</a>, while Teknium's hand-curated inspiration site grew to <a href=\"/?date=2026-10-24&amp;category=social#item-ca8de19b5942\" class=\"internal-link\" rel=\"noopener noreferrer\">462 demos spanning 425 libraries</a> and became the batch's highest-engagement post. A separate observation of <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">over 23,000 open PRs</a> on the main repo underscores the intensity of development activity.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 1,
+        "social": 2,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 72
+    },
+    {
+      "name": "Performance and Observability Tooling",
+      "description": "Tooling improvements target speed and production readiness: Oh My Hermes (OMH) makes [history and retrieval search 2-3x faster](/?date=2026-10-24&category=social#item-0fbd1573a602) using adaptive research skills, [Hermes Kanban](/?date=2026-10-24&category=research#item-hn-49604068) enables multi-agent profile collaboration, and community setups add [Grafana monitoring](/?date=2026-10-24&category=research#item-hn-49318128) and [containerized deployments](/?date=2026-10-24&category=research#item-hn-50131496). These upgrades position Hermes for serious, long-running professional workflows.",
+      "description_html": "Tooling improvements target speed and production readiness: Oh My Hermes (OMH) makes <a href=\"/?date=2026-10-24&amp;category=social#item-0fbd1573a602\" class=\"internal-link\" rel=\"noopener noreferrer\">history and retrieval search 2-3x faster</a> using adaptive research skills, <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a> enables multi-agent profile collaboration, and community setups add <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana monitoring</a> and <a href=\"/?date=2026-10-24&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized deployments</a>. These upgrades position Hermes for serious, long-running professional workflows.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 3,
+        "social": 1,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Official Engagement and Events",
+      "description": "Nous Research and its founders are highly visible and responsive: the NYC community event drew strong promotion (22.4k views), the [Hermes Agent name was directly confirmed](/?date=2026-10-24&category=social#item-8298f8920d7f), a cryptic ['one to two orders of magnitude less'](/?date=2026-10-24&category=social#item-20a549a098f9) comment hints at a major efficiency or cost claim, and a [same-day bug fix](/?date=2026-10-24&category=social#item-fc5595d47060) demonstrated fast maintenance turnaround. An ['OH MY HERMES NATIVE' teaser](/?date=2026-10-24&category=social#item-fae858d611a3) adds further roadmap anticipation.",
+      "description_html": "Nous Research and its founders are highly visible and responsive: the NYC community event drew strong promotion (22.4k views), the <a href=\"/?date=2026-10-24&amp;category=social#item-8298f8920d7f\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent name was directly confirmed</a>, a cryptic <a href=\"/?date=2026-10-24&amp;category=social#item-20a549a098f9\" class=\"internal-link\" rel=\"noopener noreferrer\">'one to two orders of magnitude less'</a> comment hints at a major efficiency or cost claim, and a <a href=\"/?date=2026-10-24&amp;category=social#item-fc5595d47060\" class=\"internal-link\" rel=\"noopener noreferrer\">same-day bug fix</a> demonstrated fast maintenance turnaround. An <a href=\"/?date=2026-10-24&amp;category=social#item-fae858d611a3\" class=\"internal-link\" rel=\"noopener noreferrer\">'OH MY HERMES NATIVE' teaser</a> adds further roadmap anticipation.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 0,
+        "social": 3,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 68
+    },
+    {
+      "name": "Free-Tier Setup Friction",
+      "description": "A Windows free-tier user reported a cascade of setup problems: gateway 'draining: not_ready' crash loops, HTTP 429 rate limits, and telemetry SQLite permission errors, flagged as a strong FAQ candidate. A parallel debate over whether [the agent is unusable without an external model router](/?date=2026-10-24&category=research#item-hn-49159529) highlights onboarding gaps for resource-constrained users.",
+      "description_html": "A Windows free-tier user reported a cascade of setup problems: gateway 'draining: not_ready' crash loops, HTTP 429 rate limits, and telemetry SQLite permission errors, flagged as a strong FAQ candidate. A parallel debate over whether <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">the agent is unusable without an external model router</a> highlights onboarding gaps for resource-constrained users.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1,
+        "social": 0,
+        "reddit": 0
+      },
+      "representative_items": [],
+      "importance": 60
+    }
+  ],
+  "total_items_collected": 123,
+  "total_items_analyzed": 101,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 33,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 25,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 65,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 65,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-24/hero.webp?v=1792825895",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe holds up a slim phone, thumb hovering over a headline notification, the other hand free as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Computer Use and Physical Embodiment — A major strategic push to give the agent agency over digital and physical environments: the built-in computer_use too...\nTopic 2: Plugin and Skill Ecosystem Expansion — The plugin and skill layer is both growing and formalizing: Teknium unveiled a verified tier for companies maintainin...\nTopic 3: v0.22.5 Stable Release and RC Pipeline — Nous Research shipped Hermes Agent v0.22.5 as a stable patch consolidating roughly 81 merged PRs across 804 changed f...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, locks, shields, firewall barriers, protection symbols. The scene stays dark and tech-forward, matching her palette. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a tight over-the-shoulder frame, cool dark ambience broken by a single warm orange glow above the console. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-24T07:11:35.736713",
+  "categories": {
+    "news": {
+      "count": 11,
+      "category_summary": "**Releases:** **[Hermes Agent v0.22.5](/?date=2026-10-24&category=news#item-7608d9b01045)** is the headline — the stable rollout across CLI, Microsoft Store, Docker, and Hermes Cloud, consolidating ~**81 merged PRs** since v0.22.4 (804 changed files). The **[rc.2](/?date=2026-10-24&category=news#item-acaeb64d829f)**/**[rc.3](/?date=2026-10-24&category=news#item-e6913c63937f)** tags were metadata-only and are superseded by the stable release. **Merged PRs:** desktop plugin transcript-directive cards now receive a **[sessionId](/?date=2026-10-24&category=news#item-e6ef772ed7fa)** prop naming the owning chat (fixes multi-chat ambiguity for plugin devs), and new [tests harden the **MCP trust-gate**](/?date=2026-10-24&category=news#item-936a62cee7bb) so Session/Always approvals stay scoped to the prompt actually offered. **Community:** a [Windows free-tier thread](/?date=2026-10-24&category=news#item-f81fed5f8056) surfaces gateway 'draining: not_ready' crash loops, **HTTP 429** rate limits, and telemetry SQLite permission errors — strong FAQ candidate; the new **[deed-page-skill](/?date=2026-10-24&category=news#item-4327b2bf1b5a)** publishes a file or folder to a permanent deed.page URL with a single curl. **Tips:** a [practical guide to the built-in **computer_use** toolset](/?date=2026-10-24&category=news#item-88c0557784e6) — screenshot-driven clicks, typing, and scrolling via Cua's open-source driver — for desktop-automation workflows.",
+      "category_summary_html": "<p><strong>Releases:</strong> <strong><a href=\"/?date=2026-10-24&amp;category=news#item-7608d9b01045\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.5</a></strong> is the headline — the stable rollout across CLI, Microsoft Store, Docker, and Hermes Cloud, consolidating ~<strong>81 merged PRs</strong> since v0.22.4 (804 changed files). The <strong><a href=\"/?date=2026-10-24&amp;category=news#item-acaeb64d829f\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.2</a></strong>/<strong><a href=\"/?date=2026-10-24&amp;category=news#item-e6913c63937f\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.3</a></strong> tags were metadata-only and are superseded by the stable release. <strong>Merged PRs:</strong> desktop plugin transcript-directive cards now receive a <strong><a href=\"/?date=2026-10-24&amp;category=news#item-e6ef772ed7fa\" class=\"internal-link\" rel=\"noopener noreferrer\">sessionId</a></strong> prop naming the owning chat (fixes multi-chat ambiguity for plugin devs), and new <a href=\"/?date=2026-10-24&amp;category=news#item-936a62cee7bb\" class=\"internal-link\" rel=\"noopener noreferrer\">tests harden the <strong>MCP trust-gate</strong></a> so Session/Always approvals stay scoped to the prompt actually offered. <strong>Community:</strong> a <a href=\"/?date=2026-10-24&amp;category=news#item-f81fed5f8056\" class=\"internal-link\" rel=\"noopener noreferrer\">Windows free-tier thread</a> surfaces gateway 'draining: not_ready' crash loops, <strong>HTTP 429</strong> rate limits, and telemetry SQLite permission errors — strong FAQ candidate; the new <strong><a href=\"/?date=2026-10-24&amp;category=news#item-4327b2bf1b5a\" class=\"internal-link\" rel=\"noopener noreferrer\">deed-page-skill</a></strong> publishes a file or folder to a permanent deed.page URL with a single curl. <strong>Tips:</strong> a <a href=\"/?date=2026-10-24&amp;category=news#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\">practical guide to the built-in <strong>computer_use</strong> toolset</a> — screenshot-driven clicks, typing, and scrolling via Cua's open-source driver — for desktop-automation workflows.</p>",
+      "themes": [
+        {
+          "name": "Version Releases and RC Pipeline",
+          "description": "The stable v0.22.5 release and its preceding release-candidate tags show an active release cadence, rolling up 81 PRs across CLI, Microsoft Store, Docker and Hermes Cloud.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Sandboxing and Computer Use",
+          "description": "A cluster of coverage around giving Hermes its own isolated computer: the computer_use toolset on cua-driver and the free hermes-cua-spaces plugin for throwaway Linux/macOS/Windows environments.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Plugins and Ecosystem Integrations",
+          "description": "Third-party and official plugin coverage including the official Meshy 3D-generation plugin, the Autonomous Lamp robot body, and a community deed.page publishing skill, showing a broadening Hermes ecosystem.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 58.0
+        },
+        {
+          "name": "Desktop and Gateway Engineering",
+          "description": "Merged commits improving multi-chat desktop plugin behavior and hardening MCP trust-gate approval scope tests.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 52.0
+        },
+        {
+          "name": "Troubleshooting and Free-Tier Friction",
+          "description": "Community reports of Windows gateway crash loops, SQLite permission errors and 429 rate limits on free setups.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 45.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "7608d9b01045",
+          "title": "Hermes Agent v0.22.5",
+          "content": "Hermes Agent v0.22.5\nRelease Date: October 22, 2026\n\nPatch release. This tag rolls up the ~81 PRs merged since v0.22.4 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n\nAbout this release\nMeasured at commit bf0203a794a, the window since v0.22.4 contains 231 non-merge commits across 804 changed files (+35,212 / −17,885), 81 merged PRs and 30 closed issues.\nAlso in the window, undocumented here on purpose: Nous sign-in reworked (every sign-in is the plain device login, the free-tier guest hands over to your account, the result shows who signed in, connectors offer sign-in instead of opening a guest), hermes update holding back a stable release it refuses instead of offering it, Windows hermes update no longer stuck on the old launcher after a Python repin, usage-window plan support (plan gauges, limit cards and model-switch recovery for window-based plans), pluggable delegation backends (route subagents by model map or profile, switchable per session), plugin slash commands that can ask you to pick an option, hermes import-agent, OpenClaw migration, hermes mcp serve and the Singularity backend moving out of core into plugins (setup offers the importer when it finds another agent), Desktop drag-to-pin in the sidebar and one-click plugin installs with tier badges, the Electron 44 upgrade, Pillow 13 and a batch of dependency security bumps, a clear message when a chat's working folder is gone, hermes update recovering paused gateways after a damaged .git, long Claude DirectSDK answers no longer cut off by the stall timer, Desktop group chats showing which bot is working again, and the experimental webhook-mode MCP events client.\nFull curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\nUpdating\n\nMicrosoft Store app: updates through the Store.\nDesktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.4...v0.22.5",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5",
+          "author": "teknium1",
+          "published": "2026-10-23T05:28:45",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Nous Research shipped Hermes Agent v0.22.5, a stable patch release rolling up roughly 81 merged PRs since v0.22.4 across 804 changed files. It is available via GitHub (CLI and installers), the Microsoft Store, Docker and Hermes Cloud, with curated full notes deferred to v0.23.0. The release also quietly includes a reworked Nous sign-in flow and changes to how hermes update handles stable-release holdbacks.",
+          "importance_score": 90.0,
+          "reasoning": "This is the official stable version release for all Hermes Agent distribution channels, consolidating 81 PRs and 30 closed issues. A major version drop that every user can install, plus undocumented sign-in changes, makes it the highest-priority item in the batch.",
+          "themes": [
+            "Version Releases",
+            "Authentication and Accounts"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Nous Research shipped Hermes Agent v0.22.5, a stable patch release rolling up roughly 81 merged PRs since v0.22.4 across 804 changed files. It is available via GitHub (CLI and installers), the Microsoft Store, Docker and Hermes Cloud, with curated full notes deferred to v0.23.0. The release also quietly includes a reworked Nous sign-in flow and changes to how hermes update handles stable-release holdbacks.</p>",
+          "content_html": "<p>Hermes Agent v0.22.5</p>\n<p>Release Date: October 22, 2026</p>\n<p>Patch release. This tag rolls up the ~81 PRs merged since v0.22.4 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.</p>\n<p>About this release</p>\n<p>Measured at commit bf0203a794a, the window since v0.22.4 contains 231 non-merge commits across 804 changed files (+35,212 / −17,885), 81 merged PRs and 30 closed issues.</p>\n<p>Also in the window, undocumented here on purpose: Nous sign-in reworked (every sign-in is the plain device login, the free-tier guest hands over to your account, the result shows who signed in, connectors offer sign-in instead of opening a guest), hermes update holding back a stable release it refuses instead of offering it, Windows hermes update no longer stuck on the old launcher after a Python repin, usage-window plan support (plan gauges, limit cards and model-switch recovery for window-based plans), pluggable delegation backends (route subagents by model map or profile, switchable per session), plugin slash commands that can ask you to pick an option, hermes import-agent, OpenClaw migration, hermes mcp serve and the Singularity backend moving out of core into plugins (setup offers the importer when it finds another agent), Desktop drag-to-pin in the sidebar and one-click plugin installs with tier badges, the Electron 44 upgrade, Pillow 13 and a batch of dependency security bumps, a clear message when a chat's working folder is gone, hermes update recovering paused gateways after a damaged .git, long Claude DirectSDK answers no longer cut off by the stall timer, Desktop group chats showing which bot is working again, and the experimental webhook-mode MCP events client.</p>\n<p>Full curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.</p>\n<p>Updating</p>\n<p>Microsoft Store app: updates through the Store.</p>\n<p>Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.4...v0.22.5</p>"
+        },
+        {
+          "id": "e6ef772ed7fa",
+          "title": "feat(desktop): name the owning chat in transcript directive props",
+          "content": "feat(desktop): name the owning chat in transcript directive props\n\nA plugin's transcript-directive card (e.g. a model card with Next/Convert\nbuttons) could only call host.composer.submit(null, …), which posts into\nwhichever composer is ACTIVE. With two chats side by side, a click on a\ncard in chat A posted into chat B when B's composer held focus last.\n\nhost.composer.* already addresses a session by id and fails closed; the\ncard just had no way to learn its own chat. DirectiveEntry now reads the\nsurrounding SessionView (primary pane or tile) and passes `sessionId`\n(stored id, else runtime id, else null) to the contribution's render.\n\nAdditive: existing renders that ignore the field are unchanged, and\nplugins feature-detect `props.sessionId !== undefined` on older hosts.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/c78ca093aa4b6759c055c3ed2bfbe7f741cf0292",
+          "author": "teknium1",
+          "published": "2026-10-23T23:27:01",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A merged desktop fix ensures plugin transcript-directive cards (such as model cards with Next/Convert buttons) now receive a sessionId prop identifying their owning chat. Previously, with two chats side by side, clicking a card in chat A could post into chat B if B's composer had focus. The change is additive, so existing plugins are unaffected and can feature-detect the new field on older hosts.",
+          "importance_score": 58.0,
+          "reasoning": "A meaningful usability fix for Hermes Desktop multi-chat users and plugin developers, resolving a real cross-chat misposting bug. It is a single commit rather than a release, but the additive, backward-compatible design makes it notable for the plugin ecosystem.",
+          "themes": [
+            "Desktop",
+            "Plugin Development",
+            "Bug Fixes"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A merged desktop fix ensures plugin transcript-directive cards (such as model cards with Next/Convert buttons) now receive a sessionId prop identifying their owning chat. Previously, with two chats side by side, clicking a card in chat A could post into chat B if B's composer had focus. The change is additive, so existing plugins are unaffected and can feature-detect the new field on older hosts.</p>",
+          "content_html": "<p>feat(desktop): name the owning chat in transcript directive props</p>\n<p>A plugin's transcript-directive card (e.g. a model card with Next/Convert</p>\n<p>buttons) could only call host.composer.submit(null, …), which posts into</p>\n<p>whichever composer is ACTIVE. With two chats side by side, a click on a</p>\n<p>card in chat A posted into chat B when B's composer held focus last.</p>\n<p>host.composer.* already addresses a session by id and fails closed; the</p>\n<p>card just had no way to learn its own chat. DirectiveEntry now reads the</p>\n<p>surrounding SessionView (primary pane or tile) and passes <code>sessionId</code></p>\n<p>(stored id, else runtime id, else null) to the contribution's render.</p>\n<p>Additive: existing renders that ignore the field are unchanged, and</p>\n<p>plugins feature-detect <code>props.sessionId !== undefined</code> on older hosts.</p>"
+        },
+        {
+          "id": "88c0557784e6",
+          "title": "Hermes Computer Use Skill: How Hermes Agent Controls a Computer",
+          "content": "Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in computer_use toolset, powered by Cua&rsquo;s open-source cua-driver. You can add Cua&rsquo;s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here&rsquo;s how computer use works in Hermes, how to switch it on and how to keep it safe.\n\nKey takeaways\n\nHermes&rsquo; computer_use toolset controls apps with screenshots, clicks, typing and scrolling.\nIt runs on cua-driver and works with any tool-capable model.\nIt works in the background and doesn&rsquo;t steal your cursor or keyboard.\nRun it in a Cua Space for full isolation. Claim a free strategy session for help.\n\n\n\n\n\n\nWhat the Hermes computer use skill does\nHermes&rsquo; computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.\nUnlike most computer-use tools, it works with any tool-capable model &mdash; Claude, GPT, Gemini or an open model on a local endpoint. It isn&rsquo;t tied to one provider&rsquo;s computer-use format.\n\n\n\n\nPlatform\nHow Hermes reads the screen\nHow it sends input\n\n\n\n\nmacOS\nAccessibility (AX)\nEvents posted to the app, no cursor warp\n\n\nWindows\nUIAutomation\nSendInput and PostMessage, no focus steal\n\n\nLinux\nAT-SPI (X11 and Wayland)\nXTest or virtual keyboard\n\n\n\n\nToolset vs skill: what&rsquo;s the difference?\nIn Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run cua-driver skills install, and it lands in ~/.cua-driver/skills/cua-driver.\nHermes doesn&rsquo;t auto-detect that folder yet &mdash; Nous lists it as a planned follow-up &mdash; so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use /learn to save the steps (see Hermes learn skill).\n\nWant Hermes doing your computer admin for you? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\n\nWant Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS &mdash; Hermes, OpenClaw, OpenCode, Claude and Codex in one place &mdash; plus step-by-step Hermes training and four live coaching calls a week.\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;\n\nHow to switch on computer use in Hermes\nThe driver ships with Hermes: the installers and hermes update install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it&rsquo;s missing, any of these installs it:\n\nRun hermes tools and pick Computer Use.\nToggle the Computer Use toolset in the dashboard or desktop app.\nRun hermes computer-use install, then hermes computer-use status to check it.\n\nThen grant the permissions for your system:\n\n\n\n\nPlatform\nWhat you need\n\n\n\n\nmacOS\nSystem Settings &rarr; Privacy &amp; Security &rarr; Accessibility and Screen Recording for CuaDriver (run hermes computer-use doctor to see the exact name)\n\n\nWindows\nNothing at install time (driving over SSH needs Cua&rsquo;s autostart pattern)\n\n\nLinux\nA display server (X11 or Wayland with XWayland) and AT-SPI switched on\n\n\n\n\nFinally, start a session with hermes -t computer_use chat, or add computer_use to your enabled toolsets in config.yaml.\nPermission modes: how much freedom to give it\n\n\n\n\nMode\nWhat it means\n\n\n\n\nStandard (default)\nNormal Hermes approvals for actions\n\n\nBounded\nYou review a capability manifest once at launch &mdash; listed apps, origins and tools only; anything else fails closed\n\n\nUnrestricted (yolo)\nNo prompts at all &mdash; only for a disposable machine\n\n\n\n\nBounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can&rsquo;t step outside it. Nous warns that unrestricted mode doesn&rsquo;t protect against prompt injection, so only use it on a machine you can throw away.\nWhich computer does Hermes control?\ncomputer_use acts on the machine where the bot&rsquo;s screen lives. On a local setup that&rsquo;s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can&rsquo;t host a display yet.\nThat&rsquo;s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin&rsquo;s desktop setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.\nBest uses for the Hermes computer use skill\n\nApps with no API &mdash; old desktop software, internal tools or dashboards.\nRepeat admin &mdash; exporting reports, updating spreadsheets, filing forms.\nTesting your own site or app the way a real user would.\nChecking visual work &mdash; reading a design, a chart or a layout on screen.\n\nFor web pages, Hermes&rsquo; browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.\nMy verdict on the Hermes computer use skill\nHermes&rsquo; computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\nFAQ: hermes computer use skill\nWhat is the Hermes computer use skill?\nHermes Agent&rsquo;s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.\nWhich models work with Hermes computer use?\nAny tool-capable model, including Claude, GPT, Gemini and local open models.\nDoes Hermes computer use take over my mouse?\nNo &mdash; it works in the background without moving your cursor or stealing keyboard focus.\nHow do I turn on computer use in Hermes?\nRun hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.\nIs Hermes computer use safe?\nUse standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\nOr claim your free strategy session and we&rsquo;ll map out your setup.\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;Get the FREE AI Course + Community &rarr;\n\nRelated reading\n\nHermes Computer Use\nHermes Agent Computer Use\nHermes Cua\n\nLast updated October 2026. This page is a living guide to hermes computer use skill &mdash; the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-computer-use-skill/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-computer-use-skill",
+          "author": "Clawdbot",
+          "published": "2026-10-23T00:39:59",
+          "source": "Julian Goldie",
+          "source_type": "rss",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "An explainer on Hermes Agent's built-in computer_use toolset, which drives apps via screenshots, clicks, typing and scrolling using Cua's open-source cua-driver. The article covers enabling the capability, adding Cua's skill pack, running it inside a disposable Cua Space, and safety practices, noting it works in the background without hijacking the user's cursor or keyboard.",
+          "importance_score": 52.0,
+          "reasoning": "Computer use is a high-interest capability for Hermes users automating desktop workflows, and the guide pairs the built-in toolset with the new Cua Space option announced the same day. Practical tutorial value, but it documents existing functionality more than announcing anything new.",
+          "themes": [
+            "Computer Use",
+            "Skills",
+            "Automation Safety"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An explainer on Hermes Agent's built-in computer_use toolset, which drives apps via screenshots, clicks, typing and scrolling using Cua's open-source cua-driver. The article covers enabling the capability, adding Cua's skill pack, running it inside a disposable Cua Space, and safety practices, noting it works in the background without hijacking the user's cursor or keyboard.</p>",
+          "content_html": "<p>Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in computer_use toolset, powered by Cua’s open-source cua-driver. You can add Cua’s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here’s how computer use works in Hermes, how to switch it on and how to keep it safe.</p>\n<p>Key takeaways</p>\n<p>Hermes’ computer_use toolset controls apps with screenshots, clicks, typing and scrolling.</p>\n<p>It runs on cua-driver and works with any tool-capable model.</p>\n<p>It works in the background and doesn’t steal your cursor or keyboard.</p>\n<p>Run it in a Cua Space for full isolation. Claim a free strategy session for help.</p>\n<p>What the Hermes computer use skill does</p>\n<p>Hermes’ computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.</p>\n<p>Unlike most computer-use tools, it works with any tool-capable model — Claude, GPT, Gemini or an open model on a local endpoint. It isn’t tied to one provider’s computer-use format.</p>\n<p>Platform</p>\n<p>How Hermes reads the screen</p>\n<p>How it sends input</p>\n<p>macOS</p>\n<p>Accessibility (AX)</p>\n<p>Events posted to the app, no cursor warp</p>\n<p>Windows</p>\n<p>UIAutomation</p>\n<p>SendInput and PostMessage, no focus steal</p>\n<p>Linux</p>\n<p>AT-SPI (X11 and Wayland)</p>\n<p>XTest or virtual keyboard</p>\n<p>Toolset vs skill: what’s the difference?</p>\n<p>In Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run cua-driver skills install, and it lands in ~/.cua-driver/skills/cua-driver.</p>\n<p>Hermes doesn’t auto-detect that folder yet — Nous lists it as a planned follow-up — so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use /learn to save the steps (see Hermes learn skill).</p>\n<p>Want Hermes doing your computer admin for you? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<p>How to switch on computer use in Hermes</p>\n<p>The driver ships with Hermes: the installers and hermes update install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it’s missing, any of these installs it:</p>\n<p>Run hermes tools and pick Computer Use.</p>\n<p>Toggle the Computer Use toolset in the dashboard or desktop app.</p>\n<p>Run hermes computer-use install, then hermes computer-use status to check it.</p>\n<p>Then grant the permissions for your system:</p>\n<p>Platform</p>\n<p>What you need</p>\n<p>macOS</p>\n<p>System Settings → Privacy &amp; Security → Accessibility and Screen Recording for CuaDriver (run hermes computer-use doctor to see the exact name)</p>\n<p>Windows</p>\n<p>Nothing at install time (driving over SSH needs Cua’s autostart pattern)</p>\n<p>Linux</p>\n<p>A display server (X11 or Wayland with XWayland) and AT-SPI switched on</p>\n<p>Finally, start a session with hermes -t computer_use chat, or add computer_use to your enabled toolsets in config.yaml.</p>\n<p>Permission modes: how much freedom to give it</p>\n<p>Mode</p>\n<p>What it means</p>\n<p>Standard (default)</p>\n<p>Normal Hermes approvals for actions</p>\n<p>Bounded</p>\n<p>You review a capability manifest once at launch — listed apps, origins and tools only; anything else fails closed</p>\n<p>Unrestricted (yolo)</p>\n<p>No prompts at all — only for a disposable machine</p>\n<p>Bounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can’t step outside it. Nous warns that unrestricted mode doesn’t protect against prompt injection, so only use it on a machine you can throw away.</p>\n<p>Which computer does Hermes control?</p>\n<p>computer_use acts on the machine where the bot’s screen lives. On a local setup that’s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can’t host a display yet.</p>\n<p>That’s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin’s desktop setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.</p>\n<p>Best uses for the Hermes computer use skill</p>\n<p>Apps with no API — old desktop software, internal tools or dashboards.</p>\n<p>Repeat admin — exporting reports, updating spreadsheets, filing forms.</p>\n<p>Testing your own site or app the way a real user would.</p>\n<p>Checking visual work — reading a design, a chart or a layout on screen.</p>\n<p>For web pages, Hermes’ browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.</p>\n<p>My verdict on the Hermes computer use skill</p>\n<p>Hermes’ computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>FAQ: hermes computer use skill</p>\n<p>What is the Hermes computer use skill?</p>\n<p>Hermes Agent’s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.</p>\n<p>Which models work with Hermes computer use?</p>\n<p>Any tool-capable model, including Claude, GPT, Gemini and local open models.</p>\n<p>Does Hermes computer use take over my mouse?</p>\n<p>No — it works in the background without moving your cursor or stealing keyboard focus.</p>\n<p>How do I turn on computer use in Hermes?</p>\n<p>Run hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.</p>\n<p>Is Hermes computer use safe?</p>\n<p>Use standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<p>Related reading</p>\n<p>Hermes Computer Use</p>\n<p>Hermes Agent Computer Use</p>\n<p>Hermes Cua</p>\n<p>Last updated October 2026. This page is a living guide to hermes computer use skill — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "f81fed5f8056",
+          "title": "[Help] Hermes Agent CLI constantly getting stuck on Gateway draining: not_ready & HTTP 429 rate limits — What is the optimal free setup?",
+          "content": "      Hey everyone, I've been trying to set up **Hermes Agent** on Windows (PowerShell) for a completely free workflow, but I keep bumping into a chain of errors that freeze or crash the gateway service. Here is the nightmare sequence of errors I've hit so far:  **Gateway Crash Loops (`ensure_failed`):** Started getting `Connection test failed - Gateway draining (ensure_failed)`. Checked `hermes logs errors` and found out an old Telegram bot token was rejected, causing a 10s backoff / respawn storm every time the service tried to launch. **SQLite Permission Errors:** Tried resetting, but then ran into a file permission issue: `PermissionError: [Errno 13] Permission denied: '...\\telemetry\\shared_metrics\\metrics.sqlite3'` **Persistent `not_ready` State:** Even after stopping and restarting the gateway, running single queries like `hermes -z &quot;Hello&quot;` keeps throwing: `Error: Gateway draining: not_ready` **Google AI Studio Rate Limits (HTTP 429):** When I finally got the gateway running using Google AI Studio (`gemini-3.8-flash`), I ran out of free quota after just 1 or 2 messages: `Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5`  --- ### My Questions for the Community:  **How do you keep the Hermes Gateway from dying when a single platform (like Telegram) fails?** Is there a config flag to ignore platform connection errors on boot so it doesn't enter `ensure_failed` safety mode? **What is the best 100% free inference model/provider setup for Hermes?** * Gemini 2.0 Flash directly via Google AI Studio? * OpenRouter `:free` models (e.g., `nvidia/nemotron-3.5-lightning:free`, `stepfun/step-3.7-flash:free`, or `llama-3.3-70b`)? * Local via LM Studio / Ollama?  Any advice or recommended `config.yaml` settings for a stable, low-cost/free setup would be greatly appreciated!  &#32; submitted by &#32;  /u/Dog_Snake_92  &#32; to &#32;  r/hermesagent   [link] &#32; [comments] ",
+          "url": "https://www.reddit.com/r/hermesagent/comments/1xdtk89/help_hermes_agent_cli_constantly_getting_stuck_on/",
+          "author": "/u/Dog_Snake_92",
+          "published": "2026-10-23T23:37:40",
+          "source": "newest submissions : multi",
+          "source_type": "rss",
+          "tags": [
+            "hermesagent"
+          ],
+          "summary": "A Reddit user reports a cascade of problems setting up Hermes Agent on Windows for a free-tier workflow: gateway crash loops from a rejected old Telegram bot token causing 10-second backoff respawns, SQLite permission errors on telemetry files, and persistent not_ready states alongside HTTP 429 rate limits. The post asks for help finding an optimal free setup.",
+          "importance_score": 45.0,
+          "reasoning": "The thread surfaces real Windows-specific pain points (gateway crash loops, telemetry SQLite permissions, free-tier rate limiting) that likely affect other users and could inform docs or fixes. However, it is an unresolved help request rather than a solution or official guidance.",
+          "themes": [
+            "Troubleshooting",
+            "Windows",
+            "Free Tier Limits"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Reddit user reports a cascade of problems setting up Hermes Agent on Windows for a free-tier workflow: gateway crash loops from a rejected old Telegram bot token causing 10-second backoff respawns, SQLite permission errors on telemetry files, and persistent not_ready states alongside HTTP 429 rate limits. The post asks for help finding an optimal free setup.</p>",
+          "content_html": "<p>Hey everyone, I've been trying to set up <strong>Hermes Agent</strong> on Windows (PowerShell) for a completely free workflow, but I keep bumping into a chain of errors that freeze or crash the gateway service. Here is the nightmare sequence of errors I've hit so far:  <strong>Gateway Crash Loops (<code>ensure_failed</code>):</strong> Started getting <code>Connection test failed - Gateway draining (ensure_failed)</code>. Checked <code>hermes logs errors</code> and found out an old Telegram bot token was rejected, causing a 10s backoff / respawn storm every time the service tried to launch. <strong>SQLite Permission Errors:</strong> Tried resetting, but then ran into a file permission issue: <code>PermissionError: [Errno 13] Permission denied: '...\\telemetry\\shared_metrics\\metrics.sqlite3'</code> <strong>Persistent <code>not_ready</code> State:</strong> Even after stopping and restarting the gateway, running single queries like <code>hermes -z \"Hello\"</code> keeps throwing: <code>Error: Gateway draining: not_ready</code> <strong>Google AI Studio Rate Limits (HTTP 429):</strong> When I finally got the gateway running using Google AI Studio (<code>gemini-3.8-flash</code>), I ran out of free quota after just 1 or 2 messages: <code>Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5</code>  --- ### My Questions for the Community:  <strong>How do you keep the Hermes Gateway from dying when a single platform (like Telegram) fails?</strong> Is there a config flag to ignore platform connection errors on boot so it doesn't enter <code>ensure_failed</code> safety mode? <strong>What is the best 100% free inference model/provider setup for Hermes?</strong> * Gemini 2.0 Flash directly via Google AI Studio? * OpenRouter <code>:free</code> models (e.g., <code>nvidia/nemotron-3.5-lightning:free</code>, <code>stepfun/step-3.7-flash:free</code>, or <code>llama-3.3-70b</code>)? * Local via LM Studio / Ollama?  Any advice or recommended <code>config.yaml</code> settings for a stable, low-cost/free setup would be greatly appreciated!    submitted by    /u/Dog_Snake_92    to    r/hermesagent   [link]   [comments]</p>"
+        },
+        {
+          "id": "936a62cee7bb",
+          "title": "test(mcp): trust-gate approval scopes match what each prompt offers",
+          "content": "test(mcp): trust-gate approval scopes match what each prompt offers\n\nSession/Always on the untrusted-server gate stop the next prompt for that\ntool only (driven through the real gateway approval queue); unkeyed consent\noffers Once / Deny on the gateway card and the CLI panel and records\nnothing. Both red on origin/main.",
+          "url": "https://github.com/NousResearch/hermes-agent/commit/5e260854c2358e2c82ee7794e7546e277f661cb0",
+          "author": "teknium1",
+          "published": "2026-10-23T23:16:43",
+          "source": "Recent Commits to hermes-agent:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A merged test commit strengthens coverage of the MCP trust-gate by verifying that Session/Always approvals on the untrusted-server gate only scope to the next prompt for that tool, driven through the real gateway approval queue. It also checks that unkeyed consent offers only Once/Deny on the gateway card and CLI panel and records nothing. Both tests were noted as failing on origin/main, indicating they guard against live regressions.",
+          "importance_score": 42.0,
+          "reasoning": "Security-relevant test hardening for how Hermes approves untrusted MCP server actions, which matters to users running external tools. However, as a test-only commit with no behavior change itself, its practical impact is moderate.",
+          "themes": [
+            "Security",
+            "MCP and Tools",
+            "Testing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A merged test commit strengthens coverage of the MCP trust-gate by verifying that Session/Always approvals on the untrusted-server gate only scope to the next prompt for that tool, driven through the real gateway approval queue. It also checks that unkeyed consent offers only Once/Deny on the gateway card and CLI panel and records nothing. Both tests were noted as failing on origin/main, indicating they guard against live regressions.</p>",
+          "content_html": "<p>test(mcp): trust-gate approval scopes match what each prompt offers</p>\n<p>Session/Always on the untrusted-server gate stop the next prompt for that</p>\n<p>tool only (driven through the real gateway approval queue); unkeyed consent</p>\n<p>offers Once / Deny on the gateway card and the CLI panel and records</p>\n<p>nothing. Both red on origin/main.</p>"
+        },
+        {
+          "id": "4327b2bf1b5a",
+          "title": "deed-page-skill (Skills & Skill Registries)",
+          "content": "This repository contains an agent skill that publishes a file or folder to a permanent deed.page URL with a curl request, without requiring an account. It also includes plugin manifests and instructions for connecting agents to deed.page’s hosted MCP server, which supports publishing and managing sites.",
+          "url": "https://hermesatlas.com/projects/f-o-x11/deed-page-skill",
+          "author": "Unknown",
+          "published": "2026-10-23T17:56:13",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Skills & Skill Registries"
+          ],
+          "summary": "A new community-listed agent skill on Hermes Atlas that publishes a file or folder to a permanent deed.page URL with a single curl request and no account required. The repository also ships plugin manifests and instructions for connecting agents to deed.page's hosted MCP server for publishing and site management.",
+          "importance_score": 32.0,
+          "reasoning": "A niche but functional community contribution to the skill registry, useful for quick static publishing. It is a small third-party listing rather than an official feature, so its Hermes-wide significance is limited.",
+          "themes": [
+            "Skills and Skill Registries",
+            "Community Projects"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A new community-listed agent skill on Hermes Atlas that publishes a file or folder to a permanent deed.page URL with a single curl request and no account required. The repository also ships plugin manifests and instructions for connecting agents to deed.page's hosted MCP server for publishing and site management.</p>",
+          "content_html": "<p>This repository contains an agent skill that publishes a file or folder to a permanent deed.page URL with a curl request, without requiring an account. It also includes plugin manifests and instructions for connecting agents to deed.page’s hosted MCP server, which supports publishing and managing sites.</p>"
+        },
+        {
+          "id": "e6913c63937f",
+          "title": "rc.3-v0.22.5",
+          "content": "{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1792722320,\"commit\":\"bf…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.3-v0.22.5",
+          "author": "teknium1",
+          "published": "2026-10-23T02:25:20",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A third release-candidate tag for v0.22.5 was published on the hermes-agent repo, containing only machine-generated metadata (attempt 3, commit hash, claim epoch) rather than human-readable notes. It documents the final pre-release validation pass before the stable v0.22.5 tag.",
+          "importance_score": 25.0,
+          "reasoning": "Release-candidate tags with no substantive notes are process artifacts superseded by the stable v0.22.5 release the same day. Useful for developers tracking the pipeline but of minimal direct value to most Hermes users.",
+          "themes": [
+            "Release Candidates"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A third release-candidate tag for v0.22.5 was published on the hermes-agent repo, containing only machine-generated metadata (attempt 3, commit hash, claim epoch) rather than human-readable notes. It documents the final pre-release validation pass before the stable v0.22.5 tag.</p>",
+          "content_html": "<p>{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1792722320,\"commit\":\"bf…</p>"
+        },
+        {
+          "id": "acaeb64d829f",
+          "title": "rc.2-v0.22.5",
+          "content": "{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792716569,\"commit\":\"a4…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.22.5",
+          "author": "teknium1",
+          "published": "2026-10-23T00:49:29",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A second release-candidate tag for v0.22.5 appeared with only auto-generated metadata (attempt 2, commit pointer, claim epoch) and no curated changelog. It is an intermediate step in the release pipeline that culminated in the stable v0.22.5 tag.",
+          "importance_score": 22.0,
+          "reasoning": "Like rc.3, this is a metadata-only RC tag with no user-facing content, fully superseded by the stable release published hours later. Low value except for contributors tracing commit lineage.",
+          "themes": [
+            "Release Candidates"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A second release-candidate tag for v0.22.5 appeared with only auto-generated metadata (attempt 2, commit pointer, claim epoch) and no curated changelog. It is an intermediate step in the release pipeline that culminated in the stable v0.22.5 tag.</p>",
+          "content_html": "<p>{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792716569,\"commit\":\"a4…</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 25,
+      "category_summary": "The latest updates demonstrate the Hermes Agent's rapid evolution from a basic language model interface into a highly sophisticated, autonomous, and extensible AI framework. The focus has shifted aggressively toward **Embodiment** and **Operational Robustness**.\n\n**🤖 Autonomous Embodiment & Multi-Modality:** The most impactful developments include giving the agent a physical 'body' via the **[Autonomous Lamp](/?date=2026-10-24&category=research#item-0b2d4347fa9d)** (bridging software and physical reality) and expanding its creative scope with the **[Hermes Meshy](/?date=2026-10-24&category=research#item-59864203d485)** plugin, enabling the creation of complex 3D models from natural language.\n\n**💻 Advanced Agent Control & Safety:** Core utility is being expanded through the **[computer_use](/?date=2026-10-24&category=research#item-88c0557784e6)** toolset, which allows Hermes to interact with and control a standard computer's desktop environment. Crucially, safety and sandboxing are addressed by **[Hermes Cua](/?date=2026-10-24&category=research#item-910c6d383a4e)**, which isolates terminal and file commands in 'Cua Spaces' to prevent host machine risk.\n\n**🧠 Architectural Innovation & Autonomy:** At the research level, the community is pushing boundaries with solutions like **[Refine Cycle](/?date=2026-10-24&category=research#item-hn-49606988)**, a self-improvement plugin that moves the agent toward iterative autonomy, and foundational research into **[Cross-Layer Expert Sharing for MoE](/?date=2026-10-24&category=research#item-2610.27598)**, which optimizes the underlying model architecture for better efficiency.\n\n**🛠️ Enterprise Readiness & Ecosystem Growth:** For enterprise users, the practical application is expanding via ['Almanac' (AI that knows your company)](/?date=2026-10-24&category=research#item-hn-49511007) and a growing suite of developer tools. High-value infrastructure improvements include the **[Hermes Kanban](/?date=2026-10-24&category=research#item-hn-49604068)** feature for multi-agent collaboration and dedicated monitoring solutions like the [Grafana agent](/?date=2026-10-24&category=research#item-hn-49318128), which significantly enhance production observability.",
+      "category_summary_html": "<p>The latest updates demonstrate the Hermes Agent's rapid evolution from a basic language model interface into a highly sophisticated, autonomous, and extensible AI framework. The focus has shifted aggressively toward <strong>Embodiment</strong> and <strong>Operational Robustness</strong>.</p>\n<p><strong>🤖 Autonomous Embodiment &amp; Multi-Modality:</strong> The most impactful developments include giving the agent a physical 'body' via the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-0b2d4347fa9d\" class=\"internal-link\" rel=\"noopener noreferrer\">Autonomous Lamp</a></strong> (bridging software and physical reality) and expanding its creative scope with the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-59864203d485\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Meshy</a></strong> plugin, enabling the creation of complex 3D models from natural language.</p>\n<p><strong>💻 Advanced Agent Control &amp; Safety:</strong> Core utility is being expanded through the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-88c0557784e6\" class=\"internal-link\" rel=\"noopener noreferrer\">computer_use</a></strong> toolset, which allows Hermes to interact with and control a standard computer's desktop environment. Crucially, safety and sandboxing are addressed by <strong><a href=\"/?date=2026-10-24&amp;category=research#item-910c6d383a4e\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Cua</a></strong>, which isolates terminal and file commands in 'Cua Spaces' to prevent host machine risk.</p>\n<p><strong>🧠 Architectural Innovation &amp; Autonomy:</strong> At the research level, the community is pushing boundaries with solutions like <strong><a href=\"/?date=2026-10-24&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong>, a self-improvement plugin that moves the agent toward iterative autonomy, and foundational research into <strong><a href=\"/?date=2026-10-24&amp;category=research#item-2610.27598\" class=\"internal-link\" rel=\"noopener noreferrer\">Cross-Layer Expert Sharing for MoE</a></strong>, which optimizes the underlying model architecture for better efficiency.</p>\n<p><strong>🛠️ Enterprise Readiness &amp; Ecosystem Growth:</strong> For enterprise users, the practical application is expanding via <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">'Almanac' (AI that knows your company)</a> and a growing suite of developer tools. High-value infrastructure improvements include the <strong><a href=\"/?date=2026-10-24&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> feature for multi-agent collaboration and dedicated monitoring solutions like the <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana agent</a>, which significantly enhance production observability.</p>",
+      "themes": [
+        {
+          "name": "Agent Embodiment and Autonomy",
+          "description": "This theme covers advancements in giving the Hermes Agent physical presence (robotics), the ability to interact with a computer's UI, and higher levels of task-level autonomy (self-improvement, isolated execution).",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Advanced Capabilities and Modalities",
+          "description": "Focuses on the expansion of what the agent can create and process, including 3D model generation, specialized financial data queries, and multi-agent collaboration workflows.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 88.0
+        },
+        {
+          "name": "Infrastructure and Architectural Foundations",
+          "description": "Research and development concerning the underlying technology, such as MoE model efficiency, deployment solutions (Kubernetes), and necessary architectural components (model routers).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Open Source Community and Practical Use",
+          "description": "Documentation of community efforts, developer tools, user-driven solutions, and high-value enterprise demonstrations of the platform's utility.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 70.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "0b2d4347fa9d",
+          "title": "Hermes Agent Robot: Give Hermes a Body With the Autonomous Lamp",
+          "content": "Hermes Agent robot setups are here. The Autonomous Lamp is a desk-lamp robot that gives AI agents like Hermes a physical body: it moves, looks at you, listens and talks back. Autonomous announced it with one line — Hermes “just escaped” and got “a body, one eye, and two ears”. In the video below I show what it does, how it works under the hood and what you can build with it. Here’s everything you need to know before you put Hermes on your desk.\n\nKey takeaways\n\n- The Autonomous Lamp gives Hermes a camera, microphones, speakers and five motors.\n\n- It runs Hermes, Claude Code, Codex, OpenClaw, OpenCode and more, with cloud or local models.\n\n- Behaviour lives in simple files: SOUL.md, SAFETY.md and SKILL.md.\n\n- Lamp costs $999. Claim a free strategy session to plan your agent setup.\n\n## What is the Hermes Agent robot?\n\nAgents like Hermes and Claude Code live in a terminal window. They’re powerful, but they’re stuck on a screen. The Autonomous Lamp takes the same agents and puts them on your desk. Autonomous calls it your personal robot. When you walk in it can look up, turn towards you when you talk, and answer out loud.\n\nIt ships with Autonomous’s open-source Physical AI Operating System, often called lampOS. Autonomous describes it as “the Android for physical AI agents”. It sits between your agent and the hardware — camera, microphones, speakers, motors and light. Your agent asks for something, and the OS makes the hardware do it.\n\nAutonomous Lamp at a glance\n\nPrice\n$999 (bulk pricing from $969 for 3+ units)\n\nSize and weight\n7.87 × 7.87 × 18.43 in, 6.6 lb\n\nMovement\n5 position-feedback servos: turn, tilt, nod and lean\n\nVision\nWide-angle camera with face tracking and motion sensing\n\nAudio\nMicrophone array and stereo speakers\n\nCompute\n8-core ARM64 CPU, 6 GB RAM\n\nSoftware\nOpen-source Physical AI Operating System (lampOS), Apache 2.0\n\nWarranty\n1 year\n\n## Which agents run on the robot?\n\nYou’re not locked into one agent or one model. Autonomous lists Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw (its product page also mentions Pi), with more on the way. You can use a cloud model from the provider you pick, or a compatible local model running on your own hardware.\n\nSo the Hermes you already use — with its memory, skills and scheduled jobs — can now have a voice and a body. Hermes is also the first runtime the OS enables its intent routing for by default, while other runtimes wait for validation.\n\nWant your AI agents doing real work for your business? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant Hermes working for you on and off the screen? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## What it’s like to use\n\nYou just talk to it. It listens, answers and moves while it talks, so it feels like a character on your desk rather than a speaker. You pick its voice and shape how it behaves. In one of Autonomous’s own clips, two lamps chat with each other, each with its own personality.\n\n- Simple commands: “Turn off the lights”, “This lamp is too bright”, “You’re speaking too loudly” or “Make this lamp violet” run as local commands.\n\n- Lighting scenes: “I need light to read a book” switches on a reading scene.\n\n- Little nudges: Autonomous shows it reminding you to drink water, take breaks and fix your posture, and its ring light can change colour as a quiet cue.\n\n- Bigger jobs: anything it isn’t sure about goes to your main agent.\n\n## Under the hood: SOUL.md, SAFETY.md and skills\n\nThis is the part I like most. The OS can run any robot you can describe in four markdown files:\n\nFile\nWhat it controls\n\nROBOT.md\nThe body: the board and the hardware it has\n\nSOUL.md\nThe self: who it is and how it talks\n\nSAFETY.md\nThe bounds: how fast, how bright, how late\n\nSKILL.md\nThe hands: one thing it can do\n\nChange SOUL.md and it becomes someone else on the next turn. SAFETY.md is the safety gate: it sets limits like brightness, quiet hours and movement speed. Those limits apply no matter which AI model sent the request, so you can swap agents or models and the robot still stays inside your rules.\n\nEvery behaviour is a skill, and a skill is just a folder with a SKILL.md file inside — the same idea Hermes already uses. Install skills from the Skill Store in one tap, or type what you want in the app and it writes the skill for you. The OS ships with skills such as following an object with the camera and responding to touch with a gesture.\n\n## Work across your robot and your computer\n\n- Hand off computer work. The harness-use skill sends coding and research tasks to agents running in Autonomous’s Harness on your paired computer, then reads you the result.\n\n- Use Mac apps. The computer-use skill works through Autonomous Buddy, which bundles Cua Driver — the same driver behind Hermes computer use.\n\n- Smart home. You can connect it to Home Assistant, so the lamp becomes a talking, moving front end for your home.\n\nAutonomous also suggests uses like a front-desk host, a co-host for creators and a robot for classrooms.\n\n## Other robots: Intern, Reachy Mini or your own\n\nRobot\nWhat it is\n\nAutonomous Lamp\nThe full experience: sees, hears, speaks and moves\n\nAutonomous Intern\nAn always-on desk agent with a mic, speaker and LED ring\n\nReachy Mini\nHugging Face’s desk robot, which can run the OS alongside its own software\n\nYour own robot\nDescribe it in ROBOT.md, SOUL.md, SAFETY.md and SKILL.md\n\nPut a Reachy Mini next to a Lamp and each hears the other’s answer as its next input, so the two will hold a conversation until you stop them.\n\n## How to get started with a Hermes Agent robot\n\n- Add the robot in the Autonomous app (iOS or Android) and connect it to your Wi-Fi.\n\n- Pick your agent: Hermes, Claude Code, Codex or one of the others.\n\n- Choose its voice and shape its personality in SOUL.md.\n\n- Install a skill from the Skill Store, or describe a new one.\n\n- Set your limits in SAFETY.md so it behaves exactly how you want.\n\nA robot with a camera and microphones is always sensing. Decide where it lives, set quiet hours, and check which model service your audio and video go to, since inference may run remotely depending on your setup.\n\n## Is it worth $999?\n\nIf you just want reminders and a talking lamp, probably not yet. If you run agents every day and want them present — greeting visitors, reading you results, co-hosting content or running your smart home — it’s the most complete Hermes body available right now. And because the OS is open source, you can try it on a Reachy Mini or your own hardware first.\n\n## My verdict on the Hermes Agent robot\n\nAgents are leaving the screen. With an open OS, simple SOUL.md and SAFETY.md files, and support for the agents you already use, the Autonomous Lamp is a fun and genuinely useful first step into physical AI. If you want your agent on your desk and not just in your terminal, the Hermes Agent robot is worth a look.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes agent robot\n\n### What is the Hermes Agent robot?\n\nA setup that runs Hermes Agent on a physical robot such as the Autonomous Lamp, giving it a camera, microphones, speakers and motors so it can see, listen, talk and move.\n\n### How much does the Autonomous Lamp cost?\n\n$999 for one unit, with bulk pricing from $969 for three or more.\n\n### Which agents work with the Autonomous Lamp?\n\nHermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw, with cloud or local models.\n\n### What are SOUL.md and SAFETY.md?\n\nSOUL.md sets the robot’s personality and SAFETY.md sets its limits, like brightness, quiet hours and movement speed, whichever model is in charge.\n\n### Is lampOS open source?\n\nYes — Autonomous’s Physical AI Operating System is open source on GitHub under Apache 2.0.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Computer Use Skill\n\n- Hermes Apollo Voice\n\n- Hermes SOUL.md\n\nLast updated October 2026. This page is a living guide to hermes agent robot — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-agent-robot/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-robot",
+          "author": "Clawdbot",
+          "published": "2026-10-23T23:56:05",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Detailed coverage of the 'Autonomous Lamp,' a physical desk robot that acts as a body for the Hermes Agent, providing it with sensory input and motor control to interact with the physical world.",
+          "importance_score": 95.0,
+          "reasoning": "This is a major step in AI embodiment, bridging the gap between software agents and physical reality.",
+          "themes": [
+            "embodiment",
+            "robotics"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Detailed coverage of the 'Autonomous Lamp,' a physical desk robot that acts as a body for the Hermes Agent, providing it with sensory input and motor control to interact with the physical world.</p>",
+          "content_html": "<p>Hermes Agent robot setups are here. The Autonomous Lamp is a desk-lamp robot that gives AI agents like Hermes a physical body: it moves, looks at you, listens and talks back. Autonomous announced it with one line — Hermes “just escaped” and got “a body, one eye, and two ears”. In the video below I show what it does, how it works under the hood and what you can build with it. Here’s everything you need to know before you put Hermes on your desk.</p>\n<p>Key takeaways</p>\n<ul>\n<li>The Autonomous Lamp gives Hermes a camera, microphones, speakers and five motors.</li>\n</ul>\n<ul>\n<li>It runs Hermes, Claude Code, Codex, OpenClaw, OpenCode and more, with cloud or local models.</li>\n</ul>\n<ul>\n<li>Behaviour lives in simple files: SOUL.md, SAFETY.md and SKILL.md.</li>\n</ul>\n<ul>\n<li>Lamp costs $999. Claim a free strategy session to plan your agent setup.</li>\n</ul>\n<h2>What is the Hermes Agent robot?</h2>\n<p>Agents like Hermes and Claude Code live in a terminal window. They’re powerful, but they’re stuck on a screen. The Autonomous Lamp takes the same agents and puts them on your desk. Autonomous calls it your personal robot. When you walk in it can look up, turn towards you when you talk, and answer out loud.</p>\n<p>It ships with Autonomous’s open-source Physical AI Operating System, often called lampOS. Autonomous describes it as “the Android for physical AI agents”. It sits between your agent and the hardware — camera, microphones, speakers, motors and light. Your agent asks for something, and the OS makes the hardware do it.</p>\n<p>Autonomous Lamp at a glance</p>\n<p>Price</p>\n<p>$999 (bulk pricing from $969 for 3+ units)</p>\n<p>Size and weight</p>\n<p>7.87 × 7.87 × 18.43 in, 6.6 lb</p>\n<p>Movement</p>\n<p>5 position-feedback servos: turn, tilt, nod and lean</p>\n<p>Vision</p>\n<p>Wide-angle camera with face tracking and motion sensing</p>\n<p>Audio</p>\n<p>Microphone array and stereo speakers</p>\n<p>Compute</p>\n<p>8-core ARM64 CPU, 6 GB RAM</p>\n<p>Software</p>\n<p>Open-source Physical AI Operating System (lampOS), Apache 2.0</p>\n<p>Warranty</p>\n<p>1 year</p>\n<h2>Which agents run on the robot?</h2>\n<p>You’re not locked into one agent or one model. Autonomous lists Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw (its product page also mentions Pi), with more on the way. You can use a cloud model from the provider you pick, or a compatible local model running on your own hardware.</p>\n<p>So the Hermes you already use — with its memory, skills and scheduled jobs — can now have a voice and a body. Hermes is also the first runtime the OS enables its intent routing for by default, while other runtimes wait for validation.</p>\n<p>Want your AI agents doing real work for your business? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes working for you on and off the screen? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>What it’s like to use</h2>\n<p>You just talk to it. It listens, answers and moves while it talks, so it feels like a character on your desk rather than a speaker. You pick its voice and shape how it behaves. In one of Autonomous’s own clips, two lamps chat with each other, each with its own personality.</p>\n<ul>\n<li>Simple commands: “Turn off the lights”, “This lamp is too bright”, “You’re speaking too loudly” or “Make this lamp violet” run as local commands.</li>\n</ul>\n<ul>\n<li>Lighting scenes: “I need light to read a book” switches on a reading scene.</li>\n</ul>\n<ul>\n<li>Little nudges: Autonomous shows it reminding you to drink water, take breaks and fix your posture, and its ring light can change colour as a quiet cue.</li>\n</ul>\n<ul>\n<li>Bigger jobs: anything it isn’t sure about goes to your main agent.</li>\n</ul>\n<h2>Under the hood: SOUL.md, SAFETY.md and skills</h2>\n<p>This is the part I like most. The OS can run any robot you can describe in four markdown files:</p>\n<p>File</p>\n<p>What it controls</p>\n<p>ROBOT.md</p>\n<p>The body: the board and the hardware it has</p>\n<p>SOUL.md</p>\n<p>The self: who it is and how it talks</p>\n<p>SAFETY.md</p>\n<p>The bounds: how fast, how bright, how late</p>\n<p>SKILL.md</p>\n<p>The hands: one thing it can do</p>\n<p>Change SOUL.md and it becomes someone else on the next turn. SAFETY.md is the safety gate: it sets limits like brightness, quiet hours and movement speed. Those limits apply no matter which AI model sent the request, so you can swap agents or models and the robot still stays inside your rules.</p>\n<p>Every behaviour is a skill, and a skill is just a folder with a SKILL.md file inside — the same idea Hermes already uses. Install skills from the Skill Store in one tap, or type what you want in the app and it writes the skill for you. The OS ships with skills such as following an object with the camera and responding to touch with a gesture.</p>\n<h2>Work across your robot and your computer</h2>\n<ul>\n<li>Hand off computer work. The harness-use skill sends coding and research tasks to agents running in Autonomous’s Harness on your paired computer, then reads you the result.</li>\n</ul>\n<ul>\n<li>Use Mac apps. The computer-use skill works through Autonomous Buddy, which bundles Cua Driver — the same driver behind Hermes computer use.</li>\n</ul>\n<ul>\n<li>Smart home. You can connect it to Home Assistant, so the lamp becomes a talking, moving front end for your home.</li>\n</ul>\n<p>Autonomous also suggests uses like a front-desk host, a co-host for creators and a robot for classrooms.</p>\n<h2>Other robots: Intern, Reachy Mini or your own</h2>\n<p>Robot</p>\n<p>What it is</p>\n<p>Autonomous Lamp</p>\n<p>The full experience: sees, hears, speaks and moves</p>\n<p>Autonomous Intern</p>\n<p>An always-on desk agent with a mic, speaker and LED ring</p>\n<p>Reachy Mini</p>\n<p>Hugging Face’s desk robot, which can run the OS alongside its own software</p>\n<p>Your own robot</p>\n<p>Describe it in ROBOT.md, SOUL.md, SAFETY.md and SKILL.md</p>\n<p>Put a Reachy Mini next to a Lamp and each hears the other’s answer as its next input, so the two will hold a conversation until you stop them.</p>\n<h2>How to get started with a Hermes Agent robot</h2>\n<ul>\n<li>Add the robot in the Autonomous app (iOS or Android) and connect it to your Wi-Fi.</li>\n</ul>\n<ul>\n<li>Pick your agent: Hermes, Claude Code, Codex or one of the others.</li>\n</ul>\n<ul>\n<li>Choose its voice and shape its personality in SOUL.md.</li>\n</ul>\n<ul>\n<li>Install a skill from the Skill Store, or describe a new one.</li>\n</ul>\n<ul>\n<li>Set your limits in SAFETY.md so it behaves exactly how you want.</li>\n</ul>\n<p>A robot with a camera and microphones is always sensing. Decide where it lives, set quiet hours, and check which model service your audio and video go to, since inference may run remotely depending on your setup.</p>\n<h2>Is it worth $999?</h2>\n<p>If you just want reminders and a talking lamp, probably not yet. If you run agents every day and want them present — greeting visitors, reading you results, co-hosting content or running your smart home — it’s the most complete Hermes body available right now. And because the OS is open source, you can try it on a Reachy Mini or your own hardware first.</p>\n<h2>My verdict on the Hermes Agent robot</h2>\n<p>Agents are leaving the screen. With an open OS, simple SOUL.md and SAFETY.md files, and support for the agents you already use, the Autonomous Lamp is a fun and genuinely useful first step into physical AI. If you want your agent on your desk and not just in your terminal, the Hermes Agent robot is worth a look.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes agent robot</h2>\n<h3>What is the Hermes Agent robot?</h3>\n<p>A setup that runs Hermes Agent on a physical robot such as the Autonomous Lamp, giving it a camera, microphones, speakers and motors so it can see, listen, talk and move.</p>\n<h3>How much does the Autonomous Lamp cost?</h3>\n<p>$999 for one unit, with bulk pricing from $969 for three or more.</p>\n<h3>Which agents work with the Autonomous Lamp?</h3>\n<p>Hermes, Claude Code, Codex, OpenClaw, OpenCode and PicoClaw, with cloud or local models.</p>\n<h3>What are SOUL.md and SAFETY.md?</h3>\n<p>SOUL.md sets the robot’s personality and SAFETY.md sets its limits, like brightness, quiet hours and movement speed, whichever model is in charge.</p>\n<h3>Is lampOS open source?</h3>\n<p>Yes — Autonomous’s Physical AI Operating System is open source on GitHub under Apache 2.0.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Computer Use Skill</li>\n</ul>\n<ul>\n<li>Hermes Apollo Voice</li>\n</ul>\n<ul>\n<li>Hermes SOUL.md</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent robot — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "88c0557784e6",
+          "title": "Hermes Computer Use Skill: How Hermes Agent Controls a Computer",
+          "content": "Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in `computer_use` toolset, powered by Cua’s open-source `cua-driver`. You can add Cua’s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here’s how computer use works in Hermes, how to switch it on and how to keep it safe.\n\nKey takeaways\n\n- Hermes’ computer_use toolset controls apps with screenshots, clicks, typing and scrolling.\n\n- It runs on cua-driver and works with any tool-capable model.\n\n- It works in the background and doesn’t steal your cursor or keyboard.\n\n- Run it in a Cua Space for full isolation. Claim a free strategy session for help.\n\n## What the Hermes computer use skill does\n\nHermes’ computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.\n\nUnlike most computer-use tools, it works with any tool-capable model — Claude, GPT, Gemini or an open model on a local endpoint. It isn’t tied to one provider’s computer-use format.\n\nPlatform\nHow Hermes reads the screen\nHow it sends input\n\nmacOS\nAccessibility (AX)\nEvents posted to the app, no cursor warp\n\nWindows\nUIAutomation\nSendInput and PostMessage, no focus steal\n\nLinux\nAT-SPI (X11 and Wayland)\nXTest or virtual keyboard\n\n## Toolset vs skill: what’s the difference?\n\nIn Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run `cua-driver skills install`, and it lands in `~/.cua-driver/skills/cua-driver`.\n\nHermes doesn’t auto-detect that folder yet — Nous lists it as a planned follow-up — so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use `/learn` to save the steps (see Hermes learn skill).\n\nWant Hermes doing your computer admin for you? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How to switch on computer use in Hermes\n\nThe driver ships with Hermes: the installers and `hermes update` install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it’s missing, any of these installs it:\n\n- Run `hermes tools` and pick Computer Use.\n\n- Toggle the Computer Use toolset in the dashboard or desktop app.\n\n- Run `hermes computer-use install`, then `hermes computer-use status` to check it.\n\nThen grant the permissions for your system:\n\nPlatform\nWhat you need\n\nmacOS\nSystem Settings → Privacy & Security → Accessibility and Screen Recording for CuaDriver (run `hermes computer-use doctor` to see the exact name)\n\nWindows\nNothing at install time (driving over SSH needs Cua’s autostart pattern)\n\nLinux\nA display server (X11 or Wayland with XWayland) and AT-SPI switched on\n\nFinally, start a session with `hermes -t computer_use chat`, or add computer_use to your enabled toolsets in config.yaml.\n\n## Permission modes: how much freedom to give it\n\nMode\nWhat it means\n\nStandard (default)\nNormal Hermes approvals for actions\n\nBounded\nYou review a capability manifest once at launch — listed apps, origins and tools only; anything else fails closed\n\nUnrestricted (yolo)\nNo prompts at all — only for a disposable machine\n\nBounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can’t step outside it. Nous warns that unrestricted mode doesn’t protect against prompt injection, so only use it on a machine you can throw away.\n\n## Which computer does Hermes control?\n\ncomputer_use acts on the machine where the bot’s screen lives. On a local setup that’s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can’t host a display yet.\n\nThat’s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin’s `desktop` setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.\n\n## Best uses for the Hermes computer use skill\n\n- Apps with no API — old desktop software, internal tools or dashboards.\n\n- Repeat admin — exporting reports, updating spreadsheets, filing forms.\n\n- Testing your own site or app the way a real user would.\n\n- Checking visual work — reading a design, a chart or a layout on screen.\n\nFor web pages, Hermes’ browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.\n\n## My verdict on the Hermes computer use skill\n\nHermes’ computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: hermes computer use skill\n\n### What is the Hermes computer use skill?\n\nHermes Agent’s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.\n\n### Which models work with Hermes computer use?\n\nAny tool-capable model, including Claude, GPT, Gemini and local open models.\n\n### Does Hermes computer use take over my mouse?\n\nNo — it works in the background without moving your cursor or stealing keyboard focus.\n\n### How do I turn on computer use in Hermes?\n\nRun hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.\n\n### Is Hermes computer use safe?\n\nUse standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Computer Use\n\n- Hermes Agent Computer Use\n\n- Hermes Cua\n\nLast updated October 2026. This page is a living guide to hermes computer use skill — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-computer-use-skill/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-computer-use-skill",
+          "author": "Clawdbot",
+          "published": "2026-10-23T00:39:59",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Describes the 'computer_use' toolset which allows the agent to interact with and control a computer's desktop environment via screenshots, clicks, typing, and scrolling, powered by the Cua driver.",
+          "importance_score": 90.0,
+          "reasoning": "Essential functionality for advanced agents to perform complex software tasks autonomously.",
+          "themes": [
+            "autonomy",
+            "system_interaction"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Describes the 'computer_use' toolset which allows the agent to interact with and control a computer's desktop environment via screenshots, clicks, typing, and scrolling, powered by the Cua driver.</p>",
+          "content_html": "<p>Hermes computer use skill is how Hermes Agent sees a screen and uses apps the way you do: it takes screenshots, clicks, types and scrolls. Hermes does this with its built-in <code>computer_use</code> toolset, powered by Cua’s open-source <code>cua-driver</code>. You can add Cua’s skill pack on top, and since this week you can run it all inside a throwaway Cua Space. In the video below I show Hermes getting its own computer through Cua. Here’s how computer use works in Hermes, how to switch it on and how to keep it safe.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Hermes’ computer_use toolset controls apps with screenshots, clicks, typing and scrolling.</li>\n</ul>\n<ul>\n<li>It runs on cua-driver and works with any tool-capable model.</li>\n</ul>\n<ul>\n<li>It works in the background and doesn’t steal your cursor or keyboard.</li>\n</ul>\n<ul>\n<li>Run it in a Cua Space for full isolation. Claim a free strategy session for help.</li>\n</ul>\n<h2>What the Hermes computer use skill does</h2>\n<p>Hermes’ computer_use toolset gives the agent background desktop control: screenshots, click, drag, scroll, type, key presses, waiting, listing apps and focusing an app. It reads the accessibility tree of any visible window and sends input without bringing the window to the front, switching desktops or moving your real cursor. So you and the agent can co-work on the same machine.</p>\n<p>Unlike most computer-use tools, it works with any tool-capable model — Claude, GPT, Gemini or an open model on a local endpoint. It isn’t tied to one provider’s computer-use format.</p>\n<p>Platform</p>\n<p>How Hermes reads the screen</p>\n<p>How it sends input</p>\n<p>macOS</p>\n<p>Accessibility (AX)</p>\n<p>Events posted to the app, no cursor warp</p>\n<p>Windows</p>\n<p>UIAutomation</p>\n<p>SendInput and PostMessage, no focus steal</p>\n<p>Linux</p>\n<p>AT-SPI (X11 and Wayland)</p>\n<p>XTest or virtual keyboard</p>\n<h2>Toolset vs skill: what’s the difference?</h2>\n<p>In Hermes, a tool is an ability (like computer_use) and a skill is a set of instructions that teaches the agent how to use abilities well. The computer_use toolset is built in. On top of it, Cua publishes a skill pack: install Cua Driver and run <code>cua-driver skills install</code>, and it lands in <code>~/.cua-driver/skills/cua-driver</code>.</p>\n<p>Hermes doesn’t auto-detect that folder yet — Nous lists it as a planned follow-up — so point Hermes at that directory or symlink it into your skills folder. You can also teach Hermes your own computer-use skills: show it a task, then use <code>/learn</code> to save the steps (see Hermes learn skill).</p>\n<p>Want Hermes doing your computer admin for you? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want Hermes using your apps for you? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How to switch on computer use in Hermes</h2>\n<p>The driver ships with Hermes: the installers and <code>hermes update</code> install cua-driver on macOS, Windows and Linux, and the desktop app bundles it. If it’s missing, any of these installs it:</p>\n<ul>\n<li>Run <code>hermes tools</code> and pick Computer Use.</li>\n</ul>\n<ul>\n<li>Toggle the Computer Use toolset in the dashboard or desktop app.</li>\n</ul>\n<ul>\n<li>Run <code>hermes computer-use install</code>, then <code>hermes computer-use status</code> to check it.</li>\n</ul>\n<p>Then grant the permissions for your system:</p>\n<p>Platform</p>\n<p>What you need</p>\n<p>macOS</p>\n<p>System Settings → Privacy &amp; Security → Accessibility and Screen Recording for CuaDriver (run <code>hermes computer-use doctor</code> to see the exact name)</p>\n<p>Windows</p>\n<p>Nothing at install time (driving over SSH needs Cua’s autostart pattern)</p>\n<p>Linux</p>\n<p>A display server (X11 or Wayland with XWayland) and AT-SPI switched on</p>\n<p>Finally, start a session with <code>hermes -t computer_use chat</code>, or add computer_use to your enabled toolsets in config.yaml.</p>\n<h2>Permission modes: how much freedom to give it</h2>\n<p>Mode</p>\n<p>What it means</p>\n<p>Standard (default)</p>\n<p>Normal Hermes approvals for actions</p>\n<p>Bounded</p>\n<p>You review a capability manifest once at launch — listed apps, origins and tools only; anything else fails closed</p>\n<p>Unrestricted (yolo)</p>\n<p>No prompts at all — only for a disposable machine</p>\n<p>Bounded mode is the smart choice for repeat jobs like scheduled reports. You approve exactly what the agent may touch once, and it can’t step outside it. Nous warns that unrestricted mode doesn’t protect against prompt injection, so only use it on a machine you can throw away.</p>\n<h2>Which computer does Hermes control?</h2>\n<p>computer_use acts on the machine where the bot’s screen lives. On a local setup that’s your computer. With a sandboxed terminal such as Docker, SSH or Singularity, the driver runs inside the sandbox on its own display, so it can only touch what the sandbox can. Modal, Daytona and Vercel sandboxes can’t host a display yet.</p>\n<p>That’s why the new Hermes Cua plugin is such a good fit. A Cua Space is a full computer with its own screen and apps. Set the plugin’s <code>desktop</code> setting to true and it installs what computer_use and the browser need into the Space. Then you can watch the agent click around live, and take over if it gets stuck.</p>\n<h2>Best uses for the Hermes computer use skill</h2>\n<ul>\n<li>Apps with no API — old desktop software, internal tools or dashboards.</li>\n</ul>\n<ul>\n<li>Repeat admin — exporting reports, updating spreadsheets, filing forms.</li>\n</ul>\n<ul>\n<li>Testing your own site or app the way a real user would.</li>\n</ul>\n<ul>\n<li>Checking visual work — reading a design, a chart or a layout on screen.</li>\n</ul>\n<p>For web pages, Hermes’ browser toolset is usually faster and more reliable. Use computer use for everything outside the browser.</p>\n<h2>My verdict on the Hermes computer use skill</h2>\n<p>Hermes’ computer use works with any model, runs in the background without hijacking your mouse, and comes with proper permission modes. Pair it with a Cua Space and you get an agent that uses a real computer without risking yours. If you want an agent that can handle the apps you use every day, the Hermes computer use skill is the place to start.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: hermes computer use skill</h2>\n<h3>What is the Hermes computer use skill?</h3>\n<p>Hermes Agent’s computer_use toolset, powered by cua-driver, lets the agent take screenshots, click, type and scroll in apps. Cua also publishes a skill pack you can add.</p>\n<h3>Which models work with Hermes computer use?</h3>\n<p>Any tool-capable model, including Claude, GPT, Gemini and local open models.</p>\n<h3>Does Hermes computer use take over my mouse?</h3>\n<p>No — it works in the background without moving your cursor or stealing keyboard focus.</p>\n<h3>How do I turn on computer use in Hermes?</h3>\n<p>Run hermes tools and pick Computer Use, grant the permissions for your system, then start Hermes with hermes -t computer_use chat.</p>\n<h3>Is Hermes computer use safe?</h3>\n<p>Use standard or bounded permission mode, and run it inside a sandbox or Cua Space for real isolation. Only use unrestricted mode on a disposable machine.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Computer Use</li>\n</ul>\n<ul>\n<li>Hermes Agent Computer Use</li>\n</ul>\n<ul>\n<li>Hermes Cua</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes computer use skill — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Details the launch of 'Refine Cycle', an open-source plugin engineered to introduce self-improvement capabilities into the operational framework of the Hermes Agent.",
+          "importance_score": 80.0,
+          "reasoning": "Moves the agent closer to achieving higher levels of autonomy and iterative capability.",
+          "themes": [
+            "agent_autonomy",
+            "self_improvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Details the launch of 'Refine Cycle', an open-source plugin engineered to introduce self-improvement capabilities into the operational framework of the Hermes Agent.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-50131496",
+          "title": "Hermes Agent: My containerized take",
+          "content": "Hermes Agent: My containerized take",
+          "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+          "author": "ricardodevries",
+          "published": "2026-10-17T14:27:11Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A practical guide or personal tutorial detailing the process and experience of running the Hermes Agent within a containerized environment.",
+          "importance_score": 75.0,
+          "reasoning": "Provides essential operational knowledge for developers and users looking to deploy the agent locally or in restricted environments.",
+          "themes": [
+            "deployment_optimization"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A practical guide or personal tutorial detailing the process and experience of running the Hermes Agent within a containerized environment.</p>",
+          "content_html": "<p>Hermes Agent: My containerized take</p>"
+        },
+        {
+          "id": "hn-49604068",
+          "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+          "author": "fallinditch",
+          "published": "2026-09-07T23:24:05Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Documentation update for Hermes Kanban, specifically outlining its features related to multi-agent profile collaboration and workflow management.",
+          "importance_score": 75.0,
+          "reasoning": "Crucial update for scaling projects that require coordinated work between multiple specialized agent profiles.",
+          "themes": [
+            "multi_agent_systems",
+            "workflow_management"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Documentation update for Hermes Kanban, specifically outlining its features related to multi-agent profile collaboration and workflow management.</p>",
+          "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+        },
+        {
+          "id": "hn-49424643",
+          "title": "Hermes Agent has 23000 open PRs and climbing",
+          "content": "Hermes Agent has 23000 open PRs and climbing",
+          "url": "https://github.com/NousResearch/hermes-agent/pulls",
+          "author": "nhecker",
+          "published": "2026-08-24T19:22:36Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A community status update noting the vast and growing volume of open pull requests (over 23,000) in the Hermes Agent codebase, signaling intense development activity.",
+          "importance_score": 75.0,
+          "reasoning": "Indicates a highly active, complex, and evolving open-source project base.",
+          "themes": [
+            "development_activity",
+            "open_source_growth"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A community status update noting the vast and growing volume of open pull requests (over 23,000) in the Hermes Agent codebase, signaling intense development activity.</p>",
+          "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+        },
+        {
+          "id": "hn-49790991",
+          "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+          "author": "rob",
+          "published": "2026-09-21T18:07:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Document update confirming that Hermes Agent has integrated support for utilizing Claude Pro/Max subscriptions via a specific direct SDK plugin.",
+          "importance_score": 70.0,
+          "reasoning": "Important feature update for users who wish to leverage premium models with the Hermes Agent framework.",
+          "themes": [
+            "provider_integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Document update confirming that Hermes Agent has integrated support for utilizing Claude Pro/Max subscriptions via a specific direct SDK plugin.</p>",
+          "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+        },
+        {
+          "id": "hn-49305190",
+          "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+          "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+          "url": "https://fn2.ai/claude",
+          "author": "oceanplexian",
+          "published": "2026-08-14T22:09:36Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Describes a platform using a Claude Code plugin to query and derive insights from a vast database of earnings call embeddings.",
+          "importance_score": 70.0,
+          "reasoning": "Demonstrates sophisticated, specialized use cases for combining LLMs with large, structured proprietary datasets.",
+          "themes": [
+            "data_retrieval",
+            "specialized_applications"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Describes a platform using a Claude Code plugin to query and derive insights from a vast database of earnings call embeddings.</p>",
+          "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Describes an experimental setup where the Hermes Agent client is successfully run on a specialized Arduino UNO Q board, demonstrating hardware adaptability.",
+          "importance_score": 65.0,
+          "reasoning": "Illustrates the potential for edge computing and extreme hardware integration for AI agents.",
+          "themes": [
+            "edge_computing",
+            "hardware_integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Describes an experimental setup where the Hermes Agent client is successfully run on a specialized Arduino UNO Q board, demonstrating hardware adaptability.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A technical discussion regarding the architectural necessity of an external model router to maintain the functionality of the Hermes Agent.",
+          "importance_score": 65.0,
+          "reasoning": "Identifies critical architectural dependencies and design constraints for scaling agent operations.",
+          "themes": [
+            "system_architecture",
+            "system_dependencies"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A technical discussion regarding the architectural necessity of an external model router to maintain the functionality of the Hermes Agent.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 65,
+      "category_summary": "**Community Showcase:** The standout story is **@rlaope**'s [mega Hermes-agent session](/?date=2026-10-24&category=social#item-534f6a2668c9) — nearly **2,000 subagents** running for over a day, **8,198 commits** and **961 PRs merged** — pure scale-metric hype the community loved. **@Teknium**'s [hand-curated inspiration/demo site](/?date=2026-10-24&category=social#item-ca8de19b5942) (grown from ~75 to **462 finds** spanning **425 libraries**, 653 likes) was the batch's highest-engagement post, with Teknium separately confirming [**460 demos** live on a single page](/?date=2026-10-24&category=social#item-20aee0253921). **Official Announcements & Events:** **@NousResearch** promoted [next week's NYC event](/?date=2026-10-24&category=social#item-70523966bdd9) ('See you next week in NYC!', 22.4k views, 325 likes) and tersely confirmed the [**Hermes Agent** name](/?date=2026-10-24&category=social#item-8298f8920d7f) in a widely-liked reply; a cryptic ['one to two orders of magnitude less' comment](/?date=2026-10-24&category=social#item-20a549a098f9) hinted at a major efficiency/cost claim worth watching. **Performance & Tooling:** **@rlaope** announced that [**Oh My Hermes (OMH)** now makes history/retrieval search **2-3x faster**](/?date=2026-10-24&category=social#item-0fbd1573a602) using adaptive research skills, and teased [**OH MY HERMES NATIVE**](/?date=2026-10-24&category=social#item-fae858d611a3) — while stressing he is not leaving Hermes-Agent. **Plugin & Skill Ecosystem:** **@Teknium** revealed a [**verified tier** for companies maintaining their own integration plugins](/?date=2026-10-24&category=social#item-1d79613b7604) and pointed builders toward the [official **plugin catalog** with a **verified badge** path](/?date=2026-10-24&category=social#item-bd106bc87991); community skills like [**@123mikeyd**'s humanoid rigging skill](/?date=2026-10-24&category=social#item-eb7a58bfba23) earned shout-outs, and support for [**Browser-Use** and **BrowserBase** browser automation](/?date=2026-10-24&category=social#item-6322f4c86d71) was confirmed. **Practical Tips:** top advice included [periodically pruning skills that raw model capability has made redundant](/?date=2026-10-24&category=social#item-902908f63eb5), [using the **CLI** for most work and Desktop for visual tasks](/?date=2026-10-24&category=social#item-51b39c2746b6), and confirmation that [**1Password** integration has been live for three months](/?date=2026-10-24&category=social#item-39ae0625803c); hardware watchers flagged [Teknium requesting **30 M5Stack** units](/?date=2026-10-24&category=social#item-6175046c3129), hinting at a Hermes-on-device push. Overall sentiment is highly positive and energetic — founders are responsive ([same-day bug fix deployed](/?date=2026-10-24&category=social#item-fc5595d47060)), openly [soliciting community suggestions](/?date=2026-10-24&category=social#item-d0d740d21525), and users are proudly trading scale metrics and tooling wins.",
+      "category_summary_html": "<p><strong>Community Showcase:</strong> The standout story is <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-24&amp;category=social#item-534f6a2668c9\" class=\"internal-link\" rel=\"noopener noreferrer\">mega Hermes-agent session</a> — nearly <strong>2,000 subagents</strong> running for over a day, <strong>8,198 commits</strong> and <strong>961 PRs merged</strong> — pure scale-metric hype the community loved. <strong>@Teknium</strong>'s <a href=\"/?date=2026-10-24&amp;category=social#item-ca8de19b5942\" class=\"internal-link\" rel=\"noopener noreferrer\">hand-curated inspiration/demo site</a> (grown from ~75 to <strong>462 finds</strong> spanning <strong>425 libraries</strong>, 653 likes) was the batch's highest-engagement post, with Teknium separately confirming <a href=\"/?date=2026-10-24&amp;category=social#item-20aee0253921\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>460 demos</strong> live on a single page</a>. <strong>Official Announcements &amp; Events:</strong> <strong>@NousResearch</strong> promoted <a href=\"/?date=2026-10-24&amp;category=social#item-70523966bdd9\" class=\"internal-link\" rel=\"noopener noreferrer\">next week's NYC event</a> ('See you next week in NYC!', 22.4k views, 325 likes) and tersely confirmed the <a href=\"/?date=2026-10-24&amp;category=social#item-8298f8920d7f\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent</strong> name</a> in a widely-liked reply; a cryptic <a href=\"/?date=2026-10-24&amp;category=social#item-20a549a098f9\" class=\"internal-link\" rel=\"noopener noreferrer\">'one to two orders of magnitude less' comment</a> hinted at a major efficiency/cost claim worth watching. <strong>Performance &amp; Tooling:</strong> <strong>@rlaope</strong> announced that <a href=\"/?date=2026-10-24&amp;category=social#item-0fbd1573a602\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Oh My Hermes (OMH)</strong> now makes history/retrieval search <strong>2-3x faster</strong></a> using adaptive research skills, and teased <a href=\"/?date=2026-10-24&amp;category=social#item-fae858d611a3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OH MY HERMES NATIVE</strong></a> — while stressing he is not leaving Hermes-Agent. <strong>Plugin &amp; Skill Ecosystem:</strong> <strong>@Teknium</strong> revealed a <a href=\"/?date=2026-10-24&amp;category=social#item-1d79613b7604\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verified tier</strong> for companies maintaining their own integration plugins</a> and pointed builders toward the <a href=\"/?date=2026-10-24&amp;category=social#item-bd106bc87991\" class=\"internal-link\" rel=\"noopener noreferrer\">official <strong>plugin catalog</strong> with a <strong>verified badge</strong> path</a>; community skills like <a href=\"/?date=2026-10-24&amp;category=social#item-eb7a58bfba23\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@123mikeyd</strong>'s humanoid rigging skill</a> earned shout-outs, and support for <a href=\"/?date=2026-10-24&amp;category=social#item-6322f4c86d71\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Browser-Use</strong> and <strong>BrowserBase</strong> browser automation</a> was confirmed. <strong>Practical Tips:</strong> top advice included <a href=\"/?date=2026-10-24&amp;category=social#item-902908f63eb5\" class=\"internal-link\" rel=\"noopener noreferrer\">periodically pruning skills that raw model capability has made redundant</a>, <a href=\"/?date=2026-10-24&amp;category=social#item-51b39c2746b6\" class=\"internal-link\" rel=\"noopener noreferrer\">using the <strong>CLI</strong> for most work and Desktop for visual tasks</a>, and confirmation that <a href=\"/?date=2026-10-24&amp;category=social#item-39ae0625803c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>1Password</strong> integration has been live for three months</a>; hardware watchers flagged <a href=\"/?date=2026-10-24&amp;category=social#item-6175046c3129\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium requesting <strong>30 M5Stack</strong> units</a>, hinting at a Hermes-on-device push. Overall sentiment is highly positive and energetic — founders are responsive (<a href=\"/?date=2026-10-24&amp;category=social#item-fc5595d47060\" class=\"internal-link\" rel=\"noopener noreferrer\">same-day bug fix deployed</a>), openly <a href=\"/?date=2026-10-24&amp;category=social#item-d0d740d21525\" class=\"internal-link\" rel=\"noopener noreferrer\">soliciting community suggestions</a>, and users are proudly trading scale metrics and tooling wins.</p>",
+      "themes": [
+        {
+          "name": "Community Showcase and Hype",
+          "description": "High-energy posts from Teknium and rlaope demonstrating Hermes-agent capabilities, large-scale agent runs, and curated resources.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Official Announcements and Events",
+          "description": "NousResearch-level communications including naming Hermes Agent publicly and promoting an upcoming NYC event.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Performance and Tooling Showcases",
+          "description": "Community showcases of speed and capability improvements, notably the Oh My Hermes 2-3x faster retrieval announcement.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Plugin and Skill Ecosystem",
+          "description": "Posts revealing the Hermes plugin catalog, verified tier program for company integrations, and community-built skills like the rigging skill and Oh My Hermes research skills.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Practical Tips and Tooling",
+          "description": "Actionable advice on skill cleanup, free hosting via Cloudflare Workers, and comparisons of 3D generation tools.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Hermes Usage and Configuration Guidance",
+          "description": "Teknium shares practical tips on how he uses Hermes (CLI vs desktop, browser automation providers, session-based self-improvement).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Ecosystem and Integrations",
+          "description": "Discussion of the Hermes plugin catalog, verified plugin badges, 1Password integration, demo catalog scale, and ecosystem partnerships.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Hardware and Partnerships",
+          "description": "Teknium engaging with M5Stack about receiving hardware units, signaling movement toward physical Hermes deployments.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Hermes Promotion and Teasers",
+          "description": "rlaope repeatedly sharing links, inviting follows, and teasing upcoming OH MY HERMES NATIVE, indicating active ecosystem buzz.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 50.0
+        },
+        {
+          "name": "Responsive Maintenance and Roadmap Signals",
+          "description": "Teknium confirming or declining features and shipping quick bug fixes in response to community reports.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 45.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "ca8de19b5942",
+          "title": "Been updating this site throughout the day, started with around 75 interesting finds, now am at 462 ...",
+          "content": "Been updating this site throughout the day, started with around 75 interesting finds, now am at 462 demos covering 425 libraries in 23 sections!\n\nGet some webdev inspiration at \nhttps://t.co/Mz7RJP0B1U",
+          "url": "https://twitter.com/Teknium/status/2113505088572694769",
+          "author": "@Teknium",
+          "published": "2026-10-23T05:37:34",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces he has been curating a web development inspiration site all day, growing it from about 75 finds to 462 demos covering 425 libraries across 23 sections, and invites people to check it out.",
+          "importance_score": 85.0,
+          "reasoning": "Original showcase content from @Teknium with exceptional engagement (653 likes, 38 retweets, 56 replies, 28042 views). A substantial, unique community resource that is the standout post of the batch.",
+          "themes": [
+            "webdev showcase",
+            "resource curation",
+            "community showcase"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces he has been curating a web development inspiration site all day, growing it from about 75 finds to 462 demos covering 425 libraries across 23 sections, and invites people to check it out.</p>",
+          "content_html": "<p>Been updating this site throughout the day, started with around 75 interesting finds, now am at 462 demos covering 425 libraries in 23 sections!</p>\n<p>Get some webdev inspiration at</p>\n<p>https://t.co/Mz7RJP0B1U</p>"
+        },
+        {
+          "id": "534f6a2668c9",
+          "title": "hermes-agent @NousResearch is crazy.\n\ni have a session with nearly 2,000 subagents running more than...",
+          "content": "hermes-agent @NousResearch is crazy.\n\ni have a session with nearly 2,000 subagents running more than a day thanks to\n\nThanks to https://t.co/g1exHwWK5E it was just super smooth and easy works (dag-ulw)\n\nHistory:\n1. 8,198 commits, 961 PRs merged (+1,217,871 / −528,875 lines). \n2. Subagents: 2,002. \n3. Tokens: 70,049,332,364.\n\n#hermes",
+          "url": "https://twitter.com/rlaope/status/2113486064652533924",
+          "author": "@rlaope",
+          "published": "2026-10-23T04:21:59",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope showcases the extreme scale of a Hermes-agent session: nearly 2,002 subagents running over a day, with 8,198 commits, 961 PRs merged, over 1.2 million lines added, and roughly 70 billion tokens processed, crediting tooling for making it smooth.",
+          "importance_score": 85.0,
+          "reasoning": "Strong prioritized-author community showcase with impressive verifiable-looking metrics and high engagement (73 likes, 6 retweets, 6300 views). It is the most substantive demonstration of Hermes-agent capability in the batch, even though the PR and commit figures are user-reported stats rather than official merge announcements.",
+          "themes": [
+            "agent orchestration",
+            "subagents",
+            "community showcase",
+            "scale benchmark"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope showcases the extreme scale of a Hermes-agent session: nearly 2,002 subagents running over a day, with 8,198 commits, 961 PRs merged, over 1.2 million lines added, and roughly 70 billion tokens processed, crediting tooling for making it smooth.</p>",
+          "content_html": "<p>hermes-agent @NousResearch is crazy.</p>\n<p>i have a session with nearly 2,000 subagents running more than a day thanks to</p>\n<p>Thanks to https://t.co/g1exHwWK5E it was just super smooth and easy works (dag-ulw)</p>\n<p>History:</p>\n<p>1. 8,198 commits, 961 PRs merged (+1,217,871 / −528,875 lines).</p>\n<p>2. Subagents: 2,002.</p>\n<p>3. Tokens: 70,049,332,364.</p>\n<p>#hermes</p>"
+        },
+        {
+          "id": "70523966bdd9",
+          "title": "See you next week in NYC!",
+          "content": "See you next week in NYC!",
+          "url": "https://twitter.com/NousResearch/status/2113638609794293773",
+          "author": "@NousResearch",
+          "published": "2026-10-23T14:28:08",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch announces an upcoming event in New York City next week, inviting the community to attend.",
+          "importance_score": 80.0,
+          "reasoning": "Official announcement from the NousResearch account with very high engagement (22392 views, 325 likes), signaling a significant in-person event for the community.",
+          "themes": [
+            "events",
+            "official communication"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch announces an upcoming event in New York City next week, inviting the community to attend.</p>",
+          "content_html": "<p>See you next week in NYC!</p>"
+        },
+        {
+          "id": "0fbd1573a602",
+          "title": "FINDING HISTORY in Hermes just got a lot faster !!!\n\nGitHub: https://t.co/g1exHwWK5E\n\nWith Oh My Her...",
+          "content": "FINDING HISTORY in Hermes just got a lot faster !!!\n\nGitHub: https://t.co/g1exHwWK5E\n\nWith Oh My Hermes, a plain \"find this\" now \nexplores 2~ 3 times faster than before, and comes back with more of what you actually asked for.\n\nThe research skills ship with search techniques adapted from AutoRAG and tuned for agent use, so the speed comes without trading away depth. Nothing new to set up. No vector DB, no extra service, no new command.\n\nInstall it, ask the way you already do, and feel the difference on your next real question.\n\njust install OMH once.\n\n#hermes #agent #optimization",
+          "url": "https://twitter.com/rlaope/status/2113580526250676612",
+          "author": "@rlaope",
+          "published": "2026-10-23T10:37:20",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope announces that Oh My Hermes (OMH) now makes history/retrieval searches in Hermes 2-3x faster, using research skills with search techniques adapted from AutoRAG, requiring no vector DB, extra service, or new commands; includes a GitHub link and install instructions.",
+          "importance_score": 78.0,
+          "reasoning": "Substantive community showcase from prioritized author rlaope with strong engagement (43 likes, 9 RTs, 2763 views); concrete performance improvement, technical detail, and actionable install guidance make it one of the most valuable posts in the batch.",
+          "themes": [
+            "oh my hermes",
+            "performance optimization",
+            "retrieval skills",
+            "community tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope announces that Oh My Hermes (OMH) now makes history/retrieval searches in Hermes 2-3x faster, using research skills with search techniques adapted from AutoRAG, requiring no vector DB, extra service, or new commands; includes a GitHub link and install instructions.</p>",
+          "content_html": "<p>FINDING HISTORY in Hermes just got a lot faster !!!</p>\n<p>GitHub: https://t.co/g1exHwWK5E</p>\n<p>With Oh My Hermes, a plain \"find this\" now</p>\n<p>explores 2~ 3 times faster than before, and comes back with more of what you actually asked for.</p>\n<p>The research skills ship with search techniques adapted from AutoRAG and tuned for agent use, so the speed comes without trading away depth. Nothing new to set up. No vector DB, no extra service, no new command.</p>\n<p>Install it, ask the way you already do, and feel the difference on your next real question.</p>\n<p>just install OMH once.</p>\n<p>#hermes #agent #optimization</p>"
+        },
+        {
+          "id": "902908f63eb5",
+          "title": "Hermes-Agent Tips.\n\nIf you're running Hermes, you should clean up your skills periodically. \n\nKeep t...",
+          "content": "Hermes-Agent Tips.\n\nIf you're running Hermes, you should clean up your skills periodically. \n\nKeep the following criteria in mind when asking:\n1. Skills that can now be handled purely by raw model capability.\n2. Skills rendered redundant by newly added core features in the Hermes-Agent.\n\nSkills that pass both #1 and #2 are the ones you actually need to keep. \n\nI run this optimization process almost daily to keep skills lean because nobody likes performance degradation.",
+          "url": "https://twitter.com/rlaope/status/2113535565874540645",
+          "author": "@rlaope",
+          "published": "2026-10-23T07:38:41",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope shares practical Hermes-Agent advice: periodically prune skills that raw model capability can now handle or that new core features have made redundant, keeping only skills failing both criteria to avoid performance degradation; the author runs this optimization almost daily.",
+          "importance_score": 72.0,
+          "reasoning": "Substantive, actionable configuration advice from a prioritized community author with strong engagement (61 likes, 4 retweets, 4509 views). Clear fit for the tips section and a useful maintenance practice for Hermes users.",
+          "themes": [
+            "skill management",
+            "performance optimization",
+            "agent maintenance"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope shares practical Hermes-Agent advice: periodically prune skills that raw model capability can now handle or that new core features have made redundant, keeping only skills failing both criteria to avoid performance degradation; the author runs this optimization almost daily.</p>",
+          "content_html": "<p>Hermes-Agent Tips.</p>\n<p>If you're running Hermes, you should clean up your skills periodically.</p>\n<p>Keep the following criteria in mind when asking:</p>\n<p>1. Skills that can now be handled purely by raw model capability.</p>\n<p>2. Skills rendered redundant by newly added core features in the Hermes-Agent.</p>\n<p>Skills that pass both #1 and #2 are the ones you actually need to keep.</p>\n<p>I run this optimization process almost daily to keep skills lean because nobody likes performance degradation.</p>"
+        },
+        {
+          "id": "1d79613b7604",
+          "title": "@HermesAgentTips @Tiny_Fish Any company that wants to maintain their own integration plugins can get...",
+          "content": "@HermesAgentTips @Tiny_Fish Any company that wants to maintain their own integration plugins can get verified tier, hit us up :)",
+          "url": "https://twitter.com/Teknium/status/2113553025604423879",
+          "author": "@Teknium",
+          "published": "2026-10-23T08:48:03",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains that any company wanting to maintain its own integration plugins can get verified tier status, inviting them to reach out — revealing an official verified-plugin program.",
+          "importance_score": 65.0,
+          "reasoning": "Official policy detail about the verified tier plugin program from Teknium with decent engagement (8 likes, 449 views); actionable for companies building Hermes integrations.",
+          "themes": [
+            "plugin ecosystem",
+            "verified tier",
+            "partnerships"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains that any company wanting to maintain its own integration plugins can get verified tier status, inviting them to reach out — revealing an official verified-plugin program.</p>",
+          "content_html": "<p>@HermesAgentTips @Tiny_Fish Any company that wants to maintain their own integration plugins can get verified tier, hit us up :)</p>"
+        },
+        {
+          "id": "bd106bc87991",
+          "title": "@mfranz_on @NousResearch Awesome! Did you submit a plugin catalog entry?",
+          "content": "@mfranz_on @NousResearch Awesome! Did you submit a plugin catalog entry?",
+          "url": "https://twitter.com/Teknium/status/2113624937152020698",
+          "author": "@Teknium",
+          "published": "2026-10-23T13:33:48",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium congratulates a community member on a plugin build and asks whether they submitted it to the Hermes plugin catalog, revealing an official catalog submission process.",
+          "importance_score": 62.0,
+          "reasoning": "From Teknium with solid engagement (19 likes, 1245 views); the mention of a plugin catalog entry process is useful ecosystem information for plugin developers.",
+          "themes": [
+            "plugin ecosystem",
+            "community showcase"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium congratulates a community member on a plugin build and asks whether they submitted it to the Hermes plugin catalog, revealing an official catalog submission process.</p>",
+          "content_html": "<p>@mfranz_on @NousResearch Awesome! Did you submit a plugin catalog entry?</p>"
+        },
+        {
+          "id": "dbbfb8625828",
+          "title": "@LifestyleOS_AI @mr_r0b0t I point hermes at my own sessions at least once a week as well as with the...",
+          "content": "@LifestyleOS_AI @mr_r0b0t I point hermes at my own sessions at least once a week as well as with the trace data that nemo relay adds on top to find ways to improve hermes itself :)",
+          "url": "https://twitter.com/Teknium/status/2113731545878204686",
+          "author": "@Teknium",
+          "published": "2026-10-23T20:37:26",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains that he points Hermes at his own sessions at least weekly, using trace data from nemo relay, to find ways to improve Hermes itself.",
+          "importance_score": 55.0,
+          "reasoning": "Firsthand developer insight into how Hermes is self-improving via its own session traces and nemo relay telemetry; unique disclosure though engagement is low.",
+          "themes": [
+            "development",
+            "telemetry",
+            "self-improvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains that he points Hermes at his own sessions at least weekly, using trace data from nemo relay, to find ways to improve Hermes itself.</p>",
+          "content_html": "<p>@LifestyleOS_AI @mr_r0b0t I point hermes at my own sessions at least once a week as well as with the trace data that nemo relay adds on top to find ways to improve hermes itself :)</p>"
+        },
+        {
+          "id": "39ae0625803c",
+          "title": "@livabeat @1Password @Muse @bot @AnthropicAI @claudeai @OpenAI @TownAI @browserbase @browser_use @he...",
+          "content": "@livabeat @1Password @Muse @bot @AnthropicAI @claudeai @OpenAI @TownAI @browserbase @browser_use @heydana_ai @usekernel @perplexity_ai @tryramp @tomo @wajo_ai We've had 1Pass integration for 3 months",
+          "url": "https://twitter.com/Teknium/status/2113651833902366744",
+          "author": "@Teknium",
+          "published": "2026-10-23T15:20:41",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium responds to livabeat and a long list of AI tool accounts, noting that Hermes has had 1Password integration for three months.",
+          "importance_score": 55.0,
+          "reasoning": "Concrete capability claim from the lead developer: Hermes has supported 1Password integration for three months, relevant amid a crowded agent-tool discussion; engagement was low but the fact is notable.",
+          "themes": [
+            "integrations",
+            "security",
+            "competitive landscape"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium responds to livabeat and a long list of AI tool accounts, noting that Hermes has had 1Password integration for three months.</p>",
+          "content_html": "<p>@livabeat @1Password @Muse @bot @AnthropicAI @claudeai @OpenAI @TownAI @browserbase @browser_use @heydana_ai @usekernel @perplexity_ai @tryramp @tomo @wajo_ai We've had 1Pass integration for 3 months</p>"
+        },
+        {
+          "id": "6175046c3129",
+          "title": "@libapi_ @M5Stack Yes gimme 30",
+          "content": "@libapi_ @M5Stack Yes gimme 30",
+          "url": "https://twitter.com/Teknium/status/2113542408017489964",
+          "author": "@Teknium",
+          "published": "2026-10-23T08:05:52",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium enthusiastically requests 30 units of M5Stack hardware, signaling a concrete plan to put Hermes on M5Stack devices.",
+          "importance_score": 55.0,
+          "reasoning": "Concrete commitment toward a hardware batch from a high-credibility author with good engagement (11 likes, 1750 views); suggests upcoming Hermes hardware deployment.",
+          "themes": [
+            "hardware",
+            "partnerships",
+            "m5stack"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium enthusiastically requests 30 units of M5Stack hardware, signaling a concrete plan to put Hermes on M5Stack devices.</p>",
+          "content_html": "<p>@libapi_ @M5Stack Yes gimme 30</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

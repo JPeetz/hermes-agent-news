@@ -1,0 +1,619 @@
+{
+  "category": "research",
+  "date": "2026-10-12",
+  "category_summary": "Research and documentation this cycle centers on official capability expansion and a maturing self-hosting ecosystem. Headline items: official docs for **[Claude Pro/Max subscription](/?date=2026-10-12&category=research#item-hn-49790991)** support via the **claude-subscription-directsdk** plugin (reuse existing Anthropic plans instead of API keys) and the canonical **[Hermes Agent v0.20.0](/?date=2026-10-12&category=research#item-hn-49159200)** release notes (tag **v2026.8.3**). Orchestration and memory advance together: the new **[Hermes Kanban](/?date=2026-10-12&category=research#item-hn-49604068)** multi-agent profile collaboration, **[LanceDB](/?date=2026-10-12&category=research#item-hn-49133145)**-backed semantic memory for persistent recall, and the **[Refine Cycle](/?date=2026-10-12&category=research#item-hn-49606988)** self-improvement plugin. Deployment documentation exposes real operational gaps — no official **Helm** chart and a root-at-init container image on **[Kubernetes](/?date=2026-10-12&category=research#item-hn-49977400)**, a [headless-Debian debugging walkthrough](/?date=2026-10-12&category=research#item-hn-49916751) with captured traces, and a low-cost **[Arduino UNO Q](/?date=2026-10-12&category=research#item-hn-49368474)** host recipe. Production tooling fills observability and routing needs: a **[Grafana](/?date=2026-10-12&category=research#item-hn-49318128)** dashboard integration, the **[verso](/?date=2026-10-12&category=research#item-hn-49628094)** open-source orchestrator for knowledge work, and a **[Bifrost](/?date=2026-10-12&category=research#item-hn-49159529)** model-router reliability discussion. Ecosystem health reads strong but strained: ~**[23,000 open PRs](/?date=2026-10-12&category=research#item-hn-49424643)** signal rapid community growth, **[Almanac (YC S26)](/?date=2026-10-12&category=research#item-hn-49511007)** validates enterprise demand for tamed Hermes deployments, and reproducible skill loops pairing Hermes with **[Codex and Claude Code](/?date=2026-10-12&category=research#item-hn-49136162)** show where multi-agent coding workflows are heading. Verification note: the debugging thread's '**[GLM 5.3 Flash](/?date=2026-10-12&category=research#item-hn-49916751)**' does not match our verified Z.ai catalog (latest confirmed release is **GLM-5.2**, 2026-06-16) — treat that model name as unverified. Off-topic items (a Claude Code earnings-data plugin, a trademark thread, personal usage reflections, and two promotional SEO/Skool listicles) were excluded from the ranking.",
+  "category_summary_html": "<p>Research and documentation this cycle centers on official capability expansion and a maturing self-hosting ecosystem. Headline items: official docs for <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> support via the <strong>claude-subscription-directsdk</strong> plugin (reuse existing Anthropic plans instead of API keys) and the canonical <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> release notes (tag <strong>v2026.8.3</strong>). Orchestration and memory advance together: the new <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> multi-agent profile collaboration, <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong>-backed semantic memory for persistent recall, and the <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> self-improvement plugin. Deployment documentation exposes real operational gaps — no official <strong>Helm</strong> chart and a root-at-init container image on <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes</a></strong>, a <a href=\"/?date=2026-10-12&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">headless-Debian debugging walkthrough</a> with captured traces, and a low-cost <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q</a></strong> host recipe. Production tooling fills observability and routing needs: a <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> dashboard integration, the <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong> open-source orchestrator for knowledge work, and a <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">Bifrost</a></strong> model-router reliability discussion. Ecosystem health reads strong but strained: ~<strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000 open PRs</a></strong> signal rapid community growth, <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac (YC S26)</a></strong> validates enterprise demand for tamed Hermes deployments, and reproducible skill loops pairing Hermes with <strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Codex and Claude Code</a></strong> show where multi-agent coding workflows are heading. Verification note: the debugging thread's '<strong><a href=\"/?date=2026-10-12&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a></strong>' does not match our verified Z.ai catalog (latest confirmed release is <strong>GLM-5.2</strong>, 2026-06-16) — treat that model name as unverified. Off-topic items (a Claude Code earnings-data plugin, a trademark thread, personal usage reflections, and two promotional SEO/Skool listicles) were excluded from the ranking.</p>",
+  "themes": [
+    {
+      "name": "Memory and Multi-Agent Orchestration",
+      "description": "Official and community work on semantic memory (LanceDB) and coordinating multiple agent profiles (Hermes Kanban, Codex/Claude loops).",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Integrations with Coding Agents and Model Providers",
+      "description": "Hermes Agent connecting to Claude (Pro/Max subscriptions, Claude Code), Codex, Z.ai GLM models, and model routers like Bifrost.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Deployment and Hosting",
+      "description": "Practical deployment experiences and recipes across Kubernetes, headless Debian servers, and single-board hardware like the Arduino UNO Q, exposing gaps such as missing Helm charts and root-at-init images.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Ecosystem Tools and Plugins",
+      "description": "Third-party extensions built on Hermes Agent: orchestrators (verso), observability (Grafana), plugins (Refine Cycle, memory), and skill workflows, showing an active builder community.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Project Health and Governance",
+      "description": "Signals about sustainability and trust: 23k open PRs, moderation/blocking on GitHub issues, naming/trademark questions, and the official project landing page.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Off-Topic Marketing Noise",
+      "description": "Syndicated promotional SEO/Skool-course content from a single author unrelated to Hermes Agent, indicating feed contamination.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 5.0
+    }
+  ],
+  "total_items": 22,
+  "items": [
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49790991) yesterday, Official documentation announces that Hermes Agent now supports Claude Pro/Max subscriptions via a plugin (claude-subscription-directsdk), letting subscribers use their existing Anthropic plan with the agent instead of API keys. The linked page is a docs plugin reference.",
+      "importance_score": 42,
+      "reasoning": "An official capability expansion with its own docs page; reusing Claude Pro/Max subscriptions lowers cost barriers for a large user segment and is a notable integration milestone for the project.",
+      "themes": [
+        "integrations",
+        "subscriptions",
+        "official-docs"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official documentation announces that Hermes Agent now supports Claude Pro/Max subscriptions via a plugin (claude-subscription-directsdk), letting subscribers use their existing Anthropic plan with the agent instead of API keys. The linked page is a docs plugin reference.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49159200) yesterday, Hermes Agent release v0.20.0, tagged v2026.8.3 on the NousResearch/hermes-agent GitHub releases page, shared to Hacker News.",
+      "importance_score": 39,
+      "reasoning": "An official versioned release of the core project; release notes are the canonical source for new features and fixes users depend on, though the listing itself summarizes no changelog contents.",
+      "themes": [
+        "releases",
+        "versioning"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49159200",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Hermes Agent v0.20.0",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Hermes Agent release v0.20.0, tagged v2026.8.3 on the NousResearch/hermes-agent GitHub releases page, shared to Hacker News.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49604068) yesterday, Official documentation introduces Hermes Kanban, a feature enabling multi-agent collaboration through profiles coordinated on a kanban board, hosted in the Hermes Agent user guide docs.",
+      "importance_score": 37,
+      "reasoning": "Multi-agent profile collaboration via kanban is a significant orchestration feature in official docs, relevant to teams running multiple agents; a first-class documented capability rather than a third-party hack.",
+      "themes": [
+        "multi-agent",
+        "official-docs",
+        "workflows"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official documentation introduces Hermes Kanban, a feature enabling multi-agent collaboration through profiles coordinated on a kanban board, hosted in the Hermes Agent user guide docs.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49977400) yesterday, A Revos.ai blog post covers deploying Hermes Agent on Kubernetes, identifying two friction points: the project ships no official Helm chart, and the container image requires running as root during initialization. It is a practical deployment writeup highlighting gaps in the official containerization story.",
+      "importance_score": 36,
+      "reasoning": "Directly documents real deployment friction (missing Helm chart, root-at-init requirement) that affects anyone running Hermes Agent in production clusters; actionable operational information even if brief.",
+      "themes": [
+        "deployment",
+        "kubernetes",
+        "containerization"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Revos.ai blog post covers deploying Hermes Agent on Kubernetes, identifying two friction points: the project ships no official Helm chart, and the container image requires running as root during initialization. It is a practical deployment writeup highlighting gaps in the official containerization story.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49133145",
+      "title": "Semantic Memory for Hermes Agent with LanceDB",
+      "content": "Semantic Memory for Hermes Agent with LanceDB",
+      "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb",
+      "author": "eigenBasis",
+      "published": "2026-08-01T10:47:04Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49133145) yesterday, A LanceDB blog post explains adding semantic memory to Hermes Agent using LanceDB, presumably covering embedding storage and retrieval so the agent can recall context across sessions.",
+      "importance_score": 34,
+      "reasoning": "Persistent semantic memory is a core capability gap for personal agents, and a vendor-supported integration guide with a specific vector database is directly actionable for users.",
+      "themes": [
+        "memory",
+        "vector-databases",
+        "integrations"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49133145",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Semantic Memory for Hermes Agent with LanceDB",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A LanceDB blog post explains adding semantic memory to Hermes Agent using LanceDB, presumably covering embedding storage and retrieval so the agent can recall context across sessions.</p>",
+      "content_html": "<p>Semantic Memory for Hermes Agent with LanceDB</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49424643) yesterday, A HN post points at the NousResearch/hermes-agent GitHub pull requests page, noting the repository has roughly 23,000 open PRs and that the count keeps rising, raising questions about maintainer triage capacity and project governance.",
+      "importance_score": 33,
+      "reasoning": "A quantified project-health signal: 23k open PRs suggests either explosive community contribution or a review bottleneck, both of which materially affect contributors and users assessing the project's sustainability.",
+      "themes": [
+        "project-governance",
+        "open-source-health",
+        "contributions"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A HN post points at the NousResearch/hermes-agent GitHub pull requests page, noting the repository has roughly 23,000 open PRs and that the count keeps rising, raising questions about maintainer triage capacity and project governance.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49916751) yesterday, A user reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai GLM 5.3 Flash entering a trance-like loop after being asked to print its local environment and $PATH. The post includes a long 'Thinking for 1m36s' reasoning block for community diagnosis of whether the agent output indicates a real malfunction.",
+      "importance_score": 32,
+      "reasoning": "A concrete debugging report with model-specific behavior (GLM 5.3 Flash) and captured reasoning traces; useful signal for reproducibility and agent-loop stability, though anecdotal and unresolved.",
+      "themes": [
+        "troubleshooting",
+        "model-compatibility",
+        "agent-looping"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49916751",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Ask HN: My agent went haywire, does this output mean anything?",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A user reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai GLM 5.3 Flash entering a trance-like loop after being asked to print its local environment and $PATH. The post includes a long 'Thinking for 1m36s' reasoning block for community diagnosis of whether the agent output indicates a real malfunction.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49136162",
+      "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+      "author": "yruzin",
+      "published": "2026-08-01T17:00:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49136162) yesterday, A codenote.net post describes a Hermes Agent skill that autonomously loops between OpenAI Codex and Claude Code, driving an issue-to-PR workflow where coding agents hand work back and forth until a pull request is produced.",
+      "importance_score": 31,
+      "reasoning": "A concrete, reproducible multi-agent coding pattern connecting Hermes with two major coding agents; practical for automation pipelines though it is a personal blog writeup rather than official docs.",
+      "themes": [
+        "multi-agent",
+        "coding-agents",
+        "automation"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49136162",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A codenote.net post describes a Hermes Agent skill that autonomously loops between OpenAI Codex and Claude Code, driving an issue-to-PR workflow where coding agents hand work back and forth until a pull request is produced.</p>",
+      "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49628094) yesterday, SchezHugo showcases verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface for interacting with Hermes Agent and has become the author's daily work setup, reportedly boosting productivity.",
+      "importance_score": 31,
+      "reasoning": "A working third-party orchestration layer over Hermes Agent demonstrates ecosystem growth and a demand for GUI alternatives to the CLI; community-built but with unclear maturity and adoption.",
+      "themes": [
+        "ecosystem-tools",
+        "orchestration",
+        "user-interfaces"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, SchezHugo showcases verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface for interacting with Hermes Agent and has become the author's daily work setup, reportedly boosting productivity.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-10&category=research#item-hn-49318128) yesterday, alexander-akhmetov releases grafana-agento11y-hermes, a Grafana-based observability integration for Hermes Agent, enabling dashboards and monitoring of agent activity on GitHub.",
+      "importance_score": 30,
+      "reasoning": "Observability is a common production need for long-running agents, and a ready-made Grafana integration fills a real gap; open-source and directly reusable, though depth of metrics coverage is unknown.",
+      "themes": [
+        "observability",
+        "monitoring",
+        "ecosystem-tools"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-10-10",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-10&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, alexander-akhmetov releases grafana-agento11y-hermes, a Grafana-based observability integration for Hermes Agent, enabling dashboards and monitoring of agent activity on GitHub.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Almanac, a YC S26 startup, launches an enterprise 'Hermes with a brain that knows everything about your company.' The founders describe the pain of setting up Hermes themselves, including getting it to answer contextually and building OAuth connector apps, which motivated their commercial product.",
+      "importance_score": 60.0,
+      "reasoning": "A venture-backed commercial product built on Hermes setup pain validates enterprise demand and documents real deployment pain points (connectors, OAuth, context ingestion), though it is promotional rather than technical documentation.",
+      "themes": [
+        "startups",
+        "enterprise-deployment",
+        "connectors"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Almanac, a YC S26 startup, launches an enterprise 'Hermes with a brain that knows everything about your company.' The founders describe the pain of setting up Hermes themselves, including getting it to answer contextually and building OAuth connector apps, which motivated their commercial product.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub project, Refine Cycle, adds a self-improvement plugin for Hermes Agent, presumably enabling the agent to iterate on and refine its own behavior or outputs over successive cycles.",
+      "importance_score": 58.0,
+      "reasoning": "Self-improvement loops are a technically interesting extension of agent capabilities, but the listing gives no detail on the mechanism, safety controls, or adoption; community plugin of moderate depth.",
+      "themes": [
+        "plugins",
+        "self-improvement",
+        "agent-architecture"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub project, Refine Cycle, adds a self-improvement plugin for Hermes Agent, presumably enabling the agent to iterate on and refine its own behavior or outputs over successive cycles.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to maximhq/bifrost, implying users route multiple models through a proxy like Bifrost to get acceptable reliability or cost behavior.",
+      "importance_score": 57.0,
+      "reasoning": "Surfaces an important architectural question about model-routing dependency for reliability and cost control; the linked Bifrost project is a practical answer, but the framing is open-ended.",
+      "themes": [
+        "model-routing",
+        "architecture",
+        "reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A discussion titled as a question about whether Hermes Agent is unusable without a model router, linked to maximhq/bifrost, implying users route multiple models through a proxy like Bifrost to get acceptable reliability or cost behavior.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs an Arduino-side MCU with a Linux-side chip, as a low-cost always-on alternative to a personal machine or paid VPS.",
+      "importance_score": 55.0,
+      "reasoning": "A novel, concrete low-cost self-hosting recipe with hardware specifics; practically useful for hobbyists though niche relative to mainstream deployment paths.",
+      "themes": [
+        "self-hosting",
+        "hardware",
+        "edge-deployment"
+      ],
+      "continuation": null,
+      "summary_html": "<p>etoxin describes running the Hermes Agent client on an Arduino UNO Q board (4GB RAM, 32GB storage), which pairs an Arduino-side MCU with a Linux-side chip, as a low-cost always-on alternative to a personal machine or paid VPS.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub issue (NousResearch/hermes-agent#10232) reports that a question asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked, raising moderation and transparency concerns on the repository.",
+      "importance_score": 54.0,
+      "reasoning": "Moderation and attribution-governance issues on the official repo affect community trust and provenance discussions; notable but limited direct technical impact.",
+      "themes": [
+        "moderation",
+        "provenance",
+        "project-governance"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub issue (NousResearch/hermes-agent#10232) reports that a question asking whether EvoMap's Evolver was a reference for Hermes was deleted and the user blocked, raising moderation and transparency concerns on the repository.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with the user. Shared on Hacker News, likely surfacing the project landing page and positioning to a broader audience.",
+      "importance_score": 52.0,
+      "reasoning": "The canonical project page is useful as a reference point and indicates active promotion of the project, but the item itself contains no new technical details beyond the marketing framing.",
+      "themes": [
+        "project-overview",
+        "open-source"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with the user. Shared on Hacker News, likely surfacing the project landing page and positioning to a broader audience.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository, hermes-jekyl-hyde by jnorthrup, presents an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or manipulating the agent's behavior.",
+      "importance_score": 50.0,
+      "reasoning": "Adversarial probing of the agent is security-relevant and could expose prompt-injection or control-flow weaknesses, but the bare title offers no demonstrated findings or methodology.",
+      "themes": [
+        "security",
+        "adversarial-testing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository, hermes-jekyl-hyde by jnorthrup, presents an adversarial LLM reversal technique aimed at hermes-agent, apparently probing or manipulating the agent's behavior.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by heyjonny reflecting on a mistaken or suboptimal way of using the Hermes Agent, likely covering workflow misconceptions and lessons learned from correcting the approach.",
+      "importance_score": 48.0,
+      "reasoning": "First-person usage reflection that may contain useful pitfalls for other users, but with limited technical depth visible from the title and no concrete feature or release information.",
+      "themes": [
+        "usage-patterns",
+        "lessons-learned"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by heyjonny reflecting on a mistaken or suboptimal way of using the Hermes Agent, likely covering workflow misconceptions and lessons learned from correcting the approach.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "fn2.ai launches a Claude Code plugin for querying 10.6M earnings-call transcript embeddings, backed by sharded PostgreSQL and ElasticSearch across two regions, with example market-research queries about companies like NVIDIA.",
+      "importance_score": 32.0,
+      "reasoning": "Technically interesting financial-data tooling, but it targets Claude Code rather than Hermes Agent; only marginal relevance to the Hermes ecosystem.",
+      "themes": [
+        "plugins",
+        "financial-data",
+        "rag"
+      ],
+      "continuation": null,
+      "summary_html": "<p>fn2.ai launches a Claude Code plugin for querying 10.6M earnings-call transcript embeddings, backed by sharded PostgreSQL and ElasticSearch across two regions, with example market-research queries about companies like NVIDIA.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès fashion brand's trademark, soliciting community discussion of trademark law and naming risk.",
+      "importance_score": 28.0,
+      "reasoning": "A legal-speculation discussion with no technical content about the software itself; low relevance to documentation, releases, or practical usage of Hermes Agent.",
+      "themes": [
+        "naming",
+        "legal"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread questioning why the Hermes Agent name does not infringe on the Hermès fashion brand's trademark, soliciting community discussion of trademark law and naming risk.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    },
+    {
+      "id": "ecaec348555b",
+      "title": "Best Skool Courses: Top 10 Communities for 2026",
+      "content": "The best Skool course is the AI Profit Boardroom — Julian Goldie’s community for using AI agents, automation and AI SEO to grow a business, with four live coaching calls a week and the Agent OS. This guide ranks the top 10 best Skool courses and communities for 2026, free and paid, so you can pick the right one for your goals. The video below shows the Agent OS that AI Profit Boardroom members get.\n\nKey takeaways\n\n- #1 AI Profit Boardroom — AI agents, automation and AI SEO with live coaching.\n\n- #2 AI Money Lab — the best free Skool course.\n\n- #3 SEO Elite Circle — the best Skool course for SEO.\n\n- Check current prices on each Skool page — they change often.\n\n## Best Skool courses: the top 10 compared\n\n#\nSkool community\nRun by\nBest for\nPrice\n\n1\nAI Profit Boardroom\nJulian Goldie\nAI automation, AI agents and AI SEO, with four live calls a week\nPaid\n\n2\nAI Money Lab\nJulian Goldie\nFree AI courses, 1,000+ AI agents and workflows\nFree\n\n3\nSEO Elite Circle\nJulian Goldie\nSEO hot-seat calls and direct access\nPaid\n\n4\nAI Automation Society\nNate Herk\nA huge free AI automation course library\nFree\n\n5\nAI Automation Society Plus\nNate Herk\nDeeper AI automation and agency training\nPaid\n\n6\nAI Automation Agency Hub\nLiam Ottley\nStarting an AI automation agency\nFree\n\n7\nMaker School\n—\nA client-focused AI automation agency curriculum\nPaid\n\n8\nAI Video Bootcamp\n—\nLow-cost AI video training\nPaid\n\n9\nThe New Search\nKasra Dash\nAI-era SEO\nPaid\n\n10\nSkoolers\nSkool\nLearning to build on Skool itself\nFree\n\n## What makes a great Skool course\n\n- A clear roadmap from beginner to advanced.\n\n- Live calls where real problems get solved.\n\n- An active community that answers questions.\n\n- Up-to-date content — essential for fast-moving topics like AI.\n\n- Direct access to the creator.\n\n- A refund guarantee so you can try it safely.\n\nJoin the best Skool course. Join the AI Profit Boardroom — four live coaching calls a week, daily Q&A and the Agent OS.\n\nWant to start free? Join AI Money Lab.\n\nJoin the AI Profit Boardroom →Get the FREE AI Course + Community →\n\n## Best Skool courses reviewed\n\n### 1. AI Profit Boardroom — the best Skool course\n\nThe AI Profit Boardroom is Julian Goldie’s flagship community and the best Skool course for anyone who wants to use AI to grow a business. Members get a beginner-to-expert roadmap, full courses on AI agents like Hermes, Claude, DeepSeek Harness and Jev, AI SEO training, and the Agent OS — an agentic operating system members download and set up with step-by-step training.\n\nWhat sets it apart is the live support: four coaching calls a week, daily Q&A where Julian Goldie answers personally, often with personalised video tutorials, and new trainings added the same day new AI tools launch. It has 3,400+ members, a 4.9 rating on Skool and a 7-day refund guarantee.\n\nAt a glance\n\nMembers\n3,400+\n\nRating\n4.9 on Skool\n\nLive calls\nFour a week\n\nCourses\nAI agents, AI automation, AI SEO, Agent OS\n\nJoin\nAI Profit Boardroom\n\n### 2. AI Money Lab — the best free Skool course\n\nAI Money Lab is Julian Goldie’s free community, with 90,000+ members, AI courses, 1,000+ ready-made AI agents and workflows, 50+ AI tools and 200+ prompts. It’s the easiest place to start learning AI without spending anything.\n\n### 3. SEO Elite Circle — the best Skool course for SEO\n\nThe SEO Elite Circle is Julian Goldie’s private SEO mastermind: weekly hot-seat calls where members’ real sites get worked on, weekly live calls with recordings, direct messaging access, action plans, private case studies and swipe-and-deploy SOP templates.\n\n### 4. AI Automation Society\n\nNate Herk’s AI Automation Society is one of the largest communities on Skool, free to join, with a big library of AI automation courses. It’s a strong free option for learning automation tools and workflows.\n\n### 5. AI Automation Society Plus\n\nThe paid tier of Nate Herk’s community, with deeper training and frameworks for building an AI automation business.\n\n### 6. AI Automation Agency Hub\n\nLiam Ottley’s free community, one of the biggest on Skool, focused on starting and growing an AI automation agency.\n\n### 7. Maker School\n\nA paid curriculum focused on landing clients for an AI automation agency.\n\n### 8. AI Video Bootcamp\n\nA low-cost paid community for learning AI video creation.\n\n### 9. The New Search\n\nKasra Dash’s community on AI-era SEO, home to his Rank OS approach.\n\n### 10. Skoolers\n\nSkool’s own official community, and the best place to learn how to build and grow a community on the platform.\n\n## Best Skool courses by goal\n\nGoal\nBest pick\n\nAI agents and automation for your business\nAI Profit Boardroom\n\nLearning AI for free\nAI Money Lab\n\nRanking in Google and AI answers\nSEO Elite Circle\n\nFree AI automation tutorials\nAI Automation Society\n\nStarting an AI agency\nAI Automation Agency Hub\n\nBuilding your own Skool community\nSkoolers\n\n## Free vs paid Skool courses\n\nFree Skool communities are a great way to start: you get courses and a community at no cost. Paid communities add the things that speed up results — live coaching calls, direct access to the creator, and more advanced training. Many people start in a free group like AI Money Lab and move to a paid one like the AI Profit Boardroom once they know what they want to build.\n\n## How to choose a Skool course\n\n- Decide your goal for the next 90 days.\n\n- Check when the community last added content.\n\n- Look at how often live calls run, and whether they’re recorded.\n\n- Read the reviews on the Skool page.\n\n- Start with a free group or use the refund window to test a paid one.\n\n## Why the AI Profit Boardroom ranks #1\n\nPlenty of Skool communities have good courses. The AI Profit Boardroom ranks first because it combines courses with the support that turns learning into results: four live coaching calls every week, daily Q&A, personalised video answers to members’ questions, and a local-area map for meeting other members building with AI. On top of that, members get the Agent OS — a ready-made agentic operating system that isn’t available anywhere else.\n\nAnd because AI moves so fast, the classroom is updated constantly: when a new tool or model launches, there’s usually a training on it the same day. For a topic like AI, that freshness matters more than the size of the course library.\n\n## Final verdict: best Skool courses\n\nThe best Skool course for most people who want to grow a business with AI is the AI Profit Boardroom. If you want to start free, join AI Money Lab; if SEO is your focus, join the SEO Elite Circle. These are the best Skool courses to start with in 2026.\n\nWhichever you pick, give it a real try: watch the roadmap, join a live call and ask a question in your first week. The members who get results from Skool communities are the ones who show up and apply what they learn, and that matters far more than which course looks best on paper.\n\n## FAQ: best skool courses\n\n### What is the best Skool course?\n\nThe AI Profit Boardroom — for using AI agents, automation and AI SEO to grow a business, with four live coaching calls a week.\n\n### What is the best free Skool course?\n\nAI Money Lab, with free AI courses, 1,000+ AI agents and workflows and 200+ prompts.\n\n### What is the best Skool course for SEO?\n\nThe SEO Elite Circle, with weekly SEO hot-seat calls and direct access to Julian Goldie.\n\n### Are Skool courses worth paying for?\n\nWhen they include live coaching, direct access and up-to-date training, yes — and many have refund guarantees.\n\n### How do I join a Skool course?\n\nOpen the community’s Skool page and click join; free groups are instant.\n\nReady to start? Join the AI Profit Boardroom, the SEO Elite Circle or the free AI Money Lab.\n\nPrefer a personal plan? Book a free strategy session.\n\nJoin the AI Profit Boardroom →Get the FREE AI Course + Community →Book a Free Strategy Session →\n\n## Related reading\n\n- Best Skool Communities\n\n- Julian Goldie Skool\n\n- Best SEO Community\n\nLast updated October 2026. This page is a living guide to best skool courses — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/best-skool-courses/?utm_source=rss&utm_medium=rss&utm_campaign=best-skool-courses",
+      "author": "Clawdbot",
+      "published": "2026-10-11T08:45:57",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A marketing listicle from Julian Goldie ranking ten Skool communities for 2026, promoting his own AI Profit Boardroom, AI Money Lab, and SEO Elite Circle alongside other automation communities, with pricing nudges and a video demo of an 'Agent OS'.",
+      "importance_score": 5.0,
+      "reasoning": "Promotional affiliate-style content with no relation to Hermes Agent technical documentation, releases, or usage; appears in the feed as spam or SEO syndication rather than genuine research material.",
+      "themes": [
+        "off-topic",
+        "marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A marketing listicle from Julian Goldie ranking ten Skool communities for 2026, promoting his own AI Profit Boardroom, AI Money Lab, and SEO Elite Circle alongside other automation communities, with pricing nudges and a video demo of an 'Agent OS'.</p>",
+      "content_html": "<p>The best Skool course is the AI Profit Boardroom — Julian Goldie’s community for using AI agents, automation and AI SEO to grow a business, with four live coaching calls a week and the Agent OS. This guide ranks the top 10 best Skool courses and communities for 2026, free and paid, so you can pick the right one for your goals. The video below shows the Agent OS that AI Profit Boardroom members get.</p>\n<p>Key takeaways</p>\n<ul>\n<li>#1 AI Profit Boardroom — AI agents, automation and AI SEO with live coaching.</li>\n</ul>\n<ul>\n<li>#2 AI Money Lab — the best free Skool course.</li>\n</ul>\n<ul>\n<li>#3 SEO Elite Circle — the best Skool course for SEO.</li>\n</ul>\n<ul>\n<li>Check current prices on each Skool page — they change often.</li>\n</ul>\n<h2>Best Skool courses: the top 10 compared</h2>\n<p>#</p>\n<p>Skool community</p>\n<p>Run by</p>\n<p>Best for</p>\n<p>Price</p>\n<p>1</p>\n<p>AI Profit Boardroom</p>\n<p>Julian Goldie</p>\n<p>AI automation, AI agents and AI SEO, with four live calls a week</p>\n<p>Paid</p>\n<p>2</p>\n<p>AI Money Lab</p>\n<p>Julian Goldie</p>\n<p>Free AI courses, 1,000+ AI agents and workflows</p>\n<p>Free</p>\n<p>3</p>\n<p>SEO Elite Circle</p>\n<p>Julian Goldie</p>\n<p>SEO hot-seat calls and direct access</p>\n<p>Paid</p>\n<p>4</p>\n<p>AI Automation Society</p>\n<p>Nate Herk</p>\n<p>A huge free AI automation course library</p>\n<p>Free</p>\n<p>5</p>\n<p>AI Automation Society Plus</p>\n<p>Nate Herk</p>\n<p>Deeper AI automation and agency training</p>\n<p>Paid</p>\n<p>6</p>\n<p>AI Automation Agency Hub</p>\n<p>Liam Ottley</p>\n<p>Starting an AI automation agency</p>\n<p>Free</p>\n<p>7</p>\n<p>Maker School</p>\n<p>—</p>\n<p>A client-focused AI automation agency curriculum</p>\n<p>Paid</p>\n<p>8</p>\n<p>AI Video Bootcamp</p>\n<p>—</p>\n<p>Low-cost AI video training</p>\n<p>Paid</p>\n<p>9</p>\n<p>The New Search</p>\n<p>Kasra Dash</p>\n<p>AI-era SEO</p>\n<p>Paid</p>\n<p>10</p>\n<p>Skoolers</p>\n<p>Skool</p>\n<p>Learning to build on Skool itself</p>\n<p>Free</p>\n<h2>What makes a great Skool course</h2>\n<ul>\n<li>A clear roadmap from beginner to advanced.</li>\n</ul>\n<ul>\n<li>Live calls where real problems get solved.</li>\n</ul>\n<ul>\n<li>An active community that answers questions.</li>\n</ul>\n<ul>\n<li>Up-to-date content — essential for fast-moving topics like AI.</li>\n</ul>\n<ul>\n<li>Direct access to the creator.</li>\n</ul>\n<ul>\n<li>A refund guarantee so you can try it safely.</li>\n</ul>\n<p>Join the best Skool course. Join the AI Profit Boardroom — four live coaching calls a week, daily Q&amp;A and the Agent OS.</p>\n<p>Want to start free? Join AI Money Lab.</p>\n<p>Join the AI Profit Boardroom →Get the FREE AI Course + Community →</p>\n<h2>Best Skool courses reviewed</h2>\n<h3>1. AI Profit Boardroom — the best Skool course</h3>\n<p>The AI Profit Boardroom is Julian Goldie’s flagship community and the best Skool course for anyone who wants to use AI to grow a business. Members get a beginner-to-expert roadmap, full courses on AI agents like Hermes, Claude, DeepSeek Harness and Jev, AI SEO training, and the Agent OS — an agentic operating system members download and set up with step-by-step training.</p>\n<p>What sets it apart is the live support: four coaching calls a week, daily Q&amp;A where Julian Goldie answers personally, often with personalised video tutorials, and new trainings added the same day new AI tools launch. It has 3,400+ members, a 4.9 rating on Skool and a 7-day refund guarantee.</p>\n<p>At a glance</p>\n<p>Members</p>\n<p>3,400+</p>\n<p>Rating</p>\n<p>4.9 on Skool</p>\n<p>Live calls</p>\n<p>Four a week</p>\n<p>Courses</p>\n<p>AI agents, AI automation, AI SEO, Agent OS</p>\n<p>Join</p>\n<p>AI Profit Boardroom</p>\n<h3>2. AI Money Lab — the best free Skool course</h3>\n<p>AI Money Lab is Julian Goldie’s free community, with 90,000+ members, AI courses, 1,000+ ready-made AI agents and workflows, 50+ AI tools and 200+ prompts. It’s the easiest place to start learning AI without spending anything.</p>\n<h3>3. SEO Elite Circle — the best Skool course for SEO</h3>\n<p>The SEO Elite Circle is Julian Goldie’s private SEO mastermind: weekly hot-seat calls where members’ real sites get worked on, weekly live calls with recordings, direct messaging access, action plans, private case studies and swipe-and-deploy SOP templates.</p>\n<h3>4. AI Automation Society</h3>\n<p>Nate Herk’s AI Automation Society is one of the largest communities on Skool, free to join, with a big library of AI automation courses. It’s a strong free option for learning automation tools and workflows.</p>\n<h3>5. AI Automation Society Plus</h3>\n<p>The paid tier of Nate Herk’s community, with deeper training and frameworks for building an AI automation business.</p>\n<h3>6. AI Automation Agency Hub</h3>\n<p>Liam Ottley’s free community, one of the biggest on Skool, focused on starting and growing an AI automation agency.</p>\n<h3>7. Maker School</h3>\n<p>A paid curriculum focused on landing clients for an AI automation agency.</p>\n<h3>8. AI Video Bootcamp</h3>\n<p>A low-cost paid community for learning AI video creation.</p>\n<h3>9. The New Search</h3>\n<p>Kasra Dash’s community on AI-era SEO, home to his Rank OS approach.</p>\n<h3>10. Skoolers</h3>\n<p>Skool’s own official community, and the best place to learn how to build and grow a community on the platform.</p>\n<h2>Best Skool courses by goal</h2>\n<p>Goal</p>\n<p>Best pick</p>\n<p>AI agents and automation for your business</p>\n<p>AI Profit Boardroom</p>\n<p>Learning AI for free</p>\n<p>AI Money Lab</p>\n<p>Ranking in Google and AI answers</p>\n<p>SEO Elite Circle</p>\n<p>Free AI automation tutorials</p>\n<p>AI Automation Society</p>\n<p>Starting an AI agency</p>\n<p>AI Automation Agency Hub</p>\n<p>Building your own Skool community</p>\n<p>Skoolers</p>\n<h2>Free vs paid Skool courses</h2>\n<p>Free Skool communities are a great way to start: you get courses and a community at no cost. Paid communities add the things that speed up results — live coaching calls, direct access to the creator, and more advanced training. Many people start in a free group like AI Money Lab and move to a paid one like the AI Profit Boardroom once they know what they want to build.</p>\n<h2>How to choose a Skool course</h2>\n<ul>\n<li>Decide your goal for the next 90 days.</li>\n</ul>\n<ul>\n<li>Check when the community last added content.</li>\n</ul>\n<ul>\n<li>Look at how often live calls run, and whether they’re recorded.</li>\n</ul>\n<ul>\n<li>Read the reviews on the Skool page.</li>\n</ul>\n<ul>\n<li>Start with a free group or use the refund window to test a paid one.</li>\n</ul>\n<h2>Why the AI Profit Boardroom ranks #1</h2>\n<p>Plenty of Skool communities have good courses. The AI Profit Boardroom ranks first because it combines courses with the support that turns learning into results: four live coaching calls every week, daily Q&amp;A, personalised video answers to members’ questions, and a local-area map for meeting other members building with AI. On top of that, members get the Agent OS — a ready-made agentic operating system that isn’t available anywhere else.</p>\n<p>And because AI moves so fast, the classroom is updated constantly: when a new tool or model launches, there’s usually a training on it the same day. For a topic like AI, that freshness matters more than the size of the course library.</p>\n<h2>Final verdict: best Skool courses</h2>\n<p>The best Skool course for most people who want to grow a business with AI is the AI Profit Boardroom. If you want to start free, join AI Money Lab; if SEO is your focus, join the SEO Elite Circle. These are the best Skool courses to start with in 2026.</p>\n<p>Whichever you pick, give it a real try: watch the roadmap, join a live call and ask a question in your first week. The members who get results from Skool communities are the ones who show up and apply what they learn, and that matters far more than which course looks best on paper.</p>\n<h2>FAQ: best skool courses</h2>\n<h3>What is the best Skool course?</h3>\n<p>The AI Profit Boardroom — for using AI agents, automation and AI SEO to grow a business, with four live coaching calls a week.</p>\n<h3>What is the best free Skool course?</h3>\n<p>AI Money Lab, with free AI courses, 1,000+ AI agents and workflows and 200+ prompts.</p>\n<h3>What is the best Skool course for SEO?</h3>\n<p>The SEO Elite Circle, with weekly SEO hot-seat calls and direct access to Julian Goldie.</p>\n<h3>Are Skool courses worth paying for?</h3>\n<p>When they include live coaching, direct access and up-to-date training, yes — and many have refund guarantees.</p>\n<h3>How do I join a Skool course?</h3>\n<p>Open the community’s Skool page and click join; free groups are instant.</p>\n<p>Ready to start? Join the AI Profit Boardroom, the SEO Elite Circle or the free AI Money Lab.</p>\n<p>Prefer a personal plan? Book a free strategy session.</p>\n<p>Join the AI Profit Boardroom →Get the FREE AI Course + Community →Book a Free Strategy Session →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best Skool Communities</li>\n</ul>\n<ul>\n<li>Julian Goldie Skool</li>\n</ul>\n<ul>\n<li>Best SEO Community</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to best skool courses — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "2b6068eff23e",
+      "title": "AI SEO Training: How to Learn AI SEO in 2026 (Free and Paid)",
+      "content": "The best AI SEO training teaches you a working system — not just tools — for ranking in Google and getting cited in AI answers. I’ve spent 10+ years in SEO and now rank new pages within hours using AI, and in the video below I show how I rank new AI keywords in 24 hours with Claude. Here’s what good AI SEO training covers, and the free and paid ways to learn it with me.\n\nKey takeaways\n\n- Good AI SEO training covers keywords, content, GEO, links and AI agents.\n\n- Start free with AI Money Lab and my YouTube tutorials.\n\n- Get hands-on help in the SEO Elite Circle or the AI Profit Boardroom.\n\n- Want it done for you? Book a free SEO strategy session.\n\n## What AI SEO training should teach\n\n- Fresh-first keyword research — find new and trending topics before competitors, and check what you already rank for.\n\n- AI-assisted content — research, outline and draft with Claude and other models, then edit for real expertise.\n\n- On-page structure — answer-first intros, clear headings, tables, FAQs and schema.\n\n- GEO and AEO — structuring pages so ChatGPT, Claude, Perplexity and Google’s AI Overviews quote you.\n\n- Links and authority — earned, relevant backlinks, the foundation of my agency.\n\n- Indexing and tracking — getting pages found fast and measuring clicks in Search Console.\n\n- AI agents for SEO — Hermes, Claude and an Agent OS to automate research, writing and publishing.\n\n## AI SEO training options with Julian Goldie\n\nOption\nWhat you get\nBest for\n\nSEO Elite Circle\nWeekly SEO hot-seat calls, DM access to me, action plans, private case studies and SOP templates\nBusiness owners and SEOs who want hands-on help ranking\n\nAI Profit Boardroom\nFour live coaching calls a week, daily Q&A, AI SEO and AI agent courses, and the Agent OS\nAnyone who wants AI SEO plus AI automation\n\nAI Money Lab (free)\nFree AI courses, 1,000+ AI agents and workflows, 200+ prompts\nBeginners who want to start free\n\nYouTube (free)\nDaily AI SEO tutorials and case studies with real data\nLearning one technique at a time\n\nFree strategy session\nA call with my team to map your SEO plan\nBusiness owners who want it done for them\n\nWant this working in your business, not just bookmarked? Learning AI SEO with live support is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## Free AI SEO training\n\nYou can learn a lot without paying anything. My YouTube channel has daily AI SEO tutorials with real Search Console data, and the free AI Money Lab community has AI courses, prompts and ready-made agents. Grab 200+ free AI SEO prompts and the free Link Building Mastery book too.\n\n## Paid AI SEO training: SEO Elite Circle vs AI Profit Boardroom\n\nChoose the SEO Elite Circle if SEO is your main goal: weekly hot-seat calls where we work on your actual site, direct access to me, and the SOPs my agency uses. Choose the AI Profit Boardroom if you want AI SEO plus AI automation and agents more broadly: four live coaching calls a week, daily Q&A, full courses and the Agent OS.\n\n## My AI SEO system in five steps\n\n- Find fresh keywords — new tools, updates and trends, plus gaps where you have impressions but no page.\n\n- Research properly — primary sources, real facts, your own experience and video.\n\n- Write answer-first — the keyword and the answer in the first line, clear headings, tables and FAQs.\n\n- Publish and index fast — then interlink with your related pages.\n\n- Measure and update — check clicks, refresh winners and fix pages that stall.\n\nThat’s the system behind results I’ve shown on camera, like a site going from zero to 1,300 clicks a day and 90,000 AI mentions in 90 days.\n\n## Mistakes AI SEO training should fix\n\n- Publishing thin AI content — volume without research doesn’t rank for long.\n\n- Ignoring links — authority still matters, in Google and in AI answers.\n\n- Chasing tools instead of building a repeatable process.\n\n- Never updating — fast-moving topics need regular refreshes.\n\n- Not tracking results — if you don’t measure clicks, you can’t improve.\n\n## Who AI SEO training is for\n\nBusiness owners who want more customers from search, freelancers and agencies who want to deliver faster, and creators who want their content found in Google and AI answers. You don’t need to be technical: if you can describe what you want, AI agents can do much of the heavy lifting.\n\n## What my members learn first\n\nInside my communities, new members usually start with the same three wins. First, finding fresh keywords: new tools, updates and questions people are already searching, where competition is low. Second, publishing answer-first pages fast, with the keyword and the answer in the first line, a clear structure and an FAQ. Third, getting those pages indexed and interlinked with related content. Those three habits alone can move a site from no traffic to steady daily clicks, and they’re the foundation for everything else we teach.\n\nFrom there, members add GEO techniques for AI answers, link building for authority, and AI agents that automate the research and drafting so they can publish consistently without burning out.\n\n## Getting started with AI SEO training\n\nStart free on YouTube and in AI Money Lab, join the SEO Elite Circle or the AI Profit Boardroom when you want live help, or book a free SEO strategy session if you’d rather my team handled it. Whichever you choose, good AI SEO training should leave you with a system you can run every week.\n\nThe most important thing is consistency. AI makes it possible to publish faster than ever, but the people who win are the ones who keep a weekly rhythm: find keywords, publish, index, measure, update. Training gives you the system and the accountability to stick with it, and that’s what turns a few early rankings into a site that grows every month.\n\n## FAQ: ai seo training\n\n### What is AI SEO training?\n\nTraining on using AI to rank in Google and get cited in AI answers: keyword research, content, GEO, links, indexing and AI agents.\n\n### Is there free AI SEO training?\n\nYes — Julian Goldie’s YouTube channel and the free AI Money Lab community.\n\n### What is the best AI SEO training?\n\nFor hands-on SEO help, the SEO Elite Circle; for AI SEO plus AI automation, the AI Profit Boardroom.\n\n### Do I need to be technical?\n\nNo — the training is built for business owners and beginners as well as SEOs.\n\n### Can someone do AI SEO for me?\n\nYes — book a free SEO strategy session with Julian Goldie’s team.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your AI SEO plan gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Best SEO Consultant\n\n- Best SEO Community\n\n- Julian Goldie SEO\n\nLast updated October 2026. This page is a living guide to ai seo training — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/ai-seo-training/?utm_source=rss&utm_medium=rss&utm_campaign=ai-seo-training",
+      "author": "Clawdbot",
+      "published": "2026-10-11T08:45:51",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "Another Julian Goldie promotional post outlining what AI SEO training should cover (keyword research, AI-assisted content, GEO/AEO, links) and funneling readers to his free Skool community, paid circles, and strategy sessions.",
+      "importance_score": 5.0,
+      "reasoning": "Self-promotional SEO marketing content unrelated to Hermes Agent or any agent engineering topic; included in the feed likely via over-broad syndication, contributing no technical value.",
+      "themes": [
+        "off-topic",
+        "marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Another Julian Goldie promotional post outlining what AI SEO training should cover (keyword research, AI-assisted content, GEO/AEO, links) and funneling readers to his free Skool community, paid circles, and strategy sessions.</p>",
+      "content_html": "<p>The best AI SEO training teaches you a working system — not just tools — for ranking in Google and getting cited in AI answers. I’ve spent 10+ years in SEO and now rank new pages within hours using AI, and in the video below I show how I rank new AI keywords in 24 hours with Claude. Here’s what good AI SEO training covers, and the free and paid ways to learn it with me.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Good AI SEO training covers keywords, content, GEO, links and AI agents.</li>\n</ul>\n<ul>\n<li>Start free with AI Money Lab and my YouTube tutorials.</li>\n</ul>\n<ul>\n<li>Get hands-on help in the SEO Elite Circle or the AI Profit Boardroom.</li>\n</ul>\n<ul>\n<li>Want it done for you? Book a free SEO strategy session.</li>\n</ul>\n<h2>What AI SEO training should teach</h2>\n<ul>\n<li>Fresh-first keyword research — find new and trending topics before competitors, and check what you already rank for.</li>\n</ul>\n<ul>\n<li>AI-assisted content — research, outline and draft with Claude and other models, then edit for real expertise.</li>\n</ul>\n<ul>\n<li>On-page structure — answer-first intros, clear headings, tables, FAQs and schema.</li>\n</ul>\n<ul>\n<li>GEO and AEO — structuring pages so ChatGPT, Claude, Perplexity and Google’s AI Overviews quote you.</li>\n</ul>\n<ul>\n<li>Links and authority — earned, relevant backlinks, the foundation of my agency.</li>\n</ul>\n<ul>\n<li>Indexing and tracking — getting pages found fast and measuring clicks in Search Console.</li>\n</ul>\n<ul>\n<li>AI agents for SEO — Hermes, Claude and an Agent OS to automate research, writing and publishing.</li>\n</ul>\n<h2>AI SEO training options with Julian Goldie</h2>\n<p>Option</p>\n<p>What you get</p>\n<p>Best for</p>\n<p>SEO Elite Circle</p>\n<p>Weekly SEO hot-seat calls, DM access to me, action plans, private case studies and SOP templates</p>\n<p>Business owners and SEOs who want hands-on help ranking</p>\n<p>AI Profit Boardroom</p>\n<p>Four live coaching calls a week, daily Q&amp;A, AI SEO and AI agent courses, and the Agent OS</p>\n<p>Anyone who wants AI SEO plus AI automation</p>\n<p>AI Money Lab (free)</p>\n<p>Free AI courses, 1,000+ AI agents and workflows, 200+ prompts</p>\n<p>Beginners who want to start free</p>\n<p>YouTube (free)</p>\n<p>Daily AI SEO tutorials and case studies with real data</p>\n<p>Learning one technique at a time</p>\n<p>Free strategy session</p>\n<p>A call with my team to map your SEO plan</p>\n<p>Business owners who want it done for them</p>\n<p>Want this working in your business, not just bookmarked? Learning AI SEO with live support is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>Free AI SEO training</h2>\n<p>You can learn a lot without paying anything. My YouTube channel has daily AI SEO tutorials with real Search Console data, and the free AI Money Lab community has AI courses, prompts and ready-made agents. Grab 200+ free AI SEO prompts and the free Link Building Mastery book too.</p>\n<h2>Paid AI SEO training: SEO Elite Circle vs AI Profit Boardroom</h2>\n<p>Choose the SEO Elite Circle if SEO is your main goal: weekly hot-seat calls where we work on your actual site, direct access to me, and the SOPs my agency uses. Choose the AI Profit Boardroom if you want AI SEO plus AI automation and agents more broadly: four live coaching calls a week, daily Q&amp;A, full courses and the Agent OS.</p>\n<h2>My AI SEO system in five steps</h2>\n<ul>\n<li>Find fresh keywords — new tools, updates and trends, plus gaps where you have impressions but no page.</li>\n</ul>\n<ul>\n<li>Research properly — primary sources, real facts, your own experience and video.</li>\n</ul>\n<ul>\n<li>Write answer-first — the keyword and the answer in the first line, clear headings, tables and FAQs.</li>\n</ul>\n<ul>\n<li>Publish and index fast — then interlink with your related pages.</li>\n</ul>\n<ul>\n<li>Measure and update — check clicks, refresh winners and fix pages that stall.</li>\n</ul>\n<p>That’s the system behind results I’ve shown on camera, like a site going from zero to 1,300 clicks a day and 90,000 AI mentions in 90 days.</p>\n<h2>Mistakes AI SEO training should fix</h2>\n<ul>\n<li>Publishing thin AI content — volume without research doesn’t rank for long.</li>\n</ul>\n<ul>\n<li>Ignoring links — authority still matters, in Google and in AI answers.</li>\n</ul>\n<ul>\n<li>Chasing tools instead of building a repeatable process.</li>\n</ul>\n<ul>\n<li>Never updating — fast-moving topics need regular refreshes.</li>\n</ul>\n<ul>\n<li>Not tracking results — if you don’t measure clicks, you can’t improve.</li>\n</ul>\n<h2>Who AI SEO training is for</h2>\n<p>Business owners who want more customers from search, freelancers and agencies who want to deliver faster, and creators who want their content found in Google and AI answers. You don’t need to be technical: if you can describe what you want, AI agents can do much of the heavy lifting.</p>\n<h2>What my members learn first</h2>\n<p>Inside my communities, new members usually start with the same three wins. First, finding fresh keywords: new tools, updates and questions people are already searching, where competition is low. Second, publishing answer-first pages fast, with the keyword and the answer in the first line, a clear structure and an FAQ. Third, getting those pages indexed and interlinked with related content. Those three habits alone can move a site from no traffic to steady daily clicks, and they’re the foundation for everything else we teach.</p>\n<p>From there, members add GEO techniques for AI answers, link building for authority, and AI agents that automate the research and drafting so they can publish consistently without burning out.</p>\n<h2>Getting started with AI SEO training</h2>\n<p>Start free on YouTube and in AI Money Lab, join the SEO Elite Circle or the AI Profit Boardroom when you want live help, or book a free SEO strategy session if you’d rather my team handled it. Whichever you choose, good AI SEO training should leave you with a system you can run every week.</p>\n<p>The most important thing is consistency. AI makes it possible to publish faster than ever, but the people who win are the ones who keep a weekly rhythm: find keywords, publish, index, measure, update. Training gives you the system and the accountability to stick with it, and that’s what turns a few early rankings into a site that grows every month.</p>\n<h2>FAQ: ai seo training</h2>\n<h3>What is AI SEO training?</h3>\n<p>Training on using AI to rank in Google and get cited in AI answers: keyword research, content, GEO, links, indexing and AI agents.</p>\n<h3>Is there free AI SEO training?</h3>\n<p>Yes — Julian Goldie’s YouTube channel and the free AI Money Lab community.</p>\n<h3>What is the best AI SEO training?</h3>\n<p>For hands-on SEO help, the SEO Elite Circle; for AI SEO plus AI automation, the AI Profit Boardroom.</p>\n<h3>Do I need to be technical?</h3>\n<p>No — the training is built for business owners and beginners as well as SEOs.</p>\n<h3>Can someone do AI SEO for me?</h3>\n<p>Yes — book a free SEO strategy session with Julian Goldie’s team.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your AI SEO plan gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best SEO Consultant</li>\n</ul>\n<ul>\n<li>Best SEO Community</li>\n</ul>\n<ul>\n<li>Julian Goldie SEO</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to ai seo training — the facts here move fast and it is updated as they do.</p>"
+    }
+  ],
+  "notice": {
+    "type": "info",
+    "title": "Monday Edition",
+    "message": "Today's arXiv papers cover submissions from the entire weekend (Friday through Sunday) due to arXiv's publishing schedule."
+  }
+}

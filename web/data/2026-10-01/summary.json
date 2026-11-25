@@ -1,0 +1,464 @@
+{
+  "date": "2026-10-01",
+  "coverage_date": "2026-09-30",
+  "coverage_start": "2026-09-30T00:00:00",
+  "coverage_end": "2026-09-30T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-01\n\n**Executive summary:** First-party momentum leads this cycle, with the top story being that **[Hermes Agent now supports Claude Pro/Max subscriptions](/?date=2026-10-01&category=research#item-hn-49790991)**: new official documentation lets subscribers drive the agent with Claude models **without an API key** — the lowest-friction on-ramp the project has offered — while additional **[Hermes Kanban](/?date=2026-10-01&category=research#item-hn-49604068)** documentation adds multi-agent profile coordination as a first-party capability. Alongside the docs, **[Hermes Agent v0.20.0](/?date=2026-10-01&category=research#item-hn-49159200)** shipped, with an editor caveat: the announcement title and the repo tag (**v2026.8.3**) disagree, so verify the actual version before pinning. Research extends both of the week's running threads. Skills: [**SkillSeek**](https://arxiv.org/abs/2609.38822) (arXiv **2609.38822**) tackles skill retrieval as agent-skill marketplaces blow past [**230,000 SKILL.md**](/?date=2026-10-01&category=research#item-2609.38822) packages — a scaling problem directly downstream of the SKILL.md guides covered 29 September. Self-improvement: [a test-time AI4AI paper](/?date=2026-10-01&category=research#item-2609.38143) shows a frozen-weight **Builder** model learning to construct better execution harnesses for a target agent, mapping cleanly onto Hermes' architecture and pairing with the open-source **[Refine Cycle](/?date=2026-10-01&category=research#item-hn-49606988)** plugin. Production-readiness tooling is maturing in parallel, extending 30 September's memory theme into practice: a **[LanceDB](/?date=2026-10-01&category=research#item-hn-49133145)** integration adds persistent, embedding-based semantic memory so agents recall prior interactions, an open-source **[Grafana](/?date=2026-10-01&category=research#item-hn-49318128)** project exposes observability metrics for long-running agent runs, and a practitioner guide demonstrates an [autonomous issue-to-PR skill](/?date=2026-10-01&category=research#item-hn-49136162) chaining **Codex** and **Claude Code** inside Hermes Agent. Ecosystem watch: **[verso](/?date=2026-10-01&category=research#item-hn-49628094)**, a free open-source orchestrator for knowledge work built on top of Hermes Agent, signals an application layer forming around the project — third parties now treat Hermes as a platform, not a single tool. On the competitive side, strong-scoring coverage contrasts OpenAI's paid, managed **[ChatGPT Dots](/?date=2026-10-01&category=research#item-ea5509ae3f82)** (**GPT-6 Astra**, its own cloud computer, **4,000+** apps) against [the free, open-source Hermes Agent](/?date=2026-10-01&category=research#item-cb38b0d12e2d) — date check: the source claims a 2026-09-29 launch, but **GPT-6 Astra** went GA 2026-09-04, so this reads as coverage of an existing model rather than a fresh release; the same section flags a [**~23,000**](/?date=2026-10-01&category=research#item-hn-49424643) open-PR governance signal for other newsletter sections. Net read: no merged PRs, official news-channel items, social posts, or Reddit threads this cycle — the **v0.20.0** announcement (pending tag verification) is the ship of record — and no new model launches. Today's signal is directional: Hermes is pushing releases, documentation, and subscription on-ramps while the ecosystem builds memory, observability, and orchestration on top of it, and the open-source-vs-managed contrast is sharpening into the project's core pitch.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-01</p>\n<p><strong>Executive summary:</strong> First-party momentum leads this cycle, with the top story being that <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent now supports Claude Pro/Max subscriptions</a></strong>: new official documentation lets subscribers drive the agent with Claude models <strong>without an API key</strong> — the lowest-friction on-ramp the project has offered — while additional <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> documentation adds multi-agent profile coordination as a first-party capability. Alongside the docs, <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> shipped, with an editor caveat: the announcement title and the repo tag (<strong>v2026.8.3</strong>) disagree, so verify the actual version before pinning. Research extends both of the week's running threads. Skills: <a href=\"https://arxiv.org/abs/2609.38822\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>SkillSeek</strong></a> (arXiv <strong>2609.38822</strong>) tackles skill retrieval as agent-skill marketplaces blow past <a href=\"/?date=2026-10-01&amp;category=research#item-2609.38822\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>230,000 SKILL.md</strong></a> packages — a scaling problem directly downstream of the SKILL.md guides covered 29 September. Self-improvement: <a href=\"/?date=2026-10-01&amp;category=research#item-2609.38143\" class=\"internal-link\" rel=\"noopener noreferrer\">a test-time AI4AI paper</a> shows a frozen-weight <strong>Builder</strong> model learning to construct better execution harnesses for a target agent, mapping cleanly onto Hermes' architecture and pairing with the open-source <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> plugin. Production-readiness tooling is maturing in parallel, extending 30 September's memory theme into practice: a <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong> integration adds persistent, embedding-based semantic memory so agents recall prior interactions, an open-source <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> project exposes observability metrics for long-running agent runs, and a practitioner guide demonstrates an <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">autonomous issue-to-PR skill</a> chaining <strong>Codex</strong> and <strong>Claude Code</strong> inside Hermes Agent. Ecosystem watch: <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong>, a free open-source orchestrator for knowledge work built on top of Hermes Agent, signals an application layer forming around the project — third parties now treat Hermes as a platform, not a single tool. On the competitive side, strong-scoring coverage contrasts OpenAI's paid, managed <strong><a href=\"/?date=2026-10-01&amp;category=research#item-ea5509ae3f82\" class=\"internal-link\" rel=\"noopener noreferrer\">ChatGPT Dots</a></strong> (<strong>GPT-6 Astra</strong>, its own cloud computer, <strong>4,000+</strong> apps) against <a href=\"/?date=2026-10-01&amp;category=research#item-cb38b0d12e2d\" class=\"internal-link\" rel=\"noopener noreferrer\">the free, open-source Hermes Agent</a> — date check: the source claims a 2026-09-29 launch, but <strong>GPT-6 Astra</strong> went GA 2026-09-04, so this reads as coverage of an existing model rather than a fresh release; the same section flags a <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>~23,000</strong></a> open-PR governance signal for other newsletter sections. Net read: no merged PRs, official news-channel items, social posts, or Reddit threads this cycle — the <strong>v0.20.0</strong> announcement (pending tag verification) is the ship of record — and no new model launches. Today's signal is directional: Hermes is pushing releases, documentation, and subscription on-ramps while the ecosystem builds memory, observability, and orchestration on top of it, and the open-source-vs-managed contrast is sharpening into the project's core pitch.</p>",
+  "top_topics": [
+    {
+      "name": "Hermes Agent Official Releases",
+      "description": "First-party Hermes Agent momentum: a [v0.20.0 release announcement](/?date=2026-10-01&category=research#item-hn-49159200) (with a flagged mismatch between the announcement title and the repo tag v2026.8.3 that needs verification) plus official documentation for [Claude Pro/Max subscription support](/?date=2026-10-01&category=research#item-hn-49790991), letting subscribers drive the agent with Claude models without an API key. The new [Hermes Kanban documentation](/?date=2026-10-01&category=research#item-hn-49604068) adds multi-agent profile coordination as a first-party capability.",
+      "description_html": "First-party Hermes Agent momentum: a <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.20.0 release announcement</a> (with a flagged mismatch between the announcement title and the repo tag v2026.8.3 that needs verification) plus official documentation for <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a>, letting subscribers drive the agent with Claude models without an API key. The new <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban documentation</a> adds multi-agent profile coordination as a first-party capability.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "Agent Skills at Scale",
+      "description": "The skills layer of the agent ecosystem drew both academic and practitioner attention. The [SkillSeek paper (arXiv 2609.38822)](/?date=2026-10-01&category=research#item-2609.38822) tackles skill retrieval as marketplaces grow past 230,000 SKILL.md packages, while a practitioner guide demonstrates an [autonomous issue-to-PR skill](/?date=2026-10-01&category=research#item-hn-49136162) that chains Codex and Claude Code inside [Hermes Agent](/?date=2026-10-01&category=research#item-hn-49441992).",
+      "description_html": "The skills layer of the agent ecosystem drew both academic and practitioner attention. The <a href=\"/?date=2026-10-01&amp;category=research#item-2609.38822\" class=\"internal-link\" rel=\"noopener noreferrer\">SkillSeek paper (arXiv 2609.38822)</a> tackles skill retrieval as marketplaces grow past 230,000 SKILL.md packages, while a practitioner guide demonstrates an <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">autonomous issue-to-PR skill</a> that chains Codex and Claude Code inside <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent</a>.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Memory and Observability Infrastructure",
+      "description": "Production-readiness tooling around Hermes Agent is maturing. A [LanceDB integration adds persistent, embedding-based semantic memory](/?date=2026-10-01&category=research#item-hn-49133145) so agents can recall prior interactions, and an [open-source Grafana project exposes observability metrics](/?date=2026-10-01&category=research#item-hn-49318128) for long-running agent runs.",
+      "description_html": "Production-readiness tooling around Hermes Agent is maturing. A <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB integration adds persistent, embedding-based semantic memory</a> so agents can recall prior interactions, and an <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">open-source Grafana project exposes observability metrics</a> for long-running agent runs.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "ChatGPT Dots vs Hermes",
+      "description": "Competitive-landscape coverage contrasts OpenAI's paid, managed [ChatGPT Dots (GPT-6 Astra, own cloud computer, 4,000+ apps)](/?date=2026-10-01&category=research#item-cb38b0d12e2d) against the free, open-source [Hermes Agent](/?date=2026-10-01&category=research#item-hn-49441992). Date check: the source claims a 2026-09-29 launch, but the grounding record lists GPT-6 Astra as GA on 2026-09-04, so this reads as coverage of an existing model rather than a fresh release; the section also flags [~23,000 open-PR governance signal](/?date=2026-10-01&category=research#item-hn-49424643) for other newsletter sections.",
+      "description_html": "Competitive-landscape coverage contrasts OpenAI's paid, managed <a href=\"/?date=2026-10-01&amp;category=research#item-cb38b0d12e2d\" class=\"internal-link\" rel=\"noopener noreferrer\">ChatGPT Dots (GPT-6 Astra, own cloud computer, 4,000+ apps)</a> against the free, open-source <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent</a>. Date check: the source claims a 2026-09-29 launch, but the grounding record lists GPT-6 Astra as GA on 2026-09-04, so this reads as coverage of an existing model rather than a fresh release; the section also flags <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open-PR governance signal</a> for other newsletter sections.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 68
+    },
+    {
+      "name": "Ecosystem Orchestration Tooling",
+      "description": "Third-party builders are treating Hermes Agent as a platform rather than a single tool, exemplified by [verso, a free open-source orchestrator for knowledge work](/?date=2026-10-01&category=research#item-hn-49628094) built on top of the agent. This suggests an emerging application layer forming around the project.",
+      "description_html": "Third-party builders are treating Hermes Agent as a platform rather than a single tool, exemplified by <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso, a free open-source orchestrator for knowledge work</a> built on top of the agent. This suggests an emerging application layer forming around the project.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 65
+    },
+    {
+      "name": "Self-Improving Agent Harnesses",
+      "description": "AI-for-AI research maps directly onto Hermes' architecture: a test-time paper shows a frozen-weight Builder model [learning to construct better execution harnesses for a target agent](/?date=2026-10-01&category=research#item-2609.38143). It aligns with the broader self-improvement trend in the ecosystem, alongside the open-source [Refine Cycle plugin](/?date=2026-10-01&category=research#item-hn-49606988) cited in the section summary.",
+      "description_html": "AI-for-AI research maps directly onto Hermes' architecture: a test-time paper shows a frozen-weight Builder model <a href=\"/?date=2026-10-01&amp;category=research#item-2609.38143\" class=\"internal-link\" rel=\"noopener noreferrer\">learning to construct better execution harnesses for a target agent</a>. It aligns with the broader self-improvement trend in the ecosystem, alongside the open-source <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle plugin</a> cited in the section summary.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 62
+    }
+  ],
+  "total_items_collected": 67,
+  "total_items_analyzed": 29,
+  "collection_status": {
+    "overall": "partial",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 38,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "partial",
+        "count": 29,
+        "error": "arXiv returned 0 papers on a normal day (2026-10-01); this weekday normally has papers"
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": [
+      "Research had partial collection: arXiv returned 0 papers on a normal day (2026-10-01); this weekday normally has papers"
+    ]
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-01/hero.webp?v=1790838565",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), gold (#FFD700), cyan (#00FFFF), white (#F8F8F8).\n\nShe stands in a dark command center with glowing gold and cyan data streams, examining a floating holographic display showing today's Hermes Agent news: topic 1: Hermes Agent Official Releases First-party Hermes Agent momentum: a v0.20.0 release announcement (with a flagged mismatch between the announcement title and the repo tag v2026.8.3 that needs verification) plus official documentatio; topic 2: Agent Skills at Scale The skills layer of the age. Surrounded by holographic interfaces with rocket launch, celebration confetti, announcement banners, autonomous systems, workflow diagrams, connected tools, Hermes interface, server racks, cooling systems, blue LED glow, data center.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-01T07:09:25.944808",
+  "categories": {
+    "news": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    },
+    "research": {
+      "count": 29,
+      "category_summary": "Official releases and documentation lead the research section: **[Hermes Agent v0.20.0](/?date=2026-10-01&category=research#item-hn-49159200)** shipped (editor note: verify the version tag, as the announcement title and repo tag appear to disagree), and new official docs cover **[Claude Pro/Max](/?date=2026-10-01&category=research#item-hn-49790991)** subscription support — letting subscribers drive the agent with Claude models without an API key — plus **[Hermes Kanban](/?date=2026-10-01&category=research#item-hn-49604068)** for multi-agent profile coordination. Two research papers map directly onto Hermes' architecture: **[SkillSeek](/?date=2026-10-01&category=research#item-2609.38822)** (arXiv 2609.38822) tackles skill retrieval as agent-skill marketplaces scale past 230,000 SKILL.md packages, and a [test-time AI4AI paper](/?date=2026-10-01&category=research#item-2609.38143) shows a frozen-weight Builder model learning to construct better execution harnesses for target agents. Practitioner guides cover high-impact capabilities: [LanceDB](/?date=2026-10-01&category=research#item-hn-49133145) semantic memory for persistent, embedding-based recall; an [autonomous issue-to-PR skill loop](/?date=2026-10-01&category=research#item-hn-49136162) chaining Codex and Claude Code; [Grafana](/?date=2026-10-01&category=research#item-hn-49318128)-based observability for long-running agent runs; and the open-source **[Refine Cycle](/?date=2026-10-01&category=research#item-hn-49606988)** self-improvement plugin. Third-party ecosystem tooling rounds it out with **[verso](/?date=2026-10-01&category=research#item-hn-49628094)**, a free orchestrator for knowledge work built on Hermes Agent. Strong-scoring competitive-landscape coverage ([ChatGPT Dots](/?date=2026-10-01&category=research#item-ea5509ae3f82) on GPT-6 Astra, launched 2026-09-29) and the [~23,000 open-PR governance signal](/?date=2026-10-01&category=research#item-hn-49424643) are flagged for other newsletter sections rather than research.",
+      "category_summary_html": "<p>Official releases and documentation lead the research section: <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> shipped (editor note: verify the version tag, as the announcement title and repo tag appear to disagree), and new official docs cover <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscription support — letting subscribers drive the agent with Claude models without an API key — plus <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> for multi-agent profile coordination. Two research papers map directly onto Hermes' architecture: <strong><a href=\"/?date=2026-10-01&amp;category=research#item-2609.38822\" class=\"internal-link\" rel=\"noopener noreferrer\">SkillSeek</a></strong> (arXiv 2609.38822) tackles skill retrieval as agent-skill marketplaces scale past 230,000 SKILL.md packages, and a <a href=\"/?date=2026-10-01&amp;category=research#item-2609.38143\" class=\"internal-link\" rel=\"noopener noreferrer\">test-time AI4AI paper</a> shows a frozen-weight Builder model learning to construct better execution harnesses for target agents. Practitioner guides cover high-impact capabilities: <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a> semantic memory for persistent, embedding-based recall; an <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">autonomous issue-to-PR skill loop</a> chaining Codex and Claude Code; <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a>-based observability for long-running agent runs; and the open-source <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> self-improvement plugin. Third-party ecosystem tooling rounds it out with <strong><a href=\"/?date=2026-10-01&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong>, a free orchestrator for knowledge work built on Hermes Agent. Strong-scoring competitive-landscape coverage (<a href=\"/?date=2026-10-01&amp;category=research#item-ea5509ae3f82\" class=\"internal-link\" rel=\"noopener noreferrer\">ChatGPT Dots</a> on GPT-6 Astra, launched 2026-09-29) and the <a href=\"/?date=2026-10-01&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23,000 open-PR governance signal</a> are flagged for other newsletter sections rather than research.</p>",
+      "themes": [
+        {
+          "name": "Agent Skills and Memory",
+          "description": "Skill retrieval research at marketplace scale, meta-skill learning, autonomous skill loops across coding agents, and persistent semantic memory via LanceDB show skills and memory as central extension points for Hermes.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Hermes Agent as Open-Source Alternative",
+          "description": "Third-party commentary positions Hermes Agent as the free, self-hosted, model-flexible alternative to managed commercial agents, citing bot mode, Bot Screen, voice, and plugin-based model support.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Model Support and Routing",
+          "description": "Claude Pro/Max subscription support, questions about model router necessity with Bifrost, and free decision-model access on OpenCode Zen reflect users constantly reshaping which models back their agents and at what cost.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Ecosystem Tools and Orchestration",
+          "description": "Third-party layers built on Hermes Agent, including the verso orchestrator, Grafana observability, the Refine Cycle self-improvement plugin, and YC startup Almanac, demonstrate rapid ecosystem growth beyond the CLI.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Reliability, Security and Debugging",
+          "description": "An agent spiraling on a headless host, adversarial reversal research, moderation complaints on the GitHub tracker, and a 23,000 open PR backlog highlight operational, security and governance strain as the project scales.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "ChatGPT Dots Launch Coverage",
+          "description": "Multiple posts review OpenAI's newly launched always-on Dots agent (GPT-6 Astra, DevDay 29 September 2026), covering capabilities, pricing tiers, regional restrictions, and real-task performance issues.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Agent Comparison Benchmarking",
+          "description": "A comparison series benchmarks Dots against Claude, Hermes Agent, and Grok Bot across speed, cost, control, and capability dimensions.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Self-Hosting and Deployment",
+          "description": "Practical deployment guidance ranging from running Hermes on an Arduino UNO Q board to lessons learned from incorrect usage patterns, serving the self-hoster and hobbyist segment.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Computer Use Performance Gaps",
+          "description": "Hands-on tests repeatedly flag slow cloud computer and computer-use performance in Dots relative to Claude with browser tools and xAI's Grok Bot.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-49790991",
+          "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+          "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+          "author": "rob",
+          "published": "2026-09-21T18:07:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Announcement that Hermes Agent now supports Claude Pro/Max subscriptions, documented on the official Hermes Agent docs site under a plugin page for a Claude subscription direct SDK integration. This lets subscription-authenticated Claude access be used within Hermes Agent.",
+          "importance_score": 85.0,
+          "reasoning": "Official feature addition with documentation that materially expands model access options for Hermes users by plugging paid Claude subscriptions into the agent. High relevance and impact for the user base.",
+          "themes": [
+            "Model Support",
+            "Official Features",
+            "Integrations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Announcement that Hermes Agent now supports Claude Pro/Max subscriptions, documented on the official Hermes Agent docs site under a plugin page for a Claude subscription direct SDK integration. This lets subscription-authenticated Claude access be used within Hermes Agent.</p>",
+          "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+        },
+        {
+          "id": "hn-49159200",
+          "title": "Hermes Agent v0.20.0",
+          "content": "Hermes Agent v0.20.0",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+          "author": "tosh",
+          "published": "2026-08-03T17:53:26Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Announcement of Hermes Agent v0.20.0, linked to a release tag on the NousResearch hermes-agent GitHub repository. Notably the title says v0.20.0 while the URL points to tag v2026.8.3, suggesting a versioning scheme mismatch between project version and dated release tags.",
+          "importance_score": 82.0,
+          "reasoning": "A new official Hermes Agent release is a core event for the ecosystem, and the versioning discrepancy is itself noteworthy for users tracking updates; details of changelog are not in the excerpt, keeping it just below top importance.",
+          "themes": [
+            "Releases",
+            "Versioning",
+            "Official Updates"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Announcement of Hermes Agent v0.20.0, linked to a release tag on the NousResearch hermes-agent GitHub repository. Notably the title says v0.20.0 while the URL points to tag v2026.8.3, suggesting a versioning scheme mismatch between project version and dated release tags.</p>",
+          "content_html": "<p>Hermes Agent v0.20.0</p>"
+        },
+        {
+          "id": "2609.38822",
+          "title": "SkillSeek: Revisiting Agent Skill Retrieval at Marketplace Scale",
+          "content": "Anthropic's Agent Skills package reusable procedural know-how for an LLM agent into SKILL.md directories, and open-source aggregations have grown past 230,000 skills, making selection rather than authoring the bottleneck. The standing answer in the literature outsources selection to the agent itself: an LLM-mediated retrieval loop that rewrites queries and refines candidates inside the agent's decision loop, paying LLM tokens on every task. We present SkillSeek, an open-source two-stage skill re",
+          "url": "https://arxiv.org/abs/2609.38822",
+          "author": "HF Daily Papers",
+          "published": "2026-09-30T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Research paper examining skill retrieval for LLM agents as skill marketplaces grow past 230,000 reusable SKILL.md packages in the Agent Skills format. The authors argue that selection, not authoring, is now the bottleneck, and critique the standard approach of LLM-mediated retrieval loops that rewrite queries and refine candidates inside the agent decision loop, which costs tokens on every task. They introduce SkillSeek, an open-source two-stage skill retrieval approach that moves selection out of the agent loop.",
+          "importance_score": 78.0,
+          "reasoning": "Directly relevant to agent skill ecosystems and Hermes-style skill architectures; offers a concrete architectural alternative to expensive in-loop retrieval. As a research paper rather than a Hermes-specific release it scores moderately high rather than critical.",
+          "themes": [
+            "Agent Skills",
+            "Retrieval and Memory",
+            "Research Papers"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Research paper examining skill retrieval for LLM agents as skill marketplaces grow past 230,000 reusable SKILL.md packages in the Agent Skills format. The authors argue that selection, not authoring, is now the bottleneck, and critique the standard approach of LLM-mediated retrieval loops that rewrite queries and refine candidates inside the agent decision loop, which costs tokens on every task. They introduce SkillSeek, an open-source two-stage skill retrieval approach that moves selection out of the agent loop.</p>",
+          "content_html": "<p>Anthropic's Agent Skills package reusable procedural know-how for an LLM agent into SKILL.md directories, and open-source aggregations have grown past 230,000 skills, making selection rather than authoring the bottleneck. The standing answer in the literature outsources selection to the agent itself: an LLM-mediated retrieval loop that rewrites queries and refines candidates inside the agent's decision loop, paying LLM tokens on every task. We present SkillSeek, an open-source two-stage skill re</p>"
+        },
+        {
+          "id": "hn-49604068",
+          "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+          "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+          "author": "fallinditch",
+          "published": "2026-09-07T23:24:05Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Official documentation page describing Hermes Kanban, a multi-agent profile collaboration feature in the Hermes Agent user guide. It covers coordinating multiple agent profiles via a kanban-style workflow interface.",
+          "importance_score": 74.0,
+          "reasoning": "Documents a significant official multi-agent coordination feature with dedicated docs; relevant to teams running multiple Hermes profiles, though it is a documentation reference rather than a release note.",
+          "themes": [
+            "Multi-Agent",
+            "Official Features",
+            "Documentation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official documentation page describing Hermes Kanban, a multi-agent profile collaboration feature in the Hermes Agent user guide. It covers coordinating multiple agent profiles via a kanban-style workflow interface.</p>",
+          "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+        },
+        {
+          "id": "hn-49133145",
+          "title": "Semantic Memory for Hermes Agent with LanceDB",
+          "content": "Semantic Memory for Hermes Agent with LanceDB",
+          "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb",
+          "author": "eigenBasis",
+          "published": "2026-08-01T10:47:04Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A LanceDB blog post covering how to add semantic memory to Hermes Agent using LanceDB, giving agents persistent, embedding-based recall of prior interactions and knowledge.",
+          "importance_score": 73.0,
+          "reasoning": "Semantic memory is a high-value capability for agents that grow with use, and this is an actionable integration guide from the vector database vendor; relevance to Hermes is direct.",
+          "themes": [
+            "Memory",
+            "Vector Databases",
+            "Integrations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A LanceDB blog post covering how to add semantic memory to Hermes Agent using LanceDB, giving agents persistent, embedding-based recall of prior interactions and knowledge.</p>",
+          "content_html": "<p>Semantic Memory for Hermes Agent with LanceDB</p>"
+        },
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN post for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a solo learning exercise, it provides an intuitive UI alternative to the Hermes CLI and has become the author's daily work setup with reported productivity gains.",
+          "importance_score": 72.0,
+          "reasoning": "A mature third-party orchestration layer on Hermes demonstrates ecosystem growth beyond the CLI and offers a practical productivity tool; strong community contribution though not an official change.",
+          "themes": [
+            "Ecosystem Tools",
+            "Orchestration",
+            "Community Projects"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN post for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a solo learning exercise, it provides an intuitive UI alternative to the Hermes CLI and has become the author's daily work setup with reported productivity gains.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "cb38b0d12e2d",
+          "title": "ChatGPT Dots vs Hermes Agent: Paid vs Free",
+          "content": "ChatGPT Dots vs Hermes is really a question of philosophy. Dots are OpenAI’s polished, paid, always-on agents living inside ChatGPT. Hermes Agent is the free, open-source agent I run my whole operation on, living on my own machine with whatever model I choose. When I tested Dots on launch day (above), my honest reaction was that it feels like “a version of Hermes Agent for beginners that’s still not that smooth.” Here’s the full comparison.\n\nKey takeaways\n\n- Dots: paid, managed, beginner-friendly — GPT-6 Astra, own cloud computer, 4,000+ apps, inside ChatGPT.\n\n- Hermes: free and open source — runs on your machine, any model (local or cloud), bot mode, Bot Screen, voice.\n\n- Control: Hermes gives you everything — models, data, plugins; Dots gives you Custom Rules within OpenAI’s walls.\n\n- My take: Dots is easier to start; Hermes is more capable, cheaper and yours.\n\n## ChatGPT Dots vs Hermes side by side\n\nChatGPT Dots\nHermes Agent\n\nCost\nChatGPT Pro or Business Premium\nFree, open source (you pay only for any paid models you choose)\n\nWhere it runs\nOpenAI’s cloud computer (optional local access)\nYour own machine\n\nModels\nGPT-6 Astra\nAny — local models, Claude via plugin, others\n\nAlways-on\nYes, background and proactive research\nYes — bot mode\n\nWatching it work\nTakeover of the cloud computer\nBot Screen on your desktop\n\nVoice\nCalls not working at launch\nFull-duplex voice — voice mode\n\nApprovals\nCustom Rules\nYour config and prompts\n\nSetup\nMinutes, in ChatGPT\nMore setup — see best Hermes setup\n\n## ChatGPT Dots vs Hermes in practice\n\nDots win on first-run experience: open ChatGPT, name your Dot, pick an avatar, done. For someone who’s never touched an agent, that matters. But in my test the experience fell apart on real work — slow computer use, a call feature that didn’t connect, images that wouldn’t load, and app connections hidden away.\n\nHermes asks more of you up front, then gives you more: pick the best model for each job, run it locally for privacy, watch it on its own screen, talk to it hands-free, and keep every session in your own vault. No regional restrictions, no plan tiers, no waiting for a beta to settle. That’s why I run my business on it.\n\nWant this working in your business, not just bookmarked? Setting up Hermes Agent as your always-on AI team is exactly the kind of thing we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, daily Q&A, the Agent OS and Hermes kits, and a 30-day roadmap so you ship instead of watch.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## Who should pick which\n\n- Never used an agent, happy to pay, outside Europe: Dots is the gentlest start.\n\n- Want control, privacy or zero subscription: Hermes, no contest.\n\n- In the UK or EU: Dots on Pro isn’t available at launch — Hermes works anywhere.\n\n- Want the best of both: run Hermes with a flagship model like Claude Opus 5.5 for heavy jobs.\n\nSourcing, dated 30 September 2026: Dots facts are from OpenAI’s DevDay launch (29 September 2026) as reported by TechCrunch and DataCamp’s explainer; test observations are from my own hands-on session in the video above, on day one of the rollout. Early-rollout bugs (like the call button) may be fixed quickly — I’ll update this page as they are.\n\n## The bottom line on ChatGPT Dots vs Hermes\n\nChatGPT Dots vs Hermes: Dots is the easy, paid, managed option that’s still rough on day one; Hermes is the free, open, more capable agent you control completely. If you’re willing to spend an hour on setup, Hermes wins — and it doesn’t care what plan or country you’re in. Full Dots review: ChatGPT Dots, tested.\n\n## Where ChatGPT Dots vs Hermes is closer than it looks\n\nTo be fair to Dots, a few things it ships on day one take real work to match in Hermes. Its Custom Rules give non-technical users a clean approval model — act alone, act if pre-approved, ask first, or escalate — and sensitive actions like password changes always need your sign-off. It connects to 4,000+ apps through OpenAI’s plugin ecosystem, keeps memories between conversations, and you can message your Dot from ChatGPT on desktop, web or mobile, with Slack and Teams too.\n\nHermes can do all of that — approvals through your config, integrations through its connectors and MCP servers, memory through your own vault — but you assemble it rather than switch it on. So the honest framing is: Dots trades control and cost for convenience. If convenience is what you’re short of, that trade can make sense; if control or budget matters more, Hermes is the better long-term home.\n\n## FAQ: chatgpt dots vs hermes\n\n### What’s the difference between ChatGPT Dots and Hermes Agent?\n\nDots are paid, managed always-on agents inside ChatGPT running on OpenAI’s cloud; Hermes is a free, open-source agent that runs on your own machine with any model you choose.\n\n### Is Hermes Agent free?\n\nYes — it’s open source and free to run; you only pay if you choose paid model APIs or subscriptions.\n\n### Is ChatGPT Dots easier than Hermes?\n\nYes to start: Dots set up in minutes inside ChatGPT. Hermes takes more setup but gives far more control and capability.\n\n### Can Hermes run 24/7 like Dots?\n\nYes — Hermes bot mode runs always-on on your machine, and Bot Screen lets you watch it work.\n\n### Which is better for privacy?\n\nHermes — it runs locally and can use local models, so your data doesn’t have to leave your machine.\n\n### Can I use ChatGPT Dots outside the US?\n\nPro access excludes the EU/EEA, Switzerland and the UK at launch; Business Premium works in all ChatGPT regions.\n\nTwo ways I can help from here. If you want the community, the templates and the weekly momentum, join the AI Profit Boardroom — it’s where your Hermes setup gets built with 3,400+ members doing the same.\n\nIf you want a personal plan first, grab a free strategy session and bring your questions — no pitch-fest, just the roadmap.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — SEO agency founder, best-selling author, and one of the most-watched AI SEO educators on YouTube with 394K+ subscribers. I’ve spent 10+ years in SEO and link building, hold a 100% Job Success Score on Upwork, and run a community of 75K+ members learning AI-powered SEO. I test everything on my own sites first — what you read here comes from those tests. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- ChatGPT Dots: Is OpenAI’s New Agent Worth It?\n\n- Best Hermes Setup: My Full 2026 Stack\n\n- Hermes Bot Mode: The Free Grok Bot Alternative\n\nLast updated September 2026. This page is a living guide to chatgpt dots vs hermes — the facts here move fast and I update it as they do.",
+          "url": "https://juliangoldie.com/chatgpt-dots-vs-hermes/?utm_source=rss&utm_medium=rss&utm_campaign=chatgpt-dots-vs-hermes",
+          "author": "Clawdbot",
+          "published": "2026-09-30T09:55:19",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A philosophy-focused comparison between OpenAI's paid, managed ChatGPT Dots (GPT-6 Astra, own cloud computer, 4,000+ apps) and Hermes Agent, the free open-source agent the author runs his entire operation on. Hermes Agent runs on the user's own machine, supports any model including local models and Claude via plugin, and offers bot mode, Bot Screen, and voice. Dots is described as beginner-friendly and easier to start, but characterized as a version of Hermes Agent for beginners that is still not that smooth. The author's takeaway: Dots is easier to begin with, while Hermes is more capable, cheaper, and gives full control over models, data, and plugins.",
+          "importance_score": 72.0,
+          "reasoning": "Direct third-party coverage of Hermes Agent with specific feature mentions (bot mode, Bot Screen, voice, plugin model support, self-hosting) and a positioning claim that Dots is essentially a managed beginner version of Hermes. High relevance for ecosystem perception and competitive positioning of Hermes Agent, though still opinion-blog rather than technical documentation.",
+          "themes": [
+            "Hermes Agent",
+            "open source vs managed agents",
+            "cost comparison",
+            "model flexibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A philosophy-focused comparison between OpenAI's paid, managed ChatGPT Dots (GPT-6 Astra, own cloud computer, 4,000+ apps) and Hermes Agent, the free open-source agent the author runs his entire operation on. Hermes Agent runs on the user's own machine, supports any model including local models and Claude via plugin, and offers bot mode, Bot Screen, and voice. Dots is described as beginner-friendly and easier to start, but characterized as a version of Hermes Agent for beginners that is still not that smooth. The author's takeaway: Dots is easier to begin with, while Hermes is more capable, cheaper, and gives full control over models, data, and plugins.</p>",
+          "content_html": "<p>ChatGPT Dots vs Hermes is really a question of philosophy. Dots are OpenAI’s polished, paid, always-on agents living inside ChatGPT. Hermes Agent is the free, open-source agent I run my whole operation on, living on my own machine with whatever model I choose. When I tested Dots on launch day (above), my honest reaction was that it feels like “a version of Hermes Agent for beginners that’s still not that smooth.” Here’s the full comparison.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Dots: paid, managed, beginner-friendly — GPT-6 Astra, own cloud computer, 4,000+ apps, inside ChatGPT.</li>\n</ul>\n<ul>\n<li>Hermes: free and open source — runs on your machine, any model (local or cloud), bot mode, Bot Screen, voice.</li>\n</ul>\n<ul>\n<li>Control: Hermes gives you everything — models, data, plugins; Dots gives you Custom Rules within OpenAI’s walls.</li>\n</ul>\n<ul>\n<li>My take: Dots is easier to start; Hermes is more capable, cheaper and yours.</li>\n</ul>\n<h2>ChatGPT Dots vs Hermes side by side</h2>\n<p>ChatGPT Dots</p>\n<p>Hermes Agent</p>\n<p>Cost</p>\n<p>ChatGPT Pro or Business Premium</p>\n<p>Free, open source (you pay only for any paid models you choose)</p>\n<p>Where it runs</p>\n<p>OpenAI’s cloud computer (optional local access)</p>\n<p>Your own machine</p>\n<p>Models</p>\n<p>GPT-6 Astra</p>\n<p>Any — local models, Claude via plugin, others</p>\n<p>Always-on</p>\n<p>Yes, background and proactive research</p>\n<p>Yes — bot mode</p>\n<p>Watching it work</p>\n<p>Takeover of the cloud computer</p>\n<p>Bot Screen on your desktop</p>\n<p>Voice</p>\n<p>Calls not working at launch</p>\n<p>Full-duplex voice — voice mode</p>\n<p>Approvals</p>\n<p>Custom Rules</p>\n<p>Your config and prompts</p>\n<p>Setup</p>\n<p>Minutes, in ChatGPT</p>\n<p>More setup — see best Hermes setup</p>\n<h2>ChatGPT Dots vs Hermes in practice</h2>\n<p>Dots win on first-run experience: open ChatGPT, name your Dot, pick an avatar, done. For someone who’s never touched an agent, that matters. But in my test the experience fell apart on real work — slow computer use, a call feature that didn’t connect, images that wouldn’t load, and app connections hidden away.</p>\n<p>Hermes asks more of you up front, then gives you more: pick the best model for each job, run it locally for privacy, watch it on its own screen, talk to it hands-free, and keep every session in your own vault. No regional restrictions, no plan tiers, no waiting for a beta to settle. That’s why I run my business on it.</p>\n<p>Want this working in your business, not just bookmarked? Setting up Hermes Agent as your always-on AI team is exactly the kind of thing we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, daily Q&amp;A, the Agent OS and Hermes kits, and a 30-day roadmap so you ship instead of watch.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>Who should pick which</h2>\n<ul>\n<li>Never used an agent, happy to pay, outside Europe: Dots is the gentlest start.</li>\n</ul>\n<ul>\n<li>Want control, privacy or zero subscription: Hermes, no contest.</li>\n</ul>\n<ul>\n<li>In the UK or EU: Dots on Pro isn’t available at launch — Hermes works anywhere.</li>\n</ul>\n<ul>\n<li>Want the best of both: run Hermes with a flagship model like Claude Opus 5.5 for heavy jobs.</li>\n</ul>\n<p>Sourcing, dated 30 September 2026: Dots facts are from OpenAI’s DevDay launch (29 September 2026) as reported by TechCrunch and DataCamp’s explainer; test observations are from my own hands-on session in the video above, on day one of the rollout. Early-rollout bugs (like the call button) may be fixed quickly — I’ll update this page as they are.</p>\n<h2>The bottom line on ChatGPT Dots vs Hermes</h2>\n<p>ChatGPT Dots vs Hermes: Dots is the easy, paid, managed option that’s still rough on day one; Hermes is the free, open, more capable agent you control completely. If you’re willing to spend an hour on setup, Hermes wins — and it doesn’t care what plan or country you’re in. Full Dots review: ChatGPT Dots, tested.</p>\n<h2>Where ChatGPT Dots vs Hermes is closer than it looks</h2>\n<p>To be fair to Dots, a few things it ships on day one take real work to match in Hermes. Its Custom Rules give non-technical users a clean approval model — act alone, act if pre-approved, ask first, or escalate — and sensitive actions like password changes always need your sign-off. It connects to 4,000+ apps through OpenAI’s plugin ecosystem, keeps memories between conversations, and you can message your Dot from ChatGPT on desktop, web or mobile, with Slack and Teams too.</p>\n<p>Hermes can do all of that — approvals through your config, integrations through its connectors and MCP servers, memory through your own vault — but you assemble it rather than switch it on. So the honest framing is: Dots trades control and cost for convenience. If convenience is what you’re short of, that trade can make sense; if control or budget matters more, Hermes is the better long-term home.</p>\n<h2>FAQ: chatgpt dots vs hermes</h2>\n<h3>What’s the difference between ChatGPT Dots and Hermes Agent?</h3>\n<p>Dots are paid, managed always-on agents inside ChatGPT running on OpenAI’s cloud; Hermes is a free, open-source agent that runs on your own machine with any model you choose.</p>\n<h3>Is Hermes Agent free?</h3>\n<p>Yes — it’s open source and free to run; you only pay if you choose paid model APIs or subscriptions.</p>\n<h3>Is ChatGPT Dots easier than Hermes?</h3>\n<p>Yes to start: Dots set up in minutes inside ChatGPT. Hermes takes more setup but gives far more control and capability.</p>\n<h3>Can Hermes run 24/7 like Dots?</h3>\n<p>Yes — Hermes bot mode runs always-on on your machine, and Bot Screen lets you watch it work.</p>\n<h3>Which is better for privacy?</h3>\n<p>Hermes — it runs locally and can use local models, so your data doesn’t have to leave your machine.</p>\n<h3>Can I use ChatGPT Dots outside the US?</h3>\n<p>Pro access excludes the EU/EEA, Switzerland and the UK at launch; Business Premium works in all ChatGPT regions.</p>\n<p>Two ways I can help from here. If you want the community, the templates and the weekly momentum, join the AI Profit Boardroom — it’s where your Hermes setup gets built with 3,400+ members doing the same.</p>\n<p>If you want a personal plan first, grab a free strategy session and bring your questions — no pitch-fest, just the roadmap.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — SEO agency founder, best-selling author, and one of the most-watched AI SEO educators on YouTube with 394K+ subscribers. I’ve spent 10+ years in SEO and link building, hold a 100% Job Success Score on Upwork, and run a community of 75K+ members learning AI-powered SEO. I test everything on my own sites first — what you read here comes from those tests. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>ChatGPT Dots: Is OpenAI’s New Agent Worth It?</li>\n</ul>\n<ul>\n<li>Best Hermes Setup: My Full 2026 Stack</li>\n</ul>\n<ul>\n<li>Hermes Bot Mode: The Free Grok Bot Alternative</li>\n</ul>\n<p>Last updated September 2026. This page is a living guide to chatgpt dots vs hermes — the facts here move fast and I update it as they do.</p>"
+        },
+        {
+          "id": "hn-49136162",
+          "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+          "author": "yruzin",
+          "published": "2026-08-01T17:00:56Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A blog post describing an issue-to-PR autonomous loop implemented as a Hermes Agent skill that shuttles work between Codex and Claude Code, chaining the two coding agents to take an issue through implementation into a pull request.",
+          "importance_score": 71.0,
+          "reasoning": "Concrete, advanced skill pattern demonstrating multi-agent chaining across third-party coding tools on Hermes; highly reusable technique but a personal blog rather than official documentation.",
+          "themes": [
+            "Agent Skills",
+            "Multi-Agent",
+            "Coding Workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A blog post describing an issue-to-PR autonomous loop implemented as a Hermes Agent skill that shuttles work between Codex and Claude Code, chaining the two coding agents to take an issue through implementation into a pull request.</p>",
+          "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+        },
+        {
+          "id": "2609.38143",
+          "title": "Learning Meta-Skills for Agent Harness Design in Test-Time AI4AI",
+          "content": "Agent performance depends on both reasoning ability and the environment in which it acts. We study test-time AI-for-AI, asking how a Builder can learn to construct better execution environments for a Target while both models' weights remain fixed. To make the Builder's experience reusable, we introduce Meta-Skill: principles specifying when support is needed and what resources to provide. The Builder learns these principles from Target's execution feedback on the development set, then uses the f",
+          "url": "https://arxiv.org/abs/2609.38143",
+          "author": "HF Daily Papers",
+          "published": "2026-09-29T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Paper on test-time AI-for-AI: a Builder model with frozen weights learns to construct better execution environments (harnesses) for a Target agent, also with fixed weights. The key contribution is Meta-Skill, reusable principles specifying when support is needed and what resources to provide, learned from the Target's execution feedback on a development set and then applied to new environments.",
+          "importance_score": 70.0,
+          "reasoning": "Conceptually relevant to Hermes harness design and agent environment configuration, introducing a reusable meta-skill framework. Academic and not Hermes-specific, so importance is solid but not top-tier.",
+          "themes": [
+            "Agent Skills",
+            "Research Papers",
+            "Harness Design"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Paper on test-time AI-for-AI: a Builder model with frozen weights learns to construct better execution environments (harnesses) for a Target agent, also with fixed weights. The key contribution is Meta-Skill, reusable principles specifying when support is needed and what resources to provide, learned from the Target's execution feedback on a development set and then applied to new environments.</p>",
+          "content_html": "<p>Agent performance depends on both reasoning ability and the environment in which it acts. We study test-time AI-for-AI, asking how a Builder can learn to construct better execution environments for a Target while both models' weights remain fixed. To make the Builder's experience reusable, we introduce Meta-Skill: principles specifying when support is needed and what resources to provide. The Builder learns these principles from Target's execution feedback on the development set, then uses the f</p>"
+        },
+        {
+          "id": "hn-49318128",
+          "title": "Show HN: Grafana agent observability for Hermes Agent",
+          "content": "Show HN: Grafana agent observability for Hermes Agent",
+          "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+          "author": "eventuallyacat",
+          "published": "2026-08-16T08:40:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN post for grafana-agento11y-hermes, an open-source project on GitHub providing Grafana-based observability for Hermes Agent, exposing agent runtime metrics to Grafana dashboards for monitoring.",
+          "importance_score": 68.0,
+          "reasoning": "Observability is a real operational gap for long-running agents; a working Grafana integration addresses monitoring of Hermes deployments, though details are limited to the announcement.",
+          "themes": [
+            "Observability",
+            "Ecosystem Tools",
+            "Monitoring"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN post for grafana-agento11y-hermes, an open-source project on GitHub providing Grafana-based observability for Hermes Agent, exposing agent runtime metrics to Grafana dashboards for monitoring.</p>",
+          "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

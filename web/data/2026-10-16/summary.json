@@ -1,0 +1,968 @@
+{
+  "date": "2026-10-16",
+  "coverage_date": "2026-10-15",
+  "coverage_start": "2026-10-15T00:00:00",
+  "coverage_end": "2026-10-15T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-16\n\n**Executive summary:** The corrective train pulled out fast: **v0.22.2** is the release to run ([news top story](/?date=2026-10-16&category=news#item-b93627ac4347)) after **v0.22.1** was built from the wrong commit and skipped, with **[rc.1](/?date=2026-10-16&category=news#item-9294c765bc62)**/**[rc.2](/?date=2026-10-16&category=news#item-bceff88ae034)** tags for **v0.22.2** hitting GitHub the same day — a same-day double-tap that echoes last cycle's rhythm and documents an unusually fast re-release loop. Around it, a banner ecosystem day: **@Teknium**'s [official **REA MCP** plugin](/?date=2026-10-16&category=social#item-e48d30f34d95) took the batch's top post (1,890 likes / 171 RTs), and Nous Research positioned Hermes Agent as the best place to run NVIDIA's newly released **[Nemotron 3.5 Super VL and Bolt models](/?date=2026-10-16&category=social#item-e1857a6ca493)** — a same-day verified integration (Super VL's API date, 2026-10-15, matches the coverage day; **Bolt** isn't yet in the confirmed NVIDIA catalog, so quote as announced) backed by a cited **Hermes Bench** score. The consumer push accelerated: a mobile app ETA of roughly **1.5 months**, with the flashiest reveal being [remote computer control](/?date=2026-10-16&category=social#item-ec8718e013ee) — \"putting every app on your phone\" — plus [subscription-bundled agent instances](/?date=2026-10-16&category=social#item-d669df69a73a), a Desktop consumer pivot, and [**Microsoft**/**Google** integrations](/?date=2026-10-16&category=social#item-8b6dd67d7534) \"soon\" but blocked on legal review. On the practical side: a [new tutorial puts the Hermes messaging gateway under **systemd**](/?date=2026-10-16&category=news#item-b32489270244) so bots survive crashes and reboots (timed with this week's gateway stability fixes), the official update path (**git fetch --tags** → **hermes update**) matters more than usual in a mis-build week, and [research's top story](/?date=2026-10-16&category=research#item-022190250a3b) is the **Threshold Release** explainer consolidating **v0.22.0**'s feature set (~**2.5x larger** builds, **keyless trial onboarding**, **Connectors**, **one-click local models**, **600-plugin catalogue**) and its upgrade cautions (**Python 3.14**, **MSIX-only** Windows packaging, renamed tools) — read it before you upgrade. Community: **@rlaope**'s **[oh-my-hermes](/?date=2026-10-16&category=social#item-b84d15a8a0b3)** again drew the best engagement with its one-install bundle (subagent routing, long-term memory, coding harness, expert skills), **[fitatu-api](/?date=2026-10-16&category=news#item-7aaaec1ecbee)** joined the **Atlas** directory as an MCP-backed food-diary client, and an [**848 tok/s DeepSeek V4.1 Flash** deployment](/?date=2026-10-16&category=social#item-52817ec0502e) extended the ultrafast-inference thread. Housekeeping: the **2026-10-15** memory-provider removal deadline passed without fresh confirmation in today's feeds — migrate external backends (e.g., **Honcho**) if you haven't; [**23,000+ open PRs**](/?date=2026-10-16&category=research#item-hn-49424643) remains the project-health number; Reddit contributed nothing again and no merged PRs cleared the bar. Net read: **v0.22.2** closes the mis-build gap and the story shifts to platform-building — day-one model integrations, an official plugin, and a consumer roadmap on the clock — with the practical agenda: update to **v0.22.2**, skim the Threshold cautions before upgrading, put your gateway under **systemd**, and watch the [**GLM 5.3 Flash** agentic-loop bug report](/?date=2026-10-16&category=research#item-hn-49916751) if you run multi-provider setups.\n\n## Releases\n\n**v0.22.2** is the build to run: a [corrective release](/?date=2026-10-16&category=news#item-b93627ac4347) after **v0.22.1** was built from the wrong commit, with [**rc.1**](/?date=2026-10-16&category=news#item-9294c765bc62) and [**rc.2**](/?date=2026-10-16&category=news#item-bceff88ae034) tags for **v0.22.2** landing on GitHub the same day in the [news feed](/?date=2026-10-16&category=news#item-b93627ac4347). Don't chase **v0.22.1** — update straight to **v0.22.2**, and if you grabbed the mis-built tag, re-run the update.\n\nContext for what you're upgrading into: the [research feed's top story](/?date=2026-10-16&category=research#item-022190250a3b) is the **Threshold Release** explainer consolidating **v0.22.0**'s headline features — roughly **2.5x larger** builds, **keyless trial onboarding**, **Connectors**, **one-click local model** support, and a **600-plugin catalogue** — alongside upgrade cautions worth checking first: **Python 3.14** requirements, **MSIX-only** Windows packaging (the **msix** package is only needed for the Microsoft Store path, as covered yesterday), and **renamed tools** that can break scripts. This is a reference document for the release, not a fresh launch.\n\nStanding docs notes: [**Claude Pro/Max** subscription auth](/?date=2026-10-16&category=research#item-hn-49790991) and [**Hermes Kanban** multi-agent profile collaboration](/?date=2026-10-16&category=research#item-hn-49604068) remain documented carried support, and the official [**v0.20.0** release notes](/?date=2026-10-16&category=research#item-hn-49159200) (GitHub tag **v2026.8.3**) are still the primary-source reference for the prior milestone.\n\n## Community\n\n- **Official plugin:** **@Teknium** shipped an [official Hermes Agent plugin bundling the **REA MCP** server plus a skill for using it far more effectively](/?date=2026-10-16&category=social#item-e48d30f34d95) — the top post of the batch (1,890 likes / 171 RTs) and a concrete exemplar one day after the [open invitation to submit plugins](/?date=2026-10-15&category=social#item-221916c891a7).\n- **Day-one integrations:** Nous Research [positioned Hermes Agent as the best place to run NVIDIA's newly released **Nemotron 3.5 Super VL** and **Bolt** models](/?date=2026-10-16&category=social#item-e1857a6ca493), citing a **Hermes Bench** score. Grounding check: **Nemotron 3.5 Super VL**'s API date (2026-10-15) matches the coverage day — genuinely breaking integration news, not retro coverage; **Bolt** doesn't yet appear in the confirmed NVIDIA catalog, so quote as announced.\n- **Consumer roadmap:** [mobile app ETA of roughly **1.5 months**](/?date=2026-10-16&category=social#item-ec8718e013ee), with the flashiest reveal that it will remotely control your computer — \"putting every app on your phone\" — plus subscription-bundled agent instances and a Desktop consumer pivot. [**Microsoft**/**Google** integrations are teased \"soon\" but blocked on legal review](/?date=2026-10-16&category=social#item-8b6dd67d7534). Sentiment reads bullish, with critics answered head-on.\n- **oh-my-hermes:** **@rlaope**'s [**oh-my-hermes (OMH)**](/?date=2026-10-16&category=social#item-b84d15a8a0b3) drew the best community engagement in the batch — one-install subagent routing, long-term memory, a coding harness, and expert skills — continuing the project's run this week (**4.0.0** in preparation, **3.4k stars** as previously covered).\n- **Perf chatter:** the same author surfaced an [**848 tok/s DeepSeek V4.1 Flash** deployment](/?date=2026-10-16&category=social#item-52817ec0502e), extending the ultrafast-inference thread (yesterday's provider switch ran ~800 tok/s; **DeepSeek-V4.1-Flash**, GA 2026-09-10).\n- **Atlas directory:** [**fitatu-api** joins as an unofficial Python client for Fitatu](/?date=2026-10-16&category=news#item-7aaaec1ecbee), with MCP server support for reading and writing food diary entries, activities, and body metrics — a tidy example of the niche-integration long tail.\n- **Commercial adoption:** [**Almanac (YC S26)**](/?date=2026-10-16&category=research#item-hn-49511007), the Hermes-powered company-knowledge product, continues as ecosystem validation (carried).\n- **Visibility:** the cryptic ['Hermes Agent Spotted 👀' tease](/?date=2026-10-16&category=social#item-f2aa02a58658) pulled 632 likes / 18k views, and the [official tagline post](/?date=2026-10-16&category=social#item-1fa7e6b5f76a) ('an agent for the projects that matter most') hit 457 likes / 35.8k views — strong buzz heading into the mobile launch window.\n- **Project health:** [**23,000+ open PRs** on the core repo](/?date=2026-10-16&category=research#item-hn-49424643) — an unusually active contributor base; still reading as momentum with a review-capacity question attached.\n- **Watch item:** a [**GLM 5.3 Flash** agentic-loop bug report](/?date=2026-10-16&category=research#item-hn-49916751) is worth tracking for multi-provider setups; standing caution — the **GLM 5.3** naming remains unverified against the confirmed Z.ai catalog, which tops out at **GLM-5.2** (2026-06-16).\n\n## Tips & Tutorials\n\n- The cycle's most practical tip: a [new build log walks through running the Hermes messaging gateway under **systemd**](/?date=2026-10-16&category=news#item-b32489270244) so bots survive crashes and reboots — timed with this week's gateway stability fixes for self-hosted users. If you run always-on bots, do this now.\n- Update hygiene matters extra this week: the official workflow is [**git fetch --tags** → **hermes update**](/?date=2026-10-16&category=social#item-b6fa63bf470b) — and with **v0.22.1** built from the wrong commit, verify you've actually landed on **v0.22.2**.\n- Founder replies worth knowing: [free search runs a **four-provider round-robin**](/?date=2026-10-16&category=social#item-e933ae6a883e); [tools/context only load when actively used](/?date=2026-10-16&category=social#item-9d24681abe78) (so don't worry about idle context bloat); the [code-introspection capability](/?date=2026-10-16&category=social#item-fdefe48ab47c) is what enables app/game mashups; and a [**KV-cache-warming** exchange with **Theo**](/?date=2026-10-16&category=social#item-8d923dc37c9c) is worth a read if you care about latency.\n- Self-hosting honesty: [**@Teknium** framed self-hosting as \"kinda rough\"](/?date=2026-10-16&category=social#item-bc8053241f23) while pointing at a cloud option; the standing playbook covers the gaps — the [**Kubernetes** walkthrough](/?date=2026-10-15&category=research#item-hn-49977400) (no official **Helm** chart; **root-at-init** image), [**LanceDB**-based semantic memory](/?date=2026-10-15&category=research#item-hn-49133145), [**grafana-agento11y-hermes**](/?date=2026-10-15&category=research#item-hn-49318128) observability, and the [**Arduino UNO Q**](/?date=2026-10-11&category=research#item-hn-49368474) board as a compact hobbyist host.\n\n---\n\n**Housekeeping:** the [automated daily-sync commits](/?date=2026-10-16&category=news#item-14b47e4b0190) are routine automation (safe to ignore); no merged PRs cleared the bar this cycle; Reddit contributed nothing again. One follow-up: the **2026-10-15** deadline for three memory providers leaving Hermes Agent core has now passed, and today's feeds still don't confirm the removal — if you haven't migrated external backends (e.g., **Honcho**), do it anyway.\n\n**Net read:** **v0.22.2** closes the mis-build gap on the Threshold cycle, and the story has shifted from shipping to platform-building — an official plugin, day-one NVIDIA integration, and a consumer roadmap with a ~1.5-month mobile clock. Practical agenda for the next 24 hours: update to **v0.22.2** (skip **v0.22.1**), skim the Threshold explainer's cautions before upgrading (**Python 3.14**, **MSIX**, renamed tools), put your gateway under **systemd**, and keep an eye on the **GLM 5.3 Flash** bug report if you run multi-provider setups.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-16</p>\n<p><strong>Executive summary:</strong> The corrective train pulled out fast: <strong>v0.22.2</strong> is the release to run (<a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">news top story</a>) after <strong>v0.22.1</strong> was built from the wrong commit and skipped, with <strong><a href=\"/?date=2026-10-16&amp;category=news#item-9294c765bc62\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.1</a></strong>/<strong><a href=\"/?date=2026-10-16&amp;category=news#item-bceff88ae034\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.2</a></strong> tags for <strong>v0.22.2</strong> hitting GitHub the same day — a same-day double-tap that echoes last cycle's rhythm and documents an unusually fast re-release loop. Around it, a banner ecosystem day: <strong>@Teknium</strong>'s <a href=\"/?date=2026-10-16&amp;category=social#item-e48d30f34d95\" class=\"internal-link\" rel=\"noopener noreferrer\">official <strong>REA MCP</strong> plugin</a> took the batch's top post (1,890 likes / 171 RTs), and Nous Research positioned Hermes Agent as the best place to run NVIDIA's newly released <strong><a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">Nemotron 3.5 Super VL and Bolt models</a></strong> — a same-day verified integration (Super VL's API date, 2026-10-15, matches the coverage day; <strong>Bolt</strong> isn't yet in the confirmed NVIDIA catalog, so quote as announced) backed by a cited <strong>Hermes Bench</strong> score. The consumer push accelerated: a mobile app ETA of roughly <strong>1.5 months</strong>, with the flashiest reveal being <a href=\"/?date=2026-10-16&amp;category=social#item-ec8718e013ee\" class=\"internal-link\" rel=\"noopener noreferrer\">remote computer control</a> — \"putting every app on your phone\" — plus <a href=\"/?date=2026-10-16&amp;category=social#item-d669df69a73a\" class=\"internal-link\" rel=\"noopener noreferrer\">subscription-bundled agent instances</a>, a Desktop consumer pivot, and <a href=\"/?date=2026-10-16&amp;category=social#item-8b6dd67d7534\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Microsoft</strong>/<strong>Google</strong> integrations</a> \"soon\" but blocked on legal review. On the practical side: a <a href=\"/?date=2026-10-16&amp;category=news#item-b32489270244\" class=\"internal-link\" rel=\"noopener noreferrer\">new tutorial puts the Hermes messaging gateway under <strong>systemd</strong></a> so bots survive crashes and reboots (timed with this week's gateway stability fixes), the official update path (<strong>git fetch --tags</strong> → <strong>hermes update</strong>) matters more than usual in a mis-build week, and <a href=\"/?date=2026-10-16&amp;category=research#item-022190250a3b\" class=\"internal-link\" rel=\"noopener noreferrer\">research's top story</a> is the <strong>Threshold Release</strong> explainer consolidating <strong>v0.22.0</strong>'s feature set (~<strong>2.5x larger</strong> builds, <strong>keyless trial onboarding</strong>, <strong>Connectors</strong>, <strong>one-click local models</strong>, <strong>600-plugin catalogue</strong>) and its upgrade cautions (<strong>Python 3.14</strong>, <strong>MSIX-only</strong> Windows packaging, renamed tools) — read it before you upgrade. Community: <strong>@rlaope</strong>'s <strong><a href=\"/?date=2026-10-16&amp;category=social#item-b84d15a8a0b3\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes</a></strong> again drew the best engagement with its one-install bundle (subagent routing, long-term memory, coding harness, expert skills), <strong><a href=\"/?date=2026-10-16&amp;category=news#item-7aaaec1ecbee\" class=\"internal-link\" rel=\"noopener noreferrer\">fitatu-api</a></strong> joined the <strong>Atlas</strong> directory as an MCP-backed food-diary client, and an <a href=\"/?date=2026-10-16&amp;category=social#item-52817ec0502e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>848 tok/s DeepSeek V4.1 Flash</strong> deployment</a> extended the ultrafast-inference thread. Housekeeping: the <strong>2026-10-15</strong> memory-provider removal deadline passed without fresh confirmation in today's feeds — migrate external backends (e.g., <strong>Honcho</strong>) if you haven't; <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>23,000+ open PRs</strong></a> remains the project-health number; Reddit contributed nothing again and no merged PRs cleared the bar. Net read: <strong>v0.22.2</strong> closes the mis-build gap and the story shifts to platform-building — day-one model integrations, an official plugin, and a consumer roadmap on the clock — with the practical agenda: update to <strong>v0.22.2</strong>, skim the Threshold cautions before upgrading, put your gateway under <strong>systemd</strong>, and watch the <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GLM 5.3 Flash</strong> agentic-loop bug report</a> if you run multi-provider setups.</p>\n<h2>Releases</h2>\n<p><strong>v0.22.2</strong> is the build to run: a <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">corrective release</a> after <strong>v0.22.1</strong> was built from the wrong commit, with <a href=\"/?date=2026-10-16&amp;category=news#item-9294c765bc62\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.1</strong></a> and <a href=\"/?date=2026-10-16&amp;category=news#item-bceff88ae034\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.2</strong></a> tags for <strong>v0.22.2</strong> landing on GitHub the same day in the <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">news feed</a>. Don't chase <strong>v0.22.1</strong> — update straight to <strong>v0.22.2</strong>, and if you grabbed the mis-built tag, re-run the update.</p>\n<p>Context for what you're upgrading into: the <a href=\"/?date=2026-10-16&amp;category=research#item-022190250a3b\" class=\"internal-link\" rel=\"noopener noreferrer\">research feed's top story</a> is the <strong>Threshold Release</strong> explainer consolidating <strong>v0.22.0</strong>'s headline features — roughly <strong>2.5x larger</strong> builds, <strong>keyless trial onboarding</strong>, <strong>Connectors</strong>, <strong>one-click local model</strong> support, and a <strong>600-plugin catalogue</strong> — alongside upgrade cautions worth checking first: <strong>Python 3.14</strong> requirements, <strong>MSIX-only</strong> Windows packaging (the <strong>msix</strong> package is only needed for the Microsoft Store path, as covered yesterday), and <strong>renamed tools</strong> that can break scripts. This is a reference document for the release, not a fresh launch.</p>\n<p>Standing docs notes: <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription auth</a> and <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> multi-agent profile collaboration</a> remain documented carried support, and the official <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.20.0</strong> release notes</a> (GitHub tag <strong>v2026.8.3</strong>) are still the primary-source reference for the prior milestone.</p>\n<h2>Community</h2>\n<ul>\n<li><strong>Official plugin:</strong> <strong>@Teknium</strong> shipped an <a href=\"/?date=2026-10-16&amp;category=social#item-e48d30f34d95\" class=\"internal-link\" rel=\"noopener noreferrer\">official Hermes Agent plugin bundling the <strong>REA MCP</strong> server plus a skill for using it far more effectively</a> — the top post of the batch (1,890 likes / 171 RTs) and a concrete exemplar one day after the <a href=\"/?date=2026-10-15&amp;category=social#item-221916c891a7\" class=\"internal-link\" rel=\"noopener noreferrer\">open invitation to submit plugins</a>.</li>\n<li><strong>Day-one integrations:</strong> Nous Research <a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">positioned Hermes Agent as the best place to run NVIDIA's newly released <strong>Nemotron 3.5 Super VL</strong> and <strong>Bolt</strong> models</a>, citing a <strong>Hermes Bench</strong> score. Grounding check: <strong>Nemotron 3.5 Super VL</strong>'s API date (2026-10-15) matches the coverage day — genuinely breaking integration news, not retro coverage; <strong>Bolt</strong> doesn't yet appear in the confirmed NVIDIA catalog, so quote as announced.</li>\n<li><strong>Consumer roadmap:</strong> <a href=\"/?date=2026-10-16&amp;category=social#item-ec8718e013ee\" class=\"internal-link\" rel=\"noopener noreferrer\">mobile app ETA of roughly <strong>1.5 months</strong></a>, with the flashiest reveal that it will remotely control your computer — \"putting every app on your phone\" — plus subscription-bundled agent instances and a Desktop consumer pivot. <a href=\"/?date=2026-10-16&amp;category=social#item-8b6dd67d7534\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Microsoft</strong>/<strong>Google</strong> integrations are teased \"soon\" but blocked on legal review</a>. Sentiment reads bullish, with critics answered head-on.</li>\n<li><strong>oh-my-hermes:</strong> <strong>@rlaope</strong>'s <a href=\"/?date=2026-10-16&amp;category=social#item-b84d15a8a0b3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes (OMH)</strong></a> drew the best community engagement in the batch — one-install subagent routing, long-term memory, a coding harness, and expert skills — continuing the project's run this week (<strong>4.0.0</strong> in preparation, <strong>3.4k stars</strong> as previously covered).</li>\n<li><strong>Perf chatter:</strong> the same author surfaced an <a href=\"/?date=2026-10-16&amp;category=social#item-52817ec0502e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>848 tok/s DeepSeek V4.1 Flash</strong> deployment</a>, extending the ultrafast-inference thread (yesterday's provider switch ran ~800 tok/s; <strong>DeepSeek-V4.1-Flash</strong>, GA 2026-09-10).</li>\n<li><strong>Atlas directory:</strong> <a href=\"/?date=2026-10-16&amp;category=news#item-7aaaec1ecbee\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>fitatu-api</strong> joins as an unofficial Python client for Fitatu</a>, with MCP server support for reading and writing food diary entries, activities, and body metrics — a tidy example of the niche-integration long tail.</li>\n<li><strong>Commercial adoption:</strong> <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac (YC S26)</strong></a>, the Hermes-powered company-knowledge product, continues as ecosystem validation (carried).</li>\n<li><strong>Visibility:</strong> the cryptic <a href=\"/?date=2026-10-16&amp;category=social#item-f2aa02a58658\" class=\"internal-link\" rel=\"noopener noreferrer\">'Hermes Agent Spotted 👀' tease</a> pulled 632 likes / 18k views, and the <a href=\"/?date=2026-10-16&amp;category=social#item-1fa7e6b5f76a\" class=\"internal-link\" rel=\"noopener noreferrer\">official tagline post</a> ('an agent for the projects that matter most') hit 457 likes / 35.8k views — strong buzz heading into the mobile launch window.</li>\n<li><strong>Project health:</strong> <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>23,000+ open PRs</strong> on the core repo</a> — an unusually active contributor base; still reading as momentum with a review-capacity question attached.</li>\n<li><strong>Watch item:</strong> a <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GLM 5.3 Flash</strong> agentic-loop bug report</a> is worth tracking for multi-provider setups; standing caution — the <strong>GLM 5.3</strong> naming remains unverified against the confirmed Z.ai catalog, which tops out at <strong>GLM-5.2</strong> (2026-06-16).</li>\n</ul>\n<h2>Tips &amp; Tutorials</h2>\n<ul>\n<li>The cycle's most practical tip: a <a href=\"/?date=2026-10-16&amp;category=news#item-b32489270244\" class=\"internal-link\" rel=\"noopener noreferrer\">new build log walks through running the Hermes messaging gateway under <strong>systemd</strong></a> so bots survive crashes and reboots — timed with this week's gateway stability fixes for self-hosted users. If you run always-on bots, do this now.</li>\n<li>Update hygiene matters extra this week: the official workflow is <a href=\"/?date=2026-10-16&amp;category=social#item-b6fa63bf470b\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>git fetch --tags</strong> → <strong>hermes update</strong></a> — and with <strong>v0.22.1</strong> built from the wrong commit, verify you've actually landed on <strong>v0.22.2</strong>.</li>\n<li>Founder replies worth knowing: <a href=\"/?date=2026-10-16&amp;category=social#item-e933ae6a883e\" class=\"internal-link\" rel=\"noopener noreferrer\">free search runs a <strong>four-provider round-robin</strong></a>; <a href=\"/?date=2026-10-16&amp;category=social#item-9d24681abe78\" class=\"internal-link\" rel=\"noopener noreferrer\">tools/context only load when actively used</a> (so don't worry about idle context bloat); the <a href=\"/?date=2026-10-16&amp;category=social#item-fdefe48ab47c\" class=\"internal-link\" rel=\"noopener noreferrer\">code-introspection capability</a> is what enables app/game mashups; and a <a href=\"/?date=2026-10-16&amp;category=social#item-8d923dc37c9c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>KV-cache-warming</strong> exchange with <strong>Theo</strong></a> is worth a read if you care about latency.</li>\n<li>Self-hosting honesty: <a href=\"/?date=2026-10-16&amp;category=social#item-bc8053241f23\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@Teknium</strong> framed self-hosting as \"kinda rough\"</a> while pointing at a cloud option; the standing playbook covers the gaps — the <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong> walkthrough</a> (no official <strong>Helm</strong> chart; <strong>root-at-init</strong> image), <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>LanceDB</strong>-based semantic memory</a>, <a href=\"/?date=2026-10-15&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>grafana-agento11y-hermes</strong></a> observability, and the <a href=\"/?date=2026-10-11&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong></a> board as a compact hobbyist host.</li>\n</ul>\n<p>---</p>\n<p><strong>Housekeeping:</strong> the <a href=\"/?date=2026-10-16&amp;category=news#item-14b47e4b0190\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily-sync commits</a> are routine automation (safe to ignore); no merged PRs cleared the bar this cycle; Reddit contributed nothing again. One follow-up: the <strong>2026-10-15</strong> deadline for three memory providers leaving Hermes Agent core has now passed, and today's feeds still don't confirm the removal — if you haven't migrated external backends (e.g., <strong>Honcho</strong>), do it anyway.</p>\n<p><strong>Net read:</strong> <strong>v0.22.2</strong> closes the mis-build gap on the Threshold cycle, and the story has shifted from shipping to platform-building — an official plugin, day-one NVIDIA integration, and a consumer roadmap with a ~1.5-month mobile clock. Practical agenda for the next 24 hours: update to <strong>v0.22.2</strong> (skip <strong>v0.22.1</strong>), skim the Threshold explainer's cautions before upgrading (<strong>Python 3.14</strong>, <strong>MSIX</strong>, renamed tools), put your gateway under <strong>systemd</strong>, and keep an eye on the <strong>GLM 5.3 Flash</strong> bug report if you run multi-provider setups.</p>",
+  "top_topics": [
+    {
+      "name": "v0.22 Release Momentum",
+      "description": "The [Hermes Agent v0.22 'Threshold Release'](/?date=2026-10-16&category=research#item-022190250a3b) anchors the cycle, with [corrective v0.22.2](/?date=2026-10-16&category=news#item-b93627ac4347) shipping alongside [rc.1](/?date=2026-10-16&category=news#item-9294c765bc62) and [rc.2](/?date=2026-10-16&category=news#item-bceff88ae034) tags the same day after v0.22.1 was built from the wrong commit. Coverage recaps v0.22's headline features, including roughly 2.5x larger builds, keyless trial onboarding, connectors, one-click local model support, and a 600-plugin catalogue, plus upgrade cautions around Python 3.14 and MSIX-only Windows packaging.",
+      "description_html": "The <a href=\"/?date=2026-10-16&amp;category=research#item-022190250a3b\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22 'Threshold Release'</a> anchors the cycle, with <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">corrective v0.22.2</a> shipping alongside <a href=\"/?date=2026-10-16&amp;category=news#item-9294c765bc62\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.1</a> and <a href=\"/?date=2026-10-16&amp;category=news#item-bceff88ae034\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.2</a> tags the same day after v0.22.1 was built from the wrong commit. Coverage recaps v0.22's headline features, including roughly 2.5x larger builds, keyless trial onboarding, connectors, one-click local model support, and a 600-plugin catalogue, plus upgrade cautions around Python 3.14 and MSIX-only Windows packaging.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Plugin & Integration Ecosystem",
+      "description": "The builder economy around Hermes Agent keeps accelerating: Teknium shipped an [official REA MCP plugin](/?date=2026-10-16&category=social#item-e48d30f34d95), rlaope's [oh-my-hermes](/?date=2026-10-16&category=social#item-b84d15a8a0b3) bundles subagent routing, long-term memory, and a coding harness, and research surfaced self-improvement ([Refine Cycle](/?date=2026-10-16&category=research#item-hn-49606988)) and [Grafana observability](/?date=2026-10-16&category=research#item-hn-49318128) plugins. A [Fitatu MCP client](/?date=2026-10-16&category=news#item-7aaaec1ecbee) joined the Atlas directory, and the [YC S26 launch of Almanac](/?date=2026-10-16&category=research#item-hn-49511007) shows companies productizing on top of Hermes.",
+      "description_html": "The builder economy around Hermes Agent keeps accelerating: Teknium shipped an <a href=\"/?date=2026-10-16&amp;category=social#item-e48d30f34d95\" class=\"internal-link\" rel=\"noopener noreferrer\">official REA MCP plugin</a>, rlaope's <a href=\"/?date=2026-10-16&amp;category=social#item-b84d15a8a0b3\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes</a> bundles subagent routing, long-term memory, and a coding harness, and research surfaced self-improvement (<a href=\"/?date=2026-10-16&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a>) and <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana observability</a> plugins. A <a href=\"/?date=2026-10-16&amp;category=news#item-7aaaec1ecbee\" class=\"internal-link\" rel=\"noopener noreferrer\">Fitatu MCP client</a> joined the Atlas directory, and the <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">YC S26 launch of Almanac</a> shows companies productizing on top of Hermes.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 87
+    },
+    {
+      "name": "Model Integrations & Routing",
+      "description": "Nous Research positioned [Hermes Agent as the best place to run NVIDIA's newly released Nemotron 3.5 Super VL and Bolt models](/?date=2026-10-16&category=social#item-e1857a6ca493), citing a Hermes Bench score, with the integration verified as same-day news by the model's API date. Related items include a [GLM 5.3 Flash agentic-loop bug report](/?date=2026-10-16&category=research#item-hn-49916751), debate over whether [the agent is usable without a router like Bifrost](/?date=2026-10-16&category=research#item-hn-49159529), and a [skill looping between Codex and Claude Code](/?date=2026-10-16&category=research#item-hn-49136162) in an issue-to-PR pipeline.",
+      "description_html": "Nous Research positioned <a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent as the best place to run NVIDIA's newly released Nemotron 3.5 Super VL and Bolt models</a>, citing a Hermes Bench score, with the integration verified as same-day news by the model's API date. Related items include a <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash agentic-loop bug report</a>, debate over whether <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">the agent is usable without a router like Bifrost</a>, and a <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">skill looping between Codex and Claude Code</a> in an issue-to-PR pipeline.",
+      "category_breakdown": {
+        "social": 2,
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 84
+    },
+    {
+      "name": "Consumer Roadmap & Mobile Push",
+      "description": "Teknium leaned into a mass-market pitch, confirming a [mobile app ETA of roughly 1.5 months that can remotely control a user's computer](/?date=2026-10-16&category=social#item-ec8718e013ee), subscription-bundled agent instances, and a Desktop consumer pivot. [Microsoft and Google integrations are teased as coming soon but blocked on legal review](/?date=2026-10-16&category=social#item-8b6dd67d7534), and [community sentiment reads bullish with critics answered head-on](/?date=2026-10-16&category=social#item-d669df69a73a).",
+      "description_html": "Teknium leaned into a mass-market pitch, confirming a <a href=\"/?date=2026-10-16&amp;category=social#item-ec8718e013ee\" class=\"internal-link\" rel=\"noopener noreferrer\">mobile app ETA of roughly 1.5 months that can remotely control a user's computer</a>, subscription-bundled agent instances, and a Desktop consumer pivot. <a href=\"/?date=2026-10-16&amp;category=social#item-8b6dd67d7534\" class=\"internal-link\" rel=\"noopener noreferrer\">Microsoft and Google integrations are teased as coming soon but blocked on legal review</a>, and <a href=\"/?date=2026-10-16&amp;category=social#item-d669df69a73a\" class=\"internal-link\" rel=\"noopener noreferrer\">community sentiment reads bullish with critics answered head-on</a>.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 79
+    },
+    {
+      "name": "Deployment & Self-Hosting Hardening",
+      "description": "Practical deployment guidance and stability work featured prominently, led by a [tutorial running the Hermes messaging gateway under systemd](/?date=2026-10-16&category=news#item-b32489270244) so bots survive crashes and reboots, timed with this week's gateway stability fixes. Research also flagged [Kubernetes gaps such as no Helm chart and a root-at-init container image](/?date=2026-10-16&category=research#item-hn-49977400), alongside community experiments like [hosting the agent on an Arduino UNO Q board](/?date=2026-10-16&category=research#item-hn-49368474).",
+      "description_html": "Practical deployment guidance and stability work featured prominently, led by a <a href=\"/?date=2026-10-16&amp;category=news#item-b32489270244\" class=\"internal-link\" rel=\"noopener noreferrer\">tutorial running the Hermes messaging gateway under systemd</a> so bots survive crashes and reboots, timed with this week's gateway stability fixes. Research also flagged <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes gaps such as no Helm chart and a root-at-init container image</a>, alongside community experiments like <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">hosting the agent on an Arduino UNO Q board</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 2,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Project Health & Visibility",
+      "description": "The core repository shows an unusually active contributor base with [more than 23,000 open PRs](/?date=2026-10-16&category=research#item-hn-49424643), signaling strong project momentum. Teaser posts drove high engagement heading into the [mobile launch window](/?date=2026-10-16&category=social#item-ec8718e013ee), with ['Hermes Agent Spotted'](/?date=2026-10-16&category=social#item-f2aa02a58658) pulling 18k views and the [official tagline post](/?date=2026-10-16&category=social#item-1fa7e6b5f76a) 35.8k views, while [Hacker News](/?date=2026-10-16&category=research#item-hn-49441992) carried a steady stream of ecosystem submissions and discussions.",
+      "description_html": "The core repository shows an unusually active contributor base with <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">more than 23,000 open PRs</a>, signaling strong project momentum. Teaser posts drove high engagement heading into the <a href=\"/?date=2026-10-16&amp;category=social#item-ec8718e013ee\" class=\"internal-link\" rel=\"noopener noreferrer\">mobile launch window</a>, with <a href=\"/?date=2026-10-16&amp;category=social#item-f2aa02a58658\" class=\"internal-link\" rel=\"noopener noreferrer\">'Hermes Agent Spotted'</a> pulling 18k views and the <a href=\"/?date=2026-10-16&amp;category=social#item-1fa7e6b5f76a\" class=\"internal-link\" rel=\"noopener noreferrer\">official tagline post</a> 35.8k views, while <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">Hacker News</a> carried a steady stream of ecosystem submissions and discussions.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Official Support & Usage Tips",
+      "description": "Founder-level support and tips resonated widely: the [four-provider free search round-robin behavior](/?date=2026-10-16&category=social#item-e933ae6a883e), the [official update workflow using git fetch --tags followed by hermes update](/?date=2026-10-16&category=social#item-b6fa63bf470b), clarification that [tools and context load only when actively used](/?date=2026-10-16&category=social#item-9d24681abe78), and candid framing that [self-hosting is rough while a cloud option exists](/?date=2026-10-16&category=social#item-bc8053241f23). Personal write-ups on [agent misuse](/?date=2026-10-16&category=research#item-hn-49628740) and a ['haywire' loop incident](/?date=2026-10-16&category=research#item-hn-49916751) add community lessons about usage patterns.",
+      "description_html": "Founder-level support and tips resonated widely: the <a href=\"/?date=2026-10-16&amp;category=social#item-e933ae6a883e\" class=\"internal-link\" rel=\"noopener noreferrer\">four-provider free search round-robin behavior</a>, the <a href=\"/?date=2026-10-16&amp;category=social#item-b6fa63bf470b\" class=\"internal-link\" rel=\"noopener noreferrer\">official update workflow using git fetch --tags followed by hermes update</a>, clarification that <a href=\"/?date=2026-10-16&amp;category=social#item-9d24681abe78\" class=\"internal-link\" rel=\"noopener noreferrer\">tools and context load only when actively used</a>, and candid framing that <a href=\"/?date=2026-10-16&amp;category=social#item-bc8053241f23\" class=\"internal-link\" rel=\"noopener noreferrer\">self-hosting is rough while a cloud option exists</a>. Personal write-ups on <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">agent misuse</a> and a <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">'haywire' loop incident</a> add community lessons about usage patterns.",
+      "category_breakdown": {
+        "social": 3,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 66
+    },
+    {
+      "name": "Off-Topic Agentic Research",
+      "description": "SakanaAI's [AI Scientist v3 (The Agentic Scientist)](/?date=2026-10-16&category=social#item-d219ddb323c4), its [AutoIllustrate companion tool](/?date=2026-10-16&category=social#item-f101f248f4a4), and an [ALIFE 2026 oral](/?date=2026-10-16&category=social#item-4119864af7d5) were the biggest non-Hermes stories in the data but were deprioritized for relevance to a Hermes-focused newsletter. Worth monitoring in case agentic-science tooling later intersects with the Hermes ecosystem.",
+      "description_html": "SakanaAI's <a href=\"/?date=2026-10-16&amp;category=social#item-d219ddb323c4\" class=\"internal-link\" rel=\"noopener noreferrer\">AI Scientist v3 (The Agentic Scientist)</a>, its <a href=\"/?date=2026-10-16&amp;category=social#item-f101f248f4a4\" class=\"internal-link\" rel=\"noopener noreferrer\">AutoIllustrate companion tool</a>, and an <a href=\"/?date=2026-10-16&amp;category=social#item-4119864af7d5\" class=\"internal-link\" rel=\"noopener noreferrer\">ALIFE 2026 oral</a> were the biggest non-Hermes stories in the data but were deprioritized for relevance to a Hermes-focused newsletter. Worth monitoring in case agentic-science tooling later intersects with the Hermes ecosystem.",
+      "category_breakdown": {
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 38
+    },
+    {
+      "name": "Automated SEO Promotional Content",
+      "description": "A UTM-tracked explainer of the [v0.22 release](/?date=2026-10-16&category=research#item-022190250a3b) from an SEO-focused publisher exemplifies automated promotional coverage piggybacking on official announcements. Newsletter curation should prefer primary sources such as [GitHub releases](/?date=2026-10-16&category=news#item-b93627ac4347) and [official documentation](/?date=2026-10-16&category=research#item-hn-49790991) over this derivative content.",
+      "description_html": "A UTM-tracked explainer of the <a href=\"/?date=2026-10-16&amp;category=research#item-022190250a3b\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22 release</a> from an SEO-focused publisher exemplifies automated promotional coverage piggybacking on official announcements. Newsletter curation should prefer primary sources such as <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\">GitHub releases</a> and <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">official documentation</a> over this derivative content.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 33
+    }
+  ],
+  "total_items_collected": 103,
+  "total_items_analyzed": 81,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 29,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 30,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 44,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 35,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 9,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-16/hero.webp?v=1792134371",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe leans forward at a single illuminated work terminal, one hand on a keyboard, scanning the day's top story open before her as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: v0.22 Release Momentum — The Hermes Agent v0.22 'Threshold Release' anchors the cycle, with corrective v0.22.2 shipping alongside rc.1 and rc....\nTopic 2: Plugin & Integration Ecosystem — The builder economy around Hermes Agent keeps accelerating: Teknium shipped an official REA MCP plugin, rlaope's oh-m...\nTopic 3: Model Integrations & Routing — Nous Research positioned Hermes Agent as the best place to run NVIDIA's newly released Nemotron 3.5 Super VL and Bolt...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, neural network visualization, glowing nodes, architecture. A launch banner glows softly overhead in amber. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: from a low heroic angle, cool dark ambience broken by a single warm orange glow above the console. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-16T07:06:11.039839",
+  "categories": {
+    "news": {
+      "count": 7,
+      "category_summary": "Release-candidate tags [**rc.1**](/?date=2026-10-16&category=news#item-9294c765bc62) and [**rc.2**](/?date=2026-10-16&category=news#item-bceff88ae034) for [**v0.22.2**](/?date=2026-10-16&category=news#item-b93627ac4347) hit GitHub the same day, documenting the fast re-release cycle ([automated daily-sync commits](/?date=2026-10-16&category=news#item-14b47e4b0190) to the community repo round out the housekeeping). **Tips:** A new [build log](/?date=2026-10-16&category=news#item-b32489270244) walks through running the Hermes messaging gateway under **systemd** so bots survive crashes and reboots — a timely companion to this week's gateway stability fixes for self-hosted users. **Community:** [**fitatu-api**](/?date=2026-10-16&category=news#item-7aaaec1ecbee) joins the Hermes Atlas directory as an unofficial Python client for Fitatu, with MCP server support for reading and writing food diary entries, activities, and body metrics.",
+      "category_summary_html": "<p>Release-candidate tags <a href=\"/?date=2026-10-16&amp;category=news#item-9294c765bc62\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.1</strong></a> and <a href=\"/?date=2026-10-16&amp;category=news#item-bceff88ae034\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.2</strong></a> for <a href=\"/?date=2026-10-16&amp;category=news#item-b93627ac4347\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.2</strong></a> hit GitHub the same day, documenting the fast re-release cycle (<a href=\"/?date=2026-10-16&amp;category=news#item-14b47e4b0190\" class=\"internal-link\" rel=\"noopener noreferrer\">automated daily-sync commits</a> to the community repo round out the housekeeping). <strong>Tips:</strong> A new <a href=\"/?date=2026-10-16&amp;category=news#item-b32489270244\" class=\"internal-link\" rel=\"noopener noreferrer\">build log</a> walks through running the Hermes messaging gateway under <strong>systemd</strong> so bots survive crashes and reboots — a timely companion to this week's gateway stability fixes for self-hosted users. <strong>Community:</strong> <a href=\"/?date=2026-10-16&amp;category=news#item-7aaaec1ecbee\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>fitatu-api</strong></a> joins the Hermes Atlas directory as an unofficial Python client for Fitatu, with MCP server support for reading and writing food diary entries, activities, and body metrics.</p>",
+      "themes": [
+        {
+          "name": "Gateway Stability and Deployment",
+          "description": "The v0.22.2 patch fixing gateway startup after reboot, the accompanying release candidates, and a systemd deployment tutorial all converge on gateway reliability for self-hosted Hermes users.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "v0.22 Threshold Release Momentum",
+          "description": "Follow-on coverage and patching of the major v0.22 Threshold Release, which introduced keyless onboarding, connectors, one-click local models, and a 600-plugin catalogue.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Ecosystem Integrations",
+          "description": "Community-built integrations expanding what Hermes-connected models can do, exemplified by the Fitatu health-tracking client with MCP server support.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 32.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "b93627ac4347",
+          "title": "Hermes Agent v0.22.2",
+          "content": "Hermes Agent v0.22.2\nRelease Date: October 15, 2026\nv0.22.1 was built from the wrong commit. It shipped unreleased gateway work, and the Microsoft Store app could stick on \"Connecting.\" 0.22.2 is the release 0.22.1 was meant to be.\n\nKnown issue: Sessions that ran under the 0.22.1 gateway can't be deleted in 0.22.2.\n\n\nHighlights\n\nThe gateway starts after a reboot again. After a restart, Linux can hand an early PID to an unrelated process, and the gateway could mistake it for a running gateway, so a supervised gateway (systemd, launchd, Docker) refused to start. Hermes now records the boot it started in, and when it can't tell, it asks the host lock, which only a live gateway holds. (#138594, fixes #133744)\nLong local-model turns survive on laptops. Local requests always stream with prompt-reading progress (shown in the status line), stall timers skip time the machine was asleep, a recovered local server gets another try instead of a breaker that failed every later message, and compression no longer times out while the server is still reading a long conversation. On Windows unified-memory machines, model launch and the prompt cache are sized to free memory. (#138560)\n\nBelow is everything in the 0.22 release line since v0.22.0: the fixes 0.22.1 was meant to ship, plus the two above. Work that is only on main ships with v0.23.0.\n✨ Features\n\nRelease: split the Microsoft Store bundle into its own windows-store lane (f9d8a740) — @ethernet8023\nAgent: add nemotron super 3.5 default parameters (c59d2994) — @elisam0\nCli: add nemotron to NVIDIA NIM default model list (cc55270e) — @elisam0\nCli: add curated model list at the top in the model picker list (e6835fd3) — @elisam0\nRelease: choose what a stable release builds and tests with lanes (36a8ee18) — @ethernet8023\nPlugin-catalog: add hermes-lang-ko — Korean Desktop language pack (e5f49b6a) — @dandacompany\nPlugin-catalog: add hermes-lang-pt-br (Brazilian Portuguese language pack) (0169e80c) — @StudioCodeAI\nContributors: add 2867297362mjb-sketch email mapping (9ab40641) — @2867297362mjb-sketch\nPlugin-catalog: add teamorouter (TeamoRouter model providers) (ef223406) — @2867297362mjb-sketch\nPlugin-catalog: add author-feed (5f6d6836) — @TakeshiTGAL\nPlugin-catalog: bump aux-ledger to 1.4.0 (6048066e) — @olric3015\nPlugin-catalog: add the wait-ledger catalog card (77cb58e5) — @olric3015\nPlugin-catalog: add wait-ledger (97e65322) — @olric3015\nCommunity plugin: lightningai + lightningai-rate-limit (07515466) — @dinosauria123\nCatalog: add Hermes AAC 0.1.0 at reviewed exact source pin (7c9adda8) — @TREE-Ind\nPlugin-catalog: add openinvest (b6e86101) — @longsizhuo\nCatalog: add hermes-agent-mixer (v0.2.0 @ 04c4e13) (2e7e3859) — @Sahil-SS9\nPlugins: move Kumiho Memory to memory catalog shelf (46f95e08) — @kaveone\nRelease: dispatch Stable Release from the default branch (667e6639) — @ethernet8023\n\n🔧 Improvements\n\nAgent: keep the Mistral tool-id rule beside its only consumer (c5fc0958) — @kshitijk4poor\nProfiles: build the seed routing view once; expand enabled too (311155fa) — @kshitijk4poor\nProfiles: simplify the model seed and trim its tests (d9dfb124) — @kshitijk4poor\nUpdate nemotron super 3.5 name (3224993a) — @elisam0\nHermes_cli: update nemotron 3.5 name (108ae4e7) — @elisam0\nCatalog: re-pin showly to the build without the upstream self-update check (6462f64a) — @slchris\nCatalog: update Model Router to v0.4.3 native preferences (6a097ee9) — @metamindedu\n\n🐛 Bug Fixes\n\nGateway: a recorded boot epoch that cannot be compared is unprovable (79b3b724) — @ethernet8023\nLocal: keep long local-model turns alive on laptops (518ce272) — @emozilla\nGateway: a read-only host-record check never creates the lock file (91e63f84) — @kshitijk4poor\nGateway: let the host lock decide a legacy record that looks older than this boot (4d984677) — @ethernet8023\nGateway: anchor the legacy host-record check on boot time, not a live create_time (5b416e42) — @ethernet8023\nGateway: drop argv identity from host rendezvous liveness (c7fa3cbf) — @sin5ddd\nGateway: reject a recycled PID that only matches start ticks (7934442e) — @sin5ddd\nTui: keep a ${VAR} bare-custom endpoint as a ref in the new profile (dd2db134) — @kshitijk4poor\nTui: a new profile inherits a bare custom launch model with its endpoint (463d4019) — @kshitijk4poor\nRelease: a Store-only Windows build gets no signing vars; Store-plus-macOS smokes record only macOS (a8cc19eb) — @ethernet8023\nAgent: keep composite tool ids paired on Mistral routes (0c1bfb7d) — @kshitijk4poor\nAgent: rewrite split tool ids before Mistral sees them (b33ed359) — @xxxigm\nRelease: macOS smoke runs when no receipt was staged (f546ea2f) — @ethernet8023\nInstall-e2e: preserve bundled Windows process arrays (6db1934d) — @Oceanswave\nProfiles: match env-referenced endpoint names when seeding a profile (7b755ed5) — @kshitijk4poor\nProfiles: drop every same-identity destination entry when merging (9a9a6e43) — @kshitijk4poor\nProfiles: match endpoint identity the way runtime does when merging (ef57cbd9) — @kshitijk4poor\nProfiles: keep URL-less destination entries when merging the endpoint seed (2aa469f7) — @kshitijk4poor\nProfiles: inherited endpoint is not shadowed by the profile's own entries (ac0b63af) — @kshitijk4poor\nProfiles: select the seeded endpoint from an env-referenced provider (c85302a2) — @kshitijk4poor\nProfiles: keep bare custom provider tuning in the model seed (424aa90f) — @kshitijk4poor\nProfiles: reuse named provider lookup without credential reads (c8a777ff) — @helix4u\nProfiles: align model seed with provider resolution (5fee8d77) — @helix4u\nProfiles: inherit canonical and legacy custom endpoints (2d3e75aa) — @helix4u\nDrop the VPN/proxy advice from the CDN-block message (300228d2)\nScope the no-cf-cache-status block signal to our R2 host; keep it on 429s (ec5fa1e4)\nName a CDN firewall block instead of a bare HTTP 403 (#128295) (#128295)\nRelease: termux-only claims finish and partial releases keep the shared downloads page (6743ab71) — @ethernet8023\nCi: packaged-update acceptance retries a download whose connection resets (db4a6a9e) — @ethernet8023\nCatalog: re-pin Agent Mixer after maintainer review (4297a692) — @Sahil-SS9\nPin Activity v0.2.1 public credential routes (3dac1f07) — @hassan-kamel\nPlugin-catalog: update jp-egov-law to f1dd47e (c029046d) — @TakeshiTGAL\nPlugin-catalog: update switchbot-control to d0e6f77 (c4bf61b1) — @TakeshiTGAL\nInstall-e2e: the Windows packaged-app feed serves byte ranges (1f6c02c0)\nPm: re-merge the uv cache seed on volumes marked by a seedless image (1226894b) — @ethernet8023\nRelease: publish replaces the stable head instead of create-only (df8c3ca5)\nRelease: keep a stable run on main from using the controller commit or cancelling pushes (0dbd96ab) — @ethernet8023\nPm: stage a version for version-less buildable plugin members too (3d8dfc1d) — @ethernet8023\nPm: don't stamp project.version on members declaring it dynamic (2a10164c) — @Ieqzya\nPm: give generated virtual workspace members a project.version (357986e5) — @Ieqzya\nPm: retry sync without bytecode compile when that step fails (10619939) — @smfworks\nDeps: bump httpx2/httpcore2 2.7.0 -&gt; 2.12.0 for the audit advisories (bc8545bd) — @guthixboss1\nDoctor: stop mislabeling the root npm audit row as agent-browser (7b1dc974) — @chelsealong\nDoctor: say recreating the same Docker image does not fix npm findings (dee35e1d) — @ethernet8023\nDoctor: describe full workspace npm audit scope (b9dda06b) — @dwaxe\nDoctor: clarify Docker npm audit remediation (e21caa27) — @KoNit-K\nDeps: bump the WhatsApp bridge lock past its npm-audit findings (231cb757) — @ethernet8023\nDeps: land source-map-js 1.2.2 and sync the workspace pins to the overrides (f57d12eb) — @ethernet8023\nDeps: bump pinned npm packages to clear npm audit findings (732f0f17) — @sajidhaleem\nWindows: packaged-npx install failures degrade to plain npx; payload venv must be real (84e2250b) — @ethernet8023\nDocker: ship the build's uv cache at the PM seed path (f4e70b9d) — @ethernet8023\nRelease: publish the final vX.Y.Z Docker tag again (c1100232) — @ethernet8023\nPm: npm on PATH is the pinned npm, not the copy bundled inside node (8d3b5ab5) — @ethernet8023\nWindows: an MSIX with no Node to copy runs npx MCP servers on its packaged node (8ef7654b) — @ethernet8023\nWindows: MSIX terminal and MCP children get node, npm and python copied outside the package (c7abf4fb) — @ethernet8023\nTerminal: the user's own tools come before Hermes's in the terminal (162b457c) — @ethernet8023\nSearch: local file search runs Hermes's pinned ripgrep, not the first rg on PATH (9b4710b8) — @ethernet8023\nTerminal: strip a sealed payload's venv from child PYTHONPATH (671996b1) — @ethernet8023\n\n📚 Documentation\n\nAgent: use the released model name Nemotron 3.5 Super VL (79651b71) — @j-nolan\nAgent: name the guidance blocks and drop the unsupported claims (ba498735) — @j-nolan\nAgent: note that the guidance blocks were tested on Nemotron without effect (2b57b0db) — @j-nolan\nProviders: rephrased content (4f8df7e1) — @nv-pberard\nEnv: add NVIDIA NIM to .env example (3dd96101) — @elisam0\nProviders: use a non-cloud example key for local NIM (da463310) — @rroverin\nProviders: update NVIDIA NIM example to Nemotron 3.5 Super VL (c5bab4af) — @rroverin\nLocal Models is on by default on macOS, Windows and Linux (1e8bf3ee)\n\n🧪 Tests\n\nAgent: pin Mistral's 9-character tool id on the wire (9a90a825) — @xxxigm\nProfiles: pin same-identity eviction of URL-less and disabled entries (0f447876) — @kshitijk4poor\nProfiles: pin that the model seed copies only the selected endpoint (29db211b) — @kshitijk4poor\nAgent: add reasoning timeout default test (73a07104) — @elisam0\nRelay: the OpenAI-stream e2e no longer self-deadlocks when the stream is buffered (6e84ce66)\nPm: one streamed-sync test covers the bytecode-compile retry (7f21aad1) — @ethernet8023\nDeps: fail the build if an httpx2 pin or lock entry drops below 2.12.0 (3ca10d88) — @jarvistwil\nDoctor: point the root-row label test at the staged-npm seam (40441695) — @ethernet8023\nPm: allow-list the packaged-npx node lookups in the resolution ratchet (c4f9a169) — @ethernet8023\n\n🏗️ Infrastructure\n\nRelease: admit stable releases from release/* branches, not just main (9686d55c) — @ethernet8023\nMap contributor email for sin5ddd (#133750 salvage) (#133750) — @kshitijk4poor\nMap Oceanswave noreply email to GitHub login (f343bdff) — @ethernet8023\nMap contributor email for ashmoonori-afk (6a1ee825)\nPlugins: pin birkin-mnemosyne to core 0.7.1 (e216cd74) — @ashmoonori-afk\nCatalog: review disclosure for huddo (85d27a51)\nMap contributor email for StudioCodeAI (c708b34f)\nPlugin-catalog: update Telegram Client to 1.3.1 (27aaade9) — @guberm\nPlugin-catalog: bump Gmail to v1.0.20 (c6ac0565) — @guberm\nPlugin-catalog: bump Gmail to v1.0.19 (74324f11) — @guberm\nPlugin-catalog: update Gmail to v1.0.18 (8050d9ea) — @guberm\nKiwi: bump pin to kiwi@0.12.5, plugin v1.2.2 (a08f5894) — @harrylabsj\nMap contributor email for dinosauria123 (06c81873)\nLightningai-rate-limit to v1.1.0 (wall-clock aligned window) (e28d64e8) — @dinosauria123\nMap contributor email for TREE-Ind (71f78b3f)\nCatalog: review disclosure for hermes-aac (0567d017)\nCatalog: review disclosure for openinvest (c179b286)\nMap contributor email for Sahil-SS9 (d8b5bd8a)\nCatalog: review disclosure for hermes-agent-mixer (a98cc310)\nCatalog: review disclosure for hermes-activity (e891815c)\nUpdate Activity catalog to v0.2.0 (908c525d) — @hassan-kamel\nMap contributor email for slchris (eaf08400)\nCatalog: showly reviewed disclosure + requires_hermes &gt;=0.21.6 (2ee820e7)\nMap contributor email for Neboy72 (d9971f13)\nCatalog: review disclosure for nexus (1a5f5c7b)\nCatalog: review disclosure for kumiho-memory (63da5f7b)\nCatalog: review disclosure for model-router (92790c6d)\nCatalog: review disclosures for anatomy-museum, agent-janitor (560b2507)\nContributors: map ieqzya@gmail.com to Ieqzya (c98162bb) — @ethernet8023\nContributors: map Darthvader88@gmail.com to guthixboss1 (8c5c9ac4) — @ethernet8023\nRelease: pass the commit under test through every stable lane (66facf4a) — @ethernet8023\n\n📦 Other Changes\n\nRepin hermes-insight to a61cdf6 (1.0.3) (0e427d78) — @BrokeSkill\nRepin hermes-insight to afb08fb (1.0.2) (51e663da) — @BrokeSkill\nPlugin-catalog: bump huddo to 0.9.0 (eeacc00a) — @hellohanchen\nPlugin-catalog: re-pin hermes-lang-pt-br to 7548ff1 (pack verifier + CI) (82fbd41f) — @StudioCodeAI\nPlugin-catalog: re-pin hermes-lang-pt-br to 69efb2f (credits/timeline README) (2c20d9a3) — @StudioCodeAI\nCatalog: bump speechify to 0.1.1 (3a5b9e84) — @Lokeshm24\nCatalog: re-pin qdrant-memory to 0.2.1 (e14adc06) (720552bb) — @cnkang\nCatalog: repin Hermes AAC 0.1.1 SDK-only reduced features (473e2847) — @TREE-Ind\nPlugin-catalog: openinvest re-pin to 106e5ba (bounded backend deps, 0.41.6) (6cc9a434) — @longsizhuo\nPlugin-catalog: openinvest re-pin to 3a0c816 (review fixes, backend 0.41.4) (00c311c8) — @longsizhuo\nPlugin-catalog: openinvest re-pin to 3e1a9d7 (review fixes) (cb223633) — @longsizhuo\nPlugin-catalog: bump plan-mode to 0.4.4 (2a5617f8) — @100yenadmin\nPlugin-catalog: bump plan-mode to 0.4.3 (6fafdd4f) — @100yenadmin\nCatalog: pin the Showly community plugin (5da3156c) — @slchris\nCatalog(nexus): repin the sha to 4392e6d — /embed and /mcp demand a per-installation key (64425a06) — @Neboy72\nCatalog(nexus): repin to v0.22.24 — the embedder comes from the service, not from a shadowed path (0ee11795) — @Neboy72\nCatalog(nexus): repin to v0.22.23 — the plugin reaches its own venv again (a442c9a5) — @Neboy72\nCatalog(nexus): pin the engine to the full sha of the reviewed commit (1f295ae0) — @Neboy72\nCatalog(nexus): repin to v0.22.22 — the engine rev is one resolvable tag, the docs match the code (7f495184) — @Neboy72\nCatalog(nexus): repin to v0.22.21 — five access-level gaps closed (0f8a2a17) — @Neboy72\nCatalog(nexus): repin to v0.22.20 — conversation history is private (14aaf8e1) — @Neboy72\nCatalog(nexus): repin to v0.22.18 (Claude Code writes memory again) (2165eed9) — @Neboy72\nCatalog(nexus): repin to v0.22.17 (memory provider can embed again) (f60e16fc) — @Neboy72\nCatalog(nexus): repin to v0.22.16 (named-vector fixes in the root package) (dab47696) — @Neboy72\nCatalog(nexus): repin to v0.22.15 (review findings: stricter trust matching) (3952f2b5) — @Neboy72\nCatalog(nexus): repin to 3f77b2a (plugin.yaml version parity) (ca1c2261) — @Neboy72\nCatalog(nexus): repin to v0.22.13 (named collection model) (c7b035c1) — @Neboy72\nPlugin-catalog: bump account-pool to 4.0.2 (e5d2cebe) — @roqianjas\nPlugin-catalog: bump alans-way and alans-way-computer to 0.21.5 (a8d61e30) — @capthvnsen\nPlugin-catalog: bump tinyfish to 0.2.2 (6ebd92d9) — @Zechereh\nPlugin-catalog: nvidia pins -&gt; de75692 (Broadcast troubleshooting uses tool_search, not a shell probe) (66cd37c9) — @alt-glitch\nPlugin-catalog: nvidia-app + nvidia-broadcast pin -&gt; 729e25c (first-run setup when the app side is not ready) (f18948e4) — @alt-glitch\nCatalog: agent-janitor (from #137875) (#137875) — @ZidoCode\nCatalog: anatomy-museum (from #138166) (#138166) — @danrudy33\nCatalog: secure-env-ingress (from #132272) (#132272) — @web3blind\n\n👥 Contributors\nThank you to everyone who contributed to this release!\n\n@ethernet8023 (33 commits)\n@kshitijk4poor (17 commits)\n@Neboy72 (13 commits)\n@elisam0 (7 commits)\n@guberm (4 commits)\n@longsizhuo (4 commits)\n@helix4u (3 commits)\n@j-nolan (3 commits)\n@StudioCodeAI (3 commits)\n@TakeshiTGAL (3 commits)\n@olric3015 (3 commits)\n@sin5ddd (2 commits)\n@xxxigm (2 commits)\n@rroverin (2 commits)\n@BrokeSkill (2 commits)\n@2867297362mjb-sketch (2 commits)\n@dinosauria123 (2 commits)\n@TREE-Ind (2 commits)\n@100yenadmin (2 commits)\n@Sahil-SS9 (2 commits)\n@hassan-kamel (2 commits)\n@slchris (2 commits)\n@alt-glitch (2 commits)\n@Ieqzya (2 commits)\n@emozilla (1 commit)\n@predatorheard-byte (1 commit)\n@Oceanswave (1 commit)\n@nv-pberard (1 commit)\n@dandacompany (1 commit)\n@ashmoonori-afk (1 commit)\n@hellohanchen (1 commit)\n@Lokeshm24 (1 commit)\n@harrylabsj (1 commit)\n@cnkang (1 commit)\n@kaveone (1 commit)\n@roqianjas (1 commit)\n@capthvnsen (1 commit)\n@Zechereh (1 commit)\n@metamindedu (1 commit)\n@ZidoCode (1 commit)\n@danrudy33 (1 commit)\n@web3blind (1 commit)\n@smfworks (1 commit)\n@jarvistwil (1 commit)\n@guthixboss1 (1 commit)\n@chelsealong (1 commit)\n@dwaxe (1 commit)\n@KoNit-K (1 commit)\n@sajidhaleem (1 commit)\n\nUpdating\n\nCLI and installer-script desktop installs: hermes update, or re-run the installer one-liner. This moves installs that took v0.22.1 back onto the release line.\nMicrosoft Store: updates through the Store.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.0...v0.22.2 (release line)",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.2",
+          "author": "jquesnelle",
+          "published": "2026-10-15T08:21:32",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Nous Research shipped Hermes Agent v0.22.2 on October 15, 2026 as a corrective release after v0.22.1 was built from the wrong commit and bundled unreleased gateway work, including a Microsoft Store bug where the app stuck on Connecting. The release fixes a reboot issue where Linux PID reuse made a supervised gateway (systemd, launchd, Docker) refuse to start, and improves streaming for long local-model turns on laptops. A known issue remains: sessions created under the 0.22.1 gateway cannot be deleted in 0.22.2.",
+          "importance_score": 92.0,
+          "reasoning": "An official patch release fixing a broken prior build is high-priority Hermes news. The gateway startup fix affects anyone running supervised deployments, and the Microsoft Store Connecting bug affected consumer installs. The known deletion issue is also actionable for users.",
+          "themes": [
+            "Gateway stability",
+            "Patch releases",
+            "Local model reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Nous Research shipped Hermes Agent v0.22.2 on October 15, 2026 as a corrective release after v0.22.1 was built from the wrong commit and bundled unreleased gateway work, including a Microsoft Store bug where the app stuck on Connecting. The release fixes a reboot issue where Linux PID reuse made a supervised gateway (systemd, launchd, Docker) refuse to start, and improves streaming for long local-model turns on laptops. A known issue remains: sessions created under the 0.22.1 gateway cannot be deleted in 0.22.2.</p>",
+          "content_html": "<p>Hermes Agent v0.22.2</p>\n<p>Release Date: October 15, 2026</p>\n<p>v0.22.1 was built from the wrong commit. It shipped unreleased gateway work, and the Microsoft Store app could stick on \"Connecting.\" 0.22.2 is the release 0.22.1 was meant to be.</p>\n<p>Known issue: Sessions that ran under the 0.22.1 gateway can't be deleted in 0.22.2.</p>\n<p>Highlights</p>\n<p>The gateway starts after a reboot again. After a restart, Linux can hand an early PID to an unrelated process, and the gateway could mistake it for a running gateway, so a supervised gateway (systemd, launchd, Docker) refused to start. Hermes now records the boot it started in, and when it can't tell, it asks the host lock, which only a live gateway holds. (#138594, fixes #133744)</p>\n<p>Long local-model turns survive on laptops. Local requests always stream with prompt-reading progress (shown in the status line), stall timers skip time the machine was asleep, a recovered local server gets another try instead of a breaker that failed every later message, and compression no longer times out while the server is still reading a long conversation. On Windows unified-memory machines, model launch and the prompt cache are sized to free memory. (#138560)</p>\n<p>Below is everything in the 0.22 release line since v0.22.0: the fixes 0.22.1 was meant to ship, plus the two above. Work that is only on main ships with v0.23.0.</p>\n<p>✨ Features</p>\n<p>Release: split the Microsoft Store bundle into its own windows-store lane (f9d8a740) — @ethernet8023</p>\n<p>Agent: add nemotron super 3.5 default parameters (c59d2994) — @elisam0</p>\n<p>Cli: add nemotron to NVIDIA NIM default model list (cc55270e) — @elisam0</p>\n<p>Cli: add curated model list at the top in the model picker list (e6835fd3) — @elisam0</p>\n<p>Release: choose what a stable release builds and tests with lanes (36a8ee18) — @ethernet8023</p>\n<p>Plugin-catalog: add hermes-lang-ko — Korean Desktop language pack (e5f49b6a) — @dandacompany</p>\n<p>Plugin-catalog: add hermes-lang-pt-br (Brazilian Portuguese language pack) (0169e80c) — @StudioCodeAI</p>\n<p>Contributors: add 2867297362mjb-sketch email mapping (9ab40641) — @2867297362mjb-sketch</p>\n<p>Plugin-catalog: add teamorouter (TeamoRouter model providers) (ef223406) — @2867297362mjb-sketch</p>\n<p>Plugin-catalog: add author-feed (5f6d6836) — @TakeshiTGAL</p>\n<p>Plugin-catalog: bump aux-ledger to 1.4.0 (6048066e) — @olric3015</p>\n<p>Plugin-catalog: add the wait-ledger catalog card (77cb58e5) — @olric3015</p>\n<p>Plugin-catalog: add wait-ledger (97e65322) — @olric3015</p>\n<p>Community plugin: lightningai + lightningai-rate-limit (07515466) — @dinosauria123</p>\n<p>Catalog: add Hermes AAC 0.1.0 at reviewed exact source pin (7c9adda8) — @TREE-Ind</p>\n<p>Plugin-catalog: add openinvest (b6e86101) — @longsizhuo</p>\n<p>Catalog: add hermes-agent-mixer (v0.2.0 @ 04c4e13) (2e7e3859) — @Sahil-SS9</p>\n<p>Plugins: move Kumiho Memory to memory catalog shelf (46f95e08) — @kaveone</p>\n<p>Release: dispatch Stable Release from the default branch (667e6639) — @ethernet8023</p>\n<p>🔧 Improvements</p>\n<p>Agent: keep the Mistral tool-id rule beside its only consumer (c5fc0958) — @kshitijk4poor</p>\n<p>Profiles: build the seed routing view once; expand enabled too (311155fa) — @kshitijk4poor</p>\n<p>Profiles: simplify the model seed and trim its tests (d9dfb124) — @kshitijk4poor</p>\n<p>Update nemotron super 3.5 name (3224993a) — @elisam0</p>\n<p>Hermes_cli: update nemotron 3.5 name (108ae4e7) — @elisam0</p>\n<p>Catalog: re-pin showly to the build without the upstream self-update check (6462f64a) — @slchris</p>\n<p>Catalog: update Model Router to v0.4.3 native preferences (6a097ee9) — @metamindedu</p>\n<p>🐛 Bug Fixes</p>\n<p>Gateway: a recorded boot epoch that cannot be compared is unprovable (79b3b724) — @ethernet8023</p>\n<p>Local: keep long local-model turns alive on laptops (518ce272) — @emozilla</p>\n<p>Gateway: a read-only host-record check never creates the lock file (91e63f84) — @kshitijk4poor</p>\n<p>Gateway: let the host lock decide a legacy record that looks older than this boot (4d984677) — @ethernet8023</p>\n<p>Gateway: anchor the legacy host-record check on boot time, not a live create_time (5b416e42) — @ethernet8023</p>\n<p>Gateway: drop argv identity from host rendezvous liveness (c7fa3cbf) — @sin5ddd</p>\n<p>Gateway: reject a recycled PID that only matches start ticks (7934442e) — @sin5ddd</p>\n<p>Tui: keep a ${VAR} bare-custom endpoint as a ref in the new profile (dd2db134) — @kshitijk4poor</p>\n<p>Tui: a new profile inherits a bare custom launch model with its endpoint (463d4019) — @kshitijk4poor</p>\n<p>Release: a Store-only Windows build gets no signing vars; Store-plus-macOS smokes record only macOS (a8cc19eb) — @ethernet8023</p>\n<p>Agent: keep composite tool ids paired on Mistral routes (0c1bfb7d) — @kshitijk4poor</p>\n<p>Agent: rewrite split tool ids before Mistral sees them (b33ed359) — @xxxigm</p>\n<p>Release: macOS smoke runs when no receipt was staged (f546ea2f) — @ethernet8023</p>\n<p>Install-e2e: preserve bundled Windows process arrays (6db1934d) — @Oceanswave</p>\n<p>Profiles: match env-referenced endpoint names when seeding a profile (7b755ed5) — @kshitijk4poor</p>\n<p>Profiles: drop every same-identity destination entry when merging (9a9a6e43) — @kshitijk4poor</p>\n<p>Profiles: match endpoint identity the way runtime does when merging (ef57cbd9) — @kshitijk4poor</p>\n<p>Profiles: keep URL-less destination entries when merging the endpoint seed (2aa469f7) — @kshitijk4poor</p>\n<p>Profiles: inherited endpoint is not shadowed by the profile's own entries (ac0b63af) — @kshitijk4poor</p>\n<p>Profiles: select the seeded endpoint from an env-referenced provider (c85302a2) — @kshitijk4poor</p>\n<p>Profiles: keep bare custom provider tuning in the model seed (424aa90f) — @kshitijk4poor</p>\n<p>Profiles: reuse named provider lookup without credential reads (c8a777ff) — @helix4u</p>\n<p>Profiles: align model seed with provider resolution (5fee8d77) — @helix4u</p>\n<p>Profiles: inherit canonical and legacy custom endpoints (2d3e75aa) — @helix4u</p>\n<p>Drop the VPN/proxy advice from the CDN-block message (300228d2)</p>\n<p>Scope the no-cf-cache-status block signal to our R2 host; keep it on 429s (ec5fa1e4)</p>\n<p>Name a CDN firewall block instead of a bare HTTP 403 (#128295) (#128295)</p>\n<p>Release: termux-only claims finish and partial releases keep the shared downloads page (6743ab71) — @ethernet8023</p>\n<p>Ci: packaged-update acceptance retries a download whose connection resets (db4a6a9e) — @ethernet8023</p>\n<p>Catalog: re-pin Agent Mixer after maintainer review (4297a692) — @Sahil-SS9</p>\n<p>Pin Activity v0.2.1 public credential routes (3dac1f07) — @hassan-kamel</p>\n<p>Plugin-catalog: update jp-egov-law to f1dd47e (c029046d) — @TakeshiTGAL</p>\n<p>Plugin-catalog: update switchbot-control to d0e6f77 (c4bf61b1) — @TakeshiTGAL</p>\n<p>Install-e2e: the Windows packaged-app feed serves byte ranges (1f6c02c0)</p>\n<p>Pm: re-merge the uv cache seed on volumes marked by a seedless image (1226894b) — @ethernet8023</p>\n<p>Release: publish replaces the stable head instead of create-only (df8c3ca5)</p>\n<p>Release: keep a stable run on main from using the controller commit or cancelling pushes (0dbd96ab) — @ethernet8023</p>\n<p>Pm: stage a version for version-less buildable plugin members too (3d8dfc1d) — @ethernet8023</p>\n<p>Pm: don't stamp project.version on members declaring it dynamic (2a10164c) — @Ieqzya</p>\n<p>Pm: give generated virtual workspace members a project.version (357986e5) — @Ieqzya</p>\n<p>Pm: retry sync without bytecode compile when that step fails (10619939) — @smfworks</p>\n<p>Deps: bump httpx2/httpcore2 2.7.0 -&gt; 2.12.0 for the audit advisories (bc8545bd) — @guthixboss1</p>\n<p>Doctor: stop mislabeling the root npm audit row as agent-browser (7b1dc974) — @chelsealong</p>\n<p>Doctor: say recreating the same Docker image does not fix npm findings (dee35e1d) — @ethernet8023</p>\n<p>Doctor: describe full workspace npm audit scope (b9dda06b) — @dwaxe</p>\n<p>Doctor: clarify Docker npm audit remediation (e21caa27) — @KoNit-K</p>\n<p>Deps: bump the WhatsApp bridge lock past its npm-audit findings (231cb757) — @ethernet8023</p>\n<p>Deps: land source-map-js 1.2.2 and sync the workspace pins to the overrides (f57d12eb) — @ethernet8023</p>\n<p>Deps: bump pinned npm packages to clear npm audit findings (732f0f17) — @sajidhaleem</p>\n<p>Windows: packaged-npx install failures degrade to plain npx; payload venv must be real (84e2250b) — @ethernet8023</p>\n<p>Docker: ship the build's uv cache at the PM seed path (f4e70b9d) — @ethernet8023</p>\n<p>Release: publish the final vX.Y.Z Docker tag again (c1100232) — @ethernet8023</p>\n<p>Pm: npm on PATH is the pinned npm, not the copy bundled inside node (8d3b5ab5) — @ethernet8023</p>\n<p>Windows: an MSIX with no Node to copy runs npx MCP servers on its packaged node (8ef7654b) — @ethernet8023</p>\n<p>Windows: MSIX terminal and MCP children get node, npm and python copied outside the package (c7abf4fb) — @ethernet8023</p>\n<p>Terminal: the user's own tools come before Hermes's in the terminal (162b457c) — @ethernet8023</p>\n<p>Search: local file search runs Hermes's pinned ripgrep, not the first rg on PATH (9b4710b8) — @ethernet8023</p>\n<p>Terminal: strip a sealed payload's venv from child PYTHONPATH (671996b1) — @ethernet8023</p>\n<p>📚 Documentation</p>\n<p>Agent: use the released model name Nemotron 3.5 Super VL (79651b71) — @j-nolan</p>\n<p>Agent: name the guidance blocks and drop the unsupported claims (ba498735) — @j-nolan</p>\n<p>Agent: note that the guidance blocks were tested on Nemotron without effect (2b57b0db) — @j-nolan</p>\n<p>Providers: rephrased content (4f8df7e1) — @nv-pberard</p>\n<p>Env: add NVIDIA NIM to .env example (3dd96101) — @elisam0</p>\n<p>Providers: use a non-cloud example key for local NIM (da463310) — @rroverin</p>\n<p>Providers: update NVIDIA NIM example to Nemotron 3.5 Super VL (c5bab4af) — @rroverin</p>\n<p>Local Models is on by default on macOS, Windows and Linux (1e8bf3ee)</p>\n<p>🧪 Tests</p>\n<p>Agent: pin Mistral's 9-character tool id on the wire (9a90a825) — @xxxigm</p>\n<p>Profiles: pin same-identity eviction of URL-less and disabled entries (0f447876) — @kshitijk4poor</p>\n<p>Profiles: pin that the model seed copies only the selected endpoint (29db211b) — @kshitijk4poor</p>\n<p>Agent: add reasoning timeout default test (73a07104) — @elisam0</p>\n<p>Relay: the OpenAI-stream e2e no longer self-deadlocks when the stream is buffered (6e84ce66)</p>\n<p>Pm: one streamed-sync test covers the bytecode-compile retry (7f21aad1) — @ethernet8023</p>\n<p>Deps: fail the build if an httpx2 pin or lock entry drops below 2.12.0 (3ca10d88) — @jarvistwil</p>\n<p>Doctor: point the root-row label test at the staged-npm seam (40441695) — @ethernet8023</p>\n<p>Pm: allow-list the packaged-npx node lookups in the resolution ratchet (c4f9a169) — @ethernet8023</p>\n<p>🏗️ Infrastructure</p>\n<p>Release: admit stable releases from release/* branches, not just main (9686d55c) — @ethernet8023</p>\n<p>Map contributor email for sin5ddd (#133750 salvage) (#133750) — @kshitijk4poor</p>\n<p>Map Oceanswave noreply email to GitHub login (f343bdff) — @ethernet8023</p>\n<p>Map contributor email for ashmoonori-afk (6a1ee825)</p>\n<p>Plugins: pin birkin-mnemosyne to core 0.7.1 (e216cd74) — @ashmoonori-afk</p>\n<p>Catalog: review disclosure for huddo (85d27a51)</p>\n<p>Map contributor email for StudioCodeAI (c708b34f)</p>\n<p>Plugin-catalog: update Telegram Client to 1.3.1 (27aaade9) — @guberm</p>\n<p>Plugin-catalog: bump Gmail to v1.0.20 (c6ac0565) — @guberm</p>\n<p>Plugin-catalog: bump Gmail to v1.0.19 (74324f11) — @guberm</p>\n<p>Plugin-catalog: update Gmail to v1.0.18 (8050d9ea) — @guberm</p>\n<p>Kiwi: bump pin to kiwi@0.12.5, plugin v1.2.2 (a08f5894) — @harrylabsj</p>\n<p>Map contributor email for dinosauria123 (06c81873)</p>\n<p>Lightningai-rate-limit to v1.1.0 (wall-clock aligned window) (e28d64e8) — @dinosauria123</p>\n<p>Map contributor email for TREE-Ind (71f78b3f)</p>\n<p>Catalog: review disclosure for hermes-aac (0567d017)</p>\n<p>Catalog: review disclosure for openinvest (c179b286)</p>\n<p>Map contributor email for Sahil-SS9 (d8b5bd8a)</p>\n<p>Catalog: review disclosure for hermes-agent-mixer (a98cc310)</p>\n<p>Catalog: review disclosure for hermes-activity (e891815c)</p>\n<p>Update Activity catalog to v0.2.0 (908c525d) — @hassan-kamel</p>\n<p>Map contributor email for slchris (eaf08400)</p>\n<p>Catalog: showly reviewed disclosure + requires_hermes &gt;=0.21.6 (2ee820e7)</p>\n<p>Map contributor email for Neboy72 (d9971f13)</p>\n<p>Catalog: review disclosure for nexus (1a5f5c7b)</p>\n<p>Catalog: review disclosure for kumiho-memory (63da5f7b)</p>\n<p>Catalog: review disclosure for model-router (92790c6d)</p>\n<p>Catalog: review disclosures for anatomy-museum, agent-janitor (560b2507)</p>\n<p>Contributors: map ieqzya@gmail.com to Ieqzya (c98162bb) — @ethernet8023</p>\n<p>Contributors: map Darthvader88@gmail.com to guthixboss1 (8c5c9ac4) — @ethernet8023</p>\n<p>Release: pass the commit under test through every stable lane (66facf4a) — @ethernet8023</p>\n<p>📦 Other Changes</p>\n<p>Repin hermes-insight to a61cdf6 (1.0.3) (0e427d78) — @BrokeSkill</p>\n<p>Repin hermes-insight to afb08fb (1.0.2) (51e663da) — @BrokeSkill</p>\n<p>Plugin-catalog: bump huddo to 0.9.0 (eeacc00a) — @hellohanchen</p>\n<p>Plugin-catalog: re-pin hermes-lang-pt-br to 7548ff1 (pack verifier + CI) (82fbd41f) — @StudioCodeAI</p>\n<p>Plugin-catalog: re-pin hermes-lang-pt-br to 69efb2f (credits/timeline README) (2c20d9a3) — @StudioCodeAI</p>\n<p>Catalog: bump speechify to 0.1.1 (3a5b9e84) — @Lokeshm24</p>\n<p>Catalog: re-pin qdrant-memory to 0.2.1 (e14adc06) (720552bb) — @cnkang</p>\n<p>Catalog: repin Hermes AAC 0.1.1 SDK-only reduced features (473e2847) — @TREE-Ind</p>\n<p>Plugin-catalog: openinvest re-pin to 106e5ba (bounded backend deps, 0.41.6) (6cc9a434) — @longsizhuo</p>\n<p>Plugin-catalog: openinvest re-pin to 3a0c816 (review fixes, backend 0.41.4) (00c311c8) — @longsizhuo</p>\n<p>Plugin-catalog: openinvest re-pin to 3e1a9d7 (review fixes) (cb223633) — @longsizhuo</p>\n<p>Plugin-catalog: bump plan-mode to 0.4.4 (2a5617f8) — @100yenadmin</p>\n<p>Plugin-catalog: bump plan-mode to 0.4.3 (6fafdd4f) — @100yenadmin</p>\n<p>Catalog: pin the Showly community plugin (5da3156c) — @slchris</p>\n<p>Catalog(nexus): repin the sha to 4392e6d — /embed and /mcp demand a per-installation key (64425a06) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.24 — the embedder comes from the service, not from a shadowed path (0ee11795) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.23 — the plugin reaches its own venv again (a442c9a5) — @Neboy72</p>\n<p>Catalog(nexus): pin the engine to the full sha of the reviewed commit (1f295ae0) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.22 — the engine rev is one resolvable tag, the docs match the code (7f495184) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.21 — five access-level gaps closed (0f8a2a17) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.20 — conversation history is private (14aaf8e1) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.18 (Claude Code writes memory again) (2165eed9) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.17 (memory provider can embed again) (f60e16fc) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.16 (named-vector fixes in the root package) (dab47696) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.15 (review findings: stricter trust matching) (3952f2b5) — @Neboy72</p>\n<p>Catalog(nexus): repin to 3f77b2a (plugin.yaml version parity) (ca1c2261) — @Neboy72</p>\n<p>Catalog(nexus): repin to v0.22.13 (named collection model) (c7b035c1) — @Neboy72</p>\n<p>Plugin-catalog: bump account-pool to 4.0.2 (e5d2cebe) — @roqianjas</p>\n<p>Plugin-catalog: bump alans-way and alans-way-computer to 0.21.5 (a8d61e30) — @capthvnsen</p>\n<p>Plugin-catalog: bump tinyfish to 0.2.2 (6ebd92d9) — @Zechereh</p>\n<p>Plugin-catalog: nvidia pins -&gt; de75692 (Broadcast troubleshooting uses tool_search, not a shell probe) (66cd37c9) — @alt-glitch</p>\n<p>Plugin-catalog: nvidia-app + nvidia-broadcast pin -&gt; 729e25c (first-run setup when the app side is not ready) (f18948e4) — @alt-glitch</p>\n<p>Catalog: agent-janitor (from #137875) (#137875) — @ZidoCode</p>\n<p>Catalog: anatomy-museum (from #138166) (#138166) — @danrudy33</p>\n<p>Catalog: secure-env-ingress (from #132272) (#132272) — @web3blind</p>\n<p>👥 Contributors</p>\n<p>Thank you to everyone who contributed to this release!</p>\n<p>@ethernet8023 (33 commits)</p>\n<p>@kshitijk4poor (17 commits)</p>\n<p>@Neboy72 (13 commits)</p>\n<p>@elisam0 (7 commits)</p>\n<p>@guberm (4 commits)</p>\n<p>@longsizhuo (4 commits)</p>\n<p>@helix4u (3 commits)</p>\n<p>@j-nolan (3 commits)</p>\n<p>@StudioCodeAI (3 commits)</p>\n<p>@TakeshiTGAL (3 commits)</p>\n<p>@olric3015 (3 commits)</p>\n<p>@sin5ddd (2 commits)</p>\n<p>@xxxigm (2 commits)</p>\n<p>@rroverin (2 commits)</p>\n<p>@BrokeSkill (2 commits)</p>\n<p>@2867297362mjb-sketch (2 commits)</p>\n<p>@dinosauria123 (2 commits)</p>\n<p>@TREE-Ind (2 commits)</p>\n<p>@100yenadmin (2 commits)</p>\n<p>@Sahil-SS9 (2 commits)</p>\n<p>@hassan-kamel (2 commits)</p>\n<p>@slchris (2 commits)</p>\n<p>@alt-glitch (2 commits)</p>\n<p>@Ieqzya (2 commits)</p>\n<p>@emozilla (1 commit)</p>\n<p>@predatorheard-byte (1 commit)</p>\n<p>@Oceanswave (1 commit)</p>\n<p>@nv-pberard (1 commit)</p>\n<p>@dandacompany (1 commit)</p>\n<p>@ashmoonori-afk (1 commit)</p>\n<p>@hellohanchen (1 commit)</p>\n<p>@Lokeshm24 (1 commit)</p>\n<p>@harrylabsj (1 commit)</p>\n<p>@cnkang (1 commit)</p>\n<p>@kaveone (1 commit)</p>\n<p>@roqianjas (1 commit)</p>\n<p>@capthvnsen (1 commit)</p>\n<p>@Zechereh (1 commit)</p>\n<p>@metamindedu (1 commit)</p>\n<p>@ZidoCode (1 commit)</p>\n<p>@danrudy33 (1 commit)</p>\n<p>@web3blind (1 commit)</p>\n<p>@smfworks (1 commit)</p>\n<p>@jarvistwil (1 commit)</p>\n<p>@guthixboss1 (1 commit)</p>\n<p>@chelsealong (1 commit)</p>\n<p>@dwaxe (1 commit)</p>\n<p>@KoNit-K (1 commit)</p>\n<p>@sajidhaleem (1 commit)</p>\n<p>Updating</p>\n<p>CLI and installer-script desktop installs: hermes update, or re-run the installer one-liner. This moves installs that took v0.22.1 back onto the release line.</p>\n<p>Microsoft Store: updates through the Store.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.0...v0.22.2 (release line)</p>"
+        },
+        {
+          "id": "b32489270244",
+          "title": "Build Log: A Hermes Gateway Deployment with systemd",
+          "content": "Run the Hermes messaging gateway under systemd so bots survive crashes and reboots: user vs system service, restart semantics, watchdogs, and fixes.",
+          "url": "https://hermes-tutorials.dev/blog/build-log-a-hermes-gateway-deployment-with-systemd/",
+          "author": "Hermes Agent",
+          "published": "2026-10-15T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A tutorial on Hermes Agent Tutorials walks through running the Hermes messaging gateway under systemd so bots survive crashes and reboots, covering user versus system services, restart semantics, watchdogs, and fixes. It is a practical deployment guide for self-hosted gateway operators.",
+          "importance_score": 55.0,
+          "reasoning": "This is a solid operational guide directly relevant to the gateway reliability issues highlighted in the v0.22.2 release notes, which specifically fixed a systemd/launchd/Docker startup failure after reboot. As unofficial tutorial content it is useful but less urgent than official release news.",
+          "themes": [
+            "Gateway deployment",
+            "systemd",
+            "Self-hosting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A tutorial on Hermes Agent Tutorials walks through running the Hermes messaging gateway under systemd so bots survive crashes and reboots, covering user versus system services, restart semantics, watchdogs, and fixes. It is a practical deployment guide for self-hosted gateway operators.</p>",
+          "content_html": "<p>Run the Hermes messaging gateway under systemd so bots survive crashes and reboots: user vs system service, restart semantics, watchdogs, and fixes.</p>"
+        },
+        {
+          "id": "7aaaec1ecbee",
+          "title": "fitatu_library (Integrations & Bridges)",
+          "content": "fitatu-api is an unofficial Python client for Fitatu that reads and writes food diary entries, activities, body measurements, water, and goals, and reads summaries and the food catalog. Its FitatuTools interface exposes tools for language models, and the project also provides an MCP server for compatible hosts.",
+          "url": "https://hermesatlas.com/projects/Jezue/fitatu_library",
+          "author": "Unknown",
+          "published": "2026-10-15T09:51:18",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Integrations & Bridges"
+          ],
+          "summary": "A new community project on Hermes Atlas, fitatu-api, is an unofficial Python client for Fitatu that reads and writes food diary entries, activities, body measurements, water intake, and goals, plus summaries and the food catalog. It exposes a FitatuTools interface of tools for language models and ships an MCP server for compatible hosts.",
+          "importance_score": 32.0,
+          "reasoning": "A niche health-tracking integration listing on the Hermes Atlas project directory. It demonstrates ecosystem growth and model-tool interoperability but serves a narrow audience and is not official Hermes functionality.",
+          "themes": [
+            "Integrations",
+            "MCP servers",
+            "Community projects"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A new community project on Hermes Atlas, fitatu-api, is an unofficial Python client for Fitatu that reads and writes food diary entries, activities, body measurements, water intake, and goals, plus summaries and the food catalog. It exposes a FitatuTools interface of tools for language models and ships an MCP server for compatible hosts.</p>",
+          "content_html": "<p>fitatu-api is an unofficial Python client for Fitatu that reads and writes food diary entries, activities, body measurements, water, and goals, and reads summaries and the food catalog. Its FitatuTools interface exposes tools for language models, and the project also provides an MCP server for compatible hosts.</p>"
+        },
+        {
+          "id": "bceff88ae034",
+          "title": "rc.2-v0.22.2",
+          "content": "{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792044803,\"commit\":\"d9…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.22.2",
+          "author": "jquesnelle",
+          "published": "2026-10-15T06:13:23",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A second release-candidate tag for Hermes Agent v0.22.2 was published on GitHub on October 15, 2026, containing only automated build metadata (attempt 2, commit hash, claim epoch). No user-facing changelog or feature details are included in the release notes content.",
+          "importance_score": 18.0,
+          "reasoning": "This is an internal pre-release build artifact with no substantive content. It only matters as evidence of the release pipeline for v0.22.2, which is fully covered by the final release notes item. Low standalone value for Hermes users.",
+          "themes": [
+            "Release candidates",
+            "Build pipeline"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A second release-candidate tag for Hermes Agent v0.22.2 was published on GitHub on October 15, 2026, containing only automated build metadata (attempt 2, commit hash, claim epoch). No user-facing changelog or feature details are included in the release notes content.</p>",
+          "content_html": "<p>{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1792044803,\"commit\":\"d9…</p>"
+        },
+        {
+          "id": "9294c765bc62",
+          "title": "rc.1-v0.22.2",
+          "content": "{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1792044008,\"commit\":\"d9…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.22.2",
+          "author": "jquesnelle",
+          "published": "2026-10-15T06:00:08",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The first release-candidate tag for Hermes Agent v0.22.2 appeared on GitHub on October 15, 2026, consisting solely of automated publish metadata such as attempt number, commit hash, and claim epoch. No changelog content or feature information accompanies the tag.",
+          "importance_score": 15.0,
+          "reasoning": "Like rc.2, this is a low-information automated release-candidate tag. It documents that two candidate builds were made the same morning before the final v0.22.2 release, but carries no actionable details for users.",
+          "themes": [
+            "Release candidates",
+            "Build pipeline"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The first release-candidate tag for Hermes Agent v0.22.2 appeared on GitHub on October 15, 2026, consisting solely of automated publish metadata such as attempt number, commit hash, and claim epoch. No changelog content or feature information accompanies the tag.</p>",
+          "content_html": "<p>{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1792044008,\"commit\":\"d9…</p>"
+        },
+        {
+          "id": "14b47e4b0190",
+          "title": "Daily sync: 2026-10-15 02:00:54",
+          "content": "Daily sync: 2026-10-15 02:00:54",
+          "url": "https://github.com/AtlasOmnia/hermes-agent-community/commit/6318747a48e5ad18e4a9340428c8c07f1db420ad",
+          "author": "bot@hermes-agent-community.github.io",
+          "published": "2026-10-15T06:00:54",
+          "source": "Recent Commits to hermes-agent-community:main",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An automated daily sync commit to the hermes-agent-community repository main branch, timestamped October 15, 2026. The commit message contains only the sync timestamp with no described changes.",
+          "importance_score": 5.0,
+          "reasoning": "This is routine automated repository housekeeping with no human-authored content or notable changes. It is essentially duplicate noise in the feed and holds no significance for Hermes users.",
+          "themes": [
+            "Repository housekeeping",
+            "Automated sync"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An automated daily sync commit to the hermes-agent-community repository main branch, timestamped October 15, 2026. The commit message contains only the sync timestamp with no described changes.</p>",
+          "content_html": "<p>Daily sync: 2026-10-15 02:00:54</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 30,
+      "category_summary": "This cycle is anchored by **[Hermes Agent v0.22](/?date=2026-10-16&category=research#item-022190250a3b)**, the 'Threshold Release' (explained 13 Oct): a build roughly **2.5x larger** than prior versions, adding **keyless trial onboarding**, **connectors**, **one-click local model** support, and a **600-plugin catalogue**, with upgrade cautions around **Python 3.14**, **MSIX-only Windows packaging**, and **renamed tools**. Official documentation expanded with two notable capabilities — **[Claude Pro/Max subscription](/?date=2026-10-16&category=research#item-hn-49790991)** auth via a direct **SDK plugin**, and **[Hermes Kanban](/?date=2026-10-16&category=research#item-hn-49604068)** for multi-agent profile collaboration — while the official **[v0.20.0](/?date=2026-10-16&category=research#item-hn-49159200)** release notes (tagged v2026.8.3) serve as the primary-source reference for the prior milestone. Project health is a story in itself, with **[23,000+ open PRs](/?date=2026-10-16&category=research#item-hn-49424643)** on the core repo signaling an unusually active contributor base, and ecosystem adoption is accelerating via the YC S26 launch of **[Almanac](/?date=2026-10-16&category=research#item-hn-49511007)**, a Hermes-powered company-knowledge product. On the practical side, guides cover **[LanceDB](/?date=2026-10-16&category=research#item-hn-49133145)**-based semantic memory, a Hermes skill looping between **[Codex](/?date=2026-10-16&category=research#item-hn-49136162)** and **Claude Code** in an issue-to-PR pipeline, and [Kubernetes deployment gaps](/?date=2026-10-16&category=research#item-hn-49977400) (no **Helm chart**, root-at-init container image); a **[GLM 5.3 Flash](/?date=2026-10-16&category=research#item-hn-49916751)** agentic-loop bug report is worth watching for multi-provider setups.",
+      "category_summary_html": "<p>This cycle is anchored by <strong><a href=\"/?date=2026-10-16&amp;category=research#item-022190250a3b\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22</a></strong>, the 'Threshold Release' (explained 13 Oct): a build roughly <strong>2.5x larger</strong> than prior versions, adding <strong>keyless trial onboarding</strong>, <strong>connectors</strong>, <strong>one-click local model</strong> support, and a <strong>600-plugin catalogue</strong>, with upgrade cautions around <strong>Python 3.14</strong>, <strong>MSIX-only Windows packaging</strong>, and <strong>renamed tools</strong>. Official documentation expanded with two notable capabilities — <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription</a></strong> auth via a direct <strong>SDK plugin</strong>, and <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> for multi-agent profile collaboration — while the official <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.20.0</a></strong> release notes (tagged v2026.8.3) serve as the primary-source reference for the prior milestone. Project health is a story in itself, with <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000+ open PRs</a></strong> on the core repo signaling an unusually active contributor base, and ecosystem adoption is accelerating via the YC S26 launch of <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac</a></strong>, a Hermes-powered company-knowledge product. On the practical side, guides cover <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49133145\" class=\"internal-link\" rel=\"noopener noreferrer\">LanceDB</a></strong>-based semantic memory, a Hermes skill looping between <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Codex</a></strong> and <strong>Claude Code</strong> in an issue-to-PR pipeline, and <a href=\"/?date=2026-10-16&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes deployment gaps</a> (no <strong>Helm chart</strong>, root-at-init container image); a <strong><a href=\"/?date=2026-10-16&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a></strong> agentic-loop bug report is worth watching for multi-provider setups.</p>",
+      "themes": [
+        {
+          "name": "Hermes Agent v0.22 Threshold Release",
+          "description": "Coverage of the v0.22 release including keyless trial onboarding, connectors, one-click local models, a 600-plugin catalogue, and upgrade cautions around Python 3.14, MSIX-only Windows packaging, and renamed tools.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Official Releases & Docs",
+          "description": "First-party Hermes Agent releases (v0.20.0) and official documentation additions including Claude Pro/Max subscription support and the Kanban multi-agent feature.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Deployment & Infrastructure",
+          "description": "Self-hosting and production deployment experiences: Kubernetes gaps (no Helm chart, root-at-init), low-cost Arduino UNO Q hosting, and commercial setup pain (Almanac).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Model Integrations & Routing",
+          "description": "How Hermes connects to model providers: Claude subscription auth, GLM 5.3 Flash loop behavior, and whether a model router like Bifrost is a de facto requirement.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 63.0
+        },
+        {
+          "name": "Ecosystem Tools & Plugins",
+          "description": "Third-party tools and plugins built on Hermes Agent: verso orchestrator, Grafana observability, Refine Cycle self-improvement plugin, LanceDB semantic memory, and a Claude Code financial-data plugin.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Hermes Agent ecosystem tooling and productization",
+          "description": "Commercial launches and open-source projects built on top of Hermes Agent, including company-knowledge products and observability integrations, indicate an expanding third-party ecosystem.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Deployment and self-hosting",
+          "description": "Community interest in where and how to run Hermes Agent, from low-cost edge hardware hosts to managed product offerings, reflects demand for flexible, affordable deployment paths.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 58.0
+        },
+        {
+          "name": "Project Health & Governance",
+          "description": "Signals about the project's sustainability and governance: 23,000 open PRs, moderation/blocking controversy, and trademark naming discussion.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Agent plugin and integration economy",
+          "description": "Builders are packaging specialized capabilities (financial embeddings, connector OAuth apps, monitoring) as plugins or products around coding/assistant agents, with Hermes Agent and Claude Code as host platforms.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Automated SEO Promotional Content",
+          "description": "A cluster of near-identical, Clawdbot-attributed Goldie Agency listicles targeting adjacent SEO keyword phrases, apparently generated or syndicated at scale and irrelevant to Hermes research.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 8.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "022190250a3b",
+          "title": "Hermes Agent v0.22: The Threshold Release Explained (What Changed)",
+          "content": "Hermes Agent v0.22 — Nous Research calls it the Threshold Release — changes who gets to use Hermes. For the first time you can open Hermes on a brand-new computer and start talking to it before you’ve paid for anything: no API key, no settings screen, no setup guide. It’s also the biggest Hermes release ever. I break it all down in the video below. Here’s what changed, the simple way I think about it, and what to check before you update.\n\nKey takeaways\n\n- Released 13 October 2026 — about 2.5× bigger than v0.21, with a codebase about a third smaller.\n\n- Setup is now a chat running on a free Welcome trial model — no API key needed.\n\n- New: connectors, one-click local models, a 600-plugin catalogue and password-manager logins.\n\n- Check the upgrade notes: Python 3.14, MSIX-only Windows, renamed tools.\n\n## What Hermes Agent v0.22 is\n\nHermes already had a lot of power. The problem was the front door. For most people the hard part of any agent has never been the agent — it’s the first hour: get an API key, add a card, paste a long string in the right place, set up apps and plugins, pick a model. One wrong step and most people close the window. When I help business owners get started with agents, it’s almost never the big stuff that stops them; it’s a key, a file, a setting.\n\nThe release notes sum it up in one line: the last version assembled the Pantheon, and this one is about getting through the door. v0.22 goes straight after that first-hour problem.\n\nv0.22 by the numbers\n\nReleased\n13 October 2026 (tag published 14 October)\n\nCommits since v0.21\nAbout 24,200\n\nMerged pull requests\nAbout 6,080\n\nIssues closed\nAbout 7,180\n\nContributors\nAbout 2,520 — up from about 760 for v0.21\n\nCycle size\nAbout 2.5× the v0.21 cycle\n\nCodebase\nAbout 34% smaller — roughly 1.06M down to 698K lines\n\nRolls up\nPatch releases v0.21.1 to v0.21.7\n\n## The Front Door Engine: how I think about v0.22\n\nEvery big feature in this release fits one of three moves. I call it the Front Door Engine: you walk in, you plug in, and you hand off.\n\nMove\nWhat v0.22 changed\nWhy it matters\n\n1. Walk in\nGuided setup chat, free nous/welcome trial model, signed desktop apps, stable releases by default\nYou can start without an API key, and updates don’t break your setup\n\n2. Plug in\nConnectors for apps like Notion and Linear, a 600-plugin catalogue, password-manager logins\nHermes can reach your tools safely\n\n3. Hand off\nBot Screen, reasoning replay, automatic recovery from provider slowdowns\nYou can give it a long job, walk away and come back to it still moving\n\nWant this working in your business, not just bookmarked? Getting Hermes Agent v0.22 working in your business is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.\n\nPrefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## Move 1: walk in — setup is now a chat\n\nOpen the desktop app on a computer that’s never had Hermes and it doesn’t show you a settings page. It talks to you, one card at a time: your name, an accent colour, a layout, which apps to connect, which plugins you want, a quick tour, and then up to four first tasks picked for you. It all runs on a free trial model called Welcome (`nous/welcome`), available once per user, so you don’t need a key to start. You can skip at any time and run it again from Settings.\n\nThere’s a fun extra too: a new theme tool means you can type “make it violet dark mode” and Hermes changes its own look. Small thing, but it shows the direction — you talk to it, and it does the setup for you.\n\nWalking in also means it keeps working. Installs now follow tested, versioned stable releases by default, desktop apps ship signed with everything they need inside (including a Microsoft Store version on Windows and a notarised Apple Silicon build on Mac), and a new package manager, `hermes pm`, builds each update separately and only switches over once it passes its checks. A failed update can no longer leave you with a broken half-version.\n\n## Move 2: plug in — connectors, plugins and local models\n\nConnectors. Hermes can now work inside apps you already use, like Notion and Linear. You sign in once in your browser and the tools work in the same chat. You don’t need a Nous account to start — the first connection creates a free, connectors-only identity — and you can connect several accounts for the same app, say work and home, side by side. A new Connectors page in the desktop app lists hosted apps and MCP servers together.\n\nLocal models. This is the one a lot of people will miss. Hermes now installs and manages llama.cpp for you, checks your computer’s memory and graphics chip, scores the models in its list and picks the best one your machine can handle. Downloads pause and resume, and it works on Windows, Mac and Linux. Nothing leaves your machine — no account, no key. Give it a folder of client notes and it does the job on your laptop with none of it sent anywhere.\n\nPlugins. The plugin catalogue went from nothing to 600 entries in one cycle, each pinned to a reviewed version. Memory providers like Honcho, Supermemory, Hindsight and Mem0 now live in the catalogue, alongside Spotify, Home Assistant and much more. My best Hermes plugins guide covers the ones worth installing.\n\nPassword-manager logins. The browser agent can now sign into websites using 1Password, Bitwarden or Hermes’s own encrypted vault, and the AI never sees the password. One-time codes get filled without entering the chat, and anything involving a card or address at checkout asks you first. So you can say “log into my account on this site and pull last month’s report” without handing over your password.\n\n## Move 3: hand off — long jobs that keep going\n\nWalking in and plugging in only help if you can then hand over real work and trust it to keep going. This is the move that matters most for a business.\n\n- Bot Screen: a bot running on a server can now stream its own desktop to the Hermes app. When it hits a login, a 2FA prompt or a CAPTCHA, you take over, do that one step and hand it back. It’s off by default.\n\n- Reasoning replay: Hermes now replays its earlier thinking by default on models that support it, so long jobs keep their train of thought across pauses, resumes and context compaction.\n\n- Bad-day recovery: when a provider has a bad hour, Hermes waits it out in short, visible retry cycles instead of ending your task.\n\n- Scheduled jobs with memory (from v0.21): your 9am briefing remembers what it told you yesterday, so it doesn’t repeat itself.\n\nPut those together and you get an agent you can give a job, go to the gym, and come back to with the job still moving.\n\n## New models in Hermes Agent v0.22\n\nProvider\nModels added in v0.22\n\nAnthropic\nClaude Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5\n\nOpenAI\nGPT-6 Astra, Sol and Luna; GPT-6.1 Sol\n\nGoogle\nGemini 4 Argon, Gemini 3.8 Flash\n\nOthers\nDeepSeek V4.1 Flash, Qwen3.8-Max, Grok 4.7, GLM-5.3-FlashX, Muse Spark 1.3, Solar Pro 4 and Mini 4\n\nA follow-up, v0.22.1, landed the next morning with fixes for the Windows Store version and a cleaner model picker with a short list of handpicked models at the top — plus a simple mode in the desktop app if you don’t want to see the advanced settings. My best Hermes model guide covers which to use for what.\n\n## Before you update to Hermes Agent v0.22\n\nIt’s a big release, so read the upgrade notes first. The ones most likely to affect you:\n\n- Python 3.14 is now the runtime for managed installs.\n\n- Windows desktop is MSIX-only and needs Windows 11 22H2 or later; the old installers were removed.\n\n- macOS desktop defaults to Apple Silicon only.\n\n- One gateway per machine is now the default; `hermes update` merges per-profile gateways where it can.\n\n- Idle and daily session resets are retired — use `/new` or `/reset`.\n\n- Auto-prune deletes ended sessions inactive for 90 days (turn off with `sessions.auto_prune: false`).\n\n- Renamed tools: `todo` → `todo_list`, `cronjob` → `cronjob_manage`, `process` → `process_manage` (old names still work).\n\n- Removed: `hermes sync` (Skill Sync) and the plugin compatibility import layer.\n\nBack up before you update — `hermes update --backup` takes a full backup first. My Hermes backup guide covers restoring if you need to.\n\n## How to get started with Hermes Agent v0.22\n\n- New to Hermes: download the desktop app, open it and talk to the setup chat. Use the free Welcome model, pick a paid model, or let it run a local one.\n\n- Already on Hermes: run `hermes update` (existing installs don’t get the setup chat automatically — run it from Settings if you want it).\n\n- Want local only: Settings → Providers → Local Models, or `hermes model` in a terminal.\n\n- Want your apps connected: open the Connectors page or run `/connectors`.\n\n## Why v0.22 means agents are now for everyone\n\nA year ago you really did need to be comfortable with files, keys and terminal commands to use an AI agent. Look at what this release did: the setup is a chat, it asks your name, it picks your first tasks, and you change how it looks just by asking. The whole point of the Threshold Release was to remove the tech part from the first hour.\n\nSome people say whatever they learn about agents will be out of date fast. I see it the other way: the people who learn the basics now get every upgrade for free, because they already know where it fits. Inside the AI Profit Boardroom, some of the people doing best with agents had never used one before they joined.\n\n## The bottom line on Hermes Agent v0.22\n\nHermes Agent v0.22 is the release that opens the front door: walk in without a key, plug in your apps and plugins safely, and hand off long jobs that keep going. If you’ve been waiting for agents to get easier, this is the version to start with.\n\n## FAQ: hermes agent v0.22\n\n### What is Hermes Agent v0.22?\n\nThe Threshold Release from Nous Research, released 13 October 2026: keyless guided setup, connectors, one-click local models, a 600-plugin catalogue, password-manager logins and safer updates.\n\n### Do I need an API key for Hermes v0.22?\n\nNo — a fresh desktop install runs its setup chat on the free nous/welcome trial model.\n\n### Can Hermes v0.22 run models locally?\n\nYes — it installs llama.cpp and picks the best model for your hardware on Windows, Mac and Linux.\n\n### What are Hermes connectors?\n\nIn-app integrations with tools like Notion and Linear; you sign in once in your browser, and you can connect several accounts per app.\n\n### What breaking changes are in v0.22?\n\nPython 3.14 for managed installs, MSIX-only Windows desktop, Apple Silicon-only macOS desktop, one gateway per machine, retired idle resets and renamed tools.\n\n### What changed in v0.22.1?\n\nFixes for the Windows Store version and a cleaner model picker with handpicked models at the top.\n\nTwo ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes v0.22 setup gets built with 3,400+ members doing the same.\n\nOr grab a free strategy session and bring your questions.\n\nJoin the AI Profit Boardroom →Book a Free Strategy Session →\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.\n\n## Related reading\n\n- Hermes Agent by Nous Research\n\n- Best Hermes Agent Plugins\n\n- Hermes Agent Backup\n\nLast updated October 2026. This page is a living guide to hermes agent v0.22 — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-agent-v0-22/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-v0-22",
+          "author": "Clawdbot",
+          "published": "2026-10-15T04:24:41",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Building on yesterday's [Social](/?date=2026-10-15&category=social#item-79767b16890e) announcement, An explainer of Hermes Agent v0.22, which Nous Research calls the Threshold Release, published 13 October 2026. Key points: it is about 2.5x larger than v0.21 while the codebase is roughly a third smaller; onboarding is now a chat running on a free Welcome trial model so users can start using Hermes with no API key, payment, or setup screens; new features include connectors, one-click local model setup, a 600-plugin catalogue, and password-manager logins. The author also lists pre-upgrade cautions: Python 3.14 requirement, MSIX-only packaging on Windows, and renamed tools, and frames the release as fixing the first-hour onboarding problem rather than agent capability.",
+          "importance_score": 82.0,
+          "reasoning": "This is the only item in the batch that directly covers Hermes Agent, and it contains concrete release details: version number, release date, size/refactor metrics, a new keyless trial onboarding flow, plugin catalogue scale, connector support, and breaking changes (Python 3.14, MSIX-only Windows, tool renames) that matter for upgrades. Relevance and technical impact are high, though the source is a secondhand blog explainer rather than official release notes, which keeps it below top-tier scoring.",
+          "themes": [
+            "Hermes Agent releases",
+            "onboarding UX",
+            "breaking changes",
+            "local models"
+          ],
+          "continuation": {
+            "original_item_id": "79767b16890e",
+            "original_date": "2026-10-15",
+            "original_category": "social",
+            "original_title": "Hermes Agent v0.22.0: The Threshold Release\n\nChangelog below https://t.co/DHZ70NqMsq",
+            "continuation_type": "new_development",
+            "should_demote": false,
+            "reference_text": "Building on yesterday's **Social** announcement"
+          },
+          "summary_html": "<p>Building on yesterday's <a href=\"/?date=2026-10-15&amp;category=social#item-79767b16890e\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> announcement, An explainer of Hermes Agent v0.22, which Nous Research calls the Threshold Release, published 13 October 2026. Key points: it is about 2.5x larger than v0.21 while the codebase is roughly a third smaller; onboarding is now a chat running on a free Welcome trial model so users can start using Hermes with no API key, payment, or setup screens; new features include connectors, one-click local model setup, a 600-plugin catalogue, and password-manager logins. The author also lists pre-upgrade cautions: Python 3.14 requirement, MSIX-only packaging on Windows, and renamed tools, and frames the release as fixing the first-hour onboarding problem rather than agent capability.</p>",
+          "content_html": "<p>Hermes Agent v0.22 — Nous Research calls it the Threshold Release — changes who gets to use Hermes. For the first time you can open Hermes on a brand-new computer and start talking to it before you’ve paid for anything: no API key, no settings screen, no setup guide. It’s also the biggest Hermes release ever. I break it all down in the video below. Here’s what changed, the simple way I think about it, and what to check before you update.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Released 13 October 2026 — about 2.5× bigger than v0.21, with a codebase about a third smaller.</li>\n</ul>\n<ul>\n<li>Setup is now a chat running on a free Welcome trial model — no API key needed.</li>\n</ul>\n<ul>\n<li>New: connectors, one-click local models, a 600-plugin catalogue and password-manager logins.</li>\n</ul>\n<ul>\n<li>Check the upgrade notes: Python 3.14, MSIX-only Windows, renamed tools.</li>\n</ul>\n<h2>What Hermes Agent v0.22 is</h2>\n<p>Hermes already had a lot of power. The problem was the front door. For most people the hard part of any agent has never been the agent — it’s the first hour: get an API key, add a card, paste a long string in the right place, set up apps and plugins, pick a model. One wrong step and most people close the window. When I help business owners get started with agents, it’s almost never the big stuff that stops them; it’s a key, a file, a setting.</p>\n<p>The release notes sum it up in one line: the last version assembled the Pantheon, and this one is about getting through the door. v0.22 goes straight after that first-hour problem.</p>\n<p>v0.22 by the numbers</p>\n<p>Released</p>\n<p>13 October 2026 (tag published 14 October)</p>\n<p>Commits since v0.21</p>\n<p>About 24,200</p>\n<p>Merged pull requests</p>\n<p>About 6,080</p>\n<p>Issues closed</p>\n<p>About 7,180</p>\n<p>Contributors</p>\n<p>About 2,520 — up from about 760 for v0.21</p>\n<p>Cycle size</p>\n<p>About 2.5× the v0.21 cycle</p>\n<p>Codebase</p>\n<p>About 34% smaller — roughly 1.06M down to 698K lines</p>\n<p>Rolls up</p>\n<p>Patch releases v0.21.1 to v0.21.7</p>\n<h2>The Front Door Engine: how I think about v0.22</h2>\n<p>Every big feature in this release fits one of three moves. I call it the Front Door Engine: you walk in, you plug in, and you hand off.</p>\n<p>Move</p>\n<p>What v0.22 changed</p>\n<p>Why it matters</p>\n<p>1. Walk in</p>\n<p>Guided setup chat, free nous/welcome trial model, signed desktop apps, stable releases by default</p>\n<p>You can start without an API key, and updates don’t break your setup</p>\n<p>2. Plug in</p>\n<p>Connectors for apps like Notion and Linear, a 600-plugin catalogue, password-manager logins</p>\n<p>Hermes can reach your tools safely</p>\n<p>3. Hand off</p>\n<p>Bot Screen, reasoning replay, automatic recovery from provider slowdowns</p>\n<p>You can give it a long job, walk away and come back to it still moving</p>\n<p>Want this working in your business, not just bookmarked? Getting Hermes Agent v0.22 working in your business is exactly what we build together inside the AI Profit Boardroom — 3,400+ members, four live calls a week, and a full one-hour DeepSeek Harness course in the classroom.</p>\n<p>Prefer it mapped 1-on-1 first? Book a free strategy session and we’ll plan it for your exact situation.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>Move 1: walk in — setup is now a chat</h2>\n<p>Open the desktop app on a computer that’s never had Hermes and it doesn’t show you a settings page. It talks to you, one card at a time: your name, an accent colour, a layout, which apps to connect, which plugins you want, a quick tour, and then up to four first tasks picked for you. It all runs on a free trial model called Welcome (<code>nous/welcome</code>), available once per user, so you don’t need a key to start. You can skip at any time and run it again from Settings.</p>\n<p>There’s a fun extra too: a new theme tool means you can type “make it violet dark mode” and Hermes changes its own look. Small thing, but it shows the direction — you talk to it, and it does the setup for you.</p>\n<p>Walking in also means it keeps working. Installs now follow tested, versioned stable releases by default, desktop apps ship signed with everything they need inside (including a Microsoft Store version on Windows and a notarised Apple Silicon build on Mac), and a new package manager, <code>hermes pm</code>, builds each update separately and only switches over once it passes its checks. A failed update can no longer leave you with a broken half-version.</p>\n<h2>Move 2: plug in — connectors, plugins and local models</h2>\n<p>Connectors. Hermes can now work inside apps you already use, like Notion and Linear. You sign in once in your browser and the tools work in the same chat. You don’t need a Nous account to start — the first connection creates a free, connectors-only identity — and you can connect several accounts for the same app, say work and home, side by side. A new Connectors page in the desktop app lists hosted apps and MCP servers together.</p>\n<p>Local models. This is the one a lot of people will miss. Hermes now installs and manages llama.cpp for you, checks your computer’s memory and graphics chip, scores the models in its list and picks the best one your machine can handle. Downloads pause and resume, and it works on Windows, Mac and Linux. Nothing leaves your machine — no account, no key. Give it a folder of client notes and it does the job on your laptop with none of it sent anywhere.</p>\n<p>Plugins. The plugin catalogue went from nothing to 600 entries in one cycle, each pinned to a reviewed version. Memory providers like Honcho, Supermemory, Hindsight and Mem0 now live in the catalogue, alongside Spotify, Home Assistant and much more. My best Hermes plugins guide covers the ones worth installing.</p>\n<p>Password-manager logins. The browser agent can now sign into websites using 1Password, Bitwarden or Hermes’s own encrypted vault, and the AI never sees the password. One-time codes get filled without entering the chat, and anything involving a card or address at checkout asks you first. So you can say “log into my account on this site and pull last month’s report” without handing over your password.</p>\n<h2>Move 3: hand off — long jobs that keep going</h2>\n<p>Walking in and plugging in only help if you can then hand over real work and trust it to keep going. This is the move that matters most for a business.</p>\n<ul>\n<li>Bot Screen: a bot running on a server can now stream its own desktop to the Hermes app. When it hits a login, a 2FA prompt or a CAPTCHA, you take over, do that one step and hand it back. It’s off by default.</li>\n</ul>\n<ul>\n<li>Reasoning replay: Hermes now replays its earlier thinking by default on models that support it, so long jobs keep their train of thought across pauses, resumes and context compaction.</li>\n</ul>\n<ul>\n<li>Bad-day recovery: when a provider has a bad hour, Hermes waits it out in short, visible retry cycles instead of ending your task.</li>\n</ul>\n<ul>\n<li>Scheduled jobs with memory (from v0.21): your 9am briefing remembers what it told you yesterday, so it doesn’t repeat itself.</li>\n</ul>\n<p>Put those together and you get an agent you can give a job, go to the gym, and come back to with the job still moving.</p>\n<h2>New models in Hermes Agent v0.22</h2>\n<p>Provider</p>\n<p>Models added in v0.22</p>\n<p>Anthropic</p>\n<p>Claude Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5</p>\n<p>OpenAI</p>\n<p>GPT-6 Astra, Sol and Luna; GPT-6.1 Sol</p>\n<p>Google</p>\n<p>Gemini 4 Argon, Gemini 3.8 Flash</p>\n<p>Others</p>\n<p>DeepSeek V4.1 Flash, Qwen3.8-Max, Grok 4.7, GLM-5.3-FlashX, Muse Spark 1.3, Solar Pro 4 and Mini 4</p>\n<p>A follow-up, v0.22.1, landed the next morning with fixes for the Windows Store version and a cleaner model picker with a short list of handpicked models at the top — plus a simple mode in the desktop app if you don’t want to see the advanced settings. My best Hermes model guide covers which to use for what.</p>\n<h2>Before you update to Hermes Agent v0.22</h2>\n<p>It’s a big release, so read the upgrade notes first. The ones most likely to affect you:</p>\n<ul>\n<li>Python 3.14 is now the runtime for managed installs.</li>\n</ul>\n<ul>\n<li>Windows desktop is MSIX-only and needs Windows 11 22H2 or later; the old installers were removed.</li>\n</ul>\n<ul>\n<li>macOS desktop defaults to Apple Silicon only.</li>\n</ul>\n<ul>\n<li>One gateway per machine is now the default; <code>hermes update</code> merges per-profile gateways where it can.</li>\n</ul>\n<ul>\n<li>Idle and daily session resets are retired — use <code>/new</code> or <code>/reset</code>.</li>\n</ul>\n<ul>\n<li>Auto-prune deletes ended sessions inactive for 90 days (turn off with <code>sessions.auto_prune: false</code>).</li>\n</ul>\n<ul>\n<li>Renamed tools: <code>todo</code> → <code>todo_list</code>, <code>cronjob</code> → <code>cronjob_manage</code>, <code>process</code> → <code>process_manage</code> (old names still work).</li>\n</ul>\n<ul>\n<li>Removed: <code>hermes sync</code> (Skill Sync) and the plugin compatibility import layer.</li>\n</ul>\n<p>Back up before you update — <code>hermes update --backup</code> takes a full backup first. My Hermes backup guide covers restoring if you need to.</p>\n<h2>How to get started with Hermes Agent v0.22</h2>\n<ul>\n<li>New to Hermes: download the desktop app, open it and talk to the setup chat. Use the free Welcome model, pick a paid model, or let it run a local one.</li>\n</ul>\n<ul>\n<li>Already on Hermes: run <code>hermes update</code> (existing installs don’t get the setup chat automatically — run it from Settings if you want it).</li>\n</ul>\n<ul>\n<li>Want local only: Settings → Providers → Local Models, or <code>hermes model</code> in a terminal.</li>\n</ul>\n<ul>\n<li>Want your apps connected: open the Connectors page or run <code>/connectors</code>.</li>\n</ul>\n<h2>Why v0.22 means agents are now for everyone</h2>\n<p>A year ago you really did need to be comfortable with files, keys and terminal commands to use an AI agent. Look at what this release did: the setup is a chat, it asks your name, it picks your first tasks, and you change how it looks just by asking. The whole point of the Threshold Release was to remove the tech part from the first hour.</p>\n<p>Some people say whatever they learn about agents will be out of date fast. I see it the other way: the people who learn the basics now get every upgrade for free, because they already know where it fits. Inside the AI Profit Boardroom, some of the people doing best with agents had never used one before they joined.</p>\n<h2>The bottom line on Hermes Agent v0.22</h2>\n<p>Hermes Agent v0.22 is the release that opens the front door: walk in without a key, plug in your apps and plugins safely, and hand off long jobs that keep going. If you’ve been waiting for agents to get easier, this is the version to start with.</p>\n<h2>FAQ: hermes agent v0.22</h2>\n<h3>What is Hermes Agent v0.22?</h3>\n<p>The Threshold Release from Nous Research, released 13 October 2026: keyless guided setup, connectors, one-click local models, a 600-plugin catalogue, password-manager logins and safer updates.</p>\n<h3>Do I need an API key for Hermes v0.22?</h3>\n<p>No — a fresh desktop install runs its setup chat on the free nous/welcome trial model.</p>\n<h3>Can Hermes v0.22 run models locally?</h3>\n<p>Yes — it installs llama.cpp and picks the best model for your hardware on Windows, Mac and Linux.</p>\n<h3>What are Hermes connectors?</h3>\n<p>In-app integrations with tools like Notion and Linear; you sign in once in your browser, and you can connect several accounts per app.</p>\n<h3>What breaking changes are in v0.22?</h3>\n<p>Python 3.14 for managed installs, MSIX-only Windows desktop, Apple Silicon-only macOS desktop, one gateway per machine, retired idle resets and renamed tools.</p>\n<h3>What changed in v0.22.1?</h3>\n<p>Fixes for the Windows Store version and a cleaner model picker with handpicked models at the top.</p>\n<p>Two ways I can help from here. Join the AI Profit Boardroom — it’s where your Hermes v0.22 setup gets built with 3,400+ members doing the same.</p>\n<p>Or grab a free strategy session and bring your questions.</p>\n<p>Join the AI Profit Boardroom →Book a Free Strategy Session →</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency, best-selling author, and an AI educator with 428K+ YouTube subscribers. I’ve spent 10+ years in SEO and online business and I test every AI agent on my own work before I recommend it. Join the AI Profit Boardroom for the daily builds, or book a free strategy session to talk through yours.</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent by Nous Research</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Plugins</li>\n</ul>\n<ul>\n<li>Hermes Agent Backup</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to hermes agent v0.22 — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49441992",
+          "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "url": "https://hermes-agent.nousresearch.com",
+          "author": "duck",
+          "published": "2026-08-25T23:14:41Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hacker News submission linking to the official Hermes Agent website (hermes-agent.nousresearch.com), described as an open-source AI agent that grows with you; likely the project's main landing page or an introductory discussion.",
+          "importance_score": 60.0,
+          "reasoning": "Canonical project link useful as baseline reference material, but it is general marketing/intro content without new technical detail.",
+          "themes": [
+            "Official Releases & Docs"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hacker News submission linking to the official Hermes Agent website (hermes-agent.nousresearch.com), described as an open-source AI agent that grows with you; likely the project's main landing page or an introductory discussion.</p>",
+          "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+        },
+        {
+          "id": "hn-49136162",
+          "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+          "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+          "author": "yruzin",
+          "published": "2026-08-01T17:00:56Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Blog post on codenote.net describing a Hermes Agent skill that autonomously loops between Codex and Claude Code in an issue-to-PR pipeline, chaining two coding assistants in one workflow.",
+          "importance_score": 60.0,
+          "reasoning": "Concrete, replicable workflow pattern combining Hermes skills with external coding agents; practical for automation users, though depth of implementation detail is unclear from the excerpt.",
+          "themes": [
+            "Skills & Workflows",
+            "Multi-Agent Orchestration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Blog post on codenote.net describing a Hermes Agent skill that autonomously loops between Codex and Claude Code in an issue-to-PR pipeline, chaining two coding assistants in one workflow.</p>",
+          "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User reports a freshly provisioned Hermes agent on a headless Debian server, backed by Z.ai GLM 5.3 Flash, entering a trance-like loop when asked to inspect its local environment and PATH, producing a long 'Thinking for 1m36s' block with unusual output.",
+          "importance_score": 58.0,
+          "reasoning": "Real-world reliability debugging with model-specific detail (GLM 5.3 Flash loop behavior in agentic shell use); useful signal for agent-loop stability, but anecdotal and low on actionable depth.",
+          "themes": [
+            "Agent Behavior & Reliability",
+            "Model Integrations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User reports a freshly provisioned Hermes agent on a headless Debian server, backed by Z.ai GLM 5.3 Flash, entering a trance-like loop when asked to inspect its local environment and PATH, producing a long 'Thinking for 1m36s' block with unusual output.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A community write-up describing running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino-side microcontroller with a Linux-side chip that can communicate with it. The author's 4GB RAM / 32GB storage variant has enough headroom to run the Hermes agent client, offering an always-on, low-cost alternative to a hosted VPS that the author wanted to avoid for cost reasons. The post is framed as a hardware-hosting experiment and the excerpt is truncated before full setup details.",
+          "importance_score": 58.0,
+          "reasoning": "Practical, hands-on guidance about an unconventional self-hosting target for the Hermes Agent, which is useful to hobbyists avoiding VPS costs. However, it covers client hosting rather than core agent capabilities, lacks visible technical depth due to truncation, and targets a niche hardware audience, keeping the score moderate.",
+          "themes": [
+            "self-hosting",
+            "edge hardware",
+            "deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A community write-up describing running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino-side microcontroller with a Linux-side chip that can communicate with it. The author's 4GB RAM / 32GB storage variant has enough headroom to run the Hermes agent client, offering an always-on, low-cost alternative to a hosted VPS that the author wanted to avoid for cost reasons. The post is framed as a hardware-hosting experiment and the excerpt is truncated before full setup details.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Announcement of Refine Cycle, a community plugin for Hermes Agent on GitHub (Bergschloss) that adds a self-improvement loop, presumably letting the agent iteratively refine its own behavior or outputs.",
+          "importance_score": 55.0,
+          "reasoning": "Represents the growing plugin ecosystem and the self-improvement pattern, but limited detail on mechanism, safety, or maturity from the excerpt.",
+          "themes": [
+            "Ecosystem Tools & Plugins",
+            "Self-Improvement & Memory"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Announcement of Refine Cycle, a community plugin for Hermes Agent on GitHub (Bergschloss) that adds a self-improvement loop, presumably letting the agent iteratively refine its own behavior or outputs.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49318128",
+          "title": "Show HN: Grafana agent observability for Hermes Agent",
+          "content": "Show HN: Grafana agent observability for Hermes Agent",
+          "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+          "author": "eventuallyacat",
+          "published": "2026-08-16T08:40:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A Show HN announcement of a Grafana-based observability integration for Hermes Agent, published as an open-source GitHub repository (alexander-akhmetov/grafana-agento11y-hermes). The listing itself contains no additional descriptive text beyond the title, so details on metrics exposed, dashboards, or instrumentation approach are not visible in the excerpt.",
+          "importance_score": 55.0,
+          "reasoning": "Observability tooling addresses a real operational gap for people running Hermes Agent deployments, and an open-source Grafana integration is directly reusable by the community. The score is tempered by the near-empty announcement content, which prevents assessment of maturity, scope, or technical approach.",
+          "themes": [
+            "observability",
+            "monitoring",
+            "open-source tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Show HN announcement of a Grafana-based observability integration for Hermes Agent, published as an open-source GitHub repository (alexander-akhmetov/grafana-agento11y-hermes). The listing itself contains no additional descriptive text beyond the title, so details on metrics exposed, dashboards, or instrumentation approach are not visible in the excerpt.</p>",
+          "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49231797",
+          "title": "Adversarial LLM Reversal for hermes-agent",
+          "content": "Adversarial LLM Reversal for hermes-agent",
+          "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+          "author": "jn098671234",
+          "published": "2026-08-09T14:32:01Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "GitHub repository (jnorthrup/hermes-jekyl-hyde) presenting an adversarial LLM reversal technique targeting hermes-agent, apparently probing dual behavior or prompt-injection-style manipulation of the agent.",
+          "importance_score": 52.0,
+          "reasoning": "Security-relevant adversarial research against Hermes is notable for safety and hardening discussions, but the excerpt lacks detail on findings or severity.",
+          "themes": [
+            "Security & Adversarial Research"
+          ],
+          "continuation": null,
+          "summary_html": "<p>GitHub repository (jnorthrup/hermes-jekyl-hyde) presenting an adversarial LLM reversal technique targeting hermes-agent, apparently probing dual behavior or prompt-injection-style manipulation of the agent.</p>",
+          "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Discussion (linked to maximimhq/bifrost) asking whether Hermes Agent is effectively unusable without a model router like Bifrost, implying routing/failover across model providers may be a practical necessity for agent operation.",
+          "importance_score": 50.0,
+          "reasoning": "Highlights an architectural dependency question around model routing and provider resilience; useful discussion starter but lacks concrete benchmarks or configs.",
+          "themes": [
+            "Model Integrations",
+            "Operations & Reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Discussion (linked to maximimhq/bifrost) asking whether Hermes Agent is effectively unusable without a model router like Bifrost, implying routing/failover across model providers may be a practical necessity for agent operation.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Personal blog post by heyjonny reflecting on a misuse of the Hermes Agent, presumably sharing lessons learned about correct usage patterns; only the title is available in the feed.",
+          "importance_score": 48.0,
+          "reasoning": "Community writeup that likely contains practical usage lessons, but the excerpt provides no technical specifics, limiting assessable depth.",
+          "themes": [
+            "Usage Patterns & Lessons"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Personal blog post by heyjonny reflecting on a misuse of the Hermes Agent, presumably sharing lessons learned about correct usage patterns; only the title is available in the feed.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 44,
+      "category_summary": "**Official Announcements & Integrations:** A banner cycle for Hermes. **Teknium** shipped an [official Hermes Agent plugin bundling the REA MCP server plus a skill for using it far more effectively](/?date=2026-10-16&category=social#item-e48d30f34d95) (1,890 likes, 171 RTs — the top post of the batch), and Nous Research [positioned Hermes Agent as the best place to run NVIDIA's newly released **Nemotron 3.5 Super VL** and **Bolt** models](/?date=2026-10-16&category=social#item-e1857a6ca493). Grounding check: Nemotron 3.5 Super VL's API date (2026-10-15) matches the coverage day, confirming this is genuinely breaking integration news rather than retro coverage, and it's backed by a [cited **Hermes Bench** score](/?date=2026-10-16&category=social#item-e1857a6ca493).\n\n**Roadmap & Consumer Push:** **Teknium** [leaned hard into the mass-market pitch](/?date=2026-10-16&category=social#item-d669df69a73a), confirming a **mobile app** ETA of roughly 1.5 months, subscription-bundled agent instances, a Desktop consumer pivot, and **Microsoft**/**Google** [integrations 'soon' but blocked on legal review](/?date=2026-10-16&category=social#item-8b6dd67d7534). The flashiest reveal: [the mobile app will remotely control your computer, 'putting every app on your phone.'](/?date=2026-10-16&category=social#item-ec8718e013ee) Community sentiment reads as bullish, with critics answered head-on.\n\n**Community Tooling:** **rlaope**'s **oh-my-hermes (OMH)** plugin — [one-install subagent routing plus long-term memory, a coding harness, and expert skills](/?date=2026-10-16&category=social#item-b84d15a8a0b3) — drew the best community engagement in the batch, signaling a healthy builder ecosystem around Hermes Agent. Community perf-chatter (same author) also surfaced an [**848 tok/s DeepSeek V4.1 Flash** deployment](/?date=2026-10-16&category=social#item-52817ec0502e).\n\n**Teasers & Visibility:** The cryptic ['Hermes Agent Spotted 👀' tease](/?date=2026-10-16&category=social#item-f2aa02a58658) pulled 632 likes / 18k views, and the [official tagline post ('an agent for the projects that matter most')](/?date=2026-10-16&category=social#item-1fa7e6b5f76a) hit 457 likes / 35.8k views — strong buzz heading into the mobile launch window.\n\n**Tips, Support & Founder Candor:** Practical founder replies that resonate with users: [the four-provider free search round-robin behavior](/?date=2026-10-16&category=social#item-e933ae6a883e), the [official update workflow (**git fetch --tags** → **hermes update**)](/?date=2026-10-16&category=social#item-b6fa63bf470b), [clarification that tools/context only load when actively used](/?date=2026-10-16&category=social#item-9d24681abe78), [a code-introspection capability enabling app/game mashups](/?date=2026-10-16&category=social#item-fdefe48ab47c), [a KV-cache-warming exchange with **Theo**](/?date=2026-10-16&category=social#item-8d923dc37c9c), and honest framing that [self-hosting 'is kinda rough' while a cloud option exists](/?date=2026-10-16&category=social#item-bc8053241f23).\n\n**Deprioritized (off-topic):** SakanaAI's **[AI Scientist v3 (The Agentic Scientist)](/?date=2026-10-16&category=social#item-d219ddb323c4)** thread — including the [**AutoIllustrate** companion tool](/?date=2026-10-16&category=social#item-f101f248f4a4) and the [ALIFE 2026 oral](/?date=2026-10-16&category=social#item-4119864af7d5) — was the biggest non-Hermes story in the data but was excluded from the top ranking for relevance to a Hermes newsletter, as were low-substance asides ([bot snark](/?date=2026-10-16&category=social#item-b9fab5f19943), [moderation moments](/?date=2026-10-16&category=social#item-c5dd62198290), [emoji-only replies](/?date=2026-10-16&category=social#item-7b58800e4906)).",
+      "category_summary_html": "<p><strong>Official Announcements &amp; Integrations:</strong> A banner cycle for Hermes. <strong>Teknium</strong> shipped an <a href=\"/?date=2026-10-16&amp;category=social#item-e48d30f34d95\" class=\"internal-link\" rel=\"noopener noreferrer\">official Hermes Agent plugin bundling the REA MCP server plus a skill for using it far more effectively</a> (1,890 likes, 171 RTs — the top post of the batch), and Nous Research <a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">positioned Hermes Agent as the best place to run NVIDIA's newly released <strong>Nemotron 3.5 Super VL</strong> and <strong>Bolt</strong> models</a>. Grounding check: Nemotron 3.5 Super VL's API date (2026-10-15) matches the coverage day, confirming this is genuinely breaking integration news rather than retro coverage, and it's backed by a <a href=\"/?date=2026-10-16&amp;category=social#item-e1857a6ca493\" class=\"internal-link\" rel=\"noopener noreferrer\">cited <strong>Hermes Bench</strong> score</a>.</p>\n<p><strong>Roadmap &amp; Consumer Push:</strong> <strong>Teknium</strong> <a href=\"/?date=2026-10-16&amp;category=social#item-d669df69a73a\" class=\"internal-link\" rel=\"noopener noreferrer\">leaned hard into the mass-market pitch</a>, confirming a <strong>mobile app</strong> ETA of roughly 1.5 months, subscription-bundled agent instances, a Desktop consumer pivot, and <strong>Microsoft</strong>/<strong>Google</strong> <a href=\"/?date=2026-10-16&amp;category=social#item-8b6dd67d7534\" class=\"internal-link\" rel=\"noopener noreferrer\">integrations 'soon' but blocked on legal review</a>. The flashiest reveal: <a href=\"/?date=2026-10-16&amp;category=social#item-ec8718e013ee\" class=\"internal-link\" rel=\"noopener noreferrer\">the mobile app will remotely control your computer, 'putting every app on your phone.'</a> Community sentiment reads as bullish, with critics answered head-on.</p>\n<p><strong>Community Tooling:</strong> <strong>rlaope</strong>'s <strong>oh-my-hermes (OMH)</strong> plugin — <a href=\"/?date=2026-10-16&amp;category=social#item-b84d15a8a0b3\" class=\"internal-link\" rel=\"noopener noreferrer\">one-install subagent routing plus long-term memory, a coding harness, and expert skills</a> — drew the best community engagement in the batch, signaling a healthy builder ecosystem around Hermes Agent. Community perf-chatter (same author) also surfaced an <a href=\"/?date=2026-10-16&amp;category=social#item-52817ec0502e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>848 tok/s DeepSeek V4.1 Flash</strong> deployment</a>.</p>\n<p><strong>Teasers &amp; Visibility:</strong> The cryptic <a href=\"/?date=2026-10-16&amp;category=social#item-f2aa02a58658\" class=\"internal-link\" rel=\"noopener noreferrer\">'Hermes Agent Spotted 👀' tease</a> pulled 632 likes / 18k views, and the <a href=\"/?date=2026-10-16&amp;category=social#item-1fa7e6b5f76a\" class=\"internal-link\" rel=\"noopener noreferrer\">official tagline post ('an agent for the projects that matter most')</a> hit 457 likes / 35.8k views — strong buzz heading into the mobile launch window.</p>\n<p><strong>Tips, Support &amp; Founder Candor:</strong> Practical founder replies that resonate with users: <a href=\"/?date=2026-10-16&amp;category=social#item-e933ae6a883e\" class=\"internal-link\" rel=\"noopener noreferrer\">the four-provider free search round-robin behavior</a>, the <a href=\"/?date=2026-10-16&amp;category=social#item-b6fa63bf470b\" class=\"internal-link\" rel=\"noopener noreferrer\">official update workflow (<strong>git fetch --tags</strong> → <strong>hermes update</strong>)</a>, <a href=\"/?date=2026-10-16&amp;category=social#item-9d24681abe78\" class=\"internal-link\" rel=\"noopener noreferrer\">clarification that tools/context only load when actively used</a>, <a href=\"/?date=2026-10-16&amp;category=social#item-fdefe48ab47c\" class=\"internal-link\" rel=\"noopener noreferrer\">a code-introspection capability enabling app/game mashups</a>, <a href=\"/?date=2026-10-16&amp;category=social#item-8d923dc37c9c\" class=\"internal-link\" rel=\"noopener noreferrer\">a KV-cache-warming exchange with <strong>Theo</strong></a>, and honest framing that <a href=\"/?date=2026-10-16&amp;category=social#item-bc8053241f23\" class=\"internal-link\" rel=\"noopener noreferrer\">self-hosting 'is kinda rough' while a cloud option exists</a>.</p>\n<p><strong>Deprioritized (off-topic):</strong> SakanaAI's <strong><a href=\"/?date=2026-10-16&amp;category=social#item-d219ddb323c4\" class=\"internal-link\" rel=\"noopener noreferrer\">AI Scientist v3 (The Agentic Scientist)</a></strong> thread — including the <a href=\"/?date=2026-10-16&amp;category=social#item-f101f248f4a4\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>AutoIllustrate</strong> companion tool</a> and the <a href=\"/?date=2026-10-16&amp;category=social#item-4119864af7d5\" class=\"internal-link\" rel=\"noopener noreferrer\">ALIFE 2026 oral</a> — was the biggest non-Hermes story in the data but was excluded from the top ranking for relevance to a Hermes newsletter, as were low-substance asides (<a href=\"/?date=2026-10-16&amp;category=social#item-b9fab5f19943\" class=\"internal-link\" rel=\"noopener noreferrer\">bot snark</a>, <a href=\"/?date=2026-10-16&amp;category=social#item-c5dd62198290\" class=\"internal-link\" rel=\"noopener noreferrer\">moderation moments</a>, <a href=\"/?date=2026-10-16&amp;category=social#item-7b58800e4906\" class=\"internal-link\" rel=\"noopener noreferrer\">emoji-only replies</a>).</p>",
+      "themes": [
+        {
+          "name": "Official Hermes Agent Announcements",
+          "description": "Official posts from Nous Research and Teknium announcing or positioning Hermes Agent, including the NVIDIA Nemotron 3.5 Super VL integration, the REA MCP plugin release, and the brand tagline.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Official Roadmap & Consumer Push",
+          "description": "Teknium confirms mobile app ETA, subscription-bundled agent instances, a consumer pivot for Desktop, onboarding/connectors, and pending Microsoft/Google integrations awaiting legal work.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Community Tooling & Showcases",
+          "description": "Community-built extensions for Hermes Agent, led by rlaope's oh-my-hermes plugin adding subagents routing, memory, coding harness, and expert skills.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Official Support & Configuration Tips",
+          "description": "Teknium sharing the official update procedure (git fetch --tags, hermes update) and revealing the four-provider free search round-robin behavior.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Teasers and Product Visibility",
+          "description": "Cryptic teases about Hermes Agent being spotted, unspoken capabilities, and an upcoming mobile app with computer control.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Technical Performance Discussion",
+          "description": "Deeper technical exchanges such as prompt-cache warming strategies and agent code-injection capabilities.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 50.0
+        },
+        {
+          "name": "Community Support and Q&A",
+          "description": "Founder and official-account replies answering user questions about tool loading, APIs, upgrades, model behavior, and deployment trade-offs.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Third-Party Agentic Research (Off-Topic)",
+          "description": "A full SakanaAI thread on AI Scientist v3 / The Agentic Scientist and AutoIllustrate, notable as agentic-ecosystem context but unrelated to Hermes itself.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 35.0
+        },
+        {
+          "name": "Community Banter and Moderation",
+          "description": "Light-hearted replies, sarcasm about bots, emoji reactions, and moderation of rude behavior in threads.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 10.0
+        },
+        {
+          "name": "Low-Content Social Replies",
+          "description": "Emoji acknowledgments and personal replies from Teknium with no informational value.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 5.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "e48d30f34d95",
+          "title": "Check out the new official plugin I created for Hermes Agent that includes the REA MCP + a Skill for...",
+          "content": "Check out the new official plugin I created for Hermes Agent that includes the REA MCP + a Skill for how to use it way more effectively!\n\nhttps://t.co/Z1CxopIOYs https://t.co/HZUS3nwS2L",
+          "url": "https://twitter.com/Teknium/status/2110736682207355062",
+          "author": "@Teknium",
+          "published": "2026-10-15T14:16:55",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces a new official plugin he created for Hermes Agent, bundling the REA MCP server plus a skill teaching how to use it far more effectively, with links to the resource.",
+          "importance_score": 96.0,
+          "reasoning": "Official plugin release from the founder with exceptional engagement (1,890 likes, 171 retweets, 101k views); a concrete, actionable deliverable for the Hermes ecosystem and the top signal in this batch.",
+          "themes": [
+            "plugins",
+            "mcp",
+            "official tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces a new official plugin he created for Hermes Agent, bundling the REA MCP server plus a skill teaching how to use it far more effectively, with links to the resource.</p>",
+          "content_html": "<p>Check out the new official plugin I created for Hermes Agent that includes the REA MCP + a Skill for how to use it way more effectively!</p>\n<p>https://t.co/Z1CxopIOYs https://t.co/HZUS3nwS2L</p>"
+        },
+        {
+          "id": "e1857a6ca493",
+          "title": "Hermes Agent is the best place to use the new @NVIDIAAI Nemotron 3.5 Super VL and Bolt models.\n\nNVID...",
+          "content": "Hermes Agent is the best place to use the new @NVIDIAAI Nemotron 3.5 Super VL and Bolt models.\n\nNVIDIA benchmarked Super VL on Hermes Bench with a score of 63.44, and compared to similar local models it has up to 5x the token throughput.",
+          "url": "https://twitter.com/NousResearch/status/2110786024024445201",
+          "author": "@NousResearch",
+          "published": "2026-10-15T17:32:59",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Official announcement positioning Hermes Agent as the best place to use new NVIDIA Nemotron 3.5 Super VL and Bolt models, citing a Hermes Bench score of 63.44 and up to 5x token throughput versus similar local models.",
+          "importance_score": 92.0,
+          "reasoning": "Official Nous Research announcement tying Hermes Agent to a fresh NVIDIA model release with concrete benchmark numbers; very strong engagement (605 likes, 33.5k views) and directly relevant to the ecosystem.",
+          "themes": [
+            "model integrations",
+            "benchmarks",
+            "NVIDIA partnership"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official announcement positioning Hermes Agent as the best place to use new NVIDIA Nemotron 3.5 Super VL and Bolt models, citing a Hermes Bench score of 63.44 and up to 5x token throughput versus similar local models.</p>",
+          "content_html": "<p>Hermes Agent is the best place to use the new @NVIDIAAI Nemotron 3.5 Super VL and Bolt models.</p>\n<p>NVIDIA benchmarked Super VL on Hermes Bench with a score of 63.44, and compared to similar local models it has up to 5x the token throughput.</p>"
+        },
+        {
+          "id": "d669df69a73a",
+          "title": "@slumdog_8 @jdudley @NousResearch Bruh.\n\nIt was always intended for the masses. \n\nEverything we've d...",
+          "content": "@slumdog_8 @jdudley @NousResearch Bruh.\n\nIt was always intended for the masses. \n\nEverything we've done since launch has been to move toward consumer. \n\nMy post was about recognizing that we still aren't there yet  We have a mobile app launching potentially in a month in a half. \n\nWe have agent instances automatically provisioned with every subs coming. The desktop direction is changing as of yesterday to do more for consumer.   \n\nWe literally announced onboarding and easy connectors yesterday.   \n\nWhy people are ignoring all this and completely intentionally misunderstanding what I said and what we are actually doing is beyond me",
+          "url": "https://twitter.com/Teknium/status/2110629238932168931",
+          "author": "@Teknium",
+          "published": "2026-10-15T07:09:58",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium pushes back on critics, clarifying that Hermes has always been aimed at the mass market. He cites a mobile app potentially launching in about a month and a half, auto-provisioned agent instances with subscriptions coming, a consumer-oriented shift in the desktop direction as of the prior day, and newly announced onboarding and easy connectors.",
+          "importance_score": 88.0,
+          "reasoning": "Project lead confirms a concrete roadmap: mobile app ETA (~1.5 months), subscription-bundled agent instances, a consumer pivot for Desktop, and recent onboarding/connector announcements. High credibility and roadmap significance, though engagement is modest for the depth of information.",
+          "themes": [
+            "product roadmap",
+            "mobile app",
+            "consumer push",
+            "desktop direction change"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium pushes back on critics, clarifying that Hermes has always been aimed at the mass market. He cites a mobile app potentially launching in about a month and a half, auto-provisioned agent instances with subscriptions coming, a consumer-oriented shift in the desktop direction as of the prior day, and newly announced onboarding and easy connectors.</p>",
+          "content_html": "<p>@slumdog_8 @jdudley @NousResearch Bruh.</p>\n<p>It was always intended for the masses.</p>\n<p>Everything we've done since launch has been to move toward consumer.</p>\n<p>My post was about recognizing that we still aren't there yet  We have a mobile app launching potentially in a month in a half.</p>\n<p>We have agent instances automatically provisioned with every subs coming. The desktop direction is changing as of yesterday to do more for consumer.</p>\n<p>We literally announced onboarding and easy connectors yesterday.</p>\n<p>Why people are ignoring all this and completely intentionally misunderstanding what I said and what we are actually doing is beyond me</p>"
+        },
+        {
+          "id": "b84d15a8a0b3",
+          "title": "oh-my-hermes subagents routing\n\njust install once then your hermes agent gonna be powerful plugin\n\ni...",
+          "content": "oh-my-hermes subagents routing\n\njust install once then your hermes agent gonna be powerful plugin\n\nif you want to build long term memory, coding harness, expert skills? lets install omh\n\nhttps://t.co/g1exHwWK5E\n\nthis video is OMH TUI View, but it is ok you just use original hermes or slack/discord/telegram etc..",
+          "url": "https://twitter.com/rlaope/status/2110595509857681641",
+          "author": "@rlaope",
+          "published": "2026-10-15T04:55:57",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage of oh-my-hermes from earlier this week, rlaope showcases oh-my-hermes (OMH), a plugin adding subagents routing to Hermes Agent. One install adds long-term memory, a coding harness, and expert skills, and it works alongside the original Hermes client or via Slack, Discord, or Telegram. Includes a demo video of the OMH TUI.",
+          "importance_score": 82.0,
+          "reasoning": "Strong community showcase from a prioritized author with the best engagement in this batch (52 likes, 4110 views). Introduces a tangible third-party enhancement (OMH) with memory, coding, and skill tooling for Hermes Agent, though it is community-made rather than official.",
+          "themes": [
+            "community showcase",
+            "subagents",
+            "plugins",
+            "long-term memory"
+          ],
+          "continuation": {
+            "original_item_id": "80eb5732478d",
+            "original_date": "2026-10-14",
+            "original_category": "social",
+            "original_title": "oh-my-hermes subagents routing\n\njust install once then your hermes agent gonna be powerful plugin\n\ni...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage of oh-my-hermes from earlier this week"
+          },
+          "summary_html": "<p>Continuing our coverage of oh-my-hermes from earlier this week, rlaope showcases oh-my-hermes (OMH), a plugin adding subagents routing to Hermes Agent. One install adds long-term memory, a coding harness, and expert skills, and it works alongside the original Hermes client or via Slack, Discord, or Telegram. Includes a demo video of the OMH TUI.</p>",
+          "content_html": "<p>oh-my-hermes subagents routing</p>\n<p>just install once then your hermes agent gonna be powerful plugin</p>\n<p>if you want to build long term memory, coding harness, expert skills? lets install omh</p>\n<p>https://t.co/g1exHwWK5E</p>\n<p>this video is OMH TUI View, but it is ok you just use original hermes or slack/discord/telegram etc..</p>"
+        },
+        {
+          "id": "f2aa02a58658",
+          "title": "Hermes Agent Spotted 👀👀",
+          "content": "Hermes Agent Spotted 👀👀",
+          "url": "https://twitter.com/Teknium/status/2110777725749522920",
+          "author": "@Teknium",
+          "published": "2026-10-15T17:00:00",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium teases that Hermes Agent was spotted somewhere in the wild, with eye emojis implying a notable sighting.",
+          "importance_score": 78.0,
+          "reasoning": "High-credibility author teasing a sighting or upcoming reveal; strong engagement (632 likes, 18k views) suggests significant community interest, though the content itself is vague.",
+          "themes": [
+            "teasers",
+            "product visibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium teases that Hermes Agent was spotted somewhere in the wild, with eye emojis implying a notable sighting.</p>",
+          "content_html": "<p>Hermes Agent Spotted 👀👀</p>"
+        },
+        {
+          "id": "1fa7e6b5f76a",
+          "title": "An agent for the projects that matter most",
+          "content": "An agent for the projects that matter most",
+          "url": "https://twitter.com/NousResearch/status/2110722045411549645",
+          "author": "@NousResearch",
+          "published": "2026-10-15T13:18:45",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Official Nous Research marketing post with the tagline positioning Hermes Agent as an agent for the projects that matter most.",
+          "importance_score": 70.0,
+          "reasoning": "Official positioning/branding statement from the core account with strong reach (457 likes, 35.8k views), suggesting a campaign moment, though it contains no technical detail.",
+          "themes": [
+            "marketing",
+            "product positioning"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Official Nous Research marketing post with the tagline positioning Hermes Agent as an agent for the projects that matter most.</p>",
+          "content_html": "<p>An agent for the projects that matter most</p>"
+        },
+        {
+          "id": "e933ae6a883e",
+          "title": "@jharohit fwiw if you choose no search provider at all it round robins thru 4 free search providers ...",
+          "content": "@jharohit fwiw if you choose no search provider at all it round robins thru 4 free search providers which will make it basically feel like free uncapped high quality search for everyone",
+          "url": "https://twitter.com/Teknium/status/2110630167832125641",
+          "author": "@Teknium",
+          "published": "2026-10-15T07:13:40",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains a lesser-known Hermes Agent behavior: if no search provider is selected, the agent round-robins through four free search providers, effectively giving users free, effectively uncapped high-quality search.",
+          "importance_score": 70.0,
+          "reasoning": "Reveals a practical, non-obvious configuration tip straight from the project lead, useful to the whole user base (free search via rotation of four providers). Low engagement, but high informational value from a prioritized author.",
+          "themes": [
+            "search providers",
+            "free-tier usage",
+            "configuration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains a lesser-known Hermes Agent behavior: if no search provider is selected, the agent round-robins through four free search providers, effectively giving users free, effectively uncapped high-quality search.</p>",
+          "content_html": "<p>@jharohit fwiw if you choose no search provider at all it round robins thru 4 free search providers which will make it basically feel like free uncapped high quality search for everyone</p>"
+        },
+        {
+          "id": "ec8718e013ee",
+          "title": "@matthewbrunken Every app will be on your phone with hermes mobile app soon, because it can control ...",
+          "content": "@matthewbrunken Every app will be on your phone with hermes mobile app soon, because it can control a computer with rea",
+          "url": "https://twitter.com/Teknium/status/2110766926712721484",
+          "author": "@Teknium",
+          "published": "2026-10-15T16:17:06",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Continuing our coverage of the Hermes mobile app from earlier this week, Teknium reveals that a Hermes mobile app is coming soon which can control a computer remotely, putting every app on the user's phone.",
+          "importance_score": 65.0,
+          "reasoning": "Forward-looking product roadmap news from the founder about a mobile app with computer-control capability; decent engagement (70 likes, 2.5k views) and unique information despite truncated text.",
+          "themes": [
+            "roadmap",
+            "mobile app",
+            "remote control"
+          ],
+          "continuation": {
+            "original_item_id": "526772b007ca",
+            "original_date": "2026-10-14",
+            "original_category": "social",
+            "original_title": "@matthewbrunken Every app will be on your phone with hermes mobile app soon, because it can control ...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage of the Hermes mobile app from earlier this week"
+          },
+          "summary_html": "<p>Continuing our coverage of the Hermes mobile app from earlier this week, Teknium reveals that a Hermes mobile app is coming soon which can control a computer remotely, putting every app on the user's phone.</p>",
+          "content_html": "<p>@matthewbrunken Every app will be on your phone with hermes mobile app soon, because it can control a computer with rea</p>"
+        },
+        {
+          "id": "8b6dd67d7534",
+          "title": "@rashidkhan Soon. Msft and google both require more legal work with them then they’ll be there!",
+          "content": "@rashidkhan Soon. Msft and google both require more legal work with them then they’ll be there!",
+          "url": "https://twitter.com/Teknium/status/2110603503785980319",
+          "author": "@Teknium",
+          "published": "2026-10-15T05:27:43",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium says integrations with Microsoft and Google are coming soon, but both require additional legal work before they ship.",
+          "importance_score": 65.0,
+          "reasoning": "Signals an upcoming roadmap item (Microsoft and Google integrations) from the project lead, with the delay attributed to legal processes. Useful forward-looking info, though light on specifics and low engagement.",
+          "themes": [
+            "roadmap",
+            "integrations",
+            "Microsoft",
+            "Google"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium says integrations with Microsoft and Google are coming soon, but both require additional legal work before they ship.</p>",
+          "content_html": "<p>@rashidkhan Soon. Msft and google both require more legal work with them then they’ll be there!</p>"
+        },
+        {
+          "id": "b6fa63bf470b",
+          "title": "@DougVos Try this each command in your terminal one after another:\n  cd ~/.hermes/hermes-agent\n  git...",
+          "content": "@DougVos Try this each command in your terminal one after another:\n  cd ~/.hermes/hermes-agent\n  git fetch origin --tags\n  hermes update",
+          "url": "https://twitter.com/Teknium/status/2110693294103794001",
+          "author": "@Teknium",
+          "published": "2026-10-15T11:24:30",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium provides troubleshooting support to a user, walking them through terminal commands to update Hermes Agent: fetching git tags from the repo and running the hermes update command.",
+          "importance_score": 62.0,
+          "reasoning": "Direct support from Teknium, the project lead, showing the official update workflow (git fetch --tags plus hermes update). High credibility and useful maintenance info for all users, though engagement is minimal.",
+          "themes": [
+            "official support",
+            "update workflow",
+            "troubleshooting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium provides troubleshooting support to a user, walking them through terminal commands to update Hermes Agent: fetching git tags from the repo and running the hermes update command.</p>",
+          "content_html": "<p>@DougVos Try this each command in your terminal one after another:</p>\n<p>cd ~/.hermes/hermes-agent</p>\n<p>git fetch origin --tags</p>\n<p>hermes update</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

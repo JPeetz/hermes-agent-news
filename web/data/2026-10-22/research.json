@@ -1,0 +1,586 @@
+{
+  "category": "research",
+  "date": "2026-10-22",
+  "category_summary": "First-party momentum leads this cycle: **[Hermes Agent v0.20.0](/?date=2026-10-22&category=research#item-hn-49159200)** shipped as a tagged GitHub release, official docs added **[Claude Pro/Max subscription support](/?date=2026-10-22&category=research#item-hn-49790991)** (letting subscribers run the agent without separate API billing), and **[Hermes Kanban](/?date=2026-10-22&category=research#item-hn-49604068)** introduced multi-agent collaboration across profiles. Deployment is the biggest community focus but exposes real friction — no official **[Helm chart](/?date=2026-10-22&category=research#item-hn-49977400)** and a root-at-init container image on **[Kubernetes](/?date=2026-10-22&category=research#item-hn-49977400)** — alongside working [containerized setups](/?date=2026-10-22&category=research#item-hn-50131496) from users. Ecosystem tooling is filling production gaps: **[verso](/?date=2026-10-22&category=research#item-hn-49628094)**, an open-source orchestrator that removes the CLI barrier; a **[Grafana](/?date=2026-10-22&category=research#item-hn-49318128)**-based observability stack for agent runs; and skills that loop work between **[Codex](/?date=2026-10-22&category=research#item-hn-49136162)** and **[Claude Code](/?date=2026-10-22&category=research#item-hn-49136162)**. A self-improving-agent trend is emerging (**[Refine Cycle](/?date=2026-10-22&category=research#item-hn-49606988)** plugin, echoed externally by Google's **[Harness2](/?date=2026-10-22&category=research#item-235c31eed29b)**), with early adversarial security research (**[hermes-jekyl-hyde](/?date=2026-10-22&category=research#item-hn-49231797)**) also targeting the repo. Project-health signals cut both ways: a **[~23k open-PR backlog](/?date=2026-10-22&category=research#item-hn-49424643)** suggests growth outpacing maintainership, while YC-backed **[Almanac](/?date=2026-10-22&category=research#item-hn-49511007)** (built on Hermes Agent setup patterns) signals commercial ecosystem traction. Practical takeaways for readers: cheaper access via existing subscriptions, new multi-agent workflows, and battle-tested deployment guidance.",
+  "category_summary_html": "<p>First-party momentum leads this cycle: <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.20.0</a></strong> shipped as a tagged GitHub release, official docs added <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a></strong> (letting subscribers run the agent without separate API billing), and <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> introduced multi-agent collaboration across profiles. Deployment is the biggest community focus but exposes real friction — no official <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm chart</a></strong> and a root-at-init container image on <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes</a></strong> — alongside working <a href=\"/?date=2026-10-22&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized setups</a> from users. Ecosystem tooling is filling production gaps: <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">verso</a></strong>, an open-source orchestrator that removes the CLI barrier; a <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong>-based observability stack for agent runs; and skills that loop work between <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Codex</a></strong> and <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Code</a></strong>. A self-improving-agent trend is emerging (<strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a></strong> plugin, echoed externally by Google's <strong><a href=\"/?date=2026-10-22&amp;category=research#item-235c31eed29b\" class=\"internal-link\" rel=\"noopener noreferrer\">Harness2</a></strong>), with early adversarial security research (<strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-jekyl-hyde</a></strong>) also targeting the repo. Project-health signals cut both ways: a <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~23k open-PR backlog</a></strong> suggests growth outpacing maintainership, while YC-backed <strong><a href=\"/?date=2026-10-22&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac</a></strong> (built on Hermes Agent setup patterns) signals commercial ecosystem traction. Practical takeaways for readers: cheaper access via existing subscriptions, new multi-agent workflows, and battle-tested deployment guidance.</p>",
+  "themes": [
+    {
+      "name": "Self-Improving Agents and Harness Optimization",
+      "description": "Both the Refine Cycle plugin and Google's Harness2 framework target improving the agent's surrounding harness (prompts, skills, memory, guardrails) rather than the underlying model, signaling a trend toward automated agent self-refinement.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Model Providers and Cost",
+      "description": "Claude Pro/Max subscription support, GLM 5.3 Flash behavior questions, and model-router dependency debates show users actively optimizing provider choice, cost, and reliability.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Deployment and Hosting",
+      "description": "Multiple items cover running Hermes Agent in containers, on Kubernetes (including pain points like missing Helm charts and root-at-init requirements), and on hobby hardware such as the Arduino UNO Q, reflecting strong community interest in flexible, low-cost hosting.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Ecosystem Tooling and Orchestration",
+      "description": "Community projects like verso (CLI-free orchestrator), Grafana observability, and a Codex/Claude Code loop skill extend Hermes Agent with UIs, monitoring, and multi-agent coordination layers.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Project Health and Governance",
+      "description": "The 23,000-open-PR backlog, moderation/blocking on the official repo, and the commercial Almanac launch collectively point to rapid ecosystem growth with real maintainership and governance strain.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 56.0
+    }
+  ],
+  "total_items": 21,
+  "items": [
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-20&category=research#item-hn-49790991) yesterday, Official Hermes Agent documentation announcing plugin support for Claude Pro/Max subscriptions via a direct SDK integration. This lets subscribers use their existing Anthropic subscription entitlements with Hermes Agent instead of paying per-token API rates.",
+      "importance_score": 37,
+      "reasoning": "A first-party feature addition with broad practical impact: subscription-based access significantly lowers the cost barrier for many users and expands model-provider flexibility in Hermes Agent. Documentation-sourced and official, though it is an integration/plugin feature rather than a core architecture change.",
+      "themes": [
+        "integrations",
+        "model-providers",
+        "cost-optimization"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official Hermes Agent documentation announcing plugin support for Claude Pro/Max subscriptions via a direct SDK integration. This lets subscribers use their existing Anthropic subscription entitlements with Hermes Agent instead of paying per-token API rates.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49159200",
+      "title": "Hermes Agent v0.20.0",
+      "content": "Hermes Agent v0.20.0",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3",
+      "author": "tosh",
+      "published": "2026-08-03T17:53:26Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this HN post in [Research](/?date=2026-10-20&category=research#item-hn-49159200) yesterday, A HN post sharing the Hermes Agent v0.20.0 release, with the URL pointing to a GitHub release tag (v2026.8.3) in the NousResearch/hermes-agent repository. Content is limited to the version title, indicating a new upstream release of the agent.",
+      "importance_score": 36,
+      "reasoning": "An official versioned release of the core project, which is inherently high-signal for anyone tracking Hermes Agent capabilities and fixes. Scored below the very top only because the supplied content omits changelog details, leaving the substance of the release unspecified.",
+      "themes": [
+        "releases",
+        "versioning"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49159200",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Hermes Agent v0.20.0",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this HN post in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this HN post in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49159200\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A HN post sharing the Hermes Agent v0.20.0 release, with the URL pointing to a GitHub release tag (v2026.8.3) in the NousResearch/hermes-agent repository. Content is limited to the version title, indicating a new upstream release of the agent.</p>",
+      "content_html": "<p>Hermes Agent v0.20.0</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already covered in [Research](/?date=2026-10-20&category=research#item-hn-49604068) yesterday, Official documentation for Hermes Kanban, a feature enabling multi-agent collaboration across profiles. The content is only the title, but it indicates a first-party capability for coordinating multiple Hermes agent profiles, likely through a kanban-style workflow.",
+      "importance_score": 32,
+      "reasoning": "First-party documentation of a multi-agent coordination feature, which is a significant capability direction for the project. Scored moderately because the supplied content lacks technical detail, but multi-agent profile collaboration addresses a high-demand use case.",
+      "themes": [
+        "multi-agent",
+        "features",
+        "workflow"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already covered in **Research** yesterday"
+      },
+      "summary_html": "<p>Already covered in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Official documentation for Hermes Kanban, a feature enabling multi-agent collaboration across profiles. The content is only the title, but it indicates a first-party capability for coordinating multiple Hermes agent profiles, likely through a kanban-style workflow.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-20&category=research#item-hn-49977400) yesterday, A blog post documenting two concrete Kubernetes friction points for Hermes Agent: there is no official Helm chart, and the container image requires root privileges during initialization. Both issues matter for teams wanting least-privilege, production-grade cluster deployments.",
+      "importance_score": 31,
+      "reasoning": "Identifies specific, actionable deployment gaps (missing Helm chart, root-at-init requirement) that affect security posture and onboarding for Kubernetes users; moderately high impact since production deployment blockers are a common enterprise concern, though it is a complaint/observation rather than a fix.",
+      "themes": [
+        "deployment",
+        "kubernetes",
+        "security"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A blog post documenting two concrete Kubernetes friction points for Hermes Agent: there is no official Helm chart, and the container image requires root privileges during initialization. Both issues matter for teams wanting least-privilege, production-grade cluster deployments.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "This Show HN ran in [Research](/?date=2026-10-20&category=research#item-hn-49628094) yesterday, Show HN launch of verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author built it as a learning exercise to provide an easier, more intuitive interface to Hermes Agent without using the CLI, and reports it has become their daily work setup with significant productivity gains.",
+      "importance_score": 30,
+      "reasoning": "A concrete third-party tool extending Hermes Agent's usability beyond the CLI, demonstrating ecosystem growth and a real productivity use case. Moderate importance: it is a community-built UI/orchestration layer rather than a core Hermes change, but it signals demand for better agent interfaces.",
+      "themes": [
+        "ecosystem-tools",
+        "orchestration",
+        "user-interfaces"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "This Show HN ran in **Research** yesterday"
+      },
+      "summary_html": "<p>This Show HN ran in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Show HN launch of verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author built it as a learning exercise to provide an easier, more intuitive interface to Hermes Agent without using the CLI, and reports it has become their daily work setup with significant productivity gains.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49424643",
+      "title": "Hermes Agent has 23000 open PRs and climbing",
+      "content": "Hermes Agent has 23000 open PRs and climbing",
+      "url": "https://github.com/NousResearch/hermes-agent/pulls",
+      "author": "nhecker",
+      "published": "2026-08-24T19:22:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-20&category=research#item-hn-49424643) yesterday, A HN post highlighting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is still rising. The linked URL is the repository's PR listing page.",
+      "importance_score": 58.0,
+      "reasoning": "A meaningful project-health signal: a very large unmerged PR backlog suggests either explosive community contribution volume or a maintainership bottleneck, both of which have real consequences for merge latency, security review, and release quality. Limited technical depth but high ecosystem relevance.",
+      "themes": [
+        "project-governance",
+        "maintenance",
+        "community-growth"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49424643",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Hermes Agent has 23000 open PRs and climbing",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A HN post highlighting that the NousResearch/hermes-agent GitHub repository has roughly 23,000 open pull requests and the count is still rising. The linked URL is the repository's PR listing page.</p>",
+      "content_html": "<p>Hermes Agent has 23000 open PRs and climbing</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this Launch HN in [Research](/?date=2026-10-20&category=research#item-hn-49511007) yesterday, Launch HN post for Almanac, a YC S26 startup positioning itself as 'a Hermes with a brain that knows everything about your company.' The founders describe their painful journey setting up Hermes for their own company, building OAuth apps for every connector themselves, and productizing that experience into a company-knowledge agent.",
+      "importance_score": 57.0,
+      "reasoning": "Signals commercial ecosystem momentum: a YC-backed startup built directly on Hermes Agent's setup pain points (connectors, OAuth, configuration). Strategically interesting as evidence of demand and friction, but it is a startup launch rather than a technical improvement to Hermes itself.",
+      "themes": [
+        "startups",
+        "ecosystem",
+        "connectors",
+        "pain-points"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49511007",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this Launch HN in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this Launch HN in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, Launch HN post for Almanac, a YC S26 startup positioning itself as 'a Hermes with a brain that knows everything about your company.' The founders describe their painful journey setting up Hermes for their own company, building OAuth apps for every connector themselves, and productizing that experience into a company-knowledge agent.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-49318128",
+      "title": "Show HN: Grafana agent observability for Hermes Agent",
+      "content": "Show HN: Grafana agent observability for Hermes Agent",
+      "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+      "author": "eventuallyacat",
+      "published": "2026-08-16T08:40:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Already featured in [Research](/?date=2026-10-20&category=research#item-hn-49318128) yesterday, A Show HN release of grafana-agento11y-hermes, an open-source Grafana-based observability stack for Hermes Agent by alexander-akhmetov. The content is limited to the title, but the project provides dashboards/metrics for monitoring agent behavior.",
+      "importance_score": 57.0,
+      "reasoning": "Addresses a recognized gap in agent tooling: production observability for Hermes Agent runs. Community-built but directly useful to anyone operating agents long-term; moderate score due to thin content detail and third-party (not first-party) status.",
+      "themes": [
+        "observability",
+        "monitoring",
+        "ecosystem-tools"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49318128",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Show HN: Grafana agent observability for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "Already featured in **Research** yesterday"
+      },
+      "summary_html": "<p>Already featured in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A Show HN release of grafana-agento11y-hermes, an open-source Grafana-based observability stack for Hermes Agent by alexander-akhmetov. The content is limited to the title, but the project provides dashboards/metrics for monitoring agent behavior.</p>",
+      "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-10-20&category=research#item-hn-49606988) yesterday, A GitHub project called Refine Cycle, a self-improvement plugin for Hermes Agent by 1134taras. Content is limited to the title, but the framing indicates a plugin that iteratively refines the agent's own setup or behavior over time.",
+      "importance_score": 56.0,
+      "reasoning": "A community plugin in the notable self-improving-agent category, echoing a broader trend also visible in the Google Harness2 item in this batch. Plugin-level rather than core-project work and content details are thin, keeping the score moderate.",
+      "themes": [
+        "plugins",
+        "self-improvement",
+        "ecosystem-tools"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49606988",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A GitHub project called Refine Cycle, a self-improvement plugin for Hermes Agent by 1134taras. Content is limited to the title, but the framing indicates a plugin that iteratively refines the agent's own setup or behavior over time.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49136162",
+      "title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "content": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+      "url": "https://codenote.net/en/posts/issue-to-pr-autonomous-loop-hermes-agent-skill/",
+      "author": "yruzin",
+      "published": "2026-08-01T17:00:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "We covered this post in [Research](/?date=2026-10-20&category=research#item-hn-49136162) yesterday, A blog post on codenote.net describing a Hermes Agent skill that autonomously loops work between Codex and Claude Code, apparently implementing an issue-to-PR autonomous workflow in which multiple coding agents hand off tasks.",
+      "importance_score": 55.0,
+      "reasoning": "A concrete, reproducible pattern for multi-agent orchestration using Hermes Agent skills as the coordinator between two coding agents. Practical for automation workflows, though it is a blog tutorial rather than an official feature or merged change.",
+      "themes": [
+        "multi-agent",
+        "skills",
+        "automation",
+        "coding-agents"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49136162",
+        "original_date": "2026-10-20",
+        "original_category": "research",
+        "original_title": "A Hermes Agent Skill Looping Between Codex and Claude Code",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "We covered this post in **Research** yesterday"
+      },
+      "summary_html": "<p>We covered this post in <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49136162\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A blog post on codenote.net describing a Hermes Agent skill that autonomously loops work between Codex and Claude Code, apparently implementing an issue-to-PR autonomous workflow in which multiple coding agents hand off tasks.</p>",
+      "content_html": "<p>A Hermes Agent Skill Looping Between Codex and Claude Code</p>"
+    },
+    {
+      "id": "235c31eed29b",
+      "title": "Google Harness2: Google’s Free Self-Improving AI Agent Framework",
+      "content": "Google Harness2 — written Harness², or “harness squared” — is a free, open-source framework from Google Research that makes AI agents better without a new model. Instead of retraining anything, it rewrites the setup around the agent: the prompt, the guardrails, the memory, the tools and the skills. It then tests the changes and keeps what works. In the video below I break down how it works and why it matters for anyone running agents. Here’s the plain-English version, plus how to use the idea in your business today.\n\nKey takeaways\n\n- Google Harness2 improves the harness around an AI agent, not the model.\n\n- It runs a propose → probe → compose loop with no answer key needed.\n\n- Reported gains of up to +11.5 points on WorkBuddy-Bench from one step.\n\n- Free and open source (Apache 2.0) — claim a free strategy session to apply it to your business.\n\n## What is Google Harness2?\n\nMost people think a better AI agent needs a better model. Google Harness2 takes the opposite view. The model stays frozen; the harness — everything wrapped around the model — is what gets better. That harness is the instructions, the rules, the memory, the tool guidance and the skills that decide how the agent behaves.\n\nHarness² was built by researchers at Google Cloud AI Research with Northwestern University and published with the paper Recursive Agent Harnessing for an Open World. The code is on GitHub under the Apache 2.0 licence, and it picked up around 15,000 stars within days of launch.\n\nGoogle Harness2 at a glance\n\nFull name\nHarness²: Recursive Agent Harnessing for an Open World\n\nFrom\nGoogle Cloud AI Research, with Northwestern University\n\nWhat it does\nImproves the harness around an AI agent while the model stays frozen\n\nCore loop\nPropose → Probe → Compose\n\nEditable parts\nSystem prompt, guardrails, memory, tool guidance, sub-agents, skills, scripts, plugins\n\nExecutors\nOpenCode (default) and Codex\n\nModels tested\nGemini 3.5 Flash and GLM-5\n\nLicence\nApache 2.0, free and open source\n\nStatus\nResearch code — “not an officially supported Google product”\n\nLinks\nGitHub · project page · paper\n\n## How Google Harness2 works: propose, probe, compose\n\nEach improvement round follows three steps:\n\n- Propose — a harness editor suggests changes. Some are general (better tool guidance), some are specific to the task in front of it.\n\n- Probe — each candidate harness is actually run on the task, so the agent tries it for real.\n\n- Compose — a harness composer compares the runs and merges what worked into one improved successor harness.\n\nThe clever part is that it doesn’t need ground-truth answers. It compares runs against each other — what the paper calls a contrastive step — so it can improve on open-ended work where there is no answer key. That’s exactly the kind of messy work most of us give agents.\n\nWant agents that get better every week, not worse? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\nWant self-improving agents working in your business? Inside the AI Profit Boardroom you get my Agent OS — Claude, Hermes, OpenClaw and OpenCode sharing one memory and one set of skill files — plus four live coaching calls a week.\n\nWant a plan built around your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## The 8 parts Google Harness2 can edit\n\nHarness² can change eight components of an agent’s setup:\n\n- System prompt — the core instructions.\n\n- Guardrails — what the agent must and mustn’t do.\n\n- Memory — what it remembers and reuses.\n\n- Tool guidance — when and how to use each tool.\n\n- Sub-agents — helpers it can hand work to.\n\n- Skills — reusable how-to files.\n\n- Scripts — code it can run.\n\n- Plugins — extra abilities it can load.\n\nIf you run Claude Code, Hermes or OpenCode, you’ll recognise every one of these. They’re the same levers you already pull by hand — Harness² just pulls them automatically and keeps score.\n\n## Two loops: why it’s called harness squared\n\nThe “squared” comes from two levels of recursion. Task-level recursion improves the harness for the job in hand, either wider (several candidates in parallel) or deeper (one candidate after another). Harnessing-level recursion goes a step further: an experience reflector saves the winning setups and the lessons backed by evidence into an improvement library, so the system gets better at improving itself on future tasks.\n\nEach new task still starts from the base harness, but the improver behind it has learned from every task before. That’s the self-improving part.\n\n## Google Harness2 results\n\nGoogle tested Harness² with two models — Gemini 3.5 Flash and GLM-5 — across four model-and-harness combinations, using OpenCode and Codex as the agent executors. A single improvement step consistently helped, and more rounds helped more.\n\nBenchmark\nBest reported gain over the base harness\n\nWorkBuddy-Bench (code, web, office)\nUp to +11.5 points\n\nJobBench\nUp to +4.5 points\n\nLAB\nUp to +11.8 percentage points\n\nWorkBuddy, Gemini 3.5 Flash + OpenCode\n72.4 → 77.5 after one step; 80.8 with five parallel probes\n\nThese are the researchers’ own reported numbers on their benchmarks. They’re a strong signal, not a promise for your tasks — but they show how much performance is sitting in the harness rather than the model.\n\nWant to know where agents could save your team hours? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## How to try Google Harness2\n\nThe repo is research code, so it’s built for technical users. According to the README you need:\n\n- Linux and Python 3.12, set up with uv.\n\n- Node.js 20+ for model-backed benchmarks.\n\n- Google Cloud with Vertex AI and the gcloud CLI for models.\n\n- Docker for WorkBuddy-Bench, and Pandoc and Poppler for LAB.\n\nThere’s a demo that runs without any model credentials, which is the safe place to start. OpenCode is the default executor; Codex is an option.\n\nWatch your costs. Every probe is a full agent run, so model-backed runs add up fast — the README says to start with a small task selection. Executor network access is unrestricted by default, so lock it down before running evaluations, and remember this is research code, not a supported Google product.\n\n## What Google Harness2 means for your business\n\nYou don’t need to run Harness² to steal its biggest lesson: the setup around your agent matters as much as the model. Most businesses switch models when an agent disappoints. The faster win is usually a better prompt, clearer tool guidance, tighter guardrails and good skill files — then testing changes side by side and keeping the winners.\n\nThat’s how I run my own Agent OS. Claude, Hermes, OpenClaw and OpenCode share one memory and one set of skill files, so when I improve a skill, every agent gets better at once. Harness² is Google’s research-grade version of the same idea, with the testing automated.\n\n- Write your rules down as skill files instead of retyping prompts.\n\n- Change one thing at a time and compare the results.\n\n- Keep a lessons file of what worked, so every agent learns from it.\n\n- Give agents only the access they need.\n\n## My verdict on Google Harness2\n\nGoogle Harness2 is one of the most important agent releases of the year, because it proves you can get real gains without waiting for a new model. If you’re technical, try the demo. If you’re a business owner, apply the lesson now: improve the harness, test, keep what works. Want help doing that? Claim your free strategy session.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Claude, Hermes, OpenClaw and OpenCode together in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\n## FAQ: google harness2\n\n### What is Google Harness2?\n\nHarness² is a free, open-source framework from Google Research that improves an AI agent’s harness — prompt, guardrails, memory, tools, skills and more — while the model stays frozen.\n\n### Does Google Harness2 train a new model?\n\nNo. The model weights don’t change; only the setup around the model is edited and tested.\n\n### How much does Google Harness2 improve agents?\n\nThe paper reports gains of up to 11.5 points on WorkBuddy-Bench, 4.5 on JobBench and 11.8 percentage points on LAB from one improvement step.\n\n### Is Google Harness2 free?\n\nYes — it’s open source under Apache 2.0, but model-backed runs cost API credits because every probe is a full agent run.\n\n### Which agents does Google Harness2 work with?\n\nOpenCode is the default executor and Codex is supported; Google tested it with Gemini 3.5 Flash and GLM-5.\n\n### Is Google Harness2 an official Google product?\n\nNo — the repo says it is not an officially supported Google product. It’s research code at an early stage.\n\nReady to put better harnesses around your AI agents? Claim your free strategy session and we’ll map out where agents can save you time and win you traffic.\n\nWant the full system? Join the AI Profit Boardroom for the Agent OS and daily updates.\n\nGetting your site cited by AI too? Get the free GEO & AI SEO checklist.\n\nClaim Your Free SEO Strategy Session →Join the AI Profit Boardroom →Get the Free GEO & AI SEO Checklist →\n\n## Related reading\n\n- Hermes Agent vs OpenCode\n\n- Hermes Agent vs Codex\n\n- Best Hermes Agent Skills\n\nLast updated October 2026. This page is a living guide to google harness2 — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/google-harness2/?utm_source=rss&utm_medium=rss&utm_campaign=google-harness2",
+      "author": "Clawdbot",
+      "published": "2026-10-21T01:04:53",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A research-blog style piece (with promotional elements) describing Google Harness2, a claimed free, Apache-2.0 open-source framework from Google Research that improves AI agents without retraining models. It reportedly rewrites the harness around a frozen model - prompts, guardrails, memory, tool guidance, and skills - via a propose, probe, compose loop, with claimed gains of up to +11.5 points on WorkBuddy-Bench from a single step.",
+      "importance_score": 55.0,
+      "reasoning": "Conceptually relevant to the Hermes ecosystem because it targets harness-level self-improvement, the same theme as the Refine Cycle plugin, and offers a benchmark-quantified approach. Scored moderately: the source is a marketing-flavored blog (including a strategy-session pitch) rather than primary research, so claims like the benchmark gain and the Google Research attribution need verification.",
+      "themes": [
+        "self-improvement",
+        "agent-harnesses",
+        "benchmarks"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A research-blog style piece (with promotional elements) describing Google Harness2, a claimed free, Apache-2.0 open-source framework from Google Research that improves AI agents without retraining models. It reportedly rewrites the harness around a frozen model - prompts, guardrails, memory, tool guidance, and skills - via a propose, probe, compose loop, with claimed gains of up to +11.5 points on WorkBuddy-Bench from a single step.</p>",
+      "content_html": "<p>Google Harness2 — written Harness², or “harness squared” — is a free, open-source framework from Google Research that makes AI agents better without a new model. Instead of retraining anything, it rewrites the setup around the agent: the prompt, the guardrails, the memory, the tools and the skills. It then tests the changes and keeps what works. In the video below I break down how it works and why it matters for anyone running agents. Here’s the plain-English version, plus how to use the idea in your business today.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Google Harness2 improves the harness around an AI agent, not the model.</li>\n</ul>\n<ul>\n<li>It runs a propose → probe → compose loop with no answer key needed.</li>\n</ul>\n<ul>\n<li>Reported gains of up to +11.5 points on WorkBuddy-Bench from one step.</li>\n</ul>\n<ul>\n<li>Free and open source (Apache 2.0) — claim a free strategy session to apply it to your business.</li>\n</ul>\n<h2>What is Google Harness2?</h2>\n<p>Most people think a better AI agent needs a better model. Google Harness2 takes the opposite view. The model stays frozen; the harness — everything wrapped around the model — is what gets better. That harness is the instructions, the rules, the memory, the tool guidance and the skills that decide how the agent behaves.</p>\n<p>Harness² was built by researchers at Google Cloud AI Research with Northwestern University and published with the paper Recursive Agent Harnessing for an Open World. The code is on GitHub under the Apache 2.0 licence, and it picked up around 15,000 stars within days of launch.</p>\n<p>Google Harness2 at a glance</p>\n<p>Full name</p>\n<p>Harness²: Recursive Agent Harnessing for an Open World</p>\n<p>From</p>\n<p>Google Cloud AI Research, with Northwestern University</p>\n<p>What it does</p>\n<p>Improves the harness around an AI agent while the model stays frozen</p>\n<p>Core loop</p>\n<p>Propose → Probe → Compose</p>\n<p>Editable parts</p>\n<p>System prompt, guardrails, memory, tool guidance, sub-agents, skills, scripts, plugins</p>\n<p>Executors</p>\n<p>OpenCode (default) and Codex</p>\n<p>Models tested</p>\n<p>Gemini 3.5 Flash and GLM-5</p>\n<p>Licence</p>\n<p>Apache 2.0, free and open source</p>\n<p>Status</p>\n<p>Research code — “not an officially supported Google product”</p>\n<p>Links</p>\n<p>GitHub · project page · paper</p>\n<h2>How Google Harness2 works: propose, probe, compose</h2>\n<p>Each improvement round follows three steps:</p>\n<ul>\n<li>Propose — a harness editor suggests changes. Some are general (better tool guidance), some are specific to the task in front of it.</li>\n</ul>\n<ul>\n<li>Probe — each candidate harness is actually run on the task, so the agent tries it for real.</li>\n</ul>\n<ul>\n<li>Compose — a harness composer compares the runs and merges what worked into one improved successor harness.</li>\n</ul>\n<p>The clever part is that it doesn’t need ground-truth answers. It compares runs against each other — what the paper calls a contrastive step — so it can improve on open-ended work where there is no answer key. That’s exactly the kind of messy work most of us give agents.</p>\n<p>Want agents that get better every week, not worse? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>Want self-improving agents working in your business? Inside the AI Profit Boardroom you get my Agent OS — Claude, Hermes, OpenClaw and OpenCode sharing one memory and one set of skill files — plus four live coaching calls a week.</p>\n<p>Want a plan built around your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>The 8 parts Google Harness2 can edit</h2>\n<p>Harness² can change eight components of an agent’s setup:</p>\n<ul>\n<li>System prompt — the core instructions.</li>\n</ul>\n<ul>\n<li>Guardrails — what the agent must and mustn’t do.</li>\n</ul>\n<ul>\n<li>Memory — what it remembers and reuses.</li>\n</ul>\n<ul>\n<li>Tool guidance — when and how to use each tool.</li>\n</ul>\n<ul>\n<li>Sub-agents — helpers it can hand work to.</li>\n</ul>\n<ul>\n<li>Skills — reusable how-to files.</li>\n</ul>\n<ul>\n<li>Scripts — code it can run.</li>\n</ul>\n<ul>\n<li>Plugins — extra abilities it can load.</li>\n</ul>\n<p>If you run Claude Code, Hermes or OpenCode, you’ll recognise every one of these. They’re the same levers you already pull by hand — Harness² just pulls them automatically and keeps score.</p>\n<h2>Two loops: why it’s called harness squared</h2>\n<p>The “squared” comes from two levels of recursion. Task-level recursion improves the harness for the job in hand, either wider (several candidates in parallel) or deeper (one candidate after another). Harnessing-level recursion goes a step further: an experience reflector saves the winning setups and the lessons backed by evidence into an improvement library, so the system gets better at improving itself on future tasks.</p>\n<p>Each new task still starts from the base harness, but the improver behind it has learned from every task before. That’s the self-improving part.</p>\n<h2>Google Harness2 results</h2>\n<p>Google tested Harness² with two models — Gemini 3.5 Flash and GLM-5 — across four model-and-harness combinations, using OpenCode and Codex as the agent executors. A single improvement step consistently helped, and more rounds helped more.</p>\n<p>Benchmark</p>\n<p>Best reported gain over the base harness</p>\n<p>WorkBuddy-Bench (code, web, office)</p>\n<p>Up to +11.5 points</p>\n<p>JobBench</p>\n<p>Up to +4.5 points</p>\n<p>LAB</p>\n<p>Up to +11.8 percentage points</p>\n<p>WorkBuddy, Gemini 3.5 Flash + OpenCode</p>\n<p>72.4 → 77.5 after one step; 80.8 with five parallel probes</p>\n<p>These are the researchers’ own reported numbers on their benchmarks. They’re a strong signal, not a promise for your tasks — but they show how much performance is sitting in the harness rather than the model.</p>\n<p>Want to know where agents could save your team hours? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>How to try Google Harness2</h2>\n<p>The repo is research code, so it’s built for technical users. According to the README you need:</p>\n<ul>\n<li>Linux and Python 3.12, set up with uv.</li>\n</ul>\n<ul>\n<li>Node.js 20+ for model-backed benchmarks.</li>\n</ul>\n<ul>\n<li>Google Cloud with Vertex AI and the gcloud CLI for models.</li>\n</ul>\n<ul>\n<li>Docker for WorkBuddy-Bench, and Pandoc and Poppler for LAB.</li>\n</ul>\n<p>There’s a demo that runs without any model credentials, which is the safe place to start. OpenCode is the default executor; Codex is an option.</p>\n<p>Watch your costs. Every probe is a full agent run, so model-backed runs add up fast — the README says to start with a small task selection. Executor network access is unrestricted by default, so lock it down before running evaluations, and remember this is research code, not a supported Google product.</p>\n<h2>What Google Harness2 means for your business</h2>\n<p>You don’t need to run Harness² to steal its biggest lesson: the setup around your agent matters as much as the model. Most businesses switch models when an agent disappoints. The faster win is usually a better prompt, clearer tool guidance, tighter guardrails and good skill files — then testing changes side by side and keeping the winners.</p>\n<p>That’s how I run my own Agent OS. Claude, Hermes, OpenClaw and OpenCode share one memory and one set of skill files, so when I improve a skill, every agent gets better at once. Harness² is Google’s research-grade version of the same idea, with the testing automated.</p>\n<ul>\n<li>Write your rules down as skill files instead of retyping prompts.</li>\n</ul>\n<ul>\n<li>Change one thing at a time and compare the results.</li>\n</ul>\n<ul>\n<li>Keep a lessons file of what worked, so every agent learns from it.</li>\n</ul>\n<ul>\n<li>Give agents only the access they need.</li>\n</ul>\n<h2>My verdict on Google Harness2</h2>\n<p>Google Harness2 is one of the most important agent releases of the year, because it proves you can get real gains without waiting for a new model. If you’re technical, try the demo. If you’re a business owner, apply the lesson now: improve the harness, test, keep what works. Want help doing that? Claim your free strategy session.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Claude, Hermes, OpenClaw and OpenCode together in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<h2>FAQ: google harness2</h2>\n<h3>What is Google Harness2?</h3>\n<p>Harness² is a free, open-source framework from Google Research that improves an AI agent’s harness — prompt, guardrails, memory, tools, skills and more — while the model stays frozen.</p>\n<h3>Does Google Harness2 train a new model?</h3>\n<p>No. The model weights don’t change; only the setup around the model is edited and tested.</p>\n<h3>How much does Google Harness2 improve agents?</h3>\n<p>The paper reports gains of up to 11.5 points on WorkBuddy-Bench, 4.5 on JobBench and 11.8 percentage points on LAB from one improvement step.</p>\n<h3>Is Google Harness2 free?</h3>\n<p>Yes — it’s open source under Apache 2.0, but model-backed runs cost API credits because every probe is a full agent run.</p>\n<h3>Which agents does Google Harness2 work with?</h3>\n<p>OpenCode is the default executor and Codex is supported; Google tested it with Gemini 3.5 Flash and GLM-5.</p>\n<h3>Is Google Harness2 an official Google product?</h3>\n<p>No — the repo says it is not an officially supported Google product. It’s research code at an early stage.</p>\n<p>Ready to put better harnesses around your AI agents? Claim your free strategy session and we’ll map out where agents can save you time and win you traffic.</p>\n<p>Want the full system? Join the AI Profit Boardroom for the Agent OS and daily updates.</p>\n<p>Getting your site cited by AI too? Get the free GEO &amp; AI SEO checklist.</p>\n<p>Claim Your Free SEO Strategy Session →Join the AI Profit Boardroom →Get the Free GEO &amp; AI SEO Checklist →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent vs OpenCode</li>\n</ul>\n<ul>\n<li>Hermes Agent vs Codex</li>\n</ul>\n<ul>\n<li>Best Hermes Agent Skills</li>\n</ul>\n<p>Last updated October 2026. This page is a living guide to google harness2 — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "hn-49231797",
+      "title": "Adversarial LLM Reversal for hermes-agent",
+      "content": "Adversarial LLM Reversal for hermes-agent",
+      "url": "https://github.com/jnorthrup/hermes-jekyl-hyde",
+      "author": "jn098671234",
+      "published": "2026-08-09T14:32:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub repository, hermes-jekyl-hyde by jnorthrup, titled 'Adversarial LLM Reversal for hermes-agent.' The content is only the title, suggesting a security research project probing adversarial or dual-behavior reversal of the Hermes agent's LLM behavior.",
+      "importance_score": 54.0,
+      "reasoning": "Security and adversarial research against Hermes Agent is relevant to robustness and trustworthiness, especially given the prompt-injection threats facing tool-using agents. Scored moderately because the supplied content provides no methodology or findings, only the repository title.",
+      "themes": [
+        "security",
+        "adversarial-research",
+        "robustness"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub repository, hermes-jekyl-hyde by jnorthrup, titled 'Adversarial LLM Reversal for hermes-agent.' The content is only the title, suggesting a security research project probing adversarial or dual-behavior reversal of the Hermes agent's LLM behavior.</p>",
+      "content_html": "<p>Adversarial LLM Reversal for hermes-agent</p>"
+    },
+    {
+      "id": "hn-50131496",
+      "title": "Hermes Agent: My containerized take",
+      "content": "Hermes Agent: My containerized take",
+      "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+      "author": "ricardodevries",
+      "published": "2026-10-17T14:27:11Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by ricardodevries describing a containerized approach to running Hermes Agent. The content itself is only the title, so technical specifics are unavailable, but the framing suggests a practitioner walkthrough of Docker/container deployment patterns for the agent.",
+      "importance_score": 52.0,
+      "reasoning": "A user-authored deployment experience post; useful as practical guidance for containerizing Hermes Agent, but lacking visible technical depth from the supplied content and duplicating a common deployment topic covered by other items in this batch.",
+      "themes": [
+        "deployment",
+        "containerization"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by ricardodevries describing a containerized approach to running Hermes Agent. The content itself is only the title, so technical specifics are unavailable, but the framing suggests a practitioner walkthrough of Docker/container deployment patterns for the agent.</p>",
+      "content_html": "<p>Hermes Agent: My containerized take</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread from a user running a freshly provisioned Hermes agent on a headless Debian server with Z.ai's GLM 5.3 Flash model. After asking the agent to inspect its local environment and $PATH, the agent allegedly entered a long 'Thinking for 1m36s...' state with a lengthy, seemingly degenerate reasoning block, spiraling into a trance-like loop.",
+      "importance_score": 50.0,
+      "reasoning": "A troubleshooting question with some diagnostic value: it touches on agent looping/degenerate reasoning behavior with a specific third-party model and a first-run environment-introspection task. However, it is anecdotal and unresolved, so impact is limited to community debugging context.",
+      "themes": [
+        "troubleshooting",
+        "model-behavior",
+        "reasoning-loops"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread from a user running a freshly provisioned Hermes agent on a headless Debian server with Z.ai's GLM 5.3 Flash model. After asking the agent to inspect its local environment and $PATH, the agent allegedly entered a long 'Thinking for 1m36s...' state with a lengthy, seemingly degenerate reasoning block, spiraling into a trance-like loop.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49368474",
+      "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+      "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+      "url": "https://news.ycombinator.com/item?id=49368474",
+      "author": "etoxin",
+      "published": "2026-08-19T23:22:49Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino-side microcontroller with a Linux-side chip (their board has 4GB RAM and 32GB storage). The author wanted an always-on host without VPS costs or running the agent on a personal machine, and finds the board well suited for the Hermes agent client.",
+      "importance_score": 48.0,
+      "reasoning": "An interesting niche hardware-hosting tip showing Hermes Agent can run on modest embedded Linux hardware, with cost-saving motivation. It is anecdotal and client-focused rather than a core technical change, but offers practical guidance for always-on home-hosted deployments.",
+      "themes": [
+        "hardware-hosting",
+        "self-hosting",
+        "cost-optimization"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino-side microcontroller with a Linux-side chip (their board has 4GB RAM and 32GB storage). The author wanted an always-on host without VPS costs or running the agent on a personal machine, and finds the board well suited for the Hermes agent client.</p>",
+      "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+    },
+    {
+      "id": "hn-49159529",
+      "title": "Is Hermes Agent unusable without a model router?",
+      "content": "Is Hermes Agent unusable without a model router?",
+      "url": "https://github.com/maximhq/bifrost/",
+      "author": "Swapnoneel",
+      "published": "2026-08-03T18:18:59Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An HN post asking whether Hermes Agent is effectively unusable without a model router, linking to maximimhq/bifrost (an LLM proxy/router project). The content is limited to the title, framing a usability debate about whether routing/failover infrastructure is a practical requirement for Hermes Agent deployments.",
+      "importance_score": 47.0,
+      "reasoning": "Raises a practical architecture question about reliance on model routers for reliability, cost, and multi-provider setups. Potentially useful discussion for deployment patterns, but the supplied content is a bare question with no data or conclusions.",
+      "themes": [
+        "model-routing",
+        "architecture",
+        "reliability"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An HN post asking whether Hermes Agent is effectively unusable without a model router, linking to maximimhq/bifrost (an LLM proxy/router project). The content is limited to the title, framing a usability debate about whether routing/failover infrastructure is a practical requirement for Hermes Agent deployments.</p>",
+      "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+    },
+    {
+      "id": "hn-49208206",
+      "title": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "content": "Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked",
+      "url": "https://github.com/NousResearch/hermes-agent/issues/10232",
+      "author": "sundarurfriend",
+      "published": "2026-08-07T10:12:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A GitHub issue (NousResearch/hermes-agent#10232) reporting that a user's question asking whether EvoMap's Evolver was a reference/inspiration for Hermes was deleted and the user blocked. The title frames this as a moderation or transparency concern on the official repository.",
+      "importance_score": 46.0,
+      "reasoning": "Touches on project governance and community moderation transparency, which matters for an open-source project's reputation, and may hint at attribution/provenance questions around the project's origins. Scored moderately low because it is procedural/social rather than technically substantive.",
+      "themes": [
+        "moderation",
+        "project-governance",
+        "transparency"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A GitHub issue (NousResearch/hermes-agent#10232) reporting that a user's question asking whether EvoMap's Evolver was a reference/inspiration for Hermes was deleted and the user blocked. The title frames this as a moderation or transparency concern on the official repository.</p>",
+      "content_html": "<p>Asking \"Was EvoMap's Evolver a reference\" for Hermes gets deleted and blocked</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post by heyjonny reflecting on misuse or misunderstanding of how Hermes Agent is meant to be used. Only the title is available in the content, so no specific technical lessons can be extracted, but it appears to be an experience-based retrospective on agent usage patterns.",
+      "importance_score": 45.0,
+      "reasoning": "Reflective user-experience content that may contain useful lessons about appropriate Hermes Agent usage patterns, but with no visible technical specifics and low direct impact on the broader ecosystem.",
+      "themes": [
+        "user-experience",
+        "best-practices"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post by heyjonny reflecting on misuse or misunderstanding of how Hermes Agent is meant to be used. Only the title is available in the content, so no specific technical lessons can be extracted, but it appears to be an experience-based retrospective on agent usage patterns.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49441992",
+      "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+      "url": "https://hermes-agent.nousresearch.com",
+      "author": "duck",
+      "published": "2026-08-25T23:14:41Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "The main Hermes Agent landing page at hermes-agent.nousresearch.com, describing it as an open-source AI agent that grows with the user. Content is limited to the title and URL; it serves as the project's general marketing/overview entry point rather than a specific update.",
+      "importance_score": 42.0,
+      "reasoning": "General project overview material with no new technical detail or change; useful as baseline context but low informational value compared to release notes, docs changes, or concrete community tooling in this batch.",
+      "themes": [
+        "project-overview"
+      ],
+      "continuation": null,
+      "summary_html": "<p>The main Hermes Agent landing page at hermes-agent.nousresearch.com, describing it as an open-source AI agent that grows with the user. Content is limited to the title and URL; it serves as the project's general marketing/overview entry point rather than a specific update.</p>",
+      "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+    },
+    {
+      "id": "hn-49305190",
+      "title": "Show HN: I built a Claude Code plugin to query 10.6M earnings-call embeddings",
+      "content": "Hi HN,<p>I&#x27;ve been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that&#x27;s a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.<p>Some example requests:<p>&quot;What did NVIDIA say about data-center demand ",
+      "url": "https://fn2.ai/claude",
+      "author": "oceanplexian",
+      "published": "2026-08-14T22:09:36Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A Show HN for fn2.ai/claude, a platform by a solo developer offering a Claude Code plugin that queries about 10.6M earnings-call transcript embeddings for market research questions, backed by sharded PostgreSQL and ElasticSearch across two regions. The post describes example queries such as what NVIDIA said about data-center demand.",
+      "importance_score": 38.0,
+      "reasoning": "Technically interesting as an LLM plugin/database project, but it centers on Claude Code and a financial-data product, not Hermes Agent. Only marginally relevant to this batch's focus, so it scores low for Hermes ecosystem impact despite solid backend engineering content.",
+      "themes": [
+        "plugins",
+        "embeddings",
+        "financial-data"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A Show HN for fn2.ai/claude, a platform by a solo developer offering a Claude Code plugin that queries about 10.6M earnings-call transcript embeddings for market research questions, backed by sharded PostgreSQL and ElasticSearch across two regions. The post describes example queries such as what NVIDIA said about data-center demand.</p>",
+      "content_html": "<p>Hi HN,</p><p>I've been using LLMs for one-off market questions against a database of earnings transcripts since ~2025. In tech years that's a long time so as a Solo dev I built a platform around it and have been adding miscellaneous other financial tools and integrations. Backend infrastructure is super boring! PostgreSQL &amp; ElasticSearch, with the data appropriately sharded and replicated across two regions.</p><p>Some example requests:</p><p>\"What did NVIDIA say about data-center demand</p>"
+    },
+    {
+      "id": "hn-49357715",
+      "title": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "content": "Ask HN: Why does Hermes Agent not infringe on Hermès?",
+      "url": "https://news.ycombinator.com/item?id=49357715",
+      "author": "aitravel-dev",
+      "published": "2026-08-19T06:36:39Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread asking why the Hermes Agent name does not infringe on the Hermès (luxury fashion house) trademark. The content is only the question title; no legal analysis is included in the supplied data.",
+      "importance_score": 30.0,
+      "reasoning": "A naming/trademark curiosity question with no technical content about the agent itself. Minimal relevance to Hermes Agent development, deployment, or usage; low impact even for community discussion.",
+      "themes": [
+        "naming",
+        "legal"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread asking why the Hermes Agent name does not infringe on the Hermès (luxury fashion house) trademark. The content is only the question title; no legal analysis is included in the supplied data.</p>",
+      "content_html": "<p>Ask HN: Why does Hermes Agent not infringe on Hermès?</p>"
+    }
+  ]
+}

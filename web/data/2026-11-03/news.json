@@ -1,0 +1,177 @@
+{
+  "category": "news",
+  "date": "2026-11-03",
+  "category_summary": "**Releases:** **[Hermes Agent v0.22.6](/?date=2026-11-03&category=news#item-63da5898af32)** is the headline — the official stable drop rolling **776 merged PRs** and **385 fixed issues** since **v0.22.5** into CLI and installer artifacts. The same-day **[rc.1–rc.3](/?date=2026-11-03&category=news#item-89e9d5cc7761)** tags were automation-only metadata and are folded into the stable release story rather than covered separately. **Tips:** A new guide on **[Mixture of Agents presets](/?date=2026-11-03&category=news#item-ce9cdb957c6f)** walks through the default preset YAML, **fanout modes**, reasoning effort settings, and **fallbacks** — practical config for power users running multi-agent setups. **Community:** **[pomelu-hermes-plugin](/?date=2026-11-03&category=news#item-743fbef22d4c)** showcases Hermes extensibility, routing eligible scheduled messages from Pomelu chats back to the bot chat with push notifications. **Merged PRs:** No standalone PR items this cycle; PR activity is covered within the **v0.22.6** rollup. **Dev note:** The **[v0.22.5+canary.20261102T065013Z](/?date=2026-11-03&category=news#item-c01cda326c68)** build ships with no release notes and is only relevant to readers tracking bleeding-edge canary builds. RC tags (rc.1–rc.3) were excluded from the ranking as machine-generated noise with no user-facing content.",
+  "category_summary_html": "<p><strong>Releases:</strong> <strong><a href=\"/?date=2026-11-03&amp;category=news#item-63da5898af32\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.6</a></strong> is the headline — the official stable drop rolling <strong>776 merged PRs</strong> and <strong>385 fixed issues</strong> since <strong>v0.22.5</strong> into CLI and installer artifacts. The same-day <strong><a href=\"/?date=2026-11-03&amp;category=news#item-89e9d5cc7761\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.1–rc.3</a></strong> tags were automation-only metadata and are folded into the stable release story rather than covered separately. <strong>Tips:</strong> A new guide on <strong><a href=\"/?date=2026-11-03&amp;category=news#item-ce9cdb957c6f\" class=\"internal-link\" rel=\"noopener noreferrer\">Mixture of Agents presets</a></strong> walks through the default preset YAML, <strong>fanout modes</strong>, reasoning effort settings, and <strong>fallbacks</strong> — practical config for power users running multi-agent setups. <strong>Community:</strong> <strong><a href=\"/?date=2026-11-03&amp;category=news#item-743fbef22d4c\" class=\"internal-link\" rel=\"noopener noreferrer\">pomelu-hermes-plugin</a></strong> showcases Hermes extensibility, routing eligible scheduled messages from Pomelu chats back to the bot chat with push notifications. <strong>Merged PRs:</strong> No standalone PR items this cycle; PR activity is covered within the <strong>v0.22.6</strong> rollup. <strong>Dev note:</strong> The <strong><a href=\"/?date=2026-11-03&amp;category=news#item-c01cda326c68\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.5+canary.20261102T065013Z</a></strong> build ships with no release notes and is only relevant to readers tracking bleeding-edge canary builds. RC tags (rc.1–rc.3) were excluded from the ranking as machine-generated noise with no user-facing content.</p>",
+  "themes": [
+    {
+      "name": "v0.22.6 Release Pipeline",
+      "description": "The same-day RC chain (rc.1 through rc.3), canary builds, and the final stable v0.22.6 tag rolling up 776 merged PRs across all distribution channels.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 90.0
+    },
+    {
+      "name": "Configuration and Extensibility",
+      "description": "Guidance and community tooling around customizing Hermes: Mixture of Agents preset configuration with fanout and fallbacks, plus a community plugin for scheduled messaging and push notifications.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 50.0
+    }
+  ],
+  "total_items": 7,
+  "items": [
+    {
+      "id": "63da5898af32",
+      "title": "Hermes Agent v0.22.6",
+      "content": "Hermes Agent v0.22.6\nRelease Date: November 2, 2026\n\nPatch release. This tag rolls up the ~776 PRs merged since v0.22.5 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n\nAbout this release\nMeasured at commit f0d94882e89, the window since v0.22.5 contains 3,448 non-merge commits across 4,316 changed files (+248,579 / −94,077), 776 merged PRs and 385 closed issues.\nAlso in the window, undocumented here on purpose: the Webapp served from the gateway's own listener (hermes webapp, a Desktop Web Access pane to open it on your network or your own URL behind Nous sign-in, and Desktop plugins loading in a browser tab), /model reset to clear a session's model pin without losing history, per-skill locks against autonomous writes (lockable from the Desktop Capabilities pane), opt-in prepared compaction (compression.prepare_ahead), hermes cron cancel plus a per-job missed-run policy and a Stop button in the Desktop cron editor, /delegation choices saved for the next session, hermes migrate and setup moving Grok Bot and OpenBot users over, opt-in OS-keychain storage for the vault key, the catalog's requires_hermes enforced at plugin install and update, agent-picked ElevenLabs voices in text_to_speech, a pre_llm_call hook that can block a turn before inference, Desktop group chat rename, disband, mentions and attachment paste, every profile shown as a Desktop sidebar section, Telegram video notes, Slack emoji reactions in thread context, and resumable downloads in the package manager.\nFull curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\nUpdating\n\nMicrosoft Store app: updates through the Store.\nDesktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.5...v0.22.6",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.6",
+      "author": "teknium1",
+      "published": "2026-11-02T17:18:36",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hermes Agent v0.22.6 is a patch release that stabilizes the ~776 PRs merged since v0.22.5 into official GitHub release artifacts for the CLI, installers, Microsoft Store, Docker, and Hermes Cloud. The window spans 3,448 non-merge commits across 4,316 files and closes 385 issues, with curated notes deferred to v0.23.0. It also quietly ships a Webapp served from the gateway listener, a Desktop Web Access pane, browser-tab Desktop plugins, and a /model reset command.",
+      "importance_score": 92.0,
+      "reasoning": "Official stable version release covering a very large change window (776 PRs, 385 fixed issues) delivered across all distribution channels, plus undocumented new features like the gateway-served Webapp and /model reset. This is the highest-priority item for Hermes users this cycle.",
+      "themes": [
+        "Version releases",
+        "Stability and rollups",
+        "Webapp and Desktop integrations"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Agent v0.22.6 is a patch release that stabilizes the ~776 PRs merged since v0.22.5 into official GitHub release artifacts for the CLI, installers, Microsoft Store, Docker, and Hermes Cloud. The window spans 3,448 non-merge commits across 4,316 files and closes 385 issues, with curated notes deferred to v0.23.0. It also quietly ships a Webapp served from the gateway listener, a Desktop Web Access pane, browser-tab Desktop plugins, and a /model reset command.</p>",
+      "content_html": "<p>Hermes Agent v0.22.6</p>\n<p>Release Date: November 2, 2026</p>\n<p>Patch release. This tag rolls up the ~776 PRs merged since v0.22.5 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.</p>\n<p>About this release</p>\n<p>Measured at commit f0d94882e89, the window since v0.22.5 contains 3,448 non-merge commits across 4,316 changed files (+248,579 / −94,077), 776 merged PRs and 385 closed issues.</p>\n<p>Also in the window, undocumented here on purpose: the Webapp served from the gateway's own listener (hermes webapp, a Desktop Web Access pane to open it on your network or your own URL behind Nous sign-in, and Desktop plugins loading in a browser tab), /model reset to clear a session's model pin without losing history, per-skill locks against autonomous writes (lockable from the Desktop Capabilities pane), opt-in prepared compaction (compression.prepare_ahead), hermes cron cancel plus a per-job missed-run policy and a Stop button in the Desktop cron editor, /delegation choices saved for the next session, hermes migrate and setup moving Grok Bot and OpenBot users over, opt-in OS-keychain storage for the vault key, the catalog's requires_hermes enforced at plugin install and update, agent-picked ElevenLabs voices in text_to_speech, a pre_llm_call hook that can block a turn before inference, Desktop group chat rename, disband, mentions and attachment paste, every profile shown as a Desktop sidebar section, Telegram video notes, Slack emoji reactions in thread context, and resumable downloads in the package manager.</p>\n<p>Full curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.</p>\n<p>Updating</p>\n<p>Microsoft Store app: updates through the Store.</p>\n<p>Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.5...v0.22.6</p>"
+    },
+    {
+      "id": "ce9cdb957c6f",
+      "title": "Hermes Agent Mixture of Agents Presets Guide 2026: Configuration, Fanout, and Fallbacks",
+      "content": "Configure Hermes Agent Mixture of Agents presets in 2026: default preset YAML, fanout modes, reasoning effort, privacy filters, caching, and fallback wiring.",
+      "url": "https://hermes-tutorials.dev/blog/hermes-agent-mixture-of-agents-presets-guide-2026/",
+      "author": "Hermes Agent",
+      "published": "2026-11-02T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A tutorial covering how to configure Hermes Agent Mixture of Agents presets, including the default preset YAML, fanout modes, reasoning effort settings, privacy filters, caching, and fallback wiring. It serves as a practical configuration reference for users running multi-agent setups.",
+      "importance_score": 58.0,
+      "reasoning": "Substantive how-to guide on an advanced Hermes capability (MoA presets with fanout and fallbacks), useful for power users, though it is third-party tutorial coverage rather than an official capability announcement.",
+      "themes": [
+        "Mixture of Agents",
+        "Configuration guides",
+        "Reliability and fallbacks"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A tutorial covering how to configure Hermes Agent Mixture of Agents presets, including the default preset YAML, fanout modes, reasoning effort settings, privacy filters, caching, and fallback wiring. It serves as a practical configuration reference for users running multi-agent setups.</p>",
+      "content_html": "<p>Configure Hermes Agent Mixture of Agents presets in 2026: default preset YAML, fanout modes, reasoning effort, privacy filters, caching, and fallback wiring.</p>"
+    },
+    {
+      "id": "743fbef22d4c",
+      "title": "pomelu-hermes-plugin (Plugins & Extensions)",
+      "content": "This Hermes plugin routes eligible scheduled messages created from Pomelu chats back to the bot chat, and tells the bot how to message users later. When a bot answers in its Bot Chat, registered phones without Pomelu open receive a push notification with the bot’s name and the start of the answer.",
+      "url": "https://hermesatlas.com/projects/ateymoori/pomelu-hermes-plugin",
+      "author": "Unknown",
+      "published": "2026-11-02T13:28:00",
+      "source": "Hermes Atlas — new projects",
+      "source_type": "rss",
+      "tags": [
+        "Plugins & Extensions"
+      ],
+      "summary": "A community-built Hermes plugin named pomelu-hermes-plugin that routes eligible scheduled messages from Pomelu chats back to the bot chat and instructs the bot on later follow-up messaging. When a bot answers in its Bot Chat, registered phones without the Pomelu app open receive push notifications showing the bot name and answer preview.",
+      "importance_score": 34.0,
+      "reasoning": "Community plugin showcase demonstrating Hermes extensibility for chat scheduling and push notifications; interesting to the plugin ecosystem but niche in scope and not an official release or widely applicable feature.",
+      "themes": [
+        "Community plugins",
+        "Messaging integrations",
+        "Push notifications"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A community-built Hermes plugin named pomelu-hermes-plugin that routes eligible scheduled messages from Pomelu chats back to the bot chat and instructs the bot on later follow-up messaging. When a bot answers in its Bot Chat, registered phones without the Pomelu app open receive push notifications showing the bot name and answer preview.</p>",
+      "content_html": "<p>This Hermes plugin routes eligible scheduled messages created from Pomelu chats back to the bot chat, and tells the bot how to message users later. When a bot answers in its Bot Chat, registered phones without Pomelu open receive a push notification with the bot’s name and the start of the answer.</p>"
+    },
+    {
+      "id": "c01cda326c68",
+      "title": "v0.22.5+canary.20261102T065013Z",
+      "content": "Hermes Agent canary 20261102T065013Z",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261102T065013Z",
+      "author": "github-actions[bot]",
+      "published": "2026-11-02T06:50:14",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An automated canary build of Hermes Agent (20261102T065013Z) published on top of the v0.22.5 line, containing only a one-line title and no release notes. Canary builds are continuous-integration snapshots used to validate changes before stable tagging.",
+      "importance_score": 15.0,
+      "reasoning": "Automated CI canary tag with no content or changelog; relevant only to developers tracking bleeding-edge builds. Most users should wait for the stable v0.22.6 release instead.",
+      "themes": [
+        "Canary builds",
+        "Continuous integration"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An automated canary build of Hermes Agent (20261102T065013Z) published on top of the v0.22.5 line, containing only a one-line title and no release notes. Canary builds are continuous-integration snapshots used to validate changes before stable tagging.</p>",
+      "content_html": "<p>Hermes Agent canary 20261102T065013Z</p>"
+    },
+    {
+      "id": "03f12343e113",
+      "title": "rc.3-v0.22.6",
+      "content": "{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1793635086,\"commit\":\"f0…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.3-v0.22.6",
+      "author": "teknium1",
+      "published": "2026-11-02T15:58:06",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Third release-candidate tag for v0.22.6, published as raw automation metadata (attempt 3, autopublish false, commit f0...) with no human-facing notes. It represents the final validation step immediately before the stable v0.22.6 tag.",
+      "importance_score": 12.0,
+      "reasoning": "Machine-generated RC metadata with no readable content; notable only as a precursor to the stable v0.22.6 release covered separately. The commit hash f0... matches the release measurement commit, but there is nothing actionable for users.",
+      "themes": [
+        "Release candidates",
+        "Release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Third release-candidate tag for v0.22.6, published as raw automation metadata (attempt 3, autopublish false, commit f0...) with no human-facing notes. It represents the final validation step immediately before the stable v0.22.6 tag.</p>",
+      "content_html": "<p>{\"attempt\":3,\"autopublish\":false,\"claimEpoch\":1793635086,\"commit\":\"f0…</p>"
+    },
+    {
+      "id": "536409534536",
+      "title": "rc.2-v0.22.6",
+      "content": "{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1793616592,\"commit\":\"9c…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.22.6",
+      "author": "teknium1",
+      "published": "2026-11-02T10:49:52",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Second release-candidate tag for v0.22.6, containing only automation metadata (attempt 2, autopublish false, commit 9c...) and no user-facing notes. Part of the RC sequence validating the v0.22.6 stable tag.",
+      "importance_score": 10.0,
+      "reasoning": "Intermediate machine-generated RC artifact with no changelog or features described; low value to end users beyond indicating the release pipeline was iterating on v0.22.6 during the day.",
+      "themes": [
+        "Release candidates",
+        "Release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Second release-candidate tag for v0.22.6, containing only automation metadata (attempt 2, autopublish false, commit 9c...) and no user-facing notes. Part of the RC sequence validating the v0.22.6 stable tag.</p>",
+      "content_html": "<p>{\"attempt\":2,\"autopublish\":false,\"claimEpoch\":1793616592,\"commit\":\"9c…</p>"
+    },
+    {
+      "id": "89e9d5cc7761",
+      "title": "rc.1-v0.22.6",
+      "content": "{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1793607076,\"commit\":\"30…",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.22.6",
+      "author": "teknium1",
+      "published": "2026-11-02T08:11:16",
+      "source": "Release notes from hermes-agent",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "First release-candidate tag for v0.22.6, published as automation metadata (attempt 1, autopublish false, commit 30...) with no descriptive content. It kicked off the RC chain that concluded with the stable v0.22.6 release the same day.",
+      "importance_score": 10.0,
+      "reasoning": "Another bare RC metadata tag with no notes or features; significance is limited to showing the same-day RC-to-stable pipeline for v0.22.6. Duplicate-adjacent coverage of the actual release.",
+      "themes": [
+        "Release candidates",
+        "Release automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>First release-candidate tag for v0.22.6, published as automation metadata (attempt 1, autopublish false, commit 30...) with no descriptive content. It kicked off the RC chain that concluded with the stable v0.22.6 release the same day.</p>",
+      "content_html": "<p>{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1793607076,\"commit\":\"30…</p>"
+    }
+  ]
+}

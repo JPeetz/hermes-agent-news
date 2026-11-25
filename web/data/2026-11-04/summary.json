@@ -1,0 +1,1060 @@
+{
+  "date": "2026-11-04",
+  "coverage_date": "2026-11-03",
+  "coverage_start": "2026-11-03T00:00:00",
+  "coverage_end": "2026-11-03T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-11-04\n\n**Executive summary:** A fast-follow day — the issue's dominant story is a patch landing within a day of the flagship: one day behind yesterday's **776**-PR drop, [**Hermes Agent v0.22.7**](/?date=2026-11-04&category=news#item-bb8737992074) went stable (Nov 3), rolling roughly **174** merged PRs since **v0.22.6** into **CLI** and desktop builds — with **Teknium**'s [\"live now in our patch release\" advisory](/?date=2026-11-04&category=social#item-143df0ff2573) urging multi-machine and gateway users to upgrade immediately (the batch's most urgent and most-engaged item); the same-day [**rc.1-v0.22.7** tag](/?date=2026-11-04&category=news#item-4d573769d8c3) and the automated [**v0.22.6+canary.20261103T064339Z** build](/?date=2026-11-04&category=news#item-1e7f98b1d16b) are treated as pipeline footnotes folded into the release story rather than covered separately (the canary ships with no release notes and is moot for anyone off pre-release channels), and there are no standalone merged-PR items this cycle — PR activity lives inside the **174**-PR rollup. The release-adjacent coverage centers on **v0.22.6**'s two flagship features (released Nov 2, so fresh release coverage, not stale news about an existing feature): [**Hermes Webapp**](/?date=2026-11-04&category=research#item-984b4fa257f3), which serves the full Desktop workspace in any browser — the payoff for yesterday's webapp-from-agent-server demo — and [**Hermes Vault**](/?date=2026-11-04&category=research#item-0848130d96c6), a keychain-backed credential store that signs in, enters 2FA codes, and fills forms and checkouts without the model ever seeing secrets — the most security-relevant change of the week, now with [a dedicated deep dive](/?date=2026-11-04&category=news#item-0848130d96c6) on the OS-keychain key storage behind it. Official integrations round out the flagship: [**Claude Pro/Max** subscription support](/?date=2026-11-04&category=research#item-hn-49790991) is now first-party in the release (reusing existing subscription auth via a direct-SDK plugin and eliminating a separate API bill — the shipping form of the [docs carried since 10-20](/?date=2026-11-04&category=research#item-hn-49790991)), and [**Hermes Kanban** adds first-party multi-agent profile collaboration](/?date=2026-11-04&category=research#item-hn-49604068), directly answering the loudest recurring user request for coordinating multiple agents (echoed in the [carried 'manage your personal agents' thread](/?date=2026-11-04&category=research#item-hn-50326764), with [the profile docs](/?date=2026-11-04&category=research#item-hn-49604068) carried since 10-27). The mobile saga advanced from caps to funnel: after the **TestFlight**/**Firebase** max-out and [**Teknium**'s seat-expansion commitment](/?date=2026-11-04&category=social#item-c28cd52e378b), [a public waitlist is now open](/?date=2026-11-04&category=social#item-450268a47b1d) for the **Hermes Agent** mobile app — [the official **@NousResearch** **NousCon 2026** thank-you post](/?date=2026-11-04&category=social#item-870b4fefc9d3) (**921** likes / **65k** views) confirming the beta launched at the event and filled up almost instantly, [**Teknium** clarifying the caps are **Apple**/**Android** hard limits](/?date=2026-11-04&category=social#item-420c9743ccac) and that the agent runs in [**Hermes Cloud** rather than on-device](/?date=2026-11-04&category=social#item-990904b61b55), [**@rlaope**'s direct app-link post](/?date=2026-11-04&category=social#item-df1fe71c6b59) leading their announcement series, and [a Reddit simulator walkthrough of the app](/?date=2026-11-04&category=news#item-ad45c96b1fd5) circulating as a teaser while seats refill. The monetization story shifted materially: [every **Nous Portal** subscription now bundles a cloud agent](/?date=2026-11-04&category=social#item-821559a095d6) with its own computer and high-usage-limit models — support exchanges clarified the new plans [no longer use **credits**](/?date=2026-11-04&category=social#item-29f6c11b5d26), a notable delivery-and-pricing pivot (the rollout of the subscription revamp filed 10-28). Reliability got same-day treatment: [**Teknium** root-caused a **Telegram** breakage in **Hermes Cloud**](/?date=2026-11-04&category=social#item-4fe86b159cec) — the shared Hermes bot was disabling users' own bots at every start — with the fix already merged to main, a transparent-debugging moment the community appreciated against the week's two standing watch items: the [**GLM 5.3 Flash** trance-loop report](/?date=2026-11-04&category=research#item-hn-49916751) (the name remains unverified — tracker tops at **GLM-5.2**, released 2026-06-16) and the [adversarial prompt-leakage probing](/?date=2026-11-04&category=research#item-hn-49231797) (the **hermes-jekyl-hyde** line, carried). The extensibility layer added three fresh entries on **Hermes Atlas**: [**hermes-finance**](/?date=2026-11-04&category=news#item-3470b3ff9d25) (self-hosted finance dashboard on local **SQLite** with **Plaid** sync and native agent tools + **MCP**), [**pomelu**](/?date=2026-11-04&category=news#item-7908635a51e2) (an open-source **Android**/**iOS** client for self-hosted Hermes gateways, filling the frequently requested mobile-access gap while the official app's seats refill), and [**hermes-mock-review**](/?date=2026-11-04&category=news#item-58f3efe05f10) (human-in-the-loop UI/design review with shareable approve/request-changes boards) — joining the carried rails ([**Verso**](/?date=2026-11-04&category=research#item-hn-49628094), [**ClusterMob**](/?date=2026-11-04&category=research#item-hn-50197497), [**Refine Cycle**](/?date=2026-11-04&category=research#item-hn-49606988), [**Paper Harness**](/?date=2026-11-04&category=research#item-hn-50278175) with its SwiftUI iPhone client, [**Grafana**](/?date=2026-11-04&category=research#item-hn-49318128), [**Almanac** (**YC S26**)](/?date=2026-11-04&category=research#item-hn-49511007) with its company-aware assistant now surfacing real integration friction, the [containerized setup guide](/?date=2026-11-04&category=research#item-hn-50131496), the [**Arduino UNO Q** recipe](/?date=2026-11-04&category=research#item-hn-49368474)) while the [missing official **Helm** chart and root-at-init image](/?date=2026-11-04&category=research#item-hn-49977400) and the [~**23,000**-open-PR backlog](/?date=2026-11-04&category=research#item-hn-49424643) remain the project-health watch. Tips ran practical: [a personal-ops tutorial wiring **Gmail**, **Calendar**, a markdown task file, and **Telegram** into a scheduled morning-brief agent](/?date=2026-11-04&category=news#item-47e61d4744ae), plus **Teknium**'s [self-hosted-to-cloud migration walkthrough via `hermes backup`](/?date=2026-11-04&category=social#item-ef1290ef6b84) and a pointer to the [advanced delegation plugin](/?date=2026-11-04&category=social#item-3a6f3c9117c9); **@rlaope** showcased [**oh-my-hermes** artwork skills alongside coding optimization](/?date=2026-11-04&category=social#item-cfcb3478b4ce) (the OMH line compounding on its 5,000-star base). Off-target exclusions held: [a training-free MoE pruning paper](/?date=2026-11-04&category=research#item-2610.41366), [a **Claude Code** RAG plugin](/?date=2026-11-04&category=research#item-hn-49305190), and [**Grok** Bot trial billing](/?date=2026-11-04&category=research#item-ffc3116324e4). Housekeeping: Reddit contributed nothing again — the simulator walkthrough reached the edition via the news feed, not Reddit's own section. Net read: a platform converting release momentum into infrastructure — a flagship drop answered within a day by a **174**-PR patch, subscriptions rebuilt around bundled cloud agents instead of credits, mobile demand formalized into a waitlist, and the extensibility layer compounding across finance, review, and mobile clients — while the frictions stay known-quantity (**GLM-5.3** phantom naming, the **23k** backlog, the **K8s** gaps) and the security ledger nets positive (Vault's never-see-secrets design against carried loop/probing watch items). Practical agenda: update to [**v0.22.7**](/?date=2026-11-04&category=news#item-bb8737992074) now (multi-machine/gateway users especially — the urgent advisory applies); read the [Vault deep dive](/?date=2026-11-04&category=news#item-0848130d96c6) before letting the agent near credentials; canary trackers can move to stable since [**v0.22.6+canary.20261103T064339Z**](/?date=2026-11-04&category=news#item-1e7f98b1d16b) is automation-only; mobile hopefuls join the [public waitlist](/?date=2026-11-04&category=social#item-450268a47b1d); self-hosters eye the [`hermes backup` migration path](/?date=2026-11-04&category=social#item-ef1290ef6b84) and the [advanced delegation plugin](/?date=2026-11-04&category=social#item-3a6f3c9117c9); power users build the [morning-brief agent](/?date=2026-11-04&category=news#item-47e61d4744ae) and try [**Webapp**](/?date=2026-11-04&category=research#item-984b4fa257f3); **Claude Pro/Max** subscribers start from the [carried docs](/?date=2026-11-04&category=research#item-hn-49790991) now that support is official; **K8s** deployers plan around both [documented gaps](/?date=2026-11-04&category=research#item-hn-49977400); treat \"**GLM 5.3 Flash**\" as unverified; watch how the no-credits subscription bundling lands and whether the waitlist converts, and whether yesterday's \"coming this Thursday\" 👀 tease pays off tomorrow — filing [**Pro/Max** support](/?date=2026-11-04&category=research#item-hn-49790991), [**Kanban**](/?date=2026-11-04&category=research#item-hn-49604068), [**Verso**](/?date=2026-11-04&category=research#item-hn-49628094), [**Grafana**](/?date=2026-11-04&category=research#item-hn-49318128), [**ClusterMob**](/?date=2026-11-04&category=research#item-hn-50197497), [**Refine Cycle**](/?date=2026-11-04&category=research#item-hn-49606988), [**Paper Harness**](/?date=2026-11-04&category=research#item-hn-50278175), the [**K8s** gaps](/?date=2026-11-04&category=research#item-hn-49977400), the [~**23k** backlog](/?date=2026-11-04&category=research#item-hn-49424643), the OMH launch/momentum posts, the [haywire thread](/?date=2026-11-04&category=research#item-hn-49916751), the [**Arduino UNO Q** recipe](/?date=2026-11-04&category=research#item-hn-49368474), [**hermes-jekyl-hyde**](/?date=2026-11-04&category=research#item-hn-49231797), and [**Almanac**](/?date=2026-11-04&category=research#item-hn-49511007) as reference (de-dup duty, twentieth cycle running).\n\n*Executive summary above — full section write-ups (Releases, Merged PRs, Community, Tips & Tutorials) follow in the complete edition.*",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-11-04</p>\n<p><strong>Executive summary:</strong> A fast-follow day — the issue's dominant story is a patch landing within a day of the flagship: one day behind yesterday's <strong>776</strong>-PR drop, <a href=\"/?date=2026-11-04&amp;category=news#item-bb8737992074\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent v0.22.7</strong></a> went stable (Nov 3), rolling roughly <strong>174</strong> merged PRs since <strong>v0.22.6</strong> into <strong>CLI</strong> and desktop builds — with <strong>Teknium</strong>'s <a href=\"/?date=2026-11-04&amp;category=social#item-143df0ff2573\" class=\"internal-link\" rel=\"noopener noreferrer\">\"live now in our patch release\" advisory</a> urging multi-machine and gateway users to upgrade immediately (the batch's most urgent and most-engaged item); the same-day <a href=\"/?date=2026-11-04&amp;category=news#item-4d573769d8c3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>rc.1-v0.22.7</strong> tag</a> and the automated <a href=\"/?date=2026-11-04&amp;category=news#item-1e7f98b1d16b\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.6+canary.20261103T064339Z</strong> build</a> are treated as pipeline footnotes folded into the release story rather than covered separately (the canary ships with no release notes and is moot for anyone off pre-release channels), and there are no standalone merged-PR items this cycle — PR activity lives inside the <strong>174</strong>-PR rollup. The release-adjacent coverage centers on <strong>v0.22.6</strong>'s two flagship features (released Nov 2, so fresh release coverage, not stale news about an existing feature): <a href=\"/?date=2026-11-04&amp;category=research#item-984b4fa257f3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Webapp</strong></a>, which serves the full Desktop workspace in any browser — the payoff for yesterday's webapp-from-agent-server demo — and <a href=\"/?date=2026-11-04&amp;category=research#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Vault</strong></a>, a keychain-backed credential store that signs in, enters 2FA codes, and fills forms and checkouts without the model ever seeing secrets — the most security-relevant change of the week, now with <a href=\"/?date=2026-11-04&amp;category=news#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">a dedicated deep dive</a> on the OS-keychain key storage behind it. Official integrations round out the flagship: <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription support</a> is now first-party in the release (reusing existing subscription auth via a direct-SDK plugin and eliminating a separate API bill — the shipping form of the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">docs carried since 10-20</a>), and <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Kanban</strong> adds first-party multi-agent profile collaboration</a>, directly answering the loudest recurring user request for coordinating multiple agents (echoed in the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">carried 'manage your personal agents' thread</a>, with <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">the profile docs</a> carried since 10-27). The mobile saga advanced from caps to funnel: after the <strong>TestFlight</strong>/<strong>Firebase</strong> max-out and <a href=\"/?date=2026-11-04&amp;category=social#item-c28cd52e378b\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Teknium</strong>'s seat-expansion commitment</a>, <a href=\"/?date=2026-11-04&amp;category=social#item-450268a47b1d\" class=\"internal-link\" rel=\"noopener noreferrer\">a public waitlist is now open</a> for the <strong>Hermes Agent</strong> mobile app — <a href=\"/?date=2026-11-04&amp;category=social#item-870b4fefc9d3\" class=\"internal-link\" rel=\"noopener noreferrer\">the official <strong>@NousResearch</strong> <strong>NousCon 2026</strong> thank-you post</a> (<strong>921</strong> likes / <strong>65k</strong> views) confirming the beta launched at the event and filled up almost instantly, <a href=\"/?date=2026-11-04&amp;category=social#item-420c9743ccac\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Teknium</strong> clarifying the caps are <strong>Apple</strong>/<strong>Android</strong> hard limits</a> and that the agent runs in <a href=\"/?date=2026-11-04&amp;category=social#item-990904b61b55\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Cloud</strong> rather than on-device</a>, <a href=\"/?date=2026-11-04&amp;category=social#item-df1fe71c6b59\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>@rlaope</strong>'s direct app-link post</a> leading their announcement series, and <a href=\"/?date=2026-11-04&amp;category=news#item-ad45c96b1fd5\" class=\"internal-link\" rel=\"noopener noreferrer\">a Reddit simulator walkthrough of the app</a> circulating as a teaser while seats refill. The monetization story shifted materially: <a href=\"/?date=2026-11-04&amp;category=social#item-821559a095d6\" class=\"internal-link\" rel=\"noopener noreferrer\">every <strong>Nous Portal</strong> subscription now bundles a cloud agent</a> with its own computer and high-usage-limit models — support exchanges clarified the new plans <a href=\"/?date=2026-11-04&amp;category=social#item-29f6c11b5d26\" class=\"internal-link\" rel=\"noopener noreferrer\">no longer use <strong>credits</strong></a>, a notable delivery-and-pricing pivot (the rollout of the subscription revamp filed 10-28). Reliability got same-day treatment: <a href=\"/?date=2026-11-04&amp;category=social#item-4fe86b159cec\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Teknium</strong> root-caused a <strong>Telegram</strong> breakage in <strong>Hermes Cloud</strong></a> — the shared Hermes bot was disabling users' own bots at every start — with the fix already merged to main, a transparent-debugging moment the community appreciated against the week's two standing watch items: the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>GLM 5.3 Flash</strong> trance-loop report</a> (the name remains unverified — tracker tops at <strong>GLM-5.2</strong>, released 2026-06-16) and the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">adversarial prompt-leakage probing</a> (the <strong>hermes-jekyl-hyde</strong> line, carried). The extensibility layer added three fresh entries on <strong>Hermes Atlas</strong>: <a href=\"/?date=2026-11-04&amp;category=news#item-3470b3ff9d25\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes-finance</strong></a> (self-hosted finance dashboard on local <strong>SQLite</strong> with <strong>Plaid</strong> sync and native agent tools + <strong>MCP</strong>), <a href=\"/?date=2026-11-04&amp;category=news#item-7908635a51e2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>pomelu</strong></a> (an open-source <strong>Android</strong>/<strong>iOS</strong> client for self-hosted Hermes gateways, filling the frequently requested mobile-access gap while the official app's seats refill), and <a href=\"/?date=2026-11-04&amp;category=news#item-58f3efe05f10\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes-mock-review</strong></a> (human-in-the-loop UI/design review with shareable approve/request-changes boards) — joining the carried rails (<a href=\"/?date=2026-11-04&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong></a> with its SwiftUI iPhone client, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong> (<strong>YC S26</strong>)</a> with its company-aware assistant now surfacing real integration friction, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized setup guide</a>, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong> recipe</a>) while the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">missing official <strong>Helm</strong> chart and root-at-init image</a> and the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~<strong>23,000</strong>-open-PR backlog</a> remain the project-health watch. Tips ran practical: <a href=\"/?date=2026-11-04&amp;category=news#item-47e61d4744ae\" class=\"internal-link\" rel=\"noopener noreferrer\">a personal-ops tutorial wiring <strong>Gmail</strong>, <strong>Calendar</strong>, a markdown task file, and <strong>Telegram</strong> into a scheduled morning-brief agent</a>, plus <strong>Teknium</strong>'s <a href=\"/?date=2026-11-04&amp;category=social#item-ef1290ef6b84\" class=\"internal-link\" rel=\"noopener noreferrer\">self-hosted-to-cloud migration walkthrough via <code>hermes backup</code></a> and a pointer to the <a href=\"/?date=2026-11-04&amp;category=social#item-3a6f3c9117c9\" class=\"internal-link\" rel=\"noopener noreferrer\">advanced delegation plugin</a>; <strong>@rlaope</strong> showcased <a href=\"/?date=2026-11-04&amp;category=social#item-cfcb3478b4ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes</strong> artwork skills alongside coding optimization</a> (the OMH line compounding on its 5,000-star base). Off-target exclusions held: <a href=\"/?date=2026-11-04&amp;category=research#item-2610.41366\" class=\"internal-link\" rel=\"noopener noreferrer\">a training-free MoE pruning paper</a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49305190\" class=\"internal-link\" rel=\"noopener noreferrer\">a <strong>Claude Code</strong> RAG plugin</a>, and <a href=\"/?date=2026-11-04&amp;category=research#item-ffc3116324e4\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grok</strong> Bot trial billing</a>. Housekeeping: Reddit contributed nothing again — the simulator walkthrough reached the edition via the news feed, not Reddit's own section. Net read: a platform converting release momentum into infrastructure — a flagship drop answered within a day by a <strong>174</strong>-PR patch, subscriptions rebuilt around bundled cloud agents instead of credits, mobile demand formalized into a waitlist, and the extensibility layer compounding across finance, review, and mobile clients — while the frictions stay known-quantity (<strong>GLM-5.3</strong> phantom naming, the <strong>23k</strong> backlog, the <strong>K8s</strong> gaps) and the security ledger nets positive (Vault's never-see-secrets design against carried loop/probing watch items). Practical agenda: update to <a href=\"/?date=2026-11-04&amp;category=news#item-bb8737992074\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.7</strong></a> now (multi-machine/gateway users especially — the urgent advisory applies); read the <a href=\"/?date=2026-11-04&amp;category=news#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Vault deep dive</a> before letting the agent near credentials; canary trackers can move to stable since <a href=\"/?date=2026-11-04&amp;category=news#item-1e7f98b1d16b\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>v0.22.6+canary.20261103T064339Z</strong></a> is automation-only; mobile hopefuls join the <a href=\"/?date=2026-11-04&amp;category=social#item-450268a47b1d\" class=\"internal-link\" rel=\"noopener noreferrer\">public waitlist</a>; self-hosters eye the <a href=\"/?date=2026-11-04&amp;category=social#item-ef1290ef6b84\" class=\"internal-link\" rel=\"noopener noreferrer\"><code>hermes backup</code> migration path</a> and the <a href=\"/?date=2026-11-04&amp;category=social#item-3a6f3c9117c9\" class=\"internal-link\" rel=\"noopener noreferrer\">advanced delegation plugin</a>; power users build the <a href=\"/?date=2026-11-04&amp;category=news#item-47e61d4744ae\" class=\"internal-link\" rel=\"noopener noreferrer\">morning-brief agent</a> and try <a href=\"/?date=2026-11-04&amp;category=research#item-984b4fa257f3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Webapp</strong></a>; <strong>Claude Pro/Max</strong> subscribers start from the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">carried docs</a> now that support is official; <strong>K8s</strong> deployers plan around both <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">documented gaps</a>; treat \"<strong>GLM 5.3 Flash</strong>\" as unverified; watch how the no-credits subscription bundling lands and whether the waitlist converts, and whether yesterday's \"coming this Thursday\" 👀 tease pays off tomorrow — filing <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Pro/Max</strong> support</a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong></a>, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>K8s</strong> gaps</a>, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">~<strong>23k</strong> backlog</a>, the OMH launch/momentum posts, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">haywire thread</a>, the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong> recipe</a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes-jekyl-hyde</strong></a>, and <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong></a> as reference (de-dup duty, twentieth cycle running).</p>\n<p><em>Executive summary above — full section write-ups (Releases, Merged PRs, Community, Tips &amp; Tutorials) follow in the complete edition.</em></p>",
+  "top_topics": [
+    {
+      "name": "v0.22.7 Stable Patch Release",
+      "description": "[Hermes Agent v0.22.7](/?date=2026-11-04&category=news#item-bb8737992074) went stable on November 3, rolling roughly 174 merged PRs since v0.22.6 into CLI and desktop builds. [Teknium urged multi-machine and gateway users to upgrade immediately](/?date=2026-11-04&category=social#item-143df0ff2573), making it the day's most urgent and most-engaged item. Same-day [rc.1](/?date=2026-11-04&category=news#item-4d573769d8c3) and [canary](/?date=2026-11-04&category=news#item-1e7f98b1d16b) tags are pipeline footnotes superseded by the stable release.",
+      "description_html": "<a href=\"/?date=2026-11-04&amp;category=news#item-bb8737992074\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.7</a> went stable on November 3, rolling roughly 174 merged PRs since v0.22.6 into CLI and desktop builds. <a href=\"/?date=2026-11-04&amp;category=social#item-143df0ff2573\" class=\"internal-link\" rel=\"noopener noreferrer\">Teknium urged multi-machine and gateway users to upgrade immediately</a>, making it the day's most urgent and most-engaged item. Same-day <a href=\"/?date=2026-11-04&amp;category=news#item-4d573769d8c3\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.1</a> and <a href=\"/?date=2026-11-04&amp;category=news#item-1e7f98b1d16b\" class=\"internal-link\" rel=\"noopener noreferrer\">canary</a> tags are pipeline footnotes superseded by the stable release.",
+      "category_breakdown": {
+        "news": 3,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Hermes Mobile App Momentum",
+      "description": "The official [Hermes mobile beta launched at NousCon 2026](/?date=2026-11-04&category=social#item-870b4fefc9d3) and [hit Apple's participant cap almost instantly](/?date=2026-11-04&category=social#item-870b4fefc9d3), with a [public waitlist now open](/?date=2026-11-04&category=social#item-450268a47b1d). Teknium clarified the [seat caps are hard limits set by Apple and Android](/?date=2026-11-04&category=social#item-420c9743ccac) and that the [agent runs in Hermes Cloud rather than on-device](/?date=2026-11-04&category=social#item-990904b61b55). A [Reddit simulator walkthrough of the app](/?date=2026-11-04&category=news#item-ad45c96b1fd5) is circulating as a teaser while users await beta access.",
+      "description_html": "The official <a href=\"/?date=2026-11-04&amp;category=social#item-870b4fefc9d3\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes mobile beta launched at NousCon 2026</a> and <a href=\"/?date=2026-11-04&amp;category=social#item-870b4fefc9d3\" class=\"internal-link\" rel=\"noopener noreferrer\">hit Apple's participant cap almost instantly</a>, with a <a href=\"/?date=2026-11-04&amp;category=social#item-450268a47b1d\" class=\"internal-link\" rel=\"noopener noreferrer\">public waitlist now open</a>. Teknium clarified the <a href=\"/?date=2026-11-04&amp;category=social#item-420c9743ccac\" class=\"internal-link\" rel=\"noopener noreferrer\">seat caps are hard limits set by Apple and Android</a> and that the <a href=\"/?date=2026-11-04&amp;category=social#item-990904b61b55\" class=\"internal-link\" rel=\"noopener noreferrer\">agent runs in Hermes Cloud rather than on-device</a>. A <a href=\"/?date=2026-11-04&amp;category=news#item-ad45c96b1fd5\" class=\"internal-link\" rel=\"noopener noreferrer\">Reddit simulator walkthrough of the app</a> is circulating as a teaser while users await beta access.",
+      "category_breakdown": {
+        "social": 4,
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "v0.22.6 Flagship Features",
+      "description": "Coverage centers on the two headline features shipped in v0.22.6 (released November 2): [Hermes Webapp](/?date=2026-11-04&category=research#item-984b4fa257f3), which serves the full Desktop workspace in any browser, and [Hermes Vault](/?date=2026-11-04&category=research#item-0848130d96c6), a keychain-backed credential store that signs in, enters 2FA codes, and fills checkouts without the model seeing secrets. Official integrations also include [Claude Pro/Max subscription support](/?date=2026-11-04&category=research#item-hn-49790991) and first-party multi-agent collaboration in [Hermes Kanban](/?date=2026-11-04&category=research#item-hn-49604068).",
+      "description_html": "Coverage centers on the two headline features shipped in v0.22.6 (released November 2): <a href=\"/?date=2026-11-04&amp;category=research#item-984b4fa257f3\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Webapp</a>, which serves the full Desktop workspace in any browser, and <a href=\"/?date=2026-11-04&amp;category=research#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Vault</a>, a keychain-backed credential store that signs in, enters 2FA codes, and fills checkouts without the model seeing secrets. Official integrations also include <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a> and first-party multi-agent collaboration in <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a>.",
+      "category_breakdown": {
+        "research": 4,
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "Third-Party Ecosystem Tooling",
+      "description": "A wave of community projects extends Hermes: a self-hosted [finance dashboard](/?date=2026-11-04&category=news#item-3470b3ff9d25), a cross-platform [mobile gateway client (pomelu)](/?date=2026-11-04&category=news#item-7908635a51e2), a [UI review plugin](/?date=2026-11-04&category=news#item-58f3efe05f10), [Grafana observability dashboards](/?date=2026-11-04&category=research#item-hn-49318128), a [profile registry (ClusterMob)](/?date=2026-11-04&category=research#item-hn-50197497), a [self-improvement plugin](/?date=2026-11-04&category=research#item-hn-49606988), a [SwiftUI iPhone client](/?date=2026-11-04&category=research#item-hn-50278175), and an [orchestrator](/?date=2026-11-04&category=research#item-hn-49628094) GUI. This breadth signals a maturing plugin and client ecosystem around the agent.",
+      "description_html": "A wave of community projects extends Hermes: a self-hosted <a href=\"/?date=2026-11-04&amp;category=news#item-3470b3ff9d25\" class=\"internal-link\" rel=\"noopener noreferrer\">finance dashboard</a>, a cross-platform <a href=\"/?date=2026-11-04&amp;category=news#item-7908635a51e2\" class=\"internal-link\" rel=\"noopener noreferrer\">mobile gateway client (pomelu)</a>, a <a href=\"/?date=2026-11-04&amp;category=news#item-58f3efe05f10\" class=\"internal-link\" rel=\"noopener noreferrer\">UI review plugin</a>, <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana observability dashboards</a>, a <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">profile registry (ClusterMob)</a>, a <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">self-improvement plugin</a>, a <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">SwiftUI iPhone client</a>, and an <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">orchestrator</a> GUI. This breadth signals a maturing plugin and client ecosystem around the agent.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 6
+      },
+      "representative_items": [],
+      "importance": 76
+    },
+    {
+      "name": "Cloud Agent Subscription Bundling",
+      "description": "Every [Nous Portal subscription](/?date=2026-11-04&category=social#item-821559a095d6) in Hermes now bundles a cloud agent with its own computer and high-usage-limit models. Support exchanges clarified that the new plans [no longer use credits](/?date=2026-11-04&category=social#item-29f6c11b5d26), marking a notable shift in the product's delivery and monetization model.",
+      "description_html": "Every <a href=\"/?date=2026-11-04&amp;category=social#item-821559a095d6\" class=\"internal-link\" rel=\"noopener noreferrer\">Nous Portal subscription</a> in Hermes now bundles a cloud agent with its own computer and high-usage-limit models. Support exchanges clarified that the new plans <a href=\"/?date=2026-11-04&amp;category=social#item-29f6c11b5d26\" class=\"internal-link\" rel=\"noopener noreferrer\">no longer use credits</a>, marking a notable shift in the product's delivery and monetization model.",
+      "category_breakdown": {
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Reliability and Security Incidents",
+      "description": "A [freshly provisioned headless agent on GLM 5.3 Flash entered a trance-like loop](/?date=2026-11-04&category=research#item-hn-49916751), and [Hermes Cloud's shared Telegram bot was root-caused as disabling users' own bots, with the fix already merged to main](/?date=2026-11-04&category=social#item-4fe86b159cec). [Adversarial probing of the agent's prompt-leakage defenses](/?date=2026-11-04&category=research#item-hn-49231797) also surfaced. These items highlight operational fragility alongside the week's security-positive [Vault feature](/?date=2026-11-04&category=news#item-0848130d96c6).",
+      "description_html": "A <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">freshly provisioned headless agent on GLM 5.3 Flash entered a trance-like loop</a>, and <a href=\"/?date=2026-11-04&amp;category=social#item-4fe86b159cec\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Cloud's shared Telegram bot was root-caused as disabling users' own bots, with the fix already merged to main</a>. <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">Adversarial probing of the agent's prompt-leakage defenses</a> also surfaced. These items highlight operational fragility alongside the week's security-positive <a href=\"/?date=2026-11-04&amp;category=news#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Vault feature</a>.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Multi-Agent Coordination Demand",
+      "description": "First-party [multi-agent profile collaboration in Hermes Kanban](/?date=2026-11-04&category=research#item-hn-49604068) directly answers the loudest recurring user request, echoed by an [Ask HN thread on coordinating many personal agents](/?date=2026-11-04&category=research#item-hn-50326764). Teknium pointed users to the [advanced delegation plugin](/?date=2026-11-04&category=social#item-3a6f3c9117c9) as the current solution. The theme spans official features, community discussion, and tooling.",
+      "description_html": "First-party <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">multi-agent profile collaboration in Hermes Kanban</a> directly answers the loudest recurring user request, echoed by an <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN thread on coordinating many personal agents</a>. Teknium pointed users to the <a href=\"/?date=2026-11-04&amp;category=social#item-3a6f3c9117c9\" class=\"internal-link\" rel=\"noopener noreferrer\">advanced delegation plugin</a> as the current solution. The theme spans official features, community discussion, and tooling.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Self-Hosting Deployment Friction",
+      "description": "Practitioner coverage flags [concrete gaps on Kubernetes](/?date=2026-11-04&category=research#item-hn-49977400), including the absence of an official Helm chart and root-at-init image requirements, alongside [container guides](/?date=2026-11-04&category=research#item-hn-50131496) and [edge hosting on an Arduino UNO Q](/?date=2026-11-04&category=research#item-hn-49368474). Migration from self-hosted setups to Hermes Cloud via [hermes backup](/?date=2026-11-04&category=social#item-ef1290ef6b84) also drew attention. The theme captures both enthusiasm for self-hosting and its rough edges.",
+      "description_html": "Practitioner coverage flags <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">concrete gaps on Kubernetes</a>, including the absence of an official Helm chart and root-at-init image requirements, alongside <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">container guides</a> and <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">edge hosting on an Arduino UNO Q</a>. Migration from self-hosted setups to Hermes Cloud via <a href=\"/?date=2026-11-04&amp;category=social#item-ef1290ef6b84\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes backup</a> also drew attention. The theme captures both enthusiasm for self-hosting and its rough edges.",
+      "category_breakdown": {
+        "research": 3,
+        "social": 1,
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 64
+    },
+    {
+      "name": "NousCon 2026 Community Momentum",
+      "description": "The official [NousCon 2026 thank-you post](/?date=2026-11-04&category=social#item-870b4fefc9d3) drew strong engagement (921 likes, 65k views) and confirmed the [mobile beta launch](/?date=2026-11-04&category=social#item-450268a47b1d) at the event. Overall community sentiment is upbeat, with appreciation for [same-day fixes](/?date=2026-11-04&category=social#item-143df0ff2573) and transparent debugging. Project-health signals like the [roughly 23,000 open-PR backlog](/?date=2026-11-04&category=research#item-hn-49424643) also circulated as watch items.",
+      "description_html": "The official <a href=\"/?date=2026-11-04&amp;category=social#item-870b4fefc9d3\" class=\"internal-link\" rel=\"noopener noreferrer\">NousCon 2026 thank-you post</a> drew strong engagement (921 likes, 65k views) and confirmed the <a href=\"/?date=2026-11-04&amp;category=social#item-450268a47b1d\" class=\"internal-link\" rel=\"noopener noreferrer\">mobile beta launch</a> at the event. Overall community sentiment is upbeat, with appreciation for <a href=\"/?date=2026-11-04&amp;category=social#item-143df0ff2573\" class=\"internal-link\" rel=\"noopener noreferrer\">same-day fixes</a> and transparent debugging. Project-health signals like the <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">roughly 23,000 open-PR backlog</a> also circulated as watch items.",
+      "category_breakdown": {
+        "social": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "Personal Ops Workflow Tutorials",
+      "description": "Hands-on guides show how to wire [Gmail, Calendar, a markdown task file, and Telegram into a scheduled morning-brief agent](/?date=2026-11-04&category=news#item-47e61d4744ae), plus deep dives on [Hermes Vault usage](/?date=2026-11-04&category=research#item-0848130d96c6). A reflective [post on misusing the agent](/?date=2026-11-04&category=research#item-hn-49628740) rounds out the practical learning content. These items target users turning Hermes into a daily personal-ops assistant.",
+      "description_html": "Hands-on guides show how to wire <a href=\"/?date=2026-11-04&amp;category=news#item-47e61d4744ae\" class=\"internal-link\" rel=\"noopener noreferrer\">Gmail, Calendar, a markdown task file, and Telegram into a scheduled morning-brief agent</a>, plus deep dives on <a href=\"/?date=2026-11-04&amp;category=research#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Vault usage</a>. A reflective <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">post on misusing the agent</a> rounds out the practical learning content. These items target users turning Hermes into a daily personal-ops assistant.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 58
+    }
+  ],
+  "total_items_collected": 104,
+  "total_items_analyzed": 91,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 23,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 24,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 57,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 57,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-11-04/hero.webp?v=1793780345",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe leans forward at a single illuminated work terminal, one hand on a keyboard, scanning the day's top story open before her as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: v0.22.7 Stable Patch Release — Hermes Agent v0.22.7 went stable on November 3, rolling roughly 174 merged PRs since v0.22.6 into CLI and desktop bui...\nTopic 2: Hermes Mobile App Momentum — The official Hermes mobile beta launched at NousCon 2026 and hit Apple's participant cap almost instantly, with a pub...\nTopic 3: v0.22.6 Flagship Features — Coverage centers on the two headline features shipped in v0.22.6 (released November 2): Hermes Webapp, which serves t...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: rocket launch, celebration confetti, announcement banners, robot assistant, AI agent interface, glowing cyan circuits. A launch banner glows softly overhead in amber. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: from a low heroic angle, a single desk lamp glow in an otherwise dark late-night workspace. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-11-04T08:19:05.902980",
+  "categories": {
+    "news": {
+      "count": 10,
+      "category_summary": "**Releases:** **[Hermes Agent v0.22.7](/?date=2026-11-04&category=news#item-bb8737992074)** headlines the day — the official stable patch (Nov 3) rolling ~174 merged PRs since **v0.22.6** into stable CLI/desktop builds. Its same-day **[rc.1-v0.22.7](/?date=2026-11-04&category=news#item-4d573769d8c3)** tag and automated **[v0.22.6+canary.20261103T064339Z](/?date=2026-11-04&category=news#item-1e7f98b1d16b)** build are pipeline footnotes, both superseded by the stable release. **Merged PRs:** The day's merged work is dominated by the ~174 PRs folded into **v0.22.7**; no standalone PR items surfaced this cycle. **Community:** Ecosystem growth on Hermes Atlas — **[hermes-finance](/?date=2026-11-04&category=news#item-3470b3ff9d25)** (self-hosted finance dashboard on local SQLite with Plaid sync and native agent tools + MCP), **[pomelu](/?date=2026-11-04&category=news#item-7908635a51e2)** (open-source Android/iOS client for self-hosted Hermes gateways, filling the frequently requested mobile-access gap), and **[hermes-mock-review](/?date=2026-11-04&category=news#item-58f3efe05f10)** (human-in-the-loop UI/design review plugin with shareable approve/request-changes boards). A Reddit [simulator walkthrough](/?date=2026-11-04&category=news#item-ad45c96b1fd5) of the upcoming official **Nous mobile app** hints beta access is near. **Tips:** A deep dive on the **[Hermes Vault](/?date=2026-11-04&category=news#item-0848130d96c6)** (shipped in **v0.22.6**) explains sign-ins, 2FA entry, and checkout fills without exposing secrets to the model via OS-keychain key storage. A [personal-ops tutorial](/?date=2026-11-04&category=news#item-47e61d4744ae) wires Gmail, Calendar, a markdown task file, and Telegram into a scheduled morning-brief agent.",
+      "category_summary_html": "<p><strong>Releases:</strong> <strong><a href=\"/?date=2026-11-04&amp;category=news#item-bb8737992074\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent v0.22.7</a></strong> headlines the day — the official stable patch (Nov 3) rolling ~174 merged PRs since <strong>v0.22.6</strong> into stable CLI/desktop builds. Its same-day <strong><a href=\"/?date=2026-11-04&amp;category=news#item-4d573769d8c3\" class=\"internal-link\" rel=\"noopener noreferrer\">rc.1-v0.22.7</a></strong> tag and automated <strong><a href=\"/?date=2026-11-04&amp;category=news#item-1e7f98b1d16b\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.22.6+canary.20261103T064339Z</a></strong> build are pipeline footnotes, both superseded by the stable release. <strong>Merged PRs:</strong> The day's merged work is dominated by the ~174 PRs folded into <strong>v0.22.7</strong>; no standalone PR items surfaced this cycle. <strong>Community:</strong> Ecosystem growth on Hermes Atlas — <strong><a href=\"/?date=2026-11-04&amp;category=news#item-3470b3ff9d25\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-finance</a></strong> (self-hosted finance dashboard on local SQLite with Plaid sync and native agent tools + MCP), <strong><a href=\"/?date=2026-11-04&amp;category=news#item-7908635a51e2\" class=\"internal-link\" rel=\"noopener noreferrer\">pomelu</a></strong> (open-source Android/iOS client for self-hosted Hermes gateways, filling the frequently requested mobile-access gap), and <strong><a href=\"/?date=2026-11-04&amp;category=news#item-58f3efe05f10\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes-mock-review</a></strong> (human-in-the-loop UI/design review plugin with shareable approve/request-changes boards). A Reddit <a href=\"/?date=2026-11-04&amp;category=news#item-ad45c96b1fd5\" class=\"internal-link\" rel=\"noopener noreferrer\">simulator walkthrough</a> of the upcoming official <strong>Nous mobile app</strong> hints beta access is near. <strong>Tips:</strong> A deep dive on the <strong><a href=\"/?date=2026-11-04&amp;category=news#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Vault</a></strong> (shipped in <strong>v0.22.6</strong>) explains sign-ins, 2FA entry, and checkout fills without exposing secrets to the model via OS-keychain key storage. A <a href=\"/?date=2026-11-04&amp;category=news#item-47e61d4744ae\" class=\"internal-link\" rel=\"noopener noreferrer\">personal-ops tutorial</a> wires Gmail, Calendar, a markdown task file, and Telegram into a scheduled morning-brief agent.</p>",
+      "themes": [
+        {
+          "name": "Stable Release Wave v0.22.7",
+          "description": "The official v0.22.7 patch release rolled up ~174 PRs, with its canary and rc.1 tags published the same day, showing a full release pipeline cycle landing on November 3.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 95.0
+        },
+        {
+          "name": "v0.22.6 Feature Coverage",
+          "description": "Third-party tutorials deep-diving features shipped in v0.22.6: the browser-based Hermes webapp for remote Desktop access and the vault with OS-keychain key storage for credential security.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Ecosystem Growth",
+          "description": "New community projects on Hermes Atlas (hermes-finance, hermes-mock-review, pomelu) plus an unofficial mobile app simulator tour signal expanding third-party tooling, especially around mobile access and domain-specific agents.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 45.0
+        },
+        {
+          "name": "Practical Workflow Guides",
+          "description": "Hands-on tutorials for real-world automation, exemplified by the scheduled Gmail/Calendar/Telegram morning brief pattern.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 45.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "bb8737992074",
+          "title": "Hermes Agent v0.22.7",
+          "content": "Hermes Agent v0.22.7\nRelease Date: November 3, 2026\n\nPatch release. This tag rolls up the ~174 PRs merged since v0.22.6 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.\n\n\nAbout this release\nMeasured at commit b200f5bc60e, the window since v0.22.6 contains 581 non-merge commits across 554 changed files (+24,012 / −3,144), 174 merged PRs and 29 closed issues.\nAlso in the window, undocumented here on purpose: opt-in lead routing for Desktop Group Chats (with a Lead badge on the room header), cron jobs that post into Group Chats, room purpose and shared notes, group rooms laid out in one chat column with each member's live state, pinned Kanban boards as quick-switch tabs, $$TeX$$ diagram labels and mermaid diagrams rendered through Pele, a Desktop update error box that shows the failed update's output with a report link, Web Access naming the step Start is on with a running clock, Telegram on Team Gateway set up by linking an account to the shared bot, an opt-in Slack thread_followup_silence for unaddressed thread replies, a Daybreak switch for catalog-listed ChatGPT subscription models, and a batch of new plugin-catalog entries.\nFull curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.\nUpdating\n\nMicrosoft Store app: updates through the Store.\nDesktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.\nCLI: hermes update, or re-run the installer one-liner.\nDocker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).\n\nFull Changelog: v0.22.6...v0.22.7",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.7",
+          "author": "teknium1",
+          "published": "2026-11-03T21:53:16",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hermes Agent v0.22.7 is a patch release published November 3, 2026, rolling up approximately 174 merged PRs since v0.22.6 into stable builds for CLI/installers, Microsoft Store, Docker, and Hermes Cloud. The window includes 581 non-merge commits across 554 files, 29 closed issues, and intentionally undocumented features including opt-in lead routing for Desktop Group Chats, cron jobs posting into Group Chats, room purpose and shared notes, pinned Kanban boards, and more.",
+          "importance_score": 95.0,
+          "reasoning": "This is the official stable release of the day, aggregating a very large batch of 174 merged PRs and shipping across every distribution channel. Its scale plus mention of intentionally undocumented features makes it the single most important item for Hermes users to act on this cycle.",
+          "themes": [
+            "official releases",
+            "desktop group chats",
+            "stable distribution"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Agent v0.22.7 is a patch release published November 3, 2026, rolling up approximately 174 merged PRs since v0.22.6 into stable builds for CLI/installers, Microsoft Store, Docker, and Hermes Cloud. The window includes 581 non-merge commits across 554 files, 29 closed issues, and intentionally undocumented features including opt-in lead routing for Desktop Group Chats, cron jobs posting into Group Chats, room purpose and shared notes, pinned Kanban boards, and more.</p>",
+          "content_html": "<p>Hermes Agent v0.22.7</p>\n<p>Release Date: November 3, 2026</p>\n<p>Patch release. This tag rolls up the ~174 PRs merged since v0.22.6 into a stable release for the GitHub release (CLI and installers), the Microsoft Store app, Docker and Hermes Cloud. Full curated notes for this window ship with v0.23.0.</p>\n<p>About this release</p>\n<p>Measured at commit b200f5bc60e, the window since v0.22.6 contains 581 non-merge commits across 554 changed files (+24,012 / −3,144), 174 merged PRs and 29 closed issues.</p>\n<p>Also in the window, undocumented here on purpose: opt-in lead routing for Desktop Group Chats (with a Lead badge on the room header), cron jobs that post into Group Chats, room purpose and shared notes, group rooms laid out in one chat column with each member's live state, pinned Kanban boards as quick-switch tabs, $$TeX$$ diagram labels and mermaid diagrams rendered through Pele, a Desktop update error box that shows the failed update's output with a report link, Web Access naming the step Start is on with a running clock, Telegram on Team Gateway set up by linking an account to the shared bot, an opt-in Slack thread_followup_silence for unaddressed thread replies, a Daybreak switch for catalog-listed ChatGPT subscription models, and a batch of new plugin-catalog entries.</p>\n<p>Full curated release notes for this window ship with v0.23.0, which will document everything from v0.22.0 onward — highlights, feature areas, and complete contributor credits. Nothing in this window is skipped.</p>\n<p>Updating</p>\n<p>Microsoft Store app: updates through the Store.</p>\n<p>Desktop app installed from the installer (.exe / .dmg): no change in this release; it updates with the next bundled release.</p>\n<p>CLI: hermes update, or re-run the installer one-liner.</p>\n<p>Docker / Hermes Cloud: nousresearch/hermes-agent:stable (or :latest).</p>\n<p>Full Changelog: v0.22.6...v0.22.7</p>"
+        },
+        {
+          "id": "0848130d96c6",
+          "title": "Hermes Vault: Let Your Agent Log In Without Seeing Your Passwords",
+          "content": "The Hermes vault is how Hermes Agent signs into websites, enters two-factor codes and fills your address or card at checkout without the model ever seeing a password. Say &ldquo;log into GitHub&rdquo; and, the first time, Hermes asks you for the login in a masked prompt. After that it just works. The newest change landed in Hermes v0.22.6 on 2 November 2026: you can now keep the vault&rsquo;s encryption key in your computer&rsquo;s own keychain instead of a file. Below is what the vault stores, the commands, password manager support, the keychain option and the limits to know. My video is right under this intro.\n\nKey takeaways\n\nSaves logins, 2FA keys, cards and addresses, each bound to one website.\nThe model never sees passwords: Hermes fills them straight into the page.\nCommands: hermes vault list, add, rm, sources and key.\nNew in v0.22.6: an opt-in OS keychain home for the vault key.\nWant AI agents handling logins for your business safely? Claim a free strategy session.\n\n\n\n\n\n\nWhat does the Hermes vault store?\nThe Passwords &amp; Logins docs describe four kinds of item, all encrypted on your machine under ~/.hermes/vault/ and kept per profile:\n\nWebsite logins: your username or email plus the password, tied to the exact site (for example https://github.com).\nTwo-factor setup keys: the &ldquo;setup key&rdquo; or otpauth:// link a site shows when you turn on 2FA. Hermes then generates the code itself, and the item shows a 2FA auto badge.\nCards for checkout pages.\nAddresses for shipping and billing forms.\n\nLabels, site addresses and usernames are visible metadata. Passwords and card numbers never leave the vault except into the page they belong to.\nHow the vault keeps passwords away from the model\nWhen Hermes fills a password, the tool result the model sees is just a note like {filled_fields: 1, origin: \"https://github.com\"}. The docs list what that means:\n\nThe password never enters the model&rsquo;s context through Hermes: not tool results, logs, the session database or any command line.\nA fill is refused unless the page address exactly matches the saved site, checked again inside the page right before writing.\nThe password is also registered with the redactor, so a later page read can&rsquo;t echo it back.\nCodes sent to your phone or email are typed into a small prompt by you and entered by Hermes; they never enter the chat either.\nFor passkeys, hardware keys and app approvals (&ldquo;tap Approve in Duo&rdquo;), Hermes tells you to finish on your device and waits.\n\n\nWant AI agents logging into your business tools safely? Inside the AI Profit Boardroom you get the Agent OS &mdash; Hermes, OpenClaw, OpenCode, Claude and Codex in one place &mdash; plus step-by-step Hermes training and four live coaching calls a week.\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;\n\nAdd and manage logins\nMost people never run a command: the first time the agent hits a sign-in page with no saved login, it asks you on the spot. In Hermes Desktop you see a &ldquo;Save your github.com login?&rdquo; card with Save &amp; sign in or Don&rsquo;t save.\nTo manage things yourself, use Desktop &rarr; Settings &rarr; Passwords &amp; Logins, or the CLI:\nhermes vault list\nhermes vault add\nhermes vault rm &lt;handle&gt;\nhermes vault sources\nhermes vault key\nEasier option: ask your agent, &ldquo;Show me what&rsquo;s saved in my Hermes vault and remove any login I haven&rsquo;t used for a site I no longer need.&rdquo;\nUse 1Password or Bitwarden with Hermes\nNothing to switch on. If the op or bw command-line tool is installed and signed in, Hermes picks it up and those website logins become fillable next to the local ones.\n\nThe first time a manager login is needed, Hermes asks for your master password in a masked prompt, once per session, locking again after 30 minutes idle.\nHermes keeps only the session token in memory, never the master password.\nAn item listing several websites fills on each of those exact addresses and nothing else.\nOpt out with hermes vault sources --disable bitwarden or the switch in Settings.\n\nFor unattended jobs, the docs suggest a 1Password service account token (OP_SERVICE_ACCOUNT_TOKEN), because a locked manager can&rsquo;t be unlocked when nobody is there.\nCards and addresses: what needs your OK\nCards and addresses are saved once and filled only on their checkout site. The safety rule that matters most for a business:\n\nEvery card fill asks you first, with the same approval prompt as a dangerous command. Declining writes nothing.\nCron jobs, webhooks and the API server can&rsquo;t confirm, so card fills there are refused. A prompt injection that reaches a checkout page can ask, but it can&rsquo;t spend.\nAddress fills need no confirmation.\n\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session &rarr;\n\nClaim Your Free SEO Strategy Session &rarr;\n\nNew: keep the vault key in your OS keychain\nBy default the encryption key sits in ~/.hermes/vault/vault.key next to the encrypted vault. v0.22.6 adds an opt-in move to the macOS Keychain, Windows Credential Manager, or Secret Service / KWallet on Linux:\nhermes vault key                          # where the key is now\nhermes vault key migrate --to keychain    # move it into the keychain\nhermes vault key migrate --to file        # move it back\nThe move copies the key, checks the keychain copy opens your vault, and only then deletes the file, so an interrupted move still leaves a working vault. It also sets vault.key_storage for new vaults.\nWhy bother: with the default file, anyone holding a backup or synced copy of ~/.hermes can decrypt the vault because the key travels with it. With keychain storage, a backup holds only scrambled data.\nKeychain mode trade-offs\nThe docs explain why it&rsquo;s opt-in rather than the default:\n\nBackups don&rsquo;t carry the key. Before moving a profile to another machine, run hermes vault key migrate --to file.\nThe keychain may ask. macOS can ask whether Hermes may use the entry (for example after an update), and a locked Linux keyring asks to be unlocked. Cron jobs running while you&rsquo;re logged out can&rsquo;t read the key.\nA lost entry means lost items. Delete the keychain entry and the vault can&rsquo;t be opened; Hermes says so rather than creating a new key over it.\nOn a headless Linux server with no keyring, a new vault&rsquo;s key falls back to the file with a warning.\n\nOne limit applies in both modes: a plugin running inside Hermes can do anything Hermes can, including filling a saved login. If you save logins and install plugins you haven&rsquo;t reviewed, the docs recommend running plugins out of process with plugins.isolation: host.\nMy verdict\nIf your agent logs into tools, pays for things or fills forms for your business, use the vault instead of pasting passwords into chat. Leave card approval on, and move the key to your keychain if you back up or sync ~/.hermes. That&rsquo;s the safe way to use the Hermes vault.\nAbout Julian Goldie\nI&rsquo;m Julian Goldie &mdash; founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\nWant another angle? Read the AI Profit Boardroom guide to Hermes Vault.\nFAQ: hermes vault\nWhat is the Hermes vault?\nIt is Hermes Agent&#8217;s encrypted store for website logins, two-factor setup keys, cards and addresses. Hermes fills them straight into the right page, so the model never sees the passwords.\nHow do I add a login to the Hermes vault?\nLet the agent ask the first time it reaches a sign-in page, or use Desktop Settings, Passwords and Logins, Add, or run hermes vault add in the CLI.\nDoes Hermes work with 1Password or Bitwarden?\nYes. If the op or bw command-line tool is installed and signed in, Hermes detects it and can fill those logins after you unlock the manager with your master password once per session.\nCan the Hermes vault pay with my card on its own?\nNo. Every card fill asks you first, and unattended runs such as cron jobs and webhooks are refused, so a card is never charged without your approval.\nWhat is the new Hermes vault keychain option?\nAdded in v0.22.6 on 2 November 2026, it lets you move the vault encryption key from a file into the macOS Keychain, Windows Credential Manager or a Linux keyring with the hermes vault key migrate command.\nShould I use keychain storage for the Hermes vault?\nUse it if you back up or sync your Hermes folder, because backups then hold no key. Skip it for cron jobs that run while you are logged out, and move the key back to a file before changing machines.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\nOr claim your free strategy session and we&rsquo;ll map out your setup.\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom &rarr;Claim Your Free SEO Strategy Session &rarr;Get the FREE AI Course + Community &rarr;\n\nRelated reading\n\nHermes Camofox\nHermes Agent Browser\nHermes Multiple Profiles\n\nLast updated November 2026. This page is a living guide to hermes vault &mdash; the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-vault/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-vault",
+          "author": "Clawdbot",
+          "published": "2026-11-03T00:02:14",
+          "source": "Julian Goldie",
+          "source_type": "rss",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "A tutorial on the Hermes vault, the mechanism by which Hermes Agent signs into websites, enters 2FA codes, and fills checkout forms without the model ever seeing credentials. It highlights the newest change in v0.22.6 — storing the vault encryption key in the OS keychain instead of a file — and covers the stored data types, commands, and password manager support.",
+          "importance_score": 65.0,
+          "reasoning": "Credential handling without exposing secrets to the model is a differentiating security feature, and the keychain-based key storage change in v0.22.6 is a meaningful hardening improvement. The guide is thorough, but it covers an existing feature rather than a new release, placing it in the mid-to-upper tier.",
+          "themes": [
+            "security",
+            "vault",
+            "configuration guides"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A tutorial on the Hermes vault, the mechanism by which Hermes Agent signs into websites, enters 2FA codes, and fills checkout forms without the model ever seeing credentials. It highlights the newest change in v0.22.6 — storing the vault encryption key in the OS keychain instead of a file — and covers the stored data types, commands, and password manager support.</p>",
+          "content_html": "<p>The Hermes vault is how Hermes Agent signs into websites, enters two-factor codes and fills your address or card at checkout without the model ever seeing a password. Say “log into GitHub” and, the first time, Hermes asks you for the login in a masked prompt. After that it just works. The newest change landed in Hermes v0.22.6 on 2 November 2026: you can now keep the vault’s encryption key in your computer’s own keychain instead of a file. Below is what the vault stores, the commands, password manager support, the keychain option and the limits to know. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<p>Saves logins, 2FA keys, cards and addresses, each bound to one website.</p>\n<p>The model never sees passwords: Hermes fills them straight into the page.</p>\n<p>Commands: hermes vault list, add, rm, sources and key.</p>\n<p>New in v0.22.6: an opt-in OS keychain home for the vault key.</p>\n<p>Want AI agents handling logins for your business safely? Claim a free strategy session.</p>\n<p>What does the Hermes vault store?</p>\n<p>The Passwords &amp; Logins docs describe four kinds of item, all encrypted on your machine under ~/.hermes/vault/ and kept per profile:</p>\n<p>Website logins: your username or email plus the password, tied to the exact site (for example https://github.com).</p>\n<p>Two-factor setup keys: the “setup key” or otpauth:// link a site shows when you turn on 2FA. Hermes then generates the code itself, and the item shows a 2FA auto badge.</p>\n<p>Cards for checkout pages.</p>\n<p>Addresses for shipping and billing forms.</p>\n<p>Labels, site addresses and usernames are visible metadata. Passwords and card numbers never leave the vault except into the page they belong to.</p>\n<p>How the vault keeps passwords away from the model</p>\n<p>When Hermes fills a password, the tool result the model sees is just a note like {filled_fields: 1, origin: \"https://github.com\"}. The docs list what that means:</p>\n<p>The password never enters the model’s context through Hermes: not tool results, logs, the session database or any command line.</p>\n<p>A fill is refused unless the page address exactly matches the saved site, checked again inside the page right before writing.</p>\n<p>The password is also registered with the redactor, so a later page read can’t echo it back.</p>\n<p>Codes sent to your phone or email are typed into a small prompt by you and entered by Hermes; they never enter the chat either.</p>\n<p>For passkeys, hardware keys and app approvals (“tap Approve in Duo”), Hermes tells you to finish on your device and waits.</p>\n<p>Want AI agents logging into your business tools safely? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<p>Add and manage logins</p>\n<p>Most people never run a command: the first time the agent hits a sign-in page with no saved login, it asks you on the spot. In Hermes Desktop you see a “Save your github.com login?” card with Save &amp; sign in or Don’t save.</p>\n<p>To manage things yourself, use Desktop → Settings → Passwords &amp; Logins, or the CLI:</p>\n<p>hermes vault list</p>\n<p>hermes vault add</p>\n<p>hermes vault rm &lt;handle&gt;</p>\n<p>hermes vault sources</p>\n<p>hermes vault key</p>\n<p>Easier option: ask your agent, “Show me what’s saved in my Hermes vault and remove any login I haven’t used for a site I no longer need.”</p>\n<p>Use 1Password or Bitwarden with Hermes</p>\n<p>Nothing to switch on. If the op or bw command-line tool is installed and signed in, Hermes picks it up and those website logins become fillable next to the local ones.</p>\n<p>The first time a manager login is needed, Hermes asks for your master password in a masked prompt, once per session, locking again after 30 minutes idle.</p>\n<p>Hermes keeps only the session token in memory, never the master password.</p>\n<p>An item listing several websites fills on each of those exact addresses and nothing else.</p>\n<p>Opt out with hermes vault sources --disable bitwarden or the switch in Settings.</p>\n<p>For unattended jobs, the docs suggest a 1Password service account token (OP_SERVICE_ACCOUNT_TOKEN), because a locked manager can’t be unlocked when nobody is there.</p>\n<p>Cards and addresses: what needs your OK</p>\n<p>Cards and addresses are saved once and filled only on their checkout site. The safety rule that matters most for a business:</p>\n<p>Every card fill asks you first, with the same approval prompt as a dangerous command. Declining writes nothing.</p>\n<p>Cron jobs, webhooks and the API server can’t confirm, so card fills there are refused. A prompt injection that reaches a checkout page can ask, but it can’t spend.</p>\n<p>Address fills need no confirmation.</p>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<p>New: keep the vault key in your OS keychain</p>\n<p>By default the encryption key sits in ~/.hermes/vault/vault.key next to the encrypted vault. v0.22.6 adds an opt-in move to the macOS Keychain, Windows Credential Manager, or Secret Service / KWallet on Linux:</p>\n<p>hermes vault key                          # where the key is now</p>\n<p>hermes vault key migrate --to keychain    # move it into the keychain</p>\n<p>hermes vault key migrate --to file        # move it back</p>\n<p>The move copies the key, checks the keychain copy opens your vault, and only then deletes the file, so an interrupted move still leaves a working vault. It also sets vault.key_storage for new vaults.</p>\n<p>Why bother: with the default file, anyone holding a backup or synced copy of ~/.hermes can decrypt the vault because the key travels with it. With keychain storage, a backup holds only scrambled data.</p>\n<p>Keychain mode trade-offs</p>\n<p>The docs explain why it’s opt-in rather than the default:</p>\n<p>Backups don’t carry the key. Before moving a profile to another machine, run hermes vault key migrate --to file.</p>\n<p>The keychain may ask. macOS can ask whether Hermes may use the entry (for example after an update), and a locked Linux keyring asks to be unlocked. Cron jobs running while you’re logged out can’t read the key.</p>\n<p>A lost entry means lost items. Delete the keychain entry and the vault can’t be opened; Hermes says so rather than creating a new key over it.</p>\n<p>On a headless Linux server with no keyring, a new vault’s key falls back to the file with a warning.</p>\n<p>One limit applies in both modes: a plugin running inside Hermes can do anything Hermes can, including filling a saved login. If you save logins and install plugins you haven’t reviewed, the docs recommend running plugins out of process with plugins.isolation: host.</p>\n<p>My verdict</p>\n<p>If your agent logs into tools, pays for things or fills forms for your business, use the vault instead of pasting passwords into chat. Leave card approval on, and move the key to your keychain if you back up or sync ~/.hermes. That’s the safe way to use the Hermes vault.</p>\n<p>About Julian Goldie</p>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Vault.</p>\n<p>FAQ: hermes vault</p>\n<p>What is the Hermes vault?</p>\n<p>It is Hermes Agent’s encrypted store for website logins, two-factor setup keys, cards and addresses. Hermes fills them straight into the right page, so the model never sees the passwords.</p>\n<p>How do I add a login to the Hermes vault?</p>\n<p>Let the agent ask the first time it reaches a sign-in page, or use Desktop Settings, Passwords and Logins, Add, or run hermes vault add in the CLI.</p>\n<p>Does Hermes work with 1Password or Bitwarden?</p>\n<p>Yes. If the op or bw command-line tool is installed and signed in, Hermes detects it and can fill those logins after you unlock the manager with your master password once per session.</p>\n<p>Can the Hermes vault pay with my card on its own?</p>\n<p>No. Every card fill asks you first, and unattended runs such as cron jobs and webhooks are refused, so a card is never charged without your approval.</p>\n<p>What is the new Hermes vault keychain option?</p>\n<p>Added in v0.22.6 on 2 November 2026, it lets you move the vault encryption key from a file into the macOS Keychain, Windows Credential Manager or a Linux keyring with the hermes vault key migrate command.</p>\n<p>Should I use keychain storage for the Hermes vault?</p>\n<p>Use it if you back up or sync your Hermes folder, because backups then hold no key. Skip it for cron jobs that run while you are logged out, and move the key back to a file before changing machines.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<p>Related reading</p>\n<p>Hermes Camofox</p>\n<p>Hermes Agent Browser</p>\n<p>Hermes Multiple Profiles</p>\n<p>Last updated November 2026. This page is a living guide to hermes vault — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "3470b3ff9d25",
+          "title": "hermes-finance (Domain Applications)",
+          "content": "hermes-finance is a self-hosted personal-finance dashboard that stores account, balance, and transaction data in a local SQLite file. It supports Plaid connections and manual accounts or CSV, OFX, and QFX imports, and tracks spending categories, budgets, bills, goals, loans, investments, and net worth. An AI agent can access the same financial data through native tools, MCP, or the dashboard’s Ask panel.",
+          "url": "https://hermesatlas.com/projects/apelabs-dev/hermes-finance",
+          "author": "Unknown",
+          "published": "2026-11-03T19:30:45",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Domain Applications"
+          ],
+          "summary": "hermes-finance is a newly listed self-hosted personal-finance dashboard that stores accounts, balances, and transactions in local SQLite, with Plaid support plus CSV/OFX/QFX imports, and tracking for budgets, bills, goals, loans, investments, and net worth. An AI agent can access the same financial data through native tools, MCP, or the dashboard Ask panel.",
+          "importance_score": 55.0,
+          "reasoning": "A substantial community project with direct agent integration (native tools and MCP) that extends Hermes into a new domain — personal finance — with local-first data storage. It is a third-party project listing rather than an official release, so importance is moderate but notable for users interested in finance use cases.",
+          "themes": [
+            "community projects",
+            "finance",
+            "mcp integrations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>hermes-finance is a newly listed self-hosted personal-finance dashboard that stores accounts, balances, and transactions in local SQLite, with Plaid support plus CSV/OFX/QFX imports, and tracking for budgets, bills, goals, loans, investments, and net worth. An AI agent can access the same financial data through native tools, MCP, or the dashboard Ask panel.</p>",
+          "content_html": "<p>hermes-finance is a self-hosted personal-finance dashboard that stores account, balance, and transaction data in a local SQLite file. It supports Plaid connections and manual accounts or CSV, OFX, and QFX imports, and tracks spending categories, budgets, bills, goals, loans, investments, and net worth. An AI agent can access the same financial data through native tools, MCP, or the dashboard’s Ask panel.</p>"
+        },
+        {
+          "id": "7908635a51e2",
+          "title": "pomelu (Integrations & Bridges)",
+          "content": "Pomelu is an open-source mobile app for connecting to a self-hosted Hermes Agent gateway from Android and Apple devices. It provides chat with bots, supports media and files, and includes features such as approvals, notifications, and Bot Screen control on supported Linux gateway hosts.",
+          "url": "https://hermesatlas.com/projects/ateymoori/pomelu",
+          "author": "Unknown",
+          "published": "2026-11-03T12:46:13",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Integrations & Bridges"
+          ],
+          "summary": "Pomelu is a newly listed open-source mobile app for connecting to a self-hosted Hermes Agent gateway from Android and Apple devices. It supports chat with bots, media and files, approvals, notifications, and Bot Screen control on supported Linux gateway hosts.",
+          "importance_score": 50.0,
+          "reasoning": "Official mobile access is a frequently requested gap, and this community-built cross-platform client with approvals and notification support fills it for self-hosted users. It is a third-party project listing rather than an official Nous mobile app, so significance is moderate but it addresses a major use case.",
+          "themes": [
+            "community projects",
+            "mobile clients",
+            "self-hosting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Pomelu is a newly listed open-source mobile app for connecting to a self-hosted Hermes Agent gateway from Android and Apple devices. It supports chat with bots, media and files, approvals, notifications, and Bot Screen control on supported Linux gateway hosts.</p>",
+          "content_html": "<p>Pomelu is an open-source mobile app for connecting to a self-hosted Hermes Agent gateway from Android and Apple devices. It provides chat with bots, supports media and files, and includes features such as approvals, notifications, and Bot Screen control on supported Linux gateway hosts.</p>"
+        },
+        {
+          "id": "47e61d4744ae",
+          "title": "Your Personal-Ops Agent: Gmail, Calendar, a Task File, and a Morning Brief in Telegram",
+          "content": "Build one scheduled Hermes Agent morning brief that reads Gmail, Calendar, and a markdown task file, then ships to Telegram at 08:00.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-personal-ops-agent/",
+          "author": "Hermes Agent",
+          "published": "2026-11-03T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A tutorial from Hermes Agent Tutorials showing how to build a scheduled morning brief: an agent that reads Gmail, Calendar, and a markdown task file, then delivers a digest to Telegram at 08:00. It demonstrates chaining the scheduling, data-reading, and messaging capabilities into a single personal-ops workflow.",
+          "importance_score": 45.0,
+          "reasoning": "Scheduled morning-brief workflows are a common showcase pattern and likely covered by existing documentation, so novelty is limited. Still, it is a concrete, actionable integration guide tying together email, calendar, files, and Telegram, useful for users setting up their first scheduled agent.",
+          "themes": [
+            "scheduling",
+            "integrations",
+            "workflow tutorials"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A tutorial from Hermes Agent Tutorials showing how to build a scheduled morning brief: an agent that reads Gmail, Calendar, and a markdown task file, then delivers a digest to Telegram at 08:00. It demonstrates chaining the scheduling, data-reading, and messaging capabilities into a single personal-ops workflow.</p>",
+          "content_html": "<p>Build one scheduled Hermes Agent morning brief that reads Gmail, Calendar, and a markdown task file, then ships to Telegram at 08:00.</p>"
+        },
+        {
+          "id": "58f3efe05f10",
+          "title": "hermes-mock-review (Plugins & Extensions)",
+          "content": "mock-review is a Hermes plugin for reviewing UI and design options through shareable review boards. Reviewers can approve, request changes, or skip decisions, add notes and pins to mockups, then send feedback that wakes the agent in the originating chat.",
+          "url": "https://hermesatlas.com/projects/apelabs-dev/hermes-mock-review",
+          "author": "Unknown",
+          "published": "2026-11-03T19:28:51",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Plugins & Extensions"
+          ],
+          "summary": "hermes-mock-review is a newly listed Hermes plugin for reviewing UI and design options through shareable review boards. Reviewers can approve, request changes, or skip, add notes and pins to mockups, and send feedback that wakes the agent in the originating chat.",
+          "importance_score": 40.0,
+          "reasoning": "A niche but well-conceived community plugin that adds a human-in-the-loop design review workflow wired back into agent chats. It matters mainly to users doing UI/design work with Hermes agents; being a plugin listing rather than a core feature keeps it mid-tier.",
+          "themes": [
+            "community projects",
+            "plugins",
+            "design workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>hermes-mock-review is a newly listed Hermes plugin for reviewing UI and design options through shareable review boards. Reviewers can approve, request changes, or skip, add notes and pins to mockups, and send feedback that wakes the agent in the originating chat.</p>",
+          "content_html": "<p>mock-review is a Hermes plugin for reviewing UI and design options through shareable review boards. Reviewers can approve, request changes, or skip decisions, add notes and pins to mockups, then send feedback that wakes the agent in the originating chat.</p>"
+        },
+        {
+          "id": "ad45c96b1fd5",
+          "title": "Nous Mobile App Walk through",
+          "content": "      A little teaser while your waiting to get into the beta, I thought I would offer a walk through of the app. I don't have the patience to be a youtuber so I built out a simulator if you want to take a tour. This is current as of today, its just html so no code is involved if you want to get a peek. This will not be updated, it's just a snapshot of how it is today.  https://hermesagenttools.com/hermes-mobile-app-tour/#sessions Please send all take down requests and legal papers to u/Popcorn-Mercinary and u/riceinmybelly.  Thank you.   &#32; submitted by &#32;  /u/Jonathan_Rivera  &#32; to &#32;  r/hermesagent   [link] &#32; [comments] ",
+          "url": "https://www.reddit.com/r/hermesagent/comments/1xn8ezq/nous_mobile_app_walk_through/",
+          "author": "/u/Jonathan_Rivera",
+          "published": "2026-11-03T23:17:01",
+          "source": "newest submissions : multi",
+          "source_type": "rss",
+          "tags": [
+            "hermesagent"
+          ],
+          "summary": "A Reddit user shares an HTML simulator tour of the upcoming official Nous mobile app, offered as a teaser while others wait for beta access. The post explicitly notes the simulator is a static snapshot as of today and will not be updated, with a somewhat unusual sign-off inviting takedown requests.",
+          "importance_score": 35.0,
+          "reasoning": "Signals that an official Nous mobile app beta is imminent, which is genuinely interesting forward-looking news for the community. However, it is a fan-made static mockup of unofficial content with an unclear legal standing, so it is a low-effort community teaser rather than substantive news.",
+          "themes": [
+            "mobile app",
+            "community showcases",
+            "beta"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Reddit user shares an HTML simulator tour of the upcoming official Nous mobile app, offered as a teaser while others wait for beta access. The post explicitly notes the simulator is a static snapshot as of today and will not be updated, with a somewhat unusual sign-off inviting takedown requests.</p>",
+          "content_html": "<p>A little teaser while your waiting to get into the beta, I thought I would offer a walk through of the app. I don't have the patience to be a youtuber so I built out a simulator if you want to take a tour. This is current as of today, its just html so no code is involved if you want to get a peek. This will not be updated, it's just a snapshot of how it is today.  https://hermesagenttools.com/hermes-mobile-app-tour/#sessions Please send all take down requests and legal papers to u/Popcorn-Mercinary and u/riceinmybelly.  Thank you.     submitted by    /u/Jonathan_Rivera    to    r/hermesagent   [link]   [comments]</p>"
+        },
+        {
+          "id": "4d573769d8c3",
+          "title": "rc.1-v0.22.7",
+          "content": "{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1793735671,\"commit\":\"b2…",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.22.7",
+          "author": "teknium1",
+          "published": "2026-11-03T19:54:31",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A release candidate tag (rc.1-v0.22.7) for Hermes Agent v0.22.7 published on November 3, 2026. The notes consist only of internal pipeline metadata (attempt number, autopublish flag, commit hash), indicating an automated release-candidate cut ahead of the stable v0.22.7 tag.",
+          "importance_score": 20.0,
+          "reasoning": "Release candidates are internal validation artifacts; the same-day stable v0.22.7 release supersedes this tag. It signals the release pipeline was active but offers no user-facing information beyond the commit reference.",
+          "themes": [
+            "release candidates",
+            "pre-release"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A release candidate tag (rc.1-v0.22.7) for Hermes Agent v0.22.7 published on November 3, 2026. The notes consist only of internal pipeline metadata (attempt number, autopublish flag, commit hash), indicating an automated release-candidate cut ahead of the stable v0.22.7 tag.</p>",
+          "content_html": "<p>{\"attempt\":1,\"autopublish\":false,\"claimEpoch\":1793735671,\"commit\":\"b2…</p>"
+        },
+        {
+          "id": "1e7f98b1d16b",
+          "title": "v0.22.6+canary.20261103T064339Z",
+          "content": "Hermes Agent canary 20261103T064339Z",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.6%2Bcanary.20261103T064339Z",
+          "author": "github-actions[bot]",
+          "published": "2026-11-03T06:43:40",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An automated canary build of Hermes Agent (v0.22.6+canary.20261103T064339Z) published on November 3, 2026. The release notes contain no substantive content beyond the build identifier, indicating a routine nightly/canary cut rather than a feature announcement.",
+          "importance_score": 15.0,
+          "reasoning": "Canary builds are published continuously and serve only early adopters testing pre-release code. No feature details or changelog are provided, so this carries minimal significance for the broader user base.",
+          "themes": [
+            "canary builds",
+            "pre-release"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An automated canary build of Hermes Agent (v0.22.6+canary.20261103T064339Z) published on November 3, 2026. The release notes contain no substantive content beyond the build identifier, indicating a routine nightly/canary cut rather than a feature announcement.</p>",
+          "content_html": "<p>Hermes Agent canary 20261103T064339Z</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 24,
+      "category_summary": "This cycle is anchored by the **v0.22.6** release (2 November 2026 — one day before the coverage window, so this is fresh release-adjacent coverage, not stale news about an existing feature). The two flagship features lead the section: **[Hermes Webapp](/?date=2026-11-04&category=research#item-984b4fa257f3)**, which serves the full Desktop workspace in any browser, and **[Hermes Vault](/?date=2026-11-04&category=research#item-0848130d96c6)**, a keychain-backed credential store that lets the agent sign into sites, enter 2FA codes, and fill forms without the model ever seeing passwords — the most security-relevant change of the week. Official integrations follow: **[Hermes Agent](/?date=2026-11-04&category=research#item-hn-49441992)** now supports **[Claude Pro/Max](/?date=2026-11-04&category=research#item-hn-49790991)** subscriptions (reusing existing subscription auth via a direct-SDK plugin, eliminating a separate API bill), and **[Hermes Kanban](/?date=2026-11-04&category=research#item-hn-49604068)** adds first-party multi-agent profile collaboration, directly answering the loudest recurring user request for coordinating multiple agents (echoed in the '[manage your personal agents](/?date=2026-11-04&category=research#item-hn-50326764)' community thread). Ecosystem momentum is strong: **[Almanac](/?date=2026-11-04&category=research#item-hn-49511007)** (YC S26) launches a company-aware Hermes assistant while surfacing real integration friction, **[Paper Harness](/?date=2026-11-04&category=research#item-hn-50278175)** ships a native SwiftUI iPhone client, **[Verso](/?date=2026-11-04&category=research#item-hn-49628094)** offers a mature open-source orchestrator GUI, a **[Grafana](/?date=2026-11-04&category=research#item-hn-49318128)** integration covers observability dashboards, and **[ClusterMob](/?date=2026-11-04&category=research#item-hn-50197497)** provides a community profile registry. Practitioner deployment coverage flags concrete gaps — no official **[Helm](/?date=2026-11-04&category=research#item-hn-49977400)** chart and root-at-init image requirements on Kubernetes — alongside [container guides](/?date=2026-11-04&category=research#item-hn-50131496) and edge hosting on an **[Arduino UNO Q](/?date=2026-11-04&category=research#item-hn-49368474)**. Watch-list items for readers: the ~[23,000 open-PR backlog](/?date=2026-11-04&category=research#item-hn-49424643) as a project-health signal, a reliability report of an agent entering a loop on **[GLM 5.3 Flash](/?date=2026-11-04&category=research#item-hn-49916751)**, and [adversarial probing](/?date=2026-11-04&category=research#item-hn-49231797) of the agent's prompt-leakage defenses. Ranking prioritizes first-party release coverage and official feature docs, then ecosystem tooling, practitioner deployment guides, and community signals; tangential non-Hermes items (a [training-free MoE pruning paper](/?date=2026-11-04&category=research#item-2610.41366), a [Claude Code RAG plugin](/?date=2026-11-04&category=research#item-hn-49305190), **[Grok](/?date=2026-11-04&category=research#item-ffc3116324e4)** Bot trial billing) rank last.",
+      "category_summary_html": "<p>This cycle is anchored by the <strong>v0.22.6</strong> release (2 November 2026 — one day before the coverage window, so this is fresh release-adjacent coverage, not stale news about an existing feature). The two flagship features lead the section: <strong><a href=\"/?date=2026-11-04&amp;category=research#item-984b4fa257f3\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Webapp</a></strong>, which serves the full Desktop workspace in any browser, and <strong><a href=\"/?date=2026-11-04&amp;category=research#item-0848130d96c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Vault</a></strong>, a keychain-backed credential store that lets the agent sign into sites, enter 2FA codes, and fill forms without the model ever seeing passwords — the most security-relevant change of the week. Official integrations follow: <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49441992\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent</a></strong> now supports <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscriptions (reusing existing subscription auth via a direct-SDK plugin, eliminating a separate API bill), and <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Kanban</a></strong> adds first-party multi-agent profile collaboration, directly answering the loudest recurring user request for coordinating multiple agents (echoed in the '<a href=\"/?date=2026-11-04&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">manage your personal agents</a>' community thread). Ecosystem momentum is strong: <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac</a></strong> (YC S26) launches a company-aware Hermes assistant while surfacing real integration friction, <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Paper Harness</a></strong> ships a native SwiftUI iPhone client, <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a></strong> offers a mature open-source orchestrator GUI, a <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana</a></strong> integration covers observability dashboards, and <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob</a></strong> provides a community profile registry. Practitioner deployment coverage flags concrete gaps — no official <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Helm</a></strong> chart and root-at-init image requirements on Kubernetes — alongside <a href=\"/?date=2026-11-04&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">container guides</a> and edge hosting on an <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q</a></strong>. Watch-list items for readers: the ~<a href=\"/?date=2026-11-04&amp;category=research#item-hn-49424643\" class=\"internal-link\" rel=\"noopener noreferrer\">23,000 open-PR backlog</a> as a project-health signal, a reliability report of an agent entering a loop on <strong><a href=\"/?date=2026-11-04&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM 5.3 Flash</a></strong>, and <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49231797\" class=\"internal-link\" rel=\"noopener noreferrer\">adversarial probing</a> of the agent's prompt-leakage defenses. Ranking prioritizes first-party release coverage and official feature docs, then ecosystem tooling, practitioner deployment guides, and community signals; tangential non-Hermes items (a <a href=\"/?date=2026-11-04&amp;category=research#item-2610.41366\" class=\"internal-link\" rel=\"noopener noreferrer\">training-free MoE pruning paper</a>, a <a href=\"/?date=2026-11-04&amp;category=research#item-hn-49305190\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Code RAG plugin</a>, <strong><a href=\"/?date=2026-11-04&amp;category=research#item-ffc3116324e4\" class=\"internal-link\" rel=\"noopener noreferrer\">Grok</a></strong> Bot trial billing) rank last.</p>",
+      "themes": [
+        {
+          "name": "v0.22.6 Release and Official Features",
+          "description": "Coverage of the 2 November 2026 v0.22.6 release (webapp, vault keychain) plus official features like Kanban multi-agent collaboration and Claude Pro/Max subscription support.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Deployment and integration friction",
+          "description": "The Almanac launch highlights concrete difficulties in standing up Hermes for real companies, including connector OAuth setup and tuning agent behavior for organizational context.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Security and Reliability",
+          "description": "Credential handling via the vault, adversarial probing of the agent, webapp sign-in risks, and a report of an agent looping on GLM 5.3 Flash.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Deployment and Self-Hosting",
+          "description": "Practitioner experiences deploying Hermes Agent in containers, on Kubernetes, and on edge hardware like the Arduino UNO Q, including gaps like missing Helm charts and root-at-init.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Multi-Agent Coordination and Orchestration",
+          "description": "User demand for coordinating many agents (Hermes, Claude Code, Codex, etc.), addressed by official Kanban collaboration and third-party orchestrators like Verso.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Hermes ecosystem and adoption",
+          "description": "Both items relate to Hermes as a platform: one is the official open-source Hermes Agent project page, and the other is a YC-backed startup (Almanac) building a company-knowledge product on top of Hermes, together indicating growing ecosystem activity.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Third-Party Ecosystem Tooling",
+          "description": "Community-built clients, orchestrators, registries, and integrations around Hermes Agent: iOS app, Verso orchestrator, ClusterMob registry, Grafana observability, and plugins.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Company-context knowledge agents",
+          "description": "Interest in agents that can answer questions with full organizational context, as pitched by Almanac and implied by the adaptive positioning of Hermes Agent.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Project Health and Community Growth",
+          "description": "Signals of rapid ecosystem growth and strain: 23,000 open PRs, HN discovery of the main site, startup competition (Almanac), and naming/legal questions.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 55.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "984b4fa257f3",
+          "title": "Hermes Webapp: Run the Full Hermes Desktop in Any Browser",
+          "content": "The Hermes webapp puts the whole Hermes Desktop workspace in a normal browser tab: your chats, profiles, scheduled jobs, files, Git review and even a terminal. It’s served by the Hermes gateway itself and opened with one command, `hermes webapp`. It’s listed in Hermes v0.22.6, released on 2 November 2026, along with a Web Access pane in the Desktop app to open it from your phone or another computer behind Nous sign-in. Below is how to turn it on, how sign-in works, how to reach it safely from other devices, and how it compares with the Desktop app and older web UIs. My video is right under this intro.\n\nKey takeaways\n\n- Turn on: `hermes config set webapp.enabled true`, restart the gateway, run `hermes webapp`.\n\n- Serves at `http://127.0.0.1:9120` by default and opens a one-use sign-in link.\n\n- Settings → Web Access opens it on your network or your own HTTPS URL, behind Nous sign-in.\n\n- A signed-in user can run commands as you, so never expose it without sign-in.\n\n- Want your AI agents reachable from anywhere, safely? Claim a free strategy session.\n\n## What is the Hermes webapp?\n\nThe Hermes Desktop docs describe it as the Desktop workspace served to a browser: sessions, profiles, Capabilities, Messaging, Artifacts, scheduled jobs, the host file tree, Git review, previews and the terminal rail.\n\nTwo things make it different from older ways of using Hermes in a browser:\n\n- It’s not the Web Dashboard. It’s the full Desktop experience.\n\n- Chats run on the same gateway that serves the CLI, the native Desktop and your messaging apps, so every surface sees one conversation with one queue.\n\nThe gateway serves it from its own listener, and Desktop plugins can now load in a browser tab too.\n\n## How to turn on the Hermes webapp\n\n```\nhermes config set webapp.enabled true\nhermes gateway restart\nhermes webapp\n```\n\n`hermes webapp` builds the bundle if it’s out of date (the first build can take a few minutes), starts the gateway if it isn’t running, and opens a sign-in link in your browser. The default address is `http://127.0.0.1:9120`, which you can change with `webapp.host` and `webapp.port`.\n\nUseful options from the CLI reference:\n\n- `hermes webapp --status`: is the gateway serving it, and at which address.\n\n- `hermes webapp --no-open`: print the link instead of opening a browser.\n\n- `hermes webapp --sign-out`: sign out every browser tab at once.\n\n- `hermes -p work webapp`: open it on a named profile.\n\nEasier option: ask your agent, “Turn on the Hermes webapp, restart the gateway and give me the status.”\n\nWant your AI agents reachable from anywhere, safely? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## How sign-in works\n\nOn your own machine there’s no password. Instead:\n\n- The link works once, within 60 seconds. The browser swaps it for a sign-in that stays in that tab, so reloads and gateway restarts keep you signed in.\n\n- A fresh tab or a bare URL shows instructions, not access. Run `hermes webapp` again for a new link.\n\n- New windows and pop-outs get their own one-use link.\n\n- On Linux the gateway checks the browser connection belongs to your user. On macOS the link is written to a page only your user can read.\n\nIf a link is printed for you to open (over SSH, for example), keep it private: until it’s used, it signs a browser in as you.\n\n## Open it from your phone or another computer\n\nIn the native Desktop app, Settings → Web Access turns the webapp on for other devices, behind sign-in with your Nous account. Only the native app can change this setting; a browser signed in over the network can’t.\n\n- This network: devices on the same Wi-Fi open `http://<this computer’s address>:9120`. It’s plain HTTP, so only use it on a network you trust.\n\n- My own URL: an HTTPS address you already run, such as Tailscale Serve, a tunnel or a reverse proxy, forwarding to `127.0.0.1`. It’s saved as `webapp.public_url`.\n\nStart builds the webapp, registers its sign-in with your Nous account, saves the settings and restarts the gateway. If a chat is running, it waits and shows Restart needed. The docs are clear on one thing: never forward the port from your router directly.\n\n## Safety: treat it like access to your computer\n\nThe docs put this in a warning box, and it’s the most important line on this page: a signed-in webapp user can run any command as the account running Hermes, use agent tools, read host files and Git, and reach that account’s credentials.\n\n- Never expose it without a sign-in provider. Setting `webapp.host` to `0.0.0.0` requires the dashboard sign-in gate.\n\n- Use a username and password only on a trusted LAN or VPN; use OAuth/OIDC for anything internet-facing.\n\n- Prefer an SSH tunnel, Tailscale or another trusted VPN, and HTTPS for remote use.\n\n- Over plain HTTP on another device, browsers switch off the bot screen viewer, the microphone, clipboard reading and notifications. HTTPS or an SSH tunnel keeps them.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## Webapp vs Desktop vs other web UIs\n\nHermes webapp\nNative Desktop\nWeb Dashboard / community web UIs\n\nRuns in\nAny browser\nInstalled app\nBrowser\n\nFull Desktop workspace\nYes\nYes\nNo\n\nSame gateway and chat queue\nYes\nYes\nVaries\n\nGlobal shortcuts, overlays, updater\nNo (native only)\nYes\nNo\n\nTerminal\nYes, host shell (16 at most)\nYes\nVaries\n\nOlder chats written before the gateway owned sessions can be read in the browser but not continued until you run `hermes sessions adopt` once on the host. For other browser options, see my Hermes Agent web UI and Hermes Agent dashboard guides.\n\n## The webapp terminal\n\nThe terminal rail opens the host’s shell in your home folder. Drop files on it to upload them (16 MiB each). Refreshing the page detaches the terminal without ending it, and it reattaches when you come back.\n\nDetached shells are kept for 15 minutes while the gateway runs, with up to 16 host terminals in total. A gateway restart or update ends them.\n\n## My verdict\n\nIf you want to check on your agents from a laptop, a tablet or your phone, this is now the cleanest way. Turn it on locally first, then use Web Access with your own HTTPS address or Tailscale, and never open it to the internet without sign-in. That’s the safe way to use the Hermes webapp.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Hermes Webapp.\n\n## FAQ: hermes webapp\n\n### What is the Hermes webapp?\n\nIt is the full Hermes Desktop workspace served by the Hermes gateway to a normal browser, including chats, profiles, scheduled jobs, files, Git review and a terminal.\n\n### How do I start the Hermes webapp?\n\nRun hermes config set webapp.enabled true, restart the gateway with hermes gateway restart, then run hermes webapp. It opens a one-use sign-in link at http://127.0.0.1:9120 by default.\n\n### Can I use the Hermes webapp on my phone?\n\nYes. In the native Desktop app open Settings, Web Access and choose This network or My own URL. Devices then sign in with your Nous account.\n\n### Is the Hermes webapp safe to expose online?\n\nOnly behind a sign-in provider and ideally HTTPS, an SSH tunnel or a VPN such as Tailscale. A signed-in user can run commands as the account running Hermes, so never forward the port from your router.\n\n### Is the Hermes webapp the same as the Web Dashboard?\n\nNo. The Web Dashboard is a separate tool. The webapp is the full Desktop workspace in a browser, running on the same gateway as the CLI, Desktop and messaging.\n\n### When did the Hermes webapp come out?\n\nThe hermes webapp command and the Web Access pane are listed in the Hermes v0.22.6 release notes, published on 2 November 2026.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Agent Web UI\n\n- Hermes Agent Dashboard\n\n- Hermes Agent vs Hermes Desktop\n\nLast updated November 2026. This page is a living guide to hermes webapp — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-webapp/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-webapp",
+          "author": "Clawdbot",
+          "published": "2026-11-03T00:02:17",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Detailed walkthrough of the Hermes webapp introduced in Hermes v0.22.6 (released 2 November 2026), which serves the full Desktop workspace — chats, profiles, scheduled jobs, files, Git review, and terminal — in a browser via the Hermes gateway. Enable with hermes config set webapp.enabled true, restart the gateway, then run hermes webapp; serves at http://127.0.0.1:9120 by default with a one-use sign-in link. A new Web Access pane in the Desktop app exposes it on the network or via HTTPS behind Nous sign-in; the article warns a signed-in user can run commands as you, so never expose it without sign-in.",
+          "importance_score": 85.0,
+          "reasoning": "Comprehensive, technically detailed coverage of a major v0.22.6 feature that extends the full Desktop workspace to any browser and remote devices, including exact commands, ports, sign-in flow, and security caveats.",
+          "themes": [
+            "v0.22.6 release",
+            "web access",
+            "remote access security"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Detailed walkthrough of the Hermes webapp introduced in Hermes v0.22.6 (released 2 November 2026), which serves the full Desktop workspace — chats, profiles, scheduled jobs, files, Git review, and terminal — in a browser via the Hermes gateway. Enable with hermes config set webapp.enabled true, restart the gateway, then run hermes webapp; serves at http://127.0.0.1:9120 by default with a one-use sign-in link. A new Web Access pane in the Desktop app exposes it on the network or via HTTPS behind Nous sign-in; the article warns a signed-in user can run commands as you, so never expose it without sign-in.</p>",
+          "content_html": "<p>The Hermes webapp puts the whole Hermes Desktop workspace in a normal browser tab: your chats, profiles, scheduled jobs, files, Git review and even a terminal. It’s served by the Hermes gateway itself and opened with one command, <code>hermes webapp</code>. It’s listed in Hermes v0.22.6, released on 2 November 2026, along with a Web Access pane in the Desktop app to open it from your phone or another computer behind Nous sign-in. Below is how to turn it on, how sign-in works, how to reach it safely from other devices, and how it compares with the Desktop app and older web UIs. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Turn on: <code>hermes config set webapp.enabled true</code>, restart the gateway, run <code>hermes webapp</code>.</li>\n</ul>\n<ul>\n<li>Serves at <code>http://127.0.0.1:9120</code> by default and opens a one-use sign-in link.</li>\n</ul>\n<ul>\n<li>Settings → Web Access opens it on your network or your own HTTPS URL, behind Nous sign-in.</li>\n</ul>\n<ul>\n<li>A signed-in user can run commands as you, so never expose it without sign-in.</li>\n</ul>\n<ul>\n<li>Want your AI agents reachable from anywhere, safely? Claim a free strategy session.</li>\n</ul>\n<h2>What is the Hermes webapp?</h2>\n<p>The Hermes Desktop docs describe it as the Desktop workspace served to a browser: sessions, profiles, Capabilities, Messaging, Artifacts, scheduled jobs, the host file tree, Git review, previews and the terminal rail.</p>\n<p>Two things make it different from older ways of using Hermes in a browser:</p>\n<ul>\n<li>It’s not the Web Dashboard. It’s the full Desktop experience.</li>\n</ul>\n<ul>\n<li>Chats run on the same gateway that serves the CLI, the native Desktop and your messaging apps, so every surface sees one conversation with one queue.</li>\n</ul>\n<p>The gateway serves it from its own listener, and Desktop plugins can now load in a browser tab too.</p>\n<h2>How to turn on the Hermes webapp</h2>\n<p>```</p>\n<p>hermes config set webapp.enabled true</p>\n<p>hermes gateway restart</p>\n<p>hermes webapp</p>\n<p>```</p>\n<p><code>hermes webapp</code> builds the bundle if it’s out of date (the first build can take a few minutes), starts the gateway if it isn’t running, and opens a sign-in link in your browser. The default address is <code>http://127.0.0.1:9120</code>, which you can change with <code>webapp.host</code> and <code>webapp.port</code>.</p>\n<p>Useful options from the CLI reference:</p>\n<ul>\n<li><code>hermes webapp --status</code>: is the gateway serving it, and at which address.</li>\n</ul>\n<ul>\n<li><code>hermes webapp --no-open</code>: print the link instead of opening a browser.</li>\n</ul>\n<ul>\n<li><code>hermes webapp --sign-out</code>: sign out every browser tab at once.</li>\n</ul>\n<ul>\n<li><code>hermes -p work webapp</code>: open it on a named profile.</li>\n</ul>\n<p>Easier option: ask your agent, “Turn on the Hermes webapp, restart the gateway and give me the status.”</p>\n<p>Want your AI agents reachable from anywhere, safely? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>How sign-in works</h2>\n<p>On your own machine there’s no password. Instead:</p>\n<ul>\n<li>The link works once, within 60 seconds. The browser swaps it for a sign-in that stays in that tab, so reloads and gateway restarts keep you signed in.</li>\n</ul>\n<ul>\n<li>A fresh tab or a bare URL shows instructions, not access. Run <code>hermes webapp</code> again for a new link.</li>\n</ul>\n<ul>\n<li>New windows and pop-outs get their own one-use link.</li>\n</ul>\n<ul>\n<li>On Linux the gateway checks the browser connection belongs to your user. On macOS the link is written to a page only your user can read.</li>\n</ul>\n<p>If a link is printed for you to open (over SSH, for example), keep it private: until it’s used, it signs a browser in as you.</p>\n<h2>Open it from your phone or another computer</h2>\n<p>In the native Desktop app, Settings → Web Access turns the webapp on for other devices, behind sign-in with your Nous account. Only the native app can change this setting; a browser signed in over the network can’t.</p>\n<ul>\n<li>This network: devices on the same Wi-Fi open <code>http://:9120</code>. It’s plain HTTP, so only use it on a network you trust.</li>\n</ul>\n<ul>\n<li>My own URL: an HTTPS address you already run, such as Tailscale Serve, a tunnel or a reverse proxy, forwarding to <code>127.0.0.1</code>. It’s saved as <code>webapp.public_url</code>.</li>\n</ul>\n<p>Start builds the webapp, registers its sign-in with your Nous account, saves the settings and restarts the gateway. If a chat is running, it waits and shows Restart needed. The docs are clear on one thing: never forward the port from your router directly.</p>\n<h2>Safety: treat it like access to your computer</h2>\n<p>The docs put this in a warning box, and it’s the most important line on this page: a signed-in webapp user can run any command as the account running Hermes, use agent tools, read host files and Git, and reach that account’s credentials.</p>\n<ul>\n<li>Never expose it without a sign-in provider. Setting <code>webapp.host</code> to <code>0.0.0.0</code> requires the dashboard sign-in gate.</li>\n</ul>\n<ul>\n<li>Use a username and password only on a trusted LAN or VPN; use OAuth/OIDC for anything internet-facing.</li>\n</ul>\n<ul>\n<li>Prefer an SSH tunnel, Tailscale or another trusted VPN, and HTTPS for remote use.</li>\n</ul>\n<ul>\n<li>Over plain HTTP on another device, browsers switch off the bot screen viewer, the microphone, clipboard reading and notifications. HTTPS or an SSH tunnel keeps them.</li>\n</ul>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>Webapp vs Desktop vs other web UIs</h2>\n<p>Hermes webapp</p>\n<p>Native Desktop</p>\n<p>Web Dashboard / community web UIs</p>\n<p>Runs in</p>\n<p>Any browser</p>\n<p>Installed app</p>\n<p>Browser</p>\n<p>Full Desktop workspace</p>\n<p>Yes</p>\n<p>Yes</p>\n<p>No</p>\n<p>Same gateway and chat queue</p>\n<p>Yes</p>\n<p>Yes</p>\n<p>Varies</p>\n<p>Global shortcuts, overlays, updater</p>\n<p>No (native only)</p>\n<p>Yes</p>\n<p>No</p>\n<p>Terminal</p>\n<p>Yes, host shell (16 at most)</p>\n<p>Yes</p>\n<p>Varies</p>\n<p>Older chats written before the gateway owned sessions can be read in the browser but not continued until you run <code>hermes sessions adopt</code> once on the host. For other browser options, see my Hermes Agent web UI and Hermes Agent dashboard guides.</p>\n<h2>The webapp terminal</h2>\n<p>The terminal rail opens the host’s shell in your home folder. Drop files on it to upload them (16 MiB each). Refreshing the page detaches the terminal without ending it, and it reattaches when you come back.</p>\n<p>Detached shells are kept for 15 minutes while the gateway runs, with up to 16 host terminals in total. A gateway restart or update ends them.</p>\n<h2>My verdict</h2>\n<p>If you want to check on your agents from a laptop, a tablet or your phone, this is now the cleanest way. Turn it on locally first, then use Web Access with your own HTTPS address or Tailscale, and never open it to the internet without sign-in. That’s the safe way to use the Hermes webapp.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Webapp.</p>\n<h2>FAQ: hermes webapp</h2>\n<h3>What is the Hermes webapp?</h3>\n<p>It is the full Hermes Desktop workspace served by the Hermes gateway to a normal browser, including chats, profiles, scheduled jobs, files, Git review and a terminal.</p>\n<h3>How do I start the Hermes webapp?</h3>\n<p>Run hermes config set webapp.enabled true, restart the gateway with hermes gateway restart, then run hermes webapp. It opens a one-use sign-in link at http://127.0.0.1:9120 by default.</p>\n<h3>Can I use the Hermes webapp on my phone?</h3>\n<p>Yes. In the native Desktop app open Settings, Web Access and choose This network or My own URL. Devices then sign in with your Nous account.</p>\n<h3>Is the Hermes webapp safe to expose online?</h3>\n<p>Only behind a sign-in provider and ideally HTTPS, an SSH tunnel or a VPN such as Tailscale. A signed-in user can run commands as the account running Hermes, so never forward the port from your router.</p>\n<h3>Is the Hermes webapp the same as the Web Dashboard?</h3>\n<p>No. The Web Dashboard is a separate tool. The webapp is the full Desktop workspace in a browser, running on the same gateway as the CLI, Desktop and messaging.</p>\n<h3>When did the Hermes webapp come out?</h3>\n<p>The hermes webapp command and the Web Access pane are listed in the Hermes v0.22.6 release notes, published on 2 November 2026.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Agent Web UI</li>\n</ul>\n<ul>\n<li>Hermes Agent Dashboard</li>\n</ul>\n<ul>\n<li>Hermes Agent vs Hermes Desktop</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to hermes webapp — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "0848130d96c6",
+          "title": "Hermes Vault: Let Your Agent Log In Without Seeing Your Passwords",
+          "content": "The Hermes vault is how Hermes Agent signs into websites, enters two-factor codes and fills your address or card at checkout without the model ever seeing a password. Say “log into GitHub” and, the first time, Hermes asks you for the login in a masked prompt. After that it just works. The newest change landed in Hermes v0.22.6 on 2 November 2026: you can now keep the vault’s encryption key in your computer’s own keychain instead of a file. Below is what the vault stores, the commands, password manager support, the keychain option and the limits to know. My video is right under this intro.\n\nKey takeaways\n\n- Saves logins, 2FA keys, cards and addresses, each bound to one website.\n\n- The model never sees passwords: Hermes fills them straight into the page.\n\n- Commands: `hermes vault list`, `add`, `rm`, `sources` and `key`.\n\n- New in v0.22.6: an opt-in OS keychain home for the vault key.\n\n- Want AI agents handling logins for your business safely? Claim a free strategy session.\n\n## What does the Hermes vault store?\n\nThe Passwords & Logins docs describe four kinds of item, all encrypted on your machine under `~/.hermes/vault/` and kept per profile:\n\n- Website logins: your username or email plus the password, tied to the exact site (for example `https://github.com`).\n\n- Two-factor setup keys: the “setup key” or `otpauth://` link a site shows when you turn on 2FA. Hermes then generates the code itself, and the item shows a 2FA auto badge.\n\n- Cards for checkout pages.\n\n- Addresses for shipping and billing forms.\n\nLabels, site addresses and usernames are visible metadata. Passwords and card numbers never leave the vault except into the page they belong to.\n\n## How the vault keeps passwords away from the model\n\nWhen Hermes fills a password, the tool result the model sees is just a note like `{filled_fields: 1, origin: \"https://github.com\"}`. The docs list what that means:\n\n- The password never enters the model’s context through Hermes: not tool results, logs, the session database or any command line.\n\n- A fill is refused unless the page address exactly matches the saved site, checked again inside the page right before writing.\n\n- The password is also registered with the redactor, so a later page read can’t echo it back.\n\n- Codes sent to your phone or email are typed into a small prompt by you and entered by Hermes; they never enter the chat either.\n\n- For passkeys, hardware keys and app approvals (“tap Approve in Duo”), Hermes tells you to finish on your device and waits.\n\nWant AI agents logging into your business tools safely? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.\n\nWant a plan for your business first? Claim your free strategy session.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →\n\n## Add and manage logins\n\nMost people never run a command: the first time the agent hits a sign-in page with no saved login, it asks you on the spot. In Hermes Desktop you see a “Save your github.com login?” card with Save & sign in or Don’t save.\n\nTo manage things yourself, use Desktop → Settings → Passwords & Logins, or the CLI:\n\n```\nhermes vault list\nhermes vault add\nhermes vault rm <handle>\nhermes vault sources\nhermes vault key\n```\n\nEasier option: ask your agent, “Show me what’s saved in my Hermes vault and remove any login I haven’t used for a site I no longer need.”\n\n## Use 1Password or Bitwarden with Hermes\n\nNothing to switch on. If the `op` or `bw` command-line tool is installed and signed in, Hermes picks it up and those website logins become fillable next to the local ones.\n\n- The first time a manager login is needed, Hermes asks for your master password in a masked prompt, once per session, locking again after 30 minutes idle.\n\n- Hermes keeps only the session token in memory, never the master password.\n\n- An item listing several websites fills on each of those exact addresses and nothing else.\n\n- Opt out with `hermes vault sources --disable bitwarden` or the switch in Settings.\n\nFor unattended jobs, the docs suggest a 1Password service account token (`OP_SERVICE_ACCOUNT_TOKEN`), because a locked manager can’t be unlocked when nobody is there.\n\n## Cards and addresses: what needs your OK\n\nCards and addresses are saved once and filled only on their checkout site. The safety rule that matters most for a business:\n\n- Every card fill asks you first, with the same approval prompt as a dangerous command. Declining writes nothing.\n\n- Cron jobs, webhooks and the API server can’t confirm, so card fills there are refused. A prompt injection that reaches a checkout page can ask, but it can’t spend.\n\n- Address fills need no confirmation.\n\nWant this set up for you instead of doing it yourself? Claim your free strategy session →\n\nClaim Your Free SEO Strategy Session →\n\n## New: keep the vault key in your OS keychain\n\nBy default the encryption key sits in `~/.hermes/vault/vault.key` next to the encrypted vault. v0.22.6 adds an opt-in move to the macOS Keychain, Windows Credential Manager, or Secret Service / KWallet on Linux:\n\n```\nhermes vault key                          # where the key is now\nhermes vault key migrate --to keychain    # move it into the keychain\nhermes vault key migrate --to file        # move it back\n```\n\nThe move copies the key, checks the keychain copy opens your vault, and only then deletes the file, so an interrupted move still leaves a working vault. It also sets `vault.key_storage` for new vaults.\n\nWhy bother: with the default file, anyone holding a backup or synced copy of `~/.hermes` can decrypt the vault because the key travels with it. With keychain storage, a backup holds only scrambled data.\n\n## Keychain mode trade-offs\n\nThe docs explain why it’s opt-in rather than the default:\n\n- Backups don’t carry the key. Before moving a profile to another machine, run `hermes vault key migrate --to file`.\n\n- The keychain may ask. macOS can ask whether Hermes may use the entry (for example after an update), and a locked Linux keyring asks to be unlocked. Cron jobs running while you’re logged out can’t read the key.\n\n- A lost entry means lost items. Delete the keychain entry and the vault can’t be opened; Hermes says so rather than creating a new key over it.\n\n- On a headless Linux server with no keyring, a new vault’s key falls back to the file with a warning.\n\nOne limit applies in both modes: a plugin running inside Hermes can do anything Hermes can, including filling a saved login. If you save logins and install plugins you haven’t reviewed, the docs recommend running plugins out of process with `plugins.isolation: host`.\n\n## My verdict\n\nIf your agent logs into tools, pays for things or fills forms for your business, use the vault instead of pasting passwords into chat. Leave card approval on, and move the key to your keychain if you back up or sync `~/.hermes`. That’s the safe way to use the Hermes vault.\n\n## About Julian Goldie\n\nI’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.\n\nWant another angle? Read the AI Profit Boardroom guide to Hermes Vault.\n\n## FAQ: hermes vault\n\n### What is the Hermes vault?\n\nIt is Hermes Agent’s encrypted store for website logins, two-factor setup keys, cards and addresses. Hermes fills them straight into the right page, so the model never sees the passwords.\n\n### How do I add a login to the Hermes vault?\n\nLet the agent ask the first time it reaches a sign-in page, or use Desktop Settings, Passwords and Logins, Add, or run hermes vault add in the CLI.\n\n### Does Hermes work with 1Password or Bitwarden?\n\nYes. If the op or bw command-line tool is installed and signed in, Hermes detects it and can fill those logins after you unlock the manager with your master password once per session.\n\n### Can the Hermes vault pay with my card on its own?\n\nNo. Every card fill asks you first, and unattended runs such as cron jobs and webhooks are refused, so a card is never charged without your approval.\n\n### What is the new Hermes vault keychain option?\n\nAdded in v0.22.6 on 2 November 2026, it lets you move the vault encryption key from a file into the macOS Keychain, Windows Credential Manager or a Linux keyring with the hermes vault key migrate command.\n\n### Should I use keychain storage for the Hermes vault?\n\nUse it if you back up or sync your Hermes folder, because backups then hold no key. Skip it for cron jobs that run while you are logged out, and move the key back to a file before changing machines.\n\nReady to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.\n\nOr claim your free strategy session and we’ll map out your setup.\n\nStarting from zero? Get the free AI course and community.\n\nJoin the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →\n\n## Related reading\n\n- Hermes Camofox\n\n- Hermes Agent Browser\n\n- Hermes Multiple Profiles\n\nLast updated November 2026. This page is a living guide to hermes vault — the facts here move fast and it is updated as they do.",
+          "url": "https://juliangoldie.com/hermes-vault/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-vault",
+          "author": "Clawdbot",
+          "published": "2026-11-03T00:02:14",
+          "source": "Julian Goldie",
+          "source_type": "research_blog",
+          "tags": [
+            "Uncategorized"
+          ],
+          "summary": "Guide to the Hermes vault feature: the agent signs into websites, enters 2FA codes, and fills addresses or cards without the model seeing passwords. Credentials are encrypted per profile under ~/.hermes/vault/ and bound to one website each; commands include hermes vault list, add, rm, sources, and key. New in v0.22.6 (2 November 2026) is an opt-in OS keychain home for the vault encryption key instead of a file, plus password-manager support.",
+          "importance_score": 80.0,
+          "reasoning": "In-depth documentation of a security-critical feature and a fresh v0.22.6 improvement (keychain-backed encryption key); high relevance for users deploying agents that handle authenticated web actions.",
+          "themes": [
+            "v0.22.6 release",
+            "credential security",
+            "vault"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Guide to the Hermes vault feature: the agent signs into websites, enters 2FA codes, and fills addresses or cards without the model seeing passwords. Credentials are encrypted per profile under ~/.hermes/vault/ and bound to one website each; commands include hermes vault list, add, rm, sources, and key. New in v0.22.6 (2 November 2026) is an opt-in OS keychain home for the vault encryption key instead of a file, plus password-manager support.</p>",
+          "content_html": "<p>The Hermes vault is how Hermes Agent signs into websites, enters two-factor codes and fills your address or card at checkout without the model ever seeing a password. Say “log into GitHub” and, the first time, Hermes asks you for the login in a masked prompt. After that it just works. The newest change landed in Hermes v0.22.6 on 2 November 2026: you can now keep the vault’s encryption key in your computer’s own keychain instead of a file. Below is what the vault stores, the commands, password manager support, the keychain option and the limits to know. My video is right under this intro.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Saves logins, 2FA keys, cards and addresses, each bound to one website.</li>\n</ul>\n<ul>\n<li>The model never sees passwords: Hermes fills them straight into the page.</li>\n</ul>\n<ul>\n<li>Commands: <code>hermes vault list</code>, <code>add</code>, <code>rm</code>, <code>sources</code> and <code>key</code>.</li>\n</ul>\n<ul>\n<li>New in v0.22.6: an opt-in OS keychain home for the vault key.</li>\n</ul>\n<ul>\n<li>Want AI agents handling logins for your business safely? Claim a free strategy session.</li>\n</ul>\n<h2>What does the Hermes vault store?</h2>\n<p>The Passwords &amp; Logins docs describe four kinds of item, all encrypted on your machine under <code>~/.hermes/vault/</code> and kept per profile:</p>\n<ul>\n<li>Website logins: your username or email plus the password, tied to the exact site (for example <code>https://github.com</code>).</li>\n</ul>\n<ul>\n<li>Two-factor setup keys: the “setup key” or <code>otpauth://</code> link a site shows when you turn on 2FA. Hermes then generates the code itself, and the item shows a 2FA auto badge.</li>\n</ul>\n<ul>\n<li>Cards for checkout pages.</li>\n</ul>\n<ul>\n<li>Addresses for shipping and billing forms.</li>\n</ul>\n<p>Labels, site addresses and usernames are visible metadata. Passwords and card numbers never leave the vault except into the page they belong to.</p>\n<h2>How the vault keeps passwords away from the model</h2>\n<p>When Hermes fills a password, the tool result the model sees is just a note like <code>{filled_fields: 1, origin: \"https://github.com\"}</code>. The docs list what that means:</p>\n<ul>\n<li>The password never enters the model’s context through Hermes: not tool results, logs, the session database or any command line.</li>\n</ul>\n<ul>\n<li>A fill is refused unless the page address exactly matches the saved site, checked again inside the page right before writing.</li>\n</ul>\n<ul>\n<li>The password is also registered with the redactor, so a later page read can’t echo it back.</li>\n</ul>\n<ul>\n<li>Codes sent to your phone or email are typed into a small prompt by you and entered by Hermes; they never enter the chat either.</li>\n</ul>\n<ul>\n<li>For passkeys, hardware keys and app approvals (“tap Approve in Duo”), Hermes tells you to finish on your device and waits.</li>\n</ul>\n<p>Want AI agents logging into your business tools safely? Inside the AI Profit Boardroom you get the Agent OS — Hermes, OpenClaw, OpenCode, Claude and Codex in one place — plus step-by-step Hermes training and four live coaching calls a week.</p>\n<p>Want a plan for your business first? Claim your free strategy session.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →</p>\n<h2>Add and manage logins</h2>\n<p>Most people never run a command: the first time the agent hits a sign-in page with no saved login, it asks you on the spot. In Hermes Desktop you see a “Save your github.com login?” card with Save &amp; sign in or Don’t save.</p>\n<p>To manage things yourself, use Desktop → Settings → Passwords &amp; Logins, or the CLI:</p>\n<p>```</p>\n<p>hermes vault list</p>\n<p>hermes vault add</p>\n<p>hermes vault rm </p>\n<p>hermes vault sources</p>\n<p>hermes vault key</p>\n<p>```</p>\n<p>Easier option: ask your agent, “Show me what’s saved in my Hermes vault and remove any login I haven’t used for a site I no longer need.”</p>\n<h2>Use 1Password or Bitwarden with Hermes</h2>\n<p>Nothing to switch on. If the <code>op</code> or <code>bw</code> command-line tool is installed and signed in, Hermes picks it up and those website logins become fillable next to the local ones.</p>\n<ul>\n<li>The first time a manager login is needed, Hermes asks for your master password in a masked prompt, once per session, locking again after 30 minutes idle.</li>\n</ul>\n<ul>\n<li>Hermes keeps only the session token in memory, never the master password.</li>\n</ul>\n<ul>\n<li>An item listing several websites fills on each of those exact addresses and nothing else.</li>\n</ul>\n<ul>\n<li>Opt out with <code>hermes vault sources --disable bitwarden</code> or the switch in Settings.</li>\n</ul>\n<p>For unattended jobs, the docs suggest a 1Password service account token (<code>OP_SERVICE_ACCOUNT_TOKEN</code>), because a locked manager can’t be unlocked when nobody is there.</p>\n<h2>Cards and addresses: what needs your OK</h2>\n<p>Cards and addresses are saved once and filled only on their checkout site. The safety rule that matters most for a business:</p>\n<ul>\n<li>Every card fill asks you first, with the same approval prompt as a dangerous command. Declining writes nothing.</li>\n</ul>\n<ul>\n<li>Cron jobs, webhooks and the API server can’t confirm, so card fills there are refused. A prompt injection that reaches a checkout page can ask, but it can’t spend.</li>\n</ul>\n<ul>\n<li>Address fills need no confirmation.</li>\n</ul>\n<p>Want this set up for you instead of doing it yourself? Claim your free strategy session →</p>\n<p>Claim Your Free SEO Strategy Session →</p>\n<h2>New: keep the vault key in your OS keychain</h2>\n<p>By default the encryption key sits in <code>~/.hermes/vault/vault.key</code> next to the encrypted vault. v0.22.6 adds an opt-in move to the macOS Keychain, Windows Credential Manager, or Secret Service / KWallet on Linux:</p>\n<p>```</p>\n<p>hermes vault key                          # where the key is now</p>\n<p>hermes vault key migrate --to keychain    # move it into the keychain</p>\n<p>hermes vault key migrate --to file        # move it back</p>\n<p>```</p>\n<p>The move copies the key, checks the keychain copy opens your vault, and only then deletes the file, so an interrupted move still leaves a working vault. It also sets <code>vault.key_storage</code> for new vaults.</p>\n<p>Why bother: with the default file, anyone holding a backup or synced copy of <code>~/.hermes</code> can decrypt the vault because the key travels with it. With keychain storage, a backup holds only scrambled data.</p>\n<h2>Keychain mode trade-offs</h2>\n<p>The docs explain why it’s opt-in rather than the default:</p>\n<ul>\n<li>Backups don’t carry the key. Before moving a profile to another machine, run <code>hermes vault key migrate --to file</code>.</li>\n</ul>\n<ul>\n<li>The keychain may ask. macOS can ask whether Hermes may use the entry (for example after an update), and a locked Linux keyring asks to be unlocked. Cron jobs running while you’re logged out can’t read the key.</li>\n</ul>\n<ul>\n<li>A lost entry means lost items. Delete the keychain entry and the vault can’t be opened; Hermes says so rather than creating a new key over it.</li>\n</ul>\n<ul>\n<li>On a headless Linux server with no keyring, a new vault’s key falls back to the file with a warning.</li>\n</ul>\n<p>One limit applies in both modes: a plugin running inside Hermes can do anything Hermes can, including filling a saved login. If you save logins and install plugins you haven’t reviewed, the docs recommend running plugins out of process with <code>plugins.isolation: host</code>.</p>\n<h2>My verdict</h2>\n<p>If your agent logs into tools, pays for things or fills forms for your business, use the vault instead of pasting passwords into chat. Leave card approval on, and move the key to your keychain if you back up or sync <code>~/.hermes</code>. That’s the safe way to use the Hermes vault.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie — founder of Goldie Agency and the AI Profit Boardroom. I test new AI agents almost every day for 432K+ YouTube subscribers and run Hermes, OpenClaw, OpenCode, Claude and Codex side by side in my own Agent OS. Claim your free strategy session or join the AI Profit Boardroom.</p>\n<p>Want another angle? Read the AI Profit Boardroom guide to Hermes Vault.</p>\n<h2>FAQ: hermes vault</h2>\n<h3>What is the Hermes vault?</h3>\n<p>It is Hermes Agent’s encrypted store for website logins, two-factor setup keys, cards and addresses. Hermes fills them straight into the right page, so the model never sees the passwords.</p>\n<h3>How do I add a login to the Hermes vault?</h3>\n<p>Let the agent ask the first time it reaches a sign-in page, or use Desktop Settings, Passwords and Logins, Add, or run hermes vault add in the CLI.</p>\n<h3>Does Hermes work with 1Password or Bitwarden?</h3>\n<p>Yes. If the op or bw command-line tool is installed and signed in, Hermes detects it and can fill those logins after you unlock the manager with your master password once per session.</p>\n<h3>Can the Hermes vault pay with my card on its own?</h3>\n<p>No. Every card fill asks you first, and unattended runs such as cron jobs and webhooks are refused, so a card is never charged without your approval.</p>\n<h3>What is the new Hermes vault keychain option?</h3>\n<p>Added in v0.22.6 on 2 November 2026, it lets you move the vault encryption key from a file into the macOS Keychain, Windows Credential Manager or a Linux keyring with the hermes vault key migrate command.</p>\n<h3>Should I use keychain storage for the Hermes vault?</h3>\n<p>Use it if you back up or sync your Hermes folder, because backups then hold no key. Skip it for cron jobs that run while you are logged out, and move the key back to a file before changing machines.</p>\n<p>Ready to put Hermes to work in your business? Join the AI Profit Boardroom for the Agent OS, setup training and daily updates.</p>\n<p>Or claim your free strategy session and we’ll map out your setup.</p>\n<p>Starting from zero? Get the free AI course and community.</p>\n<p>Join the AI Profit Boardroom →Claim Your Free SEO Strategy Session →Get the FREE AI Course + Community →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Hermes Camofox</li>\n</ul>\n<ul>\n<li>Hermes Agent Browser</li>\n</ul>\n<ul>\n<li>Hermes Multiple Profiles</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to hermes vault — the facts here move fast and it is updated as they do.</p>"
+        },
+        {
+          "id": "hn-49318128",
+          "title": "Show HN: Grafana agent observability for Hermes Agent",
+          "content": "Show HN: Grafana agent observability for Hermes Agent",
+          "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+          "author": "eventuallyacat",
+          "published": "2026-08-16T08:40:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN for an open-source Grafana-based observability integration for Hermes Agent (grafana-agento11y-hermes), enabling monitoring and dashboards for agent activity.",
+          "importance_score": 60.0,
+          "reasoning": "Observability is a key operational need for long-running agents; a Grafana integration fills a monitoring gap in the ecosystem, though post detail is minimal.",
+          "themes": [
+            "observability",
+            "third-party tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN for an open-source Grafana-based observability integration for Hermes Agent (grafana-agento11y-hermes), enabling monitoring and dashboards for agent activity.</p>",
+          "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49441992",
+          "title": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "content": "Hermes Agent – Open-Source AI Agent That Grows with You",
+          "url": "https://hermes-agent.nousresearch.com",
+          "author": "duck",
+          "published": "2026-08-25T23:14:41Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A Hacker News submission linking to the official Hermes Agent site (hermes-agent.nousresearch.com), titled Open-Source AI Agent That Grows with You. The post body contains no additional commentary beyond the title, so it serves as an announcement or discussion pointer to the open-source Hermes Agent project page.",
+          "importance_score": 58.0,
+          "reasoning": "The item points to the canonical open-source Hermes Agent product page, which makes it a useful primary-source reference for the project and its positioning (open-source, adaptive agent). Its technical depth is limited because the supplied content is only the title with no details, changelog, or discussion captured, so it cannot be scored as highly as a release note or detailed analysis. Still, direct coverage of Hermes Agent itself merits a solid mid-range score.",
+          "themes": [
+            "open-source agent",
+            "official product page",
+            "Hermes Agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Hacker News submission linking to the official Hermes Agent site (hermes-agent.nousresearch.com), titled Open-Source AI Agent That Grows with You. The post body contains no additional commentary beyond the title, so it serves as an announcement or discussion pointer to the open-source Hermes Agent project page.</p>",
+          "content_html": "<p>Hermes Agent – Open-Source AI Agent That Grows with You</p>"
+        },
+        {
+          "id": "hn-50326764",
+          "title": "Ask HN: How do you manage your personal agents?",
+          "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+          "url": "https://news.ycombinator.com/item?id=50326764",
+          "author": "kevinlu310",
+          "published": "2026-11-01T15:51:22Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Ask HN thread about coordinating many personal agents including Hermes Agent, OpenClaw, Muse, Dots, Claude Code, and Codex. The author runs each agent separately but manually copies the same prompts between them to compare responses, and asks for better ways to orchestrate and coordinate multiple agents.",
+          "importance_score": 55.0,
+          "reasoning": "Directly mentions Hermes Agent and surfaces a real user pain point — multi-agent coordination and response comparison — that reflects ecosystem demand for orchestration tooling.",
+          "themes": [
+            "multi-agent coordination",
+            "user workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Ask HN thread about coordinating many personal agents including Hermes Agent, OpenClaw, Muse, Dots, Claude Code, and Codex. The author runs each agent separately but manually copies the same prompts between them to compare responses, and asks for better ways to orchestrate and coordinate multiple agents.</p>",
+          "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN post introducing ClusterMob, a community-run registry of Hermes Agent profiles, allowing users to discover and share agent profile configurations.",
+          "importance_score": 55.0,
+          "reasoning": "A third-party profile registry indicates healthy ecosystem growth and a sharing/discovery layer forming around Hermes Agent profiles, though details are thin.",
+          "themes": [
+            "profile sharing",
+            "community ecosystem"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN post introducing ClusterMob, a community-run registry of Hermes Agent profiles, allowing users to discover and share agent profile configurations.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User reports a freshly provisioned Hermes agent on a headless Debian server using Z.ai's GLM 5.3 Flash entering a trance-like loop when asked to print environment details and $PATH. The post includes a long Thinking block with oscillating content from one of the agent's first chat sessions and asks whether the output is meaningful.",
+          "importance_score": 55.0,
+          "reasoning": "Real-world failure report tied to a specific model (GLM 5.3 Flash) on Hermes; useful diagnostic case for reasoning-loop behavior on headless setups, though the excerpt is truncated.",
+          "themes": [
+            "agent debugging",
+            "model compatibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User reports a freshly provisioned Hermes agent on a headless Debian server using Z.ai's GLM 5.3 Flash entering a trance-like loop when asked to print environment details and $PATH. The post includes a long Thinking block with oscillating content from one of the agent's first chat sessions and asks whether the output is meaningful.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Blog post by heyjonny reflecting on misusing Hermes Agent, walking through what they did wrong and what they learned about correct usage patterns of the agent.",
+          "importance_score": 55.0,
+          "reasoning": "Practitioner retrospective likely containing practical guidance on agent usage pitfalls; useful for tips despite limited excerpt content.",
+          "themes": [
+            "usage patterns",
+            "lessons learned"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Blog post by heyjonny reflecting on misusing Hermes Agent, walking through what they did wrong and what they learned about correct usage patterns of the agent.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN post for Refine Cycle, an open-source self-improvement plugin for Hermes Agent hosted on GitHub, enabling the agent to iteratively refine its own behavior or outputs.",
+          "importance_score": 55.0,
+          "reasoning": "Demonstrates the plugin architecture's extensibility with a self-improvement pattern, though the bare-bones post limits assessment of quality or safety considerations.",
+          "themes": [
+            "plugins",
+            "self-improvement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN post for Refine Cycle, an open-source self-improvement plugin for Hermes Agent hosted on GitHub, enabling the agent to iteratively refine its own behavior or outputs.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User describes running the Hermes agent client on an Arduino UNO Q board with 4GB RAM and 32GB storage, which pairs an Arduino side with a Linux side, as a low-cost always-on alternative to a VPS for avoiding personal-machine deployment.",
+          "importance_score": 55.0,
+          "reasoning": "Creative low-cost self-hosting recipe with concrete hardware constraints; useful edge-deployment reference for users unwilling to pay VPS costs, though the excerpt is truncated.",
+          "themes": [
+            "self-hosting",
+            "edge hardware"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User describes running the Hermes agent client on an Arduino UNO Q board with 4GB RAM and 32GB storage, which pairs an Arduino side with a Linux side, as a low-cost always-on alternative to a VPS for avoiding personal-machine deployment.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 57,
+      "category_summary": "**Releases & Fixes**: **@Teknium** announced a **Hermes** [patch release gone live](/?date=2026-11-04&category=social#item-143df0ff2573) that same day, urging multi-machine/gateway users to upgrade — the batch's most urgent and most-engaged post. Teknium also [root-caused a **Telegram** breakage](/?date=2026-11-04&category=social#item-4fe86b159cec) in **Hermes Cloud** (a shared Hermes bot disabling users' own bots at every start) with the fix already merged to main. **Product & Subscriptions**: The headline item is that every **Nous Portal** subscription in **Hermes** now [bundles a **cloud agent**](/?date=2026-11-04&category=social#item-821559a095d6) with its own computer and high-usage-limit models. The official **@NousResearch** [**NousCon 2026** thank-you post](/?date=2026-11-04&category=social#item-870b4fefc9d3) (921 likes, 65k views) confirmed the **Hermes Mobile** beta launched at the event and filled up almost instantly. **Mobile App Momentum**: With beta seats gone, a [**waitlist** is now open](/?date=2026-11-04&category=social#item-450268a47b1d) for the **Hermes Agent** mobile app; **@Teknium** clarified [seat caps are **Apple**/**Android** hard limits](/?date=2026-11-04&category=social#item-420c9743ccac) and that [the agent runs in **Hermes Cloud**](/?date=2026-11-04&category=social#item-990904b61b55) rather than on-device. **@rlaope**'s [direct app link post](/?date=2026-11-04&category=social#item-df1fe71c6b59) led their announcement series in engagement. **Tips & Community**: Teknium walked users through [self-hosted-to-cloud migration via `hermes backup`](/?date=2026-11-04&category=social#item-ef1290ef6b84) and [pointed users to the **advanced delegation plugin**](/?date=2026-11-04&category=social#item-3a6f3c9117c9), while **@rlaope** showcased [**oh-my-hermes** artwork skills](/?date=2026-11-04&category=social#item-cfcb3478b4ce) alongside coding optimization. Overall community sentiment is upbeat: heavy demand for mobile seats, appreciation for same-day fixes and transparent debugging, and creators leaning into the product's creative side.",
+      "category_summary_html": "<p><strong>Releases &amp; Fixes</strong>: <strong>@Teknium</strong> announced a <strong>Hermes</strong> <a href=\"/?date=2026-11-04&amp;category=social#item-143df0ff2573\" class=\"internal-link\" rel=\"noopener noreferrer\">patch release gone live</a> that same day, urging multi-machine/gateway users to upgrade — the batch's most urgent and most-engaged post. Teknium also <a href=\"/?date=2026-11-04&amp;category=social#item-4fe86b159cec\" class=\"internal-link\" rel=\"noopener noreferrer\">root-caused a <strong>Telegram</strong> breakage</a> in <strong>Hermes Cloud</strong> (a shared Hermes bot disabling users' own bots at every start) with the fix already merged to main. <strong>Product &amp; Subscriptions</strong>: The headline item is that every <strong>Nous Portal</strong> subscription in <strong>Hermes</strong> now <a href=\"/?date=2026-11-04&amp;category=social#item-821559a095d6\" class=\"internal-link\" rel=\"noopener noreferrer\">bundles a <strong>cloud agent</strong></a> with its own computer and high-usage-limit models. The official <strong>@NousResearch</strong> <a href=\"/?date=2026-11-04&amp;category=social#item-870b4fefc9d3\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>NousCon 2026</strong> thank-you post</a> (921 likes, 65k views) confirmed the <strong>Hermes Mobile</strong> beta launched at the event and filled up almost instantly. <strong>Mobile App Momentum</strong>: With beta seats gone, a <a href=\"/?date=2026-11-04&amp;category=social#item-450268a47b1d\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>waitlist</strong> is now open</a> for the <strong>Hermes Agent</strong> mobile app; <strong>@Teknium</strong> clarified <a href=\"/?date=2026-11-04&amp;category=social#item-420c9743ccac\" class=\"internal-link\" rel=\"noopener noreferrer\">seat caps are <strong>Apple</strong>/<strong>Android</strong> hard limits</a> and that <a href=\"/?date=2026-11-04&amp;category=social#item-990904b61b55\" class=\"internal-link\" rel=\"noopener noreferrer\">the agent runs in <strong>Hermes Cloud</strong></a> rather than on-device. <strong>@rlaope</strong>'s <a href=\"/?date=2026-11-04&amp;category=social#item-df1fe71c6b59\" class=\"internal-link\" rel=\"noopener noreferrer\">direct app link post</a> led their announcement series in engagement. <strong>Tips &amp; Community</strong>: Teknium walked users through <a href=\"/?date=2026-11-04&amp;category=social#item-ef1290ef6b84\" class=\"internal-link\" rel=\"noopener noreferrer\">self-hosted-to-cloud migration via <code>hermes backup</code></a> and <a href=\"/?date=2026-11-04&amp;category=social#item-3a6f3c9117c9\" class=\"internal-link\" rel=\"noopener noreferrer\">pointed users to the <strong>advanced delegation plugin</strong></a>, while <strong>@rlaope</strong> showcased <a href=\"/?date=2026-11-04&amp;category=social#item-cfcb3478b4ce\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes</strong> artwork skills</a> alongside coding optimization. Overall community sentiment is upbeat: heavy demand for mobile seats, appreciation for same-day fixes and transparent debugging, and creators leaning into the product's creative side.</p>",
+      "themes": [
+        {
+          "name": "Patch Release and Upgrades",
+          "description": "Teknium announced a patch release live that day with a strong recommendation for multi-machine/gateway users to upgrade, drawing the batch's highest engagement.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 92.0
+        },
+        {
+          "name": "Hermes product announcements",
+          "description": "Announcements of new Hermes/Nous portal capabilities, notably the bundled cloud agent with its own computer and built-in tools.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 92.0
+        },
+        {
+          "name": "Hermes Agent Mobile Expansion",
+          "description": "Opening of a waitlist for the Hermes Agent mobile app as seat availability grows, signaling product scaling and high demand.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 88.0
+        },
+        {
+          "name": "Inference Performance and Serving",
+          "description": "rlaope's high-engagement post about serving DeepSeek V4.1 Flash at ~1000 tok/s via OpenGateway, including pricing and discount details.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 88.0
+        },
+        {
+          "name": "Hermes Mobile App Waitlist and Beta",
+          "description": "Announcements and follow-ups about the Hermes Agent mobile app beta launch at NousCon 2026, the now-full beta, and the newly opened waitlist for additional seats.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Backup and Migration Tips",
+          "description": "Teknium's actionable guidance on backing up self-hosted Hermes instances and importing them to cloud machines.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Hermes App Launch",
+          "description": "Multiple rlaope posts and Teknium replies center on the newly available Hermes/Hermes-agent app, including beta availability, expanded seats, and platform limits set by Apple and Android.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Hermes Cloud and Telegram Fixes",
+          "description": "Technical details about Hermes Cloud concurrency limits, a Telegram shared-bot bug fixed on main, and guidance to link Telegram via Nous Portal instead of workarounds.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "oh-my-hermes Artwork Capabilities",
+          "description": "rlaope showcasing built-in artistic harnesses in oh-my-hermes that generate artwork out of the box after install.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Plugin and SDK Usage Tips",
+          "description": "Pointers to the advanced delegation plugin and guidance on acceptable SDK usage patterns from the project lead.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 45.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "143df0ff2573",
+          "title": "FYI this is live now in our patch release from earlier today.\n\nIf you're a multi-machine/gateway use...",
+          "content": "FYI this is live now in our patch release from earlier today.\n\nIf you're a multi-machine/gateway user, definitely recommend upgrading",
+          "url": "https://twitter.com/Teknium/status/2117514571623944583",
+          "author": "@Teknium",
+          "published": "2026-11-03T07:09:50",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Following yesterday's [News](/?date=2026-11-03&category=news#item-63da5898af32) coverage of the v0.22.6 release, Teknium confirms the patch is live and urges multi-machine/gateway users to upgrade. @Teknium announces that a fix is live in the Hermes patch release from earlier that day and strongly recommends that multi-machine/gateway users upgrade.",
+          "importance_score": 92.0,
+          "reasoning": "Official release announcement from Teknium (NousResearch founder) with the highest engagement in the batch (21756 views, 444 likes, 26 retweets) and an actionable upgrade recommendation for gateway users.",
+          "themes": [
+            "patch release",
+            "gateway",
+            "upgrade"
+          ],
+          "continuation": {
+            "original_item_id": "63da5898af32",
+            "original_date": "2026-11-03",
+            "original_category": "news",
+            "original_title": "Hermes Agent v0.22.6",
+            "continuation_type": "community_reaction",
+            "should_demote": false,
+            "reference_text": "Following yesterday's **News** coverage of the v0.22.6 release, Teknium confirms the patch is live and urges multi-machine/gateway users to upgrade."
+          },
+          "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-11-03&amp;category=news#item-63da5898af32\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage of the v0.22.6 release, Teknium confirms the patch is live and urges multi-machine/gateway users to upgrade. @Teknium announces that a fix is live in the Hermes patch release from earlier that day and strongly recommends that multi-machine/gateway users upgrade.</p>",
+          "content_html": "<p>FYI this is live now in our patch release from earlier today.</p>\n<p>If you're a multi-machine/gateway user, definitely recommend upgrading</p>"
+        },
+        {
+          "id": "821559a095d6",
+          "title": "Update your priors: \n\nEvery nous portal sub in Hermes comes with a cloud agent and it's own computer...",
+          "content": "Update your priors: \n\nEvery nous portal sub in Hermes comes with a cloud agent and it's own computer now, high usage limit models, and all of your tools like search, scrape, browser use, image gen and more",
+          "url": "https://twitter.com/Teknium/status/2117513285440590035",
+          "author": "@Teknium",
+          "published": "2026-11-03T07:04:43",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium announces that every Nous portal subscription in Hermes now includes a cloud agent with its own computer, high usage limit models, and bundled tools such as search, scraping, browser use, and image generation.",
+          "importance_score": 92.0,
+          "reasoning": "High credibility author (@Teknium is a prioritized core account), substantial engagement with nearly 41k views, 759 likes and 85 replies, and it is a significant product announcement detailing a major new capability for Hermes subscribers.",
+          "themes": [
+            "Hermes product announcement",
+            "cloud agent",
+            "bundled tools"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium announces that every Nous portal subscription in Hermes now includes a cloud agent with its own computer, high usage limit models, and bundled tools such as search, scraping, browser use, and image generation.</p>",
+          "content_html": "<p>Update your priors:</p>\n<p>Every nous portal sub in Hermes comes with a cloud agent and it's own computer now, high usage limit models, and all of your tools like search, scrape, browser use, image gen and more</p>"
+        },
+        {
+          "id": "870b4fefc9d3",
+          "title": "Thank you to everyone who traveled from across the world to NousCon 2026. We loved spending time wit...",
+          "content": "Thank you to everyone who traveled from across the world to NousCon 2026. We loved spending time with the people who make the Hermes community great.\n\nAs you all know, we released the Hermes Mobile beta at the event, and as anticipated it filled up quickly. We are working tirelessly to free up more room in the beta, and to get the app production ready for wider release. The feedback has been incredible so far, and we are excited to share it with the world soon.\n\nIn the meantime, please join the waitlist at https://t.co/Oszcqj0vfO",
+          "url": "https://twitter.com/NousResearch/status/2117696344756252822",
+          "author": "@NousResearch",
+          "published": "2026-11-03T19:12:08",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "The beta that hit Apple's participant cap on [Social](/?date=2026-11-02&category=social#item-e2649b1c03c6) Monday now has an official recap: capacity is being expanded and new users can join the waitlist. Official NousResearch post thanks NousCon 2026 attendees, confirms the Hermes Mobile beta launched at the event and filled up quickly, says the team is working to expand beta capacity and reach production release, reports great early feedback, and directs people to join the waitlist.",
+          "importance_score": 90.0,
+          "reasoning": "Official status update with the highest engagement in the batch (921 likes, 65k views); covers beta rollout, production roadmap, and waitlist in one post, making it the anchor item for this news cycle.",
+          "themes": [
+            "NousCon 2026",
+            "Hermes Mobile App",
+            "Beta Program",
+            "Waitlist"
+          ],
+          "continuation": {
+            "original_item_id": "e2649b1c03c6",
+            "original_date": "2026-11-02",
+            "original_category": "social",
+            "original_title": "@real_kukuruza We hit the maximum number of people Apple will allow into a beta",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "The beta that hit Apple's participant cap on **Social** Monday now has an official recap: capacity is being expanded and new users can join the waitlist."
+          },
+          "summary_html": "<p>The beta that hit Apple's participant cap on <a href=\"/?date=2026-11-02&amp;category=social#item-e2649b1c03c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> Monday now has an official recap: capacity is being expanded and new users can join the waitlist. Official NousResearch post thanks NousCon 2026 attendees, confirms the Hermes Mobile beta launched at the event and filled up quickly, says the team is working to expand beta capacity and reach production release, reports great early feedback, and directs people to join the waitlist.</p>",
+          "content_html": "<p>Thank you to everyone who traveled from across the world to NousCon 2026. We loved spending time with the people who make the Hermes community great.</p>\n<p>As you all know, we released the Hermes Mobile beta at the event, and as anticipated it filled up quickly. We are working tirelessly to free up more room in the beta, and to get the app production ready for wider release. The feedback has been incredible so far, and we are excited to share it with the world soon.</p>\n<p>In the meantime, please join the waitlist at https://t.co/Oszcqj0vfO</p>"
+        },
+        {
+          "id": "450268a47b1d",
+          "title": "You can now join the waitlist for the Hermes Agent mobile app to get in as we get more seats!",
+          "content": "You can now join the waitlist for the Hermes Agent mobile app to get in as we get more seats!",
+          "url": "https://twitter.com/Teknium/status/2117702996478108060",
+          "author": "@Teknium",
+          "published": "2026-11-03T19:38:34",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Two days after [Social](/?date=2026-11-02&category=social#item-e2649b1c03c6) reported the beta hit Apple's cap, a waitlist is now open for the Hermes mobile app. Teknium announces that a waitlist is now open for the Hermes Agent mobile app, allowing users to sign up for access as more seats become available.",
+          "importance_score": 88.0,
+          "reasoning": "Announcement from Teknium, the highest-priority source, about a new distribution channel for the Hermes Agent product. Strong engagement with over 30k views, 640 likes, and 68 replies, indicating significant community interest. Waitlist openings typically signal upcoming capacity expansion and are high-signal for product momentum.",
+          "themes": [
+            "mobile app",
+            "waitlist",
+            "product access"
+          ],
+          "continuation": {
+            "original_item_id": "e2649b1c03c6",
+            "original_date": "2026-11-02",
+            "original_category": "social",
+            "original_title": "@real_kukuruza We hit the maximum number of people Apple will allow into a beta",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Two days after **Social** reported the beta hit Apple's cap, a waitlist is now open for the Hermes mobile app."
+          },
+          "summary_html": "<p>Two days after <a href=\"/?date=2026-11-02&amp;category=social#item-e2649b1c03c6\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> reported the beta hit Apple's cap, a waitlist is now open for the Hermes mobile app. Teknium announces that a waitlist is now open for the Hermes Agent mobile app, allowing users to sign up for access as more seats become available.</p>",
+          "content_html": "<p>You can now join the waitlist for the Hermes Agent mobile app to get in as we get more seats!</p>"
+        },
+        {
+          "id": "ef1290ef6b84",
+          "title": "@real_kukuruza yes\n\nrun `hermes backup` on your self hosted machine\n\nthen upload the file to the clo...",
+          "content": "@real_kukuruza yes\n\nrun `hermes backup` on your self hosted machine\n\nthen upload the file to the cloud machine and run `hermes import /path/to/zip` or use the dashboard on cloud's import/export section",
+          "url": "https://twitter.com/Teknium/status/2117534766400774593",
+          "author": "@Teknium",
+          "published": "2026-11-03T08:30:04",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium answers a user question about migrating a self-hosted Hermes setup: run hermes backup locally, upload the file to the cloud machine, then run hermes import or use the dashboard import/export section.",
+          "importance_score": 72.0,
+          "reasoning": "From Teknium with concrete, actionable migration instructions using named CLI commands; useful tips content with solid engagement (700 views, 15 likes).",
+          "themes": [
+            "backup",
+            "self-hosting",
+            "cloud migration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium answers a user question about migrating a self-hosted Hermes setup: run hermes backup locally, upload the file to the cloud machine, then run hermes import or use the dashboard import/export section.</p>",
+          "content_html": "<p>@real_kukuruza yes</p>\n<p>run <code>hermes backup</code> on your self hosted machine</p>\n<p>then upload the file to the cloud machine and run <code>hermes import /path/to/zip</code> or use the dashboard on cloud's import/export section</p>"
+        },
+        {
+          "id": "cfcb3478b4ce",
+          "title": "oh-my-hermes artwork skills\n\nI invest a lot not only in coding optimization, but also in hermes arti...",
+          "content": "oh-my-hermes artwork skills\n\nI invest a lot not only in coding optimization, but also in hermes artistic harnesses. \n\nYou can use it right away once installed\n\nhttps://t.co/5OoCqbz58X\n\nomher can generate like: https://t.co/LB5HxvoCoE",
+          "url": "https://twitter.com/rlaope/status/2117545539948712153",
+          "author": "@rlaope",
+          "published": "2026-11-03T09:12:53",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@rlaope highlights the oh-my-hermes artwork capabilities, saying they invest in artistic harnesses alongside coding optimization, that artwork generation works out of the box after install, and shares example outputs.",
+          "importance_score": 62.0,
+          "reasoning": "Prioritized author with direct insight into oh-my-hermes features; moderately unique claim about built-in artistic harnesses, though engagement is modest (507 views, 7 likes).",
+          "themes": [
+            "oh-my-hermes",
+            "artwork",
+            "features"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@rlaope highlights the oh-my-hermes artwork capabilities, saying they invest in artistic harnesses alongside coding optimization, that artwork generation works out of the box after install, and shares example outputs.</p>",
+          "content_html": "<p>oh-my-hermes artwork skills</p>\n<p>I invest a lot not only in coding optimization, but also in hermes artistic harnesses.</p>\n<p>You can use it right away once installed</p>\n<p>https://t.co/5OoCqbz58X</p>\n<p>omher can generate like: https://t.co/LB5HxvoCoE</p>"
+        },
+        {
+          "id": "4fe86b159cec",
+          "title": "@vijaymehtanz Okay worked it out:\n\nFixed on main: Hermes Cloud runs Telegram through a shared Hermes...",
+          "content": "@vijaymehtanz Okay worked it out:\n\nFixed on main: Hermes Cloud runs Telegram through a shared Hermes bot, so a bot of your own gets switched off at every start (that's why QR setup never worked, and why the workaround kept the machine awake). Link your Telegram account from your agent's Message platforms in Nous Portal and message the shared bot; no workaround needed, and the instance can sleep. The instance's Channels page now points you there too once you're on the new release.",
+          "url": "https://twitter.com/Teknium/status/2117675819220996562",
+          "author": "@Teknium",
+          "published": "2026-11-03T17:50:34",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium details a resolved Telegram issue: Hermes Cloud runs Telegram through a shared Hermes bot which disabled users' own bots at every start, breaking QR setup. The fix on main lets users link their Telegram account from Message platforms in Nous Portal and message the shared bot, removing the keep-awake workaround, with the Channels page updated to point users there on the new release.",
+          "importance_score": 58.0,
+          "reasoning": "Detailed root-cause explanation and merged fix on main from the lead, directly actionable for Telegram users of Hermes Cloud; low engagement but high practical value.",
+          "themes": [
+            "Telegram Integration",
+            "Bug Fix",
+            "Hermes Cloud",
+            "Nous Portal"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium details a resolved Telegram issue: Hermes Cloud runs Telegram through a shared Hermes bot which disabled users' own bots at every start, breaking QR setup. The fix on main lets users link their Telegram account from Message platforms in Nous Portal and message the shared bot, removing the keep-awake workaround, with the Channels page updated to point users there on the new release.</p>",
+          "content_html": "<p>@vijaymehtanz Okay worked it out:</p>\n<p>Fixed on main: Hermes Cloud runs Telegram through a shared Hermes bot, so a bot of your own gets switched off at every start (that's why QR setup never worked, and why the workaround kept the machine awake). Link your Telegram account from your agent's Message platforms in Nous Portal and message the shared bot; no workaround needed, and the instance can sleep. The instance's Channels page now points you there too once you're on the new release.</p>"
+        },
+        {
+          "id": "420c9743ccac",
+          "title": "@ElijahTales Nope we're at hard limits set by apple and android",
+          "content": "@ElijahTales Nope we're at hard limits set by apple and android",
+          "url": "https://twitter.com/Teknium/status/2117518886182739979",
+          "author": "@Teknium",
+          "published": "2026-11-03T07:26:58",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium replies to a user asking about expanding something (likely app install limits or test seats), explaining they are at hard limits set by Apple and Android.",
+          "importance_score": 55.0,
+          "reasoning": "Teknium confirmation of platform-imposed hard limits is meaningful context for Hermes app availability constraints, though the reply is brief.",
+          "themes": [
+            "hermes app",
+            "platform limits",
+            "support"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium replies to a user asking about expanding something (likely app install limits or test seats), explaining they are at hard limits set by Apple and Android.</p>",
+          "content_html": "<p>@ElijahTales Nope we're at hard limits set by apple and android</p>"
+        },
+        {
+          "id": "3a6f3c9117c9",
+          "title": "@LoganB254 @NousResearch Use the advanced delegation plugin:\n\nhttps://t.co/tF1YHUqvkm",
+          "content": "@LoganB254 @NousResearch Use the advanced delegation plugin:\n\nhttps://t.co/tF1YHUqvkm",
+          "url": "https://twitter.com/Teknium/status/2117675055601820068",
+          "author": "@Teknium",
+          "published": "2026-11-03T17:47:32",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium recommends the advanced delegation plugin to a user, sharing the plugin link.",
+          "importance_score": 50.0,
+          "reasoning": "Actionable pointer to a named Hermes plugin from the lead author with solid engagement (51 likes, 3.1k views); highlights an underused capability.",
+          "themes": [
+            "Plugins",
+            "Advanced Delegation",
+            "Tips"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium recommends the advanced delegation plugin to a user, sharing the plugin link.</p>",
+          "content_html": "<p>@LoganB254 @NousResearch Use the advanced delegation plugin:</p>\n<p>https://t.co/tF1YHUqvkm</p>"
+        },
+        {
+          "id": "29f6c11b5d26",
+          "title": "@ictdeptau Are you sure you're on the new sub? We don't use credits anymore",
+          "content": "@ictdeptau Are you sure you're on the new sub? We don't use credits anymore",
+          "url": "https://twitter.com/Teknium/status/2117524761882538304",
+          "author": "@Teknium",
+          "published": "2026-11-03T07:50:19",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium responds to a user reporting an issue, noting the new subscription no longer uses credits and asking whether they are on the new plan.",
+          "importance_score": 48.0,
+          "reasoning": "Reveals a billing model change (credits removed for the new subscription) directly from Teknium, but it is a brief support reply with modest engagement.",
+          "themes": [
+            "billing",
+            "subscription",
+            "support"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium responds to a user reporting an issue, noting the new subscription no longer uses credits and asking whether they are on the new plan.</p>",
+          "content_html": "<p>@ictdeptau Are you sure you're on the new sub? We don't use credits anymore</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

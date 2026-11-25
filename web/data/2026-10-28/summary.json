@@ -1,0 +1,999 @@
+{
+  "date": "2026-10-28",
+  "coverage_date": "2026-10-27",
+  "coverage_start": "2026-10-27T00:00:00",
+  "coverage_end": "2026-10-27T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-10-28\n\n**Executive summary:** A delivery day — the issue's dominant story is the subscription overhaul, and it's the payoff to a promise made in public. The lead is [the **subscription revamp**](/?date=2026-10-28&category=social#item-21b8ea3e7ceb): **@Teknium** announced that [every paid tier now ships a dedicated **Hermes Agent instance** plus a virtual computer for it to operate](/?date=2026-10-28&category=social#item-7f61ddaf57dc), and **@NousResearch** confirmed the [full plan overhaul](/?date=2026-10-28&category=social#item-21b8ea3e7ceb) — moving away from [usage-based limits toward feature-rich tiers](/?date=2026-10-28&category=social#item-1b48e3a36e82), framed as [a major accessibility milestone](/?date=2026-10-28&category=social#item-7b018619e970). This resolves yesterday's [\"literally tomorrow\"](/?date=2026-10-27&category=social#item-23e8eb73bf33) tease and delivers the [**10-26 cloud roadmap**](/?date=2026-10-26&category=social#item-5c001672cf84) (\"every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance\"), generalizing yesterday's delivery note — [new subscriptions automatically receiving a cloud instance](/?date=2026-10-27&category=social#item-8ba07ac361e5) — to every paid tier with the virtual computer attached; it pairs thematically with the [native **Claude Pro/Max** subscription support](/?date=2026-10-28&category=research#item-hn-49790991) carried since 10-20. The release feed is empty — no tagged builds and no merged PRs this cycle, not even the routine canary — so stable **v0.22.5** (GA 10-24 across **CLI**, **Microsoft Store**, **Docker**, and **Hermes Cloud**) remains the operative build, and **@NousResearch**'s [Friday-launch tease](/?date=2026-10-27&category=social#item-d8647ef8fd1e) (Oct 30) stays a watch-item. Delegation remains the week's center of gravity, but the delta today is debate, not docs: the [**Advanced Delegation** plugin](/?date=2026-10-28&category=social#item-72b739a10de5) re-surfaces as a social item a day after anchoring the entire issue — treat as carried, with [yesterday's docs](/?date=2026-10-27&category=research#item-679ef7221396) (**model_map**/**profile_routes**, [**delegate_task**](/?date=2026-10-28&category=news#item-f72edb8c3a45), per-subagent [**delegation.model**](/?date=2026-10-28&category=research#item-a441ad5b5c1c)) still the reference — and the genuinely new signal is [the community debate over whether **Hermes Agent** is unusable without an external router like **Bifrost**](/?date=2026-10-28&category=research#item-hn-49159529): read it against the first-party stack before bolting on a third-party gateway. The community top story is [**HOL Guard**](/?date=2026-10-28&category=news#item-eb5d3b1a6975), a newly listed local-first security layer that reviews shell commands, file access, and package installs before execution — a direct answer to the carried [freshly-provisioned-agents-going-haywire **HN** thread](/?date=2026-10-20&category=research#item-hn-49916751) and the strongest pick yet for anyone granting agents broad system permissions — with one flag before installing: the listing targets \"**Hermes Atlas**\" agents, a product name that has never appeared in our coverage, so verify what it refers to before citing or installing. Also new: **@Teknium**'s [**ElevenLabs SFX plugin**](/?date=2026-10-28&category=social#item-e8dac95a9362), expanding the **Game Dev Studio** suite with [sound-effect generation and looped playback](/?date=2026-10-28&category=social#item-dab72ea0183e), and the [**Refine Cycle** self-improvement plugin](/?date=2026-10-28&category=research#item-hn-49606988). The **oh-my-hermes** ecosystem keeps compounding: community members are exploring [**/dag-ulw**](/?date=2026-10-28&category=social#item-6a37c0f6fca2), which breaks high-level goals into a graph of parallel tasks each handled by its own model, and [integrating **blader/humanizer** style guides](/?date=2026-10-28&category=social#item-9325c2030812) — the latest turn in the [**OMH** line](/?date=2026-10-26&category=social#item-5200058faecb) tracked since **Zeus 4.0.0**. Tips carry the practical load: a [second guide compiles ticket triage, FAQ answering, and human handoff into a repeatable **customer-support automation** setup](/?date=2026-10-28&category=news#item-e29a93f92e5c) from existing Hermes components; self-hosters get [a **personal containerized setup guide**](/?date=2026-10-28&category=research#item-hn-50131496) plus concrete capacity sizing from **@Teknium** — [**4GB** of memory supports roughly **20** simultaneous sessions](/?date=2026-10-28&category=social#item-650b29d121d1) — alongside [**dashboard backup/restore** workflows](/?date=2026-10-28&category=social#item-f9d8c5582ecf) and the [**hermes debug share --nous**](/?date=2026-10-28&category=social#item-70325ccbda30) command for sharing diagnostics when troubleshooting erratic headless-server behavior. Research leads with [**VibeVideoBench**](/?date=2026-10-28&category=research#item-2610.35864), a benchmark evaluating multimodal agents on code-driven video generation — a clean top story with no roster conflicts; the rest of the research feed is de-dup duty, thirteenth cycle running: the [**Claude Pro/Max** subscription support](/?date=2026-10-20&category=research#item-hn-49790991) (since 10-20 — today's \"lowering the barrier to high-tier models\" framing is a re-quote), the [**llm-wiki** skill](/?date=2026-10-27&category=research#item-5ea2212b5088) (**v2.1.0**, default-bundled), the [**Grafana** observability stack](/?date=2026-10-20&category=research#item-hn-49318128) (since 10-20), [**ClusterMob**](/?date=2026-10-26&category=research#item-hn-50197497) (launched 10-26, highlighted today), [**verso**](/?date=2026-10-17&category=research#item-hn-49628094) (since 10-17), the [**Arduino UNO Q** low-cost host](/?date=2026-10-24&category=research#item-hn-49368474) (since 10-24), and the haywire thread — all reference, not news. Verification load is light today — no model names conflict with the tracker, unlike yesterday's \"**GLM 5.3 Flash**\" flag — with the \"Hermes Atlas\" naming the only first-appearance to check. Housekeeping: Reddit contributed nothing again — no items to analyze. Net read: the roadmap's biggest public promise has landed as a shipping change rather than a teaser, the plugin ecosystem is answering the platform's own anxieties (HOL Guard for the haywire reports, debug share for the headless-server pain), and the delegation center of gravity is shifting from documentation to debate — which is what maturity looks like. Practical agenda: check your tier — the cloud agent + virtual computer should now be live for every paid plan; try the **ElevenLabs SFX plugin** if you're building in **Game Dev Studio**; [install **HOL Guard**](/?date=2026-10-28&category=news#item-eb5d3b1a6975) before granting broad system permissions (after verifying the \"Hermes Atlas\" target); [read the **customer-support automation** guide](/?date=2026-10-28&category=news#item-e29a93f92e5c); if you self-host, follow the containerized setup guide and budget **4GB** ≈ **20** sessions; use **hermes debug share --nous** when diagnostics need sharing; [skim the **Bifrost** debate](/?date=2026-10-28&category=research#item-hn-49159529) before reaching for an external router; everyone else stay on stable **v0.22.5**; and watch for Friday's launches — filing the **Advanced Delegation** re-surface, **Pro/Max**, **llm-wiki v2.1.0**, **Grafana**, **ClusterMob**, **verso**, **Arduino UNO Q**, and the haywire thread as reference.\n\n*Executive summary above — full section write-ups (Community, Tips & Tutorials) follow in the complete edition.*",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-10-28</p>\n<p><strong>Executive summary:</strong> A delivery day — the issue's dominant story is the subscription overhaul, and it's the payoff to a promise made in public. The lead is <a href=\"/?date=2026-10-28&amp;category=social#item-21b8ea3e7ceb\" class=\"internal-link\" rel=\"noopener noreferrer\">the <strong>subscription revamp</strong></a>: <strong>@Teknium</strong> announced that <a href=\"/?date=2026-10-28&amp;category=social#item-7f61ddaf57dc\" class=\"internal-link\" rel=\"noopener noreferrer\">every paid tier now ships a dedicated <strong>Hermes Agent instance</strong> plus a virtual computer for it to operate</a>, and <strong>@NousResearch</strong> confirmed the <a href=\"/?date=2026-10-28&amp;category=social#item-21b8ea3e7ceb\" class=\"internal-link\" rel=\"noopener noreferrer\">full plan overhaul</a> — moving away from <a href=\"/?date=2026-10-28&amp;category=social#item-1b48e3a36e82\" class=\"internal-link\" rel=\"noopener noreferrer\">usage-based limits toward feature-rich tiers</a>, framed as <a href=\"/?date=2026-10-28&amp;category=social#item-7b018619e970\" class=\"internal-link\" rel=\"noopener noreferrer\">a major accessibility milestone</a>. This resolves yesterday's <a href=\"/?date=2026-10-27&amp;category=social#item-23e8eb73bf33\" class=\"internal-link\" rel=\"noopener noreferrer\">\"literally tomorrow\"</a> tease and delivers the <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>10-26 cloud roadmap</strong></a> (\"every subscription will soon include inference, tools, and a cloud-hosted Hermes agent instance\"), generalizing yesterday's delivery note — <a href=\"/?date=2026-10-27&amp;category=social#item-8ba07ac361e5\" class=\"internal-link\" rel=\"noopener noreferrer\">new subscriptions automatically receiving a cloud instance</a> — to every paid tier with the virtual computer attached; it pairs thematically with the <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">native <strong>Claude Pro/Max</strong> subscription support</a> carried since 10-20. The release feed is empty — no tagged builds and no merged PRs this cycle, not even the routine canary — so stable <strong>v0.22.5</strong> (GA 10-24 across <strong>CLI</strong>, <strong>Microsoft Store</strong>, <strong>Docker</strong>, and <strong>Hermes Cloud</strong>) remains the operative build, and <strong>@NousResearch</strong>'s <a href=\"/?date=2026-10-27&amp;category=social#item-d8647ef8fd1e\" class=\"internal-link\" rel=\"noopener noreferrer\">Friday-launch tease</a> (Oct 30) stays a watch-item. Delegation remains the week's center of gravity, but the delta today is debate, not docs: the <a href=\"/?date=2026-10-28&amp;category=social#item-72b739a10de5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Advanced Delegation</strong> plugin</a> re-surfaces as a social item a day after anchoring the entire issue — treat as carried, with <a href=\"/?date=2026-10-27&amp;category=research#item-679ef7221396\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday's docs</a> (<strong>model_map</strong>/<strong>profile_routes</strong>, <a href=\"/?date=2026-10-28&amp;category=news#item-f72edb8c3a45\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>delegate_task</strong></a>, per-subagent <a href=\"/?date=2026-10-28&amp;category=research#item-a441ad5b5c1c\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>delegation.model</strong></a>) still the reference — and the genuinely new signal is <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">the community debate over whether <strong>Hermes Agent</strong> is unusable without an external router like <strong>Bifrost</strong></a>: read it against the first-party stack before bolting on a third-party gateway. The community top story is <a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>HOL Guard</strong></a>, a newly listed local-first security layer that reviews shell commands, file access, and package installs before execution — a direct answer to the carried <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">freshly-provisioned-agents-going-haywire <strong>HN</strong> thread</a> and the strongest pick yet for anyone granting agents broad system permissions — with one flag before installing: the listing targets \"<strong>Hermes Atlas</strong>\" agents, a product name that has never appeared in our coverage, so verify what it refers to before citing or installing. Also new: <strong>@Teknium</strong>'s <a href=\"/?date=2026-10-28&amp;category=social#item-e8dac95a9362\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ElevenLabs SFX plugin</strong></a>, expanding the <strong>Game Dev Studio</strong> suite with <a href=\"/?date=2026-10-28&amp;category=social#item-dab72ea0183e\" class=\"internal-link\" rel=\"noopener noreferrer\">sound-effect generation and looped playback</a>, and the <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong> self-improvement plugin</a>. The <strong>oh-my-hermes</strong> ecosystem keeps compounding: community members are exploring <a href=\"/?date=2026-10-28&amp;category=social#item-6a37c0f6fca2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>/dag-ulw</strong></a>, which breaks high-level goals into a graph of parallel tasks each handled by its own model, and <a href=\"/?date=2026-10-28&amp;category=social#item-9325c2030812\" class=\"internal-link\" rel=\"noopener noreferrer\">integrating <strong>blader/humanizer</strong> style guides</a> — the latest turn in the <a href=\"/?date=2026-10-26&amp;category=social#item-5200058faecb\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OMH</strong> line</a> tracked since <strong>Zeus 4.0.0</strong>. Tips carry the practical load: a <a href=\"/?date=2026-10-28&amp;category=news#item-e29a93f92e5c\" class=\"internal-link\" rel=\"noopener noreferrer\">second guide compiles ticket triage, FAQ answering, and human handoff into a repeatable <strong>customer-support automation</strong> setup</a> from existing Hermes components; self-hosters get <a href=\"/?date=2026-10-28&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">a <strong>personal containerized setup guide</strong></a> plus concrete capacity sizing from <strong>@Teknium</strong> — <a href=\"/?date=2026-10-28&amp;category=social#item-650b29d121d1\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>4GB</strong> of memory supports roughly <strong>20</strong> simultaneous sessions</a> — alongside <a href=\"/?date=2026-10-28&amp;category=social#item-f9d8c5582ecf\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>dashboard backup/restore</strong> workflows</a> and the <a href=\"/?date=2026-10-28&amp;category=social#item-70325ccbda30\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>hermes debug share --nous</strong></a> command for sharing diagnostics when troubleshooting erratic headless-server behavior. Research leads with <a href=\"/?date=2026-10-28&amp;category=research#item-2610.35864\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>VibeVideoBench</strong></a>, a benchmark evaluating multimodal agents on code-driven video generation — a clean top story with no roster conflicts; the rest of the research feed is de-dup duty, thirteenth cycle running: the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription support</a> (since 10-20 — today's \"lowering the barrier to high-tier models\" framing is a re-quote), the <a href=\"/?date=2026-10-27&amp;category=research#item-5ea2212b5088\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>llm-wiki</strong> skill</a> (<strong>v2.1.0</strong>, default-bundled), the <a href=\"/?date=2026-10-20&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Grafana</strong> observability stack</a> (since 10-20), <a href=\"/?date=2026-10-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a> (launched 10-26, highlighted today), <a href=\"/?date=2026-10-17&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>verso</strong></a> (since 10-17), the <a href=\"/?date=2026-10-24&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Arduino UNO Q</strong> low-cost host</a> (since 10-24), and the haywire thread — all reference, not news. Verification load is light today — no model names conflict with the tracker, unlike yesterday's \"<strong>GLM 5.3 Flash</strong>\" flag — with the \"Hermes Atlas\" naming the only first-appearance to check. Housekeeping: Reddit contributed nothing again — no items to analyze. Net read: the roadmap's biggest public promise has landed as a shipping change rather than a teaser, the plugin ecosystem is answering the platform's own anxieties (HOL Guard for the haywire reports, debug share for the headless-server pain), and the delegation center of gravity is shifting from documentation to debate — which is what maturity looks like. Practical agenda: check your tier — the cloud agent + virtual computer should now be live for every paid plan; try the <strong>ElevenLabs SFX plugin</strong> if you're building in <strong>Game Dev Studio</strong>; <a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\">install <strong>HOL Guard</strong></a> before granting broad system permissions (after verifying the \"Hermes Atlas\" target); <a href=\"/?date=2026-10-28&amp;category=news#item-e29a93f92e5c\" class=\"internal-link\" rel=\"noopener noreferrer\">read the <strong>customer-support automation</strong> guide</a>; if you self-host, follow the containerized setup guide and budget <strong>4GB</strong> ≈ <strong>20</strong> sessions; use <strong>hermes debug share --nous</strong> when diagnostics need sharing; <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">skim the <strong>Bifrost</strong> debate</a> before reaching for an external router; everyone else stay on stable <strong>v0.22.5</strong>; and watch for Friday's launches — filing the <strong>Advanced Delegation</strong> re-surface, <strong>Pro/Max</strong>, <strong>llm-wiki v2.1.0</strong>, <strong>Grafana</strong>, <strong>ClusterMob</strong>, <strong>verso</strong>, <strong>Arduino UNO Q</strong>, and the haywire thread as reference.</p>\n<p><em>Executive summary above — full section write-ups (Community, Tips &amp; Tutorials) follow in the complete edition.</em></p>",
+  "top_topics": [
+    {
+      "name": "Subagent Delegation and Model Routing",
+      "description": "A surge of tooling and guidance for orchestrating multi-agent workflows, including the [official Advanced Delegation plugin with agent-profile selection and custom model routing tables](/?date=2026-10-28&category=research#item-679ef7221396), the [built-in delegate_task tool with per-subagent model control](/?date=2026-10-28&category=news#item-f72edb8c3a45), and [model_map/profile_routes configuration guides](/?date=2026-10-28&category=research#item-a441ad5b5c1c). [Community debate over whether Hermes Agent is unusable without an external router like Bifrost](/?date=2026-10-28&category=research#item-hn-49159529), plus [oh-my-hermes task-graph features](/?date=2026-10-28&category=social#item-6a37c0f6fca2), show this is now central to power-user workflows.",
+      "description_html": "A surge of tooling and guidance for orchestrating multi-agent workflows, including the <a href=\"/?date=2026-10-28&amp;category=research#item-679ef7221396\" class=\"internal-link\" rel=\"noopener noreferrer\">official Advanced Delegation plugin with agent-profile selection and custom model routing tables</a>, the <a href=\"/?date=2026-10-28&amp;category=news#item-f72edb8c3a45\" class=\"internal-link\" rel=\"noopener noreferrer\">built-in delegate_task tool with per-subagent model control</a>, and <a href=\"/?date=2026-10-28&amp;category=research#item-a441ad5b5c1c\" class=\"internal-link\" rel=\"noopener noreferrer\">model_map/profile_routes configuration guides</a>. <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">Community debate over whether Hermes Agent is unusable without an external router like Bifrost</a>, plus <a href=\"/?date=2026-10-28&amp;category=social#item-6a37c0f6fca2\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes task-graph features</a>, show this is now central to power-user workflows.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Subscription Revamp and Cloud Agents",
+      "description": "Nous Research [overhauled Hermes Agent subscription plans](/?date=2026-10-28&category=social#item-7f61ddaf57dc) so every paid tier now ships with a dedicated cloud agent instance and a virtual computer for it to operate, moving away from usage-based limits toward feature-rich tiers. Announced by Teknium and NousResearch on social media and framed as a major accessibility milestone, it connects to research coverage of [native Claude Pro/Max subscription support](/?date=2026-10-28&category=research#item-hn-49790991) lowering the barrier to high-tier models.",
+      "description_html": "Nous Research <a href=\"/?date=2026-10-28&amp;category=social#item-7f61ddaf57dc\" class=\"internal-link\" rel=\"noopener noreferrer\">overhauled Hermes Agent subscription plans</a> so every paid tier now ships with a dedicated cloud agent instance and a virtual computer for it to operate, moving away from usage-based limits toward feature-rich tiers. Announced by Teknium and NousResearch on social media and framed as a major accessibility milestone, it connects to research coverage of <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">native Claude Pro/Max subscription support</a> lowering the barrier to high-tier models.",
+      "category_breakdown": {
+        "social": 3,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 90
+    },
+    {
+      "name": "Community Plugins and Ecosystem Growth",
+      "description": "Third-party and first-party plugin activity is accelerating: [HOL Guard](/?date=2026-10-28&category=news#item-eb5d3b1a6975) (security), [Refine Cycle](/?date=2026-10-28&category=research#item-hn-49606988) (self-improvement), [ClusterMob](/?date=2026-10-28&category=research#item-hn-50197497) (profile registry), [Verso](/?date=2026-10-28&category=research#item-hn-49628094) (knowledge-work orchestrator), and the [ElevenLabs SFX plugin](/?date=2026-10-28&category=social#item-e8dac95a9362) all launched or were highlighted this cycle. The [oh-my-hermes](/?date=2026-10-28&category=social#item-7aa4aae82da3) ecosystem in particular is maturing, with users [integrating style guides](/?date=2026-10-28&category=social#item-9325c2030812) and exploring [graph-based parallel task decomposition](/?date=2026-10-28&category=social#item-6a37c0f6fca2).",
+      "description_html": "Third-party and first-party plugin activity is accelerating: <a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\">HOL Guard</a> (security), <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a> (self-improvement), <a href=\"/?date=2026-10-28&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob</a> (profile registry), <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a> (knowledge-work orchestrator), and the <a href=\"/?date=2026-10-28&amp;category=social#item-e8dac95a9362\" class=\"internal-link\" rel=\"noopener noreferrer\">ElevenLabs SFX plugin</a> all launched or were highlighted this cycle. The <a href=\"/?date=2026-10-28&amp;category=social#item-7aa4aae82da3\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes</a> ecosystem in particular is maturing, with users <a href=\"/?date=2026-10-28&amp;category=social#item-9325c2030812\" class=\"internal-link\" rel=\"noopener noreferrer\">integrating style guides</a> and exploring <a href=\"/?date=2026-10-28&amp;category=social#item-6a37c0f6fca2\" class=\"internal-link\" rel=\"noopener noreferrer\">graph-based parallel task decomposition</a>.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 3,
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "Agent Security and Guardrails",
+      "description": "[HOL Guard](/?date=2026-10-28&category=news#item-eb5d3b1a6975), a newly listed local-first security layer for Hermes Atlas agents, reviews shell commands, file access, and package installs before execution, answering demand for safety tooling as agents gain broad system permissions. Anecdotal [Hacker News reports of freshly provisioned agents going 'haywire'](/?date=2026-10-28&category=research#item-hn-49916751) reinforce the perceived need for such controls.",
+      "description_html": "<a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\">HOL Guard</a>, a newly listed local-first security layer for Hermes Atlas agents, reviews shell commands, file access, and package installs before execution, answering demand for safety tooling as agents gain broad system permissions. Anecdotal <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">Hacker News reports of freshly provisioned agents going 'haywire'</a> reinforce the perceived need for such controls.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Observability, Debugging and Reliability",
+      "description": "New reliability tooling and practices emerged, including a [Grafana-based observability project for Hermes Agent](/?date=2026-10-28&category=research#item-hn-49318128), Teknium's [hermes debug share command](/?date=2026-10-28&category=social#item-70325ccbda30) for sharing diagnostics, and [dashboard backup/restore workflows](/?date=2026-10-28&category=social#item-f9d8c5582ecf). Community troubleshooting of [erratic agent behavior on headless servers](/?date=2026-10-28&category=research#item-hn-49916751) underscores reliability as an ongoing pain point for both self-hosters and managed users.",
+      "description_html": "New reliability tooling and practices emerged, including a <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49318128\" class=\"internal-link\" rel=\"noopener noreferrer\">Grafana-based observability project for Hermes Agent</a>, Teknium's <a href=\"/?date=2026-10-28&amp;category=social#item-70325ccbda30\" class=\"internal-link\" rel=\"noopener noreferrer\">hermes debug share command</a> for sharing diagnostics, and <a href=\"/?date=2026-10-28&amp;category=social#item-f9d8c5582ecf\" class=\"internal-link\" rel=\"noopener noreferrer\">dashboard backup/restore workflows</a>. Community troubleshooting of <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">erratic agent behavior on headless servers</a> underscores reliability as an ongoing pain point for both self-hosters and managed users.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 70
+    },
+    {
+      "name": "Self-Hosting, Containers and Edge Hardware",
+      "description": "Self-hosters are actively sharing deployment patterns: a personal [containerized setup guide](/?date=2026-10-28&category=research#item-hn-50131496), concrete [capacity-sizing guidance (roughly 20 simultaneous sessions on 4GB of memory)](/?date=2026-10-28&category=social#item-650b29d121d1), and an [Arduino UNO Q board positioned as a near-ideal low-cost Hermes host](/?date=2026-10-28&category=research#item-hn-49368474). This reflects sustained demand for running agents outside managed cloud environments.",
+      "description_html": "Self-hosters are actively sharing deployment patterns: a personal <a href=\"/?date=2026-10-28&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized setup guide</a>, concrete <a href=\"/?date=2026-10-28&amp;category=social#item-650b29d121d1\" class=\"internal-link\" rel=\"noopener noreferrer\">capacity-sizing guidance (roughly 20 simultaneous sessions on 4GB of memory)</a>, and an <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49368474\" class=\"internal-link\" rel=\"noopener noreferrer\">Arduino UNO Q board positioned as a near-ideal low-cost Hermes host</a>. This reflects sustained demand for running agents outside managed cloud environments.",
+      "category_breakdown": {
+        "research": 2,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "Knowledge Management and Research Skills",
+      "description": "The new [llm-wiki skill](/?date=2026-10-28&category=research#item-5ea2212b5088) transforms Hermes Agent into a persistent research assistant capable of managing structured internal knowledge, anchoring a broader push toward knowledge-base-centric agent workflows and enhanced retrieval capabilities.",
+      "description_html": "The new <a href=\"/?date=2026-10-28&amp;category=research#item-5ea2212b5088\" class=\"internal-link\" rel=\"noopener noreferrer\">llm-wiki skill</a> transforms Hermes Agent into a persistent research assistant capable of managing structured internal knowledge, anchoring a broader push toward knowledge-base-centric agent workflows and enhanced retrieval capabilities.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 58
+    },
+    {
+      "name": "Customer Support Automation and Setup Guides",
+      "description": "Tutorial content is packaging Hermes components into repeatable business workflows, exemplified by a [pattern-based customer-support automation guide](/?date=2026-10-28&category=news#item-e29a93f92e5c) covering ticket triage, FAQ answering, and human handoff, alongside [hands-on oh-my-hermes setup guides](/?date=2026-10-28&category=social#item-7aa4aae82da3). This signals maturing onboarding paths aimed at non-developer users.",
+      "description_html": "Tutorial content is packaging Hermes components into repeatable business workflows, exemplified by a <a href=\"/?date=2026-10-28&amp;category=news#item-e29a93f92e5c\" class=\"internal-link\" rel=\"noopener noreferrer\">pattern-based customer-support automation guide</a> covering ticket triage, FAQ answering, and human handoff, alongside <a href=\"/?date=2026-10-28&amp;category=social#item-7aa4aae82da3\" class=\"internal-link\" rel=\"noopener noreferrer\">hands-on oh-my-hermes setup guides</a>. This signals maturing onboarding paths aimed at non-developer users.",
+      "category_breakdown": {
+        "news": 1,
+        "social": 1
+      },
+      "representative_items": [],
+      "importance": 55
+    },
+    {
+      "name": "Media Generation and Game Dev Tooling",
+      "description": "The [ElevenLabs SFX plugin](/?date=2026-10-28&category=social#item-e8dac95a9362) extends Hermes Agent's Game Dev Studio with in-platform sound-effect generation, [looped playback, and one-click variations](/?date=2026-10-28&category=social#item-dab72ea0183e), available through both the plugin and Hermes Desktop. Academic work like [VibeVideoBench](/?date=2026-10-28&category=research#item-2610.35864), which benchmarks multimodal agents on code-driven video generation, shows parallel research interest in agentic media creation.",
+      "description_html": "The <a href=\"/?date=2026-10-28&amp;category=social#item-e8dac95a9362\" class=\"internal-link\" rel=\"noopener noreferrer\">ElevenLabs SFX plugin</a> extends Hermes Agent's Game Dev Studio with in-platform sound-effect generation, <a href=\"/?date=2026-10-28&amp;category=social#item-dab72ea0183e\" class=\"internal-link\" rel=\"noopener noreferrer\">looped playback, and one-click variations</a>, available through both the plugin and Hermes Desktop. Academic work like <a href=\"/?date=2026-10-28&amp;category=research#item-2610.35864\" class=\"internal-link\" rel=\"noopener noreferrer\">VibeVideoBench</a>, which benchmarks multimodal agents on code-driven video generation, shows parallel research interest in agentic media creation.",
+      "category_breakdown": {
+        "social": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 55
+    },
+    {
+      "name": "Agent Economics and Reasoning Effort",
+      "description": "Research is examining the cost-effectiveness tradeoffs of agent configurations, including [a paper framing reasoning-effort selection in LLM agents as a credence-good economics problem](/?date=2026-10-28&category=research#item-2610.34491) where users must choose compute levels before observing quality. This complements [community debates about when model routing is genuinely necessary](/?date=2026-10-28&category=research#item-hn-49159529) for cost or capability reasons.",
+      "description_html": "Research is examining the cost-effectiveness tradeoffs of agent configurations, including <a href=\"/?date=2026-10-28&amp;category=research#item-2610.34491\" class=\"internal-link\" rel=\"noopener noreferrer\">a paper framing reasoning-effort selection in LLM agents as a credence-good economics problem</a> where users must choose compute levels before observing quality. This complements <a href=\"/?date=2026-10-28&amp;category=research#item-hn-49159529\" class=\"internal-link\" rel=\"noopener noreferrer\">community debates about when model routing is genuinely necessary</a> for cost or capability reasons.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 45
+    }
+  ],
+  "total_items_collected": 139,
+  "total_items_analyzed": 130,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 17,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 27,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 95,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 95,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-10-28/hero.webp?v=1793171448",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe flicks a story card up into the air toward the glowing panel wall, building today's line-up as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Subagent Delegation and Model Routing — A surge of tooling and guidance for orchestrating multi-agent workflows, including the official Advanced Delegation p...\nTopic 2: Subscription Revamp and Cloud Agents — Nous Research overhauled Hermes Agent subscription plans so every paid tier now ships with a dedicated cloud agent in...\nTopic 3: Community Plugins and Ecosystem Growth — Third-party and first-party plugin activity is accelerating: HOL Guard (security), Refine Cycle (self-improvement), C...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: neural network visualization, glowing nodes, architecture, autonomous systems, workflow diagrams, connected tools, Hermes interface. Thin orange workflow lines connect floating nodes around the room. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a wide three-quarter profile, soft orange rim light against a deep charcoal background with faint circuit traces. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-10-28T07:10:48.325821",
+  "categories": {
+    "news": {
+      "count": 8,
+      "category_summary": "A second guide compiles ticket triage, FAQ answering, and human handoff into a repeatable **[customer-support automation](/?date=2026-10-28&category=news#item-e29a93f92e5c)** setup from existing Hermes components. **Community**: **[HOL Guard](/?date=2026-10-28&category=news#item-eb5d3b1a6975)** is a newly listed local-first security layer for **[Hermes Atlas](/?date=2026-10-28&category=news#item-eb5d3b1a6975)** agents, reviewing shell commands, file access, and package installs before execution — a strong pick for anyone granting agents broad system permissions. No releases or merged PRs this cycle.",
+      "category_summary_html": "<p>A second guide compiles ticket triage, FAQ answering, and human handoff into a repeatable <strong><a href=\"/?date=2026-10-28&amp;category=news#item-e29a93f92e5c\" class=\"internal-link\" rel=\"noopener noreferrer\">customer-support automation</a></strong> setup from existing Hermes components. <strong>Community</strong>: <strong><a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\">HOL Guard</a></strong> is a newly listed local-first security layer for <strong><a href=\"/?date=2026-10-28&amp;category=news#item-eb5d3b1a6975\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Atlas</a></strong> agents, reviewing shell commands, file access, and package installs before execution — a strong pick for anyone granting agents broad system permissions. No releases or merged PRs this cycle.</p>",
+      "themes": [
+        {
+          "name": "Subagent Delegation and Model Routing",
+          "description": "Strong cluster around Hermes subagents: how delegate_task works, how to choose subagent models, and the new official advanced-delegation plugin enabling per-task model and profile routes.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Community Plugins and Projects",
+          "description": "Community-built tooling including a Postgres permanent-memory plugin and the HOL Guard security layer for reviewing agent actions.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Setup Guides and Tutorials",
+          "description": "Third-party practical guides covering the llm-wiki skill, delegation configuration, and customer support automation patterns for Hermes Agent.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Canary Releases",
+          "description": "Automated canary builds on the 0.22.5 line, notable mainly because the advanced-delegation plugin requires 0.22.5+.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 55.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "eb5d3b1a6975",
+          "title": "hol-guard (Developer Tools)",
+          "content": "HOL Guard is a local-first security layer that reviews AI agent actions, including shell commands, file access, package installs, and MCP tool calls. It can allow, block, or request approval based on policy, and provides a CLI and local dashboard for managing protection and reviewing decision history.",
+          "url": "https://hermesatlas.com/projects/hashgraph-online/hol-guard",
+          "author": "Unknown",
+          "published": "2026-10-27T14:51:02",
+          "source": "Hermes Atlas — new projects",
+          "source_type": "rss",
+          "tags": [
+            "Developer Tools"
+          ],
+          "summary": "HOL Guard is a newly listed local-first security layer for AI agent actions in the Hermes Atlas, reviewing shell commands, file access, package installs, and MCP tool calls with policy-based allow/block/approval decisions. It ships a CLI and local dashboard for managing protection and reviewing decision history.",
+          "importance_score": 58.0,
+          "reasoning": "A relevant third-party security tool for Hermes/agent users in the Atlas ecosystem, addressing a high-value concern (agent action guardrails), but it is a community project listing rather than an official release.",
+          "themes": [
+            "Security",
+            "Community Projects",
+            "Agent Safety"
+          ],
+          "continuation": null,
+          "summary_html": "<p>HOL Guard is a newly listed local-first security layer for AI agent actions in the Hermes Atlas, reviewing shell commands, file access, package installs, and MCP tool calls with policy-based allow/block/approval decisions. It ships a CLI and local dashboard for managing protection and reviewing decision history.</p>",
+          "content_html": "<p>HOL Guard is a local-first security layer that reviews AI agent actions, including shell commands, file access, package installs, and MCP tool calls. It can allow, block, or request approval based on policy, and provides a CLI and local dashboard for managing protection and reviewing decision history.</p>"
+        },
+        {
+          "id": "a996a0b8d21b",
+          "title": "Permanent memory for Hermes agent",
+          "content": "This is a Postgres-based memory plugin for Hermes plus a management tool (not just a drop-in memory provider). Where it shines: 1. Shared context across agents / profiles / threads via a vault tool 2. Vector retrieval (typically 0.00X s vs higher latency on many standard plugins) 3. Vector-backed skill storage + skill chapters (agent can pull sections across skills) 4. Custom schemas so the agent can shape memory to the use-case 5. Warm start (agent boots with context instead of blank) 6. Configurable continuity / compression settings 7. Optional learning loops (agent-controlled) I ran a small set of live agent tests (not pure headless) because I cared about turns, accuracy, consistency, hedging, and actual UX rather than only match rates on pre-defined criteria. Candidates: • A: stock Hermes + this plugin • B: stock Hermes + Hindsight (dropped early — too slow for the tests) • C: stock Hermes + Mnemosyne (strong contender, frequently recommended) Dataset: LongMemEval-style sessions, questions rewritten to span multiple facts/sessions and made vaguer so the agent had to reason over retrieved material. Observations: • Mnemosyne is fast and injects crumbs on every turn. That can help, but in several runs the agent did not treat the custom tools as available, denied facts that were not in the injected crumbs, or filled gaps with hedging/fabrication when probed. Constant injection also adds bloat. • The vault/plugin approach consistently went retrieval-first. More relevant data retrieved → less gap-filling. I included chat logs and agent logs in the repo. Six live tests were enough for me to form a working conclusion for my own agentic workloads: Mnemosyne (and similar injection-heavy approaches) can work well for chat/companion style; this setup performed better for the agentic cases I care about. A few design notes: • Plugin route keeps it portable and lets upstream updates land cleanly without forcing a full setup on anyone. • Native Postgres still has advantages for real-time learning loops and parallelism vs SQLite + cron cleanup. If the plugin proves useful in the wild I may stage a fuller native path later. If you already run your own server + GPU you can use local embeddings (e.g. nomic-embed-text) and keep everything free; otherwise a cloud embedder is the practical option. Happy to answer questions, or if you need more details 💬  &#32; submitted by &#32;  /u/creativ4art  &#32; to &#32;  r/hermesagent   [link] &#32; [comments]",
+          "url": "https://www.reddit.com/r/hermesagent/comments/1xh06ii/permanent_memory_for_hermes_agent/",
+          "author": "/u/creativ4art",
+          "published": "2026-10-27T18:14:38",
+          "source": "newest submissions : multi",
+          "source_type": "rss",
+          "tags": [
+            "hermesagent"
+          ],
+          "summary": "A Reddit post on r/hermesagent showcases a Postgres-based memory plugin with a shared vault across agents/profiles/threads, fast vector retrieval, vector-backed skill storage with skill chapters, custom schemas, warm starts, and optional learning loops. The author ran live agent tests comparing candidates on accuracy, consistency, and UX.",
+          "importance_score": 55.0,
+          "reasoning": "[Freshness check: main claim overlaps prior research coverage from 2026-10-17] A substantial community-built plugin addressing Hermes memory persistence with benchmarks and unique features like skill chapters and warm starts; highly useful for power users, though unofficial and lacking independent validation.",
+          "themes": [
+            "Memory",
+            "Community Projects",
+            "Vector Retrieval",
+            "Postgres"
+          ],
+          "continuation": null,
+          "freshness": {
+            "status": "stale_anchor",
+            "label": "Old anchor",
+            "reason": "main claim overlaps prior research coverage from 2026-10-17",
+            "score_cap": 55.0,
+            "exclude_from_top": true,
+            "exclude_from_summaries": true,
+            "age_days": 10,
+            "matched_prior_items": [
+              {
+                "id": "hn-49133145",
+                "date": "2026-10-17",
+                "category": "research",
+                "title": "Semantic Memory for Hermes Agent with LanceDB",
+                "source": "hn_algolia",
+                "url": "https://www.lancedb.com/blog/semantic-memory-for-hermes-agent-with-lancedb"
+              },
+              {
+                "id": "6adbb9c6d531",
+                "date": "2026-10-26",
+                "category": "social",
+                "title": "@gutomartino Just use hermes instead",
+                "source": "Twitter",
+                "url": "https://twitter.com/Teknium/status/2114492561163473134"
+              },
+              {
+                "id": "1124ac999c44",
+                "date": "2026-10-11",
+                "category": "social",
+                "title": "@Hocinekerouaz1 It is unified.. The only way it isn't is if you set it to not clone, or are using pr...",
+                "source": "Twitter",
+                "url": "https://twitter.com/Teknium/status/2108873229754675557"
+              }
+            ]
+          },
+          "summary_html": "<p>A Reddit post on r/hermesagent showcases a Postgres-based memory plugin with a shared vault across agents/profiles/threads, fast vector retrieval, vector-backed skill storage with skill chapters, custom schemas, warm starts, and optional learning loops. The author ran live agent tests comparing candidates on accuracy, consistency, and UX.</p>",
+          "content_html": "<p>This is a Postgres-based memory plugin for Hermes plus a management tool (not just a drop-in memory provider). Where it shines: 1. Shared context across agents / profiles / threads via a vault tool 2. Vector retrieval (typically 0.00X s vs higher latency on many standard plugins) 3. Vector-backed skill storage + skill chapters (agent can pull sections across skills) 4. Custom schemas so the agent can shape memory to the use-case 5. Warm start (agent boots with context instead of blank) 6. Configurable continuity / compression settings 7. Optional learning loops (agent-controlled) I ran a small set of live agent tests (not pure headless) because I cared about turns, accuracy, consistency, hedging, and actual UX rather than only match rates on pre-defined criteria. Candidates: • A: stock Hermes + this plugin • B: stock Hermes + Hindsight (dropped early — too slow for the tests) • C: stock Hermes + Mnemosyne (strong contender, frequently recommended) Dataset: LongMemEval-style sessions, questions rewritten to span multiple facts/sessions and made vaguer so the agent had to reason over retrieved material. Observations: • Mnemosyne is fast and injects crumbs on every turn. That can help, but in several runs the agent did not treat the custom tools as available, denied facts that were not in the injected crumbs, or filled gaps with hedging/fabrication when probed. Constant injection also adds bloat. • The vault/plugin approach consistently went retrieval-first. More relevant data retrieved → less gap-filling. I included chat logs and agent logs in the repo. Six live tests were enough for me to form a working conclusion for my own agentic workloads: Mnemosyne (and similar injection-heavy approaches) can work well for chat/companion style; this setup performed better for the agentic cases I care about. A few design notes: • Plugin route keeps it portable and lets upstream updates land cleanly without forcing a full setup on anyone. • Native Postgres still has advantages for real-time learning loops and parallelism vs SQLite + cron cleanup. If the plugin proves useful in the wild I may stage a fuller native path later. If you already run your own server + GPU you can use local embeddings (e.g. nomic-embed-text) and keep everything free; otherwise a cloud embedder is the practical option. Happy to answer questions, or if you need more details 💬    submitted by    /u/creativ4art    to    r/hermesagent   [link]   [comments]</p>"
+        },
+        {
+          "id": "34c7ad0f12dc",
+          "title": "v0.22.5+canary.20261027T070237Z",
+          "content": "Hermes Agent canary 20261027T070237Z",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261027T070237Z",
+          "author": "github-actions[bot]",
+          "published": "2026-10-27T07:02:38",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A new canary build of Hermes Agent, v0.22.5+canary.20261027T070237Z, was published on 2026-10-27. It is a routine automated canary release with minimal notes, signaling ongoing 0.22.5-line development.",
+          "importance_score": 55.0,
+          "reasoning": "[Freshness check: This is the third consecutive routine automated canary build of the same v0.22.5 line with minimal notes, so the briefing-worthy claim (ongoing 0.22.5-line development) was already covered by the Oct 25 and Oct 26 releases, with only a new build timestamp added.] Canary builds matter to Hermes users tracking edge features, and 0.22.5 is notable as the minimum version required by the newly released advanced-delegation plugin, but the release notes themselves are sparse and routine.",
+          "themes": [
+            "Canary Releases",
+            "Version 0.22.5"
+          ],
+          "continuation": null,
+          "freshness": {
+            "status": "stale_anchor",
+            "label": "Old anchor",
+            "reason": "This is the third consecutive routine automated canary build of the same v0.22.5 line with minimal notes, so the briefing-worthy claim (ongoing 0.22.5-line development) was already covered by the Oct 25 and Oct 26 releases, with only a new build timestamp added.",
+            "score_cap": 55.0,
+            "exclude_from_top": true,
+            "exclude_from_summaries": true,
+            "age_days": 2,
+            "matched_prior_items": [
+              {
+                "id": "9be57bb75d41",
+                "date": "2026-10-25",
+                "category": "news",
+                "title": "v0.22.5+canary.20261024T065630Z",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261024T065630Z"
+              },
+              {
+                "id": "ef21ea8751be",
+                "date": "2026-10-26",
+                "category": "news",
+                "title": "v0.22.5+canary.20261025T065651Z",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.5%2Bcanary.20261025T065651Z"
+              },
+              {
+                "id": "bceff88ae034",
+                "date": "2026-10-16",
+                "category": "news",
+                "title": "rc.2-v0.22.2",
+                "source": "Release notes from hermes-agent",
+                "url": "https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.22.2"
+              }
+            ]
+          },
+          "summary_html": "<p>A new canary build of Hermes Agent, v0.22.5+canary.20261027T070237Z, was published on 2026-10-27. It is a routine automated canary release with minimal notes, signaling ongoing 0.22.5-line development.</p>",
+          "content_html": "<p>Hermes Agent canary 20261027T070237Z</p>"
+        },
+        {
+          "id": "e29a93f92e5c",
+          "title": "Hermes Agent for Customer Support Automation",
+          "content": "A 2026 pattern-based setup guide for ticket triage, FAQ answers, and human handoff using Hermes components.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-agent-customer-support-automation/",
+          "author": "Hermes Agent",
+          "published": "2026-10-27T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A pattern-based 2026 setup guide from hermes-tutorials.dev covering ticket triage, FAQ answering, and human handoff workflows built from Hermes components. It is a short-descriptor listing pointing to a practical automation walkthrough.",
+          "importance_score": 45.0,
+          "reasoning": "A useful vertical-use-case tutorial for support automation, but it compiles known components into a pattern guide rather than introducing new capabilities, so it ranks below official releases and novel plugin coverage.",
+          "themes": [
+            "Customer Support",
+            "Use-Case Guides",
+            "Automation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A pattern-based 2026 setup guide from hermes-tutorials.dev covering ticket triage, FAQ answering, and human handoff workflows built from Hermes components. It is a short-descriptor listing pointing to a practical automation walkthrough.</p>",
+          "content_html": "<p>A 2026 pattern-based setup guide for ticket triage, FAQ answers, and human handoff using Hermes components.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 27,
+      "category_summary": "The latest developments for Hermes Agent focus heavily on enhanced knowledge retrieval, sophisticated multi-agent orchestration, and improved subscription workflows. Key technical advancements include the introduction of the **[llm-wiki](/?date=2026-10-28&category=research#item-5ea2212b5088)** skill, which transforms Hermes into a persistent research assistant capable of managing structured internal knowledge. The framework is rapidly maturing through advanced delegation capabilities; users now have detailed guides for **[Advanced Delegation](/?date=2026-10-28&category=research#item-679ef7221396)**, utilizing **[model_map](/?date=2026-10-28&category=research#item-679ef7221396)** and **[profile_routes](/?date=2026-10-28&category=research#item-679ef7221396)** to manage complex multi-agent tasks. Core architecture now supports **[subagents](/?date=2026-10-28&category=research#item-f72edb8c3a45)** via the built-in `delegate_task` tool, offering granular control over [which model each subagent executes on](/?date=2026-10-28&category=research#item-a441ad5b5c1c). Furthermore, the ecosystem is broadening its reach by adding native support for **[Claude Pro/Max](/?date=2026-10-28&category=research#item-hn-49790991)** subscriptions, lowering the barrier for accessing high-tier models.",
+      "category_summary_html": "<p>The latest developments for Hermes Agent focus heavily on enhanced knowledge retrieval, sophisticated multi-agent orchestration, and improved subscription workflows. Key technical advancements include the introduction of the <strong><a href=\"/?date=2026-10-28&amp;category=research#item-5ea2212b5088\" class=\"internal-link\" rel=\"noopener noreferrer\">llm-wiki</a></strong> skill, which transforms Hermes into a persistent research assistant capable of managing structured internal knowledge. The framework is rapidly maturing through advanced delegation capabilities; users now have detailed guides for <strong><a href=\"/?date=2026-10-28&amp;category=research#item-679ef7221396\" class=\"internal-link\" rel=\"noopener noreferrer\">Advanced Delegation</a></strong>, utilizing <strong><a href=\"/?date=2026-10-28&amp;category=research#item-679ef7221396\" class=\"internal-link\" rel=\"noopener noreferrer\">model_map</a></strong> and <strong><a href=\"/?date=2026-10-28&amp;category=research#item-679ef7221396\" class=\"internal-link\" rel=\"noopener noreferrer\">profile_routes</a></strong> to manage complex multi-agent tasks. Core architecture now supports <strong><a href=\"/?date=2026-10-28&amp;category=research#item-f72edb8c3a45\" class=\"internal-link\" rel=\"noopener noreferrer\">subagents</a></strong> via the built-in <code>delegate_task</code> tool, offering granular control over <a href=\"/?date=2026-10-28&amp;category=research#item-a441ad5b5c1c\" class=\"internal-link\" rel=\"noopener noreferrer\">which model each subagent executes on</a>. Furthermore, the ecosystem is broadening its reach by adding native support for <strong><a href=\"/?date=2026-10-28&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max</a></strong> subscriptions, lowering the barrier for accessing high-tier models.</p>",
+      "themes": [
+        {
+          "name": "Knowledge Base & Research",
+          "description": "Introduction of structured internal knowledge management skills based on industry patterns (e.g., Karpathy's LLM Wiki) to enhance agent capabilities.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Subagent Delegation and Model Routing",
+          "description": "A cluster of guides and discussions around Hermes subagents: delegate_task mechanics, per-subagent model choice, and the official Advanced Delegation plugin with model and profile routes.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 74.0
+        },
+        {
+          "name": "Deployment and Self-Hosting",
+          "description": "Containerization, Kubernetes pain points (no Helm chart, root-at-init), and unconventional hosts like the Arduino UNO Q for running Hermes Agent.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 62.0
+        },
+        {
+          "name": "Research on Agent Capabilities and Economics",
+          "description": "Academic papers on code-driven video generation benchmarks and the economics of choosing reasoning-effort levels in LLM agents.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Community Ecosystem and Project Health",
+          "description": "Third-party tooling (orchestrators, registries, observability), a large open-PR backlog, YC startup building on Hermes, and moderation/governance friction signals.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Agent Reliability and Debugging",
+          "description": "User reports of agent misbehavior (trance-like states with GLM 5.3 Flash), adversarial reversal research, and questions about whether model routers are required for stable operation.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 52.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "2610.35864",
+          "title": "VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation",
+          "content": "Diffusion video models produce striking clips, but they cannot reliably render an exact formula, a correct chart, a rule-consistent game or narration synchronized to on-screen events. A different route is emerging: multimodal agents that write code to render every frame and synthesize every sound. We introduce VibeVideoBench, a benchmark for evaluating agents on code-driven video generation. Its 239 self-contained tasks in English and Chinese span 12 categories, from data stories and music-drive",
+          "url": "https://arxiv.org/abs/2610.35864",
+          "author": "HF Daily Papers",
+          "published": "2026-10-27T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Introduces VibeVideoBench, a benchmark for evaluating multimodal agents on code-driven video generation, where agents write code to render frames and synthesize audio rather than relying on diffusion video models. The benchmark has 239 self-contained tasks in English and Chinese spanning 12 categories, including data stories and music-driven content, targeting exact rendering of formulas, charts, and rule-consistent synchronized media.",
+          "importance_score": 62.0,
+          "reasoning": "A rigorous new evaluation benchmark relevant to agent capabilities, though it concerns code-driven video generation broadly rather than Hermes Agent specifically, limiting direct operational relevance.",
+          "themes": [
+            "agent evaluation",
+            "multimodal agents",
+            "video generation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Introduces VibeVideoBench, a benchmark for evaluating multimodal agents on code-driven video generation, where agents write code to render frames and synthesize audio rather than relying on diffusion video models. The benchmark has 239 self-contained tasks in English and Chinese spanning 12 categories, including data stories and music-driven content, targeting exact rendering of formulas, charts, and rule-consistent synchronized media.</p>",
+          "content_html": "<p>Diffusion video models produce striking clips, but they cannot reliably render an exact formula, a correct chart, a rule-consistent game or narration synchronized to on-screen events. A different route is emerging: multimodal agents that write code to render every frame and synthesize every sound. We introduce VibeVideoBench, a benchmark for evaluating agents on code-driven video generation. Its 239 self-contained tasks in English and Chinese span 12 categories, from data stories and music-drive</p>"
+        },
+        {
+          "id": "hn-49318128",
+          "title": "Show HN: Grafana agent observability for Hermes Agent",
+          "content": "Show HN: Grafana agent observability for Hermes Agent",
+          "url": "https://github.com/alexander-akhmetov/grafana-agento11y-hermes",
+          "author": "eventuallyacat",
+          "published": "2026-08-16T08:40:50Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN for a Grafana-based observability project for Hermes Agent, published on GitHub (alexander-akhmetov/grafana-agento11y-hermes), providing agent monitoring dashboards/metrics integration.",
+          "importance_score": 62.0,
+          "reasoning": "Observability is a common operational gap for self-hosted agents; a Grafana integration fills it with concrete tooling, making it useful for production operators.",
+          "themes": [
+            "observability",
+            "monitoring",
+            "grafana"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN for a Grafana-based observability project for Hermes Agent, published on GitHub (alexander-akhmetov/grafana-agento11y-hermes), providing agent monitoring dashboards/metrics integration.</p>",
+          "content_html": "<p>Show HN: Grafana agent observability for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Show HN for verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise and now uses it daily for work, having wanted an easier, more intuitive interface to Hermes Agent than the CLI.",
+          "importance_score": 60.0,
+          "reasoning": "A third-party orchestration UI built on Hermes demonstrates ecosystem growth and addresses CLI usability gaps; moderate technical relevance as community tooling.",
+          "themes": [
+            "orchestration",
+            "community tooling",
+            "UX"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Show HN for verso, an open-source agent orchestrator for knowledge work built on top of Hermes Agent. The author started it as a learning exercise and now uses it daily for work, having wanted an easier, more intuitive interface to Hermes Agent than the CLI.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "2610.34491",
+          "title": "What Effort Level Should I Choose? On the Economics of Reasoning Effort in LLM Agents",
+          "content": "Generative models increasingly expose a reasoning effort setting that lets users scale inference-time compute, trading higher cost for potentially improved performance. Users must choose an effort level before knowing whether extra reasoning will help, and even a successful run does not reveal whether the effort purchased was necessary. Reasoning effort is therefore a credence good: buyers observe the outcome but cannot assess the marginal value of the computation they paid for. In this work, we",
+          "url": "https://arxiv.org/abs/2610.34491",
+          "author": "HF Daily Papers",
+          "published": "2026-10-25T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Research paper framing reasoning-effort settings in LLM agents as a credence-good economics problem: users must pick an inference-compute level before knowing whether extra reasoning helps, and even a successful run does not reveal whether the purchased effort was necessary. Analyzes how users should choose effort levels under cost-performance uncertainty.",
+          "importance_score": 58.0,
+          "reasoning": "Conceptually relevant to agent cost management and inference-time compute decisions, which matters for agent operators, but it is general LLM research without direct Hermes Agent documentation impact.",
+          "themes": [
+            "reasoning effort",
+            "inference economics",
+            "cost optimization"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Research paper framing reasoning-effort settings in LLM agents as a credence-good economics problem: users must pick an inference-compute level before knowing whether extra reasoning helps, and even a successful run does not reveal whether the purchased effort was necessary. Analyzes how users should choose effort levels under cost-performance uncertainty.</p>",
+          "content_html": "<p>Generative models increasingly expose a reasoning effort setting that lets users scale inference-time compute, trading higher cost for potentially improved performance. Users must choose an effort level before knowing whether extra reasoning will help, and even a successful run does not reveal whether the effort purchased was necessary. Reasoning effort is therefore a credence good: buyers observe the outcome but cannot assess the marginal value of the computation they paid for. In this work, we</p>"
+        },
+        {
+          "id": "hn-49368474",
+          "title": "The Arduino UNO Q is an almost perfect Hermes Agent host",
+          "content": "I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a ",
+          "url": "https://news.ycombinator.com/item?id=49368474",
+          "author": "etoxin",
+          "published": "2026-08-19T23:22:49Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino side with a Linux side (4GB RAM, 32GB storage on their board). Motivated by not wanting to run the agent on a personal machine and avoiding ongoing VPS costs, they found the board provides plenty of power to host the agent.",
+          "importance_score": 57.0,
+          "reasoning": "Creative low-cost, always-on self-hosting option on hobbyist hardware; practical for users weighing VPS costs, though niche and hardware-specific.",
+          "themes": [
+            "self-hosting",
+            "edge hardware",
+            "deployment"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user describes running the Hermes Agent client on an Arduino UNO Q board, which pairs an Arduino side with a Linux side (4GB RAM, 32GB storage on their board). Motivated by not wanting to run the agent on a personal machine and avoiding ongoing VPS costs, they found the board provides plenty of power to host the agent.</p>",
+          "content_html": "<p>I’ve wanted to try out Hermes agent for a while now but I never wanted to run it on my own personal machine. I thought about maybe using a hosted VPS but I wasn’t keen on the ongoing cost. Then I looked a recently acquired Arduino UNO Q. A weird arduino board that has an arduino on one side and Linux on the other side. The Linux chip can communicate to the arduino chip. The board I have has 4GB of ram and 32GB of storage. Plenty of power to run the Hermes agent client. I never intended to run a</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai's GLM 5.3 Flash model entering a trance-like state during a simple environment-inspection request. After issuing terminal commands to print local environment details and $PATH, the agent produced a long, odd 'Thinking for 1m36s' block with a strange string of output; the user asks whether the output is meaningful.",
+          "importance_score": 55.0,
+          "reasoning": "A real-world debugging report involving a specific third-party model (GLM 5.3 Flash) misbehaving inside Hermes, useful signal for reliability issues with certain providers, though anecdotal and unresolved in the snippet.",
+          "themes": [
+            "debugging",
+            "model reliability",
+            "troubleshooting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user reports a freshly provisioned Hermes Agent on a headless Debian server using Z.ai's GLM 5.3 Flash model entering a trance-like state during a simple environment-inspection request. After issuing terminal commands to print local environment details and $PATH, the agent produced a long, odd 'Thinking for 1m36s' block with a strange string of output; the user asks whether the output is meaningful.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-50131496",
+          "title": "Hermes Agent: My containerized take",
+          "content": "Hermes Agent: My containerized take",
+          "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+          "author": "ricardodevries",
+          "published": "2026-10-17T14:27:11Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A blog post by ricardodevries describing a personal containerized deployment approach for Hermes Agent, covering how to run the agent inside containers.",
+          "importance_score": 52.0,
+          "reasoning": "Practical deployment guidance for containerizing Hermes Agent is useful to self-hosters, though the snippet lacks specifics on the approach taken.",
+          "themes": [
+            "containerization",
+            "deployment",
+            "self-hosting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A blog post by ricardodevries describing a personal containerized deployment approach for Hermes Agent, covering how to run the agent inside containers.</p>",
+          "content_html": "<p>Hermes Agent: My containerized take</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Refine Cycle is a community self-improvement plugin for Hermes Agent, published on GitHub under Bergschloss, presumably enabling iterative refinement loops of agent behavior or outputs.",
+          "importance_score": 50.0,
+          "reasoning": "A self-improvement plugin is an interesting extensibility example for Hermes, but the snippet gives no detail on mechanism, safety, or adoption.",
+          "themes": [
+            "plugins",
+            "self-improvement",
+            "extensibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Refine Cycle is a community self-improvement plugin for Hermes Agent, published on GitHub under Bergschloss, presumably enabling iterative refinement loops of agent behavior or outputs.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "ClusterMob is presented as a community registry of Hermes Agent profiles, hosted at clustermob.com, allowing users to discover and presumably share agent profile configurations.",
+          "importance_score": 48.0,
+          "reasoning": "Community-built registry that aids profile discoverability and sharing across the Hermes ecosystem, but the content snippet offers few technical details.",
+          "themes": [
+            "community tooling",
+            "agent profiles",
+            "ecosystem"
+          ],
+          "continuation": null,
+          "summary_html": "<p>ClusterMob is presented as a community registry of Hermes Agent profiles, hosted at clustermob.com, allowing users to discover and presumably share agent profile configurations.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "hn-49159529",
+          "title": "Is Hermes Agent unusable without a model router?",
+          "content": "Is Hermes Agent unusable without a model router?",
+          "url": "https://github.com/maximhq/bifrost/",
+          "author": "Swapnoneel",
+          "published": "2026-08-03T18:18:59Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A Hacker News discussion titled 'Is Hermes Agent unusable without a model router?', linking to maximimhq/bifrost, a model-routing tool, implying the poster finds model routing practically necessary when running Hermes Agent.",
+          "importance_score": 47.0,
+          "reasoning": "Raises a legitimate operational question about whether multi-provider model routing (e.g., Bifrost) is effectively required for reliable Hermes operation, but the snippet is thin on specifics.",
+          "themes": [
+            "model routing",
+            "configuration",
+            "reliability"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A Hacker News discussion titled 'Is Hermes Agent unusable without a model router?', linking to maximimhq/bifrost, a model-routing tool, implying the poster finds model routing practically necessary when running Hermes Agent.</p>",
+          "content_html": "<p>Is Hermes Agent unusable without a model router?</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 95,
+      "category_summary": "### 🚀 Major Product Announcements & Upgrades\n**Hermes Agent** is undergoing massive technological and structural updates, focusing on enterprise capability and accessibility.\n\n- **Product Power Boost (Score 95.0):** **Teknium** announced a critical enhancement for all paid subscribers. Users now receive a dedicated [**Hermes Agent instance**](/?date=2026-10-28&category=social#item-7f61ddaf57dc) and a virtual computer to operate within, significantly elevating the utility of paid tiers.\n- **Subscription Model Overhaul (Score 90.0):** **NousResearch** is executing a full [revamp of subscription plans](/?date=2026-10-28&category=social#item-21b8ea3e7ceb), ensuring that every new tier includes a cloud agent, moving away from older usage-based limits to a more modern, feature-rich model.\n- **Advanced Delegation (Score 88.0):** A new official [**Advanced Delegation plugin**](/?date=2026-10-28&category=social#item-72b739a10de5) has been released. This allows orchestrators to manage complex workflows by selecting any agent profile or routing custom models, cementing the ecosystem's lead in sophisticated task management.\n- **Plugin Integrations:** **Teknium** also launched the [**ElevenLabs SFX plugin**](/?date=2026-10-28&category=social#item-e8dac95a9362), expanding **Hermes Agent's** Game Dev Studio to allow users to generate sound effects and [looped playback directly from within the platform](/?date=2026-10-28&category=social#item-dab72ea0183e).\n\n### 🛠️ Developer & Community Ecosystem\nStrong community engagement points highlight the maturity of **oh-my-hermes** and practical technical advice.\n\n- **Deep Dive into Capabilities (Score 72.0):** The [**oh-my-hermes** repository](/?date=2026-10-28&category=social#item-6a37c0f6fca2) is gaining powerful features. Community members are exploring functionality like [`/dag-ulw`](/?date=2026-10-28&category=social#item-6a37c0f6fca2), which breaks down high-level goals into a graph of parallel tasks, each handled by its own model.\n- **Technical Guidance (Score 85.0):** **Teknium** is providing high-value support by sharing critical debugging commands, such as [`hermes debug share --nous`](/?date=2026-10-28&category=social#item-70325ccbda30), which are essential for power users and developers.\n- **Capacity & Scaling (Score 55.0):** For self-hosters, **Teknium** provided concrete sizing guidance, noting that [4GB of memory can support approximately 20 simultaneous sessions](/?date=2026-10-28&category=social#item-650b29d121d1).\n- **User Workflow Enhancements:** Community members are integrating writing style guides (like [**blader/humanizer's**](/?date=2026-10-28&category=social#item-9325c2030812)) into **Oh My Hermes**, demonstrating a high level of tool adoption and creative integration into the platform.",
+      "category_summary_html": "<h3>🚀 Major Product Announcements &amp; Upgrades</h3>\n<p><strong>Hermes Agent</strong> is undergoing massive technological and structural updates, focusing on enterprise capability and accessibility.</p>\n<ul>\n<li><strong>Product Power Boost (Score 95.0):</strong> <strong>Teknium</strong> announced a critical enhancement for all paid subscribers. Users now receive a dedicated <a href=\"/?date=2026-10-28&amp;category=social#item-7f61ddaf57dc\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Agent instance</strong></a> and a virtual computer to operate within, significantly elevating the utility of paid tiers.</li>\n<li><strong>Subscription Model Overhaul (Score 90.0):</strong> <strong>NousResearch</strong> is executing a full <a href=\"/?date=2026-10-28&amp;category=social#item-21b8ea3e7ceb\" class=\"internal-link\" rel=\"noopener noreferrer\">revamp of subscription plans</a>, ensuring that every new tier includes a cloud agent, moving away from older usage-based limits to a more modern, feature-rich model.</li>\n<li><strong>Advanced Delegation (Score 88.0):</strong> A new official <a href=\"/?date=2026-10-28&amp;category=social#item-72b739a10de5\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Advanced Delegation plugin</strong></a> has been released. This allows orchestrators to manage complex workflows by selecting any agent profile or routing custom models, cementing the ecosystem's lead in sophisticated task management.</li>\n<li><strong>Plugin Integrations:</strong> <strong>Teknium</strong> also launched the <a href=\"/?date=2026-10-28&amp;category=social#item-e8dac95a9362\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ElevenLabs SFX plugin</strong></a>, expanding <strong>Hermes Agent's</strong> Game Dev Studio to allow users to generate sound effects and <a href=\"/?date=2026-10-28&amp;category=social#item-dab72ea0183e\" class=\"internal-link\" rel=\"noopener noreferrer\">looped playback directly from within the platform</a>.</li>\n</ul>\n<h3>🛠️ Developer &amp; Community Ecosystem</h3>\n<p>Strong community engagement points highlight the maturity of <strong>oh-my-hermes</strong> and practical technical advice.</p>\n<ul>\n<li><strong>Deep Dive into Capabilities (Score 72.0):</strong> The <a href=\"/?date=2026-10-28&amp;category=social#item-6a37c0f6fca2\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes</strong> repository</a> is gaining powerful features. Community members are exploring functionality like <a href=\"/?date=2026-10-28&amp;category=social#item-6a37c0f6fca2\" class=\"internal-link\" rel=\"noopener noreferrer\"><code>/dag-ulw</code></a>, which breaks down high-level goals into a graph of parallel tasks, each handled by its own model.</li>\n<li><strong>Technical Guidance (Score 85.0):</strong> <strong>Teknium</strong> is providing high-value support by sharing critical debugging commands, such as <a href=\"/?date=2026-10-28&amp;category=social#item-70325ccbda30\" class=\"internal-link\" rel=\"noopener noreferrer\"><code>hermes debug share --nous</code></a>, which are essential for power users and developers.</li>\n<li><strong>Capacity &amp; Scaling (Score 55.0):</strong> For self-hosters, <strong>Teknium</strong> provided concrete sizing guidance, noting that <a href=\"/?date=2026-10-28&amp;category=social#item-650b29d121d1\" class=\"internal-link\" rel=\"noopener noreferrer\">4GB of memory can support approximately 20 simultaneous sessions</a>.</li>\n<li><strong>User Workflow Enhancements:</strong> Community members are integrating writing style guides (like <a href=\"/?date=2026-10-28&amp;category=social#item-9325c2030812\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>blader/humanizer's</strong></a>) into <strong>Oh My Hermes</strong>, demonstrating a high level of tool adoption and creative integration into the platform.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "Subscription and Pricing Revamp",
+          "description": "Official announcements and documentation describing the new Hermes Agent subscription tiers, included cloud agents, and the shift from monthly credits to daily/weekly limits.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 95.0
+        },
+        {
+          "name": "Product Features & Hardware Inclusion",
+          "description": "Updates confirming that paid tiers now come with a dedicated Hermes Agent instance and virtual computing power, drastically improving the agent's utility and mobile readiness.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 95.0
+        },
+        {
+          "name": "Feature Development & Releases",
+          "description": "Announcements of new plugins (ElevenLabs SFX) and integration with existing services via Connectors.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Subscription & Plan Revamp",
+          "description": "Official announcements regarding the restructuring of subscription tiers, switching from monthly usage blocks to granular daily/weekly limits, and the integration of cloud agents.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "Orchestration and Delegation",
+          "description": "Multiple posts cover the new Advanced Delegation plugin, custom model routing, subagent use outside kanban, and simpler orchestration access — the batch's central product story.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Technical Guidance & Tips",
+          "description": "Providing command-line usage, backup procedures, and specific configuration details like debugging commands.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Cloud Agent and Managed Hosting",
+          "description": "Discussion of bundled Hermes Agent instances with attached computers, one-click desktop login, and how managed hosting serves users who cannot self-host, especially for the upcoming mobile app.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "oh-my-hermes ecosystem",
+          "description": "Most of the batch centers on rlaope's oh-my-hermes (OMH) harness for hermes-agent: its DAG-based task graph architecture, model routing, skill library, install guides, and its relationship to other harnesses and sponsors.",
+          "item_count": 11,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "oh-my-hermes Ecosystem Tooling",
+          "description": "rlaope ships Sprite Forge, a native TUI, and a Humanizer writing-style integration, showing a thriving community extension layer around Hermes Agent.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Community Support & Engagement",
+          "description": "General interactions, feedback, and positive support from both the core team and the user base.",
+          "item_count": 14,
+          "example_items": [],
+          "importance": 65.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "e8dac95a9362",
+          "title": "Introducing the @ElevenLabs SFX plugin, built to continue the work on a suite of Game Dev Studio cap...",
+          "content": "Introducing the @ElevenLabs SFX plugin, built to continue the work on a suite of Game Dev Studio capabilities for your Hermes Agent!\n\nHermes made this demo video to see it in action, you can install it right now from the plugins catalog:\n\nhttps://t.co/m9GCE4oa3r\n\nThe plugin adds a tool to hook up your ElevenLabs account API and generated sounds for whatever you need. Additionally, on the desktop app, the plugin adds a gallery of all of your generated SFX, easy integration into your game or other multimedia, looping, cost, cycling through the generations for that sound effect, and more!\n\nEnjoy",
+          "url": "https://twitter.com/Teknium/status/2115219694622040322",
+          "author": "@Teknium",
+          "published": "2026-10-27T23:10:48",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium announces the release of the ElevenLabs SFX plugin, which expands Hermes Agent's Game Dev Studio capabilities. This plugin allows users to integrate their ElevenLabs API account and includes advanced features like sound galleries and looping options on the desktop application.",
+          "importance_score": 95.0,
+          "reasoning": "A direct announcement of a new plugin/feature set from @Teknium with extremely high engagement, signaling a major product capability release.",
+          "themes": [
+            "ElevenLabs Plugin",
+            "Game Dev Studio",
+            "Feature Release"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium announces the release of the ElevenLabs SFX plugin, which expands Hermes Agent's Game Dev Studio capabilities. This plugin allows users to integrate their ElevenLabs API account and includes advanced features like sound galleries and looping options on the desktop application.</p>",
+          "content_html": "<p>Introducing the @ElevenLabs SFX plugin, built to continue the work on a suite of Game Dev Studio capabilities for your Hermes Agent!</p>\n<p>Hermes made this demo video to see it in action, you can install it right now from the plugins catalog:</p>\n<p>https://t.co/m9GCE4oa3r</p>\n<p>The plugin adds a tool to hook up your ElevenLabs account API and generated sounds for whatever you need. Additionally, on the desktop app, the plugin adds a gallery of all of your generated SFX, easy integration into your game or other multimedia, looping, cost, cycling through the generations for that sound effect, and more!</p>\n<p>Enjoy</p>"
+        },
+        {
+          "id": "7f61ddaf57dc",
+          "title": "All nous portal paid tier subs now come with a Hermes Agent instance and computer for it to use!\n\nEa...",
+          "content": "All nous portal paid tier subs now come with a Hermes Agent instance and computer for it to use!\n\nEasily connect to your hermes agent so you never have to leave your laptop open to keep things moving on any messenger app and one click login in the desktop app to connect to your Hermes Agent.\n\nThis will be quite critical for the Mobile App! :)",
+          "url": "https://twitter.com/Teknium/status/2115128618372522495",
+          "author": "@Teknium",
+          "published": "2026-10-27T17:08:54",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Delivering on the cloud roadmap teased in [Social](/?date=2026-10-26&category=social#item-5c001672cf84) a couple of days ago, Teknium announces a major feature addition: all paid subscriptions now include a dedicated Hermes Agent instance and a virtual computer for usage, improving connectivity and mobile experience.",
+          "importance_score": 95.0,
+          "reasoning": "This is a critical announcement from Teknium representing a substantial product enhancement for all paid users, addressing integration and mobile accessibility.",
+          "themes": [
+            "hardware_inclusion",
+            "product_upgrade"
+          ],
+          "continuation": {
+            "original_item_id": "5c001672cf84",
+            "original_date": "2026-10-26",
+            "original_category": "social",
+            "original_title": "@PatrickMoorhead @openclaw @NousResearch In a matter of days, every sub will give inference, tools, ...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Delivering on the cloud roadmap teased in **Social** a couple of days ago"
+          },
+          "summary_html": "<p>Delivering on the cloud roadmap teased in <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> a couple of days ago, Teknium announces a major feature addition: all paid subscriptions now include a dedicated Hermes Agent instance and a virtual computer for usage, improving connectivity and mobile experience.</p>",
+          "content_html": "<p>All nous portal paid tier subs now come with a Hermes Agent instance and computer for it to use!</p>\n<p>Easily connect to your hermes agent so you never have to leave your laptop open to keep things moving on any messenger app and one click login in the desktop app to connect to your Hermes Agent.</p>\n<p>This will be quite critical for the Mobile App! :)</p>"
+        },
+        {
+          "id": "21b8ea3e7ceb",
+          "title": "We've revamped Hermes Agent subscriptions. \n\nEvery new plan now includes a cloud agent out of the bo...",
+          "content": "We've revamped Hermes Agent subscriptions. \n\nEvery new plan now includes a cloud agent out of the box, and usage has daily and weekly limits instead of one monthly block of credits.\n\nSubscribers can switch to the new plans any time at https://t.co/hsnPi9hDPn https://t.co/t4fl3FrxQv",
+          "url": "https://twitter.com/NousResearch/status/2115120531611787323",
+          "author": "@NousResearch",
+          "published": "2026-10-27T16:36:46",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "The Hermes subscription revamp previewed in [Social](/?date=2026-10-26&category=social#item-5c001672cf84) a couple of days ago is now official, NousResearch officially announces a complete revamp of Hermes Agent subscriptions, implementing new plans that include a cloud agent and moving away from monthly credit blocks to daily and weekly usage limits.",
+          "importance_score": 90.0,
+          "reasoning": "This is the highest impact announcement, fundamentally changing the subscription model and offering significant value increases via cloud agents, leading to massive community engagement.",
+          "themes": [
+            "subscription_revamp",
+            "cloud_agents"
+          ],
+          "continuation": {
+            "original_item_id": "5c001672cf84",
+            "original_date": "2026-10-26",
+            "original_category": "social",
+            "original_title": "@PatrickMoorhead @openclaw @NousResearch In a matter of days, every sub will give inference, tools, ...",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "The Hermes subscription revamp previewed in **Social** a couple of days ago is now official"
+          },
+          "summary_html": "<p>The Hermes subscription revamp previewed in <a href=\"/?date=2026-10-26&amp;category=social#item-5c001672cf84\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> a couple of days ago is now official, NousResearch officially announces a complete revamp of Hermes Agent subscriptions, implementing new plans that include a cloud agent and moving away from monthly credit blocks to daily and weekly usage limits.</p>",
+          "content_html": "<p>We've revamped Hermes Agent subscriptions.</p>\n<p>Every new plan now includes a cloud agent out of the box, and usage has daily and weekly limits instead of one monthly block of credits.</p>\n<p>Subscribers can switch to the new plans any time at https://t.co/hsnPi9hDPn https://t.co/t4fl3FrxQv</p>"
+        },
+        {
+          "id": "dab72ea0183e",
+          "title": "Generate SFX with @ElevenLabs straight from Hermes Desktop with looped playback, one-click variation...",
+          "content": "Generate SFX with @ElevenLabs straight from Hermes Desktop with looped playback, one-click variation generation, and a helpful library of all your sounds.",
+          "url": "https://twitter.com/NousResearch/status/2115220372228612579",
+          "author": "@NousResearch",
+          "published": "2026-10-27T23:13:30",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@NousResearch showcases the ability to generate sound effects (SFX) using ElevenLabs directly within Hermes Desktop, highlighting features like looped playback and one-click variation.",
+          "importance_score": 88.0,
+          "reasoning": "A community showcase post from @NousResearch demonstrating a new capability with high engagement, focusing on utility.",
+          "themes": [
+            "SFX Generation",
+            "ElevenLabs Integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@NousResearch showcases the ability to generate sound effects (SFX) using ElevenLabs directly within Hermes Desktop, highlighting features like looped playback and one-click variation.</p>",
+          "content_html": "<p>Generate SFX with @ElevenLabs straight from Hermes Desktop with looped playback, one-click variation generation, and a helpful library of all your sounds.</p>"
+        },
+        {
+          "id": "72b739a10de5",
+          "title": "Learn more about the new delegation options from the official Advanced Delegation plugin.\n\nYour orch...",
+          "content": "Learn more about the new delegation options from the official Advanced Delegation plugin.\n\nYour orchestrator can select any of your agent profiles, or from a custom model routing table that you create now!",
+          "url": "https://twitter.com/Teknium/status/2115101448447128017",
+          "author": "@Teknium",
+          "published": "2026-10-27T15:20:56",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium announces the official Advanced Delegation plugin, which lets an orchestrator select any agent profile or a custom model routing table the user creates for delegation.",
+          "importance_score": 88.0,
+          "reasoning": "High-visibility announcement of a new official plugin with strong engagement (275 likes, 36k views). New delegation options and custom model routing are significant capability additions for Hermes Agent.",
+          "themes": [
+            "delegation",
+            "plugin release",
+            "model routing",
+            "orchestration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium announces the official Advanced Delegation plugin, which lets an orchestrator select any agent profile or a custom model routing table the user creates for delegation.</p>",
+          "content_html": "<p>Learn more about the new delegation options from the official Advanced Delegation plugin.</p>\n<p>Your orchestrator can select any of your agent profiles, or from a custom model routing table that you create now!</p>"
+        },
+        {
+          "id": "70325ccbda30",
+          "title": "@BrunoMalbusca @HermesWatcher ok run `hermes debug share --nous` in that machines' terminal, and sha...",
+          "content": "@BrunoMalbusca @HermesWatcher ok run `hermes debug share --nous` in that machines' terminal, and share the link",
+          "url": "https://twitter.com/Teknium/status/2115138047708963071",
+          "author": "@Teknium",
+          "published": "2026-10-27T17:46:22",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium providing a specific command (`hermes debug share --nous`) that users must run in their terminal to facilitate debugging and sharing diagnostic information.",
+          "importance_score": 85.0,
+          "reasoning": "Critical debugging command from @Teknium, offering high value to power users and developers.",
+          "themes": [
+            "Debugging",
+            "Command Line Interface"
+          ],
+          "continuation": {
+            "original_item_id": "3792ec9408b4",
+            "original_date": "2026-10-27",
+            "original_category": "social",
+            "original_title": "With the new Advanced Delegation modes plugin, Hermes Agent's orchestrator can now pick a different ...",
+            "continuation_type": "unrelated",
+            "should_demote": false,
+            "reference_text": ""
+          },
+          "summary_html": "<p>@Teknium providing a specific command (<code>hermes debug share --nous</code>) that users must run in their terminal to facilitate debugging and sharing diagnostic information.</p>",
+          "content_html": "<p>@BrunoMalbusca @HermesWatcher ok run <code>hermes debug share --nous</code> in that machines' terminal, and share the link</p>"
+        },
+        {
+          "id": "cb2d803051b8",
+          "title": "@iamjasonlevin @memelord Also available directly through Hermes Desktop in the Connectors menu! http...",
+          "content": "@iamjasonlevin @memelord Also available directly through Hermes Desktop in the Connectors menu! https://t.co/ul7xS1PoLE",
+          "url": "https://twitter.com/NousResearch/status/2115142428537819563",
+          "author": "@NousResearch",
+          "published": "2026-10-27T18:03:47",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@NousResearch announces that a third-party service is now available directly within the Connectors menu in Hermes Desktop.",
+          "importance_score": 80.0,
+          "reasoning": "Direct feature announcement from @NousResearch simplifying workflow by integrating external tools.",
+          "themes": [
+            "Connectors",
+            "Workflow Integration"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@NousResearch announces that a third-party service is now available directly within the Connectors menu in Hermes Desktop.</p>",
+          "content_html": "<p>@iamjasonlevin @memelord Also available directly through Hermes Desktop in the Connectors menu! https://t.co/ul7xS1PoLE</p>"
+        },
+        {
+          "id": "7b018619e970",
+          "title": "@NousResearch A big step toward making using Hermes Agent simpler and more accessible!",
+          "content": "@NousResearch A big step toward making using Hermes Agent simpler and more accessible!",
+          "url": "https://twitter.com/Teknium/status/2115135771158163871",
+          "author": "@Teknium",
+          "published": "2026-10-27T17:37:19",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium highlights a recent update or feature as a major milestone in simplifying and improving the accessibility of Hermes Agent for all users.",
+          "importance_score": 78.0,
+          "reasoning": "A promotional and technical significance post from @Teknium highlighting a positive shift in product usability.",
+          "themes": [
+            "Product Usability",
+            "Accessibility"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium highlights a recent update or feature as a major milestone in simplifying and improving the accessibility of Hermes Agent for all users.</p>",
+          "content_html": "<p>@NousResearch A big step toward making using Hermes Agent simpler and more accessible!</p>"
+        },
+        {
+          "id": "7aa4aae82da3",
+          "title": "here's how to set up oh-my-hermes.\n\nhonestly you could just toss the github link to your agent since...",
+          "content": "here's how to set up oh-my-hermes.\n\nhonestly you could just toss the github link to your agent since the repo guide is pretty rock-solid, but the gist is: install it, run omh setup (omh update to update).\n\nand please don't skip this: run omh model setup. literally everyone forgets this step.\n\njust tell it what providers and models you can use, and omh will map sub-agents to the right models by category automatically—like kimi k3.1 or opus for design, gpt sol 6.1 high for deep-work, astra for ultrabrain, etc. then you're done.\n\nthere are tons of skills inside, but the router reads your prompts and pulls in the right omh skills dynamically anyway. you can trigger them manually, but i don't really recommend it.\n\nexcept for one thing: definitely call dag ulw manually. it's the absolute core feature and the key to mastering graph engineering.\n\nhttps://t.co/g1exHwWK5E",
+          "url": "https://twitter.com/rlaope/status/2115012228424540267",
+          "author": "@rlaope",
+          "published": "2026-10-27T09:26:24",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Following our [News](/?date=2026-10-26&category=news#item-9854f7f894e2) coverage of oh-my-hermes a couple of days ago, a hands-on setup guide, A detailed setup guide for oh-my-hermes: install and run omh setup, run omh model setup (a commonly skipped step) to map sub-agents to appropriate models by category (e.g., Kimi or Opus for design, GPT Sol 6.1 high for deep work), rely on the automatic skill router, and manually invoke dag ulw as the core graph-engineering feature.",
+          "importance_score": 78.0,
+          "reasoning": "The most substantive post in the batch: a genuine how-to from the prioritized author with solid engagement (26 likes, 5 retweets, 2.2k views). Practical configuration advice including model routing and a key manual trigger makes this the standout tips post.",
+          "themes": [
+            "setup guide",
+            "model routing",
+            "graph engineering",
+            "oh-my-hermes"
+          ],
+          "continuation": {
+            "original_item_id": "9854f7f894e2",
+            "original_date": "2026-10-26",
+            "original_category": "news",
+            "original_title": "oh-my-hermes (Multi-Agent & Orchestration)",
+            "continuation_type": "community_reaction",
+            "should_demote": false,
+            "reference_text": "Following our **News** coverage of oh-my-hermes a couple of days ago, a hands-on setup guide"
+          },
+          "summary_html": "<p>Following our <a href=\"/?date=2026-10-26&amp;category=news#item-9854f7f894e2\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage of oh-my-hermes a couple of days ago, a hands-on setup guide, A detailed setup guide for oh-my-hermes: install and run omh setup, run omh model setup (a commonly skipped step) to map sub-agents to appropriate models by category (e.g., Kimi or Opus for design, GPT Sol 6.1 high for deep work), rely on the automatic skill router, and manually invoke dag ulw as the core graph-engineering feature.</p>",
+          "content_html": "<p>here's how to set up oh-my-hermes.</p>\n<p>honestly you could just toss the github link to your agent since the repo guide is pretty rock-solid, but the gist is: install it, run omh setup (omh update to update).</p>\n<p>and please don't skip this: run omh model setup. literally everyone forgets this step.</p>\n<p>just tell it what providers and models you can use, and omh will map sub-agents to the right models by category automatically—like kimi k3.1 or opus for design, gpt sol 6.1 high for deep-work, astra for ultrabrain, etc. then you're done.</p>\n<p>there are tons of skills inside, but the router reads your prompts and pulls in the right omh skills dynamically anyway. you can trigger them manually, but i don't really recommend it.</p>\n<p>except for one thing: definitely call dag ulw manually. it's the absolute core feature and the key to mastering graph engineering.</p>\n<p>https://t.co/g1exHwWK5E</p>"
+        },
+        {
+          "id": "f9d8c5582ecf",
+          "title": "@real_kukuruza Yes in the dashboard for your hermes you can import a backup.\n\nOn your current instal...",
+          "content": "@real_kukuruza Yes in the dashboard for your hermes you can import a backup.\n\nOn your current install, run `hermes backup` - then use the dashboard's backup and import section",
+          "url": "https://twitter.com/Teknium/status/2115148589404168212",
+          "author": "@Teknium",
+          "published": "2026-10-27T18:28:15",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "@Teknium provides instructions on backing up Hermes locally using the command `hermes backup` and importing that backup via the dashboard.",
+          "importance_score": 75.0,
+          "reasoning": "Crucial technical guidance from @Teknium on managing data integrity through backups, labeled as a tip.",
+          "themes": [
+            "Configuration",
+            "Backups"
+          ],
+          "continuation": null,
+          "summary_html": "<p>@Teknium provides instructions on backing up Hermes locally using the command <code>hermes backup</code> and importing that backup via the dashboard.</p>",
+          "content_html": "<p>@real_kukuruza Yes in the dashboard for your hermes you can import a backup.</p>\n<p>On your current install, run <code>hermes backup</code> - then use the dashboard's backup and import section</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}
