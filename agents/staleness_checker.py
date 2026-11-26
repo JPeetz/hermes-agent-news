@@ -1715,6 +1715,13 @@ Mark stale_anchor=false when today's item has a concrete new action, release, fi
                 continue
             if self._is_excluded_from_top(item):
                 continue
+            if self._is_release_page_url(item.item.url):
+                # A release-tag page is the primary source itself, never an
+                # old-anchor recap. Daily canary/rc tags are lexically similar
+                # to prior tags but are NEW releases (new tag, new version); the
+                # LLM adjudicator has misjudged them as stale, zeroing the whole
+                # news category on a thin day.
+                continue
 
             matches = self._find_old_anchor_matches(item)
             state = self._old_anchor_candidate_state(item, matches, category)
@@ -1747,6 +1754,10 @@ Mark stale_anchor=false when today's item has a concrete new action, release, fi
             if item.importance_score < MIN_SCORE_THRESHOLD:
                 continue
             if self._is_excluded_from_top(item):
+                continue
+            if self._is_release_page_url(item.item.url):
+                # A release-tag page is the primary source itself, never an
+                # old-anchor recap (see _process_old_anchors).
                 continue
 
             matches = self._find_old_anchor_matches(item)
