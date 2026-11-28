@@ -1,0 +1,810 @@
+{
+  "date": "2026-11-26",
+  "coverage_date": "2026-11-25",
+  "coverage_start": "2026-11-25T00:00:00",
+  "coverage_end": "2026-11-25T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-11-26\n\n## Executive Summary\n\n**Privacy is the story of this cycle.** **@Teknium** celebrated Hermes earning an [**A grade** for respecting user privacy](/?date=2026-11-26&category=social#item-e10052e35603) — the week's standout post at **1,009 likes** and **~42k views** — and the official accounts turned a recurring user concern into a trust win: telemetry is **[opt-in by default](/?date=2026-11-26&category=social#item-594ea3e3ab7a)** in both the Hermes agent and the desktop app, and users can point Hermes at **[any provider](/?date=2026-11-26&category=social#item-89132e5ac05c)**. After a week in which a supply-chain incident proved agent credentials are high-value targets, third-party validation of Hermes' privacy posture lands at exactly the right moment.\n\nRelease news is routine: [**canary.20261125T064800Z-v0.23.4**](/?date=2026-11-26&category=news#item-64b0b745477e) shipped to the canary channel with updated **Hermes Desktop** installers for macOS, verified smoke-test status, and pinned plugin-catalog dependencies. This is canary-track maintenance following the **v0.23.4** stable release — no breaking changes or new capabilities flagged — so it matters mainly if you ride the canary channel.\n\nThe research highlight doubles as a showcase for agentic coding on local hardware: an [**agent-authored custom-kernel workflow on Mac clusters**](/?date=2026-11-26&category=research#item-hn-50648334) reportedly outperforms **MLX**, with concrete throughput numbers for **ERNIE 5.5 Flash Preview** running in Hermes. Community momentum kept pace — **@rlaope** shipped [**omher desktop 1.2.1**](/?date=2026-11-26&category=social#item-424d55a59806) (a CLI desktop wrapping the Hermes-Agent bot with workflow packs, subagent routing, connectors, and skills), and **Oh-My-Hermes** crossed [**10,000 commits**](/?date=2026-11-26&category=social#item-4e222d566b94) on GitHub, days after its **6,000-star** milestone.\n\nCarried over rather than new: the [**leadstack-crm-connect**](/?date=2026-11-26&category=research#item-hn-50585975) supply-chain incident remains the standing audit trigger for every self-hoster, deployment gaps (no official **Helm** chart, root-at-init on [**Kubernetes**](/?date=2026-11-26&category=research#item-hn-49977400)) are still the biggest friction points, and the ecosystem tooling layer ([**Comemo**](/?date=2026-11-26&category=research#item-hn-50518538), [**Verso**](/?date=2026-11-26&category=research#item-hn-49628094), [**shoebox**](/?date=2026-11-26&category=research#item-hn-50610136), [**Refine Cycle**](/?date=2026-11-26&category=research#item-hn-49606988), [**ClusterMob**](/?date=2026-11-26&category=research#item-hn-50197497)) alongside the documented [**Claude Pro/Max**](/?date=2026-11-26&category=research#item-hn-49790991) and [**Kanban**](/?date=2026-11-26&category=research#item-hn-49604068) support continues to mature the platform's edges.\n\nWatch items and practical notes: **@Teknium** promised Hermes will be [\"running in hyperdrive\"](/?date=2026-11-26&category=social#item-85524ec7e4b1) (**634 likes**, ~21k views), and **@NousResearch** teased an imminent reveal (\"[Sooon](/?date=2026-11-26&category=social#item-5ecf87e02386)\") while name-dropping **[Nous Portal](/?date=2026-11-26&category=social#item-9ee9ee4e11f5)** — something appears close to shipping. For builders, **@Teknium** shared that [plugin catalog submissions are typically reviewed and cleared in ~3 days](/?date=2026-11-26&category=social#item-800e25e2e627), and [desktop design unification](/?date=2026-11-26&category=social#item-a2ad4ee22203) was confirmed in response to user feedback. The banter drew strong reach too — a pointed reply to **@sama** ([\"3 years late but better late than never\"](/?date=2026-11-26&category=social#item-8d68add19c36)), a nudge to **theo** to [audit closed-source projects next](/?date=2026-11-26&category=social#item-78089cc48ae8), and a [warm welcome for **notch** to the crew](/?date=2026-11-26&category=social#item-1bd3cf77705e).",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-11-26</p>\n<h2>Executive Summary</h2>\n<p><strong>Privacy is the story of this cycle.</strong> <strong>@Teknium</strong> celebrated Hermes earning an <a href=\"/?date=2026-11-26&amp;category=social#item-e10052e35603\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>A grade</strong> for respecting user privacy</a> — the week's standout post at <strong>1,009 likes</strong> and <strong>~42k views</strong> — and the official accounts turned a recurring user concern into a trust win: telemetry is <strong><a href=\"/?date=2026-11-26&amp;category=social#item-594ea3e3ab7a\" class=\"internal-link\" rel=\"noopener noreferrer\">opt-in by default</a></strong> in both the Hermes agent and the desktop app, and users can point Hermes at <strong><a href=\"/?date=2026-11-26&amp;category=social#item-89132e5ac05c\" class=\"internal-link\" rel=\"noopener noreferrer\">any provider</a></strong>. After a week in which a supply-chain incident proved agent credentials are high-value targets, third-party validation of Hermes' privacy posture lands at exactly the right moment.</p>\n<p>Release news is routine: <a href=\"/?date=2026-11-26&amp;category=news#item-64b0b745477e\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>canary.20261125T064800Z-v0.23.4</strong></a> shipped to the canary channel with updated <strong>Hermes Desktop</strong> installers for macOS, verified smoke-test status, and pinned plugin-catalog dependencies. This is canary-track maintenance following the <strong>v0.23.4</strong> stable release — no breaking changes or new capabilities flagged — so it matters mainly if you ride the canary channel.</p>\n<p>The research highlight doubles as a showcase for agentic coding on local hardware: an <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>agent-authored custom-kernel workflow on Mac clusters</strong></a> reportedly outperforms <strong>MLX</strong>, with concrete throughput numbers for <strong>ERNIE 5.5 Flash Preview</strong> running in Hermes. Community momentum kept pace — <strong>@rlaope</strong> shipped <a href=\"/?date=2026-11-26&amp;category=social#item-424d55a59806\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>omher desktop 1.2.1</strong></a> (a CLI desktop wrapping the Hermes-Agent bot with workflow packs, subagent routing, connectors, and skills), and <strong>Oh-My-Hermes</strong> crossed <a href=\"/?date=2026-11-26&amp;category=social#item-4e222d566b94\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>10,000 commits</strong></a> on GitHub, days after its <strong>6,000-star</strong> milestone.</p>\n<p>Carried over rather than new: the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>leadstack-crm-connect</strong></a> supply-chain incident remains the standing audit trigger for every self-hoster, deployment gaps (no official <strong>Helm</strong> chart, root-at-init on <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kubernetes</strong></a>) are still the biggest friction points, and the ecosystem tooling layer (<a href=\"/?date=2026-11-26&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>shoebox</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a>) alongside the documented <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong></a> and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong></a> support continues to mature the platform's edges.</p>\n<p>Watch items and practical notes: <strong>@Teknium</strong> promised Hermes will be <a href=\"/?date=2026-11-26&amp;category=social#item-85524ec7e4b1\" class=\"internal-link\" rel=\"noopener noreferrer\">\"running in hyperdrive\"</a> (<strong>634 likes</strong>, ~21k views), and <strong>@NousResearch</strong> teased an imminent reveal (\"<a href=\"/?date=2026-11-26&amp;category=social#item-5ecf87e02386\" class=\"internal-link\" rel=\"noopener noreferrer\">Sooon</a>\") while name-dropping <strong><a href=\"/?date=2026-11-26&amp;category=social#item-9ee9ee4e11f5\" class=\"internal-link\" rel=\"noopener noreferrer\">Nous Portal</a></strong> — something appears close to shipping. For builders, <strong>@Teknium</strong> shared that <a href=\"/?date=2026-11-26&amp;category=social#item-800e25e2e627\" class=\"internal-link\" rel=\"noopener noreferrer\">plugin catalog submissions are typically reviewed and cleared in ~3 days</a>, and <a href=\"/?date=2026-11-26&amp;category=social#item-a2ad4ee22203\" class=\"internal-link\" rel=\"noopener noreferrer\">desktop design unification</a> was confirmed in response to user feedback. The banter drew strong reach too — a pointed reply to <strong>@sama</strong> (<a href=\"/?date=2026-11-26&amp;category=social#item-8d68add19c36\" class=\"internal-link\" rel=\"noopener noreferrer\">\"3 years late but better late than never\"</a>), a nudge to <strong>theo</strong> to <a href=\"/?date=2026-11-26&amp;category=social#item-78089cc48ae8\" class=\"internal-link\" rel=\"noopener noreferrer\">audit closed-source projects next</a>, and a <a href=\"/?date=2026-11-26&amp;category=social#item-1bd3cf77705e\" class=\"internal-link\" rel=\"noopener noreferrer\">warm welcome for <strong>notch</strong> to the crew</a>.</p>",
+  "top_topics": [
+    {
+      "name": "Supply-Chain Security Incident",
+      "description": "A [malicious NPM package (leadstack crm-connect) installed Hermes Agent as root and tasked it over Telegram](/?date=2026-11-26&category=research#item-hn-50585975), a real-world abuse of the agent's install path. The report frames this as an audit trigger for every self-hoster and connects to flagged operational gaps such as [root-at-init requirements on Kubernetes](/?date=2026-11-26&category=research#item-hn-49977400).",
+      "description_html": "A <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">malicious NPM package (leadstack crm-connect) installed Hermes Agent as root and tasked it over Telegram</a>, a real-world abuse of the agent's install path. The report frames this as an audit trigger for every self-hoster and connects to flagged operational gaps such as <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">root-at-init requirements on Kubernetes</a>.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 93
+    },
+    {
+      "name": "Privacy and Telemetry Trust",
+      "description": "Teknium [celebrated Hermes receiving an A grade for respecting user privacy](/?date=2026-11-26&category=social#item-e10052e35603) (the week's standout post at 42k views), while official accounts [confirmed telemetry is opt-in by default](/?date=2026-11-26&category=social#item-594ea3e3ab7a) and that [users can point Hermes at any provider](/?date=2026-11-26&category=social#item-89132e5ac05c). The reply cluster turned a user concern into a trust win, reinforcing privacy as Hermes' core differentiator.",
+      "description_html": "Teknium <a href=\"/?date=2026-11-26&amp;category=social#item-e10052e35603\" class=\"internal-link\" rel=\"noopener noreferrer\">celebrated Hermes receiving an A grade for respecting user privacy</a> (the week's standout post at 42k views), while official accounts <a href=\"/?date=2026-11-26&amp;category=social#item-594ea3e3ab7a\" class=\"internal-link\" rel=\"noopener noreferrer\">confirmed telemetry is opt-in by default</a> and that <a href=\"/?date=2026-11-26&amp;category=social#item-89132e5ac05c\" class=\"internal-link\" rel=\"noopener noreferrer\">users can point Hermes at any provider</a>. The reply cluster turned a user concern into a trust win, reinforcing privacy as Hermes' core differentiator.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Ecosystem Tooling and Orchestration",
+      "description": "A maturing plugin and orchestration layer is visible in [Comemo's multi-backend memory fanout](/?date=2026-11-26&category=research#item-hn-50518538) (Mem0 and others), the [Refine Cycle self-improvement plugin](/?date=2026-11-26&category=research#item-hn-49606988), the [ClusterMob profile registry](/?date=2026-11-26&category=research#item-hn-50197497), and [Verso](/?date=2026-11-26&category=research#item-hn-49628094) and [shoebox](/?date=2026-11-26&category=research#item-hn-50610136). On social, community builder rlaope shipped [omher desktop 1.2.1](/?date=2026-11-26&category=social#item-424d55a59806) and the Oh-My-Hermes GitHub crossed [10,000 commits](/?date=2026-11-26&category=social#item-4e222d566b94).",
+      "description_html": "A maturing plugin and orchestration layer is visible in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Comemo's multi-backend memory fanout</a> (Mem0 and others), the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle self-improvement plugin</a>, the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob profile registry</a>, and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a> and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\">shoebox</a>. On social, community builder rlaope shipped <a href=\"/?date=2026-11-26&amp;category=social#item-424d55a59806\" class=\"internal-link\" rel=\"noopener noreferrer\">omher desktop 1.2.1</a> and the Oh-My-Hermes GitHub crossed <a href=\"/?date=2026-11-26&amp;category=social#item-4e222d566b94\" class=\"internal-link\" rel=\"noopener noreferrer\">10,000 commits</a>.",
+      "category_breakdown": {
+        "research": 4,
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "Deployment and Self-Hosting",
+      "description": "Operational gaps for self-hosters were flagged, including [no official Helm chart and root-at-init requirements on Kubernetes](/?date=2026-11-26&category=research#item-hn-49977400), alongside practical [VPS-plus-rooted-Android](/?date=2026-11-26&category=research#item-hn-50629729) and [containerization](/?date=2026-11-26&category=research#item-hn-50131496) guides. These items highlight deployment friction that both new and security-conscious users must navigate.",
+      "description_html": "Operational gaps for self-hosters were flagged, including <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">no official Helm chart and root-at-init requirements on Kubernetes</a>, alongside practical <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">VPS-plus-rooted-Android</a> and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerization</a> guides. These items highlight deployment friction that both new and security-conscious users must navigate.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Official Docs and Subscription Access",
+      "description": "Official documentation added [Claude Pro/Max subscription support](/?date=2026-11-26&category=research#item-hn-49790991) via a direct SDK plugin, materially changing cost and model access for subscribers, and documented [Kanban multi-agent profile collaboration](/?date=2026-11-26&category=research#item-hn-49604068). Both updates lower barriers for existing Anthropic subscribers and expand multi-agent workflow options.",
+      "description_html": "Official documentation added <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscription support</a> via a direct SDK plugin, materially changing cost and model access for subscribers, and documented <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Kanban multi-agent profile collaboration</a>. Both updates lower barriers for existing Anthropic subscribers and expand multi-agent workflow options.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 71
+    },
+    {
+      "name": "Community Integrations and Clients",
+      "description": "New interaction surfaces expand how users reach Hermes: [Hermes-Voice](/?date=2026-11-26&category=research#item-hn-50381927) enables Home Assistant Assist voice control and the [native SwiftUI Paper Harness app](/?date=2026-11-26&category=research#item-hn-50278175) brings agent sessions to iPhone. The client layer is diversifying beyond desktop and CLI into voice and mobile form factors.",
+      "description_html": "New interaction surfaces expand how users reach Hermes: <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes-Voice</a> enables Home Assistant Assist voice control and the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">native SwiftUI Paper Harness app</a> brings agent sessions to iPhone. The client layer is diversifying beyond desktop and CLI into voice and mobile form factors.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 66
+    },
+    {
+      "name": "Local Inference Performance",
+      "description": "An HN post describes [clustering Macs and having Claude write custom kernels instead of relying on MLX](/?date=2026-11-26&category=research#item-hn-50648334), claiming better throughput for ERNIE 5.5 Flash Preview running in Hermes. It signals user-driven performance optimization happening outside official tooling.",
+      "description_html": "An HN post describes <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">clustering Macs and having Claude write custom kernels instead of relying on MLX</a>, claiming better throughput for ERNIE 5.5 Flash Preview running in Hermes. It signals user-driven performance optimization happening outside official tooling.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 63
+    },
+    {
+      "name": "Upcoming Release Teasers",
+      "description": "Teknium [promised Hermes will be running in hyperdrive](/?date=2026-11-26&category=social#item-85524ec7e4b1) (634 likes, roughly 21k views), while the NousResearch account [teased an imminent reveal](/?date=2026-11-26&category=social#item-3f9d0b476ff7) and [name-dropped Nous Portal](/?date=2026-11-26&category=social#item-9ee9ee4e11f5) to a high-profile follower. The teasers build anticipation without specifics, pointing to an announcement likely tied to compute or product capability.",
+      "description_html": "Teknium <a href=\"/?date=2026-11-26&amp;category=social#item-85524ec7e4b1\" class=\"internal-link\" rel=\"noopener noreferrer\">promised Hermes will be running in hyperdrive</a> (634 likes, roughly 21k views), while the NousResearch account <a href=\"/?date=2026-11-26&amp;category=social#item-3f9d0b476ff7\" class=\"internal-link\" rel=\"noopener noreferrer\">teased an imminent reveal</a> and <a href=\"/?date=2026-11-26&amp;category=social#item-9ee9ee4e11f5\" class=\"internal-link\" rel=\"noopener noreferrer\">name-dropped Nous Portal</a> to a high-profile follower. The teasers build anticipation without specifics, pointing to an announcement likely tied to compute or product capability.",
+      "category_breakdown": {
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 61
+    },
+    {
+      "name": "Agent Usage and Coordination",
+      "description": "Ask HN threads on [managing multiple personal agents (OpenClaw, Hermes Agent, Muse, Claude Code, Codex)](/?date=2026-11-26&category=research#item-hn-50326764) and on [current agentic setups](/?date=2026-11-26&category=research#item-hn-50366117) show users juggling overlapping tools. Reflective posts on [misuse patterns](/?date=2026-11-26&category=research#item-hn-49628740) and a [debugging thread about a GLM-powered agent entering a trance-like state](/?date=2026-11-26&category=research#item-hn-49916751) underscore demand for better coordination guidance and support.",
+      "description_html": "Ask HN threads on <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">managing multiple personal agents (OpenClaw, Hermes Agent, Muse, Claude Code, Codex)</a> and on <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50366117\" class=\"internal-link\" rel=\"noopener noreferrer\">current agentic setups</a> show users juggling overlapping tools. Reflective posts on <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">misuse patterns</a> and a <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">debugging thread about a GLM-powered agent entering a trance-like state</a> underscore demand for better coordination guidance and support.",
+      "category_breakdown": {
+        "research": 4
+      },
+      "representative_items": [],
+      "importance": 57
+    },
+    {
+      "name": "Competitive Agent Launch",
+      "description": "[Almanac, a YC S26 startup](/?date=2026-11-26&category=research#item-hn-49511007), launched with an AI product pitched as a Hermes-like agent that knows everything about your company. It signals growing commercial competition in the company-knowledge agent space.",
+      "description_html": "<a href=\"/?date=2026-11-26&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac, a YC S26 startup</a>, launched with an AI product pitched as a Hermes-like agent that knows everything about your company. It signals growing commercial competition in the company-knowledge agent space.",
+      "category_breakdown": {
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 50
+    },
+    {
+      "name": "Founder Commentary and Banter",
+      "description": "Teknium's pointed reply to sama ([3 years late but better late than never](/?date=2026-11-26&category=social#item-8d68add19c36)), a nudge to theo to [audit closed-source projects](/?date=2026-11-26&category=social#item-78089cc48ae8), a resonant origin story about [doing Uber Eats before ChatGPT](/?date=2026-11-26&category=social#item-32a49f03f69e), and a [welcome for notch](/?date=2026-11-26&category=social#item-1bd3cf77705e) drew strong engagement. These posts reinforce founder visibility and the community's ship-first culture.",
+      "description_html": "Teknium's pointed reply to sama (<a href=\"/?date=2026-11-26&amp;category=social#item-8d68add19c36\" class=\"internal-link\" rel=\"noopener noreferrer\">3 years late but better late than never</a>), a nudge to theo to <a href=\"/?date=2026-11-26&amp;category=social#item-78089cc48ae8\" class=\"internal-link\" rel=\"noopener noreferrer\">audit closed-source projects</a>, a resonant origin story about <a href=\"/?date=2026-11-26&amp;category=social#item-32a49f03f69e\" class=\"internal-link\" rel=\"noopener noreferrer\">doing Uber Eats before ChatGPT</a>, and a <a href=\"/?date=2026-11-26&amp;category=social#item-1bd3cf77705e\" class=\"internal-link\" rel=\"noopener noreferrer\">welcome for notch</a> drew strong engagement. These posts reinforce founder visibility and the community's ship-first culture.",
+      "category_breakdown": {
+        "social": 4
+      },
+      "representative_items": [],
+      "importance": 48
+    },
+    {
+      "name": "Canary Release Maintenance",
+      "description": "Hermes Agent v0.23.4 [shipped to the canary channel](/?date=2026-11-26&category=news#item-64b0b745477e) with updated macOS Desktop installers, verified smoke-test status, and pinned plugin-catalog dependencies. This is routine canary-track maintenance with no breaking changes or new capabilities flagged.",
+      "description_html": "Hermes Agent v0.23.4 <a href=\"/?date=2026-11-26&amp;category=news#item-64b0b745477e\" class=\"internal-link\" rel=\"noopener noreferrer\">shipped to the canary channel</a> with updated macOS Desktop installers, verified smoke-test status, and pinned plugin-catalog dependencies. This is routine canary-track maintenance with no breaking changes or new capabilities flagged.",
+      "category_breakdown": {
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 44
+    }
+  ],
+  "total_items_collected": 71,
+  "total_items_analyzed": 65,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 7,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 21,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 43,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 43,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-11-26/hero.webp?v=1795683035",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe points at a large translucent story panel, tracing the line between two news items as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Supply-Chain Security Incident — A malicious NPM package (leadstack crm-connect) installed Hermes Agent as root and tasked it over Telegram, a real-wo...\nTopic 2: Privacy and Telemetry Trust — Teknium celebrated Hermes receiving an A grade for respecting user privacy (the week's standout post at 42k views), w...\nTopic 3: Ecosystem Tooling and Orchestration — A maturing plugin and orchestration layer is visible in Comemo's multi-backend memory fanout (Mem0 and others), the R...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: locks, shields, firewall barriers, protection symbols, cloud infrastructure, scaling arrows, production systems. Shield icons float in faint orange outline near her. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: in a tight over-the-shoulder frame, a warm amber pool of light in an otherwise dark command room. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-11-26T03:50:35.559188",
+  "categories": {
+    "news": {
+      "count": 1,
+      "category_summary": "**Releases** — Hermes Agent **[v0.23.4](/?date=2026-11-26&category=news#item-64b0b745477e)** shipped to the canary channel (build **canary.20261125T064800Z**) with updated **Hermes Desktop** installers for macOS, verified smoke-test status, and pinned plugin-catalog dependencies. This is routine canary-channel maintenance rather than a stable release, so it's most relevant to canary-track users; no breaking changes or new capabilities were flagged. With only one candidate in this batch, it leads the issue by default.",
+      "category_summary_html": "<p><strong>Releases</strong> — Hermes Agent <strong><a href=\"/?date=2026-11-26&amp;category=news#item-64b0b745477e\" class=\"internal-link\" rel=\"noopener noreferrer\">v0.23.4</a></strong> shipped to the canary channel (build <strong>canary.20261125T064800Z</strong>) with updated <strong>Hermes Desktop</strong> installers for macOS, verified smoke-test status, and pinned plugin-catalog dependencies. This is routine canary-channel maintenance rather than a stable release, so it's most relevant to canary-track users; no breaking changes or new capabilities were flagged. With only one candidate in this batch, it leads the issue by default.</p>",
+      "themes": [
+        {
+          "name": "Canary Release Maintenance",
+          "description": "Automated canary-channel builds of Hermes Agent v0.23.4 shipping updated Hermes Desktop installers with verified smoke-test status and pinned plugin-catalog dependencies.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 62.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "64b0b745477e",
+          "title": "Hermes Agent canary canary.20261125T064800Z-v0.23.4",
+          "content": "Hermes Agent v0.23.4+canary.20261125T064800Z (canary.20261125T064800Z-v0.23.4)\nRelease Date: November 25, 2026\n\nDownloads\nHermes Desktop\n\n\n\nOS\nArchitecture\nDownload\n\n\n\n\nmacOS\nApple Silicon (M-series)\nDMG\n\n\nWindows\nx86 (64-bit)\nMSIX\n\n\nWindows\nARM (arm64 / aarch64)\nMSIX\n\n\n\nNative install/chat smoke\nDownload availability is independent of smoke status. Each result covers all native legs in that format group. Linux AppImages and unsigned Store envelopes are not install-smoked. No-upload dry tags have no download handoff and are not smoke-qualified.\n\n\n\nPackages\nSmoke status\n\n\n\n\nmacOS DMG + ZIP (arm64)\nPassed\n\n\nWindows MSIX (arm64)\nPassed\n\n\nWindows MSIX (x64)\nPassed\n\n\n\n\n✨ Features\n\nPlugin-catalog): pin solverforge-workbench at 16d5016 (0.3.0) (d679d325) — @blackopsrepl\nPlugin-catalog): pin solverforge-workbench at 3b0a79d (0.2.5) (32b4c22a) — @blackopsrepl\nPlugin-catalog): list SolverForge Workbench (a08c689a) — @blackopsrepl\nPlugin-catalog): add chinadoccheck plugin (45c5e873) — @AbigailDavised\nPlugin-catalog): bump hermes-next-steps to 1.1.6 (78eb9591) — @apoapostolov\nPlugin-catalog): add phone-bud (bb3a2cc5) — @cshape\nPlugin-catalog): update hermes-warden to 0.1.6 (17b100a2) — @pedroberaldo87\nPlugin-catalog: add igni (5e145f5b) — @LangerSword\nPlugin-catalog): yandex-alice cover image, pin 5188f01 (78b2ca62) — @IvanovPetrE\nCatalog): add AgentRouter competitor research plugin (2ec7fe88) — @charly-jingan\nPlugin-catalog): add 0g-provider (9a65342b) — @dragon888code\nPlugin-catalog): add olostep (ad8efa8b) — @Olostep-devs\nCatalog): add deapi-provider (7b8e82b2) — @dawidope\nDial to the plugin catalog (728bb611) — @yotam-dial\nPlugin-catalog: add memory-fit (cde3ebc7) — @trilu\nPlugin-catalog): add AirPrompter (saved prompts and workflows, hosted MCP) (ea45834c) — @lexerio-seth\nPlugin-catalog): senpi pins senpi-plugin@cd828b6 (0.5.1) (1a98d3d9) — @betashop\nPlugin catalog entry: gpu-monitor (02c5734d) — @Lazzdaycod\nPlugin-catalog): add hermes-declines 0.1.0 (7131e35b) — @percyhendrux123-prog\nPlugin-catalog): add crowdwisdom-mcp (114fb6a4) — @CrowdWisdomTradingx402\nPlugin-catalog): add allscale (995f16dc) — @slucifersz\nPlugin-catalog): add url-date-slash-restore plugin (34153ad4) — @Harry-2546\nCatalog): add me-action (c750c28d) — @claudieclaw\nPlugin-catalog): add venice plugin (1d78b34d) — @joshua-mo-143\nPlugin-catalog): add palisade (email authentication, hosted MCP) (df6b5355) — @samuelchenardlovesboards\nPlugin-catalog): add linux-notify plugin (e494c539) — @codepilots\nCatalog): add bf16-provider (bf16.ai uncensored model provider) (b72e89bc) — @FiendSaws\nPlugins): bump rh-preflight to 0.5.17 (3c43368c) — @quotumorg\nPlugin-catalog): add agentinbox plugin (df29b2f3) — @LetItRock\nPlugin-catalog: add bark (Bark iOS push notifications) (df4ea055) — @Randool\nPlugin-catalog: add gmat-mx (hosted MCP, GMAT facts for Mexico) (00a757eb) — @elvispaul7\nPlugin-catalog): add chinamedscheck plugin (754991c0) — @AbigailDavised\nCatalog): bump zerosignal to v0.2.0 (1a07ffc8) — @pbennett\nPlugin-catalog): pin hermes-scout to v0.4.0 (31a9f99b) — @Shizoqua\nPlugin-catalog: add offline-zim (search and read local ZIM libraries) (a5d0c5d1) — @nftpoetrist\nPlugin-catalog: add trismegistus (7c50200f) — @jrcruciani\nPlugin-catalog: add ficelle-compression (45254342) — @TheBlueHouse75\nCatalog): update Subnano to 0.3.71 (d30ca8ae) — @madsb\nPlugin-catalog: add delegation-gate (c4c284d0) — @kenpritchard\nPlugin-catalog): add vaultwarden-secret-source (339141db) — @natlift\nPlugin-catalog): add repeat-pause 0.1.0 (b81a7d1e) — @percyhendrux123-prog\nPlugin-catalog): add run-receipts 0.1.0 (afa5c991) — @percyhendrux123-prog\nPlugin-catalog: add right-suite (f43a6356) — @alichherawalla\nPlugin-catalog): add hermes-wavespeed (39ca68b3) — @chengzeyi\nCatalog): pin fastpath to tested commit (5e4d9727) — @siavashmirtaheri\nCatalog: add fastpath context-diet plugin (059cddfa) — @siavashmirtaheri\nGalaxymem to plugin catalog (6e62c2d1) — @k1ng0mar\nCatalog: add hermes-roi (ROI — Return on Intelligence) (93f63195) — @JZarkcn\nCatalog: add bot-dashboard 1.3.0 (d7793512) — @trookish\nPlugin-catalog: add wigoo (aea7866c) — @youssbim\nDeepseek-meter to the plugin catalog (ec2bc36c) — @samieshmil-blip\nHermes-habitica to the plugin catalog (ab91c4aa) — @Jessy-Boo\nPlugin-catalog): pin testmu-ai 1.2.1 (Hermes trust: untrusted) (18d363a8) — @rahulj-123\nPlugin-catalog): add testmu-ai plugin (862388ac) — @rahulj-123\nPlugin-catalog): re-pin tripo 0.1.1 to 693b923 (analytics off by default) (78744688) — @sunshakestrong\nPlugin-catalog): pin tripo to 0.1.1 (1e31a076) — @sunshakestrong\nPlugin-catalog): stage gws-workspace slash-watch candidate (1b91cbf0) — @anpicasso\nPlugin-catalog): submit gws-workspace v0.9.1 (d8a1dffb) — @anpicasso\nPlugin-catalog): propose gws-oauth v0.8.0 with policy disclosures (b3121bc3) — @anpicasso\nPlugin-catalog: add aura (2eabfcbb) — @KeyArgo\nCatalog: add agent-pool (community) @ d220f4d (ef2312aa) — @maxcurrent420\nCatalog: add better-peek (cb5536ed) — @riverosmejia\nPlugin-catalog): add oci-provider (6e9074fe) — @fede-kamel\n\n🔧 Improvements\n\nCron): colocate the firing delivery snapshot (6a595373) — @unsupportedpastels\nCatalog: update Subnano to 0.3.72 (376580d1) — @madsb\nCatalog: update Unraid to v0.4.0 (317af42c) — @Anunnaki-Astronaut\nCatalog: update UniFi to v0.4.0 (0a845273) — @Anunnaki-Astronaut\nCatalog: update hermes-mini to 0.3.1 (27c33695) — @ieatcode4breakfast\nOwnMachine community plugin to v1.2.0 (ad89ca47) — @rbur0425\nCatalog: re-pin galaxymem docs cleanup (98a85bd1) — @k1ng0mar\nRelease): extract shared downloads page renderer (7a7e5c5a) — @BearHuddleston\n\n🐛 Bug Fixes\n\nCron): one paused-run refusal for every manual-run surface (ed76807f)\nComfyui): never replay a submission once a redirect was followed (948b7de5)\nComfyui): never treat a proxy 5xx or failed redirect as an unsent submission (d5b42684)\nProfiles): convert a linked .env through a fresh temp file (b26de735)\nTodo): sanitize parents on restore (6c5a053e) — @aniruddhaadak80\nTools): break todo parent cycles at the closing ancestor (#156671) (#156671) — @akhilraija\nSolstice): refuse a gemini wire too old for this transport up front (24b14819) — @unsupportedpastels\nCron): keep plugin lookups within one profile (feceed66) — @unsupportedpastels\nCron): use firing job settings in delivery_platforms and expose ctx.cron_delivery_platforms (a5a7a078) — @unsupportedpastels\nPlugin-catalog): bump hermes-field-notes to 1.3.0 (4acbcc09) — @itpartypattaya\nCatalog): pin MrScraper 4.1.0 without the action option (9c6270c5) — @riandradiva18\nCatalog): pin MrScraper 4.1.0 with the current-release README (136ce45b) — @riandradiva18\nCatalog): pin MrScraper 4.1.0 with a configurable screenshot area (b0987b43) — @riandradiva18\nCatalog): repin mindgraph to 1.3.0 (8198f32c) — @shuruheel\nPlugins): clarify Sidecar upgrade safety and disclosures (a7abd4e2) — @AtlasOmnia\nPlugin-catalog): update us-census to 472faa6 (5ccf5b2c) — @TakeshiTGAL\nPlugin-catalog): update gleif to 6c94296 (c569e4f1) — @TakeshiTGAL\nPlugin-catalog): update scar to c9cb123 (8b074bc6) — @TakeshiTGAL\nPlugin-catalog): pin hermes-habitica to the real v1.0.1 commit and declare its pre_tool_call hook (d81980eb) — @Jessy-Boo\nPlugin-catalog): use renamed gws-workspace repository (cac4aa2c) — @anpicasso\nDoctor): judge assignment words as written, before quote removal (3ddd1ee0) — @BearHuddleston\nDoctor): keep the inherited PATH before a .env PATH line replaces it (48bcfb5b) — @BearHuddleston\nDoctor): accept sealed bundle CLI links and warn when ~/.local/bin is off PATH (51b93b31) — @BearHuddleston\nDesktop): refuse a macOS update from a read-only location before quitting (69178d7a)\n\n📚 Documentation\n\nPlugins): note off-chain fallback in store.lineage.lineage guide paragraph (bbdc7289) — @unsupportedpastels\nUpdate hermes-sentinel catalogue entry - v0.1.3 (f01a3c52) — @SaltProphet\nCatalog): disclose chat and prompt excerpt limitation (136b1146) — @KyaniteLabs\nRelease): point channel_releases help at the publication workflow (ef2c66d5) — @BearHuddleston\n\n🏗️ Infrastructure\n\nCatalog): re-pin claude-subscription-directsdk to 0.4.1 (24353849)\nRun the Windows x64 smoke and install/update E2E legs on Blacksmith (400a99f7) — @c2h5oh\nCatalog): normalize shinjuku.yaml line endings to LF (5b41d5c9)\nCatalog): review disclosure for chinadoccheck (0ccd94a5)\nCatalog): re-pin nexus to 58b499e3, the rewritten twin of the reviewed 10d55248 (author scrubbed personal IDs from comments; reviewed commit no longer reachable) (f544004c)\nCatalog): nexus auf v0.22.67 (Sicherungs-Fix, Kennungspflicht) (f0ec497f) — @Neboy72\nCatalog): re-pin nexus to the v0.22.66 release commit (9e64d032) — @Neboy72\nPlugin-catalog): bump spanish-top-tech-companies to 1.1.10 (0bf290fd) — @pugarte7\nCatalog): review disclosure for phone-bud (396acf7b)\nCatalog): review disclosure for hermes-sentinel (265bc7c6)\nCatalog): review disclosure for heartbeat2 (f1dfc4dd)\nCatalog): repin qdrant-memory to 0.7.3 (94169b64) — @cnkang\nCatalog): review disclosure for agentrouter (c2d0c6dd)\nCatalog): update model-router to v0.15.1 (7d7f7b7a) — @metamindedu\nCatalog): update model-router to v0.15.0 (c95f76e4) — @metamindedu\nMap contributor email for yotam-dial (4de1ee3b)\nCatalog): review disclosure for dial (f5a37f73)\nMap contributor email for trilu (5e1189b6)\nMap contributor email for lexerio-seth (e44d8c11)\nCatalog): review disclosure for airprompter (85d0c9f4)\nCatalog): review disclosure for deja-memory (0a48d643)\nPlugin-catalog): bump deja-memory sha (3ac2b29d) — @vshulcz\nCatalog): review disclosure for emporia (8665499f)\nCatalog): review disclosure for hermes-anilist (971cbc45)\nCatalog): update Living Spaces to 0.1.4 (e65e225c) — @akinduroifedayo\nPlugin-catalog): bump rtk-rewrite-docker to 0.1.2 (17ad51eb) — @tarastech-friday\nCatalog): review disclosure for supermemory (5bf67cc5)\nPlugin-catalog): re-pin supermemory to 2.0.0 (9853a4d7) — @capy-ai[bot]\nPlugin-catalog): bump polytropos-router to 0.2.0 (98d5093e) — @Lil-Clanky\nCatalog): review disclosure for hermes-committee (b48fc632)\nCatalog): bump kiro-provider to v1.2.1 (2a8ad1cd) — @anpicasso\nMap contributor email for samuelchenardlovesboards (47f637e2)\nCatalog): review disclosure for linux-notify (70d9e854)\nCatalog): review disclosure for bf16-provider (5e058f55)\nCatalog): review disclosure for agentic-soc (9368ca93)\nCatalog): review disclosure for rh-preflight (62d55027)\nCatalog): review disclosure for agentinbox (9ea54328)\nMap contributor email for iam1maker (34bda39f)\nMap contributor email for elvispaul7 (b647666a)\nCatalog): review disclosure for gmat-mx (5f70091b)\nCatalog): review disclosure for chinamedscheck (e1fa9cf8)\nPlugin-catalog): bump adaptlypost to 1.24.0 (b06e7b81) — @TarasShyn\nCatalog): review disclosure for trismegistus (2249e596)\nCatalog): pin model-fallback-heuristic 0.3.0 to 0035146 (35f252ce) — @tomkubik\nCatalog): bump model-fallback-heuristic to 0.3.0 (a95575de) — @tomkubik\nCatalog): bump model-fallback-heuristic to 0.2.1 (cf8851b) (415582ce) — @tomkubik\nPlugins): update Sidecar for LibreOffice to 0.5.1 (c05fa020) — @AtlasOmnia\nCatalog): review disclosure for hermes-workflows (4f005711)\nPlugin-catalog): re-pin hermes-workflows to v1.4.12 (b0cadbf) (4f65b057) — @jacobhausler\nCatalog): update genealogy recipes to v2.2.0 (de94c7c7) — @lazyants\nCatalog): review disclosure for vaultwarden-secret-source (f1ebf3c1)\nPlugin-catalog): bump vaultwarden-secret-source to 1.0.4 (68edda02) — @natlift\nCatalog): re-pin pinned-folders to 0.1.16 (4eb27d0) (a505d1b7) — @jacobhausler\nCatalog): review disclosure for gleif (e8eaf791)\nCatalog): review disclosure for right-suite (5eb119c1)\nPlugin-catalog): update aamio to 0.7.48 (8c6f48b3) — @aisenseapi\nCatalog): review disclosure for fastpath (5e67c5ed)\nCatalog): review disclosure for scar (918aff3c)\nCatalog): pin Hermes Talk owner-managed phone configuration (20249c7d) — @TheSmokeDev\nCatalog): repin hermes-talk to the 0.25.0 catalog build (d0469473) — @TheSmokeDev\nCatalog): repin hermes-talk to the 0.24.1 catalog build (7959e995) — @TheSmokeDev\nMap contributor email for k1ng0mar (375f901b)\nCatalog): review disclosure for galaxymem (880afaf4)\nMap contributor email for JZarkcn (6037b482)\nCatalog): review disclosure for bot-dashboard (d9d2b070)\nCatalog): review disclosure for wigoo (d5cac476)\nMap contributor email for samieshmil-blip (fffd0774)\nCatalog): review disclosure for deepseek-meter (48090e50)\nMap contributor email for wolfhound1995 (c32d62b9)\nCatalog): review disclosure for hermes-habitica (00ccd640)\nCatalog): review disclosure for testmu-ai (3da76078)\nCatalog): pin published gws-workspace v0.10.0 (123c73fa) — @anpicasso\nPlugin-catalog): pin short watch confirmation candidate (f20dfe1f) — @anpicasso\nCatalog): review disclosure for unbl0ck (08f33071)\nCatalog): pin published UNBL0CK 0.6.2 (public Hermes APIs) (0361d38c) — @simongonzalezdc\nCatalog): pin published UNBL0CK 0.6.1 and refresh limitations (4073aefd) — @KyaniteLabs\nCatalog): update UNBL0CK to 0.5.1 (a111f230) — @KyaniteLabs\nMap contributor email for KeyArgo (fa086efc)\nCatalog): review disclosure for aura (f5909025)\nMap contributor email for maxcurrent420 (0b987422)\nCatalog): review disclosure for agent-pool (ec96cea9)\nMap contributor email for riverosmejia (7414fdff)\nMap contributor email for riverosmejia (0d002376)\nCatalog): review disclosure for better-peek (e54f50ba)\nCatalog): update Hermes Herald to v1.3.0 (ae181dd6) — @bennybuoy\nCatalog): update Hermes Herald to v1.2.0 (d53e76d8) — @bennybuoy\nMap contributor email for tradersurfer (7bbfdd19)\nCatalog): review disclosure for ceo-pack (fd672393)\n\n📦 Other Changes\n\nPlugin-catalog: bump memory-shaper to 1.13.0 (cross-line index invariants) (4a3e57b2) — @ockentap\nPin nyx-wiki-recall to 3921463 (archivist skill 1.1.0) (44df1f26) — @blacksmithFF\nPlugin-catalog: fleet-control (#158958) (#158958) — @driptothebone\nCatalog: re-pin igni to v0.3.1 (1807b6a5) — @LangerSword\nPlugin-catalog: holographic 0.31.2 (4ad13d91) — @itpartypattaya\nPlugin-catalog: heartbeat2 0.4.33 (a0268490) — @100yenadmin\nCatalog: bump hermes-lang-pt-br to 1.2.6 (f04c1ee8) — @StudioCodeAI\nPlugin-catalog: AirPrompter 0.2.8 (7279b39) (a244c2bf) — @lexerio-seth\nPlugin-catalog: AirPrompter 0.2.7 (50dc3f8) (a1898bd0) — @lexerio-seth\nCatalog: bilinc 1.1.1 (591ddc50) — @atakanelik34\nCatalog: hermes-cinema 0.4.0 (06f14b2d) — @Tormen28\nList Turn timings in the plugin catalog (0a91f1c2) — @tapresle\nPlugin-catalog: bump nachos to 0.7.0 (ded63889) — @naterchrdsn\nPlugin-catalog: bump emporia to 2.1.0 (d9960a99) — @wujitsana\nPlugin-catalog: bump triage to 0.1.4 (pin 2a3e6f9) (d375b77f) — @Saderius\nPlugin-catalog: bump zoth to 1.1.6 (a1ff21db) — @1nc0gn30\nPlugin-catalog: re-pin hermes-anilist to 0.10.0 (1b3549d) (364a4927) — @BatataBF\nPlugin-catalog: bump caduceus to v0.4.3 (da2a3a7c) — @100yenadmin\nCatalog: describe hermes-guests by what owners look for (f8b487c7) — @d8joseph\nPlugin-catalog: bump meragpt to 0.2.0 (adds meragpt_extract) (76d28093) — @Sandeep85Das\nPlugin-catalog: diaktoros 0.7.0 (a3a83ef6) — @coe0718\nPlugin-catalog: hermes-committee 0.5.1 (ae046c79) — @abualnassr\nPlugin-catalog: re-pin hermes-wake to d94bb89 (d8f37dad) — @askclaw-vesper\nRe-pin content-engine to 0.3.2 (50-90s clips, filler-stripped captions) (620f7ff8) — @PXMichael\nPlugin-catalog: bump mnemoverse to 1.0.5 (4b4852ca) — @OlyaTi\nCatalog: re-pin agentic-soc to 0.2.7 (THOR 10.7/11, L2 role split) (d0a71dcb) — @CyStrat-Services-GmbH\nPlugin-catalog: bark 0.2.1 (pin 1709090) (a87c4d64) — @iam1maker\nPlugin-catalog: bark 0.2.1 (pin 4b88be0, requires &gt;=0.23.2) (fbaad81c) — @iam1maker\nPlugin-catalog: bump oxylabs-web-api to 0.1.1 (e0e88665) — @oxy-giedrius\nCatalog: beeper-platform 0.1.1 (SHA bump) (65f197d6) — @clins1994\nPlugin-catalog: re-pin mock-review to v2.4.1 (a8bd55c0) — @arspesk\nPlugin-catalog: re-pin mock-review to v2.4.0 (acc62cdc) — @arspesk\nPlugin-catalog: hermes-finance disclosure covers 0.4.0 (category writes, SimpleFIN, CLI brains) (fb42e327) — @arspesk\nPlugin-catalog: re-pin hermes-finance to v0.4.0 (categories tools) (e40f33f3) — @arspesk\nPlugin-catalog: bump loredocs to 0.1.35 (8a24bc60) — @labyrinth-analytics\nPlugin-catalog: bump stoa to 0.30.0 (f1269bf2) — @jarrett-del\nPlugin-catalog: bump utcp-bridge to 0.2.0 (sse and streamable_http tools) (c9574ad8) — @nftpoetrist\nPlugin-catalog: corkboard 0.2.0 screenshots (re-pin to 23337e9) (3bb4d48d) — @elijahboston\nPlugin-catalog: bump telesec to 0.19.3 (e8b19417) — @neoromantic\nPlugin-catalog: bump hermes-lcm-x to 0.30.2 (968369fa) — @100yenadmin\nPlugin-catalog: bump valetudo to 0.1.1 (5db51f75) — @camescasse\nCatalog: re-pin inbox-sentinel to a354292 (nine-module multi-account release) (b20f19ec) — @eddwithers\nCatalog(tabella): pin 2.0.8 (dependency refresh) (8cc32cf7) — @dyiapanis\nCatalog: re-pin after .venv purge (987a0ea6) — @k1ng0mar\nCatalog: re-pin galaxymem final authorship (b202eebf) — @k1ng0mar\nCatalog: re-pin galaxymem full authorship fix (8a861eb1) — @k1ng0mar\nCatalog: re-pin galaxymem authorship fix (ef15bfe8) — @k1ng0mar\nCatalog: re-pin galaxymem final docs (3f480888) — @k1ng0mar\nCatalog: re-pin galaxymem 0.2.3 (2034fe12) — @k1ng0mar\nCatalog: bump hermes-roi to 0.3.0 — screenshots swapped to the four verified tier-boundary renders; re-pinned to dist 56a27c4c (3fe1adb6) — @JZarkcn\nCatalog: bump hermes-roi to 0.2.0 (manual refresh button in the pane) (35e3b4be) — @JZarkcn\nCatalog: re-pin bot-dashboard 1.3.0 after settings-writer review (9f837881) — @trookish\nCatalog: restore reviewed disclosure in 1.3.0 gallery re-pin (9a5bf72c) — @trookish\nCatalog: re-pin bot-dashboard at 1.3.0 with screenshot gallery (307ef1b4) — @trookish\nCatalog: preserve reviewed disclosure in 1.3.0 re-pin (832f8674) — @trookish\nPlugin-catalog: wigoo, re-pin after the skill YAML fix (bc5d8a33) — @youssbim\nPlugin-catalog: wigoo, describe it as a travel companion (44b00489) — @youssbim\nRe-pin deepseek-meter at 3cec7c8 (profile-safe secrets and home resolution), v1.0.1 (9403337d) — @samieshmil-blip\nPlugin-catalog: re-pin termalin to 4fdcb0f (two sentences reworded for the skill scanner) (1202ce18) — @wolfhound1995\nRe-pin hermes-habitica to 1.0.1 (648155da) — @Jessy-Boo\nPlugin-catalog: tenure 1.4.1 (undo's git child gets a minimal environment) (aa4da39c) — @otsoa-dubief\nPlugin-catalog: tenure 1.4.0 (simple mode by default) (4bad8dc2) — @otsoa-dubief\nPlugin-catalog: tenure 1.1.2 → 1.3.0 (rule B/2: autonomy earned only on what a person checked) (cca60771) — @otsoa-dubief\nPlugin-catalog: credential-pool-switcher 1.5.1 (auto rotation opt-in, default off) (3f901ded) — @hendkai\nPlugin-catalog: bump credential-pool-switcher to 1.5.0 (9d52e4d4) — @hendkai\nCatalog: re-pin inventory-reminder to 5ec3879 (literal key values redacted) (c10a6751) — @ether-btc\nCatalog: re-pin inventory-reminder to 3a3b605 (credential file no longer read) (621b4845) — @ether-btc\nPlugin-catalog: re-pin aura to 6a87c2f (941a3d1f) — @KeyArgo\nPlugin-catalog: re-pin aura to 8e262aa (4ab7a6ea) — @KeyArgo\nCatalog: pin aura to 90e8b80 (gallery, CI badge, VERIFY.md) (5ffa9797) — @KeyArgo\nCatalog: pin aura to the release with the gallery, and point the cards at it (94dfa756) — @KeyArgo\nCatalog: bump agent-pool to 2.8.1 (review fixes; exact pin is in agent-pool.yaml) (7c87ec4c) — @maxcurrent420\nCatalog: pin agent-pool @ 5b973a5c3dfd8633840bb438208211da1c78f3cf (demo video added upstream) (99cd75a5) — @maxcurrent420\nCatalog: pin better-peek 0.3.2 (7d0b6f7) (9e84773a) — @riverosmejia\nCatalog: pin better-peek 0.3.1 (88d2919) (d59c1828) — @riverosmejia\nCatalog: pin better-peek 0.3.0 (ad0bbf0) (824e1a3a) — @riverosmejia\n\n👥 Contributors\nThank you to everyone who contributed to this release!\n\n@k1ng0mar (8 commits)\n@anpicasso (7 commits)\n@unsupportedpastels (5 commits)\n@trookish (5 commits)\n@KeyArgo (5 commits)\n@BearHuddleston (5 commits)\n@arspesk (4 commits)\n@riverosmejia (4 commits)\n@blackopsrepl (3 commits)\n@100yenadmin (3 commits)\n@riandradiva18 (3 commits)\n@lexerio-seth (3 commits)\n@percyhendrux123-prog (3 commits)\n@tomkubik (3 commits)\n@TakeshiTGAL (3 commits)\n@TheSmokeDev (3 commits)\n@JZarkcn (3 commits)\n@youssbim (3 commits)\n@Jessy-Boo (3 commits)\n@otsoa-dubief (3 commits)\n@KyaniteLabs (3 commits)\n@maxcurrent420 (3 commits)\n@madsb (2 commits)\n@AbigailDavised (2 commits)\n@Neboy72 (2 commits)\n@LangerSword (2 commits)\n@itpartypattaya (2 commits)\n@metamindedu (2 commits)\n@Anunnaki-Astronaut (2 commits)\n@iam1maker (2 commits)\n@nftpoetrist (2 commits)\n@AtlasOmnia (2 commits)\n@jacobhausler (2 commits)\n@natlift (2 commits)\n@siavashmirtaheri (2 commits)\n@samieshmil-blip (2 commits)\n@hendkai (2 commits)\n@rahulj-123 (2 commits)\n@sunshakestrong (2 commits)\n@ether-btc (2 commits)\n@bennybuoy (2 commits)\n@kvnloo (1 commit)\nmarlonferreira1800-hue (1 commit)\n@aniruddhaadak80 (1 commit)\n@akhilraija (1 commit)\n@Xipong (1 commit)\nrenatosneves (1 commit)\nCheng Achi (1 commit)\n@trevorjwright (1 commit)\n@c2h5oh (1 commit)\n@ockentap (1 commit)\n@blacksmithFF (1 commit)\n@apoapostolov (1 commit)\n@pugarte7 (1 commit)\n@driptothebone (1 commit)\n@cshape (1 commit)\n@pedroberaldo87 (1 commit)\n@SaltProphet (1 commit)\n@IvanovPetrE (1 commit)\n@StudioCodeAI (1 commit)\n@cnkang (1 commit)\n@charly-jingan (1 commit)\n@dragon888code (1 commit)\n@Olostep-devs (1 commit)\n@dawidope (1 commit)\n@yotam-dial (1 commit)\n@trilu (1 commit)\n@atakanelik34 (1 commit)\n@Tormen28 (1 commit)\n@tapresle (1 commit)\n@naterchrdsn (1 commit)\n@vshulcz (1 commit)\n@betashop (1 commit)\n@wujitsana (1 commit)\n@Saderius (1 commit)\n@1nc0gn30 (1 commit)\n@BatataBF (1 commit)\n@Lazzdaycod (1 commit)\n@CrowdWisdomTradingx402 (1 commit)\n@slucifersz (1 commit)\n@shuruheel (1 commit)\n@Harry-2546 (1 commit)\n@akinduroifedayo (1 commit)\n@tarastech-friday (1 commit)\n@d8joseph (1 commit)\n@Sandeep85Das (1 commit)\n@coe0718 (1 commit)\n@capy-ai[bot] (1 commit)\n@Lil-Clanky (1 commit)\n@abualnassr (1 commit)\n@claudieclaw (1 commit)\n@askclaw-vesper (1 commit)\n@joshua-mo-143 (1 commit)\n@PXMichael (1 commit)\n@samuelchenardlovesboards (1 commit)\n@codepilots (1 commit)\n@ieatcode4breakfast (1 commit)\n@OlyaTi (1 commit)\n@FiendSaws (1 commit)\n@CyStrat-Services-GmbH (1 commit)\n@quotumorg (1 commit)\n@rbur0425 (1 commit)\n@LetItRock (1 commit)\n@Randool (1 commit)\n@oxy-giedrius (1 commit)\n@clins1994 (1 commit)\n@elvispaul7 (1 commit)\n@labyrinth-analytics (1 commit)\n@jarrett-del (1 commit)\n@pbennett (1 commit)\n@Shizoqua (1 commit)\n@TarasShyn (1 commit)\n@jrcruciani (1 commit)\n@elijahboston (1 commit)\n@neoromantic (1 commit)\n@TheBlueHouse75 (1 commit)\n@kenpritchard (1 commit)\n@lazyants (1 commit)\n@camescasse (1 commit)\n@eddwithers (1 commit)\n@alichherawalla (1 commit)\n@dyiapanis (1 commit)\n@chengzeyi (1 commit)\n@aisenseapi (1 commit)\n@wolfhound1995 (1 commit)\n@simongonzalezdc (1 commit)\n@fede-kamel (1 commit)\n@fangliquanflq (1 commit)\n\nFull Changelog: canary.20261124T064706Z-v0.23.3...canary.20261125T064800Z-v0.23.4",
+          "url": "https://github.com/NousResearch/hermes-agent/releases/tag/canary.20261125T064800Z-v0.23.4",
+          "author": "github-actions[bot]",
+          "published": "2026-11-25T08:03:42",
+          "source": "Release notes from hermes-agent",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A canary-channel build of Hermes Agent (v0.23.4, timestamped 2026-11-25) was published with installer downloads for Hermes Desktop across macOS Apple Silicon (DMG) and Windows x64/ARM (MSIX). All native package smoke tests passed for macOS DMG+ZIP (arm64) and both Windows MSIX variants, and the plugin catalog was updated, including pinning solverforge-workbench at 0.3.0.",
+          "importance_score": 62.0,
+          "reasoning": "This is an official Hermes Agent release, which warrants solid importance, but it is a canary-channel patch build rather than a stable or major feature release. The most substantive changes visible are a plugin-catalog pin (solverforge-workbench 0.3.0) and passing smoke tests for the desktop installers, so it is incremental maintenance relevant mainly to users tracking the canary channel.",
+          "themes": [
+            "canary release",
+            "desktop installers",
+            "plugin catalog",
+            "smoke testing"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A canary-channel build of Hermes Agent (v0.23.4, timestamped 2026-11-25) was published with installer downloads for Hermes Desktop across macOS Apple Silicon (DMG) and Windows x64/ARM (MSIX). All native package smoke tests passed for macOS DMG+ZIP (arm64) and both Windows MSIX variants, and the plugin catalog was updated, including pinning solverforge-workbench at 0.3.0.</p>",
+          "content_html": "<p>Hermes Agent v0.23.4+canary.20261125T064800Z (canary.20261125T064800Z-v0.23.4)</p>\n<p>Release Date: November 25, 2026</p>\n<p>Downloads</p>\n<p>Hermes Desktop</p>\n<p>OS</p>\n<p>Architecture</p>\n<p>Download</p>\n<p>macOS</p>\n<p>Apple Silicon (M-series)</p>\n<p>DMG</p>\n<p>Windows</p>\n<p>x86 (64-bit)</p>\n<p>MSIX</p>\n<p>Windows</p>\n<p>ARM (arm64 / aarch64)</p>\n<p>MSIX</p>\n<p>Native install/chat smoke</p>\n<p>Download availability is independent of smoke status. Each result covers all native legs in that format group. Linux AppImages and unsigned Store envelopes are not install-smoked. No-upload dry tags have no download handoff and are not smoke-qualified.</p>\n<p>Packages</p>\n<p>Smoke status</p>\n<p>macOS DMG + ZIP (arm64)</p>\n<p>Passed</p>\n<p>Windows MSIX (arm64)</p>\n<p>Passed</p>\n<p>Windows MSIX (x64)</p>\n<p>Passed</p>\n<p>✨ Features</p>\n<p>Plugin-catalog): pin solverforge-workbench at 16d5016 (0.3.0) (d679d325) — @blackopsrepl</p>\n<p>Plugin-catalog): pin solverforge-workbench at 3b0a79d (0.2.5) (32b4c22a) — @blackopsrepl</p>\n<p>Plugin-catalog): list SolverForge Workbench (a08c689a) — @blackopsrepl</p>\n<p>Plugin-catalog): add chinadoccheck plugin (45c5e873) — @AbigailDavised</p>\n<p>Plugin-catalog): bump hermes-next-steps to 1.1.6 (78eb9591) — @apoapostolov</p>\n<p>Plugin-catalog): add phone-bud (bb3a2cc5) — @cshape</p>\n<p>Plugin-catalog): update hermes-warden to 0.1.6 (17b100a2) — @pedroberaldo87</p>\n<p>Plugin-catalog: add igni (5e145f5b) — @LangerSword</p>\n<p>Plugin-catalog): yandex-alice cover image, pin 5188f01 (78b2ca62) — @IvanovPetrE</p>\n<p>Catalog): add AgentRouter competitor research plugin (2ec7fe88) — @charly-jingan</p>\n<p>Plugin-catalog): add 0g-provider (9a65342b) — @dragon888code</p>\n<p>Plugin-catalog): add olostep (ad8efa8b) — @Olostep-devs</p>\n<p>Catalog): add deapi-provider (7b8e82b2) — @dawidope</p>\n<p>Dial to the plugin catalog (728bb611) — @yotam-dial</p>\n<p>Plugin-catalog: add memory-fit (cde3ebc7) — @trilu</p>\n<p>Plugin-catalog): add AirPrompter (saved prompts and workflows, hosted MCP) (ea45834c) — @lexerio-seth</p>\n<p>Plugin-catalog): senpi pins senpi-plugin@cd828b6 (0.5.1) (1a98d3d9) — @betashop</p>\n<p>Plugin catalog entry: gpu-monitor (02c5734d) — @Lazzdaycod</p>\n<p>Plugin-catalog): add hermes-declines 0.1.0 (7131e35b) — @percyhendrux123-prog</p>\n<p>Plugin-catalog): add crowdwisdom-mcp (114fb6a4) — @CrowdWisdomTradingx402</p>\n<p>Plugin-catalog): add allscale (995f16dc) — @slucifersz</p>\n<p>Plugin-catalog): add url-date-slash-restore plugin (34153ad4) — @Harry-2546</p>\n<p>Catalog): add me-action (c750c28d) — @claudieclaw</p>\n<p>Plugin-catalog): add venice plugin (1d78b34d) — @joshua-mo-143</p>\n<p>Plugin-catalog): add palisade (email authentication, hosted MCP) (df6b5355) — @samuelchenardlovesboards</p>\n<p>Plugin-catalog): add linux-notify plugin (e494c539) — @codepilots</p>\n<p>Catalog): add bf16-provider (bf16.ai uncensored model provider) (b72e89bc) — @FiendSaws</p>\n<p>Plugins): bump rh-preflight to 0.5.17 (3c43368c) — @quotumorg</p>\n<p>Plugin-catalog): add agentinbox plugin (df29b2f3) — @LetItRock</p>\n<p>Plugin-catalog: add bark (Bark iOS push notifications) (df4ea055) — @Randool</p>\n<p>Plugin-catalog: add gmat-mx (hosted MCP, GMAT facts for Mexico) (00a757eb) — @elvispaul7</p>\n<p>Plugin-catalog): add chinamedscheck plugin (754991c0) — @AbigailDavised</p>\n<p>Catalog): bump zerosignal to v0.2.0 (1a07ffc8) — @pbennett</p>\n<p>Plugin-catalog): pin hermes-scout to v0.4.0 (31a9f99b) — @Shizoqua</p>\n<p>Plugin-catalog: add offline-zim (search and read local ZIM libraries) (a5d0c5d1) — @nftpoetrist</p>\n<p>Plugin-catalog: add trismegistus (7c50200f) — @jrcruciani</p>\n<p>Plugin-catalog: add ficelle-compression (45254342) — @TheBlueHouse75</p>\n<p>Catalog): update Subnano to 0.3.71 (d30ca8ae) — @madsb</p>\n<p>Plugin-catalog: add delegation-gate (c4c284d0) — @kenpritchard</p>\n<p>Plugin-catalog): add vaultwarden-secret-source (339141db) — @natlift</p>\n<p>Plugin-catalog): add repeat-pause 0.1.0 (b81a7d1e) — @percyhendrux123-prog</p>\n<p>Plugin-catalog): add run-receipts 0.1.0 (afa5c991) — @percyhendrux123-prog</p>\n<p>Plugin-catalog: add right-suite (f43a6356) — @alichherawalla</p>\n<p>Plugin-catalog): add hermes-wavespeed (39ca68b3) — @chengzeyi</p>\n<p>Catalog): pin fastpath to tested commit (5e4d9727) — @siavashmirtaheri</p>\n<p>Catalog: add fastpath context-diet plugin (059cddfa) — @siavashmirtaheri</p>\n<p>Galaxymem to plugin catalog (6e62c2d1) — @k1ng0mar</p>\n<p>Catalog: add hermes-roi (ROI — Return on Intelligence) (93f63195) — @JZarkcn</p>\n<p>Catalog: add bot-dashboard 1.3.0 (d7793512) — @trookish</p>\n<p>Plugin-catalog: add wigoo (aea7866c) — @youssbim</p>\n<p>Deepseek-meter to the plugin catalog (ec2bc36c) — @samieshmil-blip</p>\n<p>Hermes-habitica to the plugin catalog (ab91c4aa) — @Jessy-Boo</p>\n<p>Plugin-catalog): pin testmu-ai 1.2.1 (Hermes trust: untrusted) (18d363a8) — @rahulj-123</p>\n<p>Plugin-catalog): add testmu-ai plugin (862388ac) — @rahulj-123</p>\n<p>Plugin-catalog): re-pin tripo 0.1.1 to 693b923 (analytics off by default) (78744688) — @sunshakestrong</p>\n<p>Plugin-catalog): pin tripo to 0.1.1 (1e31a076) — @sunshakestrong</p>\n<p>Plugin-catalog): stage gws-workspace slash-watch candidate (1b91cbf0) — @anpicasso</p>\n<p>Plugin-catalog): submit gws-workspace v0.9.1 (d8a1dffb) — @anpicasso</p>\n<p>Plugin-catalog): propose gws-oauth v0.8.0 with policy disclosures (b3121bc3) — @anpicasso</p>\n<p>Plugin-catalog: add aura (2eabfcbb) — @KeyArgo</p>\n<p>Catalog: add agent-pool (community) @ d220f4d (ef2312aa) — @maxcurrent420</p>\n<p>Catalog: add better-peek (cb5536ed) — @riverosmejia</p>\n<p>Plugin-catalog): add oci-provider (6e9074fe) — @fede-kamel</p>\n<p>🔧 Improvements</p>\n<p>Cron): colocate the firing delivery snapshot (6a595373) — @unsupportedpastels</p>\n<p>Catalog: update Subnano to 0.3.72 (376580d1) — @madsb</p>\n<p>Catalog: update Unraid to v0.4.0 (317af42c) — @Anunnaki-Astronaut</p>\n<p>Catalog: update UniFi to v0.4.0 (0a845273) — @Anunnaki-Astronaut</p>\n<p>Catalog: update hermes-mini to 0.3.1 (27c33695) — @ieatcode4breakfast</p>\n<p>OwnMachine community plugin to v1.2.0 (ad89ca47) — @rbur0425</p>\n<p>Catalog: re-pin galaxymem docs cleanup (98a85bd1) — @k1ng0mar</p>\n<p>Release): extract shared downloads page renderer (7a7e5c5a) — @BearHuddleston</p>\n<p>🐛 Bug Fixes</p>\n<p>Cron): one paused-run refusal for every manual-run surface (ed76807f)</p>\n<p>Comfyui): never replay a submission once a redirect was followed (948b7de5)</p>\n<p>Comfyui): never treat a proxy 5xx or failed redirect as an unsent submission (d5b42684)</p>\n<p>Profiles): convert a linked .env through a fresh temp file (b26de735)</p>\n<p>Todo): sanitize parents on restore (6c5a053e) — @aniruddhaadak80</p>\n<p>Tools): break todo parent cycles at the closing ancestor (#156671) (#156671) — @akhilraija</p>\n<p>Solstice): refuse a gemini wire too old for this transport up front (24b14819) — @unsupportedpastels</p>\n<p>Cron): keep plugin lookups within one profile (feceed66) — @unsupportedpastels</p>\n<p>Cron): use firing job settings in delivery_platforms and expose ctx.cron_delivery_platforms (a5a7a078) — @unsupportedpastels</p>\n<p>Plugin-catalog): bump hermes-field-notes to 1.3.0 (4acbcc09) — @itpartypattaya</p>\n<p>Catalog): pin MrScraper 4.1.0 without the action option (9c6270c5) — @riandradiva18</p>\n<p>Catalog): pin MrScraper 4.1.0 with the current-release README (136ce45b) — @riandradiva18</p>\n<p>Catalog): pin MrScraper 4.1.0 with a configurable screenshot area (b0987b43) — @riandradiva18</p>\n<p>Catalog): repin mindgraph to 1.3.0 (8198f32c) — @shuruheel</p>\n<p>Plugins): clarify Sidecar upgrade safety and disclosures (a7abd4e2) — @AtlasOmnia</p>\n<p>Plugin-catalog): update us-census to 472faa6 (5ccf5b2c) — @TakeshiTGAL</p>\n<p>Plugin-catalog): update gleif to 6c94296 (c569e4f1) — @TakeshiTGAL</p>\n<p>Plugin-catalog): update scar to c9cb123 (8b074bc6) — @TakeshiTGAL</p>\n<p>Plugin-catalog): pin hermes-habitica to the real v1.0.1 commit and declare its pre_tool_call hook (d81980eb) — @Jessy-Boo</p>\n<p>Plugin-catalog): use renamed gws-workspace repository (cac4aa2c) — @anpicasso</p>\n<p>Doctor): judge assignment words as written, before quote removal (3ddd1ee0) — @BearHuddleston</p>\n<p>Doctor): keep the inherited PATH before a .env PATH line replaces it (48bcfb5b) — @BearHuddleston</p>\n<p>Doctor): accept sealed bundle CLI links and warn when ~/.local/bin is off PATH (51b93b31) — @BearHuddleston</p>\n<p>Desktop): refuse a macOS update from a read-only location before quitting (69178d7a)</p>\n<p>📚 Documentation</p>\n<p>Plugins): note off-chain fallback in store.lineage.lineage guide paragraph (bbdc7289) — @unsupportedpastels</p>\n<p>Update hermes-sentinel catalogue entry - v0.1.3 (f01a3c52) — @SaltProphet</p>\n<p>Catalog): disclose chat and prompt excerpt limitation (136b1146) — @KyaniteLabs</p>\n<p>Release): point channel_releases help at the publication workflow (ef2c66d5) — @BearHuddleston</p>\n<p>🏗️ Infrastructure</p>\n<p>Catalog): re-pin claude-subscription-directsdk to 0.4.1 (24353849)</p>\n<p>Run the Windows x64 smoke and install/update E2E legs on Blacksmith (400a99f7) — @c2h5oh</p>\n<p>Catalog): normalize shinjuku.yaml line endings to LF (5b41d5c9)</p>\n<p>Catalog): review disclosure for chinadoccheck (0ccd94a5)</p>\n<p>Catalog): re-pin nexus to 58b499e3, the rewritten twin of the reviewed 10d55248 (author scrubbed personal IDs from comments; reviewed commit no longer reachable) (f544004c)</p>\n<p>Catalog): nexus auf v0.22.67 (Sicherungs-Fix, Kennungspflicht) (f0ec497f) — @Neboy72</p>\n<p>Catalog): re-pin nexus to the v0.22.66 release commit (9e64d032) — @Neboy72</p>\n<p>Plugin-catalog): bump spanish-top-tech-companies to 1.1.10 (0bf290fd) — @pugarte7</p>\n<p>Catalog): review disclosure for phone-bud (396acf7b)</p>\n<p>Catalog): review disclosure for hermes-sentinel (265bc7c6)</p>\n<p>Catalog): review disclosure for heartbeat2 (f1dfc4dd)</p>\n<p>Catalog): repin qdrant-memory to 0.7.3 (94169b64) — @cnkang</p>\n<p>Catalog): review disclosure for agentrouter (c2d0c6dd)</p>\n<p>Catalog): update model-router to v0.15.1 (7d7f7b7a) — @metamindedu</p>\n<p>Catalog): update model-router to v0.15.0 (c95f76e4) — @metamindedu</p>\n<p>Map contributor email for yotam-dial (4de1ee3b)</p>\n<p>Catalog): review disclosure for dial (f5a37f73)</p>\n<p>Map contributor email for trilu (5e1189b6)</p>\n<p>Map contributor email for lexerio-seth (e44d8c11)</p>\n<p>Catalog): review disclosure for airprompter (85d0c9f4)</p>\n<p>Catalog): review disclosure for deja-memory (0a48d643)</p>\n<p>Plugin-catalog): bump deja-memory sha (3ac2b29d) — @vshulcz</p>\n<p>Catalog): review disclosure for emporia (8665499f)</p>\n<p>Catalog): review disclosure for hermes-anilist (971cbc45)</p>\n<p>Catalog): update Living Spaces to 0.1.4 (e65e225c) — @akinduroifedayo</p>\n<p>Plugin-catalog): bump rtk-rewrite-docker to 0.1.2 (17ad51eb) — @tarastech-friday</p>\n<p>Catalog): review disclosure for supermemory (5bf67cc5)</p>\n<p>Plugin-catalog): re-pin supermemory to 2.0.0 (9853a4d7) — @capy-ai[bot]</p>\n<p>Plugin-catalog): bump polytropos-router to 0.2.0 (98d5093e) — @Lil-Clanky</p>\n<p>Catalog): review disclosure for hermes-committee (b48fc632)</p>\n<p>Catalog): bump kiro-provider to v1.2.1 (2a8ad1cd) — @anpicasso</p>\n<p>Map contributor email for samuelchenardlovesboards (47f637e2)</p>\n<p>Catalog): review disclosure for linux-notify (70d9e854)</p>\n<p>Catalog): review disclosure for bf16-provider (5e058f55)</p>\n<p>Catalog): review disclosure for agentic-soc (9368ca93)</p>\n<p>Catalog): review disclosure for rh-preflight (62d55027)</p>\n<p>Catalog): review disclosure for agentinbox (9ea54328)</p>\n<p>Map contributor email for iam1maker (34bda39f)</p>\n<p>Map contributor email for elvispaul7 (b647666a)</p>\n<p>Catalog): review disclosure for gmat-mx (5f70091b)</p>\n<p>Catalog): review disclosure for chinamedscheck (e1fa9cf8)</p>\n<p>Plugin-catalog): bump adaptlypost to 1.24.0 (b06e7b81) — @TarasShyn</p>\n<p>Catalog): review disclosure for trismegistus (2249e596)</p>\n<p>Catalog): pin model-fallback-heuristic 0.3.0 to 0035146 (35f252ce) — @tomkubik</p>\n<p>Catalog): bump model-fallback-heuristic to 0.3.0 (a95575de) — @tomkubik</p>\n<p>Catalog): bump model-fallback-heuristic to 0.2.1 (cf8851b) (415582ce) — @tomkubik</p>\n<p>Plugins): update Sidecar for LibreOffice to 0.5.1 (c05fa020) — @AtlasOmnia</p>\n<p>Catalog): review disclosure for hermes-workflows (4f005711)</p>\n<p>Plugin-catalog): re-pin hermes-workflows to v1.4.12 (b0cadbf) (4f65b057) — @jacobhausler</p>\n<p>Catalog): update genealogy recipes to v2.2.0 (de94c7c7) — @lazyants</p>\n<p>Catalog): review disclosure for vaultwarden-secret-source (f1ebf3c1)</p>\n<p>Plugin-catalog): bump vaultwarden-secret-source to 1.0.4 (68edda02) — @natlift</p>\n<p>Catalog): re-pin pinned-folders to 0.1.16 (4eb27d0) (a505d1b7) — @jacobhausler</p>\n<p>Catalog): review disclosure for gleif (e8eaf791)</p>\n<p>Catalog): review disclosure for right-suite (5eb119c1)</p>\n<p>Plugin-catalog): update aamio to 0.7.48 (8c6f48b3) — @aisenseapi</p>\n<p>Catalog): review disclosure for fastpath (5e67c5ed)</p>\n<p>Catalog): review disclosure for scar (918aff3c)</p>\n<p>Catalog): pin Hermes Talk owner-managed phone configuration (20249c7d) — @TheSmokeDev</p>\n<p>Catalog): repin hermes-talk to the 0.25.0 catalog build (d0469473) — @TheSmokeDev</p>\n<p>Catalog): repin hermes-talk to the 0.24.1 catalog build (7959e995) — @TheSmokeDev</p>\n<p>Map contributor email for k1ng0mar (375f901b)</p>\n<p>Catalog): review disclosure for galaxymem (880afaf4)</p>\n<p>Map contributor email for JZarkcn (6037b482)</p>\n<p>Catalog): review disclosure for bot-dashboard (d9d2b070)</p>\n<p>Catalog): review disclosure for wigoo (d5cac476)</p>\n<p>Map contributor email for samieshmil-blip (fffd0774)</p>\n<p>Catalog): review disclosure for deepseek-meter (48090e50)</p>\n<p>Map contributor email for wolfhound1995 (c32d62b9)</p>\n<p>Catalog): review disclosure for hermes-habitica (00ccd640)</p>\n<p>Catalog): review disclosure for testmu-ai (3da76078)</p>\n<p>Catalog): pin published gws-workspace v0.10.0 (123c73fa) — @anpicasso</p>\n<p>Plugin-catalog): pin short watch confirmation candidate (f20dfe1f) — @anpicasso</p>\n<p>Catalog): review disclosure for unbl0ck (08f33071)</p>\n<p>Catalog): pin published UNBL0CK 0.6.2 (public Hermes APIs) (0361d38c) — @simongonzalezdc</p>\n<p>Catalog): pin published UNBL0CK 0.6.1 and refresh limitations (4073aefd) — @KyaniteLabs</p>\n<p>Catalog): update UNBL0CK to 0.5.1 (a111f230) — @KyaniteLabs</p>\n<p>Map contributor email for KeyArgo (fa086efc)</p>\n<p>Catalog): review disclosure for aura (f5909025)</p>\n<p>Map contributor email for maxcurrent420 (0b987422)</p>\n<p>Catalog): review disclosure for agent-pool (ec96cea9)</p>\n<p>Map contributor email for riverosmejia (7414fdff)</p>\n<p>Map contributor email for riverosmejia (0d002376)</p>\n<p>Catalog): review disclosure for better-peek (e54f50ba)</p>\n<p>Catalog): update Hermes Herald to v1.3.0 (ae181dd6) — @bennybuoy</p>\n<p>Catalog): update Hermes Herald to v1.2.0 (d53e76d8) — @bennybuoy</p>\n<p>Map contributor email for tradersurfer (7bbfdd19)</p>\n<p>Catalog): review disclosure for ceo-pack (fd672393)</p>\n<p>📦 Other Changes</p>\n<p>Plugin-catalog: bump memory-shaper to 1.13.0 (cross-line index invariants) (4a3e57b2) — @ockentap</p>\n<p>Pin nyx-wiki-recall to 3921463 (archivist skill 1.1.0) (44df1f26) — @blacksmithFF</p>\n<p>Plugin-catalog: fleet-control (#158958) (#158958) — @driptothebone</p>\n<p>Catalog: re-pin igni to v0.3.1 (1807b6a5) — @LangerSword</p>\n<p>Plugin-catalog: holographic 0.31.2 (4ad13d91) — @itpartypattaya</p>\n<p>Plugin-catalog: heartbeat2 0.4.33 (a0268490) — @100yenadmin</p>\n<p>Catalog: bump hermes-lang-pt-br to 1.2.6 (f04c1ee8) — @StudioCodeAI</p>\n<p>Plugin-catalog: AirPrompter 0.2.8 (7279b39) (a244c2bf) — @lexerio-seth</p>\n<p>Plugin-catalog: AirPrompter 0.2.7 (50dc3f8) (a1898bd0) — @lexerio-seth</p>\n<p>Catalog: bilinc 1.1.1 (591ddc50) — @atakanelik34</p>\n<p>Catalog: hermes-cinema 0.4.0 (06f14b2d) — @Tormen28</p>\n<p>List Turn timings in the plugin catalog (0a91f1c2) — @tapresle</p>\n<p>Plugin-catalog: bump nachos to 0.7.0 (ded63889) — @naterchrdsn</p>\n<p>Plugin-catalog: bump emporia to 2.1.0 (d9960a99) — @wujitsana</p>\n<p>Plugin-catalog: bump triage to 0.1.4 (pin 2a3e6f9) (d375b77f) — @Saderius</p>\n<p>Plugin-catalog: bump zoth to 1.1.6 (a1ff21db) — @1nc0gn30</p>\n<p>Plugin-catalog: re-pin hermes-anilist to 0.10.0 (1b3549d) (364a4927) — @BatataBF</p>\n<p>Plugin-catalog: bump caduceus to v0.4.3 (da2a3a7c) — @100yenadmin</p>\n<p>Catalog: describe hermes-guests by what owners look for (f8b487c7) — @d8joseph</p>\n<p>Plugin-catalog: bump meragpt to 0.2.0 (adds meragpt_extract) (76d28093) — @Sandeep85Das</p>\n<p>Plugin-catalog: diaktoros 0.7.0 (a3a83ef6) — @coe0718</p>\n<p>Plugin-catalog: hermes-committee 0.5.1 (ae046c79) — @abualnassr</p>\n<p>Plugin-catalog: re-pin hermes-wake to d94bb89 (d8f37dad) — @askclaw-vesper</p>\n<p>Re-pin content-engine to 0.3.2 (50-90s clips, filler-stripped captions) (620f7ff8) — @PXMichael</p>\n<p>Plugin-catalog: bump mnemoverse to 1.0.5 (4b4852ca) — @OlyaTi</p>\n<p>Catalog: re-pin agentic-soc to 0.2.7 (THOR 10.7/11, L2 role split) (d0a71dcb) — @CyStrat-Services-GmbH</p>\n<p>Plugin-catalog: bark 0.2.1 (pin 1709090) (a87c4d64) — @iam1maker</p>\n<p>Plugin-catalog: bark 0.2.1 (pin 4b88be0, requires &gt;=0.23.2) (fbaad81c) — @iam1maker</p>\n<p>Plugin-catalog: bump oxylabs-web-api to 0.1.1 (e0e88665) — @oxy-giedrius</p>\n<p>Catalog: beeper-platform 0.1.1 (SHA bump) (65f197d6) — @clins1994</p>\n<p>Plugin-catalog: re-pin mock-review to v2.4.1 (a8bd55c0) — @arspesk</p>\n<p>Plugin-catalog: re-pin mock-review to v2.4.0 (acc62cdc) — @arspesk</p>\n<p>Plugin-catalog: hermes-finance disclosure covers 0.4.0 (category writes, SimpleFIN, CLI brains) (fb42e327) — @arspesk</p>\n<p>Plugin-catalog: re-pin hermes-finance to v0.4.0 (categories tools) (e40f33f3) — @arspesk</p>\n<p>Plugin-catalog: bump loredocs to 0.1.35 (8a24bc60) — @labyrinth-analytics</p>\n<p>Plugin-catalog: bump stoa to 0.30.0 (f1269bf2) — @jarrett-del</p>\n<p>Plugin-catalog: bump utcp-bridge to 0.2.0 (sse and streamable_http tools) (c9574ad8) — @nftpoetrist</p>\n<p>Plugin-catalog: corkboard 0.2.0 screenshots (re-pin to 23337e9) (3bb4d48d) — @elijahboston</p>\n<p>Plugin-catalog: bump telesec to 0.19.3 (e8b19417) — @neoromantic</p>\n<p>Plugin-catalog: bump hermes-lcm-x to 0.30.2 (968369fa) — @100yenadmin</p>\n<p>Plugin-catalog: bump valetudo to 0.1.1 (5db51f75) — @camescasse</p>\n<p>Catalog: re-pin inbox-sentinel to a354292 (nine-module multi-account release) (b20f19ec) — @eddwithers</p>\n<p>Catalog(tabella): pin 2.0.8 (dependency refresh) (8cc32cf7) — @dyiapanis</p>\n<p>Catalog: re-pin after .venv purge (987a0ea6) — @k1ng0mar</p>\n<p>Catalog: re-pin galaxymem final authorship (b202eebf) — @k1ng0mar</p>\n<p>Catalog: re-pin galaxymem full authorship fix (8a861eb1) — @k1ng0mar</p>\n<p>Catalog: re-pin galaxymem authorship fix (ef15bfe8) — @k1ng0mar</p>\n<p>Catalog: re-pin galaxymem final docs (3f480888) — @k1ng0mar</p>\n<p>Catalog: re-pin galaxymem 0.2.3 (2034fe12) — @k1ng0mar</p>\n<p>Catalog: bump hermes-roi to 0.3.0 — screenshots swapped to the four verified tier-boundary renders; re-pinned to dist 56a27c4c (3fe1adb6) — @JZarkcn</p>\n<p>Catalog: bump hermes-roi to 0.2.0 (manual refresh button in the pane) (35e3b4be) — @JZarkcn</p>\n<p>Catalog: re-pin bot-dashboard 1.3.0 after settings-writer review (9f837881) — @trookish</p>\n<p>Catalog: restore reviewed disclosure in 1.3.0 gallery re-pin (9a5bf72c) — @trookish</p>\n<p>Catalog: re-pin bot-dashboard at 1.3.0 with screenshot gallery (307ef1b4) — @trookish</p>\n<p>Catalog: preserve reviewed disclosure in 1.3.0 re-pin (832f8674) — @trookish</p>\n<p>Plugin-catalog: wigoo, re-pin after the skill YAML fix (bc5d8a33) — @youssbim</p>\n<p>Plugin-catalog: wigoo, describe it as a travel companion (44b00489) — @youssbim</p>\n<p>Re-pin deepseek-meter at 3cec7c8 (profile-safe secrets and home resolution), v1.0.1 (9403337d) — @samieshmil-blip</p>\n<p>Plugin-catalog: re-pin termalin to 4fdcb0f (two sentences reworded for the skill scanner) (1202ce18) — @wolfhound1995</p>\n<p>Re-pin hermes-habitica to 1.0.1 (648155da) — @Jessy-Boo</p>\n<p>Plugin-catalog: tenure 1.4.1 (undo's git child gets a minimal environment) (aa4da39c) — @otsoa-dubief</p>\n<p>Plugin-catalog: tenure 1.4.0 (simple mode by default) (4bad8dc2) — @otsoa-dubief</p>\n<p>Plugin-catalog: tenure 1.1.2 → 1.3.0 (rule B/2: autonomy earned only on what a person checked) (cca60771) — @otsoa-dubief</p>\n<p>Plugin-catalog: credential-pool-switcher 1.5.1 (auto rotation opt-in, default off) (3f901ded) — @hendkai</p>\n<p>Plugin-catalog: bump credential-pool-switcher to 1.5.0 (9d52e4d4) — @hendkai</p>\n<p>Catalog: re-pin inventory-reminder to 5ec3879 (literal key values redacted) (c10a6751) — @ether-btc</p>\n<p>Catalog: re-pin inventory-reminder to 3a3b605 (credential file no longer read) (621b4845) — @ether-btc</p>\n<p>Plugin-catalog: re-pin aura to 6a87c2f (941a3d1f) — @KeyArgo</p>\n<p>Plugin-catalog: re-pin aura to 8e262aa (4ab7a6ea) — @KeyArgo</p>\n<p>Catalog: pin aura to 90e8b80 (gallery, CI badge, VERIFY.md) (5ffa9797) — @KeyArgo</p>\n<p>Catalog: pin aura to the release with the gallery, and point the cards at it (94dfa756) — @KeyArgo</p>\n<p>Catalog: bump agent-pool to 2.8.1 (review fixes; exact pin is in agent-pool.yaml) (7c87ec4c) — @maxcurrent420</p>\n<p>Catalog: pin agent-pool @ 5b973a5c3dfd8633840bb438208211da1c78f3cf (demo video added upstream) (99cd75a5) — @maxcurrent420</p>\n<p>Catalog: pin better-peek 0.3.2 (7d0b6f7) (9e84773a) — @riverosmejia</p>\n<p>Catalog: pin better-peek 0.3.1 (88d2919) (d59c1828) — @riverosmejia</p>\n<p>Catalog: pin better-peek 0.3.0 (ad0bbf0) (824e1a3a) — @riverosmejia</p>\n<p>👥 Contributors</p>\n<p>Thank you to everyone who contributed to this release!</p>\n<p>@k1ng0mar (8 commits)</p>\n<p>@anpicasso (7 commits)</p>\n<p>@unsupportedpastels (5 commits)</p>\n<p>@trookish (5 commits)</p>\n<p>@KeyArgo (5 commits)</p>\n<p>@BearHuddleston (5 commits)</p>\n<p>@arspesk (4 commits)</p>\n<p>@riverosmejia (4 commits)</p>\n<p>@blackopsrepl (3 commits)</p>\n<p>@100yenadmin (3 commits)</p>\n<p>@riandradiva18 (3 commits)</p>\n<p>@lexerio-seth (3 commits)</p>\n<p>@percyhendrux123-prog (3 commits)</p>\n<p>@tomkubik (3 commits)</p>\n<p>@TakeshiTGAL (3 commits)</p>\n<p>@TheSmokeDev (3 commits)</p>\n<p>@JZarkcn (3 commits)</p>\n<p>@youssbim (3 commits)</p>\n<p>@Jessy-Boo (3 commits)</p>\n<p>@otsoa-dubief (3 commits)</p>\n<p>@KyaniteLabs (3 commits)</p>\n<p>@maxcurrent420 (3 commits)</p>\n<p>@madsb (2 commits)</p>\n<p>@AbigailDavised (2 commits)</p>\n<p>@Neboy72 (2 commits)</p>\n<p>@LangerSword (2 commits)</p>\n<p>@itpartypattaya (2 commits)</p>\n<p>@metamindedu (2 commits)</p>\n<p>@Anunnaki-Astronaut (2 commits)</p>\n<p>@iam1maker (2 commits)</p>\n<p>@nftpoetrist (2 commits)</p>\n<p>@AtlasOmnia (2 commits)</p>\n<p>@jacobhausler (2 commits)</p>\n<p>@natlift (2 commits)</p>\n<p>@siavashmirtaheri (2 commits)</p>\n<p>@samieshmil-blip (2 commits)</p>\n<p>@hendkai (2 commits)</p>\n<p>@rahulj-123 (2 commits)</p>\n<p>@sunshakestrong (2 commits)</p>\n<p>@ether-btc (2 commits)</p>\n<p>@bennybuoy (2 commits)</p>\n<p>@kvnloo (1 commit)</p>\n<p>marlonferreira1800-hue (1 commit)</p>\n<p>@aniruddhaadak80 (1 commit)</p>\n<p>@akhilraija (1 commit)</p>\n<p>@Xipong (1 commit)</p>\n<p>renatosneves (1 commit)</p>\n<p>Cheng Achi (1 commit)</p>\n<p>@trevorjwright (1 commit)</p>\n<p>@c2h5oh (1 commit)</p>\n<p>@ockentap (1 commit)</p>\n<p>@blacksmithFF (1 commit)</p>\n<p>@apoapostolov (1 commit)</p>\n<p>@pugarte7 (1 commit)</p>\n<p>@driptothebone (1 commit)</p>\n<p>@cshape (1 commit)</p>\n<p>@pedroberaldo87 (1 commit)</p>\n<p>@SaltProphet (1 commit)</p>\n<p>@IvanovPetrE (1 commit)</p>\n<p>@StudioCodeAI (1 commit)</p>\n<p>@cnkang (1 commit)</p>\n<p>@charly-jingan (1 commit)</p>\n<p>@dragon888code (1 commit)</p>\n<p>@Olostep-devs (1 commit)</p>\n<p>@dawidope (1 commit)</p>\n<p>@yotam-dial (1 commit)</p>\n<p>@trilu (1 commit)</p>\n<p>@atakanelik34 (1 commit)</p>\n<p>@Tormen28 (1 commit)</p>\n<p>@tapresle (1 commit)</p>\n<p>@naterchrdsn (1 commit)</p>\n<p>@vshulcz (1 commit)</p>\n<p>@betashop (1 commit)</p>\n<p>@wujitsana (1 commit)</p>\n<p>@Saderius (1 commit)</p>\n<p>@1nc0gn30 (1 commit)</p>\n<p>@BatataBF (1 commit)</p>\n<p>@Lazzdaycod (1 commit)</p>\n<p>@CrowdWisdomTradingx402 (1 commit)</p>\n<p>@slucifersz (1 commit)</p>\n<p>@shuruheel (1 commit)</p>\n<p>@Harry-2546 (1 commit)</p>\n<p>@akinduroifedayo (1 commit)</p>\n<p>@tarastech-friday (1 commit)</p>\n<p>@d8joseph (1 commit)</p>\n<p>@Sandeep85Das (1 commit)</p>\n<p>@coe0718 (1 commit)</p>\n<p>@capy-ai[bot] (1 commit)</p>\n<p>@Lil-Clanky (1 commit)</p>\n<p>@abualnassr (1 commit)</p>\n<p>@claudieclaw (1 commit)</p>\n<p>@askclaw-vesper (1 commit)</p>\n<p>@joshua-mo-143 (1 commit)</p>\n<p>@PXMichael (1 commit)</p>\n<p>@samuelchenardlovesboards (1 commit)</p>\n<p>@codepilots (1 commit)</p>\n<p>@ieatcode4breakfast (1 commit)</p>\n<p>@OlyaTi (1 commit)</p>\n<p>@FiendSaws (1 commit)</p>\n<p>@CyStrat-Services-GmbH (1 commit)</p>\n<p>@quotumorg (1 commit)</p>\n<p>@rbur0425 (1 commit)</p>\n<p>@LetItRock (1 commit)</p>\n<p>@Randool (1 commit)</p>\n<p>@oxy-giedrius (1 commit)</p>\n<p>@clins1994 (1 commit)</p>\n<p>@elvispaul7 (1 commit)</p>\n<p>@labyrinth-analytics (1 commit)</p>\n<p>@jarrett-del (1 commit)</p>\n<p>@pbennett (1 commit)</p>\n<p>@Shizoqua (1 commit)</p>\n<p>@TarasShyn (1 commit)</p>\n<p>@jrcruciani (1 commit)</p>\n<p>@elijahboston (1 commit)</p>\n<p>@neoromantic (1 commit)</p>\n<p>@TheBlueHouse75 (1 commit)</p>\n<p>@kenpritchard (1 commit)</p>\n<p>@lazyants (1 commit)</p>\n<p>@camescasse (1 commit)</p>\n<p>@eddwithers (1 commit)</p>\n<p>@alichherawalla (1 commit)</p>\n<p>@dyiapanis (1 commit)</p>\n<p>@chengzeyi (1 commit)</p>\n<p>@aisenseapi (1 commit)</p>\n<p>@wolfhound1995 (1 commit)</p>\n<p>@simongonzalezdc (1 commit)</p>\n<p>@fede-kamel (1 commit)</p>\n<p>@fangliquanflq (1 commit)</p>\n<p>Full Changelog: canary.20261124T064706Z-v0.23.3...canary.20261125T064800Z-v0.23.4</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 21,
+      "category_summary": "**Security** leads this cycle: a malicious NPM package ([**leadstack crm-connect**](/?date=2026-11-26&category=research#item-hn-50585975)) installed **Hermes Agent** as root and tasked it over Telegram — real-world supply-chain abuse of the agent install path that every self-hoster should treat as an audit trigger. Official documentation delivered two high-impact updates: [**Claude Pro/Max subscription**](/?date=2026-11-26&category=research#item-hn-49790991) support via a direct SDK plugin (materially changes cost and model access for subscribers) and [**Kanban**](/?date=2026-11-26&category=research#item-hn-49604068) multi-agent profile collaboration. On performance, an [agent-authored custom-kernel workflow on Mac clusters reportedly outperforms **MLX**](/?date=2026-11-26&category=research#item-hn-50648334), with concrete throughput numbers for **ERNIE 5.5 Flash Preview** running in Hermes. Deployment coverage flags operational gaps — [no official **Helm** chart and root-at-init requirements on **Kubernetes**](/?date=2026-11-26&category=research#item-hn-49977400) — alongside practical [VPS-plus-rooted-Android](/?date=2026-11-26&category=research#item-hn-50629729) and [containerization guides](/?date=2026-11-26&category=research#item-hn-50131496). The ecosystem tooling layer keeps maturing: [**Comemo**](/?date=2026-11-26&category=research#item-hn-50518538) fans memory writes out to multiple backends (**Mem0** and others) to work around the single memory-provider slot, while [**Verso**](/?date=2026-11-26&category=research#item-hn-49628094), [**shoebox**](/?date=2026-11-26&category=research#item-hn-50610136), [**Refine Cycle**](/?date=2026-11-26&category=research#item-hn-49606988), and the [**ClusterMob** profile registry](/?date=2026-11-26&category=research#item-hn-50197497) show a growing orchestration/plugin layer. Interaction surfaces expanded via [**Hermes-Voice**](/?date=2026-11-26&category=research#item-hn-50381927) (Home Assistant Assist voice control) and the native SwiftUI [**Paper Harness**](/?date=2026-11-26&category=research#item-hn-50278175) iPhone client.",
+      "category_summary_html": "<p><strong>Security</strong> leads this cycle: a malicious NPM package (<a href=\"/?date=2026-11-26&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>leadstack crm-connect</strong></a>) installed <strong>Hermes Agent</strong> as root and tasked it over Telegram — real-world supply-chain abuse of the agent install path that every self-hoster should treat as an audit trigger. Official documentation delivered two high-impact updates: <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max subscription</strong></a> support via a direct SDK plugin (materially changes cost and model access for subscribers) and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong></a> multi-agent profile collaboration. On performance, an <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">agent-authored custom-kernel workflow on Mac clusters reportedly outperforms <strong>MLX</strong></a>, with concrete throughput numbers for <strong>ERNIE 5.5 Flash Preview</strong> running in Hermes. Deployment coverage flags operational gaps — <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">no official <strong>Helm</strong> chart and root-at-init requirements on <strong>Kubernetes</strong></a> — alongside practical <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">VPS-plus-rooted-Android</a> and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerization guides</a>. The ecosystem tooling layer keeps maturing: <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a> fans memory writes out to multiple backends (<strong>Mem0</strong> and others) to work around the single memory-provider slot, while <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>shoebox</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, and the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong> profile registry</a> show a growing orchestration/plugin layer. Interaction surfaces expanded via <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes-Voice</strong></a> (Home Assistant Assist voice control) and the native SwiftUI <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong></a> iPhone client.</p>",
+      "themes": [
+        {
+          "name": "Official Updates and Documentation",
+          "description": "Official announcements including Claude Pro/Max subscription support and the Kanban multi-agent collaboration feature documentation.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Security and Reliability",
+          "description": "A malicious NPM package weaponizing Hermes Agent as a root backdoor, plus a runaway-agent troubleshooting case and Kubernetes root requirement, pointing to security and reliability concerns.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Performance and Local Inference",
+          "description": "Agent-authored custom kernels replacing MLX for Mac clusters, with concrete throughput numbers for ERNIE 5.5 Flash Preview running in Hermes.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Deployment and Self-Hosting",
+          "description": "Guides and friction reports for running Hermes on VPS, Kubernetes, containers, and rooted Android hardware, highlighting missing Helm charts and root-at-init issues.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Ecosystem Tooling and Orchestration",
+          "description": "Third-party tools built on or around Hermes Agent, including shoebox, Verso, Comemo, Refine Cycle, and ClusterMob, showing a maturing plugin and orchestration layer plus competing alternatives.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 58.0
+        },
+        {
+          "name": "Community Integrations and Clients",
+          "description": "Community-built access surfaces such as the SwiftUI iPhone client, Home Assistant voice integration, and mobile/voice expansion of Hermes interaction.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 55.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-50648334",
+          "title": "Tell HN: Stop using MLX, start telling your agent to write custom kernels",
+          "content": "I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok&#x2F;sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok&#x2F;sec at low context. In hermes, running nearly 50 tok&#x2F;sec at high context, only a fifteen second wait for a response. Any critics, try i",
+          "url": "https://news.ycombinator.com/item?id=50648334",
+          "author": "thesnarkitecht",
+          "published": "2026-11-25T22:13:03Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An HN post describes clustering Macs for local AI and having Claude write custom kernels instead of relying on MLX. Claims Baidu ERNIE 5.5 Flash Preview reached 96 tok/sec at low context across four Macs, and about 50 tok/sec at high context inside Hermes with roughly a fifteen second wait.",
+          "importance_score": 68.0,
+          "reasoning": "Provides concrete, replicable performance guidance for running Hermes with local Mac clusters and current-generation models like ERNIE 5.5 Flash Preview, plus a practical agentic workflow tip of having agents author custom kernels. Strong relevance for self-hosted Hermes performance tuning.",
+          "themes": [
+            "Performance Tuning",
+            "Local Inference",
+            "Agent Workflows"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An HN post describes clustering Macs for local AI and having Claude write custom kernels instead of relying on MLX. Claims Baidu ERNIE 5.5 Flash Preview reached 96 tok/sec at low context across four Macs, and about 50 tok/sec at high context inside Hermes with roughly a fifteen second wait.</p>",
+          "content_html": "<p>I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok/sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok/sec at low context. In hermes, running nearly 50 tok/sec at high context, only a fifteen second wait for a response. Any critics, try i</p>"
+        },
+        {
+          "id": "hn-50278175",
+          "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+          "author": "yourfavdev",
+          "published": "2026-10-28T18:04:37Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hermes Paper Harness is a native SwiftUI iPhone app on the App Store serving as a mobile client for Hermes Agent, providing iOS access to agent sessions.",
+          "importance_score": 55.0,
+          "reasoning": "A notable mobile client expanding Hermes accessibility beyond desktop and CLI. Relevant to users wanting on-the-go agent interaction, though the post itself carries little technical detail.",
+          "themes": [
+            "Mobile Clients",
+            "Community Projects"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Paper Harness is a native SwiftUI iPhone app on the App Store serving as a mobile client for Hermes Agent, providing iOS access to agent sessions.</p>",
+          "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49511007",
+          "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+          "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+          "url": "https://usealmanac.com/",
+          "author": "kushagrchitkar",
+          "published": "2026-08-31T15:34:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Almanac, a YC S26 startup, launches an AI product pitched as a Hermes-like agent that knows everything about your company. The founders describe the difficulty of setting up Hermes themselves, including building OAuth connectors for every integration, as their founding motivation.",
+          "importance_score": 55.0,
+          "reasoning": "A funded startup whose founding story validates strong demand for company-context agents while documenting Hermes setup friction, especially connector and OAuth burden. Notable ecosystem and market signal.",
+          "themes": [
+            "Startups",
+            "Ecosystem Feedback",
+            "Enterprise Context"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Almanac, a YC S26 startup, launches an AI product pitched as a Hermes-like agent that knows everything about your company. The founders describe the difficulty of setting up Hermes themselves, including building OAuth connectors for every integration, as their founding motivation.</p>",
+          "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+        },
+        {
+          "id": "hn-50131496",
+          "title": "Hermes Agent: My containerized take",
+          "content": "Hermes Agent: My containerized take",
+          "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+          "author": "ricardodevries",
+          "published": "2026-10-17T14:27:11Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A blog post by ricardodevries describing a personal containerized setup for running Hermes Agent, covering one practitioner's approach to container-based deployment and management.",
+          "importance_score": 52.0,
+          "reasoning": "Practical deployment write-up relevant to self-hosters evaluating containerization strategies for Hermes. Solid operational guidance value despite a personal, non-authoritative framing.",
+          "themes": [
+            "Containerization",
+            "Deployment",
+            "Self-Hosting"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A blog post by ricardodevries describing a personal containerized setup for running Hermes Agent, covering one practitioner's approach to container-based deployment and management.</p>",
+          "content_html": "<p>Hermes Agent: My containerized take</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "ClusterMob is a community website acting as a registry of Hermes Agent profiles, allowing discovery and sharing of agent profile configurations across the community.",
+          "importance_score": 50.0,
+          "reasoning": "Useful community infrastructure for profile discovery and reuse, indicating maturing ecosystem tooling around Hermes profiles, though the announcement is brief on implementation details.",
+          "themes": [
+            "Profile Sharing",
+            "Community Infrastructure"
+          ],
+          "continuation": null,
+          "summary_html": "<p>ClusterMob is a community website acting as a registry of Hermes Agent profiles, allowing discovery and sharing of agent profile configurations across the community.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A reflective blog post by heyjonny on misusing Hermes Agent and lessons learned about the correct mental model and usage patterns for the agent.",
+          "importance_score": 50.0,
+          "reasoning": "Experience-based guidance that can help others avoid common onboarding mistakes, offering practical framing advice, though light on concrete technical specifics from the supplied snippet.",
+          "themes": [
+            "Usage Patterns",
+            "Lessons Learned"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A reflective blog post by heyjonny on misusing Hermes Agent and lessons learned about the correct mental model and usage patterns for the agent.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Refine Cycle is a self-improvement plugin for Hermes Agent hosted on GitHub, designed to let the agent iteratively refine its own behavior or outputs.",
+          "importance_score": 48.0,
+          "reasoning": "Represents the self-improving agent trend within the Hermes plugin ecosystem; interesting for power users but the bare announcement gives little detail on mechanisms or safety considerations.",
+          "themes": [
+            "Self-Improvement",
+            "Plugin Development"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Refine Cycle is a self-improvement plugin for Hermes Agent hosted on GitHub, designed to let the agent iteratively refine its own behavior or outputs.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A user reports a freshly provisioned Hermes agent on headless Debian using Z.ai GLM 5.3 Flash entering a trance-like state with a long thinking block after being asked to print local environment details and PATH. The thread includes the captured thinking output for diagnosis.",
+          "importance_score": 46.0,
+          "reasoning": "A troubleshooting case study with diagnostic data (model choice, environment probing, runaway thinking) useful for understanding failure modes, but anecdotal and unresolved in nature.",
+          "themes": [
+            "Reliability",
+            "Troubleshooting",
+            "Model Behavior"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A user reports a freshly provisioned Hermes agent on headless Debian using Z.ai GLM 5.3 Flash entering a trance-like state with a long thinking block after being asked to print local environment details and PATH. The thread includes the captured thinking output for diagnosis.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-50326764",
+          "title": "Ask HN: How do you manage your personal agents?",
+          "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+          "url": "https://news.ycombinator.com/item?id=50326764",
+          "author": "kevinlu310",
+          "published": "2026-11-01T15:51:22Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "An Ask HN thread on coordinating multiple personal agents including OpenClaw, Hermes Agent, Muse, Dots, Claude Code, and Codex. The poster copies and pastes identical questions across agents to compare responses and asks for better coordination approaches.",
+          "importance_score": 42.0,
+          "reasoning": "Reflects a real multi-agent coordination gap in the ecosystem and positions Hermes among a crowded field of agent tools, but contains no technical solution or documentation.",
+          "themes": [
+            "Multi-Agent Coordination",
+            "Ecosystem Feedback"
+          ],
+          "continuation": null,
+          "summary_html": "<p>An Ask HN thread on coordinating multiple personal agents including OpenClaw, Hermes Agent, Muse, Dots, Claude Code, and Codex. The poster copies and pastes identical questions across agents to compare responses and asks for better coordination approaches.</p>",
+          "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+        },
+        {
+          "id": "hn-50366117",
+          "title": "Ask HN: What's your current AI agentic setup?",
+          "content": "I&#x27;m curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.<p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT&#x2F;Codex, Cursor, etc)<p>- Which tiers?<p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?<p>2) Are you using models outside (or instead) of tho",
+          "url": "https://news.ycombinator.com/item?id=50366117",
+          "author": "eggbrain",
+          "published": "2026-11-04T14:37:22Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A general Ask HN thread asking what AI subscriptions and models people use day to day, covering tiers, multiple accounts, and whether people use models outside mainstream providers. Not specifically about Hermes.",
+          "importance_score": 32.0,
+          "reasoning": "Broad community sentiment survey with potential background context on model and subscription preferences among agent users, but no direct Hermes-specific technical content.",
+          "themes": [
+            "Community Discussion",
+            "Model Preferences"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A general Ask HN thread asking what AI subscriptions and models people use day to day, covering tiers, multiple accounts, and whether people use models outside mainstream providers. Not specifically about Hermes.</p>",
+          "content_html": "<p>I'm curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.</p><p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT/Codex, Cursor, etc)</p><p>- Which tiers?</p><p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?</p><p>2) Are you using models outside (or instead) of tho</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 43,
+      "category_summary": "**Privacy & trust led the week**: **Teknium** celebrated Hermes earning an **[A grade](/?date=2026-11-26&category=social#item-e10052e35603)** for respecting user privacy (1,009 likes, 42k views — the standout post), reinforced by official confirmations that **[telemetry is opt-in](/?date=2026-11-26&category=social#item-f67078a18311)** in both the **Hermes agent** and desktop app, and that users can point Hermes at **[any provider](/?date=2026-11-26&category=social#item-89132e5ac05c)** — a cluster of replies that turned a user concern into a trust win. **Ecosystem tooling** stayed hot as community builder **rlaope** shipped **[omher desktop 1.2.1](/?date=2026-11-26&category=social#item-424d55a59806)** (a CLI desktop wrapping the **Hermes-Agent** bot with workflow packs, subagent routing, connectors and skills) and crossed **[10,000 commits](/?date=2026-11-26&category=social#item-4e222d566b94)** on the Oh-My-Hermes GitHub. **Momentum & teasers**: Teknium promised Hermes will be '[running in hyperdrive](/?date=2026-11-26&category=social#item-85524ec7e4b1)' (634 likes, ~21k views), while the **NousResearch** account teased an imminent reveal ('[Can't wait to share it with the world](/?date=2026-11-26&category=social#item-3f9d0b476ff7)', '[Sooon](/?date=2026-11-26&category=social#item-5ecf87e02386)') and name-dropped **[Nous Portal](/?date=2026-11-26&category=social#item-9ee9ee4e11f5)** to a high-profile follower. **Product direction & guidance**: [desktop design unification](/?date=2026-11-26&category=social#item-a2ad4ee22203) confirmed in response to user feedback, and **Teknium** shared that **[plugin catalog](/?date=2026-11-26&category=social#item-800e25e2e627)** submissions are typically reviewed and cleared within ~3 days — actionable for builders. **Industry banter** drew strong reach: Teknium's pointed reply to **@sama** ('[3 years late but better late than never](/?date=2026-11-26&category=social#item-8d68add19c36)'), a nudge to **theo** to [audit closed-source projects next](/?date=2026-11-26&category=social#item-78089cc48ae8) ('quite sad I imagine 😳'), and a widely resonant origin story — [hobbyist programmer doing Uber Eats](/?date=2026-11-26&category=social#item-32a49f03f69e) before ChatGPT dropped — plus a warm welcome for **[notch](/?date=2026-11-26&category=social#item-1bd3cf77705e)** to the crew. Overall sentiment: proud, shipping-focused, and rallying around privacy as Hermes' core differentiator, with the community celebrating both external validation and its own building cadence.",
+      "category_summary_html": "<p><strong>Privacy &amp; trust led the week</strong>: <strong>Teknium</strong> celebrated Hermes earning an <strong><a href=\"/?date=2026-11-26&amp;category=social#item-e10052e35603\" class=\"internal-link\" rel=\"noopener noreferrer\">A grade</a></strong> for respecting user privacy (1,009 likes, 42k views — the standout post), reinforced by official confirmations that <strong><a href=\"/?date=2026-11-26&amp;category=social#item-f67078a18311\" class=\"internal-link\" rel=\"noopener noreferrer\">telemetry is opt-in</a></strong> in both the <strong>Hermes agent</strong> and desktop app, and that users can point Hermes at <strong><a href=\"/?date=2026-11-26&amp;category=social#item-89132e5ac05c\" class=\"internal-link\" rel=\"noopener noreferrer\">any provider</a></strong> — a cluster of replies that turned a user concern into a trust win. <strong>Ecosystem tooling</strong> stayed hot as community builder <strong>rlaope</strong> shipped <strong><a href=\"/?date=2026-11-26&amp;category=social#item-424d55a59806\" class=\"internal-link\" rel=\"noopener noreferrer\">omher desktop 1.2.1</a></strong> (a CLI desktop wrapping the <strong>Hermes-Agent</strong> bot with workflow packs, subagent routing, connectors and skills) and crossed <strong><a href=\"/?date=2026-11-26&amp;category=social#item-4e222d566b94\" class=\"internal-link\" rel=\"noopener noreferrer\">10,000 commits</a></strong> on the Oh-My-Hermes GitHub. <strong>Momentum &amp; teasers</strong>: Teknium promised Hermes will be '<a href=\"/?date=2026-11-26&amp;category=social#item-85524ec7e4b1\" class=\"internal-link\" rel=\"noopener noreferrer\">running in hyperdrive</a>' (634 likes, ~21k views), while the <strong>NousResearch</strong> account teased an imminent reveal ('<a href=\"/?date=2026-11-26&amp;category=social#item-3f9d0b476ff7\" class=\"internal-link\" rel=\"noopener noreferrer\">Can't wait to share it with the world</a>', '<a href=\"/?date=2026-11-26&amp;category=social#item-5ecf87e02386\" class=\"internal-link\" rel=\"noopener noreferrer\">Sooon</a>') and name-dropped <strong><a href=\"/?date=2026-11-26&amp;category=social#item-9ee9ee4e11f5\" class=\"internal-link\" rel=\"noopener noreferrer\">Nous Portal</a></strong> to a high-profile follower. <strong>Product direction &amp; guidance</strong>: <a href=\"/?date=2026-11-26&amp;category=social#item-a2ad4ee22203\" class=\"internal-link\" rel=\"noopener noreferrer\">desktop design unification</a> confirmed in response to user feedback, and <strong>Teknium</strong> shared that <strong><a href=\"/?date=2026-11-26&amp;category=social#item-800e25e2e627\" class=\"internal-link\" rel=\"noopener noreferrer\">plugin catalog</a></strong> submissions are typically reviewed and cleared within ~3 days — actionable for builders. <strong>Industry banter</strong> drew strong reach: Teknium's pointed reply to <strong>@sama</strong> ('<a href=\"/?date=2026-11-26&amp;category=social#item-8d68add19c36\" class=\"internal-link\" rel=\"noopener noreferrer\">3 years late but better late than never</a>'), a nudge to <strong>theo</strong> to <a href=\"/?date=2026-11-26&amp;category=social#item-78089cc48ae8\" class=\"internal-link\" rel=\"noopener noreferrer\">audit closed-source projects next</a> ('quite sad I imagine 😳'), and a widely resonant origin story — <a href=\"/?date=2026-11-26&amp;category=social#item-32a49f03f69e\" class=\"internal-link\" rel=\"noopener noreferrer\">hobbyist programmer doing Uber Eats</a> before ChatGPT dropped — plus a warm welcome for <strong><a href=\"/?date=2026-11-26&amp;category=social#item-1bd3cf77705e\" class=\"internal-link\" rel=\"noopener noreferrer\">notch</a></strong> to the crew. Overall sentiment: proud, shipping-focused, and rallying around privacy as Hermes' core differentiator, with the community celebrating both external validation and its own building cadence.</p>",
+      "themes": [
+        {
+          "name": "Privacy and Telemetry Trust",
+          "description": "Discussion of Hermes receiving a strong privacy grade and official confirmation that telemetry is opt-in by default, addressing user trust concerns.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Hermes Ecosystem Tooling (Oh-My-Hermes)",
+          "description": "Community builder rlaope advancing the Oh-My-Hermes desktop wrapper with a 1.2.1 release, connectors, skills, and a 10,000-commit milestone.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Telemetry and Privacy Clarifications",
+          "description": "Teknium repeatedly clarifies Hermes telemetry behavior: it is opt-in in both the agent and desktop app, and the team does not control third-party provider data handling.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Official Hype and Upcoming Releases",
+          "description": "Teasers from NousResearch and Teknium about imminent shares, hyperdrive performance, and upcoming product moments.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 60.0
+        },
+        {
+          "name": "Industry Commentary and Banter",
+          "description": "Teknium and Nous Research engaging with industry figures like Sam Altman and theo on topics such as AI-driven careers, closed-source audits, and perceived imitators.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Developer Guidance for Plugin Catalog",
+          "description": "Practical advice on Hermes plugin catalog submissions, including typical ~3-day approval turnaround and batching submissions.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 55.0
+        },
+        {
+          "name": "Product Roadmap and Capabilities",
+          "description": "Scattered confirmations about the desktop design unification, cross-device (Duo) support, feature parity claims, and not-yet-available features.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 40.0
+        },
+        {
+          "name": "Community Banter and Reactions",
+          "description": "Short replies, jokes, acknowledgments, and link drops from official accounts and rlaope with little substantive content.",
+          "item_count": 9,
+          "example_items": [],
+          "importance": 15.0
+        },
+        {
+          "name": "Community Acknowledgments and Welcomes",
+          "description": "Numerous emoji-only or one-word replies from Nous Research and Teknium welcoming users and acknowledging praise, with little informational content.",
+          "item_count": 10,
+          "example_items": [],
+          "importance": 10.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "e10052e35603",
+          "title": "Glad to see we get an A for respecting user privacy in Hermes :)",
+          "content": "Glad to see we get an A for respecting user privacy in Hermes :)",
+          "url": "https://twitter.com/Teknium/status/2125535756005544305",
+          "author": "@Teknium",
+          "published": "2026-11-25T10:23:09",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium celebrates that Hermes received an A grade for respecting user privacy, highlighting a favorable external privacy assessment of the product.",
+          "importance_score": 88.0,
+          "reasoning": "From the highest-priority author (Teknium), very strong engagement (1009 likes, 42k views), and conveys a substantive third-party privacy evaluation of Hermes that is relevant for adoption and trust.",
+          "themes": [
+            "privacy",
+            "product reputation",
+            "external evaluation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium celebrates that Hermes received an A grade for respecting user privacy, highlighting a favorable external privacy assessment of the product.</p>",
+          "content_html": "<p>Glad to see we get an A for respecting user privacy in Hermes :)</p>"
+        },
+        {
+          "id": "32a49f03f69e",
+          "title": "@matthewsoldit I disagree. I was a hobbyist programmer doing uber eats before ChatGPT dropped.\n\nEver...",
+          "content": "@matthewsoldit I disagree. I was a hobbyist programmer doing uber eats before ChatGPT dropped.\n\nEverything Ive built is thanks to AI.",
+          "url": "https://twitter.com/Teknium/status/2125683545041760359",
+          "author": "@Teknium",
+          "published": "2026-11-25T20:10:25",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium pushes back on a claim about AI and programming careers, sharing that he was a hobbyist programmer doing Uber Eats before ChatGPT existed and that everything he has built came thanks to AI.",
+          "importance_score": 82.0,
+          "reasoning": "High-credibility author (Teknium) sharing a personal career-origin story in a debate about AI's impact on programmers; very strong engagement with over 1200 likes and 21k views, making it a notable community discussion moment.",
+          "themes": [
+            "AI and careers",
+            "personal story",
+            "industry debate"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium pushes back on a claim about AI and programming careers, sharing that he was a hobbyist programmer doing Uber Eats before ChatGPT existed and that everything he has built came thanks to AI.</p>",
+          "content_html": "<p>@matthewsoldit I disagree. I was a hobbyist programmer doing uber eats before ChatGPT dropped.</p>\n<p>Everything Ive built is thanks to AI.</p>"
+        },
+        {
+          "id": "424d55a59806",
+          "title": "omher desktop 1.2.1 released\n\n- your CLI Desktop with Hermes-Agent Bot\n- Hermes-Agent workflows pack...",
+          "content": "omher desktop 1.2.1 released\n\n- your CLI Desktop with Hermes-Agent Bot\n- Hermes-Agent workflows packages\n- coding intelligence, subagent routing\n- github, discord, telegram, slack, notion etc ... connector\n- hermes-agent skills, cron, memory management\n- ai subscription, api auth management\n\na face for every bot. this is very useful and beatuiful\n\nGitHub: https://t.co/8QLzzwZOZh",
+          "url": "https://twitter.com/rlaope/status/2125474851490238606",
+          "author": "@rlaope",
+          "published": "2026-11-25T06:21:08",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope announces version 1.2.1 of the omher (Oh-My-Hermes) desktop app, a CLI desktop wrapping the Hermes-Agent bot with workflow packages, subagent routing, connectors for GitHub/Discord/Telegram/Slack/Notion, skills, cron, memory management, and subscription/API auth management, with a GitHub link.",
+          "importance_score": 78.0,
+          "reasoning": "From a prioritized community builder (rlaope), this is a concrete, detailed third-party tool release in the Hermes ecosystem with strong engagement (63 likes, 5.5k views) and a public GitHub repo; not an official NousResearch release so it is not classified as releases.",
+          "themes": [
+            "community tooling",
+            "hermes agent",
+            "release",
+            "integrations"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope announces version 1.2.1 of the omher (Oh-My-Hermes) desktop app, a CLI desktop wrapping the Hermes-Agent bot with workflow packages, subagent routing, connectors for GitHub/Discord/Telegram/Slack/Notion, skills, cron, memory management, and subscription/API auth management, with a GitHub link.</p>",
+          "content_html": "<p>omher desktop 1.2.1 released</p>\n<ul>\n<li>your CLI Desktop with Hermes-Agent Bot</li>\n<li>Hermes-Agent workflows packages</li>\n<li>coding intelligence, subagent routing</li>\n<li>github, discord, telegram, slack, notion etc ... connector</li>\n<li>hermes-agent skills, cron, memory management</li>\n<li>ai subscription, api auth management</li>\n</ul>\n<p>a face for every bot. this is very useful and beatuiful</p>\n<p>GitHub: https://t.co/8QLzzwZOZh</p>"
+        },
+        {
+          "id": "594ea3e3ab7a",
+          "title": "@MarkusEicher70 @theo Telemetry is opt-in by default",
+          "content": "@MarkusEicher70 @theo Telemetry is opt-in by default",
+          "url": "https://twitter.com/NousResearch/status/2125463765386998011",
+          "author": "@NousResearch",
+          "published": "2026-11-25T05:37:05",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "The official NousResearch account clarifies in a thread that Hermes telemetry is opt-in by default, addressing a user concern about data collection.",
+          "importance_score": 72.0,
+          "reasoning": "Official clarification on a privacy question from the primary account with strong engagement (306 likes, ~23k views); substantively addresses user trust concerns following the privacy grade discussion.",
+          "themes": [
+            "privacy",
+            "telemetry",
+            "official clarification"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The official NousResearch account clarifies in a thread that Hermes telemetry is opt-in by default, addressing a user concern about data collection.</p>",
+          "content_html": "<p>@MarkusEicher70 @theo Telemetry is opt-in by default</p>"
+        },
+        {
+          "id": "85524ec7e4b1",
+          "title": "We gonna be running Hermes in hyperdrive",
+          "content": "We gonna be running Hermes in hyperdrive",
+          "url": "https://twitter.com/Teknium/status/2125440668726403467",
+          "author": "@Teknium",
+          "published": "2026-11-25T04:05:18",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium hypes that Hermes will be running in hyperdrive, suggesting major performance or infrastructure push, likely tied to new compute resources.",
+          "importance_score": 70.0,
+          "reasoning": "High-priority author with strong engagement (634 likes, ~21k views) signaling notable momentum or upcoming capability for Hermes, though the statement is vague and promotional rather than concrete.",
+          "themes": [
+            "hype",
+            "performance",
+            "infrastructure"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium hypes that Hermes will be running in hyperdrive, suggesting major performance or infrastructure push, likely tied to new compute resources.</p>",
+          "content_html": "<p>We gonna be running Hermes in hyperdrive</p>"
+        },
+        {
+          "id": "3f9d0b476ff7",
+          "title": "@Shaughnessy119 Can’t wait to share it with the world",
+          "content": "@Shaughnessy119 Can’t wait to share it with the world",
+          "url": "https://twitter.com/NousResearch/status/2125478303733895334",
+          "author": "@NousResearch",
+          "published": "2026-11-25T06:34:51",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "The official NousResearch account tells a user it cannot wait to share an unreleased project with the world, building anticipation for an upcoming announcement.",
+          "importance_score": 60.0,
+          "reasoning": "Official teaser of a forthcoming share with solid engagement (180 likes, 27 replies, 6.6k views); signals something notable is imminent though details are absent.",
+          "themes": [
+            "teaser",
+            "upcoming release",
+            "hype"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The official NousResearch account tells a user it cannot wait to share an unreleased project with the world, building anticipation for an upcoming announcement.</p>",
+          "content_html": "<p>@Shaughnessy119 Can’t wait to share it with the world</p>"
+        },
+        {
+          "id": "800e25e2e627",
+          "title": "@langersword @witcheer @iamlukethedev @calvinnwq @HermesAgentTips @NousResearch We review and get th...",
+          "content": "@langersword @witcheer @iamlukethedev @calvinnwq @HermesAgentTips @NousResearch We review and get through the approvals process for plugin catalog submissions within ~3 days - I'd just push them 5 at a time",
+          "url": "https://twitter.com/Teknium/status/2125683139305771362",
+          "author": "@Teknium",
+          "published": "2026-11-25T20:08:48",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium explains the Hermes plugin catalog submission process: approvals are typically reviewed and cleared within about three days, and he advises pushing plugin submissions in batches of five.",
+          "importance_score": 58.0,
+          "reasoning": "Actionable configuration/process guidance from the project lead about plugin catalog submission timing and batching; low engagement but unique practical value for plugin developers.",
+          "themes": [
+            "plugin catalog",
+            "submission process",
+            "developer tips"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium explains the Hermes plugin catalog submission process: approvals are typically reviewed and cleared within about three days, and he advises pushing plugin submissions in batches of five.</p>",
+          "content_html": "<p>@langersword @witcheer @iamlukethedev @calvinnwq @HermesAgentTips @NousResearch We review and get through the approvals process for plugin catalog submissions within ~3 days - I'd just push them 5 at a time</p>"
+        },
+        {
+          "id": "5b3547ad130b",
+          "title": "Would be a great case study for a lot of people!",
+          "content": "Would be a great case study for a lot of people!",
+          "url": "https://twitter.com/Teknium/status/2125492885483368610",
+          "author": "@Teknium",
+          "published": "2026-11-25T07:32:48",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium comments that something under discussion would make a great case study for many people, implying notable community work worth documenting.",
+          "importance_score": 55.0,
+          "reasoning": "High-priority author and decent engagement (103 likes, ~12k views), but the referenced subject is not specified in the post, limiting standalone informational value.",
+          "themes": [
+            "community showcase",
+            "case study"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium comments that something under discussion would make a great case study for many people, implying notable community work worth documenting.</p>",
+          "content_html": "<p>Would be a great case study for a lot of people!</p>"
+        },
+        {
+          "id": "89132e5ac05c",
+          "title": "@read__the__diff You can use any provider you want there’s no way to control that from our side what...",
+          "content": "@read__the__diff You can use any provider you want there’s no way to control that from our side what they do, this confers telemetry Hermes collects about the user in Hermes",
+          "url": "https://twitter.com/Teknium/status/2125631523005333958",
+          "author": "@Teknium",
+          "published": "2026-11-25T16:43:42",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium clarifies Hermes privacy behavior: users can choose any provider, the team has no control over what providers do, and the statement concerns telemetry Hermes itself collects about users within Hermes.",
+          "importance_score": 52.0,
+          "reasoning": "Substantive privacy and provider-choice clarification from the project lead in a debate thread; low engagement but addresses a recurring community concern about telemetry.",
+          "themes": [
+            "privacy",
+            "telemetry",
+            "provider choice"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium clarifies Hermes privacy behavior: users can choose any provider, the team has no control over what providers do, and the statement concerns telemetry Hermes itself collects about users within Hermes.</p>",
+          "content_html": "<p>@read__the__diff You can use any provider you want there’s no way to control that from our side what they do, this confers telemetry Hermes collects about the user in Hermes</p>"
+        },
+        {
+          "id": "4e222d566b94",
+          "title": "10,000 Commits Oh-My-Hermes GitHub https://t.co/WfiSkoHMPy",
+          "content": "10,000 Commits Oh-My-Hermes GitHub https://t.co/WfiSkoHMPy",
+          "url": "https://twitter.com/rlaope/status/2125410096226418890",
+          "author": "@rlaope",
+          "published": "2026-11-25T02:03:49",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope celebrates the Oh-My-Hermes GitHub repository reaching 10,000 commits, marking a major development milestone for the community Hermes desktop tool.",
+          "importance_score": 52.0,
+          "reasoning": "Concrete commit milestone from a prioritized community builder; modest engagement (11 likes, 706 views) but a meaningful indicator of sustained ecosystem development activity.",
+          "themes": [
+            "milestone",
+            "commits",
+            "community tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope celebrates the Oh-My-Hermes GitHub repository reaching 10,000 commits, marking a major development milestone for the community Hermes desktop tool.</p>",
+          "content_html": "<p>10,000 Commits Oh-My-Hermes GitHub https://t.co/WfiSkoHMPy</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

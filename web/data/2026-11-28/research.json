@@ -1,0 +1,713 @@
+{
+  "category": "research",
+  "date": "2026-11-28",
+  "category_summary": "This cycle's research/documentation coverage is dominated by **Hermes Agent ecosystem activity**, led by a serious **supply-chain security incident**: a [malicious NPM package](/?date=2026-11-28&category=research#item-hn-50585975) (*leadstack-crm-connect*) backdoored victim machines by installing Hermes Agent as root and tasking it via Telegram — making it the top item given direct, high-impact relevance to anyone running the agent. Official changes follow: new support for [**Claude Pro/Max subscription authentication**](/?date=2026-11-28&category=research#item-hn-49790991) (lowering access barriers) and official [**Kanban multi-agent collaboration**](/?date=2026-11-28&category=research#item-hn-49604068) docs addressing coordination pain. **Deployment and infrastructure** remains a strong theme with actionable gaps documented — no official [**Helm chart**](/?date=2026-11-28&category=research#item-hn-49977400), root-at-init container requirements complicating hardened Kubernetes deploys — plus practical community guides for [containerized setups](/?date=2026-11-28&category=research#item-hn-50131496) and [VPS-to-rooted-Android control patterns](/?date=2026-11-28&category=research#item-hn-50629729). **Community tooling** is flourishing: [*Comemo*](/?date=2026-11-28&category=research#item-hn-50518538) (composite memory provider fanning out writes past the single-provider limitation), [*Refine Cycle*](/?date=2026-11-28&category=research#item-hn-49606988) (self-improvement plugin), [*Hermes-Voice*](/?date=2026-11-28&category=research#item-hn-50381927) (Home Assistant integration), [*Paper Harness*](/?date=2026-11-28&category=research#item-hn-50278175) (native SwiftUI iPhone client), [*ClusterMob*](/?date=2026-11-28&category=research#item-hn-50197497) (profile registry), and lighter-weight orchestrators ([*shoebox*](/?date=2026-11-28&category=research#item-hn-50610136), [*Verso*](/?date=2026-11-28&category=research#item-hn-49628094)) that double as friction signals against growing complexity. Performance practitioners report [**custom Metal kernels replacing MLX**](/?date=2026-11-28&category=research#item-hn-50648334) for dramatic local-inference gains on Mac clusters. **Multi-agent orchestration demand** is a recurring theme across [Ask HN threads](/?date=2026-11-28&category=research#item-hn-50326764) and third-party tools. Academic research items ([context engineering](/?date=2026-11-28&category=research#item-2611.30494), [evidence-grounded 3D agentic reasoning](/?date=2026-11-28&category=research#item-2611.29969), [AIChipbench for accelerator-design agents](/?date=2026-11-28&category=research#item-2611.33093)) are conceptually adjacent but lack direct implementation ties and rank lower. **Excluded**: three Black Friday SEO/backlink promotional posts with zero technical or documentation relevance. One minor note: a thread references [\"GLM 5.3 Flash,\"](/?date=2026-11-28&category=research#item-hn-49916751) which does not match current Zhipu/Z.ai model listings (latest GLM is 5.2) — likely a version typo in the post and not a model-release claim.",
+  "category_summary_html": "<p>This cycle's research/documentation coverage is dominated by <strong>Hermes Agent ecosystem activity</strong>, led by a serious <strong>supply-chain security incident</strong>: a <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">malicious NPM package</a> (<em>leadstack-crm-connect</em>) backdoored victim machines by installing Hermes Agent as root and tasking it via Telegram — making it the top item given direct, high-impact relevance to anyone running the agent. Official changes follow: new support for <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max subscription authentication</strong></a> (lowering access barriers) and official <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban multi-agent collaboration</strong></a> docs addressing coordination pain. <strong>Deployment and infrastructure</strong> remains a strong theme with actionable gaps documented — no official <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Helm chart</strong></a>, root-at-init container requirements complicating hardened Kubernetes deploys — plus practical community guides for <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerized setups</a> and <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">VPS-to-rooted-Android control patterns</a>. <strong>Community tooling</strong> is flourishing: <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>Comemo</em></a> (composite memory provider fanning out writes past the single-provider limitation), <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>Refine Cycle</em></a> (self-improvement plugin), <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>Hermes-Voice</em></a> (Home Assistant integration), <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>Paper Harness</em></a> (native SwiftUI iPhone client), <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>ClusterMob</em></a> (profile registry), and lighter-weight orchestrators (<a href=\"/?date=2026-11-28&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>shoebox</em></a>, <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><em>Verso</em></a>) that double as friction signals against growing complexity. Performance practitioners report <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>custom Metal kernels replacing MLX</strong></a> for dramatic local-inference gains on Mac clusters. <strong>Multi-agent orchestration demand</strong> is a recurring theme across <a href=\"/?date=2026-11-28&amp;category=research#item-hn-50326764\" class=\"internal-link\" rel=\"noopener noreferrer\">Ask HN threads</a> and third-party tools. Academic research items (<a href=\"/?date=2026-11-28&amp;category=research#item-2611.30494\" class=\"internal-link\" rel=\"noopener noreferrer\">context engineering</a>, <a href=\"/?date=2026-11-28&amp;category=research#item-2611.29969\" class=\"internal-link\" rel=\"noopener noreferrer\">evidence-grounded 3D agentic reasoning</a>, <a href=\"/?date=2026-11-28&amp;category=research#item-2611.33093\" class=\"internal-link\" rel=\"noopener noreferrer\">AIChipbench for accelerator-design agents</a>) are conceptually adjacent but lack direct implementation ties and rank lower. <strong>Excluded</strong>: three Black Friday SEO/backlink promotional posts with zero technical or documentation relevance. One minor note: a thread references <a href=\"/?date=2026-11-28&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">\"GLM 5.3 Flash,\"</a> which does not match current Zhipu/Z.ai model listings (latest GLM is 5.2) — likely a version typo in the post and not a model-release claim.</p>",
+  "themes": [
+    {
+      "name": "Security and Supply Chain",
+      "description": "A malicious NPM package installed Hermes Agent as root and tasked it over Telegram as a backdoor, intersecting with deployment practices that require root privileges and raising hardening urgency for the ecosystem.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 78.0
+    },
+    {
+      "name": "Deployment and Infrastructure",
+      "description": "Practical guides and pain reports for running Hermes Agent on VPS, in containers, and on Kubernetes, including missing Helm charts and root-at-init requirements that complicate hardened production deployments.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 62.0
+    },
+    {
+      "name": "Hermes Agent Ecosystem Tooling",
+      "description": "A wave of community-built extensions and front ends around Hermes Agent: memory providers (Comemo), plugins (Refine Cycle), voice and mobile clients (Hermes-Voice, Paper Harness), profile registries (ClusterMob), and orchestrators (shoebox, Verso).",
+      "item_count": 8,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Multi-Agent Orchestration Demand",
+      "description": "Community threads and third-party tools repeatedly surface the need to coordinate multiple agents and profiles, which official features like Kanban and external orchestrators attempt to address.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Agent Research",
+      "description": "Academic papers on context engineering, evidence-grounded agentic reasoning, and benchmarking coding agents for hardware design; conceptually adjacent to Hermes Agent but with no direct implementation tie.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 38.0
+    },
+    {
+      "name": "SEO Promotional Noise",
+      "description": "Commercial backlink-sale advertising with no technical or Hermes-related content, indicating marketing spam in the source stream.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 8.0
+    },
+    {
+      "name": "Irrelevant Marketing Noise",
+      "description": "Black Friday SEO and backlink promotions with no connection to Hermes Agent, representing feed contamination that should be filtered in future batches.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 5.0
+    }
+  ],
+  "total_items": 26,
+  "items": [
+    {
+      "id": "hn-50585975",
+      "title": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+      "content": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+      "url": "https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor",
+      "author": "tech_solver",
+      "published": "2026-11-21T04:33:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50585975) earlier this week, A Safedep report on a malicious NPM package (leadstack-crm-connect) that acted as a backdoor: it installed Hermes Agent as root on victim machines and tasked the agent remotely over Telegram, effectively weaponizing the agent framework for attacker command and control.",
+      "importance_score": 41,
+      "reasoning": "A real security incident abusing Hermes Agent specifically, with high impact for anyone running it: it demonstrates a novel supply-chain attack pattern (agent-as-backdoor) and raises urgent hardening questions around install privileges and tasking channels. Only a summary is available, but the severity justifies a high score.",
+      "themes": [
+        "Security",
+        "Supply Chain",
+        "Hermes Agent Ecosystem"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50585975",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A Safedep report on a malicious NPM package (leadstack-crm-connect) that acted as a backdoor: it installed Hermes Agent as root on victim machines and tasked the agent remotely over Telegram, effectively weaponizing the agent framework for attacker command and control.</p>",
+      "content_html": "<p>NPM package installed Hermes Agent as root and tasked it over Telegram</p>"
+    },
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-49790991) earlier this week, Official Hermes Agent documentation announces a new plugin allowing the agent to authenticate through Claude Pro/Max subscription credentials via a direct SDK path, letting subscribers use their existing Anthropic plans with Hermes Agent instead of pay-per-token API billing.",
+      "importance_score": 37,
+      "reasoning": "An official capability change with broad user impact: subscription-backed access significantly lowers cost barriers and expands model options for Hermes Agent users. It is documented on the official docs site, though the excerpt is title-only and lacks configuration detail.",
+      "themes": [
+        "Official Features",
+        "Model Providers",
+        "Hermes Agent Plugins"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official Hermes Agent documentation announces a new plugin allowing the agent to authenticate through Claude Pro/Max subscription credentials via a direct SDK path, letting subscribers use their existing Anthropic plans with Hermes Agent instead of pay-per-token API billing.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-49977400) earlier this week, A blog post documenting problems deploying Hermes Agent on Kubernetes: there is no official Helm chart, and the container image requires root privileges at initialization. The author describes the friction this causes for production-grade cluster deployments.",
+      "importance_score": 31,
+      "reasoning": "Identifies concrete, actionable gaps in official Hermes Agent packaging (missing Helm chart, root-at-init) that matter for production adoption and intersect with the security concerns raised by the malicious NPM incident; limited excerpt depth keeps it below the top tier.",
+      "themes": [
+        "Deployment",
+        "Kubernetes",
+        "Security Hardening"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A blog post documenting problems deploying Hermes Agent on Kubernetes: there is no official Helm chart, and the container image requires root privileges at initialization. The author describes the friction this causes for production-grade cluster deployments.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-49604068) earlier this week, Official Hermes Agent documentation describing the Kanban feature, which enables multi-agent profile collaboration: multiple agent profiles coordinate work through a shared Kanban board, supporting task handoffs and parallel agent workstreams.",
+      "importance_score": 30,
+      "reasoning": "Documentation of a core official multi-agent feature that directly addresses the coordination pain points raised across community threads; scored moderately because the excerpt is title-only without workflow specifics.",
+      "themes": [
+        "Official Features",
+        "Multi-Agent",
+        "Task Management"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official Hermes Agent documentation describing the Kanban feature, which enables multi-agent profile collaboration: multiple agent profiles coordinate work through a shared Kanban board, supporting task handoffs and parallel agent workstreams.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-50518538",
+      "title": "Show HN: Comemo – composite memory provider for Hermes Agent",
+      "content": "There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.<p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.<p>I intend to add support for more memory prov",
+      "url": "https://github.com/andausman/comemo",
+      "author": "Andassyn",
+      "published": "2026-11-16T15:21:15Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50518538) earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and acts as a composite provider: it fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory, then on retrieval queries all enabled providers, merges results, and deduplicates before returning them to Hermes. More backends are planned.",
+      "importance_score": 30,
+      "reasoning": "Directly addresses a real Hermes Agent limitation (one memory provider slot) with a clean fan-out/merge design and names concrete backends, making it immediately useful to the community; it is a small utility rather than a core feature, so not higher.",
+      "themes": [
+        "Memory Systems",
+        "Ecosystem Tooling",
+        "Hermes Agent Plugins"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50518538",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Show HN: Comemo – composite memory provider for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and acts as a composite provider: it fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory, then on retrieval queries all enabled providers, merges results, and deduplicates before returning them to Hermes. More backends are planned.</p>",
+      "content_html": "<p>There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.</p><p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.</p><p>I intend to add support for more memory prov</p>"
+    },
+    {
+      "id": "hn-50648334",
+      "title": "Tell HN: Stop using MLX, start telling your agent to write custom kernels",
+      "content": "I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok&#x2F;sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok&#x2F;sec at low context. In hermes, running nearly 50 tok&#x2F;sec at high context, only a fifteen second wait for a response. Any critics, try i",
+      "url": "https://news.ycombinator.com/item?id=50648334",
+      "author": "thesnarkitecht",
+      "published": "2026-11-25T22:13:03Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50648334) earlier this week, A Hacker News post reporting that instead of MLX, asking Claude to write custom Metal kernels dramatically improved local inference on a four-Mac cluster: Baidu ERNIE 5.5 Flash Preview at 96 tok/sec at low context, and roughly 50 tok/sec at high context in Hermes Agent with only a 15-second first-response wait, versus 10 tok/sec after a 15-minute wait previously.",
+      "importance_score": 58.0,
+      "reasoning": "Concrete, replicable performance technique directly involving Hermes Agent workloads, with specific throughput numbers; the ERNIE 5.5 Flash Preview reference matches a recently released model. It is anecdotal and lacks the kernel details, limiting depth.",
+      "themes": [
+        "Performance Optimization",
+        "Local Inference",
+        "Hermes Agent Usage"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50648334",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Tell HN: Stop using MLX, start telling your agent to write custom kernels",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A Hacker News post reporting that instead of MLX, asking Claude to write custom Metal kernels dramatically improved local inference on a four-Mac cluster: Baidu ERNIE 5.5 Flash Preview at 96 tok/sec at low context, and roughly 50 tok/sec at high context in Hermes Agent with only a 15-second first-response wait, versus 10 tok/sec after a 15-minute wait previously.</p>",
+      "content_html": "<p>I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok/sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok/sec at low context. In hermes, running nearly 50 tok/sec at high context, only a fifteen second wait for a response. Any critics, try i</p>"
+    },
+    {
+      "id": "hn-50610136",
+      "title": "Show HN: Crazy simple AI agent orchestration with Markdown and Containers",
+      "content": "I was sick and tired of the bloated mess that Hermes Agent has become, often dealing with hard-to-triage bugs that made managing agents a part-time job. I don&#x27;t need a self-improving magical agent, I need;<p>- A primary agent to chat to, with sub-agent delegation<p>- Isolated sub-agent workspaces, tools, binaries and skills<p>- Kanban and cron-tasks to manage tasks<p>- An easy way to chat (Telegram, Web UI)<p>I built shoebox, crazy simple filesystem-based AI agent orchestration that uses a ",
+      "url": "https://github.com/ameesme/shoebox",
+      "author": "ameesdotme",
+      "published": "2026-11-23T11:07:29Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50610136) earlier this week, A Show HN for shoebox, a filesystem-based agent orchestration tool using Markdown and containers. The author explicitly frames it as a reaction to Hermes Agent becoming bloated with hard-to-triage bugs, listing desired basics: a primary agent with sub-agent delegation, isolated sub-agent workspaces/tools/skills, Kanban and cron tasks, and simple chat via Telegram or Web UI.",
+      "importance_score": 56.0,
+      "reasoning": "Significant as a community signal of friction with Hermes Agent complexity and as a competing lightweight orchestrator, but it is a third-party project rather than a Hermes change, and the excerpt includes no benchmarks or architecture detail.",
+      "themes": [
+        "Agent Orchestration",
+        "Ecosystem Tooling",
+        "Community Feedback"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50610136",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Show HN: Crazy simple AI agent orchestration with Markdown and Containers",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A Show HN for shoebox, a filesystem-based agent orchestration tool using Markdown and containers. The author explicitly frames it as a reaction to Hermes Agent becoming bloated with hard-to-triage bugs, listing desired basics: a primary agent with sub-agent delegation, isolated sub-agent workspaces/tools/skills, Kanban and cron tasks, and simple chat via Telegram or Web UI.</p>",
+      "content_html": "<p>I was sick and tired of the bloated mess that Hermes Agent has become, often dealing with hard-to-triage bugs that made managing agents a part-time job. I don't need a self-improving magical agent, I need;</p><p>- A primary agent to chat to, with sub-agent delegation</p><p>- Isolated sub-agent workspaces, tools, binaries and skills</p><p>- Kanban and cron-tasks to manage tasks</p><p>- An easy way to chat (Telegram, Web UI)</p><p>I built shoebox, crazy simple filesystem-based AI agent orchestration that uses a</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-49511007) earlier this week, Almanac, a YC S26 startup, launches as a company-knowledge agent, described as a Hermes with a brain that knows everything about your company. The founders describe their painful journey self-hosting Hermes, building OAuth connectors for every data source themselves, and productizing that setup for enterprises.",
+      "importance_score": 55.0,
+      "reasoning": "A YC-backed company building directly on the Hermes Agent pattern validates the ecosystem commercially and echoes common setup pain points (connectors, context ingestion), but it is a product launch rather than a Hermes improvement and the excerpt is light on technical specifics.",
+      "themes": [
+        "Startups",
+        "Enterprise Agents",
+        "Hermes Agent Ecosystem"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49511007",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Almanac, a YC S26 startup, launches as a company-knowledge agent, described as a Hermes with a brain that knows everything about your company. The founders describe their painful journey self-hosting Hermes, building OAuth connectors for every data source themselves, and productizing that setup for enterprises.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-50278175",
+      "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+      "author": "yourfavdev",
+      "published": "2026-10-28T18:04:37Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50278175) earlier this week, Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the App Store, providing a mobile front end to the agent. Only the title is available in the feed, so feature details and implementation notes are not visible.",
+      "importance_score": 54.0,
+      "reasoning": "A shipped native mobile client expands how users access Hermes Agent and signals ecosystem maturity, but with no excerpt detail on capabilities, permissions, or architecture the score stays moderate.",
+      "themes": [
+        "Mobile Clients",
+        "Hermes Agent Ecosystem"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50278175",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the App Store, providing a mobile front end to the agent. Only the title is available in the feed, so feature details and implementation notes are not visible.</p>",
+      "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-50131496",
+      "title": "Hermes Agent: My containerized take",
+      "content": "Hermes Agent: My containerized take",
+      "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+      "author": "ricardodevries",
+      "published": "2026-10-17T14:27:11Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-26&category=research#item-hn-50131496) earlier this week, A blog post presenting the author's containerized setup for running Hermes Agent, sharing a personal approach to isolating the agent in containers. Only the title is available, so specifics on images, sandboxing, or tool isolation are not visible.",
+      "importance_score": 53.0,
+      "reasoning": "Containerization is a recurring Hermes Agent deployment topic with direct security and reliability benefits; the post is likely a useful reference, but the excerpt alone shows no verifiable depth.",
+      "themes": [
+        "Deployment",
+        "Containerization",
+        "Hermes Agent Usage"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50131496",
+        "original_date": "2026-11-26",
+        "original_category": "research",
+        "original_title": "Hermes Agent: My containerized take",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A blog post presenting the author's containerized setup for running Hermes Agent, sharing a personal approach to isolating the agent in containers. Only the title is available, so specifics on images, sandboxing, or tool isolation are not visible.</p>",
+      "content_html": "<p>Hermes Agent: My containerized take</p>"
+    },
+    {
+      "id": "hn-50629729",
+      "title": "Using Hermes Agent on a VPS to Control an Old Rooted Android Phone",
+      "content": "Using Hermes Agent on a VPS to Control an Old Rooted Android Phone",
+      "url": "https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/",
+      "author": "nimitbhardwaj",
+      "published": "2026-11-24T15:35:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A blog walkthrough describing how to run Hermes Agent on a VPS and use it to control an old rooted Android phone, extending the agent's reach to physical device automation. Only the title is available in the feed, so implementation details are not visible.",
+      "importance_score": 52.0,
+      "reasoning": "A practical, novel deployment pattern for Hermes Agent combining VPS hosting with rooted-device control, which is useful to users repurposing spare hardware, though the excerpt lacks verifiable technical depth.",
+      "themes": [
+        "Deployment",
+        "Hermes Agent Usage",
+        "Device Automation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A blog walkthrough describing how to run Hermes Agent on a VPS and use it to control an old rooted Android phone, extending the agent's reach to physical device automation. Only the title is available in the feed, so implementation details are not visible.</p>",
+      "content_html": "<p>Using Hermes Agent on a VPS to Control an Old Rooted Android Phone</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Verso is a free, open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface to Hermes Agent and has become the author's daily work setup, reportedly boosting productivity.",
+      "importance_score": 52.0,
+      "reasoning": "A mature-sounding community orchestrator layered on Hermes Agent that signals demand for friendlier front ends, but it is a third-party project with no excerpt detail on architecture or features.",
+      "themes": [
+        "Agent Orchestration",
+        "Ecosystem Tooling",
+        "UI and Interfaces"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Verso is a free, open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface to Hermes Agent and has become the author's daily work setup, reportedly boosting productivity.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user with a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash, reports that asking the agent to print local environment details and PATH caused it to spiral into a long trance-like thinking state (over 1m36s), producing an odd output block they ask the community to interpret.",
+      "importance_score": 50.0,
+      "reasoning": "A debugging discussion relevant to Hermes Agent reliability and model-behavior quirks (environment probing, runaway reasoning loops), but it is an unresolved question with anecdotal detail and the model name cited does not match known Z.ai releases.",
+      "themes": [
+        "Troubleshooting",
+        "Model Behavior",
+        "Hermes Agent Usage"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user with a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash, reports that asking the agent to print local environment details and PATH caused it to spiral into a long trance-like thinking state (over 1m36s), producing an odd output block they ask the community to interpret.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Refine Cycle is a self-improvement plugin for Hermes Agent, hosted on GitHub, that adds an iterative refinement loop to the agent. Only the title is available in the feed, so the mechanism (feedback capture, prompt updates, evaluation) is not described.",
+      "importance_score": 49.0,
+      "reasoning": "Self-improvement loops are a notable capability category for Hermes Agent plugins, but the excerpt provides no detail on how the cycle works, its safety controls, or measured effectiveness.",
+      "themes": [
+        "Self-Improvement",
+        "Hermes Agent Plugins"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Refine Cycle is a self-improvement plugin for Hermes Agent, hosted on GitHub, that adds an iterative refinement loop to the agent. Only the title is available in the feed, so the mechanism (feedback capture, prompt updates, evaluation) is not described.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-50381927",
+      "title": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+      "content": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+      "url": "https://github.com/majorminorlabs/hermes-voice",
+      "author": "thunderbong",
+      "published": "2026-11-05T17:38:21Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hermes-Voice is an open-source integration that lets users talk to a Hermes Agent profile through Home Assistant Assist, bringing agent interaction into a smart-home voice pipeline. Only the title is present in the feed, so implementation specifics are unavailable.",
+      "importance_score": 48.0,
+      "reasoning": "A useful community integration connecting Hermes Agent to a popular smart-home platform and demonstrating profile-based voice access, but the excerpt offers no technical depth to assess quality or scope.",
+      "themes": [
+        "Voice Interfaces",
+        "Integrations",
+        "Hermes Agent Ecosystem"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes-Voice is an open-source integration that lets users talk to a Hermes Agent profile through Home Assistant Assist, bringing agent interaction into a smart-home voice pipeline. Only the title is present in the feed, so implementation specifics are unavailable.</p>",
+      "content_html": "<p>Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist</p>"
+    },
+    {
+      "id": "hn-50197497",
+      "title": "ClusterMob – a community registry of Hermes Agent profiles",
+      "content": "ClusterMob – a community registry of Hermes Agent profiles",
+      "url": "https://clustermob.com/",
+      "author": "k_sze",
+      "published": "2026-10-22T16:19:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "ClusterMob is a community registry where users can share and discover Hermes Agent profiles, hosted at clustermob.com. Only the title is present, so details on profile format, moderation, or features are unavailable.",
+      "importance_score": 48.0,
+      "reasoning": "A dedicated shared registry for Hermes Agent profiles is a meaningful ecosystem-development signal enabling profile reuse, but the feed provides no technical specifics to weigh depth or adoption.",
+      "themes": [
+        "Community Resources",
+        "Hermes Agent Profiles"
+      ],
+      "continuation": null,
+      "summary_html": "<p>ClusterMob is a community registry where users can share and discover Hermes Agent profiles, hosted at clustermob.com. Only the title is present, so details on profile format, moderation, or features are unavailable.</p>",
+      "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A personal blog post reflecting on mistakes the author made while using Hermes Agent and what they would do differently. Only the title is available in the feed, so the specific lessons and misconfigurations are not visible.",
+      "importance_score": 48.0,
+      "reasoning": "Post-hoc usage lessons are typically high-value reading for Hermes Agent users avoiding common pitfalls, but with no excerpt content the practical takeaway cannot be verified, limiting the score.",
+      "themes": [
+        "Lessons Learned",
+        "Hermes Agent Usage"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A personal blog post reflecting on mistakes the author made while using Hermes Agent and what they would do differently. Only the title is available in the feed, so the specific lessons and misconfigurations are not visible.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "2611.33093",
+      "title": "AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design",
+      "content": "A language-model decoder carries state between decoding steps, and in hardware a wrong state update can leave the current token correct and corrupt the output several tokens later, so a design can pass output tests and still be wrong. AIChipBench asks what LLM coding agents need to build such hardware correctly. Agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable register-transfer-level (RTL) code against an executable integer reference that specifies th",
+      "url": "https://arxiv.org/abs/2611.33093",
+      "author": "HF Daily Papers",
+      "published": "2026-11-24T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A benchmark asking what LLM coding agents need to write correct hardware: agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable RTL against an executable integer reference. It highlights that a wrong decoder state update can pass output tests while corrupting tokens several steps later.",
+      "importance_score": 45.0,
+      "reasoning": "Technically substantive on agentic coding verification and an interesting edge case for state-carrying decoders, but the hardware/RTL domain is tangential to Hermes Agent operations; no Hermes-specific content.",
+      "themes": [
+        "Agent Research",
+        "Benchmarks",
+        "Hardware"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A benchmark asking what LLM coding agents need to write correct hardware: agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable RTL against an executable integer reference. It highlights that a wrong decoder state update can pass output tests while corrupting tokens several steps later.</p>",
+      "content_html": "<p>A language-model decoder carries state between decoding steps, and in hardware a wrong state update can leave the current token correct and corrupt the output several tokens later, so a design can pass output tests and still be wrong. AIChipBench asks what LLM coding agents need to build such hardware correctly. Agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable register-transfer-level (RTL) code against an executable integer reference that specifies th</p>"
+    },
+    {
+      "id": "hn-50326764",
+      "title": "Ask HN: How do you manage your personal agents?",
+      "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+      "url": "https://news.ycombinator.com/item?id=50326764",
+      "author": "kevinlu310",
+      "published": "2026-11-01T15:51:22Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread on coordinating multiple agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex and more). The author runs each separately and copy-pastes the same prompts across agents to compare responses, asking for better ways to coordinate them.",
+      "importance_score": 42.0,
+      "reasoning": "Captures a real, widely felt pain point in multi-agent management that Hermes Agent (via Kanban, profiles, and orchestrators) partially addresses, but the post is a question without solutions or technical depth of its own.",
+      "themes": [
+        "Agent Orchestration",
+        "Community Discussion",
+        "Multi-Agent"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread on coordinating multiple agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex and more). The author runs each separately and copy-pastes the same prompts across agents to compare responses, asking for better ways to coordinate them.</p>",
+      "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+    },
+    {
+      "id": "2611.30494",
+      "title": "Revisiting LLMs as Context Engineers",
+      "content": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing instruction prompts or metadata without intensive training. A growing number of LLM context engineering (LCE) approaches automate the task by casting the LLM itself as the engineer that draws generalizable instructions or experiences from offline trials as context. Although these methods resemble how humans learn from experiences, it rema",
+      "url": "https://arxiv.org/abs/2611.30494",
+      "author": "HF Daily Papers",
+      "published": "2026-11-23T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An arXiv paper surveying LLM context engineering (LCE), where the LLM itself automates construction of instruction prompts and metadata from offline trials without intensive fine-tuning. The excerpt notes these methods mimic human learning from experience but leaves the limitation unstated in the truncated abstract.",
+      "importance_score": 38.0,
+      "reasoning": "Conceptually relevant to agentic systems like Hermes Agent since context engineering underpins prompt and memory design, but it is general academic research with no direct Hermes documentation, code, or release content.",
+      "themes": [
+        "Context Engineering",
+        "Agent Research"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An arXiv paper surveying LLM context engineering (LCE), where the LLM itself automates construction of instruction prompts and metadata from offline trials without intensive fine-tuning. The excerpt notes these methods mimic human learning from experience but leaves the limitation unstated in the truncated abstract.</p>",
+      "content_html": "<p>As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing instruction prompts or metadata without intensive training. A growing number of LLM context engineering (LCE) approaches automate the task by casting the LLM itself as the engineer that draws generalizable instructions or experiences from offline trials as context. Although these methods resemble how humans learn from experiences, it rema</p>"
+    },
+    {
+      "id": "hn-50366117",
+      "title": "Ask HN: What's your current AI agentic setup?",
+      "content": "I&#x27;m curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.<p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT&#x2F;Codex, Cursor, etc)<p>- Which tiers?<p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?<p>2) Are you using models outside (or instead) of tho",
+      "url": "https://news.ycombinator.com/item?id=50366117",
+      "author": "eggbrain",
+      "published": "2026-11-04T14:37:22Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN discussion asking readers to share their day-to-day AI setups: which subscriptions and tiers they pay for (Claude, ChatGPT/Codex, Cursor, etc.), whether they hold duplicate accounts, and whether they use models outside or instead of their subscription providers. Hermes Agent is not specifically featured in the excerpt.",
+      "importance_score": 35.0,
+      "reasoning": "A broad community pulse-check that may surface Hermes Agent usage in comments, but the post itself is generic with no Hermes-specific content or technical depth.",
+      "themes": [
+        "Community Discussion",
+        "Agentic Workflows"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN discussion asking readers to share their day-to-day AI setups: which subscriptions and tiers they pay for (Claude, ChatGPT/Codex, Cursor, etc.), whether they hold duplicate accounts, and whether they use models outside or instead of their subscription providers. Hermes Agent is not specifically featured in the excerpt.</p>",
+      "content_html": "<p>I'm curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.</p><p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT/Codex, Cursor, etc)</p><p>- Which tiers?</p><p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?</p><p>2) Are you using models outside (or instead) of tho</p>"
+    },
+    {
+      "id": "hn-50340083",
+      "title": "Show HN: Hanging Context – news by an agent, for other agents",
+      "content": "Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.<p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.<p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an",
+      "url": "https://hangingcontext.com/",
+      "author": "bshivarthy",
+      "published": "2026-11-02T17:16:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hanging Context is a news site written by an agent and aimed at agent readers rather than humans, based on the thesis that agents will become the primary consumers of news. It grew out of a 2022 data-driven news site for wealth managers and a mid-2024 licensing inquiry from a major AI lab. No explicit Hermes Agent connection appears in the excerpt.",
+      "importance_score": 34.0,
+      "reasoning": "An interesting thesis about agent-to-agent content consumption, but it is only tangentially related to Hermes Agent and the excerpt provides no technical implementation detail.",
+      "themes": [
+        "Agent-to-Agent",
+        "Content and Media"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hanging Context is a news site written by an agent and aimed at agent readers rather than humans, based on the thesis that agents will become the primary consumers of news. It grew out of a 2022 data-driven news site for wealth managers and a mid-2024 licensing inquiry from a major AI lab. No explicit Hermes Agent connection appears in the excerpt.</p>",
+      "content_html": "<p>Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.</p><p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.</p><p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an</p>"
+    },
+    {
+      "id": "2611.29969",
+      "title": "CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes",
+      "content": "Situated 3D reasoning requires embodied agents to interpret objects, scene geometry, and viewpoint dependent spatial relations. Existing methods learn grounded interactions from supervised traces, but largely imitate prescribed evidence acquisition patterns rather than optimizing the support that the returned evidence provides for the correct answer. Moreover, outcome rewards provide limited credit for intermediate tool choices and may leave infrequent tools underexplored. An effective agent sho",
+      "url": "https://arxiv.org/abs/2611.29969",
+      "author": "HF Daily Papers",
+      "published": "2026-11-23T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A paper proposing reinforcement learning for embodied agents in 3D scenes, arguing that supervised-trace imitation copies prescribed evidence-acquisition patterns instead of optimizing evidence support for correct answers, and that outcome rewards under-credit intermediate tool choices and leave rare tools underexplored.",
+      "importance_score": 32.0,
+      "reasoning": "Offers useful framing on reward design and tool exploration for agentic reasoning, but it targets situated 3D embodied settings with no connection to Hermes Agent tooling, releases, or user practice.",
+      "themes": [
+        "Agent Research",
+        "Reinforcement Learning"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A paper proposing reinforcement learning for embodied agents in 3D scenes, arguing that supervised-trace imitation copies prescribed evidence-acquisition patterns instead of optimizing evidence support for correct answers, and that outcome rewards under-credit intermediate tool choices and leave rare tools underexplored.</p>",
+      "content_html": "<p>Situated 3D reasoning requires embodied agents to interpret objects, scene geometry, and viewpoint dependent spatial relations. Existing methods learn grounded interactions from supervised traces, but largely imitate prescribed evidence acquisition patterns rather than optimizing the support that the returned evidence provides for the correct answer. Moreover, outcome rewards provide limited credit for intermediate tool choices and may leave infrequent tools underexplored. An effective agent sho</p>"
+    },
+    {
+      "id": "f5c4f166c072",
+      "title": "Black Friday Backlinks: DR 70+ Links $181 (Normally $390)",
+      "content": "Black Friday sale · ends midnight Pacific tonight\n\nBlack Friday backlinks are on sale: DR 70+ links for $181. Normally $390.\n\nOrder Black Friday Backlinks Now →\n\nEvery tier is up to 54% off. Order online in 2 minutes. No sales call.\n\nDR 0 link\n$36\n\nDR 1-9 link\n$91\n\nDR 10-29 link\n$121\n\nDR 30-69 link\n$302$150\n\nDR 70-89 linkSave 54%\n$390$181\n\nDR 90+ link\n$390$330\n\nBlack Friday prices end in midnight Pacific tonight\n\nWatch: the Black Friday backlinks sale in 75 seconds\n\nI’m Julian Goldie. My agency, Goldie Agency, builds backlinks that actually rank.\n\nFor Black Friday, every backlink we build is on sale, and you can order it online in a couple of minutes.\n\nKey takeaways\n\n- Up to 54% off. You save up to $209 on every link.\n\n- DR 30-69 links are $150 (normally $302). DR 70-89 links are $181 (normally $390).\n\n- Pick, pay, done. Our team emails you for your target pages and anchor text.\n\n## Black Friday backlinks prices\n\nHere is every tier, the normal price and what you save this week.\n\nTier\nNormal price\nBlack Friday price\nYou save per link\n\nDR 0\n–\n$36\n–\n\nDR 1-9\n–\n$91\n–\n\nDR 10-29\n–\n$121\n–\n\nDR 30-69\n$302\n$150\n$152\n\nDR 70-89\n$390\n$181\n$209\n\nDR 90+\n$390\n$330\n$60\n\nThe DR 70-89 tier is the best deal. It’s the same price band as a DR 10-29 link from most sellers, for a much stronger site.\n\nGet Black Friday backlinks at these prices\n\nDR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.\n\nOrder Black Friday Backlinks →\n\nOr see every price and watch the video. Prices end in midnight Pacific tonight.\n\n## What you get with every backlink\n\n- A link from a site in the DR tier you pick. You choose the tier, we match the placement.\n\n- Your target page and anchor text. You tell us where each link points and what it says.\n\n- Built by our team. The same team behind the links in the reviews below.\n\nWhy does that matter? Because backlinks are how Google decides which pages to trust.\n\nMore trusted links mean higher rankings, more traffic and more customers from Google, without paying for every click.\n\nGoogle Search Console · aiprofitboardroom.com, our own site\n\n## How to order Black Friday backlinks\n\n- Open the order page.\n\n- Enter your details, then pick your DR tier and quantity.\n\n- Pay online. Our team then emails you for your target pages and anchor text, and builds your links.\n\nThat’s it. No sales call and no proposal to wait for.\n\n## Which backlinks should you buy this Black Friday?\n\nIt depends on what you want to rank and how competitive it is.\n\n- New site: start with a mix of DR 0 to DR 29 links to build a natural base.\n\n- Service or product pages: DR 30-69 links give real authority at $150 each.\n\n- Money keywords: DR 70-89 links at $181 are the strongest value of the sale.\n\n- Your hardest keywords: DR 90+ links for $330.\n\nNot sure which pages to boost first? The Backlink Gameplan maps the links your competitors have that you don’t, or try Polar Rank free for 3 days.\n\n## How to check any Black Friday backlinks deal\n\nLots of sellers run Black Friday offers. Before you buy anywhere, check these:\n\n- Real sites with real traffic. A high DR with no traffic is a red flag.\n\n- Relevance. The linking site should make sense for your topic.\n\n- You control target pages and anchors. Avoid packages that pick for you.\n\n- Proof. Ask for results and reviews from real clients.\n\nI compare the main options in my guides to the best place to buy backlinks and the best SEO agencies.\n\n## Reviews from clients\n\n“These links raised our rankings in 2 weeks and has helped us gain market share.”\n\nAlex Membrillo, CEO of Cardinal Digital Marketing\n\n“He’s consistently built quality links to our content, helping us to double our organic traffic.”\n\nBen Smye, Head of Growth at Matmatch\n\n“Julian is a very skilled and knowledgeable operator and it was a pleasure to work with him over the last few months. Highly recommended.”\n\nFrancois Grante, Co-Founder of Hunter.io\n\nBlack Friday backlink prices end midnight Pacific tonight\n\nDR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.\n\nOrder Black Friday Backlinks →\n\nOr see every price and watch the video. Prices end in midnight Pacific tonight.\n\n## FAQ: black friday backlinks\n\n### How much are Black Friday backlinks?\n\nFrom $36 for a DR 0 link to $330 for DR 90+. DR 70-89 links are $181, normally $390.\n\n### When do Black Friday backlink prices end?\n\nAt midnight Pacific tonight. The countdown at the top of this page shows the time left.\n\n### Can I choose my anchor text?\n\nYes. After you order, our team emails you for your target pages and anchor text.\n\n### Do I need a call to buy backlinks?\n\nNo. You order and pay online in about 2 minutes.\n\n### How many backlinks can I order?\n\nAs many as you need. Mix tiers and quantities in one checkout.\n\nBlack Friday backlinks are up to 54% off until midnight Pacific tonight. Order your Black Friday backlinks now.",
+      "url": "https://juliangoldie.com/black-friday-backlinks/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-backlinks",
+      "author": "Clawdbot",
+      "published": "2026-11-27T06:41:45",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A promotional Black Friday post from Julian Goldie's Goldie Agency advertising discounted SEO backlink packages sold by Domain Rating (DR) tier. Pricing tiers include DR 0 at $36, DR 1-9 at $91, DR 10-29 at $121, DR 30-69 reduced from $302 to $150, DR 70-89 reduced from $390 to $181 (a 54% saving of $209, highlighted as the best value), and DR 90+ reduced from $390 to $330. The sale ends at midnight Pacific and orders are placed online without a sales call; the team follows up by email for target pages and anchor text. No technical content related to Hermes Agent/Desktop is present.",
+      "importance_score": 8.0,
+      "reasoning": "This is a time-limited commercial advertisement for SEO backlink services with no technical depth, no documentation changes, and no relevance to Hermes Agent/Desktop research. Its only marginal utility is as a signal of SEO-service marketing noise in the source feed, so it receives a very low score.",
+      "themes": [
+        "SEO marketing",
+        "promotional content",
+        "black friday deals"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A promotional Black Friday post from Julian Goldie's Goldie Agency advertising discounted SEO backlink packages sold by Domain Rating (DR) tier. Pricing tiers include DR 0 at $36, DR 1-9 at $91, DR 10-29 at $121, DR 30-69 reduced from $302 to $150, DR 70-89 reduced from $390 to $181 (a 54% saving of $209, highlighted as the best value), and DR 90+ reduced from $390 to $330. The sale ends at midnight Pacific and orders are placed online without a sales call; the team follows up by email for target pages and anchor text. No technical content related to Hermes Agent/Desktop is present.</p>",
+      "content_html": "<p>Black Friday sale · ends midnight Pacific tonight</p>\n<p>Black Friday backlinks are on sale: DR 70+ links for $181. Normally $390.</p>\n<p>Order Black Friday Backlinks Now →</p>\n<p>Every tier is up to 54% off. Order online in 2 minutes. No sales call.</p>\n<p>DR 0 link</p>\n<p>$36</p>\n<p>DR 1-9 link</p>\n<p>$91</p>\n<p>DR 10-29 link</p>\n<p>$121</p>\n<p>DR 30-69 link</p>\n<p>$302$150</p>\n<p>DR 70-89 linkSave 54%</p>\n<p>$390$181</p>\n<p>DR 90+ link</p>\n<p>$390$330</p>\n<p>Black Friday prices end in midnight Pacific tonight</p>\n<p>Watch: the Black Friday backlinks sale in 75 seconds</p>\n<p>I’m Julian Goldie. My agency, Goldie Agency, builds backlinks that actually rank.</p>\n<p>For Black Friday, every backlink we build is on sale, and you can order it online in a couple of minutes.</p>\n<p>Key takeaways</p>\n<ul>\n<li>Up to 54% off. You save up to $209 on every link.</li>\n</ul>\n<ul>\n<li>DR 30-69 links are $150 (normally $302). DR 70-89 links are $181 (normally $390).</li>\n</ul>\n<ul>\n<li>Pick, pay, done. Our team emails you for your target pages and anchor text.</li>\n</ul>\n<h2>Black Friday backlinks prices</h2>\n<p>Here is every tier, the normal price and what you save this week.</p>\n<p>Tier</p>\n<p>Normal price</p>\n<p>Black Friday price</p>\n<p>You save per link</p>\n<p>DR 0</p>\n<p>–</p>\n<p>$36</p>\n<p>–</p>\n<p>DR 1-9</p>\n<p>–</p>\n<p>$91</p>\n<p>–</p>\n<p>DR 10-29</p>\n<p>–</p>\n<p>$121</p>\n<p>–</p>\n<p>DR 30-69</p>\n<p>$302</p>\n<p>$150</p>\n<p>$152</p>\n<p>DR 70-89</p>\n<p>$390</p>\n<p>$181</p>\n<p>$209</p>\n<p>DR 90+</p>\n<p>$390</p>\n<p>$330</p>\n<p>$60</p>\n<p>The DR 70-89 tier is the best deal. It’s the same price band as a DR 10-29 link from most sellers, for a much stronger site.</p>\n<p>Get Black Friday backlinks at these prices</p>\n<p>DR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.</p>\n<p>Order Black Friday Backlinks →</p>\n<p>Or see every price and watch the video. Prices end in midnight Pacific tonight.</p>\n<h2>What you get with every backlink</h2>\n<ul>\n<li>A link from a site in the DR tier you pick. You choose the tier, we match the placement.</li>\n</ul>\n<ul>\n<li>Your target page and anchor text. You tell us where each link points and what it says.</li>\n</ul>\n<ul>\n<li>Built by our team. The same team behind the links in the reviews below.</li>\n</ul>\n<p>Why does that matter? Because backlinks are how Google decides which pages to trust.</p>\n<p>More trusted links mean higher rankings, more traffic and more customers from Google, without paying for every click.</p>\n<p>Google Search Console · aiprofitboardroom.com, our own site</p>\n<h2>How to order Black Friday backlinks</h2>\n<ul>\n<li>Open the order page.</li>\n</ul>\n<ul>\n<li>Enter your details, then pick your DR tier and quantity.</li>\n</ul>\n<ul>\n<li>Pay online. Our team then emails you for your target pages and anchor text, and builds your links.</li>\n</ul>\n<p>That’s it. No sales call and no proposal to wait for.</p>\n<h2>Which backlinks should you buy this Black Friday?</h2>\n<p>It depends on what you want to rank and how competitive it is.</p>\n<ul>\n<li>New site: start with a mix of DR 0 to DR 29 links to build a natural base.</li>\n</ul>\n<ul>\n<li>Service or product pages: DR 30-69 links give real authority at $150 each.</li>\n</ul>\n<ul>\n<li>Money keywords: DR 70-89 links at $181 are the strongest value of the sale.</li>\n</ul>\n<ul>\n<li>Your hardest keywords: DR 90+ links for $330.</li>\n</ul>\n<p>Not sure which pages to boost first? The Backlink Gameplan maps the links your competitors have that you don’t, or try Polar Rank free for 3 days.</p>\n<h2>How to check any Black Friday backlinks deal</h2>\n<p>Lots of sellers run Black Friday offers. Before you buy anywhere, check these:</p>\n<ul>\n<li>Real sites with real traffic. A high DR with no traffic is a red flag.</li>\n</ul>\n<ul>\n<li>Relevance. The linking site should make sense for your topic.</li>\n</ul>\n<ul>\n<li>You control target pages and anchors. Avoid packages that pick for you.</li>\n</ul>\n<ul>\n<li>Proof. Ask for results and reviews from real clients.</li>\n</ul>\n<p>I compare the main options in my guides to the best place to buy backlinks and the best SEO agencies.</p>\n<h2>Reviews from clients</h2>\n<p>“These links raised our rankings in 2 weeks and has helped us gain market share.”</p>\n<p>Alex Membrillo, CEO of Cardinal Digital Marketing</p>\n<p>“He’s consistently built quality links to our content, helping us to double our organic traffic.”</p>\n<p>Ben Smye, Head of Growth at Matmatch</p>\n<p>“Julian is a very skilled and knowledgeable operator and it was a pleasure to work with him over the last few months. Highly recommended.”</p>\n<p>Francois Grante, Co-Founder of Hunter.io</p>\n<p>Black Friday backlink prices end midnight Pacific tonight</p>\n<p>DR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.</p>\n<p>Order Black Friday Backlinks →</p>\n<p>Or see every price and watch the video. Prices end in midnight Pacific tonight.</p>\n<h2>FAQ: black friday backlinks</h2>\n<h3>How much are Black Friday backlinks?</h3>\n<p>From $36 for a DR 0 link to $330 for DR 90+. DR 70-89 links are $181, normally $390.</p>\n<h3>When do Black Friday backlink prices end?</h3>\n<p>At midnight Pacific tonight. The countdown at the top of this page shows the time left.</p>\n<h3>Can I choose my anchor text?</h3>\n<p>Yes. After you order, our team emails you for your target pages and anchor text.</p>\n<h3>Do I need a call to buy backlinks?</h3>\n<p>No. You order and pay online in about 2 minutes.</p>\n<h3>How many backlinks can I order?</h3>\n<p>As many as you need. Mix tiers and quantities in one checkout.</p>\n<p>Black Friday backlinks are up to 54% off until midnight Pacific tonight. Order your Black Friday backlinks now.</p>"
+    },
+    {
+      "id": "de6d3ccade6f",
+      "title": "Black Friday SEO 2026: The 8 Best SEO Deals for More Google and AI Traffic",
+      "content": "The best Black Friday SEO 2026 deal is Polar Rank, free for 3 days. Its AI agents write your articles, build your links and get you seen in Google and AI search, so you get more traffic without doing the work. Want backlinks? Our Black Friday backlinks sale is live too: every link is up to 54% off, and you can order your Black Friday backlinks here in 2 minutes. Below are the 8 best Black Friday SEO deals I could verify today. Four are ours. Four are SEO tools whose own websites show a Black Friday deal on 27 November 2026. Each one is ranked by how fast it can bring you more customers.\n\nWant more customers from Google and AI search this Black Friday? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours. Or try Polar Rank free for 3 days and let the agents do the work.\n\nGet Your Backlink Gameplan →Try Polar Rank Free for 3 Days →\n\nKey takeaways\n\n- Black Friday SEO deals = cheaper ways to get more traffic and customers from Google and AI search this year.\n\n- #1 is Polar Rank: AI agents do your SEO every day. 3 days free, cancel in one click.\n\n- #2 is our Black Friday backlinks sale: up to 54% off every link, DR 70-89 links $181 (normally $390). Order here.\n\n- #3 is the Backlink Gameplan: whatever you pay comes back to you as link building credits.\n\n- #4 is the AI Profit Boardroom flash sale at $49/month.\n\n- Also verified today: SE Ranking, Rank Math, Yoast SEO and NeuronWriter.\n\n## What makes a Black Friday SEO deal worth it\n\nA cheap tool is not a good deal if it sits unused.\n\nA good deal does one of three things for you:\n\n- It does the work for you. You get more traffic without spending your evenings on SEO.\n\n- It shows you exactly what to fix. You stop guessing and spend money only on what moves rankings.\n\n- It teaches you a system. You learn how to get customers from Google and AI search yourself.\n\nOur three deals come first because they bring traffic fastest. The tool deals help if you do your own SEO.\n\n## Why Polar Rank is the #1 Black Friday SEO deal\n\nSearch has changed. Buyers still use Google, but many now ask ChatGPT, Perplexity or Gemini which company to pick.\n\nPolar Rank is built for both. AI agents publish articles every day, build links, and check every Monday whether AI tools mention you. That means more people find you, and you see which article brought in each lead or sale.\n\nI co-founded Polar Rank and we tested it on our own sites first. Here is what clients say about working with my team:\n\n“When we started link building in January 2022, we got just under 2000 visitors per month from Google. Now we get over 10,000 visitors per month and that figure is growing exponentially. That’s a 5x increase in just a few months.”\n\n Roy Selbach\n\nCEO and founder, DotYeti.com\n\n“Julian’s link building techniques had a big impact on our site’s rankings. Overall we increased our traffic, ranked higher and gained some high quality backlinks.”\n\n Will Cannon\n\nFounder & CEO, Signaturely\n\nWant more traffic from Google and AI search this Black Friday? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours.\n\nRather have the articles and links done for you every day? Try Polar Rank free for 3 days. Want to learn AI SEO yourself? Join the AI Profit Boardroom.\n\nGet Your Backlink Gameplan →Try Polar Rank Free for 3 Days →Join the AI Profit Boardroom →\n\n## The best Black Friday SEO deals at a glance\n\nOur 4 deals first, then 4 tool deals. I checked every tool deal on the vendor’s own website on 27 November 2026.\n\n#\nDeal\nWhat you get\nBest for\nDoes the work for you?\n\n1\nPolar Rank\nDaily articles, links and AI search tracking. 3 days free\nBusiness owners who want more traffic without doing SEO\nYes\n\n2\nBlack Friday Backlinks Sale\nReal backlinks at Black Friday prices, from $36 a link\nAnyone who wants higher Google rankings this week\nYes\n\n3\nBacklink Gameplan\nThe exact links you need to beat your competitors, in 48 hours\nSites stuck below competitors on Google\nWe do the research\n\n4\nAI Profit Boardroom\nAI systems, training, daily Q&A and 4 live calls a week\nOwners who want to learn AI SEO and save hours every week\nWe build custom automations for you\n\n5\nSE Ranking\n20% off annual plans and eligible add-ons\nOwners who want an all-round SEO tool on a budget\nNo\n\n6\nRank Math\nUp to 60% off Rank Math PRO, billed annually\nWordPress site owners\nNo\n\n7\nYoast SEO\n30% off Premium plans for the first year\nWordPress, WooCommerce and Shopify sites\nNo\n\n8\nNeuronWriter\n50% off yearly plans\nPeople who write their own SEO content\nNo\n\n## The 8 best Black Friday SEO deals, ranked\n\nRanked by how fast each deal can bring you more traffic and customers.\n\n### 1. Polar Rank: 3 days free, then AI agents do your SEO daily\n\nPolar Rank is a team of AI agents that runs your SEO for you. Try it free for 3 days and cancel in one click if it isn’t for you.\n\n- Articles every day: agents write and publish to WordPress, Shopify or Webflow. Articles get indexed in days.\n\n- Links: from Polar Rank’s own network and real sites, so your pages climb faster.\n\n- AI search tracking: 25 buyer questions asked to ChatGPT, Perplexity and Gemini every Monday.\n\n- Proof of results: reporting agents connect Search Console, GA4 or Shopify and show what each article brought in.\n\n- Plans: Autopilot (30 articles a month, around 5 quality links) and Growth (60 articles a month, around 30 links from stronger sites, plus a human editor). Yearly billing saves 30%.\n\n- Guarantee: more traffic in 90 days or your money back.\n\n- Own-site proof: a new site went from 0 to 1,435 Google clicks a day in 7 months (Search Console, 13 November 2026).\n\n- Best for: Business owners who want more traffic without doing SEO\n\nTry Polar Rank free for 3 days →\n\n### 2. Black Friday backlinks sale: up to 54% off every link\n\nThis is the simplest deal on the page. Goldie Agency builds backlinks that actually rank, and for Black Friday every link tier is on sale.\n\nBacklinks are how Google decides which pages to trust. More trusted links mean higher rankings, more traffic and more customers, without paying for every click.\n\nLink tier\nNormal price\nBlack Friday price\n\nDR 0\n–\n$36\n\nDR 1-9\n–\n$91\n\nDR 10-29\n–\n$121\n\nDR 30-69\n$302\n$150\n\nDR 70-89\n$390\n$181\n\nDR 90+\n$390\n$330\n\nThe DR 70-89 tier is the best value: you save $209 on every link.\n\n- How it works: open the order page, pick your DR tier and how many links, and pay online. It takes about 2 minutes.\n\n- No sales call: our team emails you for your target pages and anchor text, then builds your links.\n\n- You choose: the tier, the pages each link points to and what the link says.\n\n- Limited time: these prices are for Black Friday only.\n\n- Best for: Anyone who wants higher Google rankings this week\n\nOrder your Black Friday backlinks now → or see every price first.\n\n### 3. Backlink Gameplan: get what you pay back as link building credits\n\nLinks are still one of the biggest reasons one site outranks another. The Backlink Gameplan shows you which links you need to close that gap.\n\nWe reverse-engineer why your competitors outrank you. Then we show you the safe links that close the gap: which types of backlinks, how many, and what DR to aim for. It lands within 48 hours.\n\nThe Black Friday deal: whatever you pay for the Gameplan comes straight back to you as link building credits. So the report pays for itself.\n\n- Delivered: within 48 hours.\n\n- Black Friday bonus: you get the same amount back in link building credits.\n\n- Proof: one client went from 0 to 145,000+ monthly SEO visitors in under 6 months with backlinks.\n\n- Best for: Sites stuck below competitors on Google\n\nGet your Backlink Gameplan → or try Polar Rank free for 3 days →\n\n### 4. AI Profit Boardroom: Black Friday flash sale at $49/month\n\nThe AI Profit Boardroom is my community for business owners who use AI to get more customers and save time. 3,700+ members are inside.\n\nThe Black Friday flash sale is $49/month, and the price stays locked in for as long as you stay.\n\n- Systems: the Agent OS system, the Hermes Agent kit and the 10 Minute Claude kit.\n\n- Help: daily Q&A where I answer personally, plus unlimited support.\n\n- Done for you: custom automations built for you.\n\n- Coaching: 4 weekly live coaching calls and step-by-step video trainings.\n\n- Safe to try: 7-day no-questions refund and a 30-day guarantee.\n\n- Best for: Owners who want to learn AI SEO and save hours every week\n\nJoin the AI Profit Boardroom flash sale →\n\n### 5. SE Ranking: 20% off annual plans\n\nSE Ranking is an all-round SEO tool for rank tracking, keyword research and site audits. Its Black Friday page says new customers get 20% off annual Core and Growth plans and eligible add-ons.\n\nIt shows you what to fix. You still do the fixing.\n\nBest for: Owners who want an all-round SEO tool on a budget\n\n### 6. Rank Math: up to 60% off PRO licenses\n\nRank Math is a WordPress SEO plugin. Its pricing page shows a Black Friday sale of up to 60% off its PRO licenses, billed annually.\n\nIt helps Google understand every page on your site.\n\nBest for: WordPress site owners\n\n### 7. Yoast SEO: 30% off Yoast SEO Premium\n\nYoast shows a Black Friday deal of 30% off Yoast SEO Premium and more. New Premium customers get 30% off plus 2 extra months. The discount applies to the first year.\n\nIt gives you SEO tips as you write.\n\nBest for: WordPress, WooCommerce and Shopify sites\n\n### 8. NeuronWriter: 50% off yearly plans\n\nNeuronWriter is an SEO content tool. Its website shows a Black Friday deal of 50% off yearly plans.\n\nIt helps you write better articles. You still write and publish them yourself.\n\nBest for: People who write their own SEO content\n\nWant the SEO work done for you? Get your Backlink Gameplan → and see the exact links that close the gap, or try Polar Rank free for 3 days.\n\nGet Your Backlink Gameplan →Try Polar Rank Free for 3 Days →\n\n## Which Black Friday SEO deal fits you\n\n- “I want more traffic, but I have no time.” Polar Rank.\n\n- “I just want more backlinks, cheaper.” The Black Friday backlinks sale.\n\n- “My competitors outrank me and I don’t know why.” The Backlink Gameplan.\n\n- “I want to learn AI and SEO myself.” The AI Profit Boardroom.\n\n- “I want a cheaper SEO tool.” SE Ranking, Rank Math, Yoast SEO or NeuronWriter.\n\nComparing tools in more depth? See my list of the best all in one SEO tools.\n\n## How to get more from Black Friday SEO deals\n\nA deal only pays off if it brings you customers. Here is how to make sure it does:\n\n- Pick one goal first. More leads, more sales or more traffic. Then buy only what moves that number.\n\n- Start on day one. SEO takes months, so start now.\n\n- Check if it does the work. A tool you never open saves you nothing.\n\n- Fix your links. Good content can still lose to a site with stronger links.\n\n- Track results. Connect Search Console so you see real clicks, not guesses.\n\n- Read the terms. Many tool deals cover annual plans only.\n\nWant to see the links you are missing first? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours, or try Polar Rank free for 3 days.\n\nMore from people my team and I have helped:\n\n“Julian went to work immediately and found us QUALITY links from great websites, not links that are for sale. These links raised our rankings in 2 weeks and has helped us gain market share. This guy is the real deal.”\n\n Alex Membrillo\n\nCEO, Cardinal Digital Marketing\n\n“Julian and the team proposed a link-building playbook that would help us build domain authority on a pay-per-result basis. We’ve been extremely happy with their ability to deliver on their promises.”\n\n Lachlan Fea\n\nFounder, Cloutly.com\n\n## My verdict on Black Friday SEO 2026\n\nEvery deal on this list can help. The tool deals save you money on software you still have to run yourself.\n\nOur three deals bring results faster. try Polar Rank free for 3 days and let the agents do the work. Get your Backlink Gameplan and get what you pay back as link building credits, or try Polar Rank free for 3 days. Or join the AI Profit Boardroom at $49/month. For Black Friday SEO 2026, Polar Rank is the deal I’d grab first.\n\n## About Julian Goldie\n\nI’m Julian Goldie, co-founder of Polar Rank and founder of Goldie Agency. I’ve ranked 1,000+ websites, I share what I test with 440K+ YouTube subscribers, and I’ve worked with 240+ clients on Upwork with a 100% Job Success Score. Everything we sell gets tested on our own sites first. Get your Backlink Gameplan, try Polar Rank free for 3 days, or join the AI Profit Boardroom.\n\n## FAQ: Black Friday SEO 2026\n\n### What is the best Black Friday SEO deal in 2026?\n\nPolar Rank, free for 3 days. Its AI agents write articles, build links and track AI search for you, with a 90-day money-back guarantee.\n\n### Are there Black Friday deals on SEO tools?\n\nYes. On 27 November 2026, SE Ranking, Rank Math, Yoast SEO and NeuronWriter all show Black Friday deals on their own websites.\n\n### What is the Backlink Gameplan Black Friday deal?\n\nWhatever you pay for the Gameplan comes back to you as link building credits, so the report pays for itself.\n\n### How much is the AI Profit Boardroom on Black Friday?\n\nThe Black Friday flash sale is $49/month, locked in. It comes with a 7-day no-questions refund and a 30-day guarantee.\n\n### When do Black Friday SEO deals end?\n\nMost end when Black Friday and Cyber Monday end. Our deals run for a limited time, so grab them this Black Friday.\n\nReady to close the gap on the sites above you? Get your Backlink Gameplan, or try Polar Rank free for 3 days. You get the exact backlinks your site is missing (types, how many and how strong), based on the sites outranking you, within 48 hours.\n\nReady to stop doing the SEO work by hand? Try Polar Rank free for 3 days. Cancel in one click.\n\nWant to learn the whole AI SEO playbook? Join the AI Profit Boardroom for training and four live coaching calls a week.\n\nGet Your Backlink Gameplan →Try Polar Rank Free for 3 Days →Join the AI Profit Boardroom →\n\n## Related reading\n\n- Best All in One SEO Tools\n\n- Best SEO Automation Tools\n\n- Best Link Building Services\n\n- Best Technical SEO Tools\n\nLast updated November 2026. This page is a living guide to Black Friday SEO 2026 — the facts here move fast and it is updated as they do.",
+      "url": "https://juliangoldie.com/black-friday-seo-2026/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-seo-2026",
+      "author": "Clawdbot",
+      "published": "2026-11-27T06:43:15",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A promotional blog post listing Black Friday 2026 SEO deals, heavily promoting the author's own Polar Rank product (AI agents that write articles and build links) and a backlinks sale, with a few third-party tool deals. Content is marketing copy with affiliate-style calls to action.",
+      "importance_score": 5.0,
+      "reasoning": "Pure marketing content with no Hermes Agent, documentation, or technical substance; it appears in the feed only as noise and offers no value to the Hermes ecosystem analysis.",
+      "themes": [
+        "Irrelevant Content",
+        "Marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A promotional blog post listing Black Friday 2026 SEO deals, heavily promoting the author's own Polar Rank product (AI agents that write articles and build links) and a backlinks sale, with a few third-party tool deals. Content is marketing copy with affiliate-style calls to action.</p>",
+      "content_html": "<p>The best Black Friday SEO 2026 deal is Polar Rank, free for 3 days. Its AI agents write your articles, build your links and get you seen in Google and AI search, so you get more traffic without doing the work. Want backlinks? Our Black Friday backlinks sale is live too: every link is up to 54% off, and you can order your Black Friday backlinks here in 2 minutes. Below are the 8 best Black Friday SEO deals I could verify today. Four are ours. Four are SEO tools whose own websites show a Black Friday deal on 27 November 2026. Each one is ranked by how fast it can bring you more customers.</p>\n<p>Want more customers from Google and AI search this Black Friday? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours. Or try Polar Rank free for 3 days and let the agents do the work.</p>\n<p>Get Your Backlink Gameplan →Try Polar Rank Free for 3 Days →</p>\n<p>Key takeaways</p>\n<ul>\n<li>Black Friday SEO deals = cheaper ways to get more traffic and customers from Google and AI search this year.</li>\n</ul>\n<ul>\n<li>#1 is Polar Rank: AI agents do your SEO every day. 3 days free, cancel in one click.</li>\n</ul>\n<ul>\n<li>#2 is our Black Friday backlinks sale: up to 54% off every link, DR 70-89 links $181 (normally $390). Order here.</li>\n</ul>\n<ul>\n<li>#3 is the Backlink Gameplan: whatever you pay comes back to you as link building credits.</li>\n</ul>\n<ul>\n<li>#4 is the AI Profit Boardroom flash sale at $49/month.</li>\n</ul>\n<ul>\n<li>Also verified today: SE Ranking, Rank Math, Yoast SEO and NeuronWriter.</li>\n</ul>\n<h2>What makes a Black Friday SEO deal worth it</h2>\n<p>A cheap tool is not a good deal if it sits unused.</p>\n<p>A good deal does one of three things for you:</p>\n<ul>\n<li>It does the work for you. You get more traffic without spending your evenings on SEO.</li>\n</ul>\n<ul>\n<li>It shows you exactly what to fix. You stop guessing and spend money only on what moves rankings.</li>\n</ul>\n<ul>\n<li>It teaches you a system. You learn how to get customers from Google and AI search yourself.</li>\n</ul>\n<p>Our three deals come first because they bring traffic fastest. The tool deals help if you do your own SEO.</p>\n<h2>Why Polar Rank is the #1 Black Friday SEO deal</h2>\n<p>Search has changed. Buyers still use Google, but many now ask ChatGPT, Perplexity or Gemini which company to pick.</p>\n<p>Polar Rank is built for both. AI agents publish articles every day, build links, and check every Monday whether AI tools mention you. That means more people find you, and you see which article brought in each lead or sale.</p>\n<p>I co-founded Polar Rank and we tested it on our own sites first. Here is what clients say about working with my team:</p>\n<p>“When we started link building in January 2022, we got just under 2000 visitors per month from Google. Now we get over 10,000 visitors per month and that figure is growing exponentially. That’s a 5x increase in just a few months.”</p>\n<p>Roy Selbach</p>\n<p>CEO and founder, DotYeti.com</p>\n<p>“Julian’s link building techniques had a big impact on our site’s rankings. Overall we increased our traffic, ranked higher and gained some high quality backlinks.”</p>\n<p>Will Cannon</p>\n<p>Founder &amp; CEO, Signaturely</p>\n<p>Want more traffic from Google and AI search this Black Friday? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours.</p>\n<p>Rather have the articles and links done for you every day? Try Polar Rank free for 3 days. Want to learn AI SEO yourself? Join the AI Profit Boardroom.</p>\n<p>Get Your Backlink Gameplan →Try Polar Rank Free for 3 Days →Join the AI Profit Boardroom →</p>\n<h2>The best Black Friday SEO deals at a glance</h2>\n<p>Our 4 deals first, then 4 tool deals. I checked every tool deal on the vendor’s own website on 27 November 2026.</p>\n<p>#</p>\n<p>Deal</p>\n<p>What you get</p>\n<p>Best for</p>\n<p>Does the work for you?</p>\n<p>1</p>\n<p>Polar Rank</p>\n<p>Daily articles, links and AI search tracking. 3 days free</p>\n<p>Business owners who want more traffic without doing SEO</p>\n<p>Yes</p>\n<p>2</p>\n<p>Black Friday Backlinks Sale</p>\n<p>Real backlinks at Black Friday prices, from $36 a link</p>\n<p>Anyone who wants higher Google rankings this week</p>\n<p>Yes</p>\n<p>3</p>\n<p>Backlink Gameplan</p>\n<p>The exact links you need to beat your competitors, in 48 hours</p>\n<p>Sites stuck below competitors on Google</p>\n<p>We do the research</p>\n<p>4</p>\n<p>AI Profit Boardroom</p>\n<p>AI systems, training, daily Q&amp;A and 4 live calls a week</p>\n<p>Owners who want to learn AI SEO and save hours every week</p>\n<p>We build custom automations for you</p>\n<p>5</p>\n<p>SE Ranking</p>\n<p>20% off annual plans and eligible add-ons</p>\n<p>Owners who want an all-round SEO tool on a budget</p>\n<p>No</p>\n<p>6</p>\n<p>Rank Math</p>\n<p>Up to 60% off Rank Math PRO, billed annually</p>\n<p>WordPress site owners</p>\n<p>No</p>\n<p>7</p>\n<p>Yoast SEO</p>\n<p>30% off Premium plans for the first year</p>\n<p>WordPress, WooCommerce and Shopify sites</p>\n<p>No</p>\n<p>8</p>\n<p>NeuronWriter</p>\n<p>50% off yearly plans</p>\n<p>People who write their own SEO content</p>\n<p>No</p>\n<h2>The 8 best Black Friday SEO deals, ranked</h2>\n<p>Ranked by how fast each deal can bring you more traffic and customers.</p>\n<h3>1. Polar Rank: 3 days free, then AI agents do your SEO daily</h3>\n<p>Polar Rank is a team of AI agents that runs your SEO for you. Try it free for 3 days and cancel in one click if it isn’t for you.</p>\n<ul>\n<li>Articles every day: agents write and publish to WordPress, Shopify or Webflow. Articles get indexed in days.</li>\n</ul>\n<ul>\n<li>Links: from Polar Rank’s own network and real sites, so your pages climb faster.</li>\n</ul>\n<ul>\n<li>AI search tracking: 25 buyer questions asked to ChatGPT, Perplexity and Gemini every Monday.</li>\n</ul>\n<ul>\n<li>Proof of results: reporting agents connect Search Console, GA4 or Shopify and show what each article brought in.</li>\n</ul>\n<ul>\n<li>Plans: Autopilot (30 articles a month, around 5 quality links) and Growth (60 articles a month, around 30 links from stronger sites, plus a human editor). Yearly billing saves 30%.</li>\n</ul>\n<ul>\n<li>Guarantee: more traffic in 90 days or your money back.</li>\n</ul>\n<ul>\n<li>Own-site proof: a new site went from 0 to 1,435 Google clicks a day in 7 months (Search Console, 13 November 2026).</li>\n</ul>\n<ul>\n<li>Best for: Business owners who want more traffic without doing SEO</li>\n</ul>\n<p>Try Polar Rank free for 3 days →</p>\n<h3>2. Black Friday backlinks sale: up to 54% off every link</h3>\n<p>This is the simplest deal on the page. Goldie Agency builds backlinks that actually rank, and for Black Friday every link tier is on sale.</p>\n<p>Backlinks are how Google decides which pages to trust. More trusted links mean higher rankings, more traffic and more customers, without paying for every click.</p>\n<p>Link tier</p>\n<p>Normal price</p>\n<p>Black Friday price</p>\n<p>DR 0</p>\n<p>–</p>\n<p>$36</p>\n<p>DR 1-9</p>\n<p>–</p>\n<p>$91</p>\n<p>DR 10-29</p>\n<p>–</p>\n<p>$121</p>\n<p>DR 30-69</p>\n<p>$302</p>\n<p>$150</p>\n<p>DR 70-89</p>\n<p>$390</p>\n<p>$181</p>\n<p>DR 90+</p>\n<p>$390</p>\n<p>$330</p>\n<p>The DR 70-89 tier is the best value: you save $209 on every link.</p>\n<ul>\n<li>How it works: open the order page, pick your DR tier and how many links, and pay online. It takes about 2 minutes.</li>\n</ul>\n<ul>\n<li>No sales call: our team emails you for your target pages and anchor text, then builds your links.</li>\n</ul>\n<ul>\n<li>You choose: the tier, the pages each link points to and what the link says.</li>\n</ul>\n<ul>\n<li>Limited time: these prices are for Black Friday only.</li>\n</ul>\n<ul>\n<li>Best for: Anyone who wants higher Google rankings this week</li>\n</ul>\n<p>Order your Black Friday backlinks now → or see every price first.</p>\n<h3>3. Backlink Gameplan: get what you pay back as link building credits</h3>\n<p>Links are still one of the biggest reasons one site outranks another. The Backlink Gameplan shows you which links you need to close that gap.</p>\n<p>We reverse-engineer why your competitors outrank you. Then we show you the safe links that close the gap: which types of backlinks, how many, and what DR to aim for. It lands within 48 hours.</p>\n<p>The Black Friday deal: whatever you pay for the Gameplan comes straight back to you as link building credits. So the report pays for itself.</p>\n<ul>\n<li>Delivered: within 48 hours.</li>\n</ul>\n<ul>\n<li>Black Friday bonus: you get the same amount back in link building credits.</li>\n</ul>\n<ul>\n<li>Proof: one client went from 0 to 145,000+ monthly SEO visitors in under 6 months with backlinks.</li>\n</ul>\n<ul>\n<li>Best for: Sites stuck below competitors on Google</li>\n</ul>\n<p>Get your Backlink Gameplan → or try Polar Rank free for 3 days →</p>\n<h3>4. AI Profit Boardroom: Black Friday flash sale at $49/month</h3>\n<p>The AI Profit Boardroom is my community for business owners who use AI to get more customers and save time. 3,700+ members are inside.</p>\n<p>The Black Friday flash sale is $49/month, and the price stays locked in for as long as you stay.</p>\n<ul>\n<li>Systems: the Agent OS system, the Hermes Agent kit and the 10 Minute Claude kit.</li>\n</ul>\n<ul>\n<li>Help: daily Q&amp;A where I answer personally, plus unlimited support.</li>\n</ul>\n<ul>\n<li>Done for you: custom automations built for you.</li>\n</ul>\n<ul>\n<li>Coaching: 4 weekly live coaching calls and step-by-step video trainings.</li>\n</ul>\n<ul>\n<li>Safe to try: 7-day no-questions refund and a 30-day guarantee.</li>\n</ul>\n<ul>\n<li>Best for: Owners who want to learn AI SEO and save hours every week</li>\n</ul>\n<p>Join the AI Profit Boardroom flash sale →</p>\n<h3>5. SE Ranking: 20% off annual plans</h3>\n<p>SE Ranking is an all-round SEO tool for rank tracking, keyword research and site audits. Its Black Friday page says new customers get 20% off annual Core and Growth plans and eligible add-ons.</p>\n<p>It shows you what to fix. You still do the fixing.</p>\n<p>Best for: Owners who want an all-round SEO tool on a budget</p>\n<h3>6. Rank Math: up to 60% off PRO licenses</h3>\n<p>Rank Math is a WordPress SEO plugin. Its pricing page shows a Black Friday sale of up to 60% off its PRO licenses, billed annually.</p>\n<p>It helps Google understand every page on your site.</p>\n<p>Best for: WordPress site owners</p>\n<h3>7. Yoast SEO: 30% off Yoast SEO Premium</h3>\n<p>Yoast shows a Black Friday deal of 30% off Yoast SEO Premium and more. New Premium customers get 30% off plus 2 extra months. The discount applies to the first year.</p>\n<p>It gives you SEO tips as you write.</p>\n<p>Best for: WordPress, WooCommerce and Shopify sites</p>\n<h3>8. NeuronWriter: 50% off yearly plans</h3>\n<p>NeuronWriter is an SEO content tool. Its website shows a Black Friday deal of 50% off yearly plans.</p>\n<p>It helps you write better articles. You still write and publish them yourself.</p>\n<p>Best for: People who write their own SEO content</p>\n<p>Want the SEO work done for you? Get your Backlink Gameplan → and see the exact links that close the gap, or try Polar Rank free for 3 days.</p>\n<p>Get Your Backlink Gameplan →Try Polar Rank Free for 3 Days →</p>\n<h2>Which Black Friday SEO deal fits you</h2>\n<ul>\n<li>“I want more traffic, but I have no time.” Polar Rank.</li>\n</ul>\n<ul>\n<li>“I just want more backlinks, cheaper.” The Black Friday backlinks sale.</li>\n</ul>\n<ul>\n<li>“My competitors outrank me and I don’t know why.” The Backlink Gameplan.</li>\n</ul>\n<ul>\n<li>“I want to learn AI and SEO myself.” The AI Profit Boardroom.</li>\n</ul>\n<ul>\n<li>“I want a cheaper SEO tool.” SE Ranking, Rank Math, Yoast SEO or NeuronWriter.</li>\n</ul>\n<p>Comparing tools in more depth? See my list of the best all in one SEO tools.</p>\n<h2>How to get more from Black Friday SEO deals</h2>\n<p>A deal only pays off if it brings you customers. Here is how to make sure it does:</p>\n<ul>\n<li>Pick one goal first. More leads, more sales or more traffic. Then buy only what moves that number.</li>\n</ul>\n<ul>\n<li>Start on day one. SEO takes months, so start now.</li>\n</ul>\n<ul>\n<li>Check if it does the work. A tool you never open saves you nothing.</li>\n</ul>\n<ul>\n<li>Fix your links. Good content can still lose to a site with stronger links.</li>\n</ul>\n<ul>\n<li>Track results. Connect Search Console so you see real clicks, not guesses.</li>\n</ul>\n<ul>\n<li>Read the terms. Many tool deals cover annual plans only.</li>\n</ul>\n<p>Want to see the links you are missing first? Get your Backlink Gameplan: we reverse-engineer why your competitors outrank you and send you the exact backlinks to close the gap, within 48 hours, or try Polar Rank free for 3 days.</p>\n<p>More from people my team and I have helped:</p>\n<p>“Julian went to work immediately and found us QUALITY links from great websites, not links that are for sale. These links raised our rankings in 2 weeks and has helped us gain market share. This guy is the real deal.”</p>\n<p>Alex Membrillo</p>\n<p>CEO, Cardinal Digital Marketing</p>\n<p>“Julian and the team proposed a link-building playbook that would help us build domain authority on a pay-per-result basis. We’ve been extremely happy with their ability to deliver on their promises.”</p>\n<p>Lachlan Fea</p>\n<p>Founder, Cloutly.com</p>\n<h2>My verdict on Black Friday SEO 2026</h2>\n<p>Every deal on this list can help. The tool deals save you money on software you still have to run yourself.</p>\n<p>Our three deals bring results faster. try Polar Rank free for 3 days and let the agents do the work. Get your Backlink Gameplan and get what you pay back as link building credits, or try Polar Rank free for 3 days. Or join the AI Profit Boardroom at $49/month. For Black Friday SEO 2026, Polar Rank is the deal I’d grab first.</p>\n<h2>About Julian Goldie</h2>\n<p>I’m Julian Goldie, co-founder of Polar Rank and founder of Goldie Agency. I’ve ranked 1,000+ websites, I share what I test with 440K+ YouTube subscribers, and I’ve worked with 240+ clients on Upwork with a 100% Job Success Score. Everything we sell gets tested on our own sites first. Get your Backlink Gameplan, try Polar Rank free for 3 days, or join the AI Profit Boardroom.</p>\n<h2>FAQ: Black Friday SEO 2026</h2>\n<h3>What is the best Black Friday SEO deal in 2026?</h3>\n<p>Polar Rank, free for 3 days. Its AI agents write articles, build links and track AI search for you, with a 90-day money-back guarantee.</p>\n<h3>Are there Black Friday deals on SEO tools?</h3>\n<p>Yes. On 27 November 2026, SE Ranking, Rank Math, Yoast SEO and NeuronWriter all show Black Friday deals on their own websites.</p>\n<h3>What is the Backlink Gameplan Black Friday deal?</h3>\n<p>Whatever you pay for the Gameplan comes back to you as link building credits, so the report pays for itself.</p>\n<h3>How much is the AI Profit Boardroom on Black Friday?</h3>\n<p>The Black Friday flash sale is $49/month, locked in. It comes with a 7-day no-questions refund and a 30-day guarantee.</p>\n<h3>When do Black Friday SEO deals end?</h3>\n<p>Most end when Black Friday and Cyber Monday end. Our deals run for a limited time, so grab them this Black Friday.</p>\n<p>Ready to close the gap on the sites above you? Get your Backlink Gameplan, or try Polar Rank free for 3 days. You get the exact backlinks your site is missing (types, how many and how strong), based on the sites outranking you, within 48 hours.</p>\n<p>Ready to stop doing the SEO work by hand? Try Polar Rank free for 3 days. Cancel in one click.</p>\n<p>Want to learn the whole AI SEO playbook? Join the AI Profit Boardroom for training and four live coaching calls a week.</p>\n<p>Get Your Backlink Gameplan →Try Polar Rank Free for 3 Days →Join the AI Profit Boardroom →</p>\n<h2>Related reading</h2>\n<ul>\n<li>Best All in One SEO Tools</li>\n</ul>\n<ul>\n<li>Best SEO Automation Tools</li>\n</ul>\n<ul>\n<li>Best Link Building Services</li>\n</ul>\n<ul>\n<li>Best Technical SEO Tools</li>\n</ul>\n<p>Last updated November 2026. This page is a living guide to Black Friday SEO 2026 — the facts here move fast and it is updated as they do.</p>"
+    },
+    {
+      "id": "f70c0fa94367",
+      "title": "Black Friday Link Building: Up To 54% Off Every Backlink",
+      "content": "Black Friday sale · ends midnight Pacific tonight\n\nBlack Friday link building is live at Goldie Agency: every backlink tier is up to 54% off.\n\nOrder Black Friday Backlinks Now →\n\nPick your links and order online in 2 minutes. No sales call.\n\nDR 0 link\n$36\n\nDR 1-9 link\n$91\n\nDR 10-29 link\n$121\n\nDR 30-69 link\n$302$150\n\nDR 70-89 linkSave 54%\n$390$181\n\nDR 90+ link\n$390$330\n\nBlack Friday prices end in midnight Pacific tonight\n\nWatch: the Black Friday backlinks sale in 75 seconds\n\nI’m Julian Goldie. My agency, Goldie Agency, builds backlinks that actually rank.\n\nOnce a year I cut the price of every link we build. This is that week.\n\nKey takeaways\n\n- DR 70+ backlinks are $181 for Black Friday. Normally $390.\n\n- Every tier is on sale, from a DR 0 link at $36 up to DR 90+ at $330.\n\n- You order online in 2 minutes. Our team then emails you for your target pages and anchor text.\n\n## What’s in the Black Friday link building sale\n\nEvery DR tier we build is discounted. You can mix tiers and order as many links as you need in one checkout.\n\nThe biggest saving is on DR 70-89 links. You save $209 on every single one.\n\nTier\nNormal price\nBlack Friday price\nYou save per link\n\nDR 0\n–\n$36\n–\n\nDR 1-9\n–\n$91\n–\n\nDR 10-29\n–\n$121\n–\n\nDR 30-69\n$302\n$150\n$152\n\nDR 70-89\n$390\n$181\n$209\n\nDR 90+\n$390\n$330\n$60\n\nGet one DR 30-69, one DR 70-89 and one DR 90+ link and you save $421 versus normal prices.\n\nLock in Black Friday link building prices\n\nDR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.\n\nOrder Black Friday Backlinks →\n\nOr see every price and watch the video. Prices end in midnight Pacific tonight.\n\n## Why link building is worth it\n\nGoogle ranks the pages other sites trust.\n\nEvery good backlink is a vote of trust for your site.\n\nMore trust means higher rankings. Higher rankings mean more traffic, more leads and more customers from Google, without paying for ads.\n\nHere is what that looks like on our own site, AI Profit Boardroom:\n\nGoogle Search Console · aiprofitboardroom.com, our own site\n\n## How ordering works\n\n- Pick your links. Choose your DR tier and how many links you want.\n\n- Pay online. Check out in 2 minutes at the Black Friday price.\n\n- We place them. Our team emails you for your target pages and anchor text, then builds your links.\n\nNo calls. No back and forth. You keep full control of which pages get the links.\n\n## How to choose the right DR tier\n\nMatch the tier to the page you want to rank and how hard the keyword is.\n\n- DR 0 to DR 29: a cheap way to build a natural mix of links to a newer site.\n\n- DR 30-69: solid authority links for service pages and blog posts you want on page 1.\n\n- DR 70-89: the best value this week. Use them on your money pages.\n\n- DR 90+: the strongest sites we place on, for your most competitive keywords.\n\nIf you want a site-specific plan first, our Backlink Gameplan shows exactly which links your competitors have and which ones close the gap, or try Polar Rank free for 3 days.\n\n## How to make the most of Black Friday link building\n\nCheap links are only a deal if they actually move rankings. A few rules I follow with every client:\n\n- Point links at pages that already rank on page 2 or 3. They move fastest.\n\n- Keep one permanent URL for anything seasonal. A page like /black-friday/ keeps the authority it earns every year.\n\n- Link your strongest pages internally to the page you’re boosting. It passes the new authority further.\n\n- Vary your anchor text. Mix brand, URL and topic anchors so the profile looks natural.\n\nWant to see how buying compares to other options? Read my guide to the best place to buy backlinks and my ranking of the best digital PR agencies.\n\n## What clients say about our links\n\n“These links raised our rankings in 2 weeks and has helped us gain market share.”\n\nAlex Membrillo, CEO of Cardinal Digital Marketing\n\n“He’s consistently built quality links to our content, helping us to double our organic traffic.”\n\nBen Smye, Head of Growth at Matmatch\n\n“Julian is a very skilled and knowledgeable operator and it was a pleasure to work with him over the last few months. Highly recommended.”\n\nFrancois Grante, Co-Founder of Hunter.io\n\nBlack Friday prices end midnight Pacific tonight\n\nDR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.\n\nOrder Black Friday Backlinks →\n\nOr see every price and watch the video. Prices end in midnight Pacific tonight.\n\n## FAQ: black friday link building\n\n### When does the Black Friday link building sale end?\n\nBlack Friday prices end at midnight Pacific tonight. The countdown on this page shows exactly how long is left.\n\n### How much are backlinks in the Black Friday sale?\n\nDR 0 $36, DR 1-9 $91, DR 10-29 $121, DR 30-69 $150 (normally $302), DR 70-89 $181 (normally $390) and DR 90+ $330 (normally $390).\n\n### Do I need to get on a call to order?\n\nNo. You pick your tier and quantity and pay online in about 2 minutes.\n\n### How do I tell you which pages to link to?\n\nAfter you order, our team emails you for your target pages and anchor text, then builds your links.\n\n### Can I order more than one tier?\n\nYes. Mix any tiers and quantities you need in one checkout.\n\nBlack Friday link building prices end midnight Pacific tonight. Order your Black Friday backlinks here.",
+      "url": "https://juliangoldie.com/black-friday-link-building/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-link-building",
+      "author": "Clawdbot",
+      "published": "2026-11-27T06:42:55",
+      "source": "Julian Goldie",
+      "source_type": "research_blog",
+      "tags": [
+        "Uncategorized"
+      ],
+      "summary": "A time-limited promotional post advertising a Black Friday backlink sale from Goldie Agency, listing discounted prices per DR tier (up to 54% off DR 70-89 links) with checkout instructions. Entirely sales copy.",
+      "importance_score": 4.0,
+      "reasoning": "Advertising content with zero technical, Hermes Agent, or documentation relevance; included in the feed as noise and should be filtered from any ecosystem analysis.",
+      "themes": [
+        "Irrelevant Content",
+        "Marketing"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A time-limited promotional post advertising a Black Friday backlink sale from Goldie Agency, listing discounted prices per DR tier (up to 54% off DR 70-89 links) with checkout instructions. Entirely sales copy.</p>",
+      "content_html": "<p>Black Friday sale · ends midnight Pacific tonight</p>\n<p>Black Friday link building is live at Goldie Agency: every backlink tier is up to 54% off.</p>\n<p>Order Black Friday Backlinks Now →</p>\n<p>Pick your links and order online in 2 minutes. No sales call.</p>\n<p>DR 0 link</p>\n<p>$36</p>\n<p>DR 1-9 link</p>\n<p>$91</p>\n<p>DR 10-29 link</p>\n<p>$121</p>\n<p>DR 30-69 link</p>\n<p>$302$150</p>\n<p>DR 70-89 linkSave 54%</p>\n<p>$390$181</p>\n<p>DR 90+ link</p>\n<p>$390$330</p>\n<p>Black Friday prices end in midnight Pacific tonight</p>\n<p>Watch: the Black Friday backlinks sale in 75 seconds</p>\n<p>I’m Julian Goldie. My agency, Goldie Agency, builds backlinks that actually rank.</p>\n<p>Once a year I cut the price of every link we build. This is that week.</p>\n<p>Key takeaways</p>\n<ul>\n<li>DR 70+ backlinks are $181 for Black Friday. Normally $390.</li>\n</ul>\n<ul>\n<li>Every tier is on sale, from a DR 0 link at $36 up to DR 90+ at $330.</li>\n</ul>\n<ul>\n<li>You order online in 2 minutes. Our team then emails you for your target pages and anchor text.</li>\n</ul>\n<h2>What’s in the Black Friday link building sale</h2>\n<p>Every DR tier we build is discounted. You can mix tiers and order as many links as you need in one checkout.</p>\n<p>The biggest saving is on DR 70-89 links. You save $209 on every single one.</p>\n<p>Tier</p>\n<p>Normal price</p>\n<p>Black Friday price</p>\n<p>You save per link</p>\n<p>DR 0</p>\n<p>–</p>\n<p>$36</p>\n<p>–</p>\n<p>DR 1-9</p>\n<p>–</p>\n<p>$91</p>\n<p>–</p>\n<p>DR 10-29</p>\n<p>–</p>\n<p>$121</p>\n<p>–</p>\n<p>DR 30-69</p>\n<p>$302</p>\n<p>$150</p>\n<p>$152</p>\n<p>DR 70-89</p>\n<p>$390</p>\n<p>$181</p>\n<p>$209</p>\n<p>DR 90+</p>\n<p>$390</p>\n<p>$330</p>\n<p>$60</p>\n<p>Get one DR 30-69, one DR 70-89 and one DR 90+ link and you save $421 versus normal prices.</p>\n<p>Lock in Black Friday link building prices</p>\n<p>DR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.</p>\n<p>Order Black Friday Backlinks →</p>\n<p>Or see every price and watch the video. Prices end in midnight Pacific tonight.</p>\n<h2>Why link building is worth it</h2>\n<p>Google ranks the pages other sites trust.</p>\n<p>Every good backlink is a vote of trust for your site.</p>\n<p>More trust means higher rankings. Higher rankings mean more traffic, more leads and more customers from Google, without paying for ads.</p>\n<p>Here is what that looks like on our own site, AI Profit Boardroom:</p>\n<p>Google Search Console · aiprofitboardroom.com, our own site</p>\n<h2>How ordering works</h2>\n<ul>\n<li>Pick your links. Choose your DR tier and how many links you want.</li>\n</ul>\n<ul>\n<li>Pay online. Check out in 2 minutes at the Black Friday price.</li>\n</ul>\n<ul>\n<li>We place them. Our team emails you for your target pages and anchor text, then builds your links.</li>\n</ul>\n<p>No calls. No back and forth. You keep full control of which pages get the links.</p>\n<h2>How to choose the right DR tier</h2>\n<p>Match the tier to the page you want to rank and how hard the keyword is.</p>\n<ul>\n<li>DR 0 to DR 29: a cheap way to build a natural mix of links to a newer site.</li>\n</ul>\n<ul>\n<li>DR 30-69: solid authority links for service pages and blog posts you want on page 1.</li>\n</ul>\n<ul>\n<li>DR 70-89: the best value this week. Use them on your money pages.</li>\n</ul>\n<ul>\n<li>DR 90+: the strongest sites we place on, for your most competitive keywords.</li>\n</ul>\n<p>If you want a site-specific plan first, our Backlink Gameplan shows exactly which links your competitors have and which ones close the gap, or try Polar Rank free for 3 days.</p>\n<h2>How to make the most of Black Friday link building</h2>\n<p>Cheap links are only a deal if they actually move rankings. A few rules I follow with every client:</p>\n<ul>\n<li>Point links at pages that already rank on page 2 or 3. They move fastest.</li>\n</ul>\n<ul>\n<li>Keep one permanent URL for anything seasonal. A page like /black-friday/ keeps the authority it earns every year.</li>\n</ul>\n<ul>\n<li>Link your strongest pages internally to the page you’re boosting. It passes the new authority further.</li>\n</ul>\n<ul>\n<li>Vary your anchor text. Mix brand, URL and topic anchors so the profile looks natural.</li>\n</ul>\n<p>Want to see how buying compares to other options? Read my guide to the best place to buy backlinks and my ranking of the best digital PR agencies.</p>\n<h2>What clients say about our links</h2>\n<p>“These links raised our rankings in 2 weeks and has helped us gain market share.”</p>\n<p>Alex Membrillo, CEO of Cardinal Digital Marketing</p>\n<p>“He’s consistently built quality links to our content, helping us to double our organic traffic.”</p>\n<p>Ben Smye, Head of Growth at Matmatch</p>\n<p>“Julian is a very skilled and knowledgeable operator and it was a pleasure to work with him over the last few months. Highly recommended.”</p>\n<p>Francois Grante, Co-Founder of Hunter.io</p>\n<p>Black Friday prices end midnight Pacific tonight</p>\n<p>DR 70+ links are $181 (normally $390). DR 30-69 links are $150 (normally $302). Every tier is on sale, from $36 a link.</p>\n<p>Order Black Friday Backlinks →</p>\n<p>Or see every price and watch the video. Prices end in midnight Pacific tonight.</p>\n<h2>FAQ: black friday link building</h2>\n<h3>When does the Black Friday link building sale end?</h3>\n<p>Black Friday prices end at midnight Pacific tonight. The countdown on this page shows exactly how long is left.</p>\n<h3>How much are backlinks in the Black Friday sale?</h3>\n<p>DR 0 $36, DR 1-9 $91, DR 10-29 $121, DR 30-69 $150 (normally $302), DR 70-89 $181 (normally $390) and DR 90+ $330 (normally $390).</p>\n<h3>Do I need to get on a call to order?</h3>\n<p>No. You pick your tier and quantity and pay online in about 2 minutes.</p>\n<h3>How do I tell you which pages to link to?</h3>\n<p>After you order, our team emails you for your target pages and anchor text, then builds your links.</p>\n<h3>Can I order more than one tier?</h3>\n<p>Yes. Mix any tiers and quantities you need in one checkout.</p>\n<p>Black Friday link building prices end midnight Pacific tonight. Order your Black Friday backlinks here.</p>"
+    }
+  ],
+  "notice": {
+    "type": "info",
+    "title": "Weekend Edition",
+    "message": "arXiv papers are not collected on weekends. Any weekend papers will be included in Monday's report."
+  }
+}

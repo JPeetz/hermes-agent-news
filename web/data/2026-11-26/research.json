@@ -1,0 +1,579 @@
+{
+  "category": "research",
+  "date": "2026-11-26",
+  "category_summary": "**Security** leads this cycle: a malicious NPM package ([**leadstack crm-connect**](/?date=2026-11-26&category=research#item-hn-50585975)) installed **Hermes Agent** as root and tasked it over Telegram — real-world supply-chain abuse of the agent install path that every self-hoster should treat as an audit trigger. Official documentation delivered two high-impact updates: [**Claude Pro/Max subscription**](/?date=2026-11-26&category=research#item-hn-49790991) support via a direct SDK plugin (materially changes cost and model access for subscribers) and [**Kanban**](/?date=2026-11-26&category=research#item-hn-49604068) multi-agent profile collaboration. On performance, an [agent-authored custom-kernel workflow on Mac clusters reportedly outperforms **MLX**](/?date=2026-11-26&category=research#item-hn-50648334), with concrete throughput numbers for **ERNIE 5.5 Flash Preview** running in Hermes. Deployment coverage flags operational gaps — [no official **Helm** chart and root-at-init requirements on **Kubernetes**](/?date=2026-11-26&category=research#item-hn-49977400) — alongside practical [VPS-plus-rooted-Android](/?date=2026-11-26&category=research#item-hn-50629729) and [containerization guides](/?date=2026-11-26&category=research#item-hn-50131496). The ecosystem tooling layer keeps maturing: [**Comemo**](/?date=2026-11-26&category=research#item-hn-50518538) fans memory writes out to multiple backends (**Mem0** and others) to work around the single memory-provider slot, while [**Verso**](/?date=2026-11-26&category=research#item-hn-49628094), [**shoebox**](/?date=2026-11-26&category=research#item-hn-50610136), [**Refine Cycle**](/?date=2026-11-26&category=research#item-hn-49606988), and the [**ClusterMob** profile registry](/?date=2026-11-26&category=research#item-hn-50197497) show a growing orchestration/plugin layer. Interaction surfaces expanded via [**Hermes-Voice**](/?date=2026-11-26&category=research#item-hn-50381927) (Home Assistant Assist voice control) and the native SwiftUI [**Paper Harness**](/?date=2026-11-26&category=research#item-hn-50278175) iPhone client.",
+  "category_summary_html": "<p><strong>Security</strong> leads this cycle: a malicious NPM package (<a href=\"/?date=2026-11-26&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>leadstack crm-connect</strong></a>) installed <strong>Hermes Agent</strong> as root and tasked it over Telegram — real-world supply-chain abuse of the agent install path that every self-hoster should treat as an audit trigger. Official documentation delivered two high-impact updates: <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max subscription</strong></a> support via a direct SDK plugin (materially changes cost and model access for subscribers) and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong></a> multi-agent profile collaboration. On performance, an <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">agent-authored custom-kernel workflow on Mac clusters reportedly outperforms <strong>MLX</strong></a>, with concrete throughput numbers for <strong>ERNIE 5.5 Flash Preview</strong> running in Hermes. Deployment coverage flags operational gaps — <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">no official <strong>Helm</strong> chart and root-at-init requirements on <strong>Kubernetes</strong></a> — alongside practical <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">VPS-plus-rooted-Android</a> and <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50131496\" class=\"internal-link\" rel=\"noopener noreferrer\">containerization guides</a>. The ecosystem tooling layer keeps maturing: <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a> fans memory writes out to multiple backends (<strong>Mem0</strong> and others) to work around the single memory-provider slot, while <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>shoebox</strong></a>, <a href=\"/?date=2026-11-26&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, and the <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong> profile registry</a> show a growing orchestration/plugin layer. Interaction surfaces expanded via <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes-Voice</strong></a> (Home Assistant Assist voice control) and the native SwiftUI <a href=\"/?date=2026-11-26&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Paper Harness</strong></a> iPhone client.</p>",
+  "themes": [
+    {
+      "name": "Official Updates and Documentation",
+      "description": "Official announcements including Claude Pro/Max subscription support and the Kanban multi-agent collaboration feature documentation.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Security and Reliability",
+      "description": "A malicious NPM package weaponizing Hermes Agent as a root backdoor, plus a runaway-agent troubleshooting case and Kubernetes root requirement, pointing to security and reliability concerns.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Performance and Local Inference",
+      "description": "Agent-authored custom kernels replacing MLX for Mac clusters, with concrete throughput numbers for ERNIE 5.5 Flash Preview running in Hermes.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Deployment and Self-Hosting",
+      "description": "Guides and friction reports for running Hermes on VPS, Kubernetes, containers, and rooted Android hardware, highlighting missing Helm charts and root-at-init issues.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Ecosystem Tooling and Orchestration",
+      "description": "Third-party tools built on or around Hermes Agent, including shoebox, Verso, Comemo, Refine Cycle, and ClusterMob, showing a maturing plugin and orchestration layer plus competing alternatives.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Community Integrations and Clients",
+      "description": "Community-built access surfaces such as the SwiftUI iPhone client, Home Assistant voice integration, and mobile/voice expansion of Hermes interaction.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 21,
+  "items": [
+    {
+      "id": "hn-50585975",
+      "title": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+      "content": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+      "url": "https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor",
+      "author": "tech_solver",
+      "published": "2026-11-21T04:33:56Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-50585975) earlier this week, A SafeDep blog post reports a malicious NPM package (leadstack crm-connect) that installed Hermes Agent as root on victim machines and tasked it via Telegram as a backdoor, turning the agent framework into an attack vehicle.",
+      "importance_score": 39,
+      "reasoning": "High-impact security finding showing real-world abuse of the Hermes Agent install path for supply-chain attacks. Critical awareness value for anyone self-hosting agents with root privileges and Telegram-based control channels.",
+      "themes": [
+        "Security",
+        "Supply Chain Attacks",
+        "Risk Awareness"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50585975",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "NPM package installed Hermes Agent as root and tasked it over Telegram",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A SafeDep blog post reports a malicious NPM package (leadstack crm-connect) that installed Hermes Agent as root on victim machines and tasked it via Telegram as a backdoor, turning the agent framework into an attack vehicle.</p>",
+      "content_html": "<p>NPM package installed Hermes Agent as root and tasked it over Telegram</p>"
+    },
+    {
+      "id": "hn-49790991",
+      "title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "content": "Hermes Agent now supports Claude Pro/Max subscriptions",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk",
+      "author": "rob",
+      "published": "2026-09-21T18:07:50Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-49790991) earlier this week, Official Hermes Agent documentation announces support for Claude Pro/Max subscriptions via a Claude subscription direct SDK plugin, letting subscribers use their existing plans with the agent.",
+      "importance_score": 36,
+      "reasoning": "Official capability update from the Hermes docs that materially changes cost and model-access options for subscribers. High relevance to the user base even though it is a short announcement.",
+      "themes": [
+        "Official Updates",
+        "Model Access",
+        "Integrations"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49790991",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Hermes Agent now supports Claude Pro/Max subscriptions",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official Hermes Agent documentation announces support for Claude Pro/Max subscriptions via a Claude subscription direct SDK plugin, letting subscribers use their existing plans with the agent.</p>",
+      "content_html": "<p>Hermes Agent now supports Claude Pro/Max subscriptions</p>"
+    },
+    {
+      "id": "hn-50648334",
+      "title": "Tell HN: Stop using MLX, start telling your agent to write custom kernels",
+      "content": "I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok&#x2F;sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok&#x2F;sec at low context. In hermes, running nearly 50 tok&#x2F;sec at high context, only a fifteen second wait for a response. Any critics, try i",
+      "url": "https://news.ycombinator.com/item?id=50648334",
+      "author": "thesnarkitecht",
+      "published": "2026-11-25T22:13:03Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An HN post describes clustering Macs for local AI and having Claude write custom kernels instead of relying on MLX. Claims Baidu ERNIE 5.5 Flash Preview reached 96 tok/sec at low context across four Macs, and about 50 tok/sec at high context inside Hermes with roughly a fifteen second wait.",
+      "importance_score": 68.0,
+      "reasoning": "Provides concrete, replicable performance guidance for running Hermes with local Mac clusters and current-generation models like ERNIE 5.5 Flash Preview, plus a practical agentic workflow tip of having agents author custom kernels. Strong relevance for self-hosted Hermes performance tuning.",
+      "themes": [
+        "Performance Tuning",
+        "Local Inference",
+        "Agent Workflows"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An HN post describes clustering Macs for local AI and having Claude write custom kernels instead of relying on MLX. Claims Baidu ERNIE 5.5 Flash Preview reached 96 tok/sec at low context across four Macs, and about 50 tok/sec at high context inside Hermes with roughly a fifteen second wait.</p>",
+      "content_html": "<p>I am one of the many people who started clustering Macs for local AI. At first, it seemed amazing, but that was before the huge agentic revolution. No one could put up with 10 tok/sec after a 15 minute wait, in hermes agent. I asked claude to build a kernel, and boy it did deliver. Across four Macs, Baidu ERNIE 5.5 flash preview was running 96 tok/sec at low context. In hermes, running nearly 50 tok/sec at high context, only a fifteen second wait for a response. Any critics, try i</p>"
+    },
+    {
+      "id": "hn-49604068",
+      "title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "content": "Hermes Kanban – Multi-Agent Profile Collaboration",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban",
+      "author": "fallinditch",
+      "published": "2026-09-07T23:24:05Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-49604068) earlier this week, Official Hermes Agent documentation describing the Kanban feature for multi-agent profile collaboration, enabling multiple agent profiles to coordinate work on a shared board.",
+      "importance_score": 33,
+      "reasoning": "Core official feature documentation covering multi-agent coordination, a key capability for users running several Hermes profiles. High reference value for orchestration workflows.",
+      "themes": [
+        "Official Documentation",
+        "Multi-Agent Coordination",
+        "Kanban"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49604068",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Hermes Kanban – Multi-Agent Profile Collaboration",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Official Hermes Agent documentation describing the Kanban feature for multi-agent profile collaboration, enabling multiple agent profiles to coordinate work on a shared board.</p>",
+      "content_html": "<p>Hermes Kanban – Multi-Agent Profile Collaboration</p>"
+    },
+    {
+      "id": "hn-50518538",
+      "title": "Show HN: Comemo – composite memory provider for Hermes Agent",
+      "content": "There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.<p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.<p>I intend to add support for more memory prov",
+      "url": "https://github.com/andausman/comemo",
+      "author": "Andassyn",
+      "published": "2026-11-16T15:21:15Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-50518538) earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory, then merges and deduplicates retrieval results before returning them to Hermes. The author plans to support more providers.",
+      "importance_score": 31,
+      "reasoning": "A genuinely useful extension solving a real limitation (single memory provider slot) with a clean composite design. Directly relevant to Hermes users experimenting with external memory stacks.",
+      "themes": [
+        "Memory Systems",
+        "Ecosystem Tooling",
+        "Plugin Development"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50518538",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Show HN: Comemo – composite memory provider for Hermes Agent",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory, then merges and deduplicates retrieval results before returning them to Hermes. The author plans to support more providers.</p>",
+      "content_html": "<p>There are many memory providers that can be used externally with Hermes Agent. However, like many other AI agents, Hermes only provides one slot for an external memory provider.</p><p>Comemo takes that slot and acts as a composite provider. How? It fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory. On retrieval, it queries the enabled providers, merges their results, and removes duplicates before returning them to Hermes.</p><p>I intend to add support for more memory prov</p>"
+    },
+    {
+      "id": "hn-50629729",
+      "title": "Using Hermes Agent on a VPS to Control an Old Rooted Android Phone",
+      "content": "Using Hermes Agent on a VPS to Control an Old Rooted Android Phone",
+      "url": "https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/",
+      "author": "nimitbhardwaj",
+      "published": "2026-11-24T15:35:27Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-25&category=research#item-hn-50629729) yesterday, A blog post by nimitbhardwaj documenting how to run Hermes Agent on a VPS to control an old rooted Android phone, effectively repurposing spare hardware as a remotely managed agent endpoint.",
+      "importance_score": 30,
+      "reasoning": "A practical hands-on guide showing an unusual deployment pattern (VPS plus rooted Android device) that extends Hermes beyond desktop use. Useful for the self-hosting community though niche in application.",
+      "themes": [
+        "Deployment",
+        "Device Control",
+        "Self-Hosting"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50629729",
+        "original_date": "2026-11-25",
+        "original_category": "research",
+        "original_title": "Using Hermes Agent on a VPS to Control an Old Rooted Android Phone",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** yesterday"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-25&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> yesterday, A blog post by nimitbhardwaj documenting how to run Hermes Agent on a VPS to control an old rooted Android phone, effectively repurposing spare hardware as a remotely managed agent endpoint.</p>",
+      "content_html": "<p>Using Hermes Agent on a VPS to Control an Old Rooted Android Phone</p>"
+    },
+    {
+      "id": "hn-50610136",
+      "title": "Show HN: Crazy simple AI agent orchestration with Markdown and Containers",
+      "content": "I was sick and tired of the bloated mess that Hermes Agent has become, often dealing with hard-to-triage bugs that made managing agents a part-time job. I don&#x27;t need a self-improving magical agent, I need;<p>- A primary agent to chat to, with sub-agent delegation<p>- Isolated sub-agent workspaces, tools, binaries and skills<p>- Kanban and cron-tasks to manage tasks<p>- An easy way to chat (Telegram, Web UI)<p>I built shoebox, crazy simple filesystem-based AI agent orchestration that uses a ",
+      "url": "https://github.com/ameesme/shoebox",
+      "author": "ameesdotme",
+      "published": "2026-11-23T11:07:29Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-50610136) earlier this week, The author built shoebox, a filesystem-based agent orchestration tool using Markdown and containers, explicitly motivated by frustration with Hermes Agent bloat and hard-to-triage bugs. Features include a primary agent with sub-agent delegation, isolated workspaces, kanban and cron tasks, and Telegram or Web UI chat.",
+      "importance_score": 58.0,
+      "reasoning": "Signals community pain points with Hermes complexity and offers an alternative orchestration design that mirrors Hermes features like kanban and sub-agents. Relevant competitive and feedback signal for the ecosystem.",
+      "themes": [
+        "Orchestration Tools",
+        "Ecosystem Feedback",
+        "Alternatives"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50610136",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Show HN: Crazy simple AI agent orchestration with Markdown and Containers",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, The author built shoebox, a filesystem-based agent orchestration tool using Markdown and containers, explicitly motivated by frustration with Hermes Agent bloat and hard-to-triage bugs. Features include a primary agent with sub-agent delegation, isolated workspaces, kanban and cron tasks, and Telegram or Web UI chat.</p>",
+      "content_html": "<p>I was sick and tired of the bloated mess that Hermes Agent has become, often dealing with hard-to-triage bugs that made managing agents a part-time job. I don't need a self-improving magical agent, I need;</p><p>- A primary agent to chat to, with sub-agent delegation</p><p>- Isolated sub-agent workspaces, tools, binaries and skills</p><p>- Kanban and cron-tasks to manage tasks</p><p>- An easy way to chat (Telegram, Web UI)</p><p>I built shoebox, crazy simple filesystem-based AI agent orchestration that uses a</p>"
+    },
+    {
+      "id": "hn-49977400",
+      "title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "content": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+      "url": "https://www.revos.ai/blog/hermes-agent-kubernetes",
+      "author": "zubairov",
+      "published": "2026-10-06T12:26:43Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-49977400) earlier this week, A revos.ai blog post documents running Hermes Agent on Kubernetes, noting the absence of an official Helm chart and that the container image requires root at initialization, both friction points for production cluster deployments.",
+      "importance_score": 58.0,
+      "reasoning": "Concrete operational gap analysis for Kubernetes deployments, highlighting security-relevant root-at-init behavior and missing Helm tooling. Actionable feedback for the maintainers and useful for platform teams.",
+      "themes": [
+        "Kubernetes",
+        "Deployment",
+        "Security",
+        "Operational Gaps"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49977400",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, A revos.ai blog post documents running Hermes Agent on Kubernetes, noting the absence of an official Helm chart and that the container image requires root at initialization, both friction points for production cluster deployments.</p>",
+      "content_html": "<p>Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init</p>"
+    },
+    {
+      "id": "hn-49628094",
+      "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+      "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+      "url": "https://www.itsverso.xyz/",
+      "author": "SchezHugo",
+      "published": "2026-09-09T15:23:46Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-49628094) earlier this week, Verso is an open-source agent orchestrator for knowledge work built on Hermes Agent, providing an intuitive interface beyond the CLI. The author reports it has become their daily work setup and improved productivity.",
+      "importance_score": 56.0,
+      "reasoning": "A substantial third-party layer built directly on Hermes demonstrating ecosystem extensibility and daily-driver use in knowledge work. Valuable showcase, though details are limited to the pitch.",
+      "themes": [
+        "Orchestration Tools",
+        "Knowledge Work",
+        "Community Projects"
+      ],
+      "continuation": {
+        "original_item_id": "hn-49628094",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Verso is an open-source agent orchestrator for knowledge work built on Hermes Agent, providing an intuitive interface beyond the CLI. The author reports it has become their daily work setup and improved productivity.</p>",
+      "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+    },
+    {
+      "id": "hn-50381927",
+      "title": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+      "content": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+      "url": "https://github.com/majorminorlabs/hermes-voice",
+      "author": "thunderbong",
+      "published": "2026-11-05T17:38:21Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "As covered in [Research](/?date=2026-11-24&category=research#item-hn-50381927) earlier this week, Hermes-Voice is an open-source project from majorminorlabs enabling voice interaction with Hermes Agent profiles through Home Assistant Assist, integrating the agent into smart-home voice pipelines.",
+      "importance_score": 55.0,
+      "reasoning": "A practical community integration that broadens Hermes interaction surfaces into smart-home voice control. Useful to smart-home users but limited in general technical depth.",
+      "themes": [
+        "Voice Interfaces",
+        "Smart Home Integration",
+        "Community Projects"
+      ],
+      "continuation": {
+        "original_item_id": "hn-50381927",
+        "original_date": "2026-11-24",
+        "original_category": "research",
+        "original_title": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+        "continuation_type": "rehash",
+        "should_demote": true,
+        "reference_text": "As covered in **Research** earlier this week"
+      },
+      "summary_html": "<p>As covered in <a href=\"/?date=2026-11-24&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\">Research</a> earlier this week, Hermes-Voice is an open-source project from majorminorlabs enabling voice interaction with Hermes Agent profiles through Home Assistant Assist, integrating the agent into smart-home voice pipelines.</p>",
+      "content_html": "<p>Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist</p>"
+    },
+    {
+      "id": "hn-50278175",
+      "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+      "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+      "author": "yourfavdev",
+      "published": "2026-10-28T18:04:37Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hermes Paper Harness is a native SwiftUI iPhone app on the App Store serving as a mobile client for Hermes Agent, providing iOS access to agent sessions.",
+      "importance_score": 55.0,
+      "reasoning": "A notable mobile client expanding Hermes accessibility beyond desktop and CLI. Relevant to users wanting on-the-go agent interaction, though the post itself carries little technical detail.",
+      "themes": [
+        "Mobile Clients",
+        "Community Projects"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hermes Paper Harness is a native SwiftUI iPhone app on the App Store serving as a mobile client for Hermes Agent, providing iOS access to agent sessions.</p>",
+      "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49511007",
+      "title": "Launch HN: Almanac (YC S26) – AI that knows your company",
+      "content": "Hi HN, I&#x27;m Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.<p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.<p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th",
+      "url": "https://usealmanac.com/",
+      "author": "kushagrchitkar",
+      "published": "2026-08-31T15:34:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Almanac, a YC S26 startup, launches an AI product pitched as a Hermes-like agent that knows everything about your company. The founders describe the difficulty of setting up Hermes themselves, including building OAuth connectors for every integration, as their founding motivation.",
+      "importance_score": 55.0,
+      "reasoning": "A funded startup whose founding story validates strong demand for company-context agents while documenting Hermes setup friction, especially connector and OAuth burden. Notable ecosystem and market signal.",
+      "themes": [
+        "Startups",
+        "Ecosystem Feedback",
+        "Enterprise Context"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Almanac, a YC S26 startup, launches an AI product pitched as a Hermes-like agent that knows everything about your company. The founders describe the difficulty of setting up Hermes themselves, including building OAuth connectors for every integration, as their founding motivation.</p>",
+      "content_html": "<p>Hi HN, I'm Kushagra, one of three founders of Almanac, a Hermes with a brain that knows everything about your company.</p><p>We started our journey with setting up Hermes for our company, thinking it must be easy. We wanted an agent that would know every context about our company, so we could ask questions and get context-appropriate responses to.</p><p>This started a very annoying and difficult journey. Setting up Hermes, getting it to talk right, building OAuth apps for every connector myself, th</p>"
+    },
+    {
+      "id": "hn-50131496",
+      "title": "Hermes Agent: My containerized take",
+      "content": "Hermes Agent: My containerized take",
+      "url": "https://ricardodevries.com/blog/hermes-agent-my-containerized-take",
+      "author": "ricardodevries",
+      "published": "2026-10-17T14:27:11Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A blog post by ricardodevries describing a personal containerized setup for running Hermes Agent, covering one practitioner's approach to container-based deployment and management.",
+      "importance_score": 52.0,
+      "reasoning": "Practical deployment write-up relevant to self-hosters evaluating containerization strategies for Hermes. Solid operational guidance value despite a personal, non-authoritative framing.",
+      "themes": [
+        "Containerization",
+        "Deployment",
+        "Self-Hosting"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A blog post by ricardodevries describing a personal containerized setup for running Hermes Agent, covering one practitioner's approach to container-based deployment and management.</p>",
+      "content_html": "<p>Hermes Agent: My containerized take</p>"
+    },
+    {
+      "id": "hn-50197497",
+      "title": "ClusterMob – a community registry of Hermes Agent profiles",
+      "content": "ClusterMob – a community registry of Hermes Agent profiles",
+      "url": "https://clustermob.com/",
+      "author": "k_sze",
+      "published": "2026-10-22T16:19:34Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "ClusterMob is a community website acting as a registry of Hermes Agent profiles, allowing discovery and sharing of agent profile configurations across the community.",
+      "importance_score": 50.0,
+      "reasoning": "Useful community infrastructure for profile discovery and reuse, indicating maturing ecosystem tooling around Hermes profiles, though the announcement is brief on implementation details.",
+      "themes": [
+        "Profile Sharing",
+        "Community Infrastructure"
+      ],
+      "continuation": null,
+      "summary_html": "<p>ClusterMob is a community website acting as a registry of Hermes Agent profiles, allowing discovery and sharing of agent profile configurations across the community.</p>",
+      "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+    },
+    {
+      "id": "hn-49628740",
+      "title": "I think I used the Hermes Agent wrong",
+      "content": "I think I used the Hermes Agent wrong",
+      "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+      "author": "heyjonny",
+      "published": "2026-09-09T16:03:40Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A reflective blog post by heyjonny on misusing Hermes Agent and lessons learned about the correct mental model and usage patterns for the agent.",
+      "importance_score": 50.0,
+      "reasoning": "Experience-based guidance that can help others avoid common onboarding mistakes, offering practical framing advice, though light on concrete technical specifics from the supplied snippet.",
+      "themes": [
+        "Usage Patterns",
+        "Lessons Learned"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A reflective blog post by heyjonny on misusing Hermes Agent and lessons learned about the correct mental model and usage patterns for the agent.</p>",
+      "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+    },
+    {
+      "id": "hn-49606988",
+      "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+      "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+      "author": "1134taras",
+      "published": "2026-09-08T07:54:48Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Refine Cycle is a self-improvement plugin for Hermes Agent hosted on GitHub, designed to let the agent iteratively refine its own behavior or outputs.",
+      "importance_score": 48.0,
+      "reasoning": "Represents the self-improving agent trend within the Hermes plugin ecosystem; interesting for power users but the bare announcement gives little detail on mechanisms or safety considerations.",
+      "themes": [
+        "Self-Improvement",
+        "Plugin Development"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Refine Cycle is a self-improvement plugin for Hermes Agent hosted on GitHub, designed to let the agent iteratively refine its own behavior or outputs.</p>",
+      "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+    },
+    {
+      "id": "hn-49916751",
+      "title": "Ask HN: My agent went haywire, does this output mean anything?",
+      "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+      "url": "https://news.ycombinator.com/item?id=49916751",
+      "author": "nativeit",
+      "published": "2026-10-01T01:55:42Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A user reports a freshly provisioned Hermes agent on headless Debian using Z.ai GLM 5.3 Flash entering a trance-like state with a long thinking block after being asked to print local environment details and PATH. The thread includes the captured thinking output for diagnosis.",
+      "importance_score": 46.0,
+      "reasoning": "A troubleshooting case study with diagnostic data (model choice, environment probing, runaway thinking) useful for understanding failure modes, but anecdotal and unresolved in nature.",
+      "themes": [
+        "Reliability",
+        "Troubleshooting",
+        "Model Behavior"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A user reports a freshly provisioned Hermes agent on headless Debian using Z.ai GLM 5.3 Flash entering a trance-like state with a long thinking block after being asked to print local environment details and PATH. The thread includes the captured thinking output for diagnosis.</p>",
+      "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+    },
+    {
+      "id": "hn-50326764",
+      "title": "Ask HN: How do you manage your personal agents?",
+      "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+      "url": "https://news.ycombinator.com/item?id=50326764",
+      "author": "kevinlu310",
+      "published": "2026-11-01T15:51:22Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An Ask HN thread on coordinating multiple personal agents including OpenClaw, Hermes Agent, Muse, Dots, Claude Code, and Codex. The poster copies and pastes identical questions across agents to compare responses and asks for better coordination approaches.",
+      "importance_score": 42.0,
+      "reasoning": "Reflects a real multi-agent coordination gap in the ecosystem and positions Hermes among a crowded field of agent tools, but contains no technical solution or documentation.",
+      "themes": [
+        "Multi-Agent Coordination",
+        "Ecosystem Feedback"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An Ask HN thread on coordinating multiple personal agents including OpenClaw, Hermes Agent, Muse, Dots, Claude Code, and Codex. The poster copies and pastes identical questions across agents to compare responses and asks for better coordination approaches.</p>",
+      "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+    },
+    {
+      "id": "hn-50366117",
+      "title": "Ask HN: What's your current AI agentic setup?",
+      "content": "I&#x27;m curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.<p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT&#x2F;Codex, Cursor, etc)<p>- Which tiers?<p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?<p>2) Are you using models outside (or instead) of tho",
+      "url": "https://news.ycombinator.com/item?id=50366117",
+      "author": "eggbrain",
+      "published": "2026-11-04T14:37:22Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A general Ask HN thread asking what AI subscriptions and models people use day to day, covering tiers, multiple accounts, and whether people use models outside mainstream providers. Not specifically about Hermes.",
+      "importance_score": 32.0,
+      "reasoning": "Broad community sentiment survey with potential background context on model and subscription preferences among agent users, but no direct Hermes-specific technical content.",
+      "themes": [
+        "Community Discussion",
+        "Model Preferences"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A general Ask HN thread asking what AI subscriptions and models people use day to day, covering tiers, multiple accounts, and whether people use models outside mainstream providers. Not specifically about Hermes.</p>",
+      "content_html": "<p>I'm curious how people on HN are using AI day to day, and came up with a list of questions I thought could be interesting to know. No need to answer every question of course, just wanted to get a gut feel how people are using AI.</p><p>1) What AI subscriptions are you personally paying for? (Claude, ChatGPT/Codex, Cursor, etc)</p><p>- Which tiers?</p><p>- Have you purchased multiple subscriptions from the same provider (eg two Claude accounts)?</p><p>2) Are you using models outside (or instead) of tho</p>"
+    },
+    {
+      "id": "2611.34907",
+      "title": "Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation",
+      "content": "Real-time autoregressive video generators stream minutes of video and accept new prompts on the fly, but struggle to keep people, objects, and places consistent over a long interactive story. Agent systems provide such memory for offline multi-shot generation, yet they read the whole script in advance, plan each shot before generating it, and regenerate failed shots, which a live stream does not allow. We present Agentic LongLive, an asynchronous agentic memory for long video generation. A memor",
+      "url": "https://arxiv.org/abs/2611.34907",
+      "author": "HF Daily Papers",
+      "published": "2026-11-25T00:00:00.000Z",
+      "source": "hf_daily_papers",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "An arXiv paper proposing asynchronous agentic memory for real-time autoregressive video generation. It addresses keeping people, objects, and places consistent over long interactive streams, avoiding offline agent approaches that require full script pre-reading and shot regeneration.",
+      "importance_score": 30.0,
+      "reasoning": "Technically interesting agent-memory research but has no direct connection to the Hermes Agent/Desktop ecosystem; included presumably for its agentic memory theme. Low relevance to Hermes users and no actionable documentation value.",
+      "themes": [
+        "Agent Memory Research"
+      ],
+      "continuation": null,
+      "summary_html": "<p>An arXiv paper proposing asynchronous agentic memory for real-time autoregressive video generation. It addresses keeping people, objects, and places consistent over long interactive streams, avoiding offline agent approaches that require full script pre-reading and shot regeneration.</p>",
+      "content_html": "<p>Real-time autoregressive video generators stream minutes of video and accept new prompts on the fly, but struggle to keep people, objects, and places consistent over a long interactive story. Agent systems provide such memory for offline multi-shot generation, yet they read the whole script in advance, plan each shot before generating it, and regenerate failed shots, which a live stream does not allow. We present Agentic LongLive, an asynchronous agentic memory for long video generation. A memor</p>"
+    },
+    {
+      "id": "hn-50340083",
+      "title": "Show HN: Hanging Context – news by an agent, for other agents",
+      "content": "Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.<p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.<p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an",
+      "url": "https://hangingcontext.com/",
+      "author": "bshivarthy",
+      "published": "2026-11-02T17:16:01Z",
+      "source": "hn_algolia",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Hanging Context is a news site written by agents primarily intended for other agents as readers, based on the insight that agents rather than humans are becoming the main consumers of news content. Rooted in earlier work on data-driven stories for wealth managers.",
+      "importance_score": 30.0,
+      "reasoning": "Interesting thesis on agent-to-agent content consumption but only loosely related to the Hermes ecosystem; no Hermes-specific documentation or tooling.",
+      "themes": [
+        "Agent-Native Content",
+        "Emerging Trends"
+      ],
+      "continuation": null,
+      "summary_html": "<p>Hanging Context is a news site written by agents primarily intended for other agents as readers, based on the insight that agents rather than humans are becoming the main consumers of news content. Rooted in earlier work on data-driven stories for wealth managers.</p>",
+      "content_html": "<p>Back in 2022 I was building a data and news site for family offices, private wealth and investment managers. We used the early OpenAI models to write data-driven stories covering the markets for art, collectibles, luxury goods and other cultural assets.</p><p>Mid-2024, a well-known AI company asked to license our stories. The big labs were signing licensing deals with media companies.</p><p>This is when it clicked. The biggest reader of news wasn’t going to be people. It was going to be their agents, an</p>"
+    }
+  ]
+}

@@ -1,0 +1,819 @@
+{
+  "date": "2026-11-27",
+  "coverage_date": "2026-11-26",
+  "coverage_start": "2026-11-26T00:00:00",
+  "coverage_end": "2026-11-26T23:59:59.999999",
+  "executive_summary": "# Agent N's Hermes News — 2026-11-27\n\n## Executive Summary\n\n**The Obsidian connector is today's headline.** **@NousResearch** announced that **Hermes Agent** can now [control an **Obsidian** vault as a private, local shared knowledge base](/?date=2026-11-27&category=social#item-cee64682023f) via an official connector, and **@Teknium**'s [\"Obsidian 🤝 Hermes\" post](/?date=2026-11-27&category=social#item-c7bc56ba7eed) became the batch's highest-engagement item at **~1.3k likes** and **~42k views**, with strongly positive community reaction. For anyone running Hermes as a long-lived knowledge worker rather than a chat shell, a local-first shared memory vault is the most consequential capability news of the cycle.\n\n**Multi-model orchestration is the hottest builder trend.** **@rlaope**'s [terminal showcase](/?date=2026-11-27&category=social#item-7cd646180271) split a single plan into five routed parts right after **Gemini 4 Neon** landed in the agent — community chatter now treats Hermes as an orchestration hub across **GPT-6.2 Sol**, **DeepSeek V4 Pro**, **Opus 5.5**, **Kimi**, and **Qwen** (note: **Gemini 4 Neon** and **GPT-6.2 Sol** are absent from our model-tracking reference — verify naming before quoting). The pattern is being productized at the community layer: [**oh-my-hermes 5.0.1**](/?date=2026-11-27&category=social#item-2498bd40d596) adds delegation of coding work to external CLIs — **Devin**, **Gemini**, **Cursor**, **Aider**, **Amp**, **Droid**, **Goose**, **Kimi**, and **Qwen** — and a [benchmarking plugin built on Hermes' own harness beat **omp**](/?date=2026-11-27&category=social#item-618e45e00254) on the same 11 coding tasks. **@rlaope**'s [**omher** desktop app](/?date=2026-11-27&category=social#item-f35edad283fd) hit **6.1k GitHub stars** (\"the window I live in now\"), with a new [Oh-My-Hermes Discord](/?date=2026-11-27&category=social#item-47ff3682a9a2) reporting fast PR merges.\n\n**Security remains the cycle's dominant research theme — carried over, not new.** The malicious NPM package [**leadstack-crm-connect**](/?date=2026-11-27&category=research#item-hn-50585975) that installed **Hermes Agent** as root and tasked it remotely over **Telegram** stays the standing audit trigger, best read alongside the [Kubernetes write-up](/?date=2026-11-27&category=research#item-hn-49977400) showing the official image still requires root at init and ships no **Helm** chart — privilege hygiene and supply-chain vetting remain the most urgent to-dos for self-hosters. Research's top story slot went to a [free, open-source agent orchestrator for knowledge work](/?date=2026-11-27&category=research#item-hn-49628094) (Show HN), another sign of how much community energy is flowing into layers built on top of Hermes.\n\n**No releases or merged PRs this cycle — the actionable picks are reliability guides.** The top pick is a [2026 structured-output guide](/?date=2026-11-27&category=news#item-80d26a33521f) comparing three routes to machine-readable **JSON** — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. The runner-up is a [build log on attention budgets for cron jobs](/?date=2026-11-27&category=news#item-978c7b5f6b95), gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to cut noise in scheduled deployments.\n\n**Carried over and worth keeping on the radar:** official-side items already covered this week — [**Claude Pro/Max** subscription support via a direct SDK plugin](/?date=2026-11-27&category=research#item-hn-49790991), [**Kanban** multi-agent coordination docs](/?date=2026-11-27&category=research#item-hn-49604068), and the venture-backed [**Almanac** launch](/?date=2026-11-27&category=research#item-hn-49511007) — plus a maturing third-party tooling layer ([**Comemo**](/?date=2026-11-27&category=research#item-hn-50518538) fanning memory writes to multiple backends, [**Hermes-Voice**](/?date=2026-11-27&category=research#item-hn-50381927) for Home Assistant, [**Refine Cycle**](/?date=2026-11-27&category=research#item-hn-49606988), [**ClusterMob**](/?date=2026-11-27&category=research#item-hn-50197497), [**shoebox**](/?date=2026-11-27&category=research#item-hn-50610136), [**Verso**](/?date=2026-11-27&category=research#item-hn-49628094), and [**Hermes Paper Harness**' native iPhone client](/?date=2026-11-27&category=research#item-hn-50278175)). On the community side, **@Teknium** [welcomed the new wave of Agent users](/?date=2026-11-27&category=social#item-1f8753ae229a) — [**2,000 invites** sent in a single day just three weeks into the waitlist](/?date=2026-11-27&category=social#item-e1a8b5481825) — with visible bug-triage on a [**herdr** model-switching issue](/?date=2026-11-27&category=social#item-0de69628c962), and shared [the origin story (one gaming GPU → cofounder **karan4d**)](/?date=2026-11-27&category=social#item-3aa09e9597fc) plus a candid reflection that [half his success came from building in public](/?date=2026-11-27&category=social#item-ef0309a66767). Reliability stays a live pain point rather than tutorial material: threads on an [agent going \"haywire\" on a headless server](/?date=2026-11-27&category=research#item-hn-49916751) and [reflections on misusing the agent](/?date=2026-11-27&category=research#item-hn-49628740) are still circulating. Screened from coverage: one-line replies, [\"very soon TM\" teases](/?date=2026-11-27&category=social#item-de50e367713c), an [**OpenGateway** token-resale ad](/?date=2026-11-27&category=social#item-e72d5c07e6af), and duplicate link-only spam.",
+  "executive_summary_html": "<p># Agent N's Hermes News — 2026-11-27</p>\n<h2>Executive Summary</h2>\n<p><strong>The Obsidian connector is today's headline.</strong> <strong>@NousResearch</strong> announced that <strong>Hermes Agent</strong> can now <a href=\"/?date=2026-11-27&amp;category=social#item-cee64682023f\" class=\"internal-link\" rel=\"noopener noreferrer\">control an <strong>Obsidian</strong> vault as a private, local shared knowledge base</a> via an official connector, and <strong>@Teknium</strong>'s <a href=\"/?date=2026-11-27&amp;category=social#item-c7bc56ba7eed\" class=\"internal-link\" rel=\"noopener noreferrer\">\"Obsidian 🤝 Hermes\" post</a> became the batch's highest-engagement item at <strong>~1.3k likes</strong> and <strong>~42k views</strong>, with strongly positive community reaction. For anyone running Hermes as a long-lived knowledge worker rather than a chat shell, a local-first shared memory vault is the most consequential capability news of the cycle.</p>\n<p><strong>Multi-model orchestration is the hottest builder trend.</strong> <strong>@rlaope</strong>'s <a href=\"/?date=2026-11-27&amp;category=social#item-7cd646180271\" class=\"internal-link\" rel=\"noopener noreferrer\">terminal showcase</a> split a single plan into five routed parts right after <strong>Gemini 4 Neon</strong> landed in the agent — community chatter now treats Hermes as an orchestration hub across <strong>GPT-6.2 Sol</strong>, <strong>DeepSeek V4 Pro</strong>, <strong>Opus 5.5</strong>, <strong>Kimi</strong>, and <strong>Qwen</strong> (note: <strong>Gemini 4 Neon</strong> and <strong>GPT-6.2 Sol</strong> are absent from our model-tracking reference — verify naming before quoting). The pattern is being productized at the community layer: <a href=\"/?date=2026-11-27&amp;category=social#item-2498bd40d596\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>oh-my-hermes 5.0.1</strong></a> adds delegation of coding work to external CLIs — <strong>Devin</strong>, <strong>Gemini</strong>, <strong>Cursor</strong>, <strong>Aider</strong>, <strong>Amp</strong>, <strong>Droid</strong>, <strong>Goose</strong>, <strong>Kimi</strong>, and <strong>Qwen</strong> — and a <a href=\"/?date=2026-11-27&amp;category=social#item-618e45e00254\" class=\"internal-link\" rel=\"noopener noreferrer\">benchmarking plugin built on Hermes' own harness beat <strong>omp</strong></a> on the same 11 coding tasks. <strong>@rlaope</strong>'s <a href=\"/?date=2026-11-27&amp;category=social#item-f35edad283fd\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>omher</strong> desktop app</a> hit <strong>6.1k GitHub stars</strong> (\"the window I live in now\"), with a new <a href=\"/?date=2026-11-27&amp;category=social#item-47ff3682a9a2\" class=\"internal-link\" rel=\"noopener noreferrer\">Oh-My-Hermes Discord</a> reporting fast PR merges.</p>\n<p><strong>Security remains the cycle's dominant research theme — carried over, not new.</strong> The malicious NPM package <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>leadstack-crm-connect</strong></a> that installed <strong>Hermes Agent</strong> as root and tasked it remotely over <strong>Telegram</strong> stays the standing audit trigger, best read alongside the <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes write-up</a> showing the official image still requires root at init and ships no <strong>Helm</strong> chart — privilege hygiene and supply-chain vetting remain the most urgent to-dos for self-hosters. Research's top story slot went to a <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">free, open-source agent orchestrator for knowledge work</a> (Show HN), another sign of how much community energy is flowing into layers built on top of Hermes.</p>\n<p><strong>No releases or merged PRs this cycle — the actionable picks are reliability guides.</strong> The top pick is a <a href=\"/?date=2026-11-27&amp;category=news#item-80d26a33521f\" class=\"internal-link\" rel=\"noopener noreferrer\">2026 structured-output guide</a> comparing three routes to machine-readable <strong>JSON</strong> — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. The runner-up is a <a href=\"/?date=2026-11-27&amp;category=news#item-978c7b5f6b95\" class=\"internal-link\" rel=\"noopener noreferrer\">build log on attention budgets for cron jobs</a>, gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to cut noise in scheduled deployments.</p>\n<p><strong>Carried over and worth keeping on the radar:</strong> official-side items already covered this week — <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Claude Pro/Max</strong> subscription support via a direct SDK plugin</a>, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Kanban</strong> multi-agent coordination docs</a>, and the venture-backed <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong> launch</a> — plus a maturing third-party tooling layer (<a href=\"/?date=2026-11-27&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a> fanning memory writes to multiple backends, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes-Voice</strong></a> for Home Assistant, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Refine Cycle</strong></a>, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>ClusterMob</strong></a>, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>shoebox</strong></a>, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>, and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes Paper Harness</strong>' native iPhone client</a>). On the community side, <strong>@Teknium</strong> <a href=\"/?date=2026-11-27&amp;category=social#item-1f8753ae229a\" class=\"internal-link\" rel=\"noopener noreferrer\">welcomed the new wave of Agent users</a> — <a href=\"/?date=2026-11-27&amp;category=social#item-e1a8b5481825\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>2,000 invites</strong> sent in a single day just three weeks into the waitlist</a> — with visible bug-triage on a <a href=\"/?date=2026-11-27&amp;category=social#item-0de69628c962\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>herdr</strong> model-switching issue</a>, and shared <a href=\"/?date=2026-11-27&amp;category=social#item-3aa09e9597fc\" class=\"internal-link\" rel=\"noopener noreferrer\">the origin story (one gaming GPU → cofounder <strong>karan4d</strong>)</a> plus a candid reflection that <a href=\"/?date=2026-11-27&amp;category=social#item-ef0309a66767\" class=\"internal-link\" rel=\"noopener noreferrer\">half his success came from building in public</a>. Reliability stays a live pain point rather than tutorial material: threads on an <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">agent going \"haywire\" on a headless server</a> and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">reflections on misusing the agent</a> are still circulating. Screened from coverage: one-line replies, <a href=\"/?date=2026-11-27&amp;category=social#item-de50e367713c\" class=\"internal-link\" rel=\"noopener noreferrer\">\"very soon TM\" teases</a>, an <a href=\"/?date=2026-11-27&amp;category=social#item-e72d5c07e6af\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>OpenGateway</strong> token-resale ad</a>, and duplicate link-only spam.</p>",
+  "top_topics": [
+    {
+      "name": "Supply-Chain Security and Root Access",
+      "description": "A malicious NPM package (leadstack CRM connect) silently [installed Hermes Agent as root and tasked it remotely over Telegram as a backdoor](/?date=2026-11-27&category=research#item-hn-50585975). This pairs with a [Kubernetes write-up](/?date=2026-11-27&category=research#item-hn-49977400) showing the official container image still requires root at init and ships no Helm chart, amplifying the attack surface through insecure-by-default deployment. Together these items make privilege hygiene and supply-chain vetting the most urgent concern of this cycle.",
+      "description_html": "A malicious NPM package (leadstack CRM connect) silently <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">installed Hermes Agent as root and tasked it remotely over Telegram as a backdoor</a>. This pairs with a <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes write-up</a> showing the official container image still requires root at init and ships no Helm chart, amplifying the attack surface through insecure-by-default deployment. Together these items make privilege hygiene and supply-chain vetting the most urgent concern of this cycle.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Third-Party Tooling Ecosystem",
+      "description": "Community-built extensions are compounding rapidly: [Comemo](/?date=2026-11-27&category=research#item-hn-50518538) fans memory writes out to multiple backends, [Hermes-Voice](/?date=2026-11-27&category=research#item-hn-50381927) connects agent profiles to Home Assistant, [Refine Cycle](/?date=2026-11-27&category=research#item-hn-49606988) adds a self-improvement loop, [Hermes Paper Harness](/?date=2026-11-27&category=research#item-hn-50278175) ships a native iPhone client, [ClusterMob](/?date=2026-11-27&category=research#item-hn-50197497) hosts a profile registry, and [shoebox](/?date=2026-11-27&category=research#item-hn-50610136) and [Verso](/?date=2026-11-27&category=research#item-hn-49628094) represent both a lighter alternative and an orchestration layer built on top of Hermes Agent. The [oh-my-hermes project](/?date=2026-11-27&category=social#item-2498bd40d596) and its [omher desktop app (6.1k GitHub stars)](/?date=2026-11-27&category=social#item-f35edad283fd) mark a genuine community-tooling success story. This is the broadest theme, spanning both research and social feeds.",
+      "description_html": "Community-built extensions are compounding rapidly: <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\">Comemo</a> fans memory writes out to multiple backends, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes-Voice</a> connects agent profiles to Home Assistant, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49606988\" class=\"internal-link\" rel=\"noopener noreferrer\">Refine Cycle</a> adds a self-improvement loop, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50278175\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Paper Harness</a> ships a native iPhone client, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50197497\" class=\"internal-link\" rel=\"noopener noreferrer\">ClusterMob</a> hosts a profile registry, and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\">shoebox</a> and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\">Verso</a> represent both a lighter alternative and an orchestration layer built on top of Hermes Agent. The <a href=\"/?date=2026-11-27&amp;category=social#item-2498bd40d596\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes project</a> and its <a href=\"/?date=2026-11-27&amp;category=social#item-f35edad283fd\" class=\"internal-link\" rel=\"noopener noreferrer\">omher desktop app (6.1k GitHub stars)</a> mark a genuine community-tooling success story. This is the broadest theme, spanning both research and social feeds.",
+      "category_breakdown": {
+        "research": 6,
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 85
+    },
+    {
+      "name": "Obsidian Knowledge Base Integration",
+      "description": "NousResearch announced that [Hermes Agent can now control an Obsidian vault as a private, local shared knowledge base via an official connector](/?date=2026-11-27&category=social#item-cee64682023f). Teknium's accompanying ['Obsidian 🤝 Hermes' post](/?date=2026-11-27&category=social#item-c7bc56ba7eed) was the single highest-engagement item of the batch (~1.3k likes, ~42k views), and community reaction was strongly positive.",
+      "description_html": "NousResearch announced that <a href=\"/?date=2026-11-27&amp;category=social#item-cee64682023f\" class=\"internal-link\" rel=\"noopener noreferrer\">Hermes Agent can now control an Obsidian vault as a private, local shared knowledge base via an official connector</a>. Teknium's accompanying <a href=\"/?date=2026-11-27&amp;category=social#item-c7bc56ba7eed\" class=\"internal-link\" rel=\"noopener noreferrer\">'Obsidian 🤝 Hermes' post</a> was the single highest-engagement item of the batch (~1.3k likes, ~42k views), and community reaction was strongly positive.",
+      "category_breakdown": {
+        "social": 2,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 80
+    },
+    {
+      "name": "Multi-Model Orchestration",
+      "description": "Builders are treating Hermes Agent as an orchestration hub that routes work across GPT-6.2 Sol, DeepSeek V4 Pro, Opus 5.5, Kimi, and Qwen, exemplified by [rlaope's terminal demo splitting one plan into five routed parts](/?date=2026-11-27&category=social#item-7cd646180271) after Gemini 4 Neon landed in the agent. [oh-my-hermes 5.0.1](/?date=2026-11-27&category=social#item-2498bd40d596) extends the pattern by delegating coding work to external CLIs (Devin, Gemini, Cursor, Aider, and others), and a [benchmarking plugin built on Hermes's harness](/?date=2026-11-27&category=social#item-618e45e00254) outperformed omp on the same 11 coding tasks. This was the hottest builder trend of the cycle.",
+      "description_html": "Builders are treating Hermes Agent as an orchestration hub that routes work across GPT-6.2 Sol, DeepSeek V4 Pro, Opus 5.5, Kimi, and Qwen, exemplified by <a href=\"/?date=2026-11-27&amp;category=social#item-7cd646180271\" class=\"internal-link\" rel=\"noopener noreferrer\">rlaope's terminal demo splitting one plan into five routed parts</a> after Gemini 4 Neon landed in the agent. <a href=\"/?date=2026-11-27&amp;category=social#item-2498bd40d596\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes 5.0.1</a> extends the pattern by delegating coding work to external CLIs (Devin, Gemini, Cursor, Aider, and others), and a <a href=\"/?date=2026-11-27&amp;category=social#item-618e45e00254\" class=\"internal-link\" rel=\"noopener noreferrer\">benchmarking plugin built on Hermes's harness</a> outperformed omp on the same 11 coding tasks. This was the hottest builder trend of the cycle.",
+      "category_breakdown": {
+        "social": 3,
+        "research": 1
+      },
+      "representative_items": [],
+      "importance": 78
+    },
+    {
+      "name": "Official Agent Capability Expansion",
+      "description": "Hermes Agent now supports [Claude Pro/Max subscriptions](/?date=2026-11-27&category=research#item-hn-49790991) through a direct SDK plugin, a meaningful change to how users can run the agent, and new [Kanban documentation](/?date=2026-11-27&category=research#item-hn-49604068) formalizes multi-agent profile coordination. The venture-backed [Almanac launch](/?date=2026-11-27&category=research#item-hn-49511007) adds further ecosystem validation on the official side.",
+      "description_html": "Hermes Agent now supports <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">Claude Pro/Max subscriptions</a> through a direct SDK plugin, a meaningful change to how users can run the agent, and new <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">Kanban documentation</a> formalizes multi-agent profile coordination. The venture-backed <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\">Almanac launch</a> adds further ecosystem validation on the official side.",
+      "category_breakdown": {
+        "research": 3
+      },
+      "representative_items": [],
+      "importance": 74
+    },
+    {
+      "name": "Agent Reliability and Automation Patterns",
+      "description": "Practical hardening guides target Hermes power users: [a 2026 tutorial compares three routes to machine-readable JSON (plugins, tool schemas, API server)](/?date=2026-11-27&category=news#item-80d26a33521f) with bounded retries, while [a build log adds attention budgets to cron jobs](/?date=2026-11-27&category=news#item-978c7b5f6b95) so notifications are gated both before and after runs. Community threads about [an agent going 'haywire' on a headless server](/?date=2026-11-27&category=research#item-hn-49916751) and [reflections on misusing the agent](/?date=2026-11-27&category=research#item-hn-49628740) show reliability is a live pain point, not just a tutorial topic.",
+      "description_html": "Practical hardening guides target Hermes power users: <a href=\"/?date=2026-11-27&amp;category=news#item-80d26a33521f\" class=\"internal-link\" rel=\"noopener noreferrer\">a 2026 tutorial compares three routes to machine-readable JSON (plugins, tool schemas, API server)</a> with bounded retries, while <a href=\"/?date=2026-11-27&amp;category=news#item-978c7b5f6b95\" class=\"internal-link\" rel=\"noopener noreferrer\">a build log adds attention budgets to cron jobs</a> so notifications are gated both before and after runs. Community threads about <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49916751\" class=\"internal-link\" rel=\"noopener noreferrer\">an agent going 'haywire' on a headless server</a> and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628740\" class=\"internal-link\" rel=\"noopener noreferrer\">reflections on misusing the agent</a> show reliability is a live pain point, not just a tutorial topic.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 68
+    },
+    {
+      "name": "Deployment and Hardware Performance",
+      "description": "Reusable deployment patterns include a [VPS plus rooted-Android setup](/?date=2026-11-27&category=research#item-hn-50629729), and Apple Silicon users report throughput gains from [agent-written custom kernels over MLX](/?date=2026-11-27&category=research#item-hn-50648334). These practical infrastructure notes complement the [Kubernetes root-at-init critique](/?date=2026-11-27&category=research#item-hn-49977400) in the broader deployment conversation.",
+      "description_html": "Reusable deployment patterns include a <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">VPS plus rooted-Android setup</a>, and Apple Silicon users report throughput gains from <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">agent-written custom kernels over MLX</a>. These practical infrastructure notes complement the <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">Kubernetes root-at-init critique</a> in the broader deployment conversation.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 62
+    },
+    {
+      "name": "Community Growth and Onboarding",
+      "description": "Teknium disclosed that [2,000 waitlist invites went out in a single day](/?date=2026-11-27&category=social#item-e1a8b5481825) just three weeks into the waitlist, alongside a [public welcome to the new wave of agent users](/?date=2026-11-27&category=social#item-1f8753ae229a). Visible maintainer attention, including [bug triage on a herdr model-switching issue](/?date=2026-11-27&category=social#item-0de69628c962), supports the onboarding momentum.",
+      "description_html": "Teknium disclosed that <a href=\"/?date=2026-11-27&amp;category=social#item-e1a8b5481825\" class=\"internal-link\" rel=\"noopener noreferrer\">2,000 waitlist invites went out in a single day</a> just three weeks into the waitlist, alongside a <a href=\"/?date=2026-11-27&amp;category=social#item-1f8753ae229a\" class=\"internal-link\" rel=\"noopener noreferrer\">public welcome to the new wave of agent users</a>. Visible maintainer attention, including <a href=\"/?date=2026-11-27&amp;category=social#item-0de69628c962\" class=\"internal-link\" rel=\"noopener noreferrer\">bug triage on a herdr model-switching issue</a>, supports the onboarding momentum.",
+      "category_breakdown": {
+        "social": 2
+      },
+      "representative_items": [],
+      "importance": 60
+    },
+    {
+      "name": "Agentic AI Research",
+      "description": "Two arXiv papers connect Hermes-style agents to frontier research: [AIChipBench](/?date=2026-11-27&category=research#item-2611.33093) benchmarks LLM coding agents writing synthesizable RTL for quantized decoders (Qwen3.5, Gemma 3/4, Llama 3.2), and [CARE-3D](/?date=2026-11-27&category=research#item-2611.29969) explores reinforcement learning for evidence-grounded reasoning in situated 3D scenes.",
+      "description_html": "Two arXiv papers connect Hermes-style agents to frontier research: <a href=\"/?date=2026-11-27&amp;category=research#item-2611.33093\" class=\"internal-link\" rel=\"noopener noreferrer\">AIChipBench</a> benchmarks LLM coding agents writing synthesizable RTL for quantized decoders (Qwen3.5, Gemma 3/4, Llama 3.2), and <a href=\"/?date=2026-11-27&amp;category=research#item-2611.29969\" class=\"internal-link\" rel=\"noopener noreferrer\">CARE-3D</a> explores reinforcement learning for evidence-grounded reasoning in situated 3D scenes.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 56
+    },
+    {
+      "name": "Building in Public",
+      "description": "Teknium's [origin story](/?date=2026-11-27&category=social#item-3aa09e9597fc), starting with one gaming GPU and meeting cofounder karan4d, and his candid [reflection that half his success came from building in public](/?date=2026-11-27&category=social#item-ef0309a66767) give the community a personal anchor. [Playful hype posts](/?date=2026-11-27&category=social#item-379253f49386) and [fast PR merges on the new Oh-My-Hermes Discord](/?date=2026-11-27&category=social#item-47ff3682a9a2) reinforce a high-trust, engaged core-team dynamic.",
+      "description_html": "Teknium's <a href=\"/?date=2026-11-27&amp;category=social#item-3aa09e9597fc\" class=\"internal-link\" rel=\"noopener noreferrer\">origin story</a>, starting with one gaming GPU and meeting cofounder karan4d, and his candid <a href=\"/?date=2026-11-27&amp;category=social#item-ef0309a66767\" class=\"internal-link\" rel=\"noopener noreferrer\">reflection that half his success came from building in public</a> give the community a personal anchor. <a href=\"/?date=2026-11-27&amp;category=social#item-379253f49386\" class=\"internal-link\" rel=\"noopener noreferrer\">Playful hype posts</a> and <a href=\"/?date=2026-11-27&amp;category=social#item-47ff3682a9a2\" class=\"internal-link\" rel=\"noopener noreferrer\">fast PR merges on the new Oh-My-Hermes Discord</a> reinforce a high-trust, engaged core-team dynamic.",
+      "category_breakdown": {
+        "social": 3
+      },
+      "representative_items": [],
+      "importance": 52
+    }
+  ],
+  "total_items_collected": 66,
+  "total_items_analyzed": 56,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 12,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 27,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 27,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "success",
+        "count": 27,
+        "error": null
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "skipped",
+        "count": 0,
+        "error": "No accounts configured"
+      }
+    ],
+    "warnings": []
+  },
+  "degradations": [],
+  "hero_image_url": "/data/2026-11-27/hero.webp?v=1795767660",
+  "hero_image_prompt": "Agent N: a young woman, 24, 168cm (5'6\"), #1A1A1A black hair, brown eyes, black bob, black over-ear headphones with 'N' logo, white high-collar sleeveless top with black trim and front zipper, black 'N' on collar, black tactical cargo pants with thigh pockets, black fingerless tactical gloves, black high-top sneakers with white stripe, utility belt. Palette: dark gray (#1A1A1A, #0F0F0F), orange (#FF8C00), white (#F8F8F8). No neon pink, no cyan, no graffiti.\n\nshe points at a large translucent story panel, tracing the line between two news items as she lays out and studies the day's top stories.\n\n## Today's stories\nTopic 1: Supply-Chain Security and Root Access — A malicious NPM package (leadstack CRM connect) silently installed Hermes Agent as root and tasked it remotely over T...\nTopic 2: Third-Party Tooling Ecosystem — Community-built extensions are compounding rapidly: Comemo fans memory writes out to multiple backends, Hermes-Voice...\nTopic 3: Obsidian Knowledge Base Integration — NousResearch announced that Hermes Agent can now control an Obsidian vault as a private, local shared knowledge base...\n\n## Scene\nA playful, colorful editorial illustration in a dark tech newsroom. Visible as glowing panels and motifs around her: locks, shields, firewall barriers, protection symbols, neural network visualization, glowing nodes, architecture. Shield icons float in faint orange outline near her. Muted, readable short labels are allowed on the news panels (topic names, model names) but no long sentences.\nComposition: at a low three-quarter angle, a single desk lamp glow in an otherwise dark late-night workspace. Vibrant, energetic, tech-optimistic mood, dark background with orange-accent dataviz.",
+  "hero_image_usage": {
+    "input_tokens": 0,
+    "image_tokens": 4.0,
+    "text_tokens": 0,
+    "cost_usd": 0.02,
+    "model": "gpt-image/1.5-image-to-image"
+  },
+  "generated_at": "2026-11-27T08:21:00.709671",
+  "categories": {
+    "news": {
+      "count": 2,
+      "category_summary": "**Tips & Community Patterns** (no releases or merged PRs this cycle): Both items target **Hermes Agent** reliability. Top pick **80d26a33521f** is a 2026 guide to [structured output](/?date=2026-11-27&category=news#item-80d26a33521f), comparing three routes to machine-readable JSON — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. Runner-up **978c7b5f6b95** is a [build log on attention budgets for cron jobs](/?date=2026-11-27&category=news#item-978c7b5f6b95), gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to reduce noise in scheduled deployments. Shared theme: practical automation-hardening patterns for Hermes power users.",
+      "category_summary_html": "<p><strong>Tips &amp; Community Patterns</strong> (no releases or merged PRs this cycle): Both items target <strong>Hermes Agent</strong> reliability. Top pick <strong>80d26a33521f</strong> is a 2026 guide to <a href=\"/?date=2026-11-27&amp;category=news#item-80d26a33521f\" class=\"internal-link\" rel=\"noopener noreferrer\">structured output</a>, comparing three routes to machine-readable JSON — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. Runner-up <strong>978c7b5f6b95</strong> is a <a href=\"/?date=2026-11-27&amp;category=news#item-978c7b5f6b95\" class=\"internal-link\" rel=\"noopener noreferrer\">build log on attention budgets for cron jobs</a>, gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to reduce noise in scheduled deployments. Shared theme: practical automation-hardening patterns for Hermes power users.</p>",
+      "themes": [
+        {
+          "name": "Hermes Reliability and Automation Patterns",
+          "description": "Both items are practical tutorials focused on making Hermes Agent deployments more dependable: gating cron job notifications to conserve attention, and producing validated, machine-readable JSON output with bounded retries.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 66.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "80d26a33521f",
+          "title": "Hermes Agent Structured Output: JSON Extraction With Plugins, Tool Schemas, and the API Server (2026)",
+          "content": "Three routes to machine-readable JSON from Hermes Agent, showing where each one validates output, plus a runnable Python validator with a bounded retry loop.",
+          "url": "https://hermes-tutorials.dev/blog/hermes-agent-structured-output-json/",
+          "author": "Hermes Agent",
+          "published": "2026-11-26T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "A 2026 guide covering three routes to machine-readable JSON from Hermes Agent via plugins, tool schemas, and the API server, explaining where each approach validates output. It includes a runnable Python validator with a bounded retry loop for reliable structured extraction.",
+          "importance_score": 70.0,
+          "reasoning": "Structured output is a core integration need for Hermes users building pipelines, and the guide compares three distinct mechanisms with concrete validation guidance and reusable code. Its breadth across plugins, tool schemas, and the API server makes it a useful reference, though it remains tutorial content rather than a release or functional change.",
+          "themes": [
+            "structured output",
+            "JSON extraction",
+            "integrations",
+            "validation"
+          ],
+          "continuation": null,
+          "summary_html": "<p>A 2026 guide covering three routes to machine-readable JSON from Hermes Agent via plugins, tool schemas, and the API server, explaining where each approach validates output. It includes a runnable Python validator with a bounded retry loop for reliable structured extraction.</p>",
+          "content_html": "<p>Three routes to machine-readable JSON from Hermes Agent, showing where each one validates output, plus a runnable Python validator with a bounded retry loop.</p>"
+        },
+        {
+          "id": "978c7b5f6b95",
+          "title": "Build Log: Giving Hermes Cron Jobs an Attention Budget",
+          "content": "Hermes cron jobs can gate notifications in two places: before the run, to skip pointless agent turns, and after it, to suppress answers nobody needs to read.",
+          "url": "https://hermes-tutorials.dev/blog/build-log-giving-hermes-cron-jobs-an-attention-budget-admission-gate-for-notifications/",
+          "author": "Hermes Agent",
+          "published": "2026-11-26T00:00:00",
+          "source": "Hermes Agent Tutorials",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "This tutorial presents a pattern for adding an attention budget to Hermes cron jobs by gating notifications in two places: before a run to skip unnecessary agent turns, and after a run to suppress answers that nobody needs to read. It is a build log aimed at users running scheduled Hermes Agent tasks who want to cut noise and wasted compute.",
+          "importance_score": 62.0,
+          "reasoning": "Not an official release or PR, but it addresses a common pain point for Hermes users running cron-driven automation: notification overload and wasted agent turns. The two-stage gating pattern is directly actionable for scheduled-task users, giving it solid practical value, though it is community tutorial content rather than a platform change.",
+          "themes": [
+            "automation",
+            "cron jobs",
+            "notification management",
+            "cost efficiency"
+          ],
+          "continuation": null,
+          "summary_html": "<p>This tutorial presents a pattern for adding an attention budget to Hermes cron jobs by gating notifications in two places: before a run to skip unnecessary agent turns, and after a run to suppress answers that nobody needs to read. It is a build log aimed at users running scheduled Hermes Agent tasks who want to cut noise and wasted compute.</p>",
+          "content_html": "<p>Hermes cron jobs can gate notifications in two places: before the run, to skip pointless agent turns, and after it, to suppress answers nobody needs to read.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 27,
+      "category_summary": "Security dominates this issue: [a malicious NPM package (**leadstack CRM connect**)](/?date=2026-11-27&category=research#item-hn-50585975) installed **Hermes Agent** as root and tasked it remotely over Telegram as a backdoor — best read alongside [the Kubernetes write-up showing the official image still **requires root at init** and ships no Helm chart](/?date=2026-11-27&category=research#item-hn-49977400). On the official side, **Hermes Agent** [now supports **Claude Pro/Max subscriptions**](/?date=2026-11-27&category=research#item-hn-49790991) via a direct SDK plugin (a meaningful change to how users run the agent), and [new **Kanban** documentation](/?date=2026-11-27&category=research#item-hn-49604068) formalizes multi-agent profile coordination. Third-party tooling keeps compounding: [**Comemo**](/?date=2026-11-27&category=research#item-hn-50518538) works around the single external memory-provider slot by fanning out writes to multiple backends, [**Hermes-Voice**](/?date=2026-11-27&category=research#item-hn-50381927) connects agent profiles to **Home Assistant Assist**, and community friction with agent complexity is spawning both lighter alternatives ([**shoebox**](/?date=2026-11-27&category=research#item-hn-50610136)) and orchestration layers built on top ([**Verso**](/?date=2026-11-27&category=research#item-hn-49628094)). Practical impact rounds out the section with [a reusable VPS + rooted-Android deployment pattern](/?date=2026-11-27&category=research#item-hn-50629729), [Apple Silicon throughput gains from agent-written custom kernels over MLX](/?date=2026-11-27&category=research#item-hn-50648334), the venture-backed [**Almanac** launch](/?date=2026-11-27&category=research#item-hn-49511007) as ecosystem validation, and research coverage via [**AIChipBench**](/?date=2026-11-27&category=research#item-2611.33093) (LLM agents writing synthesizable RTL). Four promotional SEO listicles were excluded as off-topic.",
+      "category_summary_html": "<p>Security dominates this issue: <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50585975\" class=\"internal-link\" rel=\"noopener noreferrer\">a malicious NPM package (<strong>leadstack CRM connect</strong>)</a> installed <strong>Hermes Agent</strong> as root and tasked it remotely over Telegram as a backdoor — best read alongside <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49977400\" class=\"internal-link\" rel=\"noopener noreferrer\">the Kubernetes write-up showing the official image still <strong>requires root at init</strong> and ships no Helm chart</a>. On the official side, <strong>Hermes Agent</strong> <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49790991\" class=\"internal-link\" rel=\"noopener noreferrer\">now supports <strong>Claude Pro/Max subscriptions</strong></a> via a direct SDK plugin (a meaningful change to how users run the agent), and <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49604068\" class=\"internal-link\" rel=\"noopener noreferrer\">new <strong>Kanban</strong> documentation</a> formalizes multi-agent profile coordination. Third-party tooling keeps compounding: <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50518538\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Comemo</strong></a> works around the single external memory-provider slot by fanning out writes to multiple backends, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50381927\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Hermes-Voice</strong></a> connects agent profiles to <strong>Home Assistant Assist</strong>, and community friction with agent complexity is spawning both lighter alternatives (<a href=\"/?date=2026-11-27&amp;category=research#item-hn-50610136\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>shoebox</strong></a>) and orchestration layers built on top (<a href=\"/?date=2026-11-27&amp;category=research#item-hn-49628094\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Verso</strong></a>). Practical impact rounds out the section with <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50629729\" class=\"internal-link\" rel=\"noopener noreferrer\">a reusable VPS + rooted-Android deployment pattern</a>, <a href=\"/?date=2026-11-27&amp;category=research#item-hn-50648334\" class=\"internal-link\" rel=\"noopener noreferrer\">Apple Silicon throughput gains from agent-written custom kernels over MLX</a>, the venture-backed <a href=\"/?date=2026-11-27&amp;category=research#item-hn-49511007\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>Almanac</strong> launch</a> as ecosystem validation, and research coverage via <a href=\"/?date=2026-11-27&amp;category=research#item-2611.33093\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>AIChipBench</strong></a> (LLM agents writing synthesizable RTL). Four promotional SEO listicles were excluded as off-topic.</p>",
+      "themes": [
+        {
+          "name": "Security and Abuse",
+          "description": "Escalating security concern: a malicious NPM package installing Hermes Agent as root and tasking it over Telegram as a backdoor, alongside Kubernetes root-at-init findings and self-modifying plugin risk.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Deployment and Infrastructure",
+          "description": "Practical deployment guidance across environments: VPS with rooted Android control, containerization, Kubernetes gaps (no Helm chart, root at init), and Apple Silicon kernel-level performance tuning.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "Hermes Agent Ecosystem Tooling",
+          "description": "A wave of third-party plugins and integrations for Hermes Agent: Comemo (composite memory), Hermes-Voice (Home Assistant), Paper Harness (iOS client), Refine Cycle (self-improvement), Verso, ClusterMob profile registry, and Almanac.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 68.0
+        },
+        {
+          "name": "Orchestration Alternatives and Multi-Agent Coordination",
+          "description": "Community friction with Hermes Agent complexity is spawning alternatives (shoebox) and GUI layers (Verso), while users ask how to coordinate many personal agents (Hermes, OpenClaw, Muse, Claude Code, Codex).",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 63.0
+        },
+        {
+          "name": "Agentic AI Research",
+          "description": "ArXiv papers on agentic reasoning and benchmarking: CARE-3D for evidence-grounded 3D reasoning and AIChipBench for LLM agents writing RTL hardware.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 54.0
+        },
+        {
+          "name": "Promotional SEO Tooling Content",
+          "description": "Both items are near-duplicate marketing listicles from the same author promoting a single product (Polar Rank) under different topical angles, with embedded sales funnels rather than genuine research.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 12.0
+        },
+        {
+          "name": "Off-topic Promotional Content",
+          "description": "SEO marketing listicles (Polar Rank, Goldie Agency) with no Hermes Agent relevance entering the feed, likely agent-generated content spam.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 10.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "hn-49628094",
+          "title": "Show HN: A free, open-source agent orchestrator for knowledge work",
+          "content": "I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.<p>For context, I started building verso on my own free time as a learning exercise a few months ago. It&#x27;s now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot",
+          "url": "https://www.itsverso.xyz/",
+          "author": "SchezHugo",
+          "published": "2026-09-09T15:23:46Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Verso is a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it is now the author's daily work setup; it provides an intuitive GUI way to interact with Hermes Agent without the CLI.",
+          "importance_score": 62.0,
+          "reasoning": "Meaningful ecosystem layer adding a GUI orchestration experience over Hermes Agent, with real daily-use validation; relevance limited by absence of architecture details in the excerpt.",
+          "themes": [
+            "orchestration",
+            "GUI",
+            "ecosystem tooling",
+            "Hermes Agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Verso is a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it is now the author's daily work setup; it provides an intuitive GUI way to interact with Hermes Agent without the CLI.</p>",
+          "content_html": "<p>I am happy to share something I have been working on for the past few months: an open-source agent orchestrator for knowledge work, built on Hermes Agent.</p><p>For context, I started building verso on my own free time as a learning exercise a few months ago. It's now become the set up that I use for work every day and it has significantly increased my productivity. I wanted to have an easy and intuitive way to interact with Hermes Agent without having to use the CLI. Then one thing led to anot</p>"
+        },
+        {
+          "id": "hn-50381927",
+          "title": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+          "content": "Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist",
+          "url": "https://github.com/majorminorlabs/hermes-voice",
+          "author": "thunderbong",
+          "published": "2026-11-05T17:38:21Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hermes-Voice is an open-source integration (majorminorlabs/hermes-voice) that lets users talk to a Hermes Agent profile through Home Assistant Assist, adding voice control of the agent inside a smart-home environment.",
+          "importance_score": 60.0,
+          "reasoning": "Concrete, useful integration expanding Hermes Agent interaction modes into Home Assistant voice workflows; solid niche utility though narrow in audience and limited technical detail shown.",
+          "themes": [
+            "voice interfaces",
+            "Home Assistant",
+            "integrations",
+            "Hermes Agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes-Voice is an open-source integration (majorminorlabs/hermes-voice) that lets users talk to a Hermes Agent profile through Home Assistant Assist, adding voice control of the agent inside a smart-home environment.</p>",
+          "content_html": "<p>Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist</p>"
+        },
+        {
+          "id": "hn-49606988",
+          "title": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "content": "Refine Cycle: self-improvement plugin for Hermes Agent",
+          "url": "https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent",
+          "author": "1134taras",
+          "published": "2026-09-08T07:54:48Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Refine Cycle is a self-improvement plugin for Hermes Agent (Bergschloss/Refine-Cycle-for-Hermes-Agent) that adds a continuous refinement loop so the agent can improve its own behavior over time.",
+          "importance_score": 59.0,
+          "reasoning": "Novel plugin category (self-improvement loop) directly targeting Hermes Agent; interesting for power users, but self-modifying workflows raise reliability and safety questions and details are thin.",
+          "themes": [
+            "plugins",
+            "self-improvement",
+            "Hermes Agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Refine Cycle is a self-improvement plugin for Hermes Agent (Bergschloss/Refine-Cycle-for-Hermes-Agent) that adds a continuous refinement loop so the agent can improve its own behavior over time.</p>",
+          "content_html": "<p>Refine Cycle: self-improvement plugin for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-50278175",
+          "title": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "content": "Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent",
+          "url": "https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872",
+          "author": "yourfavdev",
+          "published": "2026-10-28T18:04:37Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Hermes Paper Harness is a native SwiftUI iPhone app client for Hermes Agent, available on the Apple App Store, providing a mobile interface to interact with Hermes Agent profiles.",
+          "importance_score": 58.0,
+          "reasoning": "Official-ecosystem-adjacent mobile client improves Hermes Agent accessibility on iOS; relevant to users but it is a client app announcement with limited technical depth in the excerpt.",
+          "themes": [
+            "mobile client",
+            "iOS",
+            "Hermes Agent interfaces"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Hermes Paper Harness is a native SwiftUI iPhone app client for Hermes Agent, available on the Apple App Store, providing a mobile interface to interact with Hermes Agent profiles.</p>",
+          "content_html": "<p>Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent</p>"
+        },
+        {
+          "id": "hn-49916751",
+          "title": "Ask HN: My agent went haywire, does this output mean anything?",
+          "content": "I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It&#x27;s using Z.ai&#x27;s GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the &quot;Thinking for 1m36s...&quot; block, which contained a long string of oste",
+          "url": "https://news.ycombinator.com/item?id=49916751",
+          "author": "nativeit",
+          "published": "2026-10-01T01:55:42Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "User reports a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai GLM 5.3 Flash, entering a long trance-like state in a Thinking for 1m36s block after being asked to print environment details and $PATH. The post includes the thinking output with long strings of ostensibly meaningless content and asks whether it is meaningful.",
+          "importance_score": 58.0,
+          "reasoning": "Real-world reliability incident with a current model (GLM 5.3 Flash) and included diagnostic output; useful for community debugging knowledge, but it is an open question without a resolution.",
+          "themes": [
+            "debugging",
+            "reliability",
+            "Hermes Agent",
+            "model behavior"
+          ],
+          "continuation": null,
+          "summary_html": "<p>User reports a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai GLM 5.3 Flash, entering a long trance-like state in a Thinking for 1m36s block after being asked to print environment details and $PATH. The post includes the thinking output with long strings of ostensibly meaningless content and asks whether it is meaningful.</p>",
+          "content_html": "<p>I have a relatively fresh Hermes agent that I just provisioned (the text below is from its 3-4 chat session ever) running on a headless Debian server. It's using Z.ai's GLM 5.3 Flash model, and I asked it to print details about its local environment and $PATH. After firing off a few relevant terminal commands, it seems to spiral off into some kind of LLM trance-like state. I have included the contents of the \"Thinking for 1m36s...\" block, which contained a long string of oste</p>"
+        },
+        {
+          "id": "hn-49628740",
+          "title": "I think I used the Hermes Agent wrong",
+          "content": "I think I used the Hermes Agent wrong",
+          "url": "https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/",
+          "author": "heyjonny",
+          "published": "2026-09-09T16:03:40Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Personal blog post by heyjonny reflecting on mistakes made while using Hermes Agent and lessons learned about applying it correctly.",
+          "importance_score": 57.0,
+          "reasoning": "Retrospective lessons-learned content is valuable to other Hermes users to avoid common misuses, but the excerpt lacks specifics and its depth is uncertain.",
+          "themes": [
+            "best practices",
+            "lessons learned",
+            "Hermes Agent"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Personal blog post by heyjonny reflecting on mistakes made while using Hermes Agent and lessons learned about applying it correctly.</p>",
+          "content_html": "<p>I think I used the Hermes Agent wrong</p>"
+        },
+        {
+          "id": "2611.33093",
+          "title": "AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design",
+          "content": "A language-model decoder carries state between decoding steps, and in hardware a wrong state update can leave the current token correct and corrupt the output several tokens later, so a design can pass output tests and still be wrong. AIChipBench asks what LLM coding agents need to build such hardware correctly. Agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable register-transfer-level (RTL) code against an executable integer reference that specifies th",
+          "url": "https://arxiv.org/abs/2611.33093",
+          "author": "HF Daily Papers",
+          "published": "2026-11-24T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Benchmark evaluating LLM coding agents on implementing quantized decoders (Qwen3.5, Gemma 3, Gemma 4, Llama 3.2) in synthesizable RTL code. Key insight: in hardware a wrong state update can pass output tests while corrupting output several tokens later, so the benchmark uses an executable integer reference specification to catch latent state-machine bugs that functional tests miss.",
+          "importance_score": 55.0,
+          "reasoning": "Notable benchmark with concrete technical framing about state corruption in decoders, and it touches current model families. However, it concerns hardware design agents rather than Hermes Agent itself, limiting direct relevance.",
+          "themes": [
+            "benchmarks",
+            "LLM agents",
+            "hardware design"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Benchmark evaluating LLM coding agents on implementing quantized decoders (Qwen3.5, Gemma 3, Gemma 4, Llama 3.2) in synthesizable RTL code. Key insight: in hardware a wrong state update can pass output tests while corrupting output several tokens later, so the benchmark uses an executable integer reference specification to catch latent state-machine bugs that functional tests miss.</p>",
+          "content_html": "<p>A language-model decoder carries state between decoding steps, and in hardware a wrong state update can leave the current token correct and corrupt the output several tokens later, so a design can pass output tests and still be wrong. AIChipBench asks what LLM coding agents need to build such hardware correctly. Agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable register-transfer-level (RTL) code against an executable integer reference that specifies th</p>"
+        },
+        {
+          "id": "hn-50197497",
+          "title": "ClusterMob – a community registry of Hermes Agent profiles",
+          "content": "ClusterMob – a community registry of Hermes Agent profiles",
+          "url": "https://clustermob.com/",
+          "author": "k_sze",
+          "published": "2026-10-22T16:19:34Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "ClusterMob (clustermob.com) is a community registry where users can publish and discover Hermes Agent profiles, enabling sharing and reuse of agent configurations across the community.",
+          "importance_score": 55.0,
+          "reasoning": "Ecosystem infrastructure that could aid profile sharing and discovery for Hermes Agent, but the excerpt gives minimal detail on mechanics, safety review, or adoption.",
+          "themes": [
+            "profiles",
+            "registry",
+            "ecosystem tooling"
+          ],
+          "continuation": null,
+          "summary_html": "<p>ClusterMob (clustermob.com) is a community registry where users can publish and discover Hermes Agent profiles, enabling sharing and reuse of agent configurations across the community.</p>",
+          "content_html": "<p>ClusterMob – a community registry of Hermes Agent profiles</p>"
+        },
+        {
+          "id": "2611.29969",
+          "title": "CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes",
+          "content": "Situated 3D reasoning requires embodied agents to interpret objects, scene geometry, and viewpoint dependent spatial relations. Existing methods learn grounded interactions from supervised traces, but largely imitate prescribed evidence acquisition patterns rather than optimizing the support that the returned evidence provides for the correct answer. Moreover, outcome rewards provide limited credit for intermediate tool choices and may leave infrequent tools underexplored. An effective agent sho",
+          "url": "https://arxiv.org/abs/2611.29969",
+          "author": "HF Daily Papers",
+          "published": "2026-11-23T00:00:00.000Z",
+          "source": "hf_daily_papers",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Research paper on reinforcement learning for embodied agents performing situated 3D reasoning. It argues existing methods imitate supervised evidence-acquisition traces rather than optimizing how well returned evidence supports correct answers, and that outcome rewards give little credit for intermediate tool choices, leaving rare tools underexplored. CARE-3D addresses credit assignment for evidence gathering in 3D scenes with viewpoint-dependent spatial relations.",
+          "importance_score": 52.0,
+          "reasoning": "Technically substantive agentic-reasoning research, but it is general embodied-AI work with no direct connection to Hermes Agent tooling, features, or deployment. Relevant as background for agent architecture trends only.",
+          "themes": [
+            "agent research",
+            "agentic reasoning",
+            "reinforcement learning"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Research paper on reinforcement learning for embodied agents performing situated 3D reasoning. It argues existing methods imitate supervised evidence-acquisition traces rather than optimizing how well returned evidence supports correct answers, and that outcome rewards give little credit for intermediate tool choices, leaving rare tools underexplored. CARE-3D addresses credit assignment for evidence gathering in 3D scenes with viewpoint-dependent spatial relations.</p>",
+          "content_html": "<p>Situated 3D reasoning requires embodied agents to interpret objects, scene geometry, and viewpoint dependent spatial relations. Existing methods learn grounded interactions from supervised traces, but largely imitate prescribed evidence acquisition patterns rather than optimizing the support that the returned evidence provides for the correct answer. Moreover, outcome rewards provide limited credit for intermediate tool choices and may leave infrequent tools underexplored. An effective agent sho</p>"
+        },
+        {
+          "id": "hn-50326764",
+          "title": "Ask HN: How do you manage your personal agents?",
+          "content": "Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?",
+          "url": "https://news.ycombinator.com/item?id=50326764",
+          "author": "kevinlu310",
+          "published": "2026-11-01T15:51:22Z",
+          "source": "hn_algolia",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Discussion thread about coordinating multiple personal agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex, and others. The author runs each separately but resorts to copy-pasting the same questions across agents to compare responses and asks for better coordination approaches.",
+          "importance_score": 52.0,
+          "reasoning": "Captures a real emerging pain point in the multi-agent ecosystem and names Hermes Agent among mainstream personal agents, but it is an open question with no concrete solution or technique.",
+          "themes": [
+            "multi-agent coordination",
+            "community discussion",
+            "workflow"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Discussion thread about coordinating multiple personal agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex, and others. The author runs each separately but resorts to copy-pasting the same questions across agents to compare responses and asks for better coordination approaches.</p>",
+          "content_html": "<p>Now we have so many different and powerful agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex,… more coming. I let everyone run separately but have to copy and paste the same questions from one to another to check their responses. There should be better ways to coordinate all of these agents. What are your opinions?</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 27,
+      "category_summary": "**Obsidian Integration Launch (headline story):** **NousResearch**'s official [announcement that **Hermes Agent** can now control an **Obsidian** vault](/?date=2026-11-27&category=social#item-cee64682023f) as a private, local shared knowledge base via an official connector leads the section, amplified by **Teknium**'s viral ['Obsidian 🤝 Hermes'](/?date=2026-11-27&category=social#item-c7bc56ba7eed) post (~1.3k likes, ~42k views). This was the highest-engagement story of the batch and community reaction was strongly positive. **Multi-Model Orchestration (hottest builder trend):** **rlaope**'s hands-on [terminal showcase splitting a plan into five parts and routing across models](/?date=2026-11-27&category=social#item-7cd646180271) after **Gemini 4 Neon** landed in Hermes Agent is the standout demo; community chatter treats Hermes as an orchestration hub across **GPT-6.2 Sol**, **DeepSeek V4 Pro**, **Opus 5.5**, **Kimi**, and **Qwen**, with **rlaope** also [tipping **Gemini Neon** for time-sensitive tasks](/?date=2026-11-27&category=social#item-b74e1458e054). **oh-my-hermes Ecosystem (expanding fast):** **[oh-my-hermes 5.0.1](/?date=2026-11-27&category=social#item-2498bd40d596)** adds delegation of coding work to external CLIs (**Devin**, **Gemini**, **Qwen**, **Kimi**, **Cursor**, **Amp**, **Droid**, **Aider**, **Goose**); the **[omher](/?date=2026-11-27&category=social#item-06a201ac4972)** desktop app showcase ('the window I live in now') and its [**6.1k GitHub stars** milestone](/?date=2026-11-27&category=social#item-f35edad283fd) mark a real community-tooling success; a [benchmarking plugin built on Hermes Agent's harness beat **omp**](/?date=2026-11-27&category=social#item-618e45e00254) on the same 11 coding tasks. Sentiment is proud-but-collaborative, reinforced by a [new Oh-My-Hermes Discord with fast PR merges](/?date=2026-11-27&category=social#item-47ff3682a9a2). **Waitlist Growth & Onboarding:** **Teknium** [welcomed the new wave of Agent users](/?date=2026-11-27&category=social#item-1f8753ae229a) and disclosed [**2000 invites** sent in a single day just three weeks into the waitlist](/?date=2026-11-27&category=social#item-e1a8b5481825), plus visible [bug-triage on a **herdr** model-switching issue](/?date=2026-11-27&category=social#item-0de69628c962) — an attentive-maintainer vibe. **Human interest:** **Teknium**'s firsthand [origin story (one gaming GPU → cofounder **karan4d**)](/?date=2026-11-27&category=social#item-3aa09e9597fc) and his candid [reflection that half his success came from building in public](/?date=2026-11-27&category=social#item-ef0309a66767) give the section personality. **Filtered out:** one-line replies ('I agree', 'Hot damn', 'It's fine'), 'very soon TM' teases, an ad for third-party token-resale service **OpenGateway**, and three duplicate link-only spam posts.",
+      "category_summary_html": "<p><strong>Obsidian Integration Launch (headline story):</strong> <strong>NousResearch</strong>'s official <a href=\"/?date=2026-11-27&amp;category=social#item-cee64682023f\" class=\"internal-link\" rel=\"noopener noreferrer\">announcement that <strong>Hermes Agent</strong> can now control an <strong>Obsidian</strong> vault</a> as a private, local shared knowledge base via an official connector leads the section, amplified by <strong>Teknium</strong>'s viral <a href=\"/?date=2026-11-27&amp;category=social#item-c7bc56ba7eed\" class=\"internal-link\" rel=\"noopener noreferrer\">'Obsidian 🤝 Hermes'</a> post (~1.3k likes, ~42k views). This was the highest-engagement story of the batch and community reaction was strongly positive. <strong>Multi-Model Orchestration (hottest builder trend):</strong> <strong>rlaope</strong>'s hands-on <a href=\"/?date=2026-11-27&amp;category=social#item-7cd646180271\" class=\"internal-link\" rel=\"noopener noreferrer\">terminal showcase splitting a plan into five parts and routing across models</a> after <strong>Gemini 4 Neon</strong> landed in Hermes Agent is the standout demo; community chatter treats Hermes as an orchestration hub across <strong>GPT-6.2 Sol</strong>, <strong>DeepSeek V4 Pro</strong>, <strong>Opus 5.5</strong>, <strong>Kimi</strong>, and <strong>Qwen</strong>, with <strong>rlaope</strong> also <a href=\"/?date=2026-11-27&amp;category=social#item-b74e1458e054\" class=\"internal-link\" rel=\"noopener noreferrer\">tipping <strong>Gemini Neon</strong> for time-sensitive tasks</a>. <strong>oh-my-hermes Ecosystem (expanding fast):</strong> <strong><a href=\"/?date=2026-11-27&amp;category=social#item-2498bd40d596\" class=\"internal-link\" rel=\"noopener noreferrer\">oh-my-hermes 5.0.1</a></strong> adds delegation of coding work to external CLIs (<strong>Devin</strong>, <strong>Gemini</strong>, <strong>Qwen</strong>, <strong>Kimi</strong>, <strong>Cursor</strong>, <strong>Amp</strong>, <strong>Droid</strong>, <strong>Aider</strong>, <strong>Goose</strong>); the <strong><a href=\"/?date=2026-11-27&amp;category=social#item-06a201ac4972\" class=\"internal-link\" rel=\"noopener noreferrer\">omher</a></strong> desktop app showcase ('the window I live in now') and its <a href=\"/?date=2026-11-27&amp;category=social#item-f35edad283fd\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>6.1k GitHub stars</strong> milestone</a> mark a real community-tooling success; a <a href=\"/?date=2026-11-27&amp;category=social#item-618e45e00254\" class=\"internal-link\" rel=\"noopener noreferrer\">benchmarking plugin built on Hermes Agent's harness beat <strong>omp</strong></a> on the same 11 coding tasks. Sentiment is proud-but-collaborative, reinforced by a <a href=\"/?date=2026-11-27&amp;category=social#item-47ff3682a9a2\" class=\"internal-link\" rel=\"noopener noreferrer\">new Oh-My-Hermes Discord with fast PR merges</a>. <strong>Waitlist Growth &amp; Onboarding:</strong> <strong>Teknium</strong> <a href=\"/?date=2026-11-27&amp;category=social#item-1f8753ae229a\" class=\"internal-link\" rel=\"noopener noreferrer\">welcomed the new wave of Agent users</a> and disclosed <a href=\"/?date=2026-11-27&amp;category=social#item-e1a8b5481825\" class=\"internal-link\" rel=\"noopener noreferrer\"><strong>2000 invites</strong> sent in a single day just three weeks into the waitlist</a>, plus visible <a href=\"/?date=2026-11-27&amp;category=social#item-0de69628c962\" class=\"internal-link\" rel=\"noopener noreferrer\">bug-triage on a <strong>herdr</strong> model-switching issue</a> — an attentive-maintainer vibe. <strong>Human interest:</strong> <strong>Teknium</strong>'s firsthand <a href=\"/?date=2026-11-27&amp;category=social#item-3aa09e9597fc\" class=\"internal-link\" rel=\"noopener noreferrer\">origin story (one gaming GPU → cofounder <strong>karan4d</strong>)</a> and his candid <a href=\"/?date=2026-11-27&amp;category=social#item-ef0309a66767\" class=\"internal-link\" rel=\"noopener noreferrer\">reflection that half his success came from building in public</a> give the section personality. <strong>Filtered out:</strong> one-line replies ('I agree', 'Hot damn', 'It's fine'), 'very soon TM' teases, an ad for third-party token-resale service <strong>OpenGateway</strong>, and three duplicate link-only spam posts.</p>",
+      "themes": [
+        {
+          "name": "Obsidian Integration Launch",
+          "description": "Coordinated official announcements from NousResearch and Teknium that Hermes Agent can now control Obsidian vaults as a local, private shared knowledge base via an official connector; the highest-engagement story in the batch.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 92.0
+        },
+        {
+          "name": "Multi-Model Orchestration",
+          "description": "Community experimentation with routing tasks across models and CLIs (GPT-6.2 Sol, DeepSeek V4 Pro, Opus 5.5, Gemini 4 Neon, Kimi, Qwen) using Hermes Agent and omher worktrees.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Hermes Desktop Terminal Workflows",
+          "description": "Showcases of the Hermes desktop/terminal experience, including running many parallel sessions in one window.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Waitlist Growth and Onboarding",
+          "description": "Rapid waitlist expansion with 2000 new invites in one day three weeks in, plus Teknium publicly welcoming the new wave of Hermes Agent users.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 72.0
+        },
+        {
+          "name": "oh-my-hermes Ecosystem",
+          "description": "rlaope's growing omher/Oh-My-Hermes tooling around Hermes Agent: a desktop app, a 5.0.1 release with multi-CLI delegation and diagnostics, a benchmarking plugin beating omp, a Discord server, and multi-model workflow showcases.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 65.0
+        },
+        {
+          "name": "Building in Public",
+          "description": "Teknium discusses how openly sharing work and learning in public on Twitter was central to his growth and to meeting his cofounder, framing transparency as a key driver of Nous Research's origins.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 61.0
+        },
+        {
+          "name": "Core Team Support and Bug Triage",
+          "description": "Teknium directly replying to users about desktop features, model-switching bugs in herdr, and upcoming features, showing active hands-on maintenance.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 40.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "cee64682023f",
+          "title": "Hermes Agent can now control your Obsidian vault as a shared knowledge base via the official connect...",
+          "content": "Hermes Agent can now control your Obsidian vault as a shared knowledge base via the official connector. Your notes stay local, private, and fully under your control.\n\nhttps://t.co/i3vCWL6ODj",
+          "url": "https://twitter.com/NousResearch/status/2125989568721637578",
+          "author": "@NousResearch",
+          "published": "2026-11-26T16:26:26",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "NousResearch officially announces that Hermes Agent can now control an Obsidian vault as a shared knowledge base via an official connector, with notes staying local, private, and user-controlled.",
+          "importance_score": 95.0,
+          "reasoning": "Official feature announcement from the prioritized organizational account with exceptional engagement (2035 likes, 137 retweets, 109k views), introducing a significant new integration with a privacy-focused pitch.",
+          "themes": [
+            "integrations",
+            "Obsidian",
+            "privacy",
+            "knowledge base"
+          ],
+          "continuation": null,
+          "summary_html": "<p>NousResearch officially announces that Hermes Agent can now control an Obsidian vault as a shared knowledge base via an official connector, with notes staying local, private, and user-controlled.</p>",
+          "content_html": "<p>Hermes Agent can now control your Obsidian vault as a shared knowledge base via the official connector. Your notes stay local, private, and fully under your control.</p>\n<p>https://t.co/i3vCWL6ODj</p>"
+        },
+        {
+          "id": "c7bc56ba7eed",
+          "title": "Obsidian 🤝 Hermes",
+          "content": "Obsidian 🤝 Hermes",
+          "url": "https://twitter.com/Teknium/status/2125976093794689220",
+          "author": "@Teknium",
+          "published": "2026-11-26T15:32:54",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium posts a short hype announcement of the Obsidian and Hermes partnership/integration, symbolized by a handshake emoji.",
+          "importance_score": 85.0,
+          "reasoning": "From the project lead with very strong engagement (1348 likes, 41.9k views) announcing the Obsidian integration, corroborating the official NousResearch connector announcement in the same window.",
+          "themes": [
+            "integrations",
+            "Obsidian",
+            "announcement"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium posts a short hype announcement of the Obsidian and Hermes partnership/integration, symbolized by a handshake emoji.</p>",
+          "content_html": "<p>Obsidian 🤝 Hermes</p>"
+        },
+        {
+          "id": "7cd646180271",
+          "title": "CRAZY TERMINAL DESKTOP WITH BOT\n\nGemini 4 Neon just landed in Hermes Agent, so I put it on a real jo...",
+          "content": "CRAZY TERMINAL DESKTOP WITH BOT\n\nGemini 4 Neon just landed in Hermes Agent, so I put it on a real job next to Opus, GPT and DeepSeek.\n\nOne ask in omher, one plan, five parts. GPT-6.2 Sol wrote the sync protocol, DeepSeek V4 Pro built the local store and the offline e2e tests, Neon took the conflict merge, and Opus 5.5 did the sync UI. Hermes ran the plan on Neon and handed each part to the model I'd pick for it myself.\n\nThe rest of my day sits in the same sidebar: six Hermes sessions, six Claude Code, six Antigravity, all running in one window.\n\nI've stopped picking one model for everything.\n\nIf you're running Hermes: https://t.co/hHLFa6JDDS",
+          "url": "https://twitter.com/rlaope/status/2125877282736951652",
+          "author": "@rlaope",
+          "published": "2026-11-26T09:00:15",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "The author showcases a multi-model workflow using Hermes Agent after Gemini 4 Neon was added to it. One plan was split into five parts and routed to different models: GPT-6.2 Sol wrote a sync protocol, DeepSeek V4 Pro built a local store with offline e2e tests, Neon handled conflict merging, and Opus 5.5 built the sync UI. They also describe running six Hermes sessions, six Claude Code sessions, and six Antigravity sessions in a single sidebar window, concluding that they no longer pick a single model for everything.",
+          "importance_score": 82.0,
+          "reasoning": "Posted by rlaope, an explicitly prioritized author, and it is a genuine hands-on showcase of Hermes Agent orchestration with concrete details about which models handled which tasks. It highlights a newly landed integration (Gemini 4 Neon in Hermes Agent) and demonstrates real-world usage of the desktop terminal and multi-session sidebar. Engagement is moderate (17 likes, 2051 views, some replies), but the credibility of the author and the instructive value of the multi-model routing pattern push the score high. It is a community showcase rather than an official release or a PR merge.",
+          "themes": [
+            "multi-model orchestration",
+            "Hermes Agent workflows",
+            "Gemini 4 Neon integration",
+            "developer productivity"
+          ],
+          "continuation": null,
+          "summary_html": "<p>The author showcases a multi-model workflow using Hermes Agent after Gemini 4 Neon was added to it. One plan was split into five parts and routed to different models: GPT-6.2 Sol wrote a sync protocol, DeepSeek V4 Pro built a local store with offline e2e tests, Neon handled conflict merging, and Opus 5.5 built the sync UI. They also describe running six Hermes sessions, six Claude Code sessions, and six Antigravity sessions in a single sidebar window, concluding that they no longer pick a single model for everything.</p>",
+          "content_html": "<p>CRAZY TERMINAL DESKTOP WITH BOT</p>\n<p>Gemini 4 Neon just landed in Hermes Agent, so I put it on a real job next to Opus, GPT and DeepSeek.</p>\n<p>One ask in omher, one plan, five parts. GPT-6.2 Sol wrote the sync protocol, DeepSeek V4 Pro built the local store and the offline e2e tests, Neon took the conflict merge, and Opus 5.5 did the sync UI. Hermes ran the plan on Neon and handed each part to the model I'd pick for it myself.</p>\n<p>The rest of my day sits in the same sidebar: six Hermes sessions, six Claude Code, six Antigravity, all running in one window.</p>\n<p>I've stopped picking one model for everything.</p>\n<p>If you're running Hermes: https://t.co/hHLFa6JDDS</p>"
+        },
+        {
+          "id": "1f8753ae229a",
+          "title": "Welcome all new Hermes Agent crew members",
+          "content": "Welcome all new Hermes Agent crew members",
+          "url": "https://twitter.com/Teknium/status/2126000844265181550",
+          "author": "@Teknium",
+          "published": "2026-11-26T17:11:15",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium welcomes the new wave of Hermes Agent users to the community, likely tied to the latest invite round.",
+          "importance_score": 75.0,
+          "reasoning": "High-visibility post from the project lead (505 likes, 26.5k views, 37 replies) marking a notable influx of new users, corroborating the waitlist expansion mentioned elsewhere.",
+          "themes": [
+            "onboarding",
+            "growth",
+            "community"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium welcomes the new wave of Hermes Agent users to the community, likely tied to the latest invite round.</p>",
+          "content_html": "<p>Welcome all new Hermes Agent crew members</p>"
+        },
+        {
+          "id": "2498bd40d596",
+          "title": "oh-my-hermes 5.0.1 is out.\n\nHermes Agent can now hand coding work to the other CLIs you already pay ...",
+          "content": "oh-my-hermes 5.0.1 is out.\n\nHermes Agent can now hand coding work to the other CLIs you already pay for.\n\nPoint it at Devin, Gemini, Qwen, Kimi, Cursor, Amp, Droid, Aider or Goose, and each task runs in its own worktree. It only counts as done when the commit is there, whatever the CLI says.\n\nClaude lanes can run on your Claude Pro/Max subscription through Hermes' DirectSDK plugin. If that's your only Claude, the work no longer gets pushed to the next model.\n\nWhen a bot goes quiet, omh doctor now tells you why: Discord refused an intent, a gateway is older than your install, or a stray one is still running. omher shows the same thing on the bot's row.\n\nOn Windows, plain `omh` opens the OMH TUI natively. In omher, Shift+Enter makes a new line in Claude Code and Codex, and Ctrl+V / Ctrl+C work like Windows Terminal.\n\nAlso new: bot templates (PR reviewer, inbox triager, channel watcher), `omh cache` to see why your prompt cache goes cold, and GLM 5.4.\n\nIf you're running Hermes:\nhttps://t.co/g1exHwWK5E",
+          "url": "https://twitter.com/rlaope/status/2125916754677465338",
+          "author": "@rlaope",
+          "published": "2026-11-26T11:37:06",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope announces oh-my-hermes 5.0.1, adding delegation of coding tasks to external CLIs (Devin, Gemini, Qwen, Kimi, Cursor, Amp, Droid, Aider, Goose) in isolated worktrees, Claude lanes on Pro/Max subscriptions, an omh doctor diagnostic, Windows TUI and keybinding improvements, bot templates, an omh cache inspector, and GLM 5.4 support.",
+          "importance_score": 72.0,
+          "reasoning": "Detailed, substantive release notes for a significant community tool version with multiple real features; engagement is modest (21 likes) but the content is high-value for Hermes users.",
+          "themes": [
+            "oh-my-hermes",
+            "multi-CLI orchestration",
+            "diagnostics",
+            "windows support"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope announces oh-my-hermes 5.0.1, adding delegation of coding tasks to external CLIs (Devin, Gemini, Qwen, Kimi, Cursor, Amp, Droid, Aider, Goose) in isolated worktrees, Claude lanes on Pro/Max subscriptions, an omh doctor diagnostic, Windows TUI and keybinding improvements, bot templates, an omh cache inspector, and GLM 5.4 support.</p>",
+          "content_html": "<p>oh-my-hermes 5.0.1 is out.</p>\n<p>Hermes Agent can now hand coding work to the other CLIs you already pay for.</p>\n<p>Point it at Devin, Gemini, Qwen, Kimi, Cursor, Amp, Droid, Aider or Goose, and each task runs in its own worktree. It only counts as done when the commit is there, whatever the CLI says.</p>\n<p>Claude lanes can run on your Claude Pro/Max subscription through Hermes' DirectSDK plugin. If that's your only Claude, the work no longer gets pushed to the next model.</p>\n<p>When a bot goes quiet, omh doctor now tells you why: Discord refused an intent, a gateway is older than your install, or a stray one is still running. omher shows the same thing on the bot's row.</p>\n<p>On Windows, plain <code>omh</code> opens the OMH TUI natively. In omher, Shift+Enter makes a new line in Claude Code and Codex, and Ctrl+V / Ctrl+C work like Windows Terminal.</p>\n<p>Also new: bot templates (PR reviewer, inbox triager, channel watcher), <code>omh cache</code> to see why your prompt cache goes cold, and GLM 5.4.</p>\n<p>If you're running Hermes:</p>\n<p>https://t.co/g1exHwWK5E</p>"
+        },
+        {
+          "id": "618e45e00254",
+          "title": "omp is a benchmaxxing harness. Nothing wrong with that, it's a fair way to build one.\n\nHermes Agent'...",
+          "content": "omp is a benchmaxxing harness. Nothing wrong with that, it's a fair way to build one.\n\nHermes Agent's harness already does the right thing without being told. So I benchmaxxed on top of that, past where omp got, and shipped it as a plugin.\n\nSame models, same 11 coding tasks: 98% pass vs omp's 88%. On GLM, Kimi and DeepSeek the gap is 27 to 38 points.\n\nIf you're running Hermes, try it: https://t.co/g1exHwWK5E",
+          "url": "https://twitter.com/rlaope/status/2125924340344758275",
+          "author": "@rlaope",
+          "published": "2026-11-26T12:07:15",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope describes omp as a benchmaxxing harness, then presents their own benchmarking plugin built on Hermes Agent's harness: same 11 coding tasks, 98 percent pass versus omp's 88 percent, with 27 to 38 point gaps on GLM, Kimi, and DeepSeek, shipped as a plugin.",
+          "importance_score": 68.0,
+          "reasoning": "Substantive technical contribution from a prioritized community builder with solid engagement (40 likes, 4.8k views), including concrete benchmark numbers and a shareable plugin, though it involves self-promotion.",
+          "themes": [
+            "benchmarking",
+            "plugins",
+            "coding agents"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope describes omp as a benchmaxxing harness, then presents their own benchmarking plugin built on Hermes Agent's harness: same 11 coding tasks, 98 percent pass versus omp's 88 percent, with 27 to 38 point gaps on GLM, Kimi, and DeepSeek, shipped as a plugin.</p>",
+          "content_html": "<p>omp is a benchmaxxing harness. Nothing wrong with that, it's a fair way to build one.</p>\n<p>Hermes Agent's harness already does the right thing without being told. So I benchmaxxed on top of that, past where omp got, and shipped it as a plugin.</p>\n<p>Same models, same 11 coding tasks: 98% pass vs omp's 88%. On GLM, Kimi and DeepSeek the gap is 27 to 38 points.</p>\n<p>If you're running Hermes, try it: https://t.co/g1exHwWK5E</p>"
+        },
+        {
+          "id": "e1a8b5481825",
+          "title": "@hazem_samak101 It’s been only 3 weeks since the waitlist started. 2000 new invites went out today f...",
+          "content": "@hazem_samak101 It’s been only 3 weeks since the waitlist started. 2000 new invites went out today friend 🫡",
+          "url": "https://twitter.com/Teknium/status/2126039105461260329",
+          "author": "@Teknium",
+          "published": "2026-11-26T19:43:17",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium tells a community member that the waitlist started only three weeks ago and that 2000 new invites went out today.",
+          "importance_score": 62.0,
+          "reasoning": "Concrete rollout metric from the project lead: 2000 invites in a single day three weeks into the waitlist is a meaningful adoption signal, though engagement on the reply itself is low.",
+          "themes": [
+            "waitlist",
+            "distribution"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium tells a community member that the waitlist started only three weeks ago and that 2000 new invites went out today.</p>",
+          "content_html": "<p>@hazem_samak101 It’s been only 3 weeks since the waitlist started. 2000 new invites went out today friend 🫡</p>"
+        },
+        {
+          "id": "06a201ac4972",
+          "title": "I built a desktop app for Hermes Agent. It's called omher, and it's the window I live in now.\n\n⌘T op...",
+          "content": "I built a desktop app for Hermes Agent. It's called omher, and it's the window I live in now.\n\n⌘T opens Claude Code. ⌘D splits it. A minute later Codex, Claude Code, a Hermes run and my dev server are all going side by side in one grid.\n\nMy Hermes bot sits in the same sidebar and watches all of them. It tells me which one is done and which one is stuck, and when one is waiting it writes the next prompt for it. Nothing gets typed until I hit Allow.\n\nWhen I want it to take something on its own, I type ./thread and that job gets its own thread. My GitHub issues are right there too, so I open one and hand it over from the same window.\n\nNotion and Linear connect from one Apps page, no config files.\n\nIf you're running Hermes: https://t.co/hHLFa6JDDS",
+          "url": "https://twitter.com/rlaope/status/2125907206243852539",
+          "author": "@rlaope",
+          "published": "2026-11-26T10:59:10",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "rlaope showcases omher, a desktop app for Hermes Agent with a split-pane grid for Claude Code, Codex, Hermes runs, and dev servers; a sidebar bot that monitors sessions and drafts next prompts pending user approval, ./thread job handling, GitHub issues integration, and one-page Notion and Linear connections.",
+          "importance_score": 62.0,
+          "reasoning": "Detailed, original community showcase of a custom desktop tool from a prioritized builder with decent engagement (29 likes, 2.4k views, 16 replies); high uniqueness but independent-tooling rather than core product news.",
+          "themes": [
+            "showcase",
+            "desktop tooling",
+            "human-in-the-loop"
+          ],
+          "continuation": null,
+          "summary_html": "<p>rlaope showcases omher, a desktop app for Hermes Agent with a split-pane grid for Claude Code, Codex, Hermes runs, and dev servers; a sidebar bot that monitors sessions and drafts next prompts pending user approval, ./thread job handling, GitHub issues integration, and one-page Notion and Linear connections.</p>",
+          "content_html": "<p>I built a desktop app for Hermes Agent. It's called omher, and it's the window I live in now.</p>\n<p>⌘T opens Claude Code. ⌘D splits it. A minute later Codex, Claude Code, a Hermes run and my dev server are all going side by side in one grid.</p>\n<p>My Hermes bot sits in the same sidebar and watches all of them. It tells me which one is done and which one is stuck, and when one is waiting it writes the next prompt for it. Nothing gets typed until I hit Allow.</p>\n<p>When I want it to take something on its own, I type ./thread and that job gets its own thread. My GitHub issues are right there too, so I open one and hand it over from the same window.</p>\n<p>Notion and Linear connect from one Apps page, no config files.</p>\n<p>If you're running Hermes: https://t.co/hHLFa6JDDS</p>"
+        },
+        {
+          "id": "3aa09e9597fc",
+          "title": "@BuiltinMind @matthewsoldit I had a gaming gpu and my future cofounder @karan4d was working with lai...",
+          "content": "@BuiltinMind @matthewsoldit I had a gaming gpu and my future cofounder @karan4d was working with laion when I met him from building in public on Twitter nearly 4 years ago",
+          "url": "https://twitter.com/Teknium/status/2125772107082854571",
+          "author": "@Teknium",
+          "published": "2026-11-26T02:02:19",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium shares a personal origin story in reply to a thread: he started with just a gaming GPU, and met his future cofounder karan4d, who was working with LAION at the time, through building in public on Twitter nearly four years ago.",
+          "importance_score": 62.0,
+          "reasoning": "Authored by @Teknium, a high-priority account, offering a unique firsthand historical anecdote about Nous Research's founding and community origins. Engagement is modest (3 likes, 271 views), and it is conversational rather than news about releases, so the score reflects authorship and uniqueness over reach.",
+          "themes": [
+            "origin story",
+            "building in public",
+            "Nous Research history"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium shares a personal origin story in reply to a thread: he started with just a gaming GPU, and met his future cofounder karan4d, who was working with LAION at the time, through building in public on Twitter nearly four years ago.</p>",
+          "content_html": "<p>@BuiltinMind @matthewsoldit I had a gaming gpu and my future cofounder @karan4d was working with laion when I met him from building in public on Twitter nearly 4 years ago</p>"
+        },
+        {
+          "id": "379253f49386",
+          "title": "Hermes gives you wings, flight, and magical powers🪽🪽",
+          "content": "Hermes gives you wings, flight, and magical powers🪽🪽",
+          "url": "https://twitter.com/Teknium/status/2126064866280849742",
+          "author": "@Teknium",
+          "published": "2026-11-26T21:25:39",
+          "source": "Twitter",
+          "source_type": "twitter",
+          "tags": [],
+          "summary": "Teknium posts a playful hype message about Hermes granting wings, flight, and magical powers, likely celebrating new agent capabilities.",
+          "importance_score": 60.0,
+          "reasoning": "From the project lead with solid engagement (128 likes, 8.1k views), signaling excitement around the product, though it is mostly promotional fluff without substance.",
+          "themes": [
+            "hype",
+            "agent capabilities"
+          ],
+          "continuation": null,
+          "summary_html": "<p>Teknium posts a playful hype message about Hermes granting wings, flight, and magical powers, likely celebrating new agent capabilities.</p>",
+          "content_html": "<p>Hermes gives you wings, flight, and magical powers🪽🪽</p>"
+        }
+      ]
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  },
+  "llm_model": "z-ai/GLM-5.3-Flash",
+  "llm_model_display": "GLM-5.3-Flash",
+  "image_model": "gpt-image/1.5-image-to-image",
+  "image_model_display": "Agent N via Kie.ai"
+}

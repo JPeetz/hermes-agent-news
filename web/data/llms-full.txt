@@ -1,439 +1,531 @@
 # Agent N's Hermes News — Full Content
 
-## Latest Edition (2026-11-25)
+## Latest Edition (2026-11-28)
 
 ### Executive Summary
 
-{'date': '2026-11-25', 'coverage_date': '2026-11-24', 'coverage_start': '2026-11-24T00:00:00', 'coverage_end': '2026-11-24T23:59:59.999999', 'executive_summary': '## Executive Summary\n\n**[Hermes Agent v0.23.4](/?date=2026-11-25&category=news#item-dd65564be9ab)** headlines this cycle: the stable release shipped **2026-11-23**, rolling up roughly **229 merged PRs** since **v0.23.3** into the biggest patch drop of the cycle. Desktop users who like living early can grab the **[canary.20261124T064706Z](/?date=2026-11-25&category=news#item-4559a8e5ec53)** build (macOS/Windows, smoke tests green) for a look ahead, while the **[rc.1-v0.23.4](/?date=2026-11-25&category=news#item-0cd6f21d6daf)** and **[rc.2-v0.23.4](/?date=2026-11-25&category=news#item-f7a8f36cc706)** tags — landed in the same window but superseded by stable — are pipeline housekeeping only.\n\nSecurity and deployment hardening stays the highest-stakes theme, with today\'s material deepening rather than re-breaking the story. The **[leadstack-crm-connect](/?date=2026-11-25&category=research#item-hn-50585975)** supply-chain incident reported earlier this week remains the standing concern; a fresh write-up presses the packaging critique further — the official container image still requires root at init and there is still no official **[Helm](/?date=2026-11-25&category=research#item-hn-49977400)** chart — strengthening the case for least-privilege defaults. The self-hosting community is meanwhile improvising around those gaps: the batch\'s top research story runs **[Hermes Agent on a VPS to control an old rooted Android phone](/?date=2026-11-25&category=research#item-hn-50629729)**, paired with a [personal containerization write-up](/?date=2026-11-25&category=research#item-hn-50131496).\n\nThird-party tooling keeps thickening around platform edges: the new **[shoebox](/?date=2026-11-25&category=research#item-hn-50610136)** orchestrator joins **[Verso](/?date=2026-11-25&category=research#item-hn-49628094)**, **
+{'date': '2026-11-28', 'coverage_date': '2026-11-27', 'coverage_start': '2026-11-27T00:00:00', 'coverage_end': '2026-11-27T23:59:59.999999', 'executive_summary': '## Executive Summary\n\n**The "Sooon" tease cashed out as a Black Friday deal.** **@NousResearch**\'s 24-hour offer — [**50% off** the first month of **Nous Portal** plans with code **FIFTYFIFTY**](/?date=2026-11-28&category=social#item-9714e6d5407e) — drew the batch\'s biggest reach at **134k+ views** and **893 likes**, and it\'s the payoff to last cycle\'s Portal name-drop and "imminent reveal" tease. Two official clarifications matter at checkout: [the exclamation mark is not part of the code](/?date=2026-11-28&category=social#item-b8e764c7f0a0), and [the discount applies to the first month only](/?date=2026-11-28&category=social#item-5175fd109418). If you\'ve been waiting for a cheaper on-ramp to the Portal ecosystem, this is the 24-hour window.\n\n**The Oh My Hermes ecosystem keeps compounding.** **@rlaope**\'s **OMH** plugin is nearing [**6.2k GitHub stars**](/?date=2026-11-28&category=social#item-86e1892603b8) (up from **6.1k** reported yesterday), and the standout data point is a [power-user report of burning **200B tokens/month** on **Hermes-Agent**](/?date=2026-11-28&category=social#item-4db7a63d92b6) through an OMH setup — evidence that long-lived agent workloads now sustain serious usage at the top end. For builders, the [**dag ulw** skill walkthrough](/?date=2026-11-28&category=social#item-1703b33cc71e) is the pick: it plans jobs as a directed acyclic graph of parallel, subagent-owned tasks, and a [fresh speedup this week lets Hermes self-run final checks on small tasks](/?date=2026-11-28&category=social#item-12676651ed0f). A new [**Terminal Desktop & Bot System** release](/?date=2026-11-28&category=social#item-b25e116e62ad) was announced prominently on social — the cycle\'s only launch — and **@Teknium** stayed highly visible, most notably [asking the community about reusable **audit skills**
 
 ### News
 
-- Hermes Agent v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.4
-  Nous Research shipped Hermes Agent v0.23.4, a patch release on November 23, 2026 that rolls up roughly 229 merged PRs since v0.23.3 into stable builds for the CLI, installers, Microsoft Store, Docker, and Hermes Cloud. The window includes 1,122 non-merge commits across 1,316 changed files and 281 cl
-- Hermes Agent as a Code Review Assistant: PR Analysis and Automated Checks (2026)
-  https://hermes-tutorials.dev/blog/2026-11-24-hermes-agent-code-review-assistant/
-  A Hermes Agent Tutorials walkthrough shows how to assemble an automated PR review chain using Hermes Agent together with the GitHub CLI, linters, and skills, with explicit governance around human approvals. It is a practical deployment guide for using the agent in code review workflows.
-- Hermes Agent canary canary.20261124T064706Z-v0.23.3
-  https://github.com/NousResearch/hermes-agent/releases/tag/canary.20261124T064706Z-v0.23.3
-  A Hermes Desktop canary build (v0.23.3+canary.20261124T064706Z) was published on November 24, 2026 with macOS and Windows installers whose smoke tests all passed. The build adds a neocore memory provider to the plugin catalog and includes cron-related bug fixes, though Linux AppImages and unsigned S
-- rc.2-v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.23.4
-  A second release candidate tag, rc.2-v0.23.4, was published for Hermes Agent on November 24, 2026, ahead of or alongside the stable v0.23.4 rollout. The content is machine-generated release automation metadata (attempt number, autopublish flag, claim epoch, and commit hash) rather than human-facing 
-- rc.1-v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.23.4
-  The first release candidate, rc.1-v0.23.4, was tagged on November 24, 2026 as part of the Hermes Agent release pipeline for v0.23.4. Like rc.2, it carries only automation metadata (attempt, autopublish flag, claim epoch, commit hash) with no changelog content.
-- Best Hermes Agent Course: 7 Picks Ranked by Learning Style (2026)
-  https://juliangoldie.com/best-hermes-agent-course/?utm_source=rss&utm_medium=rss&utm_campaign=best-hermes-agent-course
-  A marketing-heavy blog post ranks seven Hermes Agent courses by learning style, naming the author's own AI Profit Boardroom as the top pick, with Udemy as the most complete video course, NetworkChuck Academy for IT/homelab users, and the official Nous Research Learning Path as the best free option. 
+- Run Hermes Agent as an API Server and Put Open WebUI on It
+  https://hermes-tutorials.dev/blog/hermes-agent-api-server-guide-2026/
+  A tutorial published on Hermes Agent Tutorials walks through exposing Hermes Agent as a secure OpenAI-compatible API server and connecting Open WebUI as a web chat frontend. It covers streaming, tool usage, and troubleshooting for the setup.
 - docs: refresh Hermes Helper Reddit post index
-  https://github.com/AtlasOmnia/hermes-agent-community/commit/8496a68adb7931a94734854074900b4e1e023db4
-  A commit on the hermes-agent-community repository refreshes the Hermes Helper Reddit post index, keeping the community documentation index of Reddit posts current. It is a documentation maintenance commit rather than a code change.
+  https://github.com/AtlasOmnia/hermes-agent-community/commit/7321ce7b8ac98edbcacfaee46841737b17a63ed0
+  A commit on the hermes-agent-community repository refreshes the documentation index of Hermes Helper Reddit posts. It is a documentation housekeeping change updating pointers to community discussion threads.
 
 ### Research
 
 - NPM package installed Hermes Agent as root and tasked it over Telegram
   https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-50585975) yesterday, A security report from SafeDep about a malicious NPM package (leadstack-crm-connect) that installed Hermes Agent as root on victim machines and then tasked the agent over Telegram as a backdoor. This dem
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50585975) earlier this week, A Safedep report on a malicious NPM package (leadstack-crm-connect) that acted as a backdoor: it installed Hermes Agent as root on victim machines and tasked the agent remotely over Telegram, effectivel
 - Hermes Agent now supports Claude Pro/Max subscriptions
   https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49790991), An official Hermes Agent documentation page announcing that Hermes Agent now supports Claude Pro/Max subscriptions via a direct SDK plugin, allowing subscribers to use their existing Anthropic subscription p
-- Show HN: Comemo – composite memory provider for Hermes Agent
-  https://github.com/andausman/comemo
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-50518538), Show HN for Comemo, a composite memory provider for Hermes Agent. Because Hermes exposes only one slot for an external memory provider, Comemo occupies that slot and fans out memory writes to multiple backen
-- Show HN: Crazy simple AI agent orchestration with Markdown and Containers
-  https://github.com/ameesme/shoebox
-  As previously covered in [Research](/?date=2026-11-24&category=research#item-hn-50610136), Show HN post for shoebox, a filesystem-based AI agent orchestration tool built with Markdown and containers. The author explicitly frames it as a reaction to Hermes Agent becoming bloated, citing hard-to-triag
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49790991) earlier this week, Official Hermes Agent documentation announces a new plugin allowing the agent to authenticate through Claude Pro/Max subscription credentials via a direct SDK path, letting subscribers use their existin
 - Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init
   https://www.revos.ai/blog/hermes-agent-kubernetes
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-49977400) yesterday, A Revos.ai blog post about running Hermes Agent on Kubernetes, highlighting two friction points: the project ships no official Helm chart, and the container image requires root privileges at initializati
-- Show HN: A free, open-source agent orchestrator for knowledge work
-  https://www.itsverso.xyz/
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49628094), Show HN for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent by SchezHugo. Started as a learning exercise, it became the author's daily work setup, providing an ea
-- Using Hermes Agent on a VPS to Control an Old Rooted Android Phone
-  https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/
-  A blog post by nimitbhardwaj describing how to run Hermes Agent on a virtual private server and use it to control an old rooted Android phone, apparently as a headless automation target. The title indicates a self-hosted VPS setup combined with a rooted device controlled remotely by the agent.
-- Launch HN: Almanac (YC S26) – AI that knows your company
-  https://usealmanac.com/
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-49511007) yesterday, Launch HN for Almanac, a YC S26 startup by Kushagra and two other founders, described as a Hermes with a brain that knows everything about your company. The founders began by trying to set up Hermes for 
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49977400) earlier this week, A blog post documenting problems deploying Hermes Agent on Kubernetes: there is no official Helm chart, and the container image requires root privileges at initialization. The author describes the frict
 - Hermes Kanban – Multi-Agent Profile Collaboration
   https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49604068), Official Hermes Agent documentation describing the Kanban feature for multi-agent profile collaboration, enabling multiple agent profiles to coordinate tasks through a kanban board.
-- Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
-  https://github.com/majorminorlabs/hermes-voice
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-50381927), Hermes-Voice is a project by majorminorlabs that lets users talk to a Hermes Agent profile through Home Assistant's Assist voice pipeline, integrating the agent into a smart-home voice interface.
-- Ask HN: My agent went haywire, does this output mean anything?
-  https://news.ycombinator.com/item?id=49916751
-  An Ask HN thread by nativeit describing a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash model. When asked to print details about its local environment and PATH, the agent issued some terminal commands and then appeared to spiral into a long trance-like re
-- Refine Cycle: self-improvement plugin for Hermes Agent
-  https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent
-  Refine Cycle is a self-improvement plugin for Hermes Agent by 1134taras, hosted on GitHub, adding autonomous refinement/self-improvement capabilities to an agent installation.
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49604068) earlier this week, Official Hermes Agent documentation describing the Kanban feature, which enables multi-agent profile collaboration: multiple agent profiles coordinate work through a shared Kanban board, supporting task
+- Show HN: Comemo – composite memory provider for Hermes Agent
+  https://github.com/andausman/comemo
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50518538) earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and acts as a composite provider: it fans out memory writes to multiple backends such as Mem0, Honcho, and Supermemory,
+- Tell HN: Stop using MLX, start telling your agent to write custom kernels
+  https://news.ycombinator.com/item?id=50648334
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50648334) earlier this week, A Hacker News post reporting that instead of MLX, asking Claude to write custom Metal kernels dramatically improved local inference on a four-Mac cluster: Baidu ERNIE 5.5 Flash Preview at 96 tok/sec at 
+- Show HN: Crazy simple AI agent orchestration with Markdown and Containers
+  https://github.com/ameesme/shoebox
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50610136) earlier this week, A Show HN for shoebox, a filesystem-based agent orchestration tool using Markdown and containers. The author explicitly frames it as a reaction to Hermes Agent becoming bloated with hard-to-triage bugs,
+- Launch HN: Almanac (YC S26) – AI that knows your company
+  https://usealmanac.com/
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49511007) earlier this week, Almanac, a YC S26 startup, launches as a company-knowledge agent, described as a Hermes with a brain that knows everything about your company. The founders describe their painful journey self-hosting He
 - Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent
   https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872
-  Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the Apple App Store, providing a mobile front-end to interact with an agent profile.
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50278175) earlier this week, Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the App Store, providing a mobile front end to the agent. Only the title is available in the feed, so feature deta
 - Hermes Agent: My containerized take
   https://ricardodevries.com/blog/hermes-agent-my-containerized-take
-  A blog post by ricardodevries presenting a personal containerized deployment approach for Hermes Agent, sharing one user's containerization setup and practices.
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50131496) earlier this week, A blog post presenting the author's containerized setup for running Hermes Agent, sharing a personal approach to isolating the agent in containers. Only the title is available, so specifics on images, s
+- Using Hermes Agent on a VPS to Control an Old Rooted Android Phone
+  https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/
+  A blog walkthrough describing how to run Hermes Agent on a VPS and use it to control an old rooted Android phone, extending the agent's reach to physical device automation. Only the title is available in the feed, so implementation details are not visible.
+- Show HN: A free, open-source agent orchestrator for knowledge work
+  https://www.itsverso.xyz/
+  Verso is a free, open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface to Hermes Agent and has become the author's daily work setup, reportedly boosting productivity.
+- Ask HN: My agent went haywire, does this output mean anything?
+  https://news.ycombinator.com/item?id=49916751
+  A user with a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash, reports that asking the agent to print local environment details and PATH caused it to spiral into a long trance-like thinking state (over 1m36s), producing an odd output block they ask the comm
+- Refine Cycle: self-improvement plugin for Hermes Agent
+  https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent
+  Refine Cycle is a self-improvement plugin for Hermes Agent, hosted on GitHub, that adds an iterative refinement loop to the agent. Only the title is available in the feed, so the mechanism (feedback capture, prompt updates, evaluation) is not described.
+- Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
+  https://github.com/majorminorlabs/hermes-voice
+  Hermes-Voice is an open-source integration that lets users talk to a Hermes Agent profile through Home Assistant Assist, bringing agent interaction into a smart-home voice pipeline. Only the title is present in the feed, so implementation specifics are unavailable.
 - ClusterMob – a community registry of Hermes Agent profiles
   https://clustermob.com/
-  ClusterMob is a community-run registry of Hermes Agent profiles, hosted at clustermob.com, allowing users to discover and share agent profiles.
+  ClusterMob is a community registry where users can share and discover Hermes Agent profiles, hosted at clustermob.com. Only the title is present, so details on profile format, moderation, or features are unavailable.
 - I think I used the Hermes Agent wrong
   https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/
-  A reflective blog post by heyjonny titled I think I used the Hermes Agent wrong, apparently chronicling the author's experience of misusing the agent and lessons learned about the correct way to work with it.
+  A personal blog post reflecting on mistakes the author made while using Hermes Agent and what they would do differently. Only the title is available in the feed, so the specific lessons and misconfigurations are not visible.
+- AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design
+  https://arxiv.org/abs/2611.33093
+  A benchmark asking what LLM coding agents need to write correct hardware: agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable RTL against an executable integer reference. It highlights that a wrong decoder state update can pass output tests while corrupting 
 - Ask HN: How do you manage your personal agents?
   https://news.ycombinator.com/item?id=50326764
-  An Ask HN thread by kevinlu310 noting the proliferation of powerful agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex) and asking how people coordinate them. The author runs each separately and manually copies the same questions between agents to compare responses, seeking better coordi
-- Show HN: Hanging Context – news by an agent, for other agents
-  https://hangingcontext.com/
-  Show HN for Hanging Context, a news site authored by an agent and intended for consumption by other agents. The author recounts building a data-driven news site for wealth and investment audiences in 2022 using early OpenAI models, licensing stories to an AI company in 2024, and concluding that the 
-- Hermes Agent – Open-Source AI Agent That Grows with You
-  https://hermes-agent.nousresearch.com
-  The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with its user. Serves as the canonical entry point for the platform.
+  An Ask HN thread on coordinating multiple agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex and more). The author runs each separately and copy-pastes the same prompts across agents to compare responses, asking for better ways to coordinate them.
+- Revisiting LLMs as Context Engineers
+  https://arxiv.org/abs/2611.30494
+  An arXiv paper surveying LLM context engineering (LCE), where the LLM itself automates construction of instruction prompts and metadata from offline trials without intensive fine-tuning. The excerpt notes these methods mimic human learning from experience but leaves the limitation unstated in the tr
 - Ask HN: What's your current AI agentic setup?
   https://news.ycombinator.com/item?id=50366117
-  An Ask HN discussion thread by eggbrain surveying how Hacker News readers use AI day to day: which subscriptions they pay for (Claude, ChatGPT/Codex, Cursor, etc.), which tiers, whether they hold duplicate subscriptions, and whether they use models outside or instead of mainstream providers. Not Her
-- Best Hermes Agent Course: 7 Picks Ranked by Learning Style (2026)
-  https://juliangoldie.com/best-hermes-agent-course/?utm_source=rss&utm_medium=rss&utm_campaign=best-hermes-agent-course
-  A Julian Goldie blog post ranking seven Hermes Agent courses, promoting his own AI Profit Boardroom as number one, alongside options such as a Udemy video course (6h 27m), NetworkChuck Academy for IT and homelab users, and the free official Nous Research Learning Path.
-- Best AI Visibility Tracking Tools (2026): 8 Trackers That Log Your AI Mentions Week by Week
-  https://juliangoldie.com/best-ai-visibility-tracking-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-visibility-tracking-tools
-  A Julian Goldie marketing blog post ranking eight AI visibility tracking tools, with Polar Rank promoted as number one for logging whether a brand is named in ChatGPT, Perplexity and Gemini, plus promotional cross-sells for a Backlink Gameplan service. Checked 24 November 2026.
-- Best AI Search Visibility Tools (2026): 9 Platforms That Show What ChatGPT, Perplexity and AI Overviews Say About You
-  https://juliangoldie.com/best-ai-search-visibility-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-search-visibility-tools
-  Another Julian Goldie promotional listicle ranking nine AI search visibility monitoring platforms (Polar Rank, Profound, Ahrefs Brand Radar, Peec AI, Similarweb, Brandlight, Evertune, ziptie.ai, XFunnel) with heavy self-promotion of Polar Rank and backlink services.
-- Best Answer Engine Optimization Tools (2026): 9 AEO Tools That Get You Cited
-  https://juliangoldie.com/best-answer-engine-optimization-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-answer-engine-optimization-tools
-  A third Julian Goldie promotional listicle, this time ranking nine answer-engine-optimization (AEO) tools, again topping the list with the author's own Polar Rank offering and including calls to action for backlink services.
+  An Ask HN discussion asking readers to share their day-to-day AI setups: which subscriptions and tiers they pay for (Claude, ChatGPT/Codex, Cursor, etc.), whether they hold duplicate accounts, and whether they use models outside or instead of their subscription providers. Hermes Agent is not specifi
+- Show HN: Hanging Context – news by an agent, for other agents
+  https://hangingcontext.com/
+  Hanging Context is a news site written by an agent and aimed at agent readers rather than humans, based on the thesis that agents will become the primary consumers of news. It grew out of a 2022 data-driven news site for wealth managers and a mid-2024 licensing inquiry from a major AI lab. No explic
+- CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes
+  https://arxiv.org/abs/2611.29969
+  A paper proposing reinforcement learning for embodied agents in 3D scenes, arguing that supervised-trace imitation copies prescribed evidence-acquisition patterns instead of optimizing evidence support for correct answers, and that outcome rewards under-credit intermediate tool choices and leave rar
+- Black Friday Backlinks: DR 70+ Links $181 (Normally $390)
+  https://juliangoldie.com/black-friday-backlinks/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-backlinks
+  A promotional Black Friday post from Julian Goldie's Goldie Agency advertising discounted SEO backlink packages sold by Domain Rating (DR) tier. Pricing tiers include DR 0 at $36, DR 1-9 at $91, DR 10-29 at $121, DR 30-69 reduced from $302 to $150, DR 70-89 reduced from $390 to $181 (a 54% saving of
+- Black Friday SEO 2026: The 8 Best SEO Deals for More Google and AI Traffic
+  https://juliangoldie.com/black-friday-seo-2026/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-seo-2026
+  A promotional blog post listing Black Friday 2026 SEO deals, heavily promoting the author's own Polar Rank product (AI agents that write articles and build links) and a backlinks sale, with a few third-party tool deals. Content is marketing copy with affiliate-style calls to action.
+- Black Friday Link Building: Up To 54% Off Every Backlink
+  https://juliangoldie.com/black-friday-link-building/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-link-building
+  A time-limited promotional post advertising a Black Friday backlink sale from Goldie Agency, listing discounted prices per DR tier (up to 54% off DR 70-89 links) with checkout instructions. Entirely sales copy.
 
 ### Social
 
-- @AviSchiffmann We have many scrappy users taking advantage of free and heavily discounted models bui...
-  https://twitter.com/NousResearch/status/2125377491019678046
-  An official Nous Research reply to Avi Schiffmann noting that many scrappy users are building wonderful things using free and heavily discounted models, highlighting the accessibility of the company's model offerings.
-- @kerwinv101 @NVIDIAAI Yes it's his hair
-  https://twitter.com/NousResearch/status/2125378202122252717
-  A brief reply from the official Nous Research account confirming to a user that something depicted (apparently in an image or demo context involving NVIDIA AI) is indeed a person's hair.
-- @bippolaroid Always
-  https://twitter.com/NousResearch/status/2125377878829494596
-  A short affirmation reply from the official Nous Research account telling a community member 'Always', likely in response to praise, a promise, or a question about continued support.
-- @__RobertG__ @Teknium Sick
-  https://twitter.com/NousResearch/status/2125362140072546541
-  A one-word enthusiastic reaction from the official Nous Research account to a post involving Teknium, likely responding to a demonstration or update shared by the co-founder.
+- Remember when Black Friday discounts were bangers?
+
+For the next 24 hours, get 50% OFF the first mon...
+  https://twitter.com/NousResearch/status/2126416631572119588
+  NousResearch announces a 24-hour Black Friday deal: 50% off the first month of a new or upgraded Nous Portal plan with code FIFTYFIFTY, noting every plan includes hundreds of models, tool usage, and Hermes Cloud agents.
+- i've been burning through 200B tokens a month since hermes-agent launched
+
+i've run countless models...
+  https://twitter.com/rlaope/status/2126154291681660982
+  rlaope details their OMH setup: 200B tokens per month since Hermes-Agent launched, maintained workflows across countless models, retirement of skills duplicated by models, ~150 high-impact active skills with a lightweight router, top memory benchmark results via per-model tuning, and an expansion ha
+- OMH is an all-in-one plugin for Hermes-Agent approaching 6.2k stars on GitHub.
+
+It makes your Hermes...
+  https://twitter.com/rlaope/status/2126356615918203214
+  Continuing our coverage from [yesterday](/?date=2026-11-27&category=social#item-f35edad283fd) as OMH climbs toward 6.2k stars, rlaope describes Oh My Hermes (OMH), an all-in-one Hermes-Agent plugin nearing 6.2k GitHub stars: task breakdown with cheap-model routing, a zero-overhead skill router with 
+- oh-my-hermes turns Hermes into a graph engineer, and as of this week it's a faster one.
+
+oh-my-herme...
+  https://twitter.com/rlaope/status/2126144041733824617
+  Announces a performance improvement to oh-my-hermes, the plugin that plans Hermes Agent jobs as a graph of subagent-owned pieces run in parallel with a separate final check. As of this week, small jobs no longer pay the full graph price: Hermes now runs the final check itself instead of spawning an 
+- If you hand Oh-My-Hermes a big job without typing "dag ulw", you're doing it the slow way.
+
+https://...
+  https://twitter.com/rlaope/status/2126147405267816565
+  A detailed walkthrough of the dag ulw skill in the oh-my-hermes workflow layer for Hermes Agent. Typing dag ulw triggers a directed-acyclic-graph planning mode with ultrawork: the goal is stated as a single line, split into independently checkable outcomes, decomposed into graph nodes each owned by 
+- hermes https://t.co/AQuCRSGMNI
+  https://twitter.com/rlaope/status/2126149235871752451
+  rlaope posts an image (linked) captioned simply hermes, which drew strong engagement with 310 likes and 19 replies.
+- Terminal Desktop &amp; Bot System are HERE: https://t.co/rtDYj3aZg6
+  https://twitter.com/rlaope/status/2126357124129456438
+  Continuing yesterday's [Social](/?date=2026-11-27&category=social#item-7cd646180271) coverage — the Terminal Desktop & Bot System is now officially out, rlaope announces that a Terminal Desktop and Bot System for Hermes are now available, linking out to the release.
+- @RealAstropulse Do you have a skill for doing this audit well?
+  https://twitter.com/Teknium/status/2126410915734270380
+  Teknium asks a community member whether they have a skill set up for performing an audit well, reflecting the skills-centric workflow around Hermes agents.
+- Thankful for all our Hermeticists 💙
+  https://twitter.com/NousResearch/status/2126209386712531138
+  NousResearch posts a Thanksgiving gratitude message thanking the community of Hermeticists.
+- Happy Thanksgiving hope everyone's having a great day
+  https://twitter.com/Teknium/status/2126166446464291150
+  Teknium wishes everyone a happy Thanksgiving in a warm holiday message to the community.
+- @anh8020 Just pick some options from
+
+https://t.co/R3I8gGdMm6
+
+And send your agent there to build fr...
+  https://twitter.com/Teknium/status/2126162645191712779
+  Teknium advises a user to pick options from a linked resource and send their Hermes agent there to build from, a concrete agent-usage recommendation.
+- Happy Black Friday
+  https://twitter.com/Teknium/status/2126434227873054931
+  Teknium posts a short Happy Black Friday greeting, likely setting up or nodding to the company promo announcement.
+- @rlaope I really hope that mousepad is real
+  https://twitter.com/Teknium/status/2126376768273863007
+  Teknium replies to rlaope hoping a mousepad shown by the community member is real, continuing a lighthearted exchange with a prominent Hermes community builder.
+- @Polymarket https://t.co/P9fZEIEWO2
+  https://twitter.com/Teknium/status/2126412060124918165
+  Teknium replies directly to Polymarket with a link, suggesting a public interaction or pointer involving the prediction market platform.
+- @jgallardo Yes the promo is off of the first month as stated in the post. You can email support@nous...
+  https://twitter.com/NousResearch/status/2126456382421348404
+  NousResearch confirms the Black Friday promo applies to the first month only and directs users with issues to the support email.
+- @read__the__diff Uh twice as much?
+  https://twitter.com/NousResearch/status/2126425771690561878
+  NousResearch replies quizzically (twice as much?) to a user in what appears to be a discussion about usage, pricing, or token allowances.
+- @swedish_gold The exclamation mark is not part of the code, you can also just click the link to appl...
+  https://twitter.com/NousResearch/status/2126456542572753380
+  NousResearch clarifies to a user that the exclamation mark is not part of the promo code and that the link applies it automatically.
+- Epic
+  https://twitter.com/Teknium/status/2126378042163605811
+  Teknium posts the single word Epic, a reaction tweet likely commenting on a release, demo, or community achievement.
+- @log4j @theemozilla Impeccable
+  https://twitter.com/NousResearch/status/2126143496591413506
+  A one-word reply from the official NousResearch account to log4j and theemozilla, saying Impeccable in response to some shared work. No substantive content on its own; it signals approval or praise from the org toward community members.
+- @hazem_samak101 We love our users and love giving them free and heavily discounted tokens
+  https://twitter.com/NousResearch/status/2126456757727948880
+  Official NousResearch reply telling a user they love giving users free and heavily discounted tokens, part of the support conversation around the Black Friday promo.
+- @mRelby @fl_rn_st @NousResearch Thanks for the feedback!
+  https://twitter.com/Teknium/status/2126416595174273120
+  Teknium thanks two users for feedback on something related to NousResearch, suggesting active founder engagement with community input.
+- @HarvardChin @telegram @NousResearch Love that gif
+  https://twitter.com/Teknium/status/2126163152622805056
+  Teknium compliments a gif shared by a user in a thread also mentioning Telegram and NousResearch.
+- @HermesAgentTips https://t.co/OMgjMGifK3
+  https://twitter.com/NousResearch/status/2126421210330276175
+  NousResearch replies with a bare link to an account named HermesAgentTips, likely sharing a related resource or thread.
+- @k6bat @NousResearch 👀👀
+  https://twitter.com/Teknium/status/2126410724373356828
+  Teknium replies with eye emojis to a user mentioning NousResearch, hinting interest in whatever the user surfaced.
+- @chandu_cpz Herme
+  https://twitter.com/NousResearch/status/2126210965821636871
+  NousResearch replies to a user with the truncated word Herme, a playful sign-off riffing on the Hermes name.
+- https://t.co/5OoCqbz58X
+  https://twitter.com/rlaope/status/2126150700216512981
+  rlaope posts a bare link, presumably to OMH-related material, with no accompanying text.
+- @Albinkultur https://t.co/lcBRqwq45i
+  https://twitter.com/NousResearch/status/2126456630204068194
+  Official NousResearch reply to a user containing only a link, likely pointing to the Black Friday promotion or relevant docs.
+- @BlondeBestie148 @Polymarket @jakozloski https://t.co/P9fZEIEWO2
+  https://twitter.com/Teknium/status/2126412072225497592
+  Teknium replies to a Polymarket-related exchange with a link, apparently pointing participants to something relevant.
 
 ### Reddit
 
 
-## Recent Corpus (1081 items)
+## Recent Corpus (933 items)
 
-- [2026-11-25] Hermes Agent v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.4
-  Nous Research shipped Hermes Agent v0.23.4, a patch release on November 23, 2026 that rolls up roughly 229 merged PRs since v0.23.3 into stable builds for the CLI, installers, Microsoft Store, Docker,
-- [2026-11-25] Hermes Agent as a Code Review Assistant: PR Analysis and Automated Checks (2026)
-  https://hermes-tutorials.dev/blog/2026-11-24-hermes-agent-code-review-assistant/
-  A Hermes Agent Tutorials walkthrough shows how to assemble an automated PR review chain using Hermes Agent together with the GitHub CLI, linters, and skills, with explicit governance around human appr
-- [2026-11-25] Hermes Agent canary canary.20261124T064706Z-v0.23.3
-  https://github.com/NousResearch/hermes-agent/releases/tag/canary.20261124T064706Z-v0.23.3
-  A Hermes Desktop canary build (v0.23.3+canary.20261124T064706Z) was published on November 24, 2026 with macOS and Windows installers whose smoke tests all passed. The build adds a neocore memory provi
-- [2026-11-25] rc.2-v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/rc.2-v0.23.4
-  A second release candidate tag, rc.2-v0.23.4, was published for Hermes Agent on November 24, 2026, ahead of or alongside the stable v0.23.4 rollout. The content is machine-generated release automation
-- [2026-11-25] rc.1-v0.23.4
-  https://github.com/NousResearch/hermes-agent/releases/tag/rc.1-v0.23.4
-  The first release candidate, rc.1-v0.23.4, was tagged on November 24, 2026 as part of the Hermes Agent release pipeline for v0.23.4. Like rc.2, it carries only automation metadata (attempt, autopublis
-- [2026-11-25] Best Hermes Agent Course: 7 Picks Ranked by Learning Style (2026)
-  https://juliangoldie.com/best-hermes-agent-course/?utm_source=rss&utm_medium=rss&utm_campaign=best-hermes-agent-course
-  A marketing-heavy blog post ranks seven Hermes Agent courses by learning style, naming the author's own AI Profit Boardroom as the top pick, with Udemy as the most complete video course, NetworkChuck 
-- [2026-11-25] docs: refresh Hermes Helper Reddit post index
-  https://github.com/AtlasOmnia/hermes-agent-community/commit/8496a68adb7931a94734854074900b4e1e023db4
-  A commit on the hermes-agent-community repository refreshes the Hermes Helper Reddit post index, keeping the community documentation index of Reddit posts current. It is a documentation maintenance co
-- [2026-11-25] NPM package installed Hermes Agent as root and tasked it over Telegram
+- [2026-11-28] Run Hermes Agent as an API Server and Put Open WebUI on It
+  https://hermes-tutorials.dev/blog/hermes-agent-api-server-guide-2026/
+  A tutorial published on Hermes Agent Tutorials walks through exposing Hermes Agent as a secure OpenAI-compatible API server and connecting Open WebUI as a web chat frontend. It covers streaming, tool 
+- [2026-11-28] docs: refresh Hermes Helper Reddit post index
+  https://github.com/AtlasOmnia/hermes-agent-community/commit/7321ce7b8ac98edbcacfaee46841737b17a63ed0
+  A commit on the hermes-agent-community repository refreshes the documentation index of Hermes Helper Reddit posts. It is a documentation housekeeping change updating pointers to community discussion t
+- [2026-11-28] NPM package installed Hermes Agent as root and tasked it over Telegram
   https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-50585975) yesterday, A security report from SafeDep about a malicious NPM package (leadstack-crm-connect) that installed Her
-- [2026-11-25] Hermes Agent now supports Claude Pro/Max subscriptions
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50585975) earlier this week, A Safedep report on a malicious NPM package (leadstack-crm-connect) that acted as a backdoor: it insta
+- [2026-11-28] Hermes Agent now supports Claude Pro/Max subscriptions
   https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49790991), An official Hermes Agent documentation page announcing that Hermes Agent now supports Claude Pro/Max subscr
-- [2026-11-25] Show HN: Comemo – composite memory provider for Hermes Agent
-  https://github.com/andausman/comemo
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-50518538), Show HN for Comemo, a composite memory provider for Hermes Agent. Because Hermes exposes only one slot for 
-- [2026-11-25] Show HN: Crazy simple AI agent orchestration with Markdown and Containers
-  https://github.com/ameesme/shoebox
-  As previously covered in [Research](/?date=2026-11-24&category=research#item-hn-50610136), Show HN post for shoebox, a filesystem-based AI agent orchestration tool built with Markdown and containers. 
-- [2026-11-25] Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49790991) earlier this week, Official Hermes Agent documentation announces a new plugin allowing the agent to authenticate through 
+- [2026-11-28] Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init
   https://www.revos.ai/blog/hermes-agent-kubernetes
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-49977400) yesterday, A Revos.ai blog post about running Hermes Agent on Kubernetes, highlighting two friction points: the pr
-- [2026-11-25] Show HN: A free, open-source agent orchestrator for knowledge work
-  https://www.itsverso.xyz/
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49628094), Show HN for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent by
-- [2026-11-25] Using Hermes Agent on a VPS to Control an Old Rooted Android Phone
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49977400) earlier this week, A blog post documenting problems deploying Hermes Agent on Kubernetes: there is no official Helm chart
+- [2026-11-28] Hermes Kanban – Multi-Agent Profile Collaboration
+  https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49604068) earlier this week, Official Hermes Agent documentation describing the Kanban feature, which enables multi-agent profile c
+- [2026-11-28] Show HN: Comemo – composite memory provider for Hermes Agent
+  https://github.com/andausman/comemo
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50518538) earlier this week, Comemo is a tool that occupies Hermes Agent's single external memory provider slot and acts as a compo
+- [2026-11-28] Tell HN: Stop using MLX, start telling your agent to write custom kernels
+  https://news.ycombinator.com/item?id=50648334
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50648334) earlier this week, A Hacker News post reporting that instead of MLX, asking Claude to write custom Metal kernels dramatic
+- [2026-11-28] Show HN: Crazy simple AI agent orchestration with Markdown and Containers
+  https://github.com/ameesme/shoebox
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50610136) earlier this week, A Show HN for shoebox, a filesystem-based agent orchestration tool using Markdown and containers. The 
+- [2026-11-28] Launch HN: Almanac (YC S26) – AI that knows your company
+  https://usealmanac.com/
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-49511007) earlier this week, Almanac, a YC S26 startup, launches as a company-knowledge agent, described as a Hermes with a brain t
+- [2026-11-28] Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent
+  https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50278175) earlier this week, Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the App Store,
+- [2026-11-28] Hermes Agent: My containerized take
+  https://ricardodevries.com/blog/hermes-agent-my-containerized-take
+  As covered in [Research](/?date=2026-11-26&category=research#item-hn-50131496) earlier this week, A blog post presenting the author's containerized setup for running Hermes Agent, sharing a personal a
+- [2026-11-28] Using Hermes Agent on a VPS to Control an Old Rooted Android Phone
   https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/
-  A blog post by nimitbhardwaj describing how to run Hermes Agent on a virtual private server and use it to control an old rooted Android phone, apparently as a headless automation target. The title ind
-- [2026-11-25] Launch HN: Almanac (YC S26) – AI that knows your company
-  https://usealmanac.com/
-  As first reported in [Research](/?date=2026-11-23&category=research#item-hn-49511007) yesterday, Launch HN for Almanac, a YC S26 startup by Kushagra and two other founders, described as a Hermes with 
-- [2026-11-25] Hermes Kanban – Multi-Agent Profile Collaboration
-  https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-49604068), Official Hermes Agent documentation describing the Kanban feature for multi-agent profile collaboration, en
-- [2026-11-25] Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
-  https://github.com/majorminorlabs/hermes-voice
-  As we covered yesterday in [Research](/?date=2026-11-23&category=research#item-hn-50381927), Hermes-Voice is a project by majorminorlabs that lets users talk to a Hermes Agent profile through Home Ass
-- [2026-11-25] Ask HN: My agent went haywire, does this output mean anything?
-  https://news.ycombinator.com/item?id=49916751
-  An Ask HN thread by nativeit describing a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash model. When asked to print details about its local environment and 
-- [2026-11-25] Refine Cycle: self-improvement plugin for Hermes Agent
-  https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent
-  Refine Cycle is a self-improvement plugin for Hermes Agent by 1134taras, hosted on GitHub, adding autonomous refinement/self-improvement capabilities to an agent installation.
-- [2026-11-25] Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent
-  https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872
-  Hermes Paper Harness is a native SwiftUI iPhone client for Hermes Agent, distributed on the Apple App Store, providing a mobile front-end to interact with an agent profile.
-- [2026-11-25] Hermes Agent: My containerized take
-  https://ricardodevries.com/blog/hermes-agent-my-containerized-take
-  A blog post by ricardodevries presenting a personal containerized deployment approach for Hermes Agent, sharing one user's containerization setup and practices.
-- [2026-11-25] ClusterMob – a community registry of Hermes Agent profiles
-  https://clustermob.com/
-  ClusterMob is a community-run registry of Hermes Agent profiles, hosted at clustermob.com, allowing users to discover and share agent profiles.
-- [2026-11-25] I think I used the Hermes Agent wrong
-  https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/
-  A reflective blog post by heyjonny titled I think I used the Hermes Agent wrong, apparently chronicling the author's experience of misusing the agent and lessons learned about the correct way to work 
-- [2026-11-25] Ask HN: How do you manage your personal agents?
-  https://news.ycombinator.com/item?id=50326764
-  An Ask HN thread by kevinlu310 noting the proliferation of powerful agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex) and asking how people coordinate them. The author runs each separate
-- [2026-11-25] Show HN: Hanging Context – news by an agent, for other agents
-  https://hangingcontext.com/
-  Show HN for Hanging Context, a news site authored by an agent and intended for consumption by other agents. The author recounts building a data-driven news site for wealth and investment audiences in 
-- [2026-11-25] Hermes Agent – Open-Source AI Agent That Grows with You
-  https://hermes-agent.nousresearch.com
-  The official Hermes Agent website (hermes-agent.nousresearch.com), presenting the project as an open-source AI agent that grows with its user. Serves as the canonical entry point for the platform.
-- [2026-11-25] Ask HN: What's your current AI agentic setup?
-  https://news.ycombinator.com/item?id=50366117
-  An Ask HN discussion thread by eggbrain surveying how Hacker News readers use AI day to day: which subscriptions they pay for (Claude, ChatGPT/Codex, Cursor, etc.), which tiers, whether they hold dupl
-- [2026-11-25] Best Hermes Agent Course: 7 Picks Ranked by Learning Style (2026)
-  https://juliangoldie.com/best-hermes-agent-course/?utm_source=rss&utm_medium=rss&utm_campaign=best-hermes-agent-course
-  A Julian Goldie blog post ranking seven Hermes Agent courses, promoting his own AI Profit Boardroom as number one, alongside options such as a Udemy video course (6h 27m), NetworkChuck Academy for IT 
-- [2026-11-25] Best AI Visibility Tracking Tools (2026): 8 Trackers That Log Your AI Mentions Week by Week
-  https://juliangoldie.com/best-ai-visibility-tracking-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-visibility-tracking-tools
-  A Julian Goldie marketing blog post ranking eight AI visibility tracking tools, with Polar Rank promoted as number one for logging whether a brand is named in ChatGPT, Perplexity and Gemini, plus prom
-- [2026-11-25] Best AI Search Visibility Tools (2026): 9 Platforms That Show What ChatGPT, Perplexity and AI Overviews Say About You
-  https://juliangoldie.com/best-ai-search-visibility-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-search-visibility-tools
-  Another Julian Goldie promotional listicle ranking nine AI search visibility monitoring platforms (Polar Rank, Profound, Ahrefs Brand Radar, Peec AI, Similarweb, Brandlight, Evertune, ziptie.ai, XFunn
-- [2026-11-25] Best Answer Engine Optimization Tools (2026): 9 AEO Tools That Get You Cited
-  https://juliangoldie.com/best-answer-engine-optimization-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-answer-engine-optimization-tools
-  A third Julian Goldie promotional listicle, this time ranking nine answer-engine-optimization (AEO) tools, again topping the list with the author's own Polar Rank offering and including calls to actio
-- [2026-11-25] @AviSchiffmann We have many scrappy users taking advantage of free and heavily discounted models bui...
-  https://twitter.com/NousResearch/status/2125377491019678046
-  An official Nous Research reply to Avi Schiffmann noting that many scrappy users are building wonderful things using free and heavily discounted models, highlighting the accessibility of the company's
-- [2026-11-25] @kerwinv101 @NVIDIAAI Yes it's his hair
-  https://twitter.com/NousResearch/status/2125378202122252717
-  A brief reply from the official Nous Research account confirming to a user that something depicted (apparently in an image or demo context involving NVIDIA AI) is indeed a person's hair.
-- [2026-11-25] @bippolaroid Always
-  https://twitter.com/NousResearch/status/2125377878829494596
-  A short affirmation reply from the official Nous Research account telling a community member 'Always', likely in response to praise, a promise, or a question about continued support.
-- [2026-11-25] @__RobertG__ @Teknium Sick
-  https://twitter.com/NousResearch/status/2125362140072546541
-  A one-word enthusiastic reaction from the official Nous Research account to a post involving Teknium, likely responding to a demonstration or update shared by the co-founder.
-- [2026-11-24] fix(profiles): platform adapters never recreate a deleted profile home
-  https://github.com/NousResearch/hermes-agent/commit/4fc866bae7c88da6020a0e3c8def3f6a48119df5
-  A merged fix stops eight writer code paths in gateway platform plugins from recreating a deleted or renamed profile home via raw mkdir(parents=True) calls. All affected writers now go through mkdir_un
-- [2026-11-24] Hermes Agent canary canary.20261123T065600Z-v0.23.3
-  https://github.com/NousResearch/hermes-agent/releases/tag/canary.20261123T065600Z-v0.23.3
-  Nous Research shipped a canary build of Hermes Agent v0.23.3 dated November 23, 2026, with desktop downloads for macOS Apple Silicon and Windows x64/ARM64. Native install/chat smoke tests passed for m
-- [2026-11-24] fix(matrix): an operator recovery-key path outside every profile home…
-  https://github.com/NousResearch/hermes-agent/commit/eee77ea20d5c2f9d44eb5a95e0b6884a6bd0dffe
-  A merged fix for the Matrix adapter ensures that an operator-configured Matrix recovery-key output path outside any profile home (e.g. /secure/path from the docs) keeps a plain mkdir instead of going 
-- [2026-11-24] Hermes Agent Observability: Trace, Debug, and Monitor Agent Runs (2026)
-  https://hermes-tutorials.dev/blog/hermes-agent-observability-tracing-guide-2026/
-  A documentation-based tutorial on tracing, debugging, and monitoring Hermes Agent runs, covering observer hooks plus integrations with Langfuse, NeMo Relay, and OpenTelemetry. It targets users who wan
-- [2026-11-24] Hermes Agent Discord vs Telegram: Which One Should You Use? (2026)
-  https://juliangoldie.com/hermes-agent-discord-vs-telegram/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-discord-vs-telegram
-  As covered in [Research](/?date=2026-11-23&category=research#item-8c6bdbd35643) yesterday, A third-party guide compares talking to a running Hermes Agent via Discord versus Telegram, concluding Telegr
-- [2026-11-24] test(google-chat): restore the dead-home assertion the rebase dropped
-  https://github.com/NousResearch/hermes-agent/commit/b98c388a880b1b6fd303c9c2821a3946651a0b4c
-  A merged commit to hermes-agent:main restores a test assertion in the Google Chat platform adapter that was accidentally displaced during a rebase conflict with PR #159157. Without the fix, a raw mkdi
-- [2026-11-24] NPM package installed Hermes Agent as root and tasked it over Telegram
-  https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-50585975) yesterday, Link to a safedep.io writeup on a malicious NPM package (leadstack-crm-connect) that installed Hermes Agent as
-- [2026-11-24] Hermes Agent now supports Claude Pro/Max subscriptions
-  https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49790991) yesterday, Announcement that Hermes Agent now supports Claude Pro/Max subscriptions, linking to official documentation fo
-- [2026-11-24] Hermes Agent has 23000 open PRs and climbing
-  https://github.com/NousResearch/hermes-agent/pulls
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49424643) yesterday, Observation that the Hermes Agent GitHub repository (NousResearch/hermes-agent) has roughly 23,000 open pull r
-- [2026-11-24] Show HN: Crazy simple AI agent orchestration with Markdown and Containers
-  https://github.com/ameesme/shoebox
-  Show HN post for shoebox, a filesystem-based AI agent orchestration tool built by a developer frustrated with Hermes Agent's perceived bloat and hard-to-triage bugs. Shoebox offers a primary agent wit
-- [2026-11-24] Show HN: Comemo – composite memory provider for Hermes Agent
-  https://github.com/andausman/comemo
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-50518538) yesterday, Show HN post for Comemo, a composite memory provider for Hermes Agent. Since Hermes exposes only one external 
-- [2026-11-24] Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init
-  https://www.revos.ai/blog/hermes-agent-kubernetes
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49977400) yesterday, Blog post from revos.ai on running Hermes Agent on Kubernetes, identifying two friction points: there is no of
-- [2026-11-24] Hermes Kanban – Multi-Agent Profile Collaboration
-  https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49604068) yesterday, Link to official Hermes Agent documentation for the Kanban feature, which enables multi-agent profile collabor
-- [2026-11-24] Show HN: A free, open-source agent orchestrator for knowledge work
+  A blog walkthrough describing how to run Hermes Agent on a VPS and use it to control an old rooted Android phone, extending the agent's reach to physical device automation. Only the title is available
+- [2026-11-28] Show HN: A free, open-source agent orchestrator for knowledge work
   https://www.itsverso.xyz/
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49628094) yesterday, Show HN for verso, a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. The 
-- [2026-11-24] Ask HN: My agent went haywire, does this output mean anything?
+  Verso is a free, open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it provides an intuitive non-CLI interface to Hermes Agent and has beco
+- [2026-11-28] Ask HN: My agent went haywire, does this output mean anything?
   https://news.ycombinator.com/item?id=49916751
-  As covered in [Research](/?date=2026-11-23&category=research#item-hn-49916751) yesterday, User reports a freshly provisioned Hermes agent on a headless Debian server, backed by Z.ai GLM 5.3 Flash, spi
-- [2026-11-24] Hermes Agent Discord vs Telegram: Which One Should You Use? (2026)
-  https://juliangoldie.com/hermes-agent-discord-vs-telegram/?utm_source=rss&utm_medium=rss&utm_campaign=hermes-agent-discord-vs-telegram
-  As covered in [Research](/?date=2026-11-23&category=research#item-8c6bdbd35643) yesterday, Guide comparing Discord vs Telegram as chat frontends for Hermes Agent via the Messaging Gateway. Key points:
-- [2026-11-24] Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent
-  https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872
-  Announcement of Hermes Paper Harness, a native SwiftUI iPhone client for Hermes Agent, distributed on the App Store. The post is essentially a link with no additional technical detail in the visible c
-- [2026-11-24] Launch HN: Almanac (YC S26) – AI that knows your company
-  https://usealmanac.com/
-  Launch HN for Almanac (YC S26), positioned as a Hermes-like agent with a brain that knows everything about your company. The founders describe their own painful journey setting up Hermes for internal 
-- [2026-11-24] Moving Generality from Model to Modeler: LLM Agents for PHM on a Deployment-Style Benchmark
-  https://arxiv.org/abs/2611.25252
-  Research paper proposing NextUnit-Bench, a deployment-style benchmark for prognostics and health management (PHM) built around LLM coding agents. It covers 24 public datasets split into 58 folds that 
-- [2026-11-24] Refine Cycle: self-improvement plugin for Hermes Agent
+  A user with a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai's GLM 5.3 Flash, reports that asking the agent to print local environment details and PATH caused it to spiral 
+- [2026-11-28] Refine Cycle: self-improvement plugin for Hermes Agent
   https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent
-  Announcement of Refine Cycle, a self-improvement plugin for Hermes Agent hosted on GitHub (Bergschloss/Refine-Cycle-for-Hermes-Agent). The post is title-only; the plugin apparently iterates on the age
-- [2026-11-24] Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
+  Refine Cycle is a self-improvement plugin for Hermes Agent, hosted on GitHub, that adds an iterative refinement loop to the agent. Only the title is available in the feed, so the mechanism (feedback c
+- [2026-11-28] Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
   https://github.com/majorminorlabs/hermes-voice
-  Community-shared project Hermes-Voice, which lets users talk to a Hermes Agent profile through Home Assistant Assist, enabling voice interaction with the agent from a smart-home setup. Shared via GitH
-- [2026-11-24] Hermes Agent: My containerized take
-  https://ricardodevries.com/blog/hermes-agent-my-containerized-take
-  Blog post by ricardodevries describing a personal containerized deployment approach for Hermes Agent. The HN post is title-only; the linked writeup presumably covers container setup choices for runnin
-- [2026-11-24] I think I used the Hermes Agent wrong
-  https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/
-  Personal blog post by heyjonny reflecting on misusing the Hermes Agent, posted to HN as a title-only link. The essay presumably documents misunderstandings of the agent's intended usage patterns and l
-- [2026-11-24] MemOnce: A Scalable Memory Architecture for Large Language Models
-  https://arxiv.org/abs/2611.27973
-  Paper introducing MemOnce, a memory architecture for LLMs in long-horizon and continual interactions. It addresses the tradeoff between standard Transformers with layer-wise token-level KV caches (lin
-- [2026-11-24] Ask HN: How do you manage your personal agents?
-  https://news.ycombinator.com/item?id=50326764
-  Ask HN thread on coordinating multiple personal agents. The author lists OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex and more, noting they run each separately but copy-paste the same questi
-- [2026-11-24] ClusterMob – a community registry of Hermes Agent profiles
+  Hermes-Voice is an open-source integration that lets users talk to a Hermes Agent profile through Home Assistant Assist, bringing agent interaction into a smart-home voice pipeline. Only the title is 
+- [2026-11-28] ClusterMob – a community registry of Hermes Agent profiles
   https://clustermob.com/
-  Community project ClusterMob, described as a registry of Hermes Agent profiles, hosted at clustermob.com. The post is link-only, so details on registration mechanism, discovery features, or curation a
-- [2026-11-24] Hermes Agent – Open-Source AI Agent That Grows with You
-  https://hermes-agent.nousresearch.com
-  Link to the official Hermes Agent website (hermes-agent.nousresearch.com) with its tagline positioning it as an open-source AI agent that grows with you. The HN post is title-only with no discussion c
-- [2026-11-24] Ask HN: What's your current AI agentic setup?
+  ClusterMob is a community registry where users can share and discover Hermes Agent profiles, hosted at clustermob.com. Only the title is present, so details on profile format, moderation, or features 
+- [2026-11-28] I think I used the Hermes Agent wrong
+  https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/
+  A personal blog post reflecting on mistakes the author made while using Hermes Agent and what they would do differently. Only the title is available in the feed, so the specific lessons and misconfigu
+- [2026-11-28] AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design
+  https://arxiv.org/abs/2611.33093
+  A benchmark asking what LLM coding agents need to write correct hardware: agents implement quantized Qwen3.5, Gemma 3, Gemma 4, and Llama 3.2 decoders in synthesizable RTL against an executable intege
+- [2026-11-28] Ask HN: How do you manage your personal agents?
+  https://news.ycombinator.com/item?id=50326764
+  An Ask HN thread on coordinating multiple agents (OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex and more). The author runs each separately and copy-pastes the same prompts across agents to co
+- [2026-11-28] Revisiting LLMs as Context Engineers
+  https://arxiv.org/abs/2611.30494
+  An arXiv paper surveying LLM context engineering (LCE), where the LLM itself automates construction of instruction prompts and metadata from offline trials without intensive fine-tuning. The excerpt n
+- [2026-11-28] Ask HN: What's your current AI agentic setup?
   https://news.ycombinator.com/item?id=50366117
-  Ask HN discussion surveying how people use AI day to day: which subscriptions and tiers they pay for (Claude, ChatGPT/Codex, Cursor), whether they hold multiple accounts per provider, and whether they
-- [2026-11-24] Show HN: Hanging Context – news by an agent, for other agents
+  An Ask HN discussion asking readers to share their day-to-day AI setups: which subscriptions and tiers they pay for (Claude, ChatGPT/Codex, Cursor, etc.), whether they hold duplicate accounts, and whe
+- [2026-11-28] Show HN: Hanging Context – news by an agent, for other agents
   https://hangingcontext.com/
-  Show HN for Hanging Context, a news site authored by agents and aimed at agent readers rather than humans. The founder describes pivoting from a 2022 data/news site for family offices (which licensed 
-- [2026-11-24] Best AI Automation Courses: 7 Ranked for Building Agents (2026)
-  https://juliangoldie.com/best-ai-automation-courses/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-automation-courses
-  Ranking of seven AI automation courses for building agents, again led by the author's AI Profit Boardroom, which is described as using an Agent OS plus kits for Hermes Agent and Claude. Other picks in
-- [2026-11-24] Best AI Course for Business Owners: 7 Courses Ranked for 2026
-  https://juliangoldie.com/best-ai-course-for-business-owners/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-course-for-business-owners
-  Ranking of seven AI courses for business owners as of 23 November 2026, topped by the author's own paid AI Profit Boardroom, followed by options from Wharton (Coursera), the U.S. Chamber of Commerce, 
-- [2026-11-24] Best LLM SEO Tools (2026): 10 Tools for ChatGPT, Claude and Gemini, Sorted by Job
-  https://juliangoldie.com/best-llm-seo-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-llm-seo-tools
-  A promotional listicle ranking ten LLM SEO tools, naming Polar Rank as the top pick because it both tracks what ChatGPT, Perplexity and Gemini say about a brand and deploys agents to write articles, b
-- [2026-11-24] Best AI SEO Software (2026): 10 AI SEO Platforms Ranked by the Work They Do
-  https://juliangoldie.com/best-ai-seo-software/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-seo-software
-  A ranking of ten AI SEO platforms sorted by the amount of work they perform. Polar Rank is ranked first as the only platform that executes SEO daily rather than producing reports. The piece groups the
-- [2026-11-24] Best AI Rank Tracking Tools (2026): 9 Trackers for ChatGPT, Perplexity and AI Overviews
-  https://juliangoldie.com/best-ai-rank-tracking-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-rank-tracking-tools
-  A review of nine AI rank-tracking tools that monitor brand rankings inside ChatGPT, Perplexity and AI Overviews. Polar Rank is ranked first on the claim that it is the only tool that both tracks AI an
-- [2026-11-24] Best ChatGPT SEO Tools (2026): 10 Trackers and Content Tools to Get Named in ChatGPT
-  https://juliangoldie.com/best-chatgpt-seo-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-chatgpt-seo-tools
-  A ranked list of ten ChatGPT-focused SEO tools, again placing Polar Rank first for combining weekly checks of whether ChatGPT names a business with agent-driven article publishing and link building. I
-- [2026-11-24] Best SEO Automation Tools (2026): 9 Tools Ranked by the Work They Do for You
-  https://juliangoldie.com/best-seo-automation-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-seo-automation-tools
-  A ranking of nine SEO automation tools ordered by how much work each takes off the user's plate. Polar Rank is placed first for end-to-end automation: writing and publishing articles, building links, 
-- [2026-11-24] Best AI SEO Writer (2026): 9 AI Writers Ranked, From Draft Tools to Done-For-You
-  https://juliangoldie.com/best-ai-seo-writer/?utm_source=rss&utm_medium=rss&utm_campaign=best-ai-seo-writer
-  A comparison of nine AI SEO writers, placing Polar Rank first for covering the full pipeline beyond drafting: choosing topics from search data, publishing articles, interlinking pages, building links,
-- [2026-11-24] @pabis_eu It’s none of the options. Nous from day one of Hermes launch had big plans for enterprise ...
-  https://twitter.com/Teknium/status/2124784903447605534
-  Teknium laying out Nous strategy in detail: enterprise plans existed from Hermes day one with an enterprise team since April and design partners including NVIDIA, while he leads Hermes core covering t
-- [2026-11-24] A face for every bot! ⭐️ 6k+ GitHub star
+  Hanging Context is a news site written by an agent and aimed at agent readers rather than humans, based on the thesis that agents will become the primary consumers of news. It grew out of a 2022 data-
+- [2026-11-28] CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes
+  https://arxiv.org/abs/2611.29969
+  A paper proposing reinforcement learning for embodied agents in 3D scenes, arguing that supervised-trace imitation copies prescribed evidence-acquisition patterns instead of optimizing evidence suppor
+- [2026-11-28] Black Friday Backlinks: DR 70+ Links $181 (Normally $390)
+  https://juliangoldie.com/black-friday-backlinks/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-backlinks
+  A promotional Black Friday post from Julian Goldie's Goldie Agency advertising discounted SEO backlink packages sold by Domain Rating (DR) tier. Pricing tiers include DR 0 at $36, DR 1-9 at $91, DR 10
+- [2026-11-28] Black Friday SEO 2026: The 8 Best SEO Deals for More Google and AI Traffic
+  https://juliangoldie.com/black-friday-seo-2026/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-seo-2026
+  A promotional blog post listing Black Friday 2026 SEO deals, heavily promoting the author's own Polar Rank product (AI agents that write articles and build links) and a backlinks sale, with a few thir
+- [2026-11-28] Black Friday Link Building: Up To 54% Off Every Backlink
+  https://juliangoldie.com/black-friday-link-building/?utm_source=rss&utm_medium=rss&utm_campaign=black-friday-link-building
+  A time-limited promotional post advertising a Black Friday backlink sale from Goldie Agency, listing discounted prices per DR tier (up to 54% off DR 70-89 links) with checkout instructions. Entirely s
+- [2026-11-28] Remember when Black Friday discounts were bangers?
 
-introducing: a revolutionary open-source desktop app that ...
-  https://twitter.com/rlaope/status/2124703622705647741
-  rlaope introduces Oh-My-Hermes and OMHER Desktop, an open-source desktop app built on Hermes Agent with 6k+ GitHub stars, featuring a GrokBot companion, built-in agents, personalized memory and manage
-- [2026-11-24] Access the frontier at a discount
+For the next 24 hours, get 50% OFF the first mon...
+  https://twitter.com/NousResearch/status/2126416631572119588
+  NousResearch announces a 24-hour Black Friday deal: 50% off the first month of a new or upgraded Nous Portal plan with code FIFTYFIFTY, noting every plan includes hundreds of models, tool usage, and H
+- [2026-11-28] i've been burning through 200B tokens a month since hermes-agent launched
 
-The latest Anthropic and OpenAI models are 20% off for the next w...
-  https://twitter.com/NousResearch/status/2124945850531037556
-  Official Nous Research announcement that the latest Anthropic and OpenAI models are 20% off for one week, presumably via the Nous platform, with very high reach.
-- [2026-11-24] Hermes Agent can now hand coding work to the other agents you already pay for.
+i've run countless models...
+  https://twitter.com/rlaope/status/2126154291681660982
+  rlaope details their OMH setup: 200B tokens per month since Hermes-Agent launched, maintained workflows across countless models, retirement of skills duplicated by models, ~150 high-impact active skil
+- [2026-11-28] OMH is an all-in-one plugin for Hermes-Agent approaching 6.2k stars on GitHub.
 
-Someone told me they...
-  https://twitter.com/rlaope/status/2124704746871325024
-  rlaope announces expanded delegation support in Hermes Agent: beyond Codex, Claude Code, and pi, it now has built-in support for Devin, Gemini CLI, Qwen Code, Kimi, Cursor, Amp, Droid, aider, and goos
-- [2026-11-24] We’re so back https://t.co/7wIQbgNl34
-  https://twitter.com/NousResearch/status/2124889507610927533
-  Official Nous Research hype post with an attached link, declaring a comeback or major positive moment, achieving very large engagement (4k+ likes, 52k views).
-- [2026-11-24] https://t.co/W9k2orXLXH's GLM 5.4 has just been announced, and we offer it as an oh my hermes provid...
-  https://twitter.com/rlaope/status/2124775254937809338
-  rlaope announces that GLM 5.4 has been announced and is now available as a provider in oh-my-hermes, showing an example workflow and sharing the GitHub link for a one-install integration.
-- [2026-11-24] 3-day kernel grinding retrospective with 3x RTX 6000 Pro and Oh-My-Hermes
+It makes your Hermes...
+  https://twitter.com/rlaope/status/2126356615918203214
+  Continuing our coverage from [yesterday](/?date=2026-11-27&category=social#item-f35edad283fd) as OMH climbs toward 6.2k stars, rlaope describes Oh My Hermes (OMH), an all-in-one Hermes-Agent plugin ne
+- [2026-11-28] oh-my-hermes turns Hermes into a graph engineer, and as of this week it's a faster one.
 
-- Fixed SGLang ignoring t...
-  https://twitter.com/rlaope/status/2124784854973976661
-  rlaope publishing a detailed three-day retrospective of kernel and inference-stack fixes using 3x RTX 6000 Pro and Oh-My-Hermes, including SGLang DSA prefill config fixes on SM120, Qwen3.6 AWQ load cr
-- [2026-11-24] Big discounts on Claude and GPT :)
-  https://twitter.com/Teknium/status/2124950998049558697
-  Teknium announcing notable discounts on Claude and GPT model access, evidently through the Nous offering, with solid traction across replies.
-- [2026-11-24] ⭐️ GitHub 6k star Hermes-Agent Plugin
+oh-my-herme...
+  https://twitter.com/rlaope/status/2126144041733824617
+  Announces a performance improvement to oh-my-hermes, the plugin that plans Hermes Agent jobs as a graph of subagent-owned pieces run in parallel with a separate final check. As of this week, small job
+- [2026-11-28] If you hand Oh-My-Hermes a big job without typing "dag ulw", you're doing it the slow way.
 
-thank you https://t.co/5OoCqbz58X https://t.co/sgUwiWFQtq
-  https://twitter.com/rlaope/status/2124700504127394240
-  rlaope thanks the community as the Hermes-Agent Plugin reaches 6k GitHub stars, sharing repository links.
-- [2026-11-24] OpenAI published its internal pretraining loss numbers, the kind of thing labs usually keep to thems...
-  https://twitter.com/rlaope/status/2124700874308223169
-  rlaope summarizes OpenAI chief scientist Jakub Pachocki publishing internal pretraining loss numbers: log-perplexity on a held-out code set improving from about 0.99 (GPT-3.5) to 0.91 (GPT-4), around 
-- [2026-11-24] @jotavs77 @nima_owji @NousResearch A bots market is coming to the Hermes Market :)
-  https://twitter.com/Teknium/status/2124935332655513840
-  Teknium teasing that a bots marketplace is coming to the Hermes Market, answering community speculation about upcoming platform features.
-- [2026-11-24] Looking at Anthropic's proof of the Riemann Hypothesis, the good news is that they proved it's true,...
-  https://twitter.com/rlaope/status/2124755492656632009
-  rlaope comments on Anthropic's claimed proof of the Riemann Hypothesis, noting it was proven true but is not understood by people, and arguing that an AI-built mathematical decision model for truth de
-- [2026-11-24] Truly part of the Hermes Agent gang now ♥️
-  https://twitter.com/Teknium/status/2124836234828918902
-  Teknium expressing enthusiasm about being part of the Hermes Agent team/community, resonating widely with over 10k views and 208 likes.
-- [2026-11-24] @deeperflows @pabis_eu @NousResearch @linuxfoundation And mozilla foundation is also investors in us...
-  https://twitter.com/Teknium/status/2124771815990108492
-  Teknium adds that the Mozilla Foundation is also an investor in Nous Research, continuing a thread about the company's backers alongside the Linux Foundation mention.
-- [2026-11-24] @as_maruf62783 @pabis_eu We love our collabs with nvidia, msft, and every other company, and have si...
-  https://twitter.com/Teknium/status/2124771674499547391
-  Teknium states that Nous Research welcomes collaborations with NVIDIA, Microsoft, and other companies, noting partnerships began in month one of the Hermes release with hundreds of companies.
-- [2026-11-24] @JasonHCrowe @HermesAgentTips The plugin i think can build and use the scripts the same but if you d...
-  https://twitter.com/Teknium/status/2124785880108015930
-  Teknium explaining that a Hermes plugin can likely build and use scripts the same way, and inviting a comparison if the user tests it, via the HermesAgentTips account thread.
-- [2026-11-24] @PaulFWatts Mm it isn’t for every plugin, it’s up to the author though https://t.co/MOWdb7ZdR0
-  https://twitter.com/Teknium/status/2124772256899531107
-  Teknium clarifies in a reply that a certain behavior or capability applies to some plugins rather than all, noting it is at the discretion of the plugin author, with a linked reference.
-- [2026-11-24] @OpenAI there's a strange satisfaction in it.
+https://...
+  https://twitter.com/rlaope/status/2126147405267816565
+  A detailed walkthrough of the dag ulw skill in the oh-my-hermes workflow layer for Hermes Agent. Typing dag ulw triggers a directed-acyclic-graph planning mode with ultrawork: the goal is stated as a 
+- [2026-11-28] hermes https://t.co/AQuCRSGMNI
+  https://twitter.com/rlaope/status/2126149235871752451
+  rlaope posts an image (linked) captioned simply hermes, which drew strong engagement with 310 likes and 19 replies.
+- [2026-11-28] Terminal Desktop &amp; Bot System are HERE: https://t.co/rtDYj3aZg6
+  https://twitter.com/rlaope/status/2126357124129456438
+  Continuing yesterday's [Social](/?date=2026-11-27&category=social#item-7cd646180271) coverage — the Terminal Desktop & Bot System is now officially out, rlaope announces that a Terminal Desktop and Bo
+- [2026-11-28] @RealAstropulse Do you have a skill for doing this audit well?
+  https://twitter.com/Teknium/status/2126410915734270380
+  Teknium asks a community member whether they have a skill set up for performing an audit well, reflecting the skills-centric workflow around Hermes agents.
+- [2026-11-28] Thankful for all our Hermeticists 💙
+  https://twitter.com/NousResearch/status/2126209386712531138
+  NousResearch posts a Thanksgiving gratitude message thanking the community of Hermeticists.
+- [2026-11-28] Happy Thanksgiving hope everyone's having a great day
+  https://twitter.com/Teknium/status/2126166446464291150
+  Teknium wishes everyone a happy Thanksgiving in a warm holiday message to the community.
+- [2026-11-28] @anh8020 Just pick some options from
 
-as someone who uses multiple models, gpt 6.2 gives me...
-  https://twitter.com/rlaope/status/2124740748763672680
-  rlaope tells OpenAI that among the multiple models they use, GPT 6.2 gives the most confidence at the implementation level, while relying on other models for planning and design.
-- [2026-11-24] @deeperflows @pabis_eu @NousResearch @linuxfoundation @grok Ok well I guess we'll just never partner...
-  https://twitter.com/Teknium/status/2124837777909137847
-  A reply thread snippet from Teknium responding to criticism, joking sarcastically that to stay pure for critics Nous would have to never partner with any company, foundation, or non-profit again. Ment
-- [2026-11-24] hermes agent motion reels (free in the reply) https://t.co/8gxRGQgP6r
-  https://twitter.com/rlaope/status/2124819462583144462
-  rlaope sharing motion reels showcasing the Hermes Agent, offering free versions of the reels in the replies.
-- [2026-11-24] @deeperflows @pabis_eu @NousResearch @linuxfoundation We do! Lol
-  https://twitter.com/Teknium/status/2124771743621689820
-  Teknium casually confirms something in a reply thread with deeperflows and pabis_eu about Nous Research and the Linux Foundation.
-- [2026-11-24] GitHub: https://t.co/5OoCqbz58X
-  https://twitter.com/rlaope/status/2124703694835028352
-  rlaope posts a bare GitHub link, part of the oh-my-hermes desktop app launch thread.
-- [2026-11-24] @navyapper This is not edited
-  https://twitter.com/NousResearch/status/2124890990519464094
-  Nous Research confirming to a skeptical user that a shared screenshot or clip related to Hermes is unedited, defending authenticity of a viral claim.
-- [2026-11-24] @UtkarshSheel @NousResearch Sent to the team
-  https://twitter.com/Teknium/status/2124772328353735095
-  Teknium replies to a user indicating that something (likely feedback or a report) has been passed along to the Nous Research team.
-- [2026-11-24] @Ciqax @pabis_eu It was definitely not a big company who wanted a qwen finetune msft would be perfec...
-  https://twitter.com/Teknium/status/2124771373482696862
-  Teknium responds to speculation, saying a rumored commissioning party was definitely not a big company seeking a Qwen finetune, and that Microsoft would be happy if everyone used GPT.
-- [2026-11-24] @AIJourneyz Wouldn’t it be easier to ask the agent? It’s all documented just tell it to read the doc...
-  https://twitter.com/rlaope/status/2124740123950776618
-  rlaope suggests to another user that the easier path is to ask the Hermes agent directly, since the process is documented and the agent can read the docs and follow instructions.
-- [2026-11-24] Destop app: https://t.co/rtDYj3aZg6
-  https://twitter.com/rlaope/status/2124703722148429875
-  rlaope shares a bare link labeled as the desktop app download, as part of the oh-my-hermes desktop app launch thread.
-- [2026-11-24] @Ciqax @pabis_eu And we have hundreds of ndas including with msft lol
-  https://twitter.com/Teknium/status/2124771434899873877
-  Teknium replies that Nous Research has hundreds of NDAs, including with Microsoft, in an ongoing thread about the company's commercial relationships.
+https://t.co/R3I8gGdMm6
+
+And send your agent there to build fr...
+  https://twitter.com/Teknium/status/2126162645191712779
+  Teknium advises a user to pick options from a linked resource and send their Hermes agent there to build from, a concrete agent-usage recommendation.
+- [2026-11-28] Happy Black Friday
+  https://twitter.com/Teknium/status/2126434227873054931
+  Teknium posts a short Happy Black Friday greeting, likely setting up or nodding to the company promo announcement.
+- [2026-11-28] @rlaope I really hope that mousepad is real
+  https://twitter.com/Teknium/status/2126376768273863007
+  Teknium replies to rlaope hoping a mousepad shown by the community member is real, continuing a lighthearted exchange with a prominent Hermes community builder.
+- [2026-11-28] @Polymarket https://t.co/P9fZEIEWO2
+  https://twitter.com/Teknium/status/2126412060124918165
+  Teknium replies directly to Polymarket with a link, suggesting a public interaction or pointer involving the prediction market platform.
+- [2026-11-28] @jgallardo Yes the promo is off of the first month as stated in the post. You can email support@nous...
+  https://twitter.com/NousResearch/status/2126456382421348404
+  NousResearch confirms the Black Friday promo applies to the first month only and directs users with issues to the support email.
+- [2026-11-28] @read__the__diff Uh twice as much?
+  https://twitter.com/NousResearch/status/2126425771690561878
+  NousResearch replies quizzically (twice as much?) to a user in what appears to be a discussion about usage, pricing, or token allowances.
+- [2026-11-28] @swedish_gold The exclamation mark is not part of the code, you can also just click the link to appl...
+  https://twitter.com/NousResearch/status/2126456542572753380
+  NousResearch clarifies to a user that the exclamation mark is not part of the promo code and that the link applies it automatically.
+- [2026-11-28] Epic
+  https://twitter.com/Teknium/status/2126378042163605811
+  Teknium posts the single word Epic, a reaction tweet likely commenting on a release, demo, or community achievement.
+- [2026-11-28] @log4j @theemozilla Impeccable
+  https://twitter.com/NousResearch/status/2126143496591413506
+  A one-word reply from the official NousResearch account to log4j and theemozilla, saying Impeccable in response to some shared work. No substantive content on its own; it signals approval or praise fr
+- [2026-11-28] @hazem_samak101 We love our users and love giving them free and heavily discounted tokens
+  https://twitter.com/NousResearch/status/2126456757727948880
+  Official NousResearch reply telling a user they love giving users free and heavily discounted tokens, part of the support conversation around the Black Friday promo.
+- [2026-11-28] @mRelby @fl_rn_st @NousResearch Thanks for the feedback!
+  https://twitter.com/Teknium/status/2126416595174273120
+  Teknium thanks two users for feedback on something related to NousResearch, suggesting active founder engagement with community input.
+- [2026-11-28] @HarvardChin @telegram @NousResearch Love that gif
+  https://twitter.com/Teknium/status/2126163152622805056
+  Teknium compliments a gif shared by a user in a thread also mentioning Telegram and NousResearch.
+- [2026-11-28] @HermesAgentTips https://t.co/OMgjMGifK3
+  https://twitter.com/NousResearch/status/2126421210330276175
+  NousResearch replies with a bare link to an account named HermesAgentTips, likely sharing a related resource or thread.
+- [2026-11-28] @k6bat @NousResearch 👀👀
+  https://twitter.com/Teknium/status/2126410724373356828
+  Teknium replies with eye emojis to a user mentioning NousResearch, hinting interest in whatever the user surfaced.
+- [2026-11-28] @chandu_cpz Herme
+  https://twitter.com/NousResearch/status/2126210965821636871
+  NousResearch replies to a user with the truncated word Herme, a playful sign-off riffing on the Hermes name.
+- [2026-11-28] https://t.co/5OoCqbz58X
+  https://twitter.com/rlaope/status/2126150700216512981
+  rlaope posts a bare link, presumably to OMH-related material, with no accompanying text.
+- [2026-11-28] @Albinkultur https://t.co/lcBRqwq45i
+  https://twitter.com/NousResearch/status/2126456630204068194
+  Official NousResearch reply to a user containing only a link, likely pointing to the Black Friday promotion or relevant docs.
+- [2026-11-28] @BlondeBestie148 @Polymarket @jakozloski https://t.co/P9fZEIEWO2
+  https://twitter.com/Teknium/status/2126412072225497592
+  Teknium replies to a Polymarket-related exchange with a link, apparently pointing participants to something relevant.
+- [2026-11-27] Hermes Agent Structured Output: JSON Extraction With Plugins, Tool Schemas, and the API Server (2026)
+  https://hermes-tutorials.dev/blog/hermes-agent-structured-output-json/
+  A 2026 guide covering three routes to machine-readable JSON from Hermes Agent via plugins, tool schemas, and the API server, explaining where each approach validates output. It includes a runnable Pyt
+- [2026-11-27] Build Log: Giving Hermes Cron Jobs an Attention Budget
+  https://hermes-tutorials.dev/blog/build-log-giving-hermes-cron-jobs-an-attention-budget-admission-gate-for-notifications/
+  This tutorial presents a pattern for adding an attention budget to Hermes cron jobs by gating notifications in two places: before a run to skip unnecessary agent turns, and after a run to suppress ans
+- [2026-11-27] NPM package installed Hermes Agent as root and tasked it over Telegram
+  https://safedep.io/blog/malicious-npm-leadstack-crm-connect-hermes-agent-backdoor
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-50585975), Safedep report of a malicious NPM package (leadstack CRM connect) that installed Hermes Agent as root and use
+- [2026-11-27] Hermes Agent now supports Claude Pro/Max subscriptions
+  https://hermes-agent.nousresearch.com/docs/plugins/claude-subscription-directsdk
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-49790991), Official Hermes Agent documentation page announcing support for Claude Pro/Max subscriptions via a Claude sub
+- [2026-11-27] Tell HN: Stop using MLX, start telling your agent to write custom kernels
+  https://news.ycombinator.com/item?id=50648334
+  As previously covered in [Research](/?date=2026-11-26&category=research#item-hn-50648334), Author describes clustering Macs for local AI and replacing MLX with agent-written custom kernels after poor 
+- [2026-11-27] Show HN: Comemo – composite memory provider for Hermes Agent
+  https://github.com/andausman/comemo
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-50518538), Comemo is a composite memory provider that occupies the single external memory-provider slot in Hermes Agent.
+- [2026-11-27] Hermes Kanban – Multi-Agent Profile Collaboration
+  https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-49604068), Official Hermes Agent documentation describing the Kanban feature for multi-agent profile collaboration, wher
+- [2026-11-27] Hermes Agent on Kubernetes: no Helm chart, and the image needs root at init
+  https://www.revos.ai/blog/hermes-agent-kubernetes
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-49977400), Revos.ai blog post covering running Hermes Agent on Kubernetes, noting gaps: there is no official Helm chart,
+- [2026-11-27] Launch HN: Almanac (YC S26) – AI that knows your company
+  https://usealmanac.com/
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-49511007), Almanac, a YC S26 startup, launches an AI product described as a Hermes with a brain that knows everything ab
+- [2026-11-27] Using Hermes Agent on a VPS to Control an Old Rooted Android Phone
+  https://nimitbhardwaj.github.io/posts/hermes-agent-rooted-android-vps/
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-50629729), Blog post by nimitbhardwaj describing a setup that runs Hermes Agent on a VPS and uses it to remotely control
+- [2026-11-27] Show HN: Crazy simple AI agent orchestration with Markdown and Containers
+  https://github.com/ameesme/shoebox
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-50610136), Launch of shoebox, a filesystem-based agent orchestration tool built as a lighter alternative after the autho
+- [2026-11-27] Hermes Agent: My containerized take
+  https://ricardodevries.com/blog/hermes-agent-my-containerized-take
+  As previously covered in [Research](/?date=2026-11-25&category=research#item-hn-50131496), Blog post by ricardodevries presenting a personal containerized deployment approach for Hermes Agent, describ
+- [2026-11-27] Show HN: A free, open-source agent orchestrator for knowledge work
+  https://www.itsverso.xyz/
+  Verso is a free open-source agent orchestrator for knowledge work built on top of Hermes Agent. Started as a learning exercise, it is now the author's daily work setup; it provides an intuitive GUI wa
+- [2026-11-27] Hermes-Voice: Talk to a Hermes Agent Profile Through Home Assistant Assist
+  https://github.com/majorminorlabs/hermes-voice
+  Hermes-Voice is an open-source integration (majorminorlabs/hermes-voice) that lets users talk to a Hermes Agent profile through Home Assistant Assist, adding voice control of the agent inside a smart-
+- [2026-11-27] Refine Cycle: self-improvement plugin for Hermes Agent
+  https://github.com/Bergschloss/Refine-Cycle-for-Hermes-Agent
+  Refine Cycle is a self-improvement plugin for Hermes Agent (Bergschloss/Refine-Cycle-for-Hermes-Agent) that adds a continuous refinement loop so the agent can improve its own behavior over time.
+- [2026-11-27] Hermes Paper Harness: Native SwiftUI iPhone Client for Hermes Agent
+  https://apps.apple.com/ro/app/hermes-paper-harness/id6820495872
+  Hermes Paper Harness is a native SwiftUI iPhone app client for Hermes Agent, available on the Apple App Store, providing a mobile interface to interact with Hermes Agent profiles.
+- [2026-11-27] Ask HN: My agent went haywire, does this output mean anything?
+  https://news.ycombinator.com/item?id=49916751
+  User reports a freshly provisioned Hermes Agent on a headless Debian server, running Z.ai GLM 5.3 Flash, entering a long trance-like state in a Thinking for 1m36s block after being asked to print envi
+- [2026-11-27] I think I used the Hermes Agent wrong
+  https://heyjonny.dev/posts/i-think-i-used-the-hermes-agent-wrong/
+  Personal blog post by heyjonny reflecting on mistakes made while using Hermes Agent and lessons learned about applying it correctly.
+- [2026-11-27] AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design
+  https://arxiv.org/abs/2611.33093
+  Benchmark evaluating LLM coding agents on implementing quantized decoders (Qwen3.5, Gemma 3, Gemma 4, Llama 3.2) in synthesizable RTL code. Key insight: in hardware a wrong state update can pass outpu
+- [2026-11-27] ClusterMob – a community registry of Hermes Agent profiles
+  https://clustermob.com/
+  ClusterMob (clustermob.com) is a community registry where users can publish and discover Hermes Agent profiles, enabling sharing and reuse of agent configurations across the community.
+- [2026-11-27] CARE-3D: Reinforcement Learning for Evidence Grounded Agentic Reasoning in Situated 3D Scenes
+  https://arxiv.org/abs/2611.29969
+  Research paper on reinforcement learning for embodied agents performing situated 3D reasoning. It argues existing methods imitate supervised evidence-acquisition traces rather than optimizing how well
+- [2026-11-27] Ask HN: How do you manage your personal agents?
+  https://news.ycombinator.com/item?id=50326764
+  Discussion thread about coordinating multiple personal agents: OpenClaw, Hermes Agent, Muse, Dots, Claude Code, Codex, and others. The author runs each separately but resorts to copy-pasting the same 
+- [2026-11-27] Ask HN: What's your current AI agentic setup?
+  https://news.ycombinator.com/item?id=50366117
+  Open discussion thread asking HN users how they use AI day to day: which subscriptions they pay for (Claude, ChatGPT/Codex, Cursor), whether they hold multiple accounts or tiers, and whether they use 
+- [2026-11-27] Show HN: Hanging Context – news by an agent, for other agents
+  https://hangingcontext.com/
+  Hanging Context is a site where agent-written news is published for consumption by other agents. The author describes pivoting from a 2022 human-facing markets/collectibles news site to targeting agen
+- [2026-11-27] Best SEO Reporting Software (2026): 10 Tools That Show Which Pages Bring in Customers
+  https://juliangoldie.com/best-seo-reporting-software/?utm_source=rss&utm_medium=rss&utm_campaign=best-seo-reporting-software
+  A marketing listicle ranking ten SEO reporting tools, placing a product called Polar Rank first because it attributes clicks, demos, signups, or orders to specific articles and tracks weekly Google an
+- [2026-11-27] Best SEO Tools for Ecommerce (2026): 10 Tools to Get More Sales From Google and ChatGPT
+  https://juliangoldie.com/best-seo-tools-for-ecommerce/?utm_source=rss&utm_medium=rss&utm_campaign=best-seo-tools-for-ecommerce
+  A second promotional listicle, this one targeting ecommerce SEO, again ranking Polar Rank first on the basis that its AI agents write and publish buying-guide articles to Shopify, WordPress, and Webfl
+- [2026-11-27] Best Technical SEO Tools (2026): 10 Tools to Crawl, Fix and Grow Your Site
+  https://juliangoldie.com/best-technical-seo-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-technical-seo-tools
+  Marketing listicle ranking Polar Rank as the best technical SEO tool, with crawlers like Screaming Frog listed for finding problems, and promotional calls to action for a backlink service. Dated 26 No
+- [2026-11-27] Best All in One SEO Tools (2026): 10 SEO Platforms Compared, From Research to Done-for-You
+  https://juliangoldie.com/best-all-in-one-seo-tools/?utm_source=rss&utm_medium=rss&utm_campaign=best-all-in-one-seo-tools
+  Promotional comparison post ranking Polar Rank first among all-in-one SEO platforms, listing research suites such as Semrush, Ahrefs, SE Ranking, Moz Pro, seoClarity, Mangools, Serpstat, Ubersuggest a
+- [2026-11-27] Best Roofing SEO Company (2026): 9 Roofing SEO Companies Ranked for Google and AI Search
+  https://juliangoldie.com/best-roofing-seo-company/?utm_source=rss&utm_medium=rss&utm_campaign=best-roofing-seo-company
+  Promotional ranking of roofing SEO companies with Goldie Agency first, emphasizing manual outreach links and AI search visibility for roofers, plus calls to action for a backlink gameplan service.
+- [2026-11-27] Hermes Agent can now control your Obsidian vault as a shared knowledge base via the official connect...
+  https://twitter.com/NousResearch/status/2125989568721637578
+  NousResearch officially announces that Hermes Agent can now control an Obsidian vault as a shared knowledge base via an official connector, with notes staying local, private, and user-controlled.
+- [2026-11-27] Obsidian 🤝 Hermes
+  https://twitter.com/Teknium/status/2125976093794689220
+  Teknium posts a short hype announcement of the Obsidian and Hermes partnership/integration, symbolized by a handshake emoji.
+- [2026-11-27] CRAZY TERMINAL DESKTOP WITH BOT
+
+Gemini 4 Neon just landed in Hermes Agent, so I put it on a real jo...
+  https://twitter.com/rlaope/status/2125877282736951652
+  The author showcases a multi-model workflow using Hermes Agent after Gemini 4 Neon was added to it. One plan was split into five parts and routed to different models: GPT-6.2 Sol wrote a sync protocol
+- [2026-11-27] Welcome all new Hermes Agent crew members
+  https://twitter.com/Teknium/status/2126000844265181550
+  Teknium welcomes the new wave of Hermes Agent users to the community, likely tied to the latest invite round.
+- [2026-11-27] oh-my-hermes 5.0.1 is out.
+
+Hermes Agent can now hand coding work to the other CLIs you already pay ...
+  https://twitter.com/rlaope/status/2125916754677465338
+  rlaope announces oh-my-hermes 5.0.1, adding delegation of coding tasks to external CLIs (Devin, Gemini, Qwen, Kimi, Cursor, Amp, Droid, Aider, Goose) in isolated worktrees, Claude lanes on Pro/Max sub
+- [2026-11-27] omp is a benchmaxxing harness. Nothing wrong with that, it's a fair way to build one.
+
+Hermes Agent'...
+  https://twitter.com/rlaope/status/2125924340344758275
+  rlaope describes omp as a benchmaxxing harness, then presents their own benchmarking plugin built on Hermes Agent's harness: same 11 coding tasks, 98 percent pass versus omp's 88 percent, with 27 to 3
+- [2026-11-27] @hazem_samak101 It’s been only 3 weeks since the waitlist started. 2000 new invites went out today f...
+  https://twitter.com/Teknium/status/2126039105461260329
+  Teknium tells a community member that the waitlist started only three weeks ago and that 2000 new invites went out today.
+- [2026-11-27] I built a desktop app for Hermes Agent. It's called omher, and it's the window I live in now.
+
+⌘T op...
+  https://twitter.com/rlaope/status/2125907206243852539
+  rlaope showcases omher, a desktop app for Hermes Agent with a split-pane grid for Claude Code, Codex, Hermes runs, and dev servers; a sidebar bot that monitors sessions and drafts next prompts pending
+- [2026-11-27] @BuiltinMind @matthewsoldit I had a gaming gpu and my future cofounder @karan4d was working with lai...
+  https://twitter.com/Teknium/status/2125772107082854571
+  Teknium shares a personal origin story in reply to a thread: he started with just a gaming GPU, and met his future cofounder karan4d, who was working with LAION at the time, through building in public
+- [2026-11-27] Hermes gives you wings, flight, and magical powers🪽🪽
+  https://twitter.com/Teknium/status/2126064866280849742
+  Teknium posts a playful hype message about Hermes granting wings, flight, and magical powers, likely celebrating new agent capabilities.
+- [2026-11-27] @matthewsoldit well yea, at least half my success was from building and learning in public all those...
+  https://twitter.com/Teknium/status/2125771537949348307
+  In a reply to @matthewsoldit, Teknium reflects that at least half of his success came from building and learning in public during his early years in the AI community.
+- [2026-11-27] just install omher. 6.1k github star
+
+open-source bot &amp; coding-agent desktop
+
+coding skills, sub...
+  https://twitter.com/rlaope/status/2125993451753972057
+  rlaope promotes the omher desktop app, citing 6.1k GitHub stars and highlighting coding skills, subagent routing, long-term memory, and connections to other sub-systems.
+- [2026-11-27] @witcheer @sfxnz kanban is a built in plugin for the desktop ;)
+  https://twitter.com/Teknium/status/2126075307518218739
+  Teknium replies to users clarifying that kanban functionality is a built-in plugin for the Hermes desktop app.
+- [2026-11-27] @0xdierich The final boss
+  https://twitter.com/NousResearch/status/2126026524256088291
+  The official NousResearch account calls something the final boss in a reply, likely hyping Hermes Agent relative to competitors.
+- [2026-11-27] There's an Oh-My-Hermes Discord server!
+I generally review PRs and merge them pretty quickly, and yo...
+  https://twitter.com/rlaope/status/2125917566006894641
+  rlaope announces an Oh-My-Hermes Discord server for updates, feedback, and collaboration, and notes they quickly review and merge almost all PRs from contributors.

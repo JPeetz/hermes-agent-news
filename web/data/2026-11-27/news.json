@@ -1,0 +1,64 @@
+{
+  "category": "news",
+  "date": "2026-11-27",
+  "category_summary": "**Tips & Community Patterns** (no releases or merged PRs this cycle): Both items target **Hermes Agent** reliability. Top pick **80d26a33521f** is a 2026 guide to [structured output](/?date=2026-11-27&category=news#item-80d26a33521f), comparing three routes to machine-readable JSON — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. Runner-up **978c7b5f6b95** is a [build log on attention budgets for cron jobs](/?date=2026-11-27&category=news#item-978c7b5f6b95), gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to reduce noise in scheduled deployments. Shared theme: practical automation-hardening patterns for Hermes power users.",
+  "category_summary_html": "<p><strong>Tips &amp; Community Patterns</strong> (no releases or merged PRs this cycle): Both items target <strong>Hermes Agent</strong> reliability. Top pick <strong>80d26a33521f</strong> is a 2026 guide to <a href=\"/?date=2026-11-27&amp;category=news#item-80d26a33521f\" class=\"internal-link\" rel=\"noopener noreferrer\">structured output</a>, comparing three routes to machine-readable JSON — plugins, tool schemas, and the API server — with bounded retries; essential reading for anyone building pipelines or integrations on Hermes. Runner-up <strong>978c7b5f6b95</strong> is a <a href=\"/?date=2026-11-27&amp;category=news#item-978c7b5f6b95\" class=\"internal-link\" rel=\"noopener noreferrer\">build log on attention budgets for cron jobs</a>, gating notifications both before a run (skipping unnecessary executions) and after (filtering output) to reduce noise in scheduled deployments. Shared theme: practical automation-hardening patterns for Hermes power users.</p>",
+  "themes": [
+    {
+      "name": "Hermes Reliability and Automation Patterns",
+      "description": "Both items are practical tutorials focused on making Hermes Agent deployments more dependable: gating cron job notifications to conserve attention, and producing validated, machine-readable JSON output with bounded retries.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 66.0
+    }
+  ],
+  "total_items": 2,
+  "items": [
+    {
+      "id": "80d26a33521f",
+      "title": "Hermes Agent Structured Output: JSON Extraction With Plugins, Tool Schemas, and the API Server (2026)",
+      "content": "Three routes to machine-readable JSON from Hermes Agent, showing where each one validates output, plus a runnable Python validator with a bounded retry loop.",
+      "url": "https://hermes-tutorials.dev/blog/hermes-agent-structured-output-json/",
+      "author": "Hermes Agent",
+      "published": "2026-11-26T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "A 2026 guide covering three routes to machine-readable JSON from Hermes Agent via plugins, tool schemas, and the API server, explaining where each approach validates output. It includes a runnable Python validator with a bounded retry loop for reliable structured extraction.",
+      "importance_score": 70.0,
+      "reasoning": "Structured output is a core integration need for Hermes users building pipelines, and the guide compares three distinct mechanisms with concrete validation guidance and reusable code. Its breadth across plugins, tool schemas, and the API server makes it a useful reference, though it remains tutorial content rather than a release or functional change.",
+      "themes": [
+        "structured output",
+        "JSON extraction",
+        "integrations",
+        "validation"
+      ],
+      "continuation": null,
+      "summary_html": "<p>A 2026 guide covering three routes to machine-readable JSON from Hermes Agent via plugins, tool schemas, and the API server, explaining where each approach validates output. It includes a runnable Python validator with a bounded retry loop for reliable structured extraction.</p>",
+      "content_html": "<p>Three routes to machine-readable JSON from Hermes Agent, showing where each one validates output, plus a runnable Python validator with a bounded retry loop.</p>"
+    },
+    {
+      "id": "978c7b5f6b95",
+      "title": "Build Log: Giving Hermes Cron Jobs an Attention Budget",
+      "content": "Hermes cron jobs can gate notifications in two places: before the run, to skip pointless agent turns, and after it, to suppress answers nobody needs to read.",
+      "url": "https://hermes-tutorials.dev/blog/build-log-giving-hermes-cron-jobs-an-attention-budget-admission-gate-for-notifications/",
+      "author": "Hermes Agent",
+      "published": "2026-11-26T00:00:00",
+      "source": "Hermes Agent Tutorials",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "This tutorial presents a pattern for adding an attention budget to Hermes cron jobs by gating notifications in two places: before a run to skip unnecessary agent turns, and after a run to suppress answers that nobody needs to read. It is a build log aimed at users running scheduled Hermes Agent tasks who want to cut noise and wasted compute.",
+      "importance_score": 62.0,
+      "reasoning": "Not an official release or PR, but it addresses a common pain point for Hermes users running cron-driven automation: notification overload and wasted agent turns. The two-stage gating pattern is directly actionable for scheduled-task users, giving it solid practical value, though it is community tutorial content rather than a platform change.",
+      "themes": [
+        "automation",
+        "cron jobs",
+        "notification management",
+        "cost efficiency"
+      ],
+      "continuation": null,
+      "summary_html": "<p>This tutorial presents a pattern for adding an attention budget to Hermes cron jobs by gating notifications in two places: before a run to skip unnecessary agent turns, and after a run to suppress answers that nobody needs to read. It is a build log aimed at users running scheduled Hermes Agent tasks who want to cut noise and wasted compute.</p>",
+      "content_html": "<p>Hermes cron jobs can gate notifications in two places: before the run, to skip pointless agent turns, and after it, to suppress answers nobody needs to read.</p>"
+    }
+  ]
+}
