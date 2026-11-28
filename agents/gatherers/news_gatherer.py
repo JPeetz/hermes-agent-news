@@ -185,16 +185,24 @@ class NewsGatherer(BaseGatherer):
 
         return articles
 
-    def _is_reddit_empty_throttle(self, feed_url: str, parsed) -> bool:
+    def _is_reddit_empty_throttle(self, feed_url: str, status_code, parsed) -> bool:
         """Reddit's anonymous throttle can serve HTTP 200 with an EMPTY feed body
         (0 entries, bozo False) instead of 429. The retry loop only checks HTTP
         status, so such a response used to be treated as success and silently
         dropped Reddit for the day. The combined multi-sub feed always has
         content, so a 0-entry parse from a reddit.com host is a throttle signal,
         not a quiet feed.
+
+        Only an HTTP 200 qualifies as the empty-throttle signal. Reddit retired
+        public RSS for non-moderators (Nov 2026), so a reddit host answering
+        4xx/5xx with an empty body is a TERMINAL failure (feed dead/blocked), not
+        a transient quota cooldown — retrying it 5x for 90s only burns wall-clock
+        time on a feed that will never return items.
         """
         host = (urlparse(feed_url).hostname or '').lower()
         if host != 'reddit.com' and not host.endswith('.reddit.com'):
+            return False
+        if status_code != 200:
             return False
         return len(getattr(parsed, 'entries', None) or []) == 0
 
@@ -235,7 +243,7 @@ class NewsGatherer(BaseGatherer):
                             "content-type": resp.headers.get("content-type", "")
                         }
                     )
-                    if not self._is_reddit_empty_throttle(feed_url, feed_parsed):
+                    if not self._is_reddit_empty_throttle(feed_url, resp.status_code, feed_parsed):
                         response = resp
                         break
                     # Reddit throttle answered 200 with an empty body: wait a

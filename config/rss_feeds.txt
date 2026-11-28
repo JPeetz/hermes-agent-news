@@ -31,12 +31,15 @@ https://huggingface.co/blog/feed.xml
 
 # ===== Reddit Community (via one combined multi-sub feed) =====
 # Priority: critical — primary Hermes subreddits.
-# IMPORTANT: Reddit rate-limits anonymous RSS to ~1 request per window (HTTP 429
-# on any second burst). Fetching each sub as its own feed guarantees throttling.
-# A single combined multi-sub feed returns covers all subs in ONE request, which
-# stays under the quota. The gatherer fetches Reddit serially at 1.6s spacing;
-# with one feed that is effectively one request per run.
-https://www.reddit.com/r/hermesagent+nousresearch+LocalLLaMA+LLMDevs+Rag/new.rss
+# REDDIT RETIRED PUBLIC RSS FOR NON-MODERATORS (Nov 2026): every feed type now
+# answers 404/"Not Found" on www, 403 on the .json API, and old.reddit requires
+# login. There is NO anonymous replacement (Reddit stated none for non-moderators).
+# Without Reddit API credentials this source is dead — the feed is kept commented
+# so the pipeline stops burning ~450s/day retrying a URL that will never return
+# items, and so this doc records WHY it was disabled. Re-enable only if we obtain
+# Reddit OAuth/developer credentials (then use oauth.reddit.com, not the RSS path).
+# Formerly (until 2026-11-13):
+# https://www.reddit.com/r/hermesagent+nousresearch+LocalLLaMA+LLMDevs+Rag/new.rss
 
 # Keyword search feed (LLM relevance gate filters for Agent N content). Kept
 # commented: a second Reddit request in the same window trips 429, and the
